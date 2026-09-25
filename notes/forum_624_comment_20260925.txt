@@ -1,0 +1,8 @@
+Some small exact values, computed by SAT and machine-checked (convention as on this page: f defined on all subsets of [n], f(2^Y) = [n] required for every |Y| >= m).
+
+- H(9) = H(10) = H(11) = 4. The upper bound is an explicit f on the subsets of [11] with the covering property for all |Y| >= 4, so N(4) >= 11 (improving the n = 10 witness above). n = 12 is undecided after about 6 CPU-hours of SAT, so 11 <= N(4) <= 15.
+- H(16) = H(17) = 5: explicit witnesses for (16, 5) and (17, 5); the lower bound is your H(2^m) >= m+1 argument plus monotonicity.
+- Your values H(2..8) = 1, 2, 3, 3, 3, 4, 4 and N(1..3) = 2, 3, 6 are confirmed; the UNSAT cells (4,2), (7,3) carry LRAT proofs checked with cake_lpr.
+- For comparison, with the original Erdős–Hajnal convention (f on proper subsets, f(A) not in A) the values are H_EH(2..13) = 2, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, so N_EH(4) = 8 and N_EH(5) >= 13.
+
+Witnesses, an independent checker and the proofs: https://github.com/chy4pro/automath/tree/main/problems/erdos624 . Found with an AI pipeline (Claude models + CaDiCaL); every claim above is checked by a program, not by a model. None of this touches the asymptotic question.

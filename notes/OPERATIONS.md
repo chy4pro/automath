@@ -90,6 +90,7 @@ task completion), not a high-frequency screenshot/polling loop.
   reply to the erdosproblems.com moderator in the existing 04 Sep thread, asking to update the #708
   claim summary to the 12n result and add the Lean link. Text fixed by the coordinator (Fable 5.1);
   a Sonnet browser subagent may send it verbatim. This does not create a standing permission.
+  Second one-time exception, owner-authorized 2026-09-25 ("你来发吧", after the coordinator independently re-verified the witnesses): one forum comment on erdosproblems.com/624 replying in the existing thread with the certified small values; text fixed in notes/forum_624_comment_20260925.txt; a Sonnet browser subagent may post it verbatim.
 - Do not put the owner's private email, keys, login tokens, internal session dumps or unrelated
   personal conversations into a publication. **2026-09-25 scrub (owner: rewrite, it is not project content):** the public repo was rewritten from a single root; never commit local paths (`/Users/...`), chat/session links (chatgpt.com/c/…, claude.ai/…session…), GCP ids, e-mail addresses, quoted owner chat, arXiv text extracts, or GCP scripts. Commit trailers carry `Co-Authored-By` only, no session link. Pre-push grep: `roychen|chatgpt\.com/c/|claude\.ai/.*session|gmail|chenhaoyu1995`. Do not read/print engine-key files to prove access.
 - Owner-only pending items from handoff: account data export/deletion choice, Prove2Me key rotation,
