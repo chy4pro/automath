@@ -1,0 +1,20 @@
+cell (7,3)_L, symmetry-breaking level sb=2
+audit n=7 m=3 variant=L sb=2: vars=448 clauses expected=1697 file=1697
+AUDIT: PASS (file clause set == specification clause set)
+--- cadical
+s UNSATISFIABLE
+--- drat-trim
+c 953 of 1697 clauses in core                            
+c 5348 of 9956 lemmas in core using 104732 resolution steps
+c 0 RAT lemmas in core; 9 redundant literals in core lemmas
+s VERIFIED
+raw DRAT bytes: 316963
+trimmed LRAT bytes: 765484
+--- cake_lpr
+s VERIFIED UNSAT
+--- lrat-check
+c VERIFIED
+c Added clauses = 7045.  Deleted clauses = 7006.  Max live clauses = 1697
+--- sha256 (uncompressed)
+1e2635809bc9e285fdf65c2ac623b43e34da3bf5e3c7d0ebf988a2224a88f100  f.cnf
+e57ff5b3ab58e53db53e20b361ee74d4dbece3d0c6b263eb4fcdfa426192041f  trim.lrat

@@ -1,0 +1,3 @@
+n=8 m=4 variant=L : closure method checked 163 sets Y (|Y|>=m), failures 0; direct method checked 163 sets (all |Y|>=m), failures 0
+mutation self-test: 15 of 40 single-value mutations detected as failures
+RESULT: PASS  (f witnesses (8,4)_L, hence H_L(8) <= 4)

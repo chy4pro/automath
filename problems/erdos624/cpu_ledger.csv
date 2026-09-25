@@ -1,0 +1,109 @@
+2026-09-25T13:47:15,probe_4_2_L_sb1,0.01,0.01,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/c_4_2_L_sb1.cnf
+2026-09-25T13:47:15,probe_6_3_L_sb1,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/c_6_3_L_sb1.cnf
+2026-09-25T13:47:16,probe_11_4_L_sb1,0.49,0.49,10,24,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/c_11_4_L_sb1.cnf
+2026-09-25T13:47:20,probe_7_3_L_sb2,0.04,0.04,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/c_7_3_L_sb2.cnf
+2026-09-25T13:48:51,probe_7_3_L_sb1,91.08,91.17,20,46,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/c_7_3_L_sb1.cnf
+2026-09-25T13:49:20,probeEH_2_2_sb1,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_2_2_1.cnf
+2026-09-25T13:49:20,probeEH_2_2_sb2,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_2_2_2.cnf
+2026-09-25T13:49:20,probeEH_3_3_sb1,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_3_3_1.cnf
+2026-09-25T13:49:20,probeEH_3_3_sb2,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_3_3_2.cnf
+2026-09-25T13:49:21,probeEH_4_3_sb1,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_4_3_1.cnf
+2026-09-25T13:49:21,probeEH_4_3_sb2,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_4_3_2.cnf
+2026-09-25T13:49:21,probeEH_5_4_sb1,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_5_4_1.cnf
+2026-09-25T13:49:21,probeEH_5_4_sb2,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_5_4_2.cnf
+2026-09-25T13:49:21,probeEH_8_4_sb1,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_8_4_1.cnf
+2026-09-25T13:49:21,probeEH_8_4_sb2,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_8_4_2.cnf
+2026-09-25T13:49:21,probeEH_3_2_sb1,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_3_2_1.cnf
+2026-09-25T13:49:21,probeEH_3_2_sb2,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_3_2_2.cnf
+2026-09-25T13:49:21,probeEH_5_3_sb1,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_5_3_1.cnf
+2026-09-25T13:49:21,probeEH_5_3_sb2,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_5_3_2.cnf
+2026-09-25T13:49:23,probeEH_9_4_sb1,2.22,2.23,20,10,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_9_4_1.cnf
+2026-09-25T13:49:23,probeEH_9_4_sb2,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_9_4_2.cnf
+2026-09-25T13:49:37,probe_e_10_5_2,0.01,0.02,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_10_5_2.cnf
+2026-09-25T13:49:37,probe_e_11_5_2,0.02,0.02,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_11_5_2.cnf
+2026-09-25T13:49:37,probe_e_12_5_2,0.13,0.13,10,22,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_12_5_2.cnf
+2026-09-25T13:50:22,w_1_0_L,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_1_0_L.cnf
+2026-09-25T13:50:22,w_2_1_L,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_2_1_L.cnf
+2026-09-25T13:50:23,w_3_2_L,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_3_2_L.cnf
+2026-09-25T13:50:23,w_4_3_L,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_4_3_L.cnf
+2026-09-25T13:50:23,w_5_3_L,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_5_3_L.cnf
+2026-09-25T13:50:23,w_6_3_L,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_6_3_L.cnf
+2026-09-25T13:50:23,w_7_4_L,0.01,0.01,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_7_4_L.cnf
+2026-09-25T13:50:23,w_8_4_L,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_8_4_L.cnf
+2026-09-25T13:50:23,w_9_4_L,0.02,0.02,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_9_4_L.cnf
+2026-09-25T13:50:23,w_10_4_L,0.03,0.03,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_10_4_L.cnf
+2026-09-25T13:50:24,w_11_4_L,0.50,0.50,10,24,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_11_4_L.cnf
+2026-09-25T13:50:24,w_2_2_EH,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_2_2_EH.cnf
+2026-09-25T13:50:24,w_3_3_EH,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_3_3_EH.cnf
+2026-09-25T13:50:24,w_4_3_EH,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_4_3_EH.cnf
+2026-09-25T13:50:24,w_5_4_EH,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_5_4_EH.cnf
+2026-09-25T13:50:24,w_6_4_EH,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_6_4_EH.cnf
+2026-09-25T13:50:24,w_7_4_EH,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_7_4_EH.cnf
+2026-09-25T13:50:24,w_8_4_EH,0.00,0.00,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_8_4_EH.cnf
+2026-09-25T13:50:24,w_9_5_EH,0.01,0.01,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_9_5_EH.cnf
+2026-09-25T13:50:24,w_10_5_EH,0.01,0.01,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_10_5_EH.cnf
+2026-09-25T13:50:24,w_11_5_EH,0.04,0.04,10,11,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_11_5_EH.cnf
+2026-09-25T13:50:25,w_12_5_EH,0.04,0.04,10,16,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_12_5_EH.cnf
+2026-09-25T13:51:05,w_16_5_L,8.52,8.52,10,798,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_16_5_L.cnf
+2026-09-25T13:52:07,w_17_5_L,57.31,57.37,10,1277,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_17_5_L.cnf
+2026-09-25T13:53:01,u_7_3_L_sb2_solve,0.04,0.04,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat
+2026-09-25T13:53:01,u_7_3_L_sb2_dratrim,0.05,0.06,0,63,/home/agent/tools/bin/drat-trim runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat -L runs/u_7_3_L_sb2/trim.lrat -w
+2026-09-25T13:53:10,u_7_3_L_sb2_solve,0.04,0.04,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat
+2026-09-25T13:53:10,u_7_3_L_sb2_dratrim,0.06,0.06,0,63,/home/agent/tools/bin/drat-trim runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat -L runs/u_7_3_L_sb2/trim.lrat -w
+2026-09-25T13:53:15,u_7_3_L_sb2_solve,0.04,0.04,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat
+2026-09-25T13:53:15,u_7_3_L_sb2_dratrim,0.07,0.07,0,62,/home/agent/tools/bin/drat-trim runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat -L runs/u_7_3_L_sb2/trim.lrat -w
+2026-09-25T13:53:15,u_7_3_L_sb2_cakelpr,0.03,0.03,0,36,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/trim.lrat
+2026-09-25T13:53:15,u_7_3_L_sb2_lratcheck,0.02,0.02,0,33,/home/agent/tools/bin/lrat-check runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/trim.lrat
+2026-09-25T13:53:28,u_7_3_L_sb2_solve,0.04,0.04,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat
+2026-09-25T13:53:28,u_7_3_L_sb2_dratrim,0.05,0.05,0,63,/home/agent/tools/bin/drat-trim runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/raw.drat -L runs/u_7_3_L_sb2/trim.lrat -w
+2026-09-25T13:53:28,u_7_3_L_sb2_cakelpr,0.02,0.02,0,36,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/trim.lrat
+2026-09-25T13:53:28,u_7_3_L_sb2_lratcheck,0.01,0.01,0,33,/home/agent/tools/bin/lrat-check runs/u_7_3_L_sb2/f.cnf runs/u_7_3_L_sb2/trim.lrat
+2026-09-25T13:53:47,u_4_2_L_sb0_solve,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_4_2_L_sb0/f.cnf runs/u_4_2_L_sb0/raw.drat
+2026-09-25T13:53:47,u_4_2_L_sb0_dratrim,0.04,0.04,0,58,/home/agent/tools/bin/drat-trim runs/u_4_2_L_sb0/f.cnf runs/u_4_2_L_sb0/raw.drat -L runs/u_4_2_L_sb0/trim.lrat -w
+2026-09-25T13:53:47,u_4_2_L_sb0_cakelpr,0.00,0.00,0,8,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_4_2_L_sb0/f.cnf runs/u_4_2_L_sb0/trim.lrat
+2026-09-25T13:53:47,u_4_2_L_sb0_lratcheck,0.00,0.00,0,33,/home/agent/tools/bin/lrat-check runs/u_4_2_L_sb0/f.cnf runs/u_4_2_L_sb0/trim.lrat
+2026-09-25T13:53:47,u_2_1_EH_sb0_solve,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_2_1_EH_sb0/f.cnf runs/u_2_1_EH_sb0/raw.drat
+2026-09-25T13:53:47,u_2_1_EH_sb0_dratrim,0.02,0.02,0,58,/home/agent/tools/bin/drat-trim runs/u_2_1_EH_sb0/f.cnf runs/u_2_1_EH_sb0/raw.drat -L runs/u_2_1_EH_sb0/trim.lrat -w
+2026-09-25T13:53:47,u_2_1_EH_sb0_cakelpr,0.00,0.00,0,8,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_2_1_EH_sb0/f.cnf runs/u_2_1_EH_sb0/trim.lrat
+2026-09-25T13:53:47,u_2_1_EH_sb0_lratcheck,0.00,0.00,0,33,/home/agent/tools/bin/lrat-check runs/u_2_1_EH_sb0/f.cnf runs/u_2_1_EH_sb0/trim.lrat
+2026-09-25T13:53:47,u_3_2_EH_sb0_solve,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_3_2_EH_sb0/f.cnf runs/u_3_2_EH_sb0/raw.drat
+2026-09-25T13:53:47,u_3_2_EH_sb0_dratrim,0.02,0.02,0,58,/home/agent/tools/bin/drat-trim runs/u_3_2_EH_sb0/f.cnf runs/u_3_2_EH_sb0/raw.drat -L runs/u_3_2_EH_sb0/trim.lrat -w
+2026-09-25T13:53:47,u_3_2_EH_sb0_cakelpr,0.00,0.00,0,8,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_3_2_EH_sb0/f.cnf runs/u_3_2_EH_sb0/trim.lrat
+2026-09-25T13:53:47,u_3_2_EH_sb0_lratcheck,0.00,0.00,0,33,/home/agent/tools/bin/lrat-check runs/u_3_2_EH_sb0/f.cnf runs/u_3_2_EH_sb0/trim.lrat
+2026-09-25T13:53:47,u_5_3_EH_sb0_solve,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/raw.drat
+2026-09-25T13:53:47,u_5_3_EH_sb0_dratrim,0.02,0.02,0,59,/home/agent/tools/bin/drat-trim runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/raw.drat -L runs/u_5_3_EH_sb0/trim.lrat -w
+2026-09-25T13:53:47,u_5_3_EH_sb0_cakelpr,0.00,0.00,0,8,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/trim.lrat
+2026-09-25T13:53:47,u_5_3_EH_sb0_lratcheck,0.00,0.00,0,33,/home/agent/tools/bin/lrat-check runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/trim.lrat
+2026-09-25T13:54:29,probe_e_13_5_sb1,0.76,0.76,10,38,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_13_5_1.cnf
+2026-09-25T13:54:35,u_9_4_EH_sb0_solve,44.15,44.18,20,35,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_9_4_EH_sb0/f.cnf runs/u_9_4_EH_sb0/raw.drat
+2026-09-25T13:55:21,w_13_5_EH,0.89,0.91,10,37,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_13_5_EH.cnf
+2026-09-25T13:55:26,u_9_4_EH_sb0_dratrim,50.84,50.94,0,729,/home/agent/tools/bin/drat-trim runs/u_9_4_EH_sb0/f.cnf runs/u_9_4_EH_sb0/raw.drat -L runs/u_9_4_EH_sb0/trim.lrat -w
+2026-09-25T13:55:38,u_9_4_EH_sb0_cakelpr,11.84,11.85,0,1401,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_9_4_EH_sb0/f.cnf runs/u_9_4_EH_sb0/trim.lrat
+2026-09-25T13:55:43,u_9_4_EH_sb0_lratcheck,5.49,5.51,0,34,/home/agent/tools/bin/lrat-check runs/u_9_4_EH_sb0/f.cnf runs/u_9_4_EH_sb0/trim.lrat
+2026-09-25T13:56:27,u_9_4_EH_sb1_solve,2.65,2.66,20,10,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_9_4_EH_sb1/f.cnf runs/u_9_4_EH_sb1/raw.drat
+2026-09-25T13:56:31,u_9_4_EH_sb1_dratrim,3.31,3.32,0,101,/home/agent/tools/bin/drat-trim runs/u_9_4_EH_sb1/f.cnf runs/u_9_4_EH_sb1/raw.drat -L runs/u_9_4_EH_sb1/trim.lrat -w
+2026-09-25T13:56:32,u_9_4_EH_sb1_cakelpr,1.62,1.63,0,1401,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_9_4_EH_sb1/f.cnf runs/u_9_4_EH_sb1/trim.lrat
+2026-09-25T13:56:33,u_9_4_EH_sb1_lratcheck,0.56,0.56,0,33,/home/agent/tools/bin/lrat-check runs/u_9_4_EH_sb1/f.cnf runs/u_9_4_EH_sb1/trim.lrat
+2026-09-25T13:56:35,u_9_4_EH_sb2_solve,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_9_4_EH_sb2/f.cnf runs/u_9_4_EH_sb2/raw.drat
+2026-09-25T13:56:35,u_9_4_EH_sb2_dratrim,0.03,0.03,0,62,/home/agent/tools/bin/drat-trim runs/u_9_4_EH_sb2/f.cnf runs/u_9_4_EH_sb2/raw.drat -L runs/u_9_4_EH_sb2/trim.lrat -w
+2026-09-25T13:56:35,u_9_4_EH_sb2_cakelpr,0.01,0.01,0,17,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_9_4_EH_sb2/f.cnf runs/u_9_4_EH_sb2/trim.lrat
+2026-09-25T13:56:35,u_9_4_EH_sb2_lratcheck,0.01,0.01,0,33,/home/agent/tools/bin/lrat-check runs/u_9_4_EH_sb2/f.cnf runs/u_9_4_EH_sb2/trim.lrat
+2026-09-25T13:58:39,u_7_3_L_sb1_solve,111.15,111.37,20,41,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_7_3_L_sb1/f.cnf runs/u_7_3_L_sb1/raw.drat
+2026-09-25T14:01:38,u_7_3_L_sb1_dratrim,178.59,178.88,0,1232,/home/agent/tools/bin/drat-trim runs/u_7_3_L_sb1/f.cnf runs/u_7_3_L_sb1/raw.drat -L runs/u_7_3_L_sb1/trim.lrat -w
+2026-09-25T14:02:15,u_7_3_L_sb1_cakelpr,36.80,36.97,0,1401,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_7_3_L_sb1/f.cnf runs/u_7_3_L_sb1/trim.lrat
+2026-09-25T14:02:27,u_7_3_L_sb1_lratcheck,11.78,11.78,0,35,/home/agent/tools/bin/lrat-check runs/u_7_3_L_sb1/f.cnf runs/u_7_3_L_sb1/trim.lrat
+2026-09-25T14:11:47,probe_cyc_12_4_L,42.91,42.92,20,35,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/cyc_12_4_L.cnf
+2026-09-25T14:14:52,probe_cyc_16_5_EH,178.03,178.73,20,151,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/cyc_16_5_EH.cnf
+2026-09-25T14:19:40,probe_c_12_4_L_sb2,1801.58,1803.50,-24,400,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/c_12_4_L_sb2.cnf
+2026-09-25T14:24:34,probe_e_16_5_sb1,1802.16,1804.21,-24,374,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_16_5_1.cnf
+2026-09-25T14:28:15,probe_e_14_5_sb1,1802.36,1804.11,-24,574,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_14_5_1.cnf
+2026-09-25T14:30:01,probe_cyc_14_5_EH,900.94,902.67,-24,150,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/cyc_14_5_EH.cnf
+2026-09-25T14:45:21,probe_cube_inj_12_4_L,1199.91,1200.77,-24,265,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/cube_inj_12_4_L.cnf
+2026-09-25T14:58:22,probe_e_14_5_sb2,1799.93,1800.78,-24,412,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/e_14_5_2.cnf
+2026-09-25T14:58:40,probe_satcfg_12_4_L_sb0,1199.91,1200.64,-24,357,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q --sat runs/c_12_4_L_sb0.cnf
+2026-09-25T14:58:40,probe_satcfg_e_14_5_sb0,1199.92,1200.87,-24,393,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q --sat runs/e_14_5_0.cnf
+2026-09-25T14:59:11,w_6_3_L,0.01,0.01,10,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/w_6_3_L.cnf
+2026-09-25T14:59:11,u_5_3_EH_sb0_solve,0.00,0.00,20,8,/home/agent/.elan/toolchains/leanprover--lean4---v4.34.0-rc1/bin/cadical -q runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/raw.drat
+2026-09-25T14:59:11,u_5_3_EH_sb0_dratrim,0.03,0.03,0,59,/home/agent/tools/bin/drat-trim runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/raw.drat -L runs/u_5_3_EH_sb0/trim.lrat -w
+2026-09-25T14:59:11,u_5_3_EH_sb0_cakelpr,0.00,0.01,0,8,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/trim.lrat
+2026-09-25T14:59:11,u_5_3_EH_sb0_lratcheck,0.00,0.00,0,33,/home/agent/tools/bin/lrat-check runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/trim.lrat

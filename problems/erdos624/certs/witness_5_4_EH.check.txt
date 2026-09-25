@@ -1,0 +1,3 @@
+n=5 m=4 variant=EH : closure method checked 6 sets Y (|Y|>=m), failures 0; direct method checked 6 sets (all |Y|>=m), failures 0
+mutation self-test: 14 of 40 single-value mutations detected as failures
+RESULT: PASS  (f witnesses (5,4)_EH, hence H_EH(5) <= 4)
