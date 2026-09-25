@@ -1,5 +1,7 @@
 # Erdős #889: an explicit threshold for the lowercase v₁ problem (Theorem A)
 
+**Published 2026-09-25:** Zenodo DOI [10.5281/zenodo.22962744](https://doi.org/10.5281/zenodo.22962744) (concept DOI 10.5281/zenodo.22962743). Source of the note: publish/automath-papers/erdos889/.
+
 Status (2026-09-25): refereed same-vendor (Claude Opus, adversarial, fresh context) —
 PASS-WITH-REPAIRS, repairs R1–R6 applied; see REFEREE_CLAUDE_20260925.md. Not cross-vendor
 refereed; no Lean.
