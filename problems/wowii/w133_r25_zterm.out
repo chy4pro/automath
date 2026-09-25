@@ -1,0 +1,194 @@
+
+w133 round 25 -- THE Z-TERM / THE W_1 LEAK: the last named gap in (D3-C6).
+
+WHERE THE FRONT STOOD (round 24 / draft 36, planner cert r24).
+    (D3-C6) hypotheses: connected, C4-FREE, contains an induced C6 Z=(z_0..z_5), NO
+    INDUCED P7.  V = Z + W_1 + W_cons + W_anti + W_0 (G54).  G58 (round 23) bounds
+    a(v) <= 3 on W_1 + W_cons; (B) (round 24) gives Sum_{R}(a-3) <= 0 on R := W_anti+W_0,
+    hence the WHOLE off-cycle term is <= 0.  What was left, and what this file answers, is
+    the Z-TERM: G55 summed carries a  +|W_1|  that is paid only if Sum_{W_1}(a(v)-2) fits
+    in the slack -- and G58's value a = 3 IS ATTAINED on W_1, so a W_1 vertex CAN leak +1.
+
+THE STATEMENT THIS FILE CERTIFIES.
+
+    Write  n3 := #{ v in W_1 : a(v) = 3 }   (the LEAKING vertices)  and  m := |W_anti|.
+
+    (Z1)  Sum_{v in V} (a(v)-3)  <=  n3 + 2m - 6.                [G55 + G58 + (B)]
+    (Z2)  A leak has a SHAPE: a(v)=3 for v in W_1 with trace {z_i} forces d(v) in {3,4}
+          and N(v)\{z_i} = 2 or 3 SINGLE-trace W_1 vertices at z_{i+2},z_{i+3} /
+          z_{i+3},z_{i+4} / all three (with exactly the +2 ~ +4 edge).  In particular a
+          leak ALWAYS has a W_1 neighbour at its own ANTIPODE.
+    (Z3)  At most ONE leak per hexagon vertex.
+    (Z4)  Two leaks can sit only at ANTIPODAL hexagon vertices.  With (Z3): n3 <= 2.
+    (Z5)  A leak coexists with at most ONE occupied antipodal slot: n3 >= 1  =>  m <= 1.
+    (Z6)  Hence  n3 + 2m <= 6,  and therefore
+
+              *** Sum_{v in V} (a(v) - 3)  <=  0  for every graph in (D3-C6)'s class ***
+
+          which is (D3-C6).  BOTH extremal regimes are attained: (n3,m) = (0,3) at the
+          n=10 region of round 24, and (n3,m) = (2,0) at an n=10 region exhibited here.
+
+RULING BW binds: every load-bearing bound below is an EXHAUSTIVE ENUMERATION with its
+population printed BEFORE its verdict.  Round 24's own record is why: a hand claim there
+was not weak but BACKWARDS.  This round's hand claims were wrong twice again -- see the
+state file, and PART 3's note.
+RULING BM: a Sample refuses to report a statistic before admit().
+RULING BV: the membership test is written against the OBJECT it tests (frame vs host).
+RULING CG: the string probes in PART 8 are EVIDENCE, NOT CHECKS -- a probe whose blind
+spot is the ENCODING of the token it looks for cannot certify absence.  The inputs that
+carry load are ASSERTED as graph facts, not as strings.
+
+C4-FREE throughout means: NO TWO DISTINCT VERTICES HAVE TWO COMMON NEIGHBOURS.
+Wall-clock self-limit 900 s, exit(2) on overrun.  No SAT.
+
+
+=== PART 0 -- POSITIVE CONTROLS ON THE TOOLING (before any of it is used) ===
+  [PASS] control: Petersen is C4-free
+  [PASS] control: longest induced path(Petersen) = 5
+  [PASS] control: a == 3 at every Petersen vertex
+  [PASS] specificity: longest induced path(K_{1,4}) = 3
+  [PASS] specificity: a bare induced C6 has longest induced path 5
+  [PASS] specificity: the 4-cycle IS detected as not C4-free
+  [PASS] control: a(v) == d(v) - t(v) on every C4-free control (G[N(v)] is a matching)
+  [PASS] RULING BM: reading a statistic BEFORE admit() RAISES
+  [PASS] RULING BV: the SAME edge list is admitted as a FRAME and rejected as a HOST
+  [PASS] control: the fast bitmask induced-P_k detector AGREES with the trusted longest_induced_path on 400 random graphs x 3 lengths  -- 0 mismatches
+
+=== PART 1 -- (Z1): G55 summed + T_Z >= 2|W_cons| + G58 + (B) collapse the ===
+===           global count to   Sum_v (a(v)-3)  <=  n3 + 2m - 6            ===
+  The three inputs are USED, not re-proved: G55 (a(z) = 2+|Off(z)|-t(z)),
+  G58 (a <= 3 on W_1 + W_cons), (B) (Sum_R (a-3) <= 0).  What is checked here
+  is the ARITHMETIC that assembles them, on in-hypothesis instances.
+  instance                        n |W1| |Wc| |Wa| |W0| | Z-term offterm total  n3   m |     T_Z    2|Wc|
+  INSTANCE-D  n=9                 9    0    3    0    0 |     -6     -6   -12   0   0 |       6        6
+  INSTANCE-E  n=12               12    0    3    3    0 |      0     -9    -9   0   3 |       6        6
+  r24 attaining region n=10      10    0    0    3    1 |      0      0     0   0   3 |       0        0
+  34.4b fan k=7 n=13             13    7    0    0    0 |      1    -14   -13   0   0 |       0        0
+  2-LEAK region n=10             10    4    0    0    0 |     -2     -2    -4   2   0 |       0        0
+  [PASS] G55 SUMMED is an identity on every in-hypothesis instance: Sum_Z(a(z)-3) = |W_1|+2|W_cons|+2|W_anti| - T_Z - 6  -- 0 discrepancies
+  [PASS] T_Z >= 2|W_cons| on every instance (each consecutive-trace vertex makes a triangle with the hexagon edge it spans, once at EACH end)
+  [PASS] (Z1) holds on every instance:  Sum_v(a(v)-3) <= n3 + 2m - 6
+  PROOF of T_Z >= 2|W_cons|, machine-verified on the generic frame: for w with
+  trace {z_i,z_{i+1}},  w and z_{i+1} lie in N(z_i) and are adjacent, and w and
+  z_i lie in N(z_{i+1}) and are adjacent -- 2 distinct triangle edges per w.
+  [PASS] each W_cons vertex contributes EXACTLY 2 to T_Z, at all 6 hexagon edges  -- observed [2, 2, 2, 2, 2, 2]
+
+=== PART 2 -- (Z2) THE SHAPE OF A LEAK: a(v)=3 on W_1 is enumerated, not assumed ===
+  N(v) = {z_0} + off-Z neighbours whose traces are PAIRWISE DISJOINT (two
+  neighbours sharing a z would be two common neighbours of v and that z: a C4)
+  and each drawn from r23 PART 1A's 7 survivors.  With the free adjacency bits
+  INSIDE N(v) this determines G[N(v)] COMPLETELY, so the table below is exact.
+      observed population: 152 neighbourhood configurations enumerated, 17 in hypothesis, 135 refuted
+      observed (d,a) realised: [(1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
+      observed a=3 SHAPES (3 of them):
+         far traces [[2], [3]]   internal edges ()
+         far traces [[3], [4]]   internal edges ()
+         far traces [[2], [3], [4]]   internal edges ((0, 2),)
+  [PASS] (Z2) a leak has EXACTLY the three shapes {+2,+3}, {+3,+4}, {+2,+3,+4}(+2~+4)  -- observed [(((2,), (3,)), ()), (((2,), (3,), (4,)), ((0, 2),)), (((3,), (4,)), ())]
+  [PASS] (Z2a) EVERY leak has a SINGLE-trace W_1 neighbour at its OWN ANTIPODE z_{i+3}
+  [PASS] (Z2b) EVERY off-Z neighbour of a leak is a SINGLE-trace W_1 vertex, at a hexagon vertex at distance >= 2 from the leak's own
+  [PASS] (Z2c) NO neighbour of a leak lies in Off(z_0): a leak contributes 0 to E_off
+  [PASS] liveness: a=3 IS realised on W_1 (so this is a real gap, not an accounting step)
+
+=== PART 3/4 -- (Z3),(Z4): WHERE TWO LEAKS MAY SIT ===
+  a(v) is monotone under adding vertices, so a >= 3 read off the frame
+  certifies a = 3 in the host (G58 caps it); and the frame Z+N[v]+N[v'] of a
+  host carrying two leaks is IN HYPOTHESIS, so refuting every such frame
+  refutes the host.  Population printed before every verdict.
+      SAME hexagon vertex z_0: 832 frames enumerated, 0 survive
+  [PASS] (Z3) TWO leaks at the SAME hexagon vertex are REFUTED (so <= 1 leak per z_i)  -- 0/832 survive
+      z_0 & z_1 : 832 frames enumerated, 0 survive
+      z_0 & z_2 : 858 frames enumerated, 0 survive
+      z_0 & z_3 : 872 frames enumerated, 2 survive   e.g. [(0, 1), (0, 5), (0, 6), (1, 2), (1, 9), (2, 3), (2, 8), (3, 4), (3, 7), (4, 5), (6, 7), (6, 8), (7, 9)]
+      z_0 & z_4 : 858 frames enumerated, 0 survive
+      z_0 & z_5 : 832 frames enumerated, 0 survive
+  [PASS] (Z4) two leaks at hexagon distance 1 are REFUTED (both sides)
+  [PASS] (Z4) two leaks at hexagon distance 2 are REFUTED (both sides)
+  [PASS] liveness: two leaks at ANTIPODAL hexagon vertices ARE in hypothesis -- so (Z4) is a restriction, not a vacuity
+  [PASS] (Z4)+(Z3) => n3 <= 2, and n3 = 2 forces the two leaks ANTIPODAL
+
+=== PART 5 -- (Z5): A LEAK AND THE ANTIPODAL SLOTS ===
+  Frame = Z + N[v] + the W_anti vertices themselves (their own neighbourhoods
+  are NOT needed: refutation on a subframe refutes every host containing it).
+  The w-to-N[v] bits AND the w-to-w' bit are enumerated, not assumed.
+      leak at z_0  +  ONE W_anti at slot (z_0,z_3): 32 frames, 2 survive
+      leak at z_1  +  ONE W_anti at slot (z_0,z_3): 32 frames, 1 survive
+      leak at z_2  +  ONE W_anti at slot (z_0,z_3): 32 frames, 1 survive
+      leak at z_3  +  ONE W_anti at slot (z_0,z_3): 32 frames, 2 survive
+      leak at z_4  +  ONE W_anti at slot (z_0,z_3): 32 frames, 1 survive
+      leak at z_5  +  ONE W_anti at slot (z_0,z_3): 32 frames, 1 survive
+  [PASS] liveness: a leak and ONE occupied slot DO coexist -- (Z5) is a restriction, not a vacuity
+      leak at z_0  +  TWO W_anti at slots [(0, 3), (1, 4)]: 768 frames, 0 survive
+      leak at z_0  +  TWO W_anti at slots [(0, 3), (2, 5)]: 768 frames, 0 survive
+      leak at z_0  +  TWO W_anti at slots [(1, 4), (2, 5)]: 768 frames, 0 survive
+  [PASS] (Z5) a leak and TWO occupied antipodal slots are REFUTED, at ALL THREE slot pairs => n3 >= 1 implies m <= 1
+
+=== PART 6 -- (Z6) THE ARITHMETIC, over EVERY feasible (n3, m) ===
+      constraints in force: n3 <= 2 (Z3+Z4); m <= 3 (34.4a); n3>=1 => m<=1 (Z5)
+       n3   m      n3+2m bound on Sum(a-3)
+        0   0          0         -6
+        0   1          2         -4
+        0   2          4         -2
+        0   3          6          0
+        1   0          1         -5
+        1   1          3         -3
+        2   0          2         -4
+        2   1          4         -2
+      observed population: 8 feasible (n3,m) pairs
+  [PASS] (Z6) n3 + 2m <= 6 in EVERY feasible case, so Sum_v(a(v)-3) <= 0 -- (D3-C6)  -- worst bound +0
+      r24 attaining region n=10    in hypothesis, n3=0 m=3 n3+2m=6, Sum(a-3)=0, bound 0
+  [PASS] extremal regime (n3,m)=(0, 3) realised and (Z1) TIGHT on it
+      2-LEAK region n=10           in hypothesis, n3=2 m=0 n3+2m=2, Sum(a-3)=-4, bound -4
+  [PASS] extremal regime (n3,m)=(2, 0) realised and (Z1) TIGHT on it
+
+=== PART 7 -- INDEPENDENT EXHAUSTIVE CONFIRMATION over a bounded window ===
+      ALL-TRACES k<=5: in-hypothesis regions by |off-Z| = 0..5 : [1, 16, 272, 4274, 59406, 738884]
+      ALL-TRACES k<=5: of which CONNECTED hosts                : [1, 15, 240, 3456, 42168, 435126]
+      ALL-TRACES k<=5: max Sum(a-3) per size                   : [-6, -5, -4, -3, 0, -1]
+      ALL-TRACES k<=5: MAX Sum_v(a(v)-3) = +0 ; MAX n3 = 2
+  [PASS] sweep A (every legal trace, |off-Z| <= 5, 802853 regions): MAX Sum(a-3) = 0, i.e. (D3-C6) holds with equality attained
+  [PASS] sweep A: (Z1) Sum(a-3) <= n3+2m-6 on EVERY host, 0 violations
+  [PASS] sweep A: (Z6) n3 + 2m <= 6 on EVERY host, 0 violations
+  [PASS] sweep A: MAX n3 = 2, matching (Z3)+(Z4)
+      SINGLE-TRACE k<=6: in-hypothesis regions by |off-Z| = 0..6 : [1, 6, 48, 324, 1680, 9576, 79224]
+      SINGLE-TRACE k<=6: of which CONNECTED hosts                : [1, 6, 48, 324, 1680, 9576, 79224]
+      SINGLE-TRACE k<=6: max Sum(a-3) per size                   : [-6, -7, -6, -5, -4, -7, -6]
+      SINGLE-TRACE k<=6: MAX Sum_v(a(v)-3) = -4 ; MAX n3 = 2
+  [PASS] sweep B (single traces only -- the class a leak's whole neighbourhood lives in -- |off-Z| <= 6, 90859 regions): MAX n3 = 2
+  [PASS] sweep B: (Z1) and (Z6) hold on EVERY host, 0 violations
+
+=== PART 8 -- PROVENANCE against a PINNED corpus boundary (RULING BX) ===
+  RULING CG: a probe whose blind spot is the ENCODING of the token it looks for
+  cannot certify ABSENCE.  Everything printed below is EVIDENCE, not a CHECK.
+  The load-bearing inputs are asserted as GRAPH facts in PARTS 1-7, not here.
+      pinned corpus boundary: draft line 4993 (HARD-PINNED = the draft's length immediately before §37 was appended; recorded so the number is auditable)
+  [PASS] the pinned boundary is where it claims to be: no '# §37 ' heading at or before line 4993, and one after it  -- §37 heading line(s) [4995]
+      EVIDENCE  token 'G59'                            raw=2    normalised(NFKC+casefold+unicode-math)=2
+      EVIDENCE  token 'the W_1 leak'                   raw=0    normalised(NFKC+casefold+unicode-math)=0
+      EVIDENCE  token 'n3 + 2m <= 6'                   raw=0    normalised(NFKC+casefold+unicode-math)=0
+      EVIDENCE  token '|W_anti| <= 3'                  raw=2    normalised(NFKC+casefold+unicode-math)=10
+      EVIDENCE  token 'G58'                            raw=10   normalised(NFKC+casefold+unicode-math)=10
+      EVIDENCE  token 'G55'                            raw=10   normalised(NFKC+casefold+unicode-math)=10
+      EVIDENCE  token 'per-branch discharging bound'   raw=0    normalised(NFKC+casefold+unicode-math)=3
+      EVIDENCE  token 'leaking'                        raw=0    normalised(NFKC+casefold+unicode-math)=0
+      NOTE the two columns differ for '|W_anti| <= 3': that is exactly round 24's
+      uncaught defect, now visible rather than silent.  It is still EVIDENCE.
+
+  --- the MINT GATE, rebuilt so it cannot miss by ENCODING (RULING CG) ---
+  A probe ASKS 'is G59 absent?' and answers 'yes' whenever it cannot read the
+  token.  This instead ENUMERATES the whole address population and asserts it is
+  CONTIGUOUS: an address written in an encoding the scanner misses would open a
+  HOLE, and a hole is VISIBLE.  Absence is then a consequence of completeness,
+  not a probe's silence.  This is the uniqueness claim RULING CG asked for.
+      observed G-address population: G0..G59, 60 distinct, holes []
+  [PASS] mint gate (population form): the G-namespace is CONTIGUOUS G0..G59, so the scan missed nothing
+      observed G59 occurrences before the boundary: 2
+         line 4455: addresses `G58`/`G59` (**observed 0 occurrences**, so the `G` namespace is still monotone).
+         line 4944: from open into settled. **UNREGISTERED. No number minted** — `G59` is the next free address and
+  [PASS] mint gate: EVERY G59 occurrence is PROSE ABOUT the next free address, none is a registration (0 in a heading or a Lemma line)  -- registration-shaped occurrences: []
+  [PASS] mint gate: G60 is unoccupied, so this round's own entry has a free address and does NOT need to self-promote to get one
+
+=== SUMMARY ===
+  checks run: 39, failures: 0 
+  wall clock: 184.17 s (self-limit 900 s)
+EXIT=0

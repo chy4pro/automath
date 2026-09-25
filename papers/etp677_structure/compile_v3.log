@@ -1,0 +1,19 @@
+note: Running TeX ...
+warning: main.tex:1152: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1146--1152
+warning: main.tex:1162: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1154--1162
+warning: main.tex:1443: Overfull \hbox (11.70905pt too wide) detected at line 1443
+warning: main.tex:1570: Overfull \hbox (17.6817pt too wide) detected at line 1570
+note: Rerunning TeX because "main.out" changed ...
+warning: main.tex:1152: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1146--1152
+warning: main.tex:1162: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1154--1162
+warning: main.tex:1443: Overfull \hbox (11.70905pt too wide) detected at line 1443
+warning: main.tex:1570: Overfull \hbox (17.6817pt too wide) detected at line 1570
+note: Rerunning TeX because "main.aux" changed ...
+warning: main.tex:1152: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1146--1152
+warning: main.tex:1162: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1154--1162
+warning: main.tex:1443: Overfull \hbox (11.70905pt too wide) detected at line 1443
+warning: main.tex:1570: Overfull \hbox (17.6817pt too wide) detected at line 1570
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `main.pdf` (351.0859375 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)

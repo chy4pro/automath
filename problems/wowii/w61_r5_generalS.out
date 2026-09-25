@@ -1,0 +1,7 @@
+[exhaustive connected n<=7 (atlas)] runs with s != tau (off the reductio): 1323
+   Lemma T' tested 2985 terminal steps, failures = 0
+   Lemma H' tested 5257 (head, step) pairs, failures = 0
+[random connected n=8..11] runs with s != tau (off the reductio): 1764
+   Lemma T' tested 2100 terminal steps, failures = 0
+   Lemma H' tested 8017 (head, step) pairs, failures = 0
+done

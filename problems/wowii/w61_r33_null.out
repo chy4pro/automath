@@ -1,0 +1,151 @@
+impl source : w61_r29_c1audit.py  md5 768975c3987de60fbebe1080d0dd530d
+             (w61_r31_key.py recorded md5 768975c3987de60fbebe1080d0dd530d)
+
+==============================================================================
+PART 0 -- controls.  Every predicate must be shown returning True somewhere.
+==============================================================================
+   steps(M((2,1,1))) = 3   [brief SS1.3 worked example]     got 3            want 3            OK
+   residue(M((2,1,1))) = 3 [brief SS1.3 worked example]     got 3            want 3            OK
+   s0((5,3)) = w+1 = 6     [Thm C1-2, disclosed]            got 6            want 6            OK
+   steps([1,1,1]) aborts   [negative]                       got None         want None         OK
+
+==============================================================================
+PART 1 -- reproduce the four ANSWERED key rows from the single source impl
+==============================================================================
+   key file declares : {'A1': 8, 'A2': 2, 'A3': 4, 'B1': 3, 'B2': 19, 'B3': 90}
+   A1 recomputed = key                                      got 8            want 8            OK
+   A2 recomputed = key                                      got 2            want 2            OK
+   A3 recomputed = key                                      got 4            want 4            OK
+   A/B diffed calls so far: 9, disagreements 0
+
+   *** THE LATENT.  Prop C1-B (PRINTED IN THE BRIEF) is steps = |L| - residue.
+       Applying it to the three A rows:
+       A1: |M((6,4,2))| = 10   steps = 8   ->  residue = 2
+       A2: |M((5,4,3))| =  9   steps = 7   ->  residue = 2
+       A3: |[4,4,3,3,2,2]| = 6   steps = 4   ->  residue = 2
+   ALL THREE A ROWS HAVE THE SAME RESIDUE [predicate, True here] got True         want True         OK
+     ... and that common residue is 2                       got 2            want 2            OK
+     negative control: residues of M((2,1,1)),M((5,3)),[4,4,3,3,2,2] differ got False        want False        OK
+
+==============================================================================
+PART 2 -- the plausible-answer SET per row, DERIVED from the brief alone
+==============================================================================
+   A judge who does not run the process still has, from the brief's own text:
+     (i)  Prop C1-B, printed:  steps(L) = |L| - residue(L).
+     (ii) residue >= 1 always (a length-1 list [x] steps only if x = 0, i.e. is
+          already terminal), so steps <= |L| - 1.
+     (iii)Thm C1-2's proof, printed:  Sum(L) = 2 * Sum(heads).  Heads are integers
+          in [1, max(L)] and the FIRST head is exactly max(L).
+          => steps >= 1 + ceil((Sum/2 - max) / max)   and   steps <= 1 + (Sum/2 - max).
+     (iv) Conjecture C1 (SS3): s0(lambda) != lambda_1 for lambda |- 2v, k >= 2.
+   None of (i)-(iv) requires running a single step.
+   struct set contains truth for the worked example M((2,1,1)) got True         want True         OK
+   struct set contains truth for M((5,3)) [Thm C1-2 prints 6] got True         want True         OK
+   struct set contains truth for [4]^6 [Lemma C1-A prints 4] got True         want True         OK
+   struct set for M((6,4,2)) is a PROPER subset of 1..|M|-1 got True         want True         OK
+   A1  L has n=10 Sum=54 max=6  ->  steps in [5, 6, 7, 8, 9]  (truth 8, in set: True)
+      A1 structural set contains the true value             got True         want True         OK
+   A2  L has n=9 Sum=42 max=5  ->  steps in [5, 6, 7, 8]  (truth 7, in set: True)
+      A2 structural set contains the true value             got True         want True         OK
+   A3  L has n=6 Sum=18 max=4  ->  steps in [3, 4, 5]  (truth 4, in set: True)
+      A3 structural set contains the true value             got True         want True         OK
+
+   Applying (iv) Conjecture C1  [both (6,4,2) and (5,4,3) partition 12, k=3]:
+     A1: s0 != w = 6  ->  [5, 7, 8, 9]   (size 4)
+     A2: s0 != w = 5  ->  steps in [6, 7, 8] ; residue = 9 - steps in [1, 2, 3]   (size 3)
+     A3: no statement in the brief speaks to it   ->  [3, 4, 5]   (size 3)
+
+==============================================================================
+PART 3 -- the SHORTCUT anchors the brief actually hands a judge
+==============================================================================
+   Every value of s0 the brief DISCLOSES, and what a judge would read off them:
+      worked example s0((2,1,1))       = 3     w = 2    ->  v - w = +1
+      Thm C1-2 s0((5,3))               = 6     w = 5    ->  v - w = +1
+      Thm C1-2 s0((4,2))               = 5     w = 4    ->  v - w = +1
+      Lemma C1-A s0((6)) via T(6)      = 6     w = 6    ->  v - w = +0
+   => the brief's disclosed instances all read s0 = w+1 (k>=2) or s0 = w (k=1).
+      A JUDGE ANCHORED ON THE DISCLOSED VALUES ANSWERS A1 = 7.  Truth is 8.
+      Anchored on the worked example's residue (=3) they answer A2 = 3, A3 = 3.
+      All three anchors are WRONG.  The rows were built to defeat the anchor;
+      that is what makes the META-GAME below the conservative model.
+
+==============================================================================
+PART 4 -- B1 re-enumerated here (planner's figure VERIFIED, not assumed)
+==============================================================================
+   alpha(C_5) = 2   [POSITIVE ctrl]                         got 2            want 2            OK
+   alpha(K_4) = 1   [POSITIVE ctrl]                         got 1            want 1            OK
+   alpha(empty_4)=4 [POSITIVE ctrl]                         got 4            want 4            OK
+   population : all 2^21 labelled graphs on 7 vertices, filtered to realizations
+   realizations of [2,2,2,2,2,1,1] : 3507
+   alpha histogram : {3: 672, 4: 2835}
+   planner's counts {3:672, 4:2835} reproduce               got {3: 672, 4: 2835} want {3: 672, 4: 2835} OK
+   B1 true answer space size = 2                            got 2            want 2            OK
+   B1 key value 3 = min of that space                       got 3            want 3            OK
+
+==============================================================================
+PART 5 -- is the single-latent guess ('residue = r for all three') realistic?
+==============================================================================
+   Reference population: every lambda with EXACTLY 3 parts and Sum <= 30 whose
+   padded list terminates.  This is what 'the residue of a padded 3-part list'
+   ranges over.  A judge cannot compute it -- it is printed to show that the
+   single-latent model is not a strawman, i.e. residue really is concentrated.
+   3-part lambdas with terminating M, Sum<=30 : 410
+   residue(M(lambda)) histogram : {2: 305, 3: 105}
+   modal residue = 2 with 305/410 = 0.744 of the population
+   the modal residue over 3-part lambdas is 2 [predicate, True here] got 2            want 2            OK
+   support size = 2 ; a uniform guess over the support scores 0.5000
+
+==============================================================================
+PART 6 -- THE NULL
+==============================================================================
+   MODEL 1 (structural): uniform over the set (i)-(iv) leaves standing.
+      A1 1/4 = 0.2500 | A2 1/3 = 0.3333 | A3 1/3 = 0.3333
+      product IF THE ROWS WERE INDEPENDENT : 1/36 = 0.02778
+
+   MODEL 2 (meta-game, the CONSERVATIVE model -- guessing made to look EASY):
+      the judge assumes a row that coincides with a brief shortcut would have
+      been struck, so answers 'shortcut, displaced by one'.
+      A1: {w+1, w+2} = {7,8}          -> 1/2
+      A2: residue not in {k, k+1} = {3,4}, and >=1  -> {1,2} -> 1/2
+      A3: no shortcut exists          -> 1/3
+      product IF THE ROWS WERE INDEPENDENT : 1/12 = 0.0833
+
+   *** ROW INDEPENDENCE IS NOT ESTABLISHED, AND THE PRODUCT IS THEREFORE NOT
+       CITABLE.  All three A rows are the SAME LATENT: residue = 2, reachable
+       from the brief's own Prop C1-B.  One guess answers all three.
+       residue sets: A1 [1, 2, 3, 5] | A2 [1, 2, 3] | A3 [1, 2, 3]
+       smallest of the three latent sets has size 3.
+
+   CITABLE CONJUNCTION OVER {A1, A2, A3}  (B1 excluded, B2/B3 declined):
+      structural  , dependence-honest : 1/3    = 0.3333
+      meta-gamed  , dependence-honest : 1/2    = 0.5000
+      => the harness is worth between 1.0 and 1.6 BITS.
+      For comparison: the standing ~1/240 is 7.9 bits; 677's 1/4.8e6 is 22.2 bits.
+
+   SEAT MULTIPLICATION IS REFUSED: cert SS6 already declined to treat the two
+   families as independent (the fluent-echo shape).  1/3 is not squared to 1/9.
+
+==============================================================================
+PART 7 -- HOW MUCH WORK an A row actually costs (planner's datum, checked)
+==============================================================================
+   w61_r32_uniqueness.out reports 9 / 8 / 5 states explored for A1/A2/A3.
+   States = steps + 1, so that file is reporting 8 / 7 / 4 hand steps.
+      A1 : 8 steps on a 10-entry list  ->  9 states ; uniqueness file says 9  MATCH
+      A1 state count matches the uniqueness file            got 9            want 9            OK
+      A2 : 7 steps on a 9-entry list  ->  8 states ; uniqueness file says 8  MATCH
+      A2 state count matches the uniqueness file            got 8            want 8            OK
+      A3 : 4 steps on a 6-entry list  ->  5 states ; uniqueness file says 5  MATCH
+      A3 state count matches the uniqueness file            got 5            want 5            OK
+   The most expensive A row is 8 steps on a 10-entry list.  That is inside a
+   competent judge's HEAD, let alone a language model's scratchpad.  Landing it
+   demonstrates that the definitions were applied -- which is exactly what the
+   brief SS4 says the table grades ('non-fabrication, not correctness').  It is
+   NOT evidence about the six verdicts and must not be cited as if it were.
+
+   ALSO, and it is a miss in the uniqueness file itself: its outcome sets print
+   (8, 2), (7, 2), (4, 2) -- the residue 2 is RIGHT THERE on all three rows and
+   the file did not remark on it.  The collinearity was visible and unnoticed.
+
+   controls run : 27 ; passed : 27
+   A/B diffed calls : 806 ; disagreements : 0
+elapsed 8.7s

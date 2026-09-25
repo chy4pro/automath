@@ -1,0 +1,1 @@
+# k=3 done=True I(k)=0 candidates_checked=1 elapsed=0.0s

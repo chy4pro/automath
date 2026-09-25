@@ -1,0 +1,70 @@
+====================================================================================================
+w61 r48 -- (CHAIN) PROVED: the graphic partitions are a DOWN-SET in dominance, and
+           dominance-comparable partitions are joined by unit transfers inside it.
+           Interpreter .venv/bin/python3 (pure Python).
+====================================================================================================
+
+[0] POPULATION and the sec 105 three-way agreement on 'graphic'.
+    all partitions of N <= 22 (no cap on the number of parts) : 4507
+    of them GRAPHIC (Havel-Hakimi terminates)                 : 991
+    disagreements  HH  vs  Erdos-Gallai                       : 0   e.g. None
+    disagreements  HH  vs  explicit realisation               : 0   e.g. None
+    [ok] CONTROL: the population contains NON-graphic partitions (the test is not trivial)      hits=3516
+    [ok] CONTROL: the population contains graphic partitions                                    hits=991
+    r47 population reproduced  N <= 16, <= 10 parts : 181 terminating (r47 banked 181)
+    r47 population reproduced  N <= 20, <= 12 parts : 531 terminating (r47 banked 531)
+
+[1] THEOREM DOWN-SET censused.  For every GRAPHIC lam and every single unit DOWN
+    transfer lam -> mu (a part x >= y+2 gives one unit to a part y, y = 0 allowed),
+    is mu graphic?  Every instance is a place the claim could fail.
+    (lam graphic, mu one unit DOWN) instances : 4621
+    of them with mu NOT graphic               : 0   e.g. None
+    [ok] CONTROL: the down-move census is non-vacuous                                           hits=4621
+    the SAME census run UPWARDS (lam graphic, one unit UP) : 5638 instances
+    of them landing OUTSIDE the graphic set               : 1017   e.g. ((1, 1), (2,))
+    [ok] CORRUPT CONTROL: upward unit transfers DO leave the graphic set -- the direction of THEOREM DOWN-SET is load-bearing hits=1017
+    [1c] r45's window (N even <= 18, <= 11 parts): down-edges leaving THAT set : 47
+         of those, edges leaving the GRAPHIC set itself                        : 0
+         smallest witness and its number of parts                              : ((2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), 12)
+    [ok] CONTROL: r45's lost-edge count is reproduced non-vacuously                             hits=47
+    [ok] CONTROL: none of r45's lost edges leaves the GRAPHIC set -- they leave that run's PARTS window hits=0
+
+[2] THEOREM DOWN-SET's PROOF, run as a construction (sec 105).  For every instance of
+    [1]: build G |= lam, build W = N(u) \ ({v} u N(v)), take w in W, build
+    G' = G - uw + vw, and CHECK G' is simple with degree sequence mu.
+    surgeries attempted                       : 17278
+    surgeries that FAILED (no w, or bad G')   : 0   e.g. None
+    instances where |W| >= deg(u) - deg(v) FAILED : 0   (the proof's counting bound)
+    [ok] CONTROL: the surgery census is non-vacuous                                             hits=17278
+    [ok] CORRUPT CONTROL: choosing w inside N(u) n N(v) always hits an EXISTING edge vw, so the restriction w not-in N(v) is load-bearing hits=5098
+
+[3] THEOREM CHAIN-STEP, run as a construction, on EVERY equal-sum dominance pair of
+    partitions (graphic or not -- the lemma is about the dominance order alone).
+    equal-sum dominance pairs tested            : 1021751
+    nu not a partition / equal to lam           : 0
+    lam >= nu >= mu FAILED                      : 0
+    nu not a single unit transfer from lam      : 0
+    potential did not strictly drop             : 0   e.g. None
+    [ok] CONTROL: CHAIN-STEP was exercised on a non-empty population                            hits=1021751
+    NAIVE index choice on the same pairs        : 1021751 instances, 117103 produce a NON-partition
+      smallest such                             : ((2, 2), (1, 1, 1, 1), (1, 2, 1, 0, 0))
+    [ok] CORRUPT CONTROL: the naive (first-disagreement, first-deficit) choice BREAKS -- the i*/j** refinement is load-bearing hits=117103
+
+[4] (CHAIN) ASSEMBLED.  For every equal-sum dominance pair of GRAPHIC partitions,
+    iterate CHAIN-STEP from A down to B and re-verify EVERY element of the chain with
+    the two implementations that share no code with the HH walk.
+    equal-sum dominance pairs of GRAPHIC partitions, N <= 22 : 75735
+    chain edges built                                        : 343446
+    longest chain                                            : 16 edges
+    chain elements re-certified graphic by Erdos-Gallai      : 419181
+    chain elements re-certified graphic by explicit realisation : 419181
+    FAILURES of any kind                                     : 0   e.g. None
+    [ok] CONTROL: chains longer than one edge occur (the chain is not a re-labelled edge)       hits=1
+    [ok] CONTROL: the (CHAIN) census is non-vacuous                                             hits=75735
+    r47's dominance-pair count reproduced  N <= 16, <= 10 parts : 2683 (r47 banked 2683)
+    r47's dominance-pair count reproduced  N <= 20, <= 12 parts : 19744 (r47 banked 19744)
+
+====================================================================================================
+ELAPSED 25.63 s / 300 s internal limit ; PARTIAL=False
+CONTROLS 12/12 firing ; DEFECTS 0
+====================================================================================================

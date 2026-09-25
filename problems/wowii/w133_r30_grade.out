@@ -1,0 +1,113 @@
+================================================================================================
+PART 0 -- POSITIVE CONTROLS.  Every predicate fired on an input where it MUST return
+          the stated value.  A predicate that has not been shown returning True on a
+          known-True input has not been shown to work at all.
+================================================================================================
+  [OK] Petersen is C4-free                                                    got=False want=False
+  [OK] Petersen longest induced path = 5 vertices                             got=5 want=5
+  [OK] Petersen a(v) == 3 for every v                                         got=[3] want=[3]
+  [OK] C4 detector FIRES on a bare C4                                         got=True want=True
+  [OK] bare P7 longest induced path = 7 vertices                              got=7 want=7
+  [OK] induced_C6 ACCEPTS the bare hexagon                                    got=True want=True
+  [OK] induced_C6 REJECTS a chorded hexagon                                   got=False want=False
+  [OK] bare hexagon: T_Z = 0                                                  got=0 want=0
+  [OK] bare hexagon: every z has a(z) = 2, so sumZ = -6                       got=-6 want=-6
+  [OK] K_{1,4}: a(centre) = 4 - 0 = 4                                         got=4 want=4
+  [OK] triangle: a(v) = 2 - 1 = 1                                             got=1 want=1
+
+================================================================================================
+PART 1 -- THE SEVEN TRUTHS, RECOMPUTED HERE FROM THE EDGE LISTS.
+          Not read off r29's key: recomputed by a second implementation, then
+          CROSS-CHECKED against the key file.  Disagreement would be the finding.
+================================================================================================
+  [OK] K1 is CONNECTED                                                        got=True want=True
+  [OK] K1 is C4-FREE                                                          got=False want=False
+  [OK] K1 is P7-FREE (longest induced path <= 6)                              got=True want=True
+  [OK] K1: Z=[0..5] induces a C6                                              got=True want=True
+  [OK] K2 is CONNECTED                                                        got=True want=True
+  [OK] K2 is C4-FREE                                                          got=False want=False
+  [OK] K2 is P7-FREE (longest induced path <= 6)                              got=True want=True
+  [OK] K2: Z=[0..5] induces a C6                                              got=True want=True
+  [OK] K3 is CONNECTED                                                        got=True want=True
+  [OK] K3 is C4-FREE                                                          got=False want=False
+  [OK] K3 is P7-FREE (longest induced path <= 6)                              got=True want=True
+  [OK] K3: Z=[0..5] induces a C6                                              got=True want=True
+  [OK] V10 is EXISTENTIAL and its witness is UNIQUE (exactly one vertex attains max degree) got=1 want=1
+  [OK] V1 recomputed HERE agrees with the r29 key file                        got=(14,) want=(14,)
+  [OK] V1 key file carries the row text and space size                        got=True want=True
+  [OK] V5 recomputed HERE agrees with the r29 key file                        got=(2,) want=(2,)
+  [OK] V5 key file carries the row text and space size                        got=True want=True
+  [OK] V7 recomputed HERE agrees with the r29 key file                        got=(2, -3) want=(2, -3)
+  [OK] V7 key file carries the row text and space size                        got=True want=True
+  [OK] V9 recomputed HERE agrees with the r29 key file                        got=(3, -10) want=(3, -10)
+  [OK] V9 key file carries the row text and space size                        got=True want=True
+  [OK] V10 recomputed HERE agrees with the r29 key file                       got=(5, 4) want=(5, 4)
+  [OK] V10 key file carries the row text and space size                       got=True want=True
+  [OK] V11 recomputed HERE agrees with the r29 key file                       got=(3, 1, 1, 1) want=(3, 1, 1, 1)
+  [OK] V11 key file carries the row text and space size                       got=True want=True
+  [OK] V12 recomputed HERE agrees with the r29 key file                       got=(2, -1) want=(2, -1)
+  [OK] V12 key file carries the row text and space size                       got=True want=True
+
+================================================================================================
+PART 2 -- STRICT PER-ROW PARSER.  Every slot is read POSITIONALLY, from the line that
+          begins with that row's label.  No whole-document searching anywhere.
+================================================================================================
+  [OK] harvest on disk matches the in-page SHA-256 of the SERVER-STORED answer got=cafb0146c234eb6af15696639da2e53b081942616e5ca782f8496e354f9f3ad6 want=cafb0146c234eb6af15696639da2e53b081942616e5ca782f8496e354f9f3ad6
+  [OK] harvest length in codepoints                                           got=4077 want=4077
+
+  ROW GRID (parsed answer vs held-out truth):
+  row   tier   answered                     truth                        grade  1/|space|
+  V1    H      (14,)                        (14,)                        CORRECT 1/60
+  V5    H      (2,)                         (2,)                         CORRECT 1/8
+  V7    C      (2, -3)                      (2, -3)                      CORRECT 1/247
+  V9    C      (3, -10)                     (3, -10)                     CORRECT 1/351
+  V10   H      (5, 4)                       (5, 4)                       CORRECT 1/132
+  V11   H      (3, 1, 1, 1)                 (3, 1, 1, 1)                 CORRECT 1/84
+  V12   C      (2, -1)                      (2, -1)                      CORRECT 1/247
+  [OK] CLEAN HARVEST: the gate returns NO wrong rows (the input where it MUST be empty) got=[] want=[]
+  [OK] CLEAN HARVEST: schema complete                                         got=[] want=[]
+  [OK] CLEAN HARVEST: ends on a terminal sentence                             got=True want=True
+  [OK] CLEAN HARVEST: naive whole-doc comparator also passes (so it cannot be the gate) got=[] want=[]
+
+================================================================================================
+PART 3 -- RULING CZ.  Eight ADVERSARIAL corruptions, each the HARDEST form of its
+          species, each shown FIRING in this same run.  RULING CZ': for the
+          value-preserving ones the NAIVE whole-document comparator is shown PASSING
+          on the identical corrupted text -- so the gate fires on the FEATURE (the
+          row's asserted slot value) and not on the presence of a string.
+================================================================================================
+  [OK] X1 host-swap of V7/V12: GATE FIRES on exactly {V7,V12}                 got=['V12', 'V7'] want=['V12', 'V7']
+  [OK] X1 CZ': naive whole-doc comparator PASSES on the same text (value multiset intact) got=[] want=[]
+  [OK] X2 census permutation: GATE FIRES on exactly {V11}                     got=['V11'] want=['V11']
+  [OK] X2 CZ': naive whole-doc comparator PASSES on the same text             got=[] want=[]
+  [OK] X3 witness substitution on V10: GATE FIRES on exactly {V10}            got=['V10'] want=['V10']
+  [OK] X3 CZ': the wrong witness 9 and the right witness 4 BOTH occur in the document got=(True, True) want=(True, True)
+  [OK] X4 V1 -> a value occurring elsewhere in the text: GATE FIRES on exactly {V1} got=['V1'] want=['V1']
+  [OK] X4 CZ': that same wrong value 32 genuinely occurs elsewhere in the harvest got=True want=True
+  [OK] X5 V5 -> the named modal-prior shortcut: GATE FIRES on exactly {V5}    got=['V5'] want=['V5']
+  [OK] X6 V9 second slot -> a value from the response's own algebra: FIRES on exactly {V9} got=['V9'] want=['V9']
+  [OK] X7 VERDICT line deleted: SCHEMA GATE FIRES                             got=['missing-VERDICT'] want=['missing-VERDICT']
+  [OK] X7 CZ': the string 'GAP' still occurs in the corrupted text, so a string check passes got=True want=True
+  [OK] X7 the ROW gate is silent on X7 (the corruption is schema, not answers) got=[] want=[]
+  [OK] X8 mid-token truncation: TERMINAL-SENTENCE GATE FIRES                  got=False want=False
+  [OK] X8 the row gate is silent on X8                                        got=[] want=[]
+  [OK] X8 the schema gate is silent on X8                                     got=[] want=[]
+  [OK] X8 CZ': the clean text passes the same terminal gate                   got=True want=True
+
+================================================================================================
+PART 4 -- OPS-14.  The finish is settled by THREE signals and recorded as an INFERENCE.
+================================================================================================
+  [OK] signal 1 CONTENT STABILITY: two server-store reads, byte-identical SHA-256 got=cafb0146c234eb6af15696639da2e53b081942616e5ca782f8496e354f9f3ad6 want=cafb0146c234eb6af15696639da2e53b081942616e5ca782f8496e354f9f3ad6
+  [OK] signal 2 SCHEMA COMPLETENESS: all seven rows + VERDICT + (P1)          got=[] want=[]
+  [OK] signal 3 TERMINAL SENTENCE                                             got=True want=True
+  NOTE, stated and not resolved favourably: document.visibilityState was "hidden" at
+  BOTH reads, so per OPS-14 no UI-chrome signal was believed at any point.  The store's
+  own status fields (done=true, phase-answer status "finished", endTime present,
+  childrenIds empty) were used INSTEAD of chrome -- but a store status is still not an
+  eyewitness of the generation window.  If a continuation arrives, this harvest is a
+  PREFIX.  That is carried as an OPEN RISK on the harvest row.
+
+================================================================================================
+CHECKS: 64   FAILURES: 0
+ALL CHECKS PASS.
+================================================================================================

@@ -1,0 +1,7 @@
+=== Lemma G43 (far-end truncation): certification on graphs WITH a=1 vertices ===
+  W1+leaf                    n=133   l=764/133   rad=8    a=1 vertices: 1  certified truncation runs: 12 (last: d=11, path=14)
+  W1+triangle-leaf           n=134   l=765/134   rad=8    a=1 vertices: 2  certified truncation runs: 12 (last: d=11, path=14)
+
+  TOTAL certified truncation runs: 24
+
+FAILURES: 0

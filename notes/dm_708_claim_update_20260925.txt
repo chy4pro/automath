@@ -1,0 +1,15 @@
+Hello,
+
+A brief update request for my proof claim on #708 (submitted 5 Sep, at your suggestion in place of per-version comments). The linked Zenodo concept DOI now resolves to v14 of the paper, and the claim's summary text is out of date. Could you please:
+
+1. Replace the summary with:
+"Partial result: explicit upper bounds for g(n), not a resolution of the (2+o(1))n question. Main result of the linked paper (v14): g(n) <= 12n for all n. This bound is kernel-verified in Lean 4 (v4.34.0-rc1, Mathlib de5ce8a9); the final theorem depends only on propext, Classical.choice and Quot.sound. Also in the paper: g(n) <= 11n (refereed, not formalised), and the conjectured 2n holds whenever max(A) >= 8n^3. Method: an LP duality reduces a linear bound to a 'hinge inequality' for weighted prime-factor counts on intervals, which is proved by explicit counting certificates checked by decide."
+
+2. Add the Lean formalisation link to the claim:
+https://github.com/chy4pro/erdos-708-explicit-upper-bounds/tree/main/lean
+(see lean/README.md there for the theorem names and the axiom check).
+
+This is the endpoint of this line of work; I do not expect further updates to the claim unless a genuinely new bound appears.
+
+Thank you,
+Haoyu Chen

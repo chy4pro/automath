@@ -1,0 +1,150 @@
+
+w133 round 31 -- ITEM 1: THE PRESCRIBED CONSISTENCY CHECK IS UNSATISFIABLE, AND WHY.
+
+WHAT r30 FOUND AND WHAT THIS FILE MEASURES.
+    The Q41 brief's "A GUARD THAT CANNOT MOVE" paragraph told the reviewer to check
+    "that a table's `N frames` is the product of the free bits it describes".
+    832 = 2^6 * 13, 858 = 2*3*11*13, 872 = 2^3*109.  A product of free bits is a power
+    of two (each free bit contributes a factor 2), so those three tables CANNOT pass a
+    check the same brief prescribes -- and the returned verdict was that failure.
+
+    r30 diagnosed this by FACTORING the printed numbers.  Factoring says the check
+    fails; it does not say WHY, and a wrong reason is worth nothing (OPS-15).  This
+    file establishes the MECHANISM by re-deriving the populations from scratch:
+
+    *** A frame table's population is NOT a product.  It is a SUM over BRANCHES,     ***
+    ***     N = SUM_b ( 2^{f_b} - dup_b ),                                           ***
+    *** where a branch is (shape of N[v], shape of N[v'], whether v ~ v', which      ***
+    *** far neighbours are IDENTIFIED), f_b is that branch's free-bit count, and     ***
+    *** dup_b counts assignments whose edge list degenerates.  Different branches    ***
+    *** have DIFFERENT f_b, so no single free-bit set describes the table at all.    ***
+
+    Two consequences that factoring alone cannot see, and both matter:
+      (a) the check is not merely FAILED by 832/858/872, it is ILL-POSED for every
+          multi-branch table -- there is no "the free bits it describes";
+      (b) (Z5)'s 32 PASSES the prescribed check BY ACCIDENT: 32 = 2^5 looks like a
+          five-bit product, but the enumeration is 2^3 + 2^3 + 2^4 over three branches
+          and no branch has five free bits.  A check that a table passes for a false
+          reason is worse than one it fails.
+
+    THIRD FINDING, not part of the assignment and against this line's own draft:
+      the draft and the DISPATCHED brief both printed "384 frames" for (Z5)'s two-slot
+      tables.  Both machines print 768.  The draft is corrected; the shipped brief is
+      NOT, because it is evidence of what a reviewer actually saw.  See PART 4.
+
+THIS IS A SECOND IMPLEMENTATION.  Nothing is imported from w133_r22/r23/r25; every
+primitive below (C4-freeness, induced C6, induced P7, a = alpha(G[N(v)])) is written
+here and positive-controlled in PART 0 before it is used.  Agreement with r25 is then
+a cross-check, not a tautology.
+
+No SAT.  No search beyond the bounded frame enumerations already in the draft.
+Wall-clock self-limit 600 s, exit(2) on overrun -- never a silent `return`.
+
+
+=== PART 0 -- POSITIVE CONTROLS ON THIS FILE'S OWN PRIMITIVES ===
+  Every predicate below ships with an input on which it MUST return True.
+  [PASS] MUST-FIRE: Petersen is C4-free
+  [PASS] MUST-FIRE: Petersen has an induced P5
+  [PASS] specificity: Petersen has NO induced P6 (so P_k is not a constant True)
+  [PASS] MUST-FIRE: a(v) = 3 at every Petersen vertex
+  [PASS] specificity: the 4-cycle IS detected as NOT C4-free
+  [PASS] MUST-FIRE: the bare hexagon is an induced C6 on Z
+  [PASS] specificity: a hexagon PLUS a chord is NOT an induced C6
+  [PASS] specificity: the bare hexagon has no induced P7
+  [PASS] MUST-FIRE: the path on 7 vertices HAS an induced P7
+  [PASS] cross-check: the subset-enumerating alpha AGREES with d - t on every C4-free control (two implementations of the same number)
+  [PASS] MUST-FIRE: admit_frame ACCEPTS the bare hexagon
+  [PASS] specificity: admit_frame REJECTS a repeated edge
+  [PASS] specificity: admit_frame REJECTS a C4
+
+=== PART 1 -- (Z3)/(Z4): WHAT A FRAME TABLE'S POPULATION ACTUALLY IS ===
+  Re-derived here by a SECOND implementation, then compared to the draft.
+  A branch = (X shape, Y shape, v~v'?, identification pattern).
+  table                         TOTAL  survive   branches free-bit counts f_b         
+  same hexagon vertex z_0         832        0         36 2^0 x7 2^1 x9 2^2 x8 2^4 x7 2^6 x4 2^9 x1
+  z_0 & z_1                       832        0         25 2^0 x3 2^1 x5 2^2 x6 2^4 x6 2^6 x4 2^9 x1
+  z_0 & z_2                       858        0         18 2^1 x3 2^2 x4 2^4 x6 2^6 x4 2^9 x1
+  z_0 & z_3 (antipodal)           872        2         18 2^1 x4 2^2 x4 2^4 x5 2^6 x4 2^9 x1
+  z_0 & z_4                       858        0         18 2^1 x3 2^2 x4 2^4 x6 2^6 x4 2^9 x1
+  z_0 & z_5                       832        0         25 2^0 x3 2^1 x5 2^2 x6 2^4 x6 2^6 x4 2^9 x1
+
+  MECHANISM, printed in full for ONE table (z_0 & z_3, the live one):
+      X   Y   v~v'   ids  f    2^f     dups 
+      0   0   False  0    4    16      0    
+      0   0   True   0    1    2       0    
+      0   1   False  0    4    16      0    
+      0   1   True   0    1    2       0    
+      0   2   False  0    6    64      0    
+      0   2   True   0    2    4       0    
+      1   0   False  0    4    16      0    
+      1   0   True   0    1    2       0    
+      1   1   False  0    4    16      0    
+      1   1   True   0    1    2       0    
+      1   2   False  0    6    64      0    
+      1   2   True   0    2    4       0    
+      2   0   False  0    6    64      0    
+      2   0   True   0    2    4       0    
+      2   1   False  0    6    64      0    
+      2   1   True   0    2    4       0    
+      2   2   False  0    9    512     0    
+      2   2   True   0    4    16      0    
+      SUM over branches of (2^f - dups) = 872
+  [PASS] SECOND IMPLEMENTATION reproduces the draft's (Z3)/(Z4) populations 832/832/858/872/858/832  -- observed [832, 832, 858, 872, 858, 832]
+  [PASS] SECOND IMPLEMENTATION reproduces the draft's survivor counts 0/0/0/2/0/0 (so (Z3) and (Z4) themselves stand)  -- observed [0, 0, 0, 2, 0, 0]
+  [PASS] MECHANISM: every (Z3)/(Z4) table spans SEVERAL DISTINCT free-bit counts, so there is no single 'the free bits it describes' to take a product of
+
+=== PART 2 -- (Z5): the SAME structure, and 32 passes the check BY ACCIDENT ===
+      leak at z_0 + ONE slot (z_0,z_3):   32 frames = 2^3 + 2^3 + 2^4         2 survive
+      leak at z_1 + ONE slot (z_0,z_3):   32 frames = 2^3 + 2^3 + 2^4         1 survive
+      leak at z_2 + ONE slot (z_0,z_3):   32 frames = 2^3 + 2^3 + 2^4         1 survive
+      leak at z_3 + ONE slot (z_0,z_3):   32 frames = 2^3 + 2^3 + 2^4         2 survive
+      leak at z_4 + ONE slot (z_0,z_3):   32 frames = 2^3 + 2^3 + 2^4         1 survive
+      leak at z_5 + ONE slot (z_0,z_3):   32 frames = 2^3 + 2^3 + 2^4         1 survive
+  [PASS] SECOND IMPLEMENTATION reproduces (Z5)'s one-slot population 32 at all six leak positions  -- observed [32, 32, 32, 32, 32, 32]
+  [PASS] SECOND IMPLEMENTATION reproduces the one-slot survivors 2,1,1,2,1,1 (so (Z5)'s liveness claim stands)  -- observed [2, 1, 1, 2, 1, 1]
+  [PASS] *** THE ACCIDENT: 32 is 2^3 + 2^3 + 2^4 over three branches, NOT 2^5 -- no branch has five free bits, so the prescribed product check PASSES this table for a reason that is false  -- branch free-bit counts [3, 3, 4]
+      leak at z_0 + TWO slots [(0, 3), (1, 4)]  :  768 frames = 2^7 + 2^7 + 2^9         0 survive
+      leak at z_0 + TWO slots [(0, 3), (2, 5)]  :  768 frames = 2^7 + 2^7 + 2^9         0 survive
+      leak at z_0 + TWO slots [(1, 4), (2, 5)]  :  768 frames = 2^7 + 2^7 + 2^9         0 survive
+  [PASS] (Z5)'s two-slot tables refute EVERY frame at all three slot pairs (so n_3 >= 1 => m <= 1 stands)  -- survivors [0, 0, 0]
+
+=== PART 3 -- THE PRESCRIBED CHECK, STATED FORMALLY AND DECIDED ===
+  PRESCRIBED: "a table's `N frames` is the product of the free bits it describes".
+  A free bit is a binary choice, so a product of free bits is a POWER OF TWO,
+  and the check is  N = 2^f  for the f free bits of THE enumeration.
+  table                             N factorisation    2-power?   verdict
+  (Z3) z_0 & z_0                  832 2*2*2*2*2*2*13   NO         CANNOT PASS (odd prime factor 13)
+  (Z4) z_0 & z_1                  832 2*2*2*2*2*2*13   NO         CANNOT PASS (odd prime factor 13)
+  (Z4) z_0 & z_2                  858 2*3*11*13        NO         CANNOT PASS (odd prime factor 13)
+  (Z4) z_0 & z_3                  872 2*2*2*109        NO         CANNOT PASS (odd prime factor 109)
+  (Z4) z_0 & z_4                  858 2*3*11*13        NO         CANNOT PASS (odd prime factor 13)
+  (Z4) z_0 & z_5                  832 2*2*2*2*2*2*13   NO         CANNOT PASS (odd prime factor 13)
+  (Z5) one slot                    32 2*2*2*2*2        yes        PASSES BY ACCIDENT (no branch has 5 free bits)
+  (Z5) two slots                  768 2*2*2*2*2*2*2*2*3 NO         CANNOT PASS (odd prime factor 3)
+  [PASS] the prescribed check CANNOT be passed by SEVEN of the eight tables, because their populations carry odd prime factors and a free-bit product cannot  -- 7 tables cannot pass
+  [PASS] and of the two tables that CAN pass, at least one passes for a FALSE reason (no branch has that many free bits)  -- 1 accidental passes
+
+  SO: the check is not 'failed', it is ILL-POSED.  There is no 'the free bits
+  it describes' -- each table is a SUM over branches with DIFFERENT free-bit
+  counts.  The satisfiable form of the check is
+        N  =  SUM over branches of ( 2^{f_b} - degenerate )
+  which needs the branch list, and the branch list is not in the brief.
+
+=== PART 4 -- (Z5) TWO-SLOT POPULATION: THE DRAFT AND THE BRIEF SAY 384 ===
+      this file (second implementation): 768
+      r25's own printed .out             : 768
+      draft line saying '384 frames'     : 0 occurrence(s)
+      draft line saying '768 frames'     : 1 occurrence(s)
+      DISPATCHED brief, '384 frames'     : 1 occurrence(s)
+  [PASS] the two implementations AGREE on the (Z5) two-slot population  -- second impl 768 vs r25 .out 768
+  [PASS] *** THE DEFECT, and its repair: the draft now says 768 and no longer says 384 (a hand-transcribed population that was wrong by a factor of two)  -- obs=768 draft768=1 draft384=0
+  [PASS] and the DISPATCHED brief still says 384 -- the shipped bytes are evidence and were NOT rewritten to hide what the reviewer actually saw  -- brief384=1
+      NOTE what this does and does NOT touch: the two-slot tables have 0
+      survivors either way, so (Z5)'s CONCLUSION (n_3 >= 1 => m <= 1) is
+      unaffected.  What is wrong is a printed population -- i.e. exactly the
+      number the brief invited the reviewer to check, in the one table where
+      the reviewer said it was not reconstructible.
+
+=== SUMMARY ===
+  checks run: 25, failures: 0 
+  wall clock: 0.10 s (self-limit 600 s)

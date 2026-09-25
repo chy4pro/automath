@@ -1,0 +1,27 @@
+level n=2: classes=1 tested_total=1
+level n=3: classes=2  tested_total=4  violations=0
+level n=4: classes=3  tested_total=12  violations=0
+level n=5: classes=8  tested_total=32  violations=0
+level n=6: classes=19  tested_total=105  violations=0
+level n=7: classes=57  tested_total=365  violations=0
+level n=8: classes=186  tested_total=1493  violations=0
+level n=9: classes=740  tested_total=6836  violations=0
+level n=10: classes=3389  tested_total=36810  violations=0
+level n=11: classes=18502  tested_total=226361  violations=0
+level n=12: classes=120221  tested_total=1620614  violations=0
+level n=13: classes=0  tested_total=13544784  violations=0
+COVERAGE: C4-free tested=13544784 covered_by_proved_lemmas=13544784 (100.0000%) residual=0
+L3-CENSUS: l>=3 graphs=622  of which mu>=2 (Thm G+ base case)=622  radius-critical residual=0  of which no-good-pair=0
+Gplus-k PROBE k=4: applicable=15  violations=0
+G15-CHECKS: induced-C6 instances (in path<=5 graphs) verified = 1272
+G12-CHECKS: (diam-2 C4-free graph, triangle) pairs structurally verified = 422
+G9-d3-probe: (u,z) pairs at distance 3 with both a>=2 and path<6 : 334
+DONE tested=13544784 violations=0 tight=5
+  C4-free floor(l)=1: count=2863838 minslack=0 tight=2
+  C4-free floor(l)=2: count=10680324 minslack=0 tight=2
+  C4-free floor(l)=3: count=622 minslack=0 tight=1
+  tight at n=2: 1
+  tight at n=3: 1
+  tight at n=5: 1
+  tight at n=6: 1
+  tight at n=10: 1

@@ -1,0 +1,12 @@
+LIVENESS PROBE on the BASE text : heading-uniqueness TRIPS  ({'C-8': 2})
+LIVENESS PROBE on the BASE text : lower-case c-ref  TRIPS  (['(c-3)'])
+WROTE $HOME/workspace/claudecode/automath/prompts/w61_S3_GFAN_r20.md
+patches applied : 14
+bytes (wc -c)   : 102422
+chars (wc -m)   : 97617   <-- OPS-6 compares THIS
+md5             : 6fc6cc062028496e36661fbef66907d3
+delta vs r18    : +7360 bytes / +7350 chars
+AC5 heading uniqueness on PRODUCT : PASS (dupes {})
+AC6 lower-case c-refs in PRODUCT PROSE : PASS (found [])
+    verbatim diff artifact exempted, byte-identical to disk, carries ['(c-2)', '(c-3)', '(c-4)'] = the SOURCE DRAFT's labels
+LEAK PROBE      : PASS (no held-out answer in product)

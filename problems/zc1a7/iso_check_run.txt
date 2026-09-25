@@ -1,0 +1,9 @@
+isomorphism-invariant fingerprints (char. polys mod p of fixed elements)
+   p=2: 6 modules, 6 DISTINCT fingerprints -> pairwise non-isomorphic  [OK]
+      the two 4-dimensional F_2-modules, on an element of order 7:
+         module 1: char poly factors [('x + 1', 1), ('x**3 + x**2 + 1', 1)]
+         module 2: char poly factors [('x + 1', 1), ('x**3 + x + 1', 1)]
+      -> DIFFERENT, so genuinely non-isomorphic (they are the Galois pair whose Brauer characters differ only on 7a / 7b)
+   p=3: 5 modules, 5 DISTINCT fingerprints -> pairwise non-isomorphic  [OK]
+   p=5: 7 modules, 7 DISTINCT fingerprints -> pairwise non-isomorphic  [OK]
+   p=7: 7 modules, 7 DISTINCT fingerprints -> pairwise non-isomorphic  [OK]

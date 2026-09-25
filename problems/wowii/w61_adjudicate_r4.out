@@ -1,0 +1,10 @@
+[A1] reviewer witness seq=[5, 5, 5, 3, 3, 3, 2] graphical=True
+[A1] L^1 (list before step 2) = [4, 4, 2, 2, 2, 2]; entries >= 4: [4, 4]
+[A1] draft's parenthetical 'no entry >= 4 in L^1' is FALSE (gap CONFIRMED)  [H_2 is one of them, so L^1 minus H_2 still has 1]
+[A1] second witness K_(3,5) seq=[5, 5, 5, 3, 3, 3, 3, 3] L^1=[4, 4, 3, 3, 2, 2, 2]
+[A2] tau=3 k=3-shaped degree sequences tested=70017; repaired claim 'no entry of L^1 minus H_2 equals Z' violations=0
+[B1] K_(2,3): n=5 degrees=[3, 3, 2, 2, 2] alpha=3 tau=2 s=3 residue=2
+[B1] s == tau ? False  -> Lemma F3 as stated (NOT available); gap CONFIRMED
+[B2/B3] trajectories=19324 of which s != tau: 14784
+[B2] general-s survivor decay (value <= s-j+1) failures = 0
+[B3] Lemma Z+ failures on the same corpus            = 0

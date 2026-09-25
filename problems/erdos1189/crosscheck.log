@@ -1,0 +1,3 @@
+k=5 DFS: complete=True I(k)=1 checked=9 elapsed=0.0s  AGREES_WITH_SAT=True
+k=6 DFS: complete=True I(k)=4 checked=255 elapsed=0.1s  AGREES_WITH_SAT=True
+k=7 DFS: complete=True I(k)=15 checked=16057 elapsed=24.9s  AGREES_WITH_SAT=True

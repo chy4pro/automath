@@ -1,0 +1,209 @@
+w133 round 23 -- the off-cycle bound.  RULING BM is enforced by the Sample object.
+
+=== PART 0 -- POSITIVE CONTROLS ON THE TOOLING (before any of it is used) ===
+  [PASS] control: Petersen is C4-free
+      observed: longest induced path(Petersen) = 5
+  [PASS] control: longest induced path(Petersen) = 5  -- got 5
+  [PASS] control: a == 3 at every Petersen vertex
+  [PASS] specificity: longest induced path(K_{1,4}) = 3
+  [PASS] specificity: a bare induced C6 has longest induced path 5
+  [PASS] specificity: the 4-cycle IS detected as not C4-free
+  [PASS] control: the P7 witness is re-verified edge-by-edge, not trusted  -- [2, 3, 4, 5, 0, 6, 7]
+      guard raised: RULING BM: statistic read off `guard-probe` BEFORE admit() ran
+  [PASS] RULING BM: reading a statistic BEFORE admit() RAISES
+      sample guard-probe                    [host] n=8   path=7  -> REJECTED  [HAS an induced P7 (longest induced path = 7, witness [2, 3, 4, 5, 0, 6, 7])]
+  [PASS] RULING BM: reading a statistic off a REJECTED sample RAISES
+  [PASS] frame/host: the SAME edge list is admitted as a frame and rejected as a host (connectedness is not inherited by induced subgraphs)  -- frame=True host=False ['not connected']
+
+=== PART 1 -- EXHAUSTIVE FRAME TABLES: what a non-Z vertex may be adjacent to ===
+  Frame = the induced subgraph on Z + {anchor} + {u}, so it is an induced subgraph
+  of any host carrying that configuration; C4-freeness and P7-freeness are
+  inherited, so a refuted frame is refuted in EVERY host.  Connectedness is not
+  inherited and is not asserted (see the header: this file's own RULING BM error).
+
+  --- frame table A  single-trace anchor v~z0 (anchor Z-trace [0]) ---
+      observed population: 64 frames, 7 survive the hypothesis, 57 refuted
+      observed survivors: [[0], [0, 3], [2], [2, 3], [3], [3, 4], [4]]
+  [PASS] A  single-trace anchor v~z0: survivor set == the closed-form claim (u's trace is a nonempty legal trace inside {z0,z2,z3,z4})
+      reasons, printed rather than summarised:
+        T=[]       : HAS an induced P7 (longest induced path = 7, witness [2, 3, 4, 5, 0, 6, 7])
+        T=[1]      : NOT C4-free (2 pairs with >=2 common nbrs, e.g. (0, 7, [1, 6])); HAS an induced P7 (longest induced path = 7, witness [2, 3, 4, 5, 0, 6, 7])
+        T=[5]      : NOT C4-free (2 pairs with >=2 common nbrs, e.g. (0, 7, [5, 6])); HAS an induced P7 (longest induced path = 7, witness [1, 2, 3, 4, 5, 7, 6])
+        T=[1, 5]   : NOT C4-free (4 pairs with >=2 common nbrs, e.g. (0, 7, [1, 5, 6]))
+        T=[2]      : SURVIVES
+  [PASS] A: the empty trace dies by an INDUCED P7 and by nothing else  -- ['HAS an induced P7 (longest induced path = 7, witness [2, 3, 4, 5, 0, 6, 7])']
+  [PASS] A: z1 and z5 are excluded by a C4 through z0 (v,z1 already share z0)
+
+  --- frame table B  consecutive-trace anchor w~z0,z1 (anchor Z-trace [0, 1]) ---
+      observed population: 64 frames, 3 survive the hypothesis, 61 refuted
+      observed survivors: [[3], [3, 4], [4]]
+  [PASS] B  consecutive-trace anchor w~z0,z1: survivor set == the closed-form claim (u's trace is a nonempty subset of {z3,z4})
+        T=[]       : HAS an induced P7 (longest induced path = 7, witness [2, 3, 4, 5, 0, 6, 7])
+        T=[2]      : NOT C4-free (2 pairs with >=2 common nbrs, e.g. (1, 7, [2, 6]))
+        T=[5]      : NOT C4-free (2 pairs with >=2 common nbrs, e.g. (0, 7, [5, 6]))
+        T=[0]      : NOT C4-free (2 pairs with >=2 common nbrs, e.g. (0, 6, [1, 7])); HAS an induced P7 (longest induced path = 7, witness [5, 4, 3, 2, 1, 6, 7])
+  [PASS] B: the empty trace dies by an INDUCED P7 and by nothing else  -- ['HAS an induced P7 (longest induced path = 7, witness [2, 3, 4, 5, 0, 6, 7])']
+  [PASS] B: z0,z1,z2,z5 are all excluded by a C4 -- the sharper half, and it is pure C4-freeness
+
+  --- frame table C  empty-trace anchor x (distance >= 2) (anchor Z-trace []) ---
+      observed population: 64 frames, 4 survive the hypothesis, 60 refuted
+      observed survivors: [[], [0, 3], [1, 4], [2, 5]]
+  [PASS] C  empty-trace anchor x (distance >= 2): survivor set == the closed-form claim (u is antipodal, or itself has no Z-neighbour)
+  [PASS] C: THE SHIELD -- every distance-2 vertex attaches only to ANTIPODAL vertices, of which there are at most 3 (draft 34.4a)  -- [(), (0, 3), (1, 4), (2, 5)]
+
+  --- frame table D  antipodal-trace anchor u~z0,z3 (anchor Z-trace [0, 3]) ---
+      observed population: 64 frames, 3 survive the hypothesis, 61 refuted
+      observed survivors: [[], [0], [3]]
+  [PASS] D  antipodal-trace anchor u~z0,z3: survivor set == the closed-form claim (u's neighbours have trace {} , {z0} or {z3} -- and {} IS permitted)
+  [PASS] D: the EMPTY trace survives on an antipodal anchor.  This single frame is where the off-cycle term's unboundedness enters.
+
+=== PART 2 -- THE EXACT BOUNDS.  Enumeration is over N(v), so they are SHARP ===
+
+  --- exact maxima for single-trace v~z0 ---
+      observed population: 152 neighbourhood configurations enumerated, 17 in hypothesis, 135 refuted
+      observed EXACT maximum degree      d = 4, at neighbour traces [[2], [3], [4]]
+      observed EXACT maximum a-value     a = 3, at neighbour traces [[2], [3]]
+      observed (d,a) pairs realised in hypothesis: [(1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
+      maximiser edge list: [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 0), (6, 0), (7, 2), (7, 6), (8, 3), (8, 6)]
+      NOTE, against the owner's own first answer: the hand argument gave only
+      d(v) <= 5 and a(v) <= 4 (at most one neighbour per permitted anchor, and
+      z0 is adjacent to any neighbour that uses it).  The ENUMERATION is sharper
+      by one in both coordinates, because the surviving neighbour traces obstruct
+      each other -- a pairwise interaction no counting argument can see.
+  [PASS] SINGLE TRACE: d(v) <= 4 exactly (bound and attainment in one enumeration)  -- observed max d = 4
+  [PASS] SINGLE TRACE: a(v) <= 3 exactly -- so a single-trace vertex NEVER carries positive charge  -- observed max a = 3
+
+  --- exact maxima for consecutive-trace w~z0,z1 ---
+      observed population: 6 neighbourhood configurations enumerated, 5 in hypothesis, 1 refuted
+      observed EXACT maximum degree      d = 4, at neighbour traces [[3], [4]]
+      observed EXACT maximum a-value     a = 3, at neighbour traces [[3], [4]]
+      observed (d,a) pairs realised in hypothesis: [(2, 1), (3, 2), (4, 3)]
+      maximiser edge list: [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 0), (6, 0), (6, 1), (7, 3), (7, 6), (8, 4), (8, 6)]
+  [PASS] CONSECUTIVE TRACE: d(w) <= 4 exactly  -- observed max d = 4
+  [PASS] CONSECUTIVE TRACE: a(w) <= 3 exactly -- so a consecutive-trace vertex NEVER carries positive charge  -- observed max a = 3
+      sample single-trace maximiser         [host] n=9   path=6  -> IN HYPOTHESIS
+  [PASS] single-trace maximiser is admitted as a HOST (connected), so the maximum is ATTAINED, not merely bounded  -- a=3 d=3 t=0
+      sample consecutive maximiser          [host] n=9   path=6  -> IN HYPOTHESIS
+  [PASS] consecutive maximiser is admitted as a HOST (connected), so the maximum is ATTAINED, not merely bounded  -- a=3 d=4 t=1
+
+=== PART 3 -- THE OFF-CYCLE TERM IS UNBOUNDED: two families, IN HYPOTHESIS ===
+  FAMILY-U (EMPTY trace):     Z + u~z0,z3 + v~u + k pendants on v
+  FAMILY-A (ANTIPODAL trace): Z + u~z0,z3 + k pendants on u
+      sample FAMILY-U k=0                   [host] n=8   path=5  -> IN HYPOTHESIS
+      sample FAMILY-A k=0                   [host] n=7   path=5  -> IN HYPOTHESIS
+      sample FAMILY-U k=1                   [host] n=9   path=6  -> IN HYPOTHESIS
+      sample FAMILY-A k=1                   [host] n=8   path=5  -> IN HYPOTHESIS
+
+    FAMILY-U  (v has NO Z-neighbour; the question's own class)
+      k   d(v)  a(v)   Sum_v(a-3)   dist(v,Z)
+      0   1     1      -6           2
+      1   2     2      -7           2
+      2   3     3      -8           2
+      3   4     4      -9           2
+      4   5     5      -10          2
+      5   6     6      -11          2
+      6   7     7      -12          2
+      7   8     8      -13          2
+      8   9     9      -14          2
+  [PASS] FAMILY-U: all 9 members IN HYPOTHESIS  -- 9
+  [PASS] FAMILY-U: v has an empty Z-trace and sits at distance 2
+  [PASS] FAMILY-U: a(v) = k+1 -- UNBOUNDED, and |N(v) cap Z| = 0 <= 1, so the question's own class contains it  -- [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  [PASS] FAMILY-U: the GLOBAL count survives anyway (Sum(a-3) <= 0 throughout)  -- [-6, -7, -8, -9, -10, -11, -12, -13, -14]
+
+    FAMILY-A  (u has an ANTIPODAL Z-trace)
+      k   d(u)  a(u)   Sum_v(a-3)
+      0   2     2      -5
+      1   3     3      -6
+      2   4     4      -7
+      3   5     5      -8
+      4   6     6      -9
+      5   7     7      -10
+      6   8     8      -11
+      7   9     9      -12
+      8   10    10     -13
+  [PASS] FAMILY-A: all 9 members IN HYPOTHESIS  -- 9
+  [PASS] FAMILY-A: a(u) = k+2 -- UNBOUNDED  -- [2, 3, 4, 5, 6, 7, 8, 9, 10]
+  [PASS] FAMILY-A: the GLOBAL count survives anyway (Sum(a-3) <= 0 throughout)  -- [-5, -6, -7, -8, -9, -10, -11, -12, -13]
+
+=== PART 4 -- BOTH HYPOTHESES ARE LOAD-BEARING FOR THE SINGLE-TRACE BOUND ===
+  DROP `no induced P7`: hexagon + v~z0 + k pendants on v.  C4-free, carries the
+  induced C6 -- and a(v)=k+1 is unbounded.  Rejected BY THE GATE, for the P7.
+      k   admitted?  longest induced path   C4-free?   a(v)
+      1   False      7                      True       2
+      3   False      7                      True       4
+      6   False      7                      True       7
+  [PASS] no-P7 is load-bearing: C4-free, but every one REJECTED for an induced P7
+  [PASS] no-P7 is load-bearing: without it a(v) on a single-trace v is unbounded  -- [2, 4, 7]
+
+  DROP `C4-free`: hexagon + v~z0 + k vertices adjacent to both v and z2.
+      k   admitted?  longest induced path   C4-free?   a(v)
+      2   False      6                      False      3
+      4   False      6                      False      5
+      6   False      6                      False      7
+  [PASS] C4-freeness is load-bearing: P7-free, but every one REJECTED for a C4
+  [PASS] C4-freeness is load-bearing: without it a(v) on a single-trace v is unbounded  -- [3, 5, 7]
+
+=== PART 5 -- STRUCTURE: distance <= 3 from Z; depth 4 dies by an induced P7 ===
+  By PART 1C a distance-2 vertex attaches ONLY to an antipodal vertex, so the
+  depth-4 frame is forced to be x4-x3-x2-u-z0 with u antipodal.  Enumerated over
+  the antipodal slot and over the free bits of the tail.
+      slot 0: REJECTED  [HAS an induced P7 (longest induced path = 7, witness [1, 2, 3, 6, 7, 8, 9])]
+      slot 1: REJECTED  [HAS an induced P7 (longest induced path = 7, witness [0, 5, 4, 6, 7, 8, 9])]
+      slot 2: REJECTED  [HAS an induced P7 (longest induced path = 7, witness [0, 1, 2, 6, 7, 8, 9])]
+  [PASS] depth 4 is refuted at all 3 antipodal slots, and by the P7 (never by a C4)  -- good=3 bad=0
+  [PASS] depth 3 IS reached (so `distance <= 3` is sharp, not merely an upper bound)  -- []
+      observed: dist(x,Z) = 3, d(x) = 1, a(x) = 1
+
+=== PART 6 -- RANDOM IN-HYPOTHESIS SWEEP (evidence weight stated up front) ===
+  The dichotomy is a THEOREM inside the hypothesis, so an in-hypothesis sweep buys
+  0 bits about its truth -- round 19's null-expectation lesson.  It buys exactly
+  one thing: it certifies the ARITHMETIC on hosts nobody designed.  The DISCARD
+  COUNT is printed so the sample is never mistaken for the population.
+      observed population: 6000 random hosts, 795 ADMITTED (13.2%), 5205 DISCARDED as out of hypothesis
+      observed off-Z vertices by trace type: {'single': 726, 'consecutive': 271, 'antipodal': 137, 'empty': 15}
+      observed maxima (d,a) by trace type:   {'single': (3, 3), 'consecutive': (3, 2), 'antipodal': (4, 4), 'empty': (3, 3)}
+  [PASS] sweep: 0 single-trace with d>4 or a>3; 0 consecutive with d>4 or a>3; 0 distance-2 or size>=3 trace
+  [PASS] sweep is NON-VACUOUS on both bounded classes  -- {'single': 726, 'consecutive': 271, 'antipodal': 137, 'empty': 15}
+
+=== PART 7 -- MINT-TIME ADDRESS GATE (RULING BB) on round 23's names ===
+  corpus boundary PINNED at draft line 4557 (the file before 35 was appended)
+  observed: `G58    ` -> 1 occurrence(s) AT MINT TIME, 2 added by 35
+      pre-existing  4432: addresses `G58`/`G59` (**observed 0 occurrences**, so the `G` namespace is still monotone).
+  observed: `G59    ` -> 1 occurrence(s) AT MINT TIME, 0 added by 35
+      pre-existing  4432: addresses `G58`/`G59` (**observed 0 occurrences**, so the `G` namespace is still monotone).
+  observed: `G60    ` -> 0 occurrence(s) AT MINT TIME, 0 added by 35
+  observed: `W_1    ` -> 0 occurrence(s) AT MINT TIME, 14 added by 35
+  observed: `W_far  ` -> 0 occurrence(s) AT MINT TIME, 0 added by 35
+  observed: `Shield ` -> 0 occurrence(s) AT MINT TIME, 0 added by 35
+  observed: `Br     ` -> 0 occurrence(s) AT MINT TIME, 0 added by 35
+  `G58`/`G59` pre-existing occurrences are draft 34.2a's PROSE ABOUT the gate
+  ("the next free addresses G58/G59"), inspected line by line above, never an
+  address -- so the `G` namespace is monotone and `G58` is still the next free one.
+  [PASS] gate: `W_1` was MINTABLE at mint time (0 pre-existing occurrences), and it completes the W_0 / W_cons / W_anti family  -- 0 pre-existing
+  [PASS] gate: `G60`, `W_far`, `Shield`, `Br` resolve nowhere, before or after  -- {'G58': (1, 2), 'G59': (1, 0), 'G60': (0, 0), 'W_1': (0, 14), 'W_far': (0, 0), 'Shield': (0, 0), 'Br': (0, 0)}
+  [PASS] gate: `G58` was NOT minted as an address this round -- 35 leaves it free, and the owner does not self-promote  -- [(4692, 'shape. **UNREGISTERED. No number minted** — `G58` is the next free address and the owner does'), (4753, '`W_1` has **0 pre-existing occurrences** and `G58` has **1**, at line 4432, inspected and')]
+
+=== PART A -- MINT-TIME ADDRESS GATE on ROUND-23 CURRENT ($HOME/workspace/claudecode/automath/notes/proofs/wowii133_draft.md) ===
+  observed population: 20 distinct symbols defined with ':=', 28 definition sites
+  observed population: 3 symbol(s) carrying MORE THAN ONE distinct definition
+      COLLISION  `A`  ->  3 distinct senses
+          lines 745            : n(a)∖b,c，b:=n(b)∖a,c，cs:=n(c)∖a,b，r:=v∖(t∪a∪b∪cs)。
+          lines 1034           : n(c)，k:=|a|，b:=距离-2层。
+          lines 513            : n(h)、b:=距离2层，
+      COLLISION  `C`  ->  2 distinct senses
+          lines 1150           : g−λ(connected,isometricing,l(c)>3,rad(c)=2
+          lines 644            : g−λ连通且在g中等距；
+      COLLISION  `H`  ->  3 distinct senses
+          lines 1228           : maxh∈h|n(h)∩h|
+          lines 1593           : maxh∈h|n(h)∩h|,soeither
+          lines 1169           : v∈c:a(v)≥3(a=ac),andu,zrealise
+  registered legacy collisions (declared, not repaired): {'A': 3, 'C': 2, 'H': 3}
+  observed collisions outside the legacy set: []
+  observed sense counts for the legacy set: {'A': 3, 'C': 2, 'H': 3}
+  [PASS] A/ROUND-23 CURRENT: NO collision outside the registered legacy set  -- new: []
+  [PASS] A/ROUND-23 CURRENT: no LEGACY symbol has gained a sense (count pinned, not just named)  -- declared {'A': 3, 'C': 2, 'H': 3} observed {'A': 3, 'C': 2, 'H': 3}
+  [PASS] gate: round 22's PART A is still clean on the draft as it now stands  -- []
+
+=== SUMMARY ===
+checks run: 45   failures: 0
+elapsed: 1.39 s

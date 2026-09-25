@@ -1,0 +1,51 @@
+=== V7 EXECUTION PROBE on w133_r17_w2_recompute.py (RULING L method) ===
+
+baseline: n = 660, 6-regular = True, C4-free = True, triangle-free = True
+baseline: rad = 5, diam = 5, all eccentricities equal = True
+
+[probes] each injects ONE fault that SHOULD trip the named assertion
+  note      dropping the 3rd generator leaves order 660 -- the first two already
+            generate PSL(2,11); that fault is not a fault for THIS predicate.
+  LIVE      |<S>| = 660   [single generator [1 5; 0 1] -> order 11 (a proper subgroup)]
+  LIVE      6-regular   [one edge deleted -> degrees 5..6]
+  LIVE      C4-free (strong form)   [added edge 0-426 giving x,y the two common neighbours 363,402]
+  LIVE      rad = diam = 5 and every ecc equal   [vertex 0 reduced to a leaf -> rad 5 diam 7]
+  LIVE      chords = 0 on the built path   [builder relaxed to cnt<=2 -> certifier reports 97 chords on a 257-vertex walk]
+  LIVE      constructed path has exactly 9 vertices   [a 10-vertex candidate is rejected by == 9]
+
+[census] every check made by w133_r17_w2_recompute.py, classified
+
+ LIVE, settled by execution probe above
+   |<S>| = 660 (P1, on the second fault; see the note there) . 6-regular (P2) . C4-free strong form (P3) . triangle-free (P3 shares
+   its machinery; a manufactured common-neighbour pair also breaks it) . rad = diam = 5 and
+   equal eccentricities (P4) . chords = 0 on the built path (P5) . constructed path length
+   (P6) . path(W2) >= 168 (data-dependent: the builder returns what it returns)
+ LIVE by construction of the input, not probed here
+   det = 1 for the three generator matrices . |S| = 6 . identity not in S . phi(-I) = id
+   (this one tests the Moebius code, not the data: a sign error in moebius() breaks it)
+ DERIVED -- true once an earlier check passed, kept only as a reading aid, NOT evidence
+   image is not SL(2,11) (follows from n = 660) . edge count 1980 (follows from 6-regularity
+   and n) . diam <= rad + 2 (follows from rad = diam = 5) . path >= rad + 4 (follows from
+   path >= 168) . sum a = 6n and mu = 6 (follow from 6-regularity plus independent
+   neighbourhoods) . the graph's path exceeds the constructed one (192 vs 9)
+ SELF-SATISFIED INVARIANT -- the generator structurally cannot violate it, zero information
+   "S is closed under inversion": S is BUILT as {g, g^-1}.  Relabelled in the subject.
+   "N(v) is independent for every v": once triangle-freeness has passed this cannot fail.
+   It is retained because it is computed by a different route (neighbourhood-internal edge
+   count rather than common-neighbour intersection), but it is NOT a second witness.
+ REPAIRED THIS ROUND
+   the subject originally contained `check(6 > 4, "l = 6 > 4")` -- a comparison of two
+   literals, which could not fail under any input whatever.  It now compares the COMPUTED
+   sum_a / n against 4.  This is the exact shape RULING L names and it was in our own file.
+ FINDING FROM THE PROBE ITSELF
+   the first P1 fault (drop the third generator) did NOT trip: the first two generators
+   already generate PSL(2,11).  Reported as a fact about the generating set, not buried;
+   it does not touch any W2 number, because the graph is fixed by the 6-element connection
+   set and not by which generators are redundant.
+ ZERO-SAMPLE RULE (RULING L, adopted): no verdict token in the subject is rendered on an
+   empty sample.  The two 0-valued reports -- "0 violating pairs" (C4) and "0 triangle
+   incidences" -- are counts over NON-empty scans (660 vertices, 1980 edges), and P2/P3
+   show both scans can produce a non-zero count, so they are refutable, not vacuous.
+
+=== PRODUCT: 6/6 injected faults tripped the assertion they target ===
+checks failed: 0

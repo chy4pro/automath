@@ -1,0 +1,205 @@
+=== POPULATION, PRINTED BEFORE ANY VERDICT (RULING AS) ===
+  -- promotion-scoring briefs (the audit RULING BK ordered) --
+    Q25   prompts/w61_S3_GFAN_qwen.md         138037B md5=5cb821f7  bought: rows R-20, R-21, R-22 (family 1)
+    Q33   prompts/w61_S3_GFAN_sol.md           43653B md5=7cf4bc47  bought: rows R-20, R-21 (family 2)
+    Q34   prompts/w61_S3_GFAN_r14.md           57269B md5=67eff764  bought: row R-22 (family 3)
+    Q34b  prompts/w61_S3_GFAN_r14b.md          60296B md5=3520cea7  bought: row R-22 (family 2, Meta)
+    Q35   prompts/w61_S3_GFAN_r15.md           62854B md5=8b215db9  bought: row R-23 (family 1)
+    Q37   prompts/w61_S3_GFAN_r20.md          102422B md5=6fc6cc06  bought: row R-23 (family 2)
+  -- same family, no promotion (swept anyway, noisy side) --
+    Q36   prompts/w61_S3_GFAN_r18.md           95062B md5=3a2c17cb  no promotion (no family 2 that round)
+    Q38   prompts/w61_S3_GFAN_r24.md          113381B md5=45b79f35  IN FLIGHT this round
+
+=== CHECK LIVENESS (V7): the vocabulary must fire on a known planted leak ===
+  planted sentence: "Do not referee the imports' own proofs -- they are separately certified."
+  classes that fire: ['STATUS-CERT']   -> check CAN fail: True
+
+=== ALL HITS, VERBATIM, EVERY BRIEF (no filtering) ===
+
+--- Q25  prompts/w61_S3_GFAN_qwen.md  (57 hit lines)
+       21 [STATUS-PROVED] Everything below is under review, including every line labelled PROVED.
+       30 [STATUS-PROVED] on an enumeration, with only the *finiteness* of the case list hand-proved. That
+       56 [STATUS-PROVED] | **J-RIG** | **Theorem RIG** (a)–(e) and its "Consequently" clause | (a) is CAP1; (b) uses Lemma 4 on two adjacent low vertices — check the common-neighbour conclusion is the form Lemma 4 s
+       57 [STATUS-FAM] | **J-RIG-NU** | The `ν ≤ L−1` clause of Theorem RIG | It is the only part needing the hard core, and it is imported from **Corollary MB1**, which is itself under review in a parallel round 
+       63 [STATUS-PROVED] | **J-GFANNU** | **Theorem GFANν (`ν ≤ 6`) — the computer-assisted demarcation. THE JOINT THIS ROUND TURNS ON.** | Two separate questions, answer both explicitly. **(1) Is the finiteness arg
+      124 [STATUS-CERT] Z⁺, Theorem K — certified by four independent judges across two model families.
+      166 [STATUS-CERT] Theorem K). Certified; context.
+      168 [STATUS-CERT] FAN-5, Theorem FAN, and the `GFan(τ,L,ν)` definition. Certified except where noted;
+      671 [STATUS-PROVED] are **PROVED** (complete proofs above, modulo Fact 2 and Lemma 1 only) and
+      690 [STATUS-PROVED] §7.7) is now **PROVED-S3** — two clean rounds from different model families plus
+      777 [STATUS-PROVED] ### A. The Fan family: verdict, mechanism, and what is actually proved
+      783 [STATUS-CERT] line-by-line certification of Lemma 1 was **not possible from the artifact**.
+      867 [STATUS-PROVED] PROVED here; **Lemma FAN-2's proof is tie-incomplete at `j = L+1`** (§7.14 G3) and it
+      871 [STATUS-PROVED] `j > L+1` together with its Lemma 2. 〔**Status amendment, 13:3x CDT: both residuals are now PROVED** — see §7.8 D/E/F
+      877 [STATUS-CERT] failures over 64 911 adversarial runs but are **NOT** owner-certified as proofs.
+      882 [STATUS-PROVED] conditionally-proved elimination with a sharp, uniform numerical signature.**
+      941 [STATUS-FAM] **Gate status (honest).** K-CHAIN now has **one** clean round (A2, verified above);
+      943 [STATUS-FAM] T3 needs a further clean round on the R3 text. Per the planner's standing ruling
+      978 [STATUS-PROVED] > `[L]^{L+1}, 2` clears in exactly `L`. **PROVED** — the first half is Lemma FAN-3;
+      981 [STATUS-VER] > `L ≥ 2`. Independently verified for `L = 2…9` (`w61_r5_bcheck.out`), TAIL's
+      987 [STATUS-PROVED] > itself `PROVED, 0 clean S3 rounds` (§7.12/§7.13 have no S3 row yet). What is
+      988 [STATUS-VER] > independently verified at S3 strength here is the **`λ = [2]` instance only**.
+      989 [STATUS-PROVED] > Accordingly **Observation FAN-5 does not carry a PROVED-S3 row** — see §7.11
+     1077 [STATUS-PROVED] closed by owner-proved lemmas FAN-1…FAN-7.
+     1098 [STATUS-PROVED] FAN-4, FAN-6, FAN-7 are **PROVED** (modulo Lemma 1, Lemma S, Lemma DICH, Lemma F3′,
+     1099 [STATUS-PROVED] all of which are PROVED-S3). **Lemma FAN-2 is struck from this list** — its proof is
+     1100 [STATUS-PROVED] tie-incomplete at `j = L+1`, and FAN-8 supersedes it. **Observation FAN-5 is PROVED**
+     1104 [STATUS-PROVED] closes it, and **§7.8's chain is PROVED-S3 as of §7.11 rows R-9/R-10**.*
+     1115 [STATUS-SETTLED] The `E = 1` case of the table in §7.8 E is now closed, and it closes the whole
+     1151 [STATUS-PROVED] > **Observation FAN-E (numerical, NOT proved)** 〔landed with F1〕**.** Measured over
+     1177 [STATUS-PROVED] Lemma F3′ (all in S3 this round) plus Lemmas FAN-1/3/4/6/7 proved above; Corollary
+     1180 [STATUS-CERT] uses a Qwen-supplied argument**: tab B's Lemma 1 (which could not be certified from
+     1186 [STATUS-PROVED] confirmed with no exception. **Observation FAN-E** (numerical, not proved) predicts the
+     1193 [STATUS-PROVED] *Status 〔updated 17:5x CDT〕: **Theorem FAN — PROVED-S3** (§7.11 row R-10), resting on
+     1194 [STATUS-PROVED] Lemma 1 / Lemma S / Lemma DICH / Lemma F3′ (R-1…R-5, PROVED-S3) and Lemmas
+     1195 [STATUS-PROVED] FAN-1/3/4/6/7/8 (R-9). **Corollary FAN-HC — PROVED, 0 clean S3 rounds, and it does NOT
+     1237 [STATUS-PROVED] *Status: **LEAD, not proved.** The two displayed counts follow from the §7.8
+     1360 [STATUS-PROVED] What is proved of the antecedent so far:
+     1412 [STATUS-PROVED] * **PROVED** (complete proofs above, modulo Lemma 1, Lemma S, Lemma DICH):
+     1420 [STATUS-PROVED] superseded by Proposition L1, which is proved here from Theorem LOW alone.
+     1481 [STATUS-PROVED] *Status: `Conjecture SL1` is a **CONJECTURE**, numerically supported, not proved.
+     1482 [STATUS-PROVED] Lemma ID and Proposition L1 are PROVED. The Conditional Theorem of §7.6 B is
+     1483 [STATUS-PROVED] proved as a conditional only.*
+     1485 [STATUS-PROVED] ### F. **Theorem SL — the open step of E is now proved** (2026-08-18, 11:0x CDT)
+     1488 [STATUS-PROVED] is the `L = 1` case of Theorem SL below, which is proved for every `L ≥ 1`. §7.6 E
+     1591 [STATUS-PROVED] **Status.** Theorem SL, Corollary SL-HC: **PROVED** (complete proofs above,
+     1667 [STATUS-SETTLED] **Where this leaves the line.** `L = 0` and `L = 1` are closed; `L = 2` is closed
+     1677 [STATUS-PROVED] **PROVED** (from Theorem SL, Lemma 4, Lemma C\*, Observation R1). Not yet
+     1803 [STATUS-SETTLED] Both are budget-consistent. The (F-b) contradiction that closed `L = 2` used
+     1846 [STATUS-PROVED] PROVED** (from Lemma 4, Observation R1, and — for the `ν ≤ L−1` clause only —
+     1847 [STATUS-PROVED] Corollary MB1, hence Theorem SL, hence Lemma DICH, which is now **PROVED-S3**,
+     2018 [STATUS-PROVED] GFAN2-HC and GFAN2-L3 — PROVED** (modulo Lemma 1 / Lemma S / Lemma DICH / Lemma
+     2019 [STATUS-PROVED] F3′, which are **PROVED-S3** as of §7.11, plus Theorem FAN for the `ν = 1` input of
+     2049 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+     2073 [STATUS-PROVED] > is finite *because* of FAN-4′/FAN-8′/MB1/TAIL, which are hand-proved above, and
+     2095 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+     2097 [STATUS-PROVED] *Status: **Lemma TAIL, Theorem GFANν (`ν ≤ 6`), Corollary GFANν-HC — PROVED**
+
+--- Q33  prompts/w61_S3_GFAN_sol.md  (13 hit lines)
+       23 [STATUS-PROVED] below is under review, including every line labelled PROVED.
+       27 [STATUS-FAM] restriction. Your round is the second of the two independent families this document
+       28 [STATUS-FAM] requires, and two families agreeing is the whole point: a round that reproduces another
+       48 [STATUS-SETTLED] * If a joint cannot be settled without a restricted file, **say so and mark that joint
+       60 [STATUS-CERT] else in the project has been through two independent families and is certified. So a
+       66 [STATUS-PROVED] theorem: four hand-proved bounds make a case list finite for each `nu`, and a finite
+      110 [STATUS-PROVED] is used outside the hypotheses it was proved under) or **BOOKKEEPING** (label,
+      172 [STATUS-CERT] **Facts you may assume without refereeing them** (all separately certified; check only
+      174 [STATUS-PROVED] used = conclusion proved; a mismatched import IS in scope and IS a MATHEMATICS defect):
+      182 [STATUS-CERT] certified toolkit.
+      438 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+      460 [STATUS-PROVED] > is finite *because* of FAN-4′/FAN-8′/MB1/TAIL, which are hand-proved above.
+      485 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+
+--- Q34  prompts/w61_S3_GFAN_r14.md  (17 hit lines)
+       19 [STATUS-PROVED] below is under review, including every line labelled PROVED.
+       33 [STATUS-PROVED] ("hypothesis supplied = hypothesis required, conclusion used = conclusion proved")
+       67 [STATUS-SETTLED] cannot be settled without a restricted file, say so and mark that joint UNRESOLVED.
+       73 [STATUS-PROVED] kills its `nu = 2` slice. Part 2 is a **computer-assisted** theorem: four hand-proved
+      131 [STATUS-CERT] | **J-IMPORT** | **The joint this round was rebuilt for.** For EVERY use of an Appendix A.1 fact anywhere in Appendix B or C: is the hypothesis the caller supplies the hypothesis the importe
+      132 [STATUS-PROVED] | **J-SCOPE** | Every statement in this file: what hypotheses does its own proof consume, versus what it is filed under? Report both under- and over-hypothesis. Under-hypothesis is a MATHEMA
+      138 [STATUS-PROVED] statement is used outside the hypotheses it was proved under) or **BOOKKEEPING**
+      236 [STATUS-CERT] Each of these is separately certified. Your job with them is **import matching only**:
+      253 [STATUS-CERT] Favaron-Maheo-Sacle (`residue <= alpha`).** The certified toolkit. Theorem FAN says
+      424 [STATUS-CERT] > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+      573 [STATUS-CERT] > *Proof.* Theorem RIG (the certified toolkit) makes the instance `GFan(τ,L,ν)` with
+      616 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+      638 [STATUS-CERT] > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (c-3), each with its
+      642 [STATUS-PROVED] > is finite *because* of FAN-4′/FAN-8′/MB1/TAIL, which are hand-proved above.
+      669 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+      670 [STATUS-CERT] 〔**Progress, 2026-08-22 00:4x CDT — see the certified toolkit.** The `[2ν]` half is now hand-proved
+      676 [STATUS-PROVED] **C1 is now PROVED for every partition with at most two parts** (**Theorem C1-2**:
+
+--- Q34b  prompts/w61_S3_GFAN_r14b.md  (17 hit lines)
+       57 [STATUS-PROVED] below is under review, including every line labelled PROVED.
+       71 [STATUS-PROVED] ("hypothesis supplied = hypothesis required, conclusion used = conclusion proved")
+      105 [STATUS-SETTLED] cannot be settled without a restricted file, say so and mark that joint UNRESOLVED.
+      111 [STATUS-PROVED] kills its `nu = 2` slice. Part 2 is a **computer-assisted** theorem: four hand-proved
+      169 [STATUS-CERT] | **J-IMPORT** | **The joint this round was rebuilt for.** For EVERY use of an Appendix A.1 fact anywhere in Appendix B or C: is the hypothesis the caller supplies the hypothesis the importe
+      170 [STATUS-PROVED] | **J-SCOPE** | Every statement in this file: what hypotheses does its own proof consume, versus what it is filed under? Report both under- and over-hypothesis. Under-hypothesis is a MATHEMA
+      176 [STATUS-PROVED] statement is used outside the hypotheses it was proved under) or **BOOKKEEPING**
+      276 [STATUS-CERT] Each of these is separately certified. Your job with them is **import matching only**:
+      293 [STATUS-CERT] Favaron-Maheo-Sacle (`residue <= alpha`).** The certified toolkit. Theorem FAN says
+      464 [STATUS-CERT] > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+      613 [STATUS-CERT] > *Proof.* Theorem RIG (the certified toolkit) makes the instance `GFan(τ,L,ν)` with
+      656 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+      678 [STATUS-CERT] > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (c-3), each with its
+      682 [STATUS-PROVED] > is finite *because* of FAN-4′/FAN-8′/MB1/TAIL, which are hand-proved above.
+      709 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+      710 [STATUS-CERT] 〔**Progress, 2026-08-22 00:4x CDT — see the certified toolkit.** The `[2ν]` half is now hand-proved
+      716 [STATUS-PROVED] **C1 is now PROVED for every partition with at most two parts** (**Theorem C1-2**:
+
+--- Q35  prompts/w61_S3_GFAN_r15.md  (15 hit lines)
+       87 [STATUS-PROVED] below is under review, including every line labelled PROVED.
+      101 [STATUS-PROVED] ("hypothesis supplied = hypothesis required, conclusion used = conclusion proved")
+      135 [STATUS-SETTLED] cannot be settled without a restricted file, say so and mark that joint UNRESOLVED.
+      141 [STATUS-PROVED] kills its `nu = 2` slice. Part 2 is a **computer-assisted** theorem: four hand-proved
+      206 [STATUS-CERT] | **J-IMPORT** *(TARGET)* | **The joint this round was rebuilt for.** For EVERY use of an Appendix A.1 fact anywhere in Appendix B or C: is the hypothesis the caller supplies the hypothesis 
+      207 [STATUS-PROVED] | **J-SCOPE** *(TARGET)* | For **Theorem GFANnu and Corollary GFANnu-HC**: what hypotheses does its own proof consume, versus what it is filed under? Report both under- and over-hypothesis. 
+      213 [STATUS-PROVED] statement is used outside the hypotheses it was proved under) or **BOOKKEEPING**
+      319 [STATUS-CERT] Each of these is separately certified. Your job with them is **import matching only**:
+      336 [STATUS-CERT] Favaron-Maheo-Sacle (`residue <= alpha`).** The certified toolkit. Theorem FAN says
+      507 [STATUS-CERT] > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+      656 [STATUS-CERT] > *Proof.* Theorem RIG (the certified toolkit) makes the instance `GFan(τ,L,ν)` with
+      699 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+      722 [STATUS-CERT] > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (c-3), each with its
+      727 [STATUS-PROVED] > `L ≥ ν + 1`, all hand-proved above.
+      754 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+
+--- Q37  prompts/w61_S3_GFAN_r20.md  (16 hit lines)
+       97 [STATUS-SETTLED] set. A previous round of this review was told that this had been settled elsewhere and,
+      207 [STATUS-PROVED] below is under review, including every line labelled PROVED.
+      221 [STATUS-PROVED] ("hypothesis supplied = hypothesis required, conclusion used = conclusion proved")
+      255 [STATUS-SETTLED] cannot be settled without a restricted file, say so and mark that joint UNRESOLVED.
+      273 [STATUS-PROVED] kills its `nu = 2` slice. Part 2 is a **computer-assisted** theorem: four hand-proved
+      343 [STATUS-CERT] | **J-IMPORT** *(TARGET)* | **The joint this round was rebuilt for.** For EVERY use of an Appendix A.1 fact anywhere in Appendix B or C: is the hypothesis the caller supplies the hypothesis 
+      344 [STATUS-PROVED] | **J-SCOPE** *(TARGET)* | For **Theorem GFANnu and Corollary GFANnu-HC**: what hypotheses does its own proof consume, versus what it is filed under? Report both under- and over-hypothesis. 
+      350 [STATUS-PROVED] statement is used outside the hypotheses it was proved under) or **BOOKKEEPING**
+      464 [STATUS-CERT] Each of these is separately certified. Your job with them is **import matching only**:
+      481 [STATUS-CERT] Favaron-Maheo-Sacle (`residue <= alpha`).** The certified toolkit. Theorem FAN says
+      652 [STATUS-CERT] > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+      801 [STATUS-CERT] > *Proof.* Theorem RIG (the certified toolkit) makes the instance `GFan(τ,L,ν)` with
+      844 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+      871 [STATUS-CERT] > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (C-3), each with its
+      876 [STATUS-PROVED] > `L ≥ ν + 1`, all hand-proved above.
+      904 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+
+--- Q36  prompts/w61_S3_GFAN_r18.md  (15 hit lines)
+      116 [STATUS-PROVED] below is under review, including every line labelled PROVED.
+      130 [STATUS-PROVED] ("hypothesis supplied = hypothesis required, conclusion used = conclusion proved")
+      164 [STATUS-SETTLED] cannot be settled without a restricted file, say so and mark that joint UNRESOLVED.
+      170 [STATUS-PROVED] kills its `nu = 2` slice. Part 2 is a **computer-assisted** theorem: four hand-proved
+      235 [STATUS-CERT] | **J-IMPORT** *(TARGET)* | **The joint this round was rebuilt for.** For EVERY use of an Appendix A.1 fact anywhere in Appendix B or C: is the hypothesis the caller supplies the hypothesis 
+      236 [STATUS-PROVED] | **J-SCOPE** *(TARGET)* | For **Theorem GFANnu and Corollary GFANnu-HC**: what hypotheses does its own proof consume, versus what it is filed under? Report both under- and over-hypothesis. 
+      242 [STATUS-PROVED] statement is used outside the hypotheses it was proved under) or **BOOKKEEPING**
+      348 [STATUS-CERT] Each of these is separately certified. Your job with them is **import matching only**:
+      365 [STATUS-CERT] Favaron-Maheo-Sacle (`residue <= alpha`).** The certified toolkit. Theorem FAN says
+      536 [STATUS-CERT] > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+      685 [STATUS-CERT] > *Proof.* Theorem RIG (the certified toolkit) makes the instance `GFan(τ,L,ν)` with
+      728 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+      755 [STATUS-CERT] > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (c-3), each with its
+      760 [STATUS-PROVED] > `L ≥ ν + 1`, all hand-proved above.
+      788 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+
+--- Q38  prompts/w61_S3_GFAN_r24.md  (12 hit lines)
+       36 [STATUS-SETTLED] text gets read as settled text, and this project has now twice shipped a repair whose own
+      127 [STATUS-SETTLED] set. A previous round of this review was told that this had been settled elsewhere and,
+      237 [STATUS-PROVED] below is under review, including every line labelled PROVED.
+      251 [STATUS-PROVED] ("hypothesis supplied = hypothesis required, conclusion used = conclusion proved")
+      285 [STATUS-SETTLED] cannot be settled without a restricted file, say so and mark that joint UNRESOLVED.
+      303 [STATUS-PROVED] kills its `nu = 2` slice. Part 2 is a **computer-assisted** theorem: four hand-proved
+      384 [STATUS-PROVED] | **J-SCOPE** *(TARGET)* | For **Corollary GFANnu-HC**: what hypotheses does its own proof consume, versus what it is filed under? Report both under- and over-hypothesis. Under-hypothesis is
+      443 [STATUS-PROVED] statement is used outside the hypotheses it was proved under) or **BOOKKEEPING**
+      580 [STATUS-CERT] Favaron-Maheo-Sacle (`residue <= alpha`).** The certified toolkit. Theorem FAN says
+      953 [STATUS-PROVED] > *Proof.* Four proved bounds make the case list finite for each `ν`:
+      986 [STATUS-PROVED] > `L ≥ ν + 1`, all hand-proved above.
+     1030 [STATUS-PROVED] maximum whose second-largest entry is `≤ λ₁ − 2`. **Neither is proved.**
+
+=== TALLY (verdict computed only now) ===
+  Q25    57 hit lines   rows R-20, R-21, R-22 (family 1)
+  Q33    13 hit lines   rows R-20, R-21 (family 2)
+  Q34    17 hit lines   row R-22 (family 3)
+  Q34b   17 hit lines   row R-22 (family 2, Meta)
+  Q35    15 hit lines   row R-23 (family 1)
+  Q37    16 hit lines   row R-23 (family 2)
+  Q36    15 hit lines   no promotion (no family 2 that round)
+  Q38    12 hit lines   IN FLIGHT this round

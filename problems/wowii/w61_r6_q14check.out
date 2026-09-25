@@ -1,0 +1,44 @@
+== calibration ==
+  K2   residue=1 expected=1 OK
+  C3   residue=1 expected=1 OK
+  C4   residue=2 expected=2 OK
+  C5   residue=2 expected=2 OK
+  C6   residue=2 expected=2 OK
+  C7   residue=3 expected=3 OK
+  C8   residue=3 expected=3 OK
+  C9   residue=3 expected=3 OK
+calibration: PASS
+
+== D2: Observation FAN-5 second half, Qwen's own inductive route ==
+  claim: [L]^(L+1), 2  clears in exactly L steps, for every L >= 2
+  step : [L]^(L+1), 2  ->  [L-1]^L, 2   (one HH step)
+  L=2..40 : direct simulation AND induction step both hold in 39/39 cases
+  base L=2: [2]^3,2 = [2,2,2,2] -> steps=2 (want 2), trace=[[2, 2, 2, 2], [2, 1, 1]]
+  first half  [L]^(L+1),1,1 clears in L+1 : 39/39 cases
+
+== D3: Lemma T's second sentence -- which reading, and does it need Fact 2? ==
+  connected graphs n<=7 scanned: 1893731
+  Fact 2 violations (residue > alpha)              : 0
+  instances with s < tau                           : 0
+  antecedent TRUE and s = tau  (reading (i) live)  : 0
+  antecedent TRUE and s > tau  (reading (ii) live) : 139066
+  -> reading (i) is VACUOUS (antecedent contradicts Lemma T's first sentence);
+     reading (ii) is the only one with content, and there 'residue <= alpha-1'
+     is reached from s != tau only via s >= tau, i.e. via Fact 2.
+
+  passage under reading (ii):  residue = n - s (Lemma 1(1));
+     s != tau  AND  s >= tau (Fact 2)  =>  s >= tau+1  =>  residue <= n-tau-1 = alpha-1.
+     Without 's >= tau' the conclusion does not follow: s = tau-1 would give
+     residue = alpha+1.  (No such graph exists -- because Fact 2 is a theorem.)
+
+== D1: draft status lines (quoted) ==
+  L1725: step**: Lemma FAN-1, FAN-2 (for `j ≤ min(p,L+1)`) and FAN-3 are PROVED here;
+  L1940: *Status: Lemmas FAN-1, FAN-2, FAN-3, FAN-4, FAN-6, FAN-7 and Observation FAN-5 are
+  L2879: ### Repair G3 (F-J7) — Lemma FAN-2's proof is not tie-safe at `j = L+1`, and it is still listed as PROVED. **UPHELD.**
+  L2897: 2. **§7.8 E's status line must stop listing FAN-2 as PROVED.** It currently reads
+  L2898: "*Lemmas FAN-1, FAN-2, FAN-3, FAN-4, FAN-6, FAN-7 and Observation FAN-5 are
+  L2899: PROVED*"; **FAN-2 is struck from that list**. Everything else in the line stands.
+  L2960: * **Lemma FAN-2:** no longer listed as PROVED (Repair G3); superseded and unused.
+  L3345: Repair G3 struck Lemma FAN-2 from §7.8 E's PROVED list, but **§7.8 A still says**
+  L3347: > "Lemma FAN-1, FAN-2 (for `j ≤ min(p,L+1)`) and FAN-3 are PROVED here"
+  L3349: *Repair V4.* Strike FAN-2 there too: "Lemma FAN-1 and FAN-3 are PROVED here; Lemma

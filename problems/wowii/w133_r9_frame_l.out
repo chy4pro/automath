@@ -1,0 +1,10 @@
+=== (D') admissible frames of §20.4/G35.2, with l computed ===
+  admissible frames kept: 5   (round-8 log says 5)
+    (['P', 'Q'], 0, 8, 20, 2.5)
+    (['P', 'Q'], 1, 9, 24, 2.6667)
+    (['P'], 0, 7, 16, 2.2857)
+    (['Q'], 0, 7, 16, 2.2857)
+    ([], 0, 6, 12, 2.0)
+  MAX l over all admissible frames: 2.6666666666666665
+  l > 3 required by RES(b);  max realised l = 2.6666666666666665  ==> NO admissible frame satisfies l > 3: G35.2 kill REINSTATED
+=== TOTAL FAILURES: 0 ===

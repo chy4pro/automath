@@ -1,0 +1,298 @@
+==============================================================================
+PART 0 -- POSITIVE CONTROLS (RULING CQ).  Every predicate is fired on an
+input where it MUST return True as well as inputs where it must return False.
+==============================================================================
+-- has_C4 must say TRUE (the positive direction):
+  [OK ] has_C4(C4)                                                 got=True want=True
+  [OK ] has_C4(K_{2,3})                                            got=True want=True
+  [OK ] has_C4(K4)                                                 got=True want=True
+-- has_C4 must say FALSE:
+  [OK ] has_C4(C6)                                                 got=False want=False
+  [OK ] has_C4(Petersen)                                           got=False want=False
+  [OK ] has_C4(P7)                                                 got=False want=False
+  [OK ] has_C4(triangle)                                           got=False want=False
+-- has_induced_path_ge(.,7) must say TRUE (a detector whose output is a
+   NEGATIVE is silent when broken -- 37.5 item 4):
+  [OK ] induced P7 in P7                                           got=True want=True
+  [OK ] induced P7 in P9                                           got=True want=True
+-- and must say FALSE:
+  [OK ] induced P7 in P6                                           got=False want=False
+  [OK ] induced P7 in C6                                           got=False want=False
+  [OK ] induced P7 in Petersen                                     got=False want=False
+-- longest_induced_path, exact values on inputs whose answer is known:
+  [OK ] lip(P7)                                                    got=7 want=7
+  [OK ] lip(P9)                                                    got=9 want=9
+  [OK ] lip(C6)                                                    got=5 want=5
+  [OK ] lip(K_{1,4})                                               got=3 want=3
+  [OK ] lip(Petersen)                                              got=5 want=5
+-- a(v) = d(v) - t(v):
+  [OK ] a(Petersen) == 3 at every vertex                           got=[3] want=[3]
+  [OK ] a(centre of triangle) == 1                                 got=1 want=1
+  [OK ] a(centre of K_{1,4}) == 4                                  got=4 want=4
+-- the two membership predicates, on objects whose status is known:
+  searched Petersen for an induced C6, admitted: [0, 1, 2, 3, 8, 5]
+  [OK ] relabelled Petersen: Z induces C6                          got=True want=True
+  [OK ] relabelled Petersen IS an in-hypothesis HOST               got=True want=True
+  [OK ] Z + v(z0,z2) is REJECTED (C4)                              got=False want=False
+  [OK ]    and the reason is a C4                                  got=True want=True
+  [OK ] Z + v(z0) + v'(z1), v~v' is REJECTED                       got=False want=False
+  [OK ]    and the reason is an induced P7                         got=True want=True
+  [OK ]    lip of that frame                                       got=7 want=7
+-- frame vs host must DIFFER on at least one input (35.6 item 3):
+  [OK ] Z + isolated v : admitted as FRAME                         got=True want=True
+  [OK ] Z + isolated v : rejected as HOST                          got=False want=False
+-- trace_class:
+  [OK ] trace_class(empty)                                         got=W0 want=W0
+  [OK ] trace_class({z0})                                          got=W1 want=W1
+  [OK ] trace_class({z0,z1})                                       got=Wcons want=Wcons
+  [OK ] trace_class({z5,z0})                                       got=Wcons want=Wcons
+  [OK ] trace_class({z0,z3})                                       got=Wanti want=Wanti
+  [OK ] trace_class({z0,z2})                                       got=ILLEGAL want=ILLEGAL
+
+==============================================================================
+PART 1 -- 35.1.1 Step 1: the four 64-frame survivor tables.
+Frame = induced subgraph on Z + {v,u}, v the anchor with a fixed trace,
+u a free neighbour of v whose trace T ranges over ALL 2^6 = 64 subsets.
+Population enumerated: 64 per row, complete by construction.
+==============================================================================
+  anchor single {z0}            population 64, survivors 7 : {z0} {z2} {z3} {z0,z3} {z2,z3} {z4} {z3,z4}
+     refutation mechanism census: {'C4': 52, 'P7': 1, 'both': 4, 'other': 0}
+  anchor consecutive {z0,z1}    population 64, survivors 3 : {z3} {z4} {z3,z4}
+     refutation mechanism census: {'C4': 58, 'P7': 1, 'both': 2, 'other': 0}
+  anchor empty (dist>=2)        population 64, survivors 4 : (empty) {z0,z3} {z1,z4} {z2,z5}
+     refutation mechanism census: {'C4': 48, 'P7': 12, 'both': 0, 'other': 0}
+  anchor antipodal {z0,z3}      population 64, survivors 3 : (empty) {z0} {z3}
+     refutation mechanism census: {'C4': 61, 'P7': 0, 'both': 0, 'other': 0}
+  [OK ] 35 single-trace anchor: survivors                          got=7 want=7
+  [OK ] 35 consecutive anchor: survivors                           got=3 want=3
+  [OK ] 35 empty-trace anchor: survivors                           got=4 want=4
+  [OK ] 35 antipodal anchor: survivors                             got=3 want=3
+  [OK ] 35 single: survivor set                                    got=[1, 4, 8, 9, 12, 16, 24] want=[1, 4, 8, 9, 12, 16, 24]
+  [OK ] 35 consecutive: survivor set                               got=[8, 16, 24] want=[8, 16, 24]
+  [OK ] 35 empty: survivor set (empty or ANTIPODAL)                got=[0, 9, 18, 36] want=[0, 9, 18, 36]
+  [OK ] 35 antipodal: survivor set (subset of {z0,z3}, not both)   got=[0, 1, 8] want=[0, 1, 8]
+
+  36.1.1 (R0): the empty/antipodal survivor table re-run at ALL THREE slots.
+     slot (z0,z3): population 64, survivors 3 -> [0, 1, 8]
+     slot (z1,z4): population 64, survivors 3 -> [0, 2, 16]
+     slot (z2,z5): population 64, survivors 3 -> [0, 4, 32]
+  [OK ] 36 R0: 3 survivors of 64 at all three antipodal slots      got=3 want=3
+  36.1.1 (R0) second half: a W_1 neighbour of an antipodal u is a TRIANGLE
+  apex, so it moves d(u) and t(u) together and leaves a(u) unchanged.
+  [OK ] 36 R0: (slot,z) pairs leaving a(u) unchanged               got=6 want=6
+
+==============================================================================
+PART 2 -- 35.1.1 Step 3 / 37.1.1 (Z2): the neighbourhood configuration tables.
+The traces of N(v)\Z are PAIRWISE DISJOINT (two neighbours sharing a z are two
+common neighbours of v and that z: a C4) and each is drawn from the survivor
+list of PART 1.  With the free adjacency bits INSIDE N(v) this determines
+G[N(v)] completely, so the table is EXACT, not an upper bound.
+==============================================================================
+  single-trace anchor v ~ z0: pairwise-disjoint trace families = 28, TOTAL CONFIGURATIONS = 152
+     families by size: [(0, 1), (1, 7), (2, 12), (3, 7), (4, 1)]
+     IN HYPOTHESIS = 17, REFUTED = 135
+     realised (d,a) pairs: [(1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
+  [OK ] 35/37 single anchor: total configurations                  got=152 want=152
+  [OK ] 35/37 single anchor: in hypothesis                         got=17 want=17
+  [OK ] 35/37 single anchor: refuted                               got=135 want=135
+  [OK ] 35/37 single anchor: realised (d,a)                        got=[(1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)] want=[(1, 1), (2, 1), (2, 2), (3, 2), (3, 3), (4, 3)]
+  [OK ] 35 single anchor: max d                                    got=4 want=4
+  [OK ] 35 single anchor: max a                                    got=3 want=3
+  consecutive anchor w ~ z0,z1: pairwise-disjoint trace families = 5, TOTAL CONFIGURATIONS = 6
+     families by size: [(0, 1), (1, 3), (2, 1)]
+     IN HYPOTHESIS = 5, REFUTED = 1
+     realised (d,a) pairs: [(2, 1), (3, 2), (4, 3)]
+  [OK ] 35 consecutive anchor: total configurations                got=6 want=6
+  [OK ] 35 consecutive anchor: in hypothesis                       got=5 want=5
+  [OK ] 35 consecutive anchor: refuted                             got=1 want=1
+  [OK ] 35 consecutive anchor: realised (d,a)                      got=[(2, 1), (3, 2), (4, 3)] want=[(2, 1), (3, 2), (4, 3)]
+  [OK ] 35 consecutive: a = d-1 throughout realisable range        got=[1] want=[1]
+
+  (Z2) THE LEAK SHAPES -- the in-hypothesis single-trace configurations with a=3.
+     shape: d=3 a=3  N(v)\{z0} = ['{z2}', '{z3}']  internal edges []
+     shape: d=3 a=3  N(v)\{z0} = ['{z3}', '{z4}']  internal edges []
+     shape: d=4 a=3  N(v)\{z0} = ['{z2}', '{z3}', '{z4}']  internal edges [('{z2}', '{z4}')]
+  [OK ] (Z2) number of leak shapes                                 got=3 want=3
+  [OK ] (Z2) leak degrees d in {3,4}                               got=[3, 4] want=[3, 4]
+  [OK ] (Z2a) every leak has a W_1 neighbour at its OWN antipode z3 got=3 want=3
+  [OK ] (Z2c) NO neighbour of a leak lies in Off(z0)               got=3 want=3
+  [OK ] (Z2b) every leak neighbour is a SINGLE-trace W_1 vertex    got=True want=True
+
+==============================================================================
+PART 3 -- 36.1.1 (S1), (S3), (S5): the antipodal-branch frames.
+==============================================================================
+  (S1) W_anti is an INDEPENDENT set -- all 9 ordered slot pairs with u ~ u'.
+     population 9 ordered slot pairs (u ~ u' asserted)
+  [OK ] (S1) refuted                                               got=9 want=9
+  [OK ] (S1) refuted BY A C4 in every case                         got=9 want=9
+  [OK ] (S1) LIVENESS: same two vertices NON-adjacent are in hypothesis got=3 want=3
+  [OK ] (34.4a) same-slot doubling refuted by a C4 at all 3 slots  got=3 want=3
+
+  (S3) Z + u(antipodal) + x(empty,~u) + y(empty,~x,!~u) + w~y,
+       w's 64 traces x (w~u) x (w~x)  ->  population 256.
+     population 256, survivors 5, refuted 251, mechanism census {'C4': 160, 'P7': 19, 'both': 72, 'other': 0}
+        survivor trace=0 w~u=0 w~x=1  d(w)=2 a(w)=1
+        survivor trace=18 w~u=0 w~x=0  d(w)=3 a(w)=3
+        survivor trace=18 w~u=0 w~x=1  d(w)=4 a(w)=3
+        survivor trace=36 w~u=0 w~x=0  d(w)=3 a(w)=3
+        survivor trace=36 w~u=0 w~x=1  d(w)=4 a(w)=3
+  [OK ] (S3) survivors of 256                                      got=5 want=5
+     NOTE: 4 of the 5 survivors have w with an ANTIPODAL trace, i.e. w is at
+     distance 1 from Z and y is then at distance 2, NOT 3.  The distance-3
+     conclusion is the restriction of the table to w of EMPTY trace:
+        distance-3 survivor: trace=0 w~u=0 w~x=1 d(w)=2 a(w)=1
+  [OK ] (S3) survivors with w of EMPTY trace (genuine distance-3 configs) got=1 want=1
+  [OK ] (S3) the one further neighbour w must be adjacent to x     got=[1] want=[1]
+  [OK ] (S3) it must NOT be adjacent to u                          got=[0] want=[0]
+  [OK ] (S3) pendant shape y is an in-hypothesis HOST              got=True want=True
+  [OK ] (S3) pendant: d(y)=1, a(y)=1, charge -2                    got=(1, 1, -2) want=(1, 1, -2)
+  [OK ] (S3) triangle shape y is an in-hypothesis HOST             got=True want=True
+  [OK ] (S3) triangle: d(y)=2, t(y)=1, a(y)=1, charge -2           got=(2, 1, 1, -2) want=(2, 1, 1, -2)
+
+  (S3 second table) a SECOND distance-2 vertex on y, anchored at each of the
+  two remaining antipodal slots -> population 2.
+     slot 1 refuted; C4=False induced-P7=True
+     slot 2 refuted; C4=False induced-P7=True
+  [OK ] (S3b) both frames refuted -> a distance-3 vertex has EXACTLY ONE distance-2 neighbour got=0 want=0
+
+  (S5) two ADJACENT distance-2 vertices, anchor sets over all 7 nonempty
+       subsets of {u_a,u_b,u_c}  ->  population 49.
+     population 49, survivors 9, refuted 40
+     survivor set (anchor bitmasks over {a,b,c}): [(1, 1), (1, 7), (2, 2), (2, 7), (4, 4), (4, 7), (7, 1), (7, 2), (7, 4)]
+  [OK ] (S5) survivors of 49                                       got=9 want=9
+  [OK ] (S5) EVERY survivor SHARES an anchor                       got=True want=True
+  [OK ] (S5) anchor multiset of an adjacent pair is always {1,1} or {1,3} got=[(1, 1), (1, 3)] want=[(1, 1), (1, 3)]
+  [OK ] (S5) an alpha=2 vertex NEVER has a distance-2 neighbour    got=False want=False
+
+  (S5 second table) x with TWO distance-2 neighbours, anchor sets over all
+       7 nonempty subsets each, far pair adjacent or not -> population 686.
+     population 686, survivors 0
+  [OK ] (S5b) population enumerated                                got=686 want=686
+  [OK ] (S5b) survivors -> |Q(x)| <= 1                             got=0 want=0
+
+==============================================================================
+PART 4 -- 37.1.1 (Z5): a leak and the occupied antipodal slots.
+Frame = Z + N[v] + the W_anti vertices themselves.  The w-to-N[v] bits AND
+the w-to-w' bit are ENUMERATED, not assumed.
+==============================================================================
+  leak shapes (offsets from the leak's own hexagon vertex, internal edges):
+     ((2, 3), ())
+     ((3, 4), ())
+     ((2, 3, 4), ((0, 2),))
+  [OK ] PART 4: leak shapes recovered                              got=3 want=3
+
+  (Z5) ONE occupied slot: population 32 at each of the 6 leak positions.
+     leak at z0: per-slot population/survivors [(32, 2), (32, 1), (32, 1)]
+     leak at z1: per-slot population/survivors [(32, 1), (32, 2), (32, 1)]
+     leak at z2: per-slot population/survivors [(32, 1), (32, 1), (32, 2)]
+     leak at z3: per-slot population/survivors [(32, 2), (32, 1), (32, 1)]
+     leak at z4: per-slot population/survivors [(32, 1), (32, 2), (32, 1)]
+     leak at z5: per-slot population/survivors [(32, 1), (32, 1), (32, 2)]
+     TOTAL population 576 frames, survivors 24
+  [OK ] (Z5) population is 32 frames at each (leak position, slot) pair got=[32] want=[32]
+  [OK ] (Z5) one occupied slot is LIVE (leak and occupied slot DO coexist -- got=True want=True
+  [OK ] (Z5) ... and it is live at EVERY leak position             got=True want=True
+
+  (Z5) TWO occupied slots: all three slot pairs, w-to-w' bit enumerated.
+     population 13824 frames, survivors 0
+  [OK ] (Z5) TWO occupied slots: 0 survive  =>  n_3 >= 1 implies m <= 1 got=0 want=0
+
+==============================================================================
+PART 5 -- 37.1.1 (Z6): the finite arithmetic over every feasible (n_3,m).
+==============================================================================
+  feasible (n_3,m) population, printed in full: [(0, 0), (0, 1), (0, 2), (0, 3), (1, 0), (1, 1), (2, 0), (2, 1)]
+  [OK ] (Z6) feasible population size                              got=8 want=8
+  [OK ] (Z6) n_3 + 2m <= 6 on ALL of them                          got=True want=True
+  [OK ] (Z6) equality only at (0,3)                                got=[(0, 3)] want=[(0, 3)]
+  [OK ] (Z6) LIVENESS: the excluded pair (1,3) would VIOLATE the bound got=False want=False
+
+==============================================================================
+PART 6 -- 37.1.1 (Z1)'s inputs, and the two ATTAINMENT witnesses.
+==============================================================================
+  G55 summed:  Sum_{z in Z}(a(z)-3) = |W_1| + 2|W_cons| + 2|W_anti| - T_Z - 6
+  T_Z >= 2|W_cons|: each consecutive-trace w makes a triangle with the hexagon
+  edge it spans and is counted ONCE AT EACH END.
+  [OK ] T_Z contribution of ONE consecutive vertex is exactly 2, at all 6 edges got=6 want=6
+  [OK ]    a single-trace vertex alone contributes 0 to T_Z        got=0 want=0
+  [OK ]    an antipodal vertex alone contributes 0 to T_Z          got=0 want=0
+
+  WITNESS 1 -- 36.1 / 37.1: the n=10 (n_3,m)=(0,3) attaining region.
+  Z + u_a(z0,z3) + u_b(z1,z4) + u_c(z2,z5) + x, x ~ u_a,u_b,u_c, x no Z-neighbour.
+  [OK ] WITNESS 1 is an in-hypothesis HOST (admitted BEFORE any statistic is read) got=True want=True
+  [OK ] WITNESS 1 longest induced path                             got=5 want=5
+     census: |W_0|=1 |W_1|=0 |W_cons|=0 |W_anti|=3  T_Z=0  Z-term=0
+  [OK ] WITNESS 1: (n_3,m)                                         got=(0, 3) want=(0, 3)
+  [OK ] WITNESS 1: Sum_v (a-3)                                     got=0 want=0
+  [OK ] WITNESS 1: (Z1) bound n_3+2m-6                             got=0 want=0
+  [OK ] WITNESS 1: G55 summed identity                             got=0 want=0
+  [OK ] WITNESS 1: Sum_R (a-3) = 0 attained (G59(i) is SHARP)      got=0 want=0
+
+  WITNESS 2 -- 37.1: the NEW n=10 two-leak region.
+  Z + v(z0) + v'(z3) + x(z2) + y(z1), v ~ v',x and v' ~ v,y.
+  [OK ] WITNESS 2 is an in-hypothesis HOST                         got=True want=True
+  [OK ] WITNESS 2 longest induced path                             got=6 want=6
+     census: |W_0|=0 |W_1|=4 |W_cons|=0 |W_anti|=0  T_Z=0  Z-term=-2
+     a-values off Z: {6: 3, 7: 3, 8: 2, 9: 2}
+  [OK ] WITNESS 2: (n_3,m)                                         got=(2, 0) want=(2, 0)
+  [OK ] WITNESS 2: Sum_v (a-3)                                     got=-4 want=-4
+  [OK ] WITNESS 2: (Z1) bound n_3+2m-6                             got=-4 want=-4
+  [OK ] WITNESS 2: the two leaks sit at ANTIPODAL hexagon vertices got=[0, 3] want=[0, 3]
+  [OK ] WITNESS 2: G55 summed identity                             got=-2 want=-2
+
+==============================================================================
+PART 7 -- THE SWEEP.  Independent exhaustive enumeration of every region
+Z + k off-Z vertices, k = 0..KMAX, pruned by C4-freeness and P7-freeness
+(both inherited by induced subgraphs, so the pruning is SOUND).
+Population is printed BY SIZE before every verdict.  Contiguity asserted.
+==============================================================================
+  trace legality: population 64 enumerated, 16 legal
+     legal traces by class: [('W0', 1), ('W1', 6), ('W1', 6), ('W1', 6), ('W1', 6), ('W1', 6), ('W1', 6), ('Wanti', 3), ('Wanti', 3), ('Wanti', 3), ('Wcons', 6), ('Wcons', 6), ('Wcons', 6), ('Wcons', 6), ('Wcons', 6), ('Wcons', 6)]
+  [OK ] SWEEP: legal traces (G54 re-derived, not assumed)          got=16 want=16
+  [OK ] SWEEP: no ILLEGAL trace survives                           got=False want=False
+  KMAX = 5  (|off-Z| <= 5)
+
+  POPULATION BY SIZE (regions, i.e. frames -- connectedness NOT required):
+     |off-Z| = 0 : regions = 1         connected hosts = 1         max Sum(a-3) over hosts = -6   max n_3 = 0
+     |off-Z| = 1 : regions = 16        connected hosts = 15        max Sum(a-3) over hosts = -5   max n_3 = 0
+     |off-Z| = 2 : regions = 272       connected hosts = 240       max Sum(a-3) over hosts = -4   max n_3 = 0
+     |off-Z| = 3 : regions = 4274      connected hosts = 3456      max Sum(a-3) over hosts = -3   max n_3 = 1
+     |off-Z| = 4 : regions = 59406     connected hosts = 42168     max Sum(a-3) over hosts = 0   max n_3 = 2
+     |off-Z| = 5 : regions = 738884    connected hosts = 435126    max Sum(a-3) over hosts = -1   max n_3 = 2
+     TOTAL regions = 802853, TOTAL hosts = 481006, candidate frames tested = 15772944
+     CONTIGUITY: sizes present = [0, 1, 2, 3, 4, 5]
+  [OK ] SWEEP: sizes are CONTIGUOUS 0..5                           got=[0, 1, 2, 3, 4, 5] want=[0, 1, 2, 3, 4, 5]
+  [OK ] SWEEP: every size has a nonzero population                 got=True want=True
+
+  VERDICTS (each over the population printed above):
+  [OK ] SWEEP: violations of (Z1)  Sum_v(a-3) <= n_3+2m-6          got=0 want=0
+  [OK ] SWEEP: violations of (Z6)  n_3+2m <= 6                     got=0 want=0
+  [OK ] SWEEP: violations of G58   a <= 3 on W_1 u W_cons          got=0 want=0
+  [OK ] SWEEP: violations of G59(i) Sum_R(a-3) <= 0                got=0 want=0
+  [OK ] SWEEP: violations of T_Z >= 2|W_cons|                      got=0 want=0
+  [OK ] SWEEP: violations of the G55 summed IDENTITY               got=0 want=0
+  [OK ] SWEEP: violations of (Z3) <=1 leak per hexagon vertex      got=0 want=0
+  [OK ] SWEEP: violations of (Z4) two leaks are ANTIPODAL          got=0 want=0
+  [OK ] SWEEP: violations of (Z5) n_3>=1 => m<=1                   got=0 want=0
+  [OK ] SWEEP: max n_3 over the whole population                   got=2 want=2
+  [OK ] SWEEP: max Sum_v(a-3) over connected hosts (THIS IS (D3-C6) on the window) got=0 want=0
+     max-n_3 witness  (POSITIVE control -- the leak counter DOES fire, n_3=2):
+        n=11 edges=[(0, 1), (0, 5), (0, 7), (1, 2), (1, 8), (2, 3), (2, 9), (3, 4), (3, 10), (4, 5), (7, 9), (7, 10), (8, 10)]
+     max-Sum(a-3) witness over hosts (Sum=0):
+        n=10 edges=[(0, 1), (0, 5), (0, 7), (1, 2), (1, 8), (2, 3), (2, 9), (3, 4), (3, 7), (4, 5), (4, 8), (5, 9), (6, 7), (6, 8), (6, 9)]
+     per-size max Sum(a-3) over hosts: [-6, -5, -4, -3, 0, -1]
+     per-size max n_3: [0, 0, 0, 1, 2, 2]
+
+  LIVENESS of the sweep's verdict predicates -- each is fired on an input
+  where it MUST report a violation (a check that can only say 0 is decoration):
+     probe graph: Z + 4 independent single-trace vertices at z0
+     |W_1|=4 Z-term=-2 T_Z=0 Sum_v(a-3)=-10 n_3=0
+  [OK ] LIVENESS: (Z3) predicate FIRES on 4 leaks at one hexagon vertex if they were leaks got=True want=True
+  [OK ] LIVENESS: (Z1) predicate would FIRE if the bound were tightened by 1 got=True want=True
+
+==============================================================================
+SUMMARY
+==============================================================================
+  checks run: 123
+  failures  : 0
+  wall clock: 170.2 s
+==============================================================================

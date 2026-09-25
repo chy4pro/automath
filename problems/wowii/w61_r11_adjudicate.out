@@ -1,0 +1,37 @@
+[A] calibration
+    residue(K2) = 1  (expect 1)
+    C_3: residue=1 steps=2 ceil(n/3)=1 n-steps=1
+    C_4: residue=2 steps=2 ceil(n/3)=2 n-steps=2
+    C_5: residue=2 steps=3 ceil(n/3)=2 n-steps=2
+    C_6: residue=2 steps=4 ceil(n/3)=2 n-steps=2
+    C_7: residue=3 steps=4 ceil(n/3)=3 n-steps=3
+    C_8: residue=3 steps=5 ceil(n/3)=3 n-steps=3
+    C_9: residue=3 steps=6 ceil(n/3)=3 n-steps=3
+    report's steps(C_n) table matches: True
+[B] box: sum(lambda)<=12, L in [0,15]
+    #partitions incl. empty = 272  (report: 272)
+    in-hyp pairs=3125 (report 3125), mismatches=0 (report 0)
+    out-hyp pairs=1211 (report 1211), mismatches=462 (report 462)
+[C] FAN-5 second half
+    steps([2,2,2,2]) = 2  (expect 2);  s0([2]) = 2
+    [L]^(L+1) u [2] clears in exactly L for L=2..15: True
+[D] boundary rows
+    lam=[1,1] L=1: observed 2 (report 2)
+    lam=[2]: s0 = 2  (expect 2)
+    lam=[4]: s0 = 4  (expect 4)
+    lam=[6]: s0 = 6  (expect 6)
+    lam=[8]: s0 = 8  (expect 8)
+    lam=[10]: s0 = 10  (expect 10)
+    lam=[12]: s0 = 12  (expect 12)
+    lam=(3, 3) L=lam1=3: obs=4 pred=4 match=True
+    lam=(4, 4) L=lam1=4: obs=5 pred=5 match=True
+    lam=(3, 3, 1) L=lam1=3: obs=5 pred=5 match=True
+    lam=(3, 2, 1, 1) L=lam1=3: obs=5 pred=5 match=True
+[E] smallest out-of-hypothesis mismatch
+    min by total content sum(lam)+L : lam=(2,) L=0 obs=1 pred=0
+    min by multiset length          : lam=(2,) L=0 obs=1 pred=0
+    judge's claim lam=[2],L=0,obs=1,pred=0 is a mismatch: True
+[F] adversarial tie-breaks, sum(lambda)<=8, L<=8, 3 random runs each
+    377 in-hyp multisets x3 adversarial runs: 0 tie-dependent
+
+ADJUDICATION RESULT: ALL REPRODUCED

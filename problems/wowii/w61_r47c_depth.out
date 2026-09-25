@@ -1,0 +1,46 @@
+====================================================================================================
+w61 r47c -- the DEPTH of lookahead a state certificate for (DOM-MAJ) needs
+====================================================================================================
+
+[N<=16] population: 869 partitions of N <= 16 with <= 10 parts ; 181 TERMINATE
+    E_0 = <| pairs                         : 11599
+    E_1  (<| survives  1 steps)            : 10383      (dropped 1216)
+    E_2  (<| survives  2 steps)            : 10267      (dropped 116)
+    E_3  (<| survives  3 steps)            : 10267      (dropped 0)
+    ==> [N<=16] STABILISES at J = 2 : E_J is the greatest closed subrelation of <|,
+        and it is a MEMORYLESS predicate computed with 2 step(s) of lookahead.
+        first pair dropped at depth 1 : (5, 1, 1, 1, 1, 1, 1, 1) <| (7, 1, 1, 1, 1, 1, 1, 1)
+        first pair dropped at depth 2 : (3, 2, 2, 2, 1, 1, 1) <| (4, 4, 2, 1, 1, 1, 1, 1, 1)
+    [ok] [N<=16] CONTROL: the chain E_j actually descends (some pair is dropped)                  hits=1332
+    E_J closure tested directly: 9038 steps ; 0 leave E_J
+    [ok] [N<=16] CONTROL: the direct closure test was non-vacuous                                 hits=9038
+    equal-sum dominance pairs 2683 ; OUTSIDE E_J : 0
+    [ok] [N<=16] CONTROL: the certificate property was tested on a non-empty set                  hits=2683
+    sizes along the chain : [11599, 10383, 10267, 10267]
+    [ok] [N<=16] CORRUPT CONTROL: ONE step of lookahead is NOT enough -- E_1 strictly contains E_J hits=116
+
+[N<=20] population: 2593 partitions of N <= 20 with <= 12 parts ; 531 TERMINATE
+    E_0 = <| pairs                         : 90528
+    E_1  (<| survives  1 steps)            : 80259      (dropped 10269)
+    E_2  (<| survives  2 steps)            : 78498      (dropped 1761)
+    E_3  (<| survives  3 steps)            : 78498      (dropped 0)
+    ==> [N<=20] STABILISES at J = 2 : E_J is the greatest closed subrelation of <|,
+        and it is a MEMORYLESS predicate computed with 2 step(s) of lookahead.
+        first pair dropped at depth 1 : (5, 3, 2, 2, 2, 2, 1, 1) <| (6, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+        first pair dropped at depth 2 : (5, 2, 2, 2, 1, 1, 1, 1, 1) <| (5, 4, 4, 1, 1, 1, 1, 1, 1, 1)
+    [ok] [N<=20] CONTROL: the chain E_j actually descends (some pair is dropped)                  hits=12030
+    E_J closure tested directly: 74169 steps ; 0 leave E_J
+    [ok] [N<=20] CONTROL: the direct closure test was non-vacuous                                 hits=74169
+    equal-sum dominance pairs 19744 ; OUTSIDE E_J : 0
+    [ok] [N<=20] CONTROL: the certificate property was tested on a non-empty set                  hits=19744
+    sizes along the chain : [90528, 80259, 78498, 78498]
+    [ok] [N<=20] CORRUPT CONTROL: ONE step of lookahead is NOT enough -- E_1 strictly contains E_J hits=1761
+
+====================================================================================================
+DEPTH at N<=16 : J = 2   chain [11599, 10383, 10267, 10267]
+DEPTH at N<=20 : J = 2   chain [90528, 80259, 78498, 78498]
+THE DEPTH DID NOT MOVE between the two sizes.  That is TWO data points, not a
+theorem: it licenses the STATEMENT 'a 2-step lookahead certificate exists at both sizes', nothing more.
+ELAPSED 0.86 s / 420 s ; PARTIAL=False ; runA/runB diffed 712 ; stepA/stepC diffed 7320
+CONTROLS 8/8 firing ; DEFECTS 0
+EXIT=0   (script's own FLAG line; the process exit code is 0)

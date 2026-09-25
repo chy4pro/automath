@@ -1,0 +1,69 @@
+==============================================================================
+PART 0 — controls on the uniqueness instrument itself, BEFORE any row is judged
+==============================================================================
+  [ok] reproduces the brief's disclosed example s0((2,1,1))=3, residue 3
+  [ok] detects a non-step-sequence ([1,1,1] aborts)
+  [ok] the instrument's branch counter CAN see a branch (2-successor probe)
+  [ok] a 2-answer object is classified NOT UNIQUE (the w133 shape)
+  all 4 controls pass.
+
+==============================================================================
+ROWS A1-A3 — (U1) single-valuedness, measured over ALL execution paths
+==============================================================================
+  A1  s0((6,4,2))
+      states explored      : 9
+      states with >1 distinct successor (a real CHOICE) : 0
+      outcome set over ALL paths : [(8, 2)]
+      single value=8 ; independent re-derivation agrees with key: True
+      UNIQUE? YES
+  A2  residue(M((5,4,3)))
+      states explored      : 8
+      states with >1 distinct successor (a real CHOICE) : 0
+      outcome set over ALL paths : [(7, 2)]
+      single value=2 ; independent re-derivation agrees with key: True
+      UNIQUE? YES
+  A3  steps([4,4,3,3,2,2])
+      states explored      : 5
+      states with >1 distinct successor (a real CHOICE) : 0
+      outcome set over ALL paths : [(4, 2)]
+      single value=4 ; independent re-derivation agrees with key: True
+      UNIQUE? YES
+
+==============================================================================
+ROW B1 — the shape RULING CX flags: does it ask for a VALUE or a WITNESS?
+==============================================================================
+  question text: 'what is the MINIMUM of alpha(G)' -> asks for a VALUE.
+  alpha values attained over ALL realizations : [3, 4]
+  minimum : 3   (key agrees: True)
+  number of DISTINCT WITNESS GRAPHS attaining the minimum : >=1
+  -> the minimum VALUE is unique by definition even though the WITNESS is not.
+     Had the row asked for the graph or its vertices, it would be the w133 defect.
+  UNIQUE? YES
+
+==============================================================================
+ROWS B2-B3 — (U2) interpretive uniqueness: do alternative READINGS differ?
+==============================================================================
+  B2  (N=20, condition residue==k)
+      primary: at least two parts                -> 19
+      alt: all partitions incl. single-part      -> 19
+      distinct integers across readings : 1
+      key agrees with primary reading   : True
+      UNIQUE? YES -- every reading tried gives the same integer.
+  B3  (N=22, condition s0==lambda_1+2)
+      primary: at least two parts                -> 90
+      alt: all partitions incl. single-part      -> 90
+      distinct integers across readings : 1
+      key agrees with primary reading   : True
+      UNIQUE? YES -- every reading tried gives the same integer.
+
+==============================================================================
+SUMMARY — per row, and the recomputed conjunction rate
+==============================================================================
+  block-choice enumerations that hit the cap : 0
+    A1 : UNIQUE + key confirmed
+    A2 : UNIQUE + key confirmed
+    A3 : UNIQUE + key confirmed
+    B1 : UNIQUE + key confirmed
+    B2 : UNIQUE + key confirmed
+    B3 : UNIQUE + key confirmed
+  rows surviving uniqueness : 6 of 6  -> ['A1', 'A2', 'A3', 'B1', 'B2', 'B3']

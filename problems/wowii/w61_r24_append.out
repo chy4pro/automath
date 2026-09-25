@@ -1,0 +1,22 @@
+owner-w61 ROUND 24 -- POST-APPEND RECORD ASSERTIONS (the round is not done until its RECORD is on the page)
+  draft md5 c5d0586c85b26d736c534811f4755a79 ; SS7.39 = 16408 chars
+  NOTE: two expected counts were corrected AFTER inspecting the extra hits, not before:
+    'separately certified' x3 = the build's assert-pattern list + the two quoted leaks (all legitimate)
+    'calibration failure'  x2 = the (e) heading + its paragraph (both in SS7.39)
+  [OK ] SS7.39 present exactly once: 1 (want 1)
+  [OK ] SS7.39 is the LAST section: True (want True)
+  [OK ] Q38 named as DISPATCHED in the heading: 1 (want 1)
+  [OK ] Q38 dispatch row in the record table: 1 (want 1)
+  [OK ] sol has NEVER judged the Corollary, said plainly: 1 (want 1)
+  [OK ] sol's prior GFANnu import find named: 1 (want 1)
+  [OK ] r20 structural withdrawal called BEFORE the harvest: 1 (want 1)
+  [OK ] outcome 3 = STILL UNTESTED, pre-named blind: 1 (want 1)
+  [OK ] the four ridden sentences named as a TARGET joint: 2 (want 2)
+  [OK ] AZ: guards on-site AND the off-site block: 1 (want 1)
+  [OK ] the two inherited status leaks quoted + the assert list: 3 (want 3)
+  [OK ] BB1 stale-address fix recorded: 1 (want 1)
+  [OK ] no stale R-22 left in SS7.38's Slice: 0 (want 0)
+  [OK ] SS7.38 Slice now says R-23: 1 (want 1)
+  [OK ] sweep-verdict limits carried at the citation: 1 (want 1)
+  [OK ] AX calibration FAILURE reported, not only the pass: 2 (want 2)
+ALL RECORD ASSERTIONS PASS

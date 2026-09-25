@@ -1,0 +1,4 @@
+# WOWII-133 r47 -- CASE A instances closed by NEITHER sidestep,
+# EXHAUSTIVE over every far end and every geodesic.  host vertex
+W43a 253
+W44a 253

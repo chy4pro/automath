@@ -1,0 +1,68 @@
+=== PART 0 controls (before any file verdict) ===
+  [ok] MUST fire: EN closes-<NAME>'s-S3-surface (AH3's ACTUAL carrier string)
+  [ok] MUST fire: EN closes-the-S3-surface (the easy form r31 controlled on)
+  [ok] MUST fire: EN entire variant
+  [ok] MUST fire: EN only-thing-between
+  [ok] MUST fire: ZH 唯一残余
+  [ok] MUST fire: ZH 只差一个族轮
+  [ok] DEFECT SHOWN: G2_R31 is SILENT on AH3's actual carrier string
+  [ok] ...while G2_R31 DOES fire on the easy form it was controlled on
+  [ok] ...and the r32 repair catches BOTH
+  [ok] MUST be silent on innocent prose
+  [ok] KNOWN FALSE POSITIVE, demonstrated: r32 gate fires on the NEGATION
+  [ok] negation FP is INTRODUCED by the r32 repair, NOT inherited from r31
+  [ok] marked line is EXEMPT (0 carriers)
+  [ok] SAME STRING without the marker MUST FIRE
+  [ok] the raw pattern still matches the marked line (exemption is a verdict, not blindness)
+  [ok] marker does NOT silence a second, unmarked line in the same file
+  [ok] ...and the surviving hit is the INJECTED line, not the marked one
+  all 17 controls pass. The exemption has been shown to be an exemption and NOT a hole: same string, marker removed, gate fires.
+
+=== G2 sweep over carriers, marker honoured (population first) ===
+  orchestration/STATUS.md            raw=1  retracted=1  CARRIERS=0   (r31 gate would have seen 1)
+       line 4      RETRACTION     '只差一个族轮'
+  orchestration/PLAN.md              raw=0  retracted=0  CARRIERS=0   (r31 gate would have seen 0)
+  orchestration/watch_ledger.md      raw=0  retracted=0  CARRIERS=0   (r31 gate would have seen 0)
+  HANDOVER.md                        raw=0  retracted=0  CARRIERS=0   (r31 gate would have seen 0)
+  notes/proofs/wowii61_draft.md      raw=33  retracted=0  CARRIERS=33   (r31 gate would have seen 17)
+       line 5339   CARRIER        'S3 surface does NOT clos'
+       line 5487   CARRIER        'closes the S3 surface'
+       line 5505   CARRIER        "closes the GFAN family's S3 surface"
+       line 5537   CARRIER        'S3 surface clos'
+       line 5539   CARRIER        'S3 surface does NOT clos'
+       line 5541   CARRIER        'S3 surface of WOWII-61 clos'
+       line 5693   CARRIER        'S3 surface of WOWII-61 clos'
+       line 6071   CARRIER        "closes the GFAN family's S3 surface"
+       line 6255   CARRIER        'closes the S3 surface'
+       line 6511   CARRIER        "closes the GFAN family's S3 surface"
+       line 8549   CARRIER        'only thing between'
+       line 8550   CARRIER        'closed S3 surface'
+       line 8576   CARRIER        'only thing between'
+       line 8579   CARRIER        'closed S3 surface'
+       line 8805   CARRIER        'S3 surface does NOT clos'
+       line 10246  CARRIER        "closes WOWII-61's S3 surface"
+       line 10288  CARRIER        'closed S3 surface'
+       line 10303  CARRIER        'S3 surface of WOWII-61 clos'
+       line 10313  CARRIER        "closes WOWII-61's S3 surface"
+       line 10314  CARRIER        'S3 surface of WOWII-61 clos'
+       line 10315  CARRIER        "closes WOWII-61's S3 surface"
+       line 10316  CARRIER        'closes the S3 surface'
+       line 10317  CARRIER        "closes WOWII-61's S3 surface"
+       line 10318  CARRIER        "closes WOWII-61's S3 surface"
+       line 10319  CARRIER        'closed S3 surface'
+       line 10320  CARRIER        '唯一残余'
+       line 10322  CARRIER        '只差一个族轮'
+       line 10323  CARRIER        '只差一个族轮'
+       line 10326  CARRIER        'closes the S3 surface'
+       line 10470  CARRIER        "closes WOWII-61's S3 surface"
+       line 10598  CARRIER        'only thing between'
+       line 10598  CARRIER        '唯一残余'
+       line 10598  CARRIER        '只差一个族轮'
+
+  TOTAL raw=34  retracted(exempt)=1  CARRIERS=33
+  The r31 gate would have seen 18 of the 34 raw occurrences: delta = 16 MISSED.
+
+  READING, and it is a measurement not a closure claim: this is a PHRASE
+  detector. Per the round-31 cert it CANNOT close the AH1/AH3 class, because
+  a class is defined by its CLAIM and a detector matches its WORDING --
+  AJ1 was found by reading, wearing the words 'a named reduction'.

@@ -1,0 +1,12 @@
+STANDALONE re-verification of round 45's L4 certificates (105)
+interpreter: system python3 3.9.6 (pure stdlib)
+certificates read: W43a, W43b, W43c, W44a
+  W43a  n=420 |E|=1049 rad=5 diam=6 |Ctr|=1 mu=4 l(H)=4.995238
+        condition-4 vertices: 128; ONE certificate of 10 vertices discharges ALL of them (target 10).
+  W43b  n=420 |E|=1049 rad=5 diam=6 |Ctr|=8 mu=4 l(H)=4.995238
+        condition-4 vertices: 1; ONE certificate of 10 vertices discharges ALL of them (target 10).
+  W43c  n=420 |E|=1050 rad=5 diam=6 |Ctr|=6 mu=5 l(H)=5.000000
+        condition-4 vertices: 2; ONE certificate of 10 vertices discharges ALL of them (target 10).
+  W44a  n=421 |E|=1050 rad=5 diam=6 |Ctr|=1 mu=2 l(H)=4.988124
+        condition-4 vertices: 129; ONE certificate of 10 vertices discharges ALL of them (target 10).
+CHECKS 817   FAILS 0

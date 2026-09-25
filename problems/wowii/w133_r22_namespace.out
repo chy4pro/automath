@@ -1,0 +1,136 @@
+w133 round 22 -- namespace mint gate + (D3-C6) restart step
+repo: $HOME/workspace/claudecode/automath
+
+=== PART A -- MINT-TIME ADDRESS GATE on PRE-REPAIR (/private/tmp/claude-501/-Users-user-workspace-claudecode-automath/d1405342-fe87-49aa-8c1d-75c2ca4b3b2b/scratchpad/draft_prerepair.md) ===
+  observed population: 16 distinct symbols defined with ':=', 26 definition sites
+  observed population: 4 symbol(s) carrying MORE THAN ONE distinct definition
+      COLLISION  `A`  ->  3 distinct senses
+          lines 745            : n(a)∖b,c，b:=n(b)∖a,c，cs:=n(c)∖a,b，r:=v∖(t∪a∪b∪cs)。
+          lines 1034           : n(c)，k:=|a|，b:=距离-2层。
+          lines 513            : n(h)、b:=距离2层，
+      COLLISION  `C`  ->  2 distinct senses
+          lines 1150           : g−λ(connected,isometricing,l(c)>3,rad(c)=2
+          lines 644            : g−λ连通且在g中等距；
+      COLLISION  `H`  ->  3 distinct senses
+          lines 1228           : maxh∈h|n(h)∩h|
+          lines 1593           : maxh∈h|n(h)∩h|,soeither
+          lines 1169           : v∈c:a(v)≥3(a=ac),andu,zrealise
+      COLLISION  `W`  ->  4 distinct senses
+          lines 1961,4264      : theverticeswithnoz-neighbour
+          lines 4265           : w∉z:exactlytwoz-neighbours,andtheyareconsecutive.two
+          lines 3786           : w∉z:whasexactlytwoz-neighbours,andtheyareconsecutive
+          lines 4144           : w∉z:…consecutive"):theverticesoffthe
+  [PASS] A/PRE-REPAIR: the gate FIRES on the real pre-repair W collision  -- detected=True
+
+=== PART A -- MINT-TIME ADDRESS GATE on REPAIRED ($HOME/workspace/claudecode/automath/notes/proofs/wowii133_draft.md) ===
+  observed population: 19 distinct symbols defined with ':=', 27 definition sites
+  observed population: 3 symbol(s) carrying MORE THAN ONE distinct definition
+      COLLISION  `A`  ->  3 distinct senses
+          lines 745            : n(a)∖b,c，b:=n(b)∖a,c，cs:=n(c)∖a,b，r:=v∖(t∪a∪b∪cs)。
+          lines 1034           : n(c)，k:=|a|，b:=距离-2层。
+          lines 513            : n(h)、b:=距离2层，
+      COLLISION  `C`  ->  2 distinct senses
+          lines 1150           : g−λ(connected,isometricing,l(c)>3,rad(c)=2
+          lines 644            : g−λ连通且在g中等距；
+      COLLISION  `H`  ->  3 distinct senses
+          lines 1228           : maxh∈h|n(h)∩h|
+          lines 1593           : maxh∈h|n(h)∩h|,soeither
+          lines 1169           : v∈c:a(v)≥3(a=ac),andu,zrealise
+  registered legacy collisions (declared, not repaired): {'A': 3, 'C': 2, 'H': 3}
+  observed collisions outside the legacy set: []
+  observed sense counts for the legacy set: {'A': 3, 'C': 2, 'H': 3}
+  [PASS] A/REPAIRED: NO collision outside the registered legacy set  -- new: []
+  [PASS] A/REPAIRED: no LEGACY symbol has gained a sense (count pinned, not just named)  -- declared {'A': 3, 'C': 2, 'H': 3} observed {'A': 3, 'C': 2, 'H': 3}
+
+=== PART A2 -- THE GATE APPLIED AT MINT TIME to this round's new names ===
+  observed: `W_0` already occurs 26 time(s) in the corpus
+      notes/proofs/wowii133_draft.md:1961  > **V(C) = Z ⊔ {P?} ⊔ {Q?} ⊔ W_0**, where W_0 := the vertices with no Z-neighbour.
+      notes/proofs/wowii133_draft.md:1962  > Moreover **every w ∈ W_0 is at distance 3 from both u and z**, hence ecc(w) = 3, hence by
+      notes/proofs/wowii133_draft.md:1963  > **(R3b)** a(w) ≤ 2 and by **Theorem G26** a(w) = 2: **no vertex of W_0 is a hub**, and in
+  observed: `W_cons` already occurs 39 time(s) in the corpus
+      notes/proofs/wowii133_draft.md:3493  `h = w` from L3's graph, but that `w` has two `Z`-neighbours, so `w ∈ W_cons`, not `F`, violating
+      notes/proofs/wowii133_draft.md:3496  **S2 — `D3_A` / Lemma L2's STATEMENT (`|W_cons| ≤ 3`), with a new proof.** The report's argument is
+      notes/proofs/wowii133_draft.md:3501  report's "no instance with `|W_cons| = 3` was found" is a **search failure**, not an absence.
+  observed: `Off` already occurs 14 time(s) in the corpus
+      notes/proofs/wowii133_draft.md:3941  ### 31.2.1 **(a) Off-cycle attachment classification** — INDEPENDENT PROOF HELD
+      notes/proofs/wowii133_draft.md:3957  > For `z` on an induced C₆ `Z` of a C4-free graph, with `Off(z) = N(z) \ Z`:
+      notes/proofs/wowii133_draft.md:3958  > `a(z) = 2 + |Off(z)| − t(z)`, hence `Σ_{z∈Z}(a(z) − 2) = Σ_{z∈Z}(|Off(z)| − t(z))`.
+  observed: `G58` already occurs 1 time(s) in the corpus
+      notes/proofs/wowii133_draft.md:4432  addresses `G58`/`G59` (**observed 0 occurrences**, so the `G` namespace is still monotone).
+  observed: `G59` already occurs 1 time(s) in the corpus
+      notes/proofs/wowii133_draft.md:4432  addresses `G58`/`G59` (**observed 0 occurrences**, so the `G` namespace is still monotone).
+  (run BEFORE the repair these are all 0; after the repair W_0/W_cons/Off are
+   expected to occur -- the gate is a PRECONDITION, its post-hoc reading is a record)
+
+=== PART B -- (D3-C6) MASS-COUNT RESTART, first computable step ===
+
+-- B0 tooling positive control and specificity probes --
+      observed: Petersen |V|=10 |E|=15, C4 pairs=0, path=5, a-vector=[3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+  [PASS] B0: Petersen is C4-free
+  [PASS] B0: path(Petersen) = 5 vertices (NOT 6 -- the round-12 VOID report's error)  -- got 5
+  [PASS] B0: a(Petersen) = 3 at every vertex, so l = 3 exactly
+      observed: K_{1,4} path = 3
+  [PASS] B0 specificity probe (must NOT fire): longest_induced_path(K_{1,4}) = 3, not 5
+      observed: bare C6 path = 5
+  [PASS] B0 specificity probe: a bare induced C6 has longest induced path 5, not 6
+
+-- B1 antipodal slots: at most ONE vertex each (C4-freeness, one line) --
+      observed: 3 of 3 antipodal slots force a C4 when doubly occupied
+  [PASS] B1: every antipodal slot holds at most one vertex  -- 3/3
+
+-- B2 |{w : |N(w) cap Z| = 2}| <= 3 (consecutive, round 21) + 3 (antipodal) = 6 --
+  [PASS] B2/INSTANCE-D: simple
+  [PASS] B2/INSTANCE-D: connected
+      observed: 0 pairs with >=2 common neighbours
+  [PASS] B2/INSTANCE-D: C4-FREE (checked before any statistic is read off it)
+  [PASS] B2/INSTANCE-D: Z=[0, 1, 2, 3, 4, 5] is an induced C6
+      observed: longest induced path = 6 vertices
+  [PASS] B2/INSTANCE-D: no induced P7 (path <= 6)  -- path=6
+      observed: |cons|=3 |anti|=0 |single|=0 |none|=0
+  [PASS] B2: INSTANCE-D has |W_cons| = 3 on slots {0,2,4}
+      observed: INSTANCE-E (n=12, 3 consecutive + 3 antipodal): 0 C4 pairs
+  [PASS] B2/INSTANCE-E: simple
+  [PASS] B2/INSTANCE-E: connected
+      observed: 0 pairs with >=2 common neighbours
+  [PASS] B2/INSTANCE-E: C4-FREE (checked before any statistic is read off it)
+  [PASS] B2/INSTANCE-E: Z=[0, 1, 2, 3, 4, 5] is an induced C6
+      observed: longest induced path = 6 vertices
+  [PASS] B2/INSTANCE-E: no induced P7 (path <= 6)  -- path=6
+      observed: |cons|=3 |anti|=3 -> 2-trace population 6
+  [PASS] B2: the bound 6 is ATTAINED by INSTANCE-E
+      observed: antipodal-only n=9 graph: 0 C4 pairs, path=5
+  [PASS] B2/INSTANCE-F(antipodal-only): simple
+  [PASS] B2/INSTANCE-F(antipodal-only): connected
+      observed: 0 pairs with >=2 common neighbours
+  [PASS] B2/INSTANCE-F(antipodal-only): C4-FREE (checked before any statistic is read off it)
+  [PASS] B2/INSTANCE-F(antipodal-only): Z=[0, 1, 2, 3, 4, 5] is an induced C6
+      observed: longest induced path = 5 vertices
+  [PASS] B2/INSTANCE-F(antipodal-only): no induced P7 (path <= 6)  -- path=5
+      observed: |cons|=0 |anti|=3
+  [PASS] B2: three antipodal vertices coexist (|anti| = 3 attained)
+
+-- B3 G55 charge identity a(z) = 2 + |Off(z)| - t(z) on every instance --
+      observed INSTANCE-D: (z, a(z), 2+|Off|-t, |Off|, t) = [(0, 2, 2, 1, 1), (1, 2, 2, 1, 1), (2, 2, 2, 1, 1), (3, 2, 2, 1, 1), (4, 2, 2, 1, 1), (5, 2, 2, 1, 1)]
+  [PASS] B3/INSTANCE-D: G55 holds at all six hexagon vertices
+      observed INSTANCE-D: Sum_{z in Z}(a(z)-2) = 0
+
+-- B4 the Z-local charge is UNBOUNDED IN HYPOTHESIS -- so the count needs the off-cycle deficit, and that is what the restart must track --
+      (the defect this check was repaired from: INSTANCE-D + k hairs at z_0 has path = 7 for every k >= 1, i.e. OUT OF HYPOTHESIS -- shown, then discarded)
+        out-of-hypothesis sample k=1: C4-free=True path=7
+        out-of-hypothesis sample k=2: C4-free=True path=7
+      observed (k, n, Sum a, 3n, l, Sum_Z(a-2), path) = [(0, 6, 12, 18, 2.0, 0, 5), (1, 7, 14, 21, 2.0, 1, 6), (2, 8, 16, 24, 2.0, 2, 6), (3, 9, 18, 27, 2.0, 3, 6), (4, 10, 20, 30, 2.0, 4, 6), (5, 11, 22, 33, 2.0, 5, 6), (6, 12, 24, 36, 2.0, 6, 6)]
+  [PASS] B4a: every sample is IN HYPOTHESIS (C4-free, induced C6, path <= 6) -- checked BEFORE any statistic is read off it  -- 7/7
+  [PASS] B4b: Sum_{z in Z}(a(z)-2) is UNBOUNDED inside (D3-C6)'s own hypotheses  -- observed [0, 1, 2, 3, 4, 5, 6]
+  [PASS] B4c: and yet l stays < 3 on every one of them -- the off-cycle vertices carry a = 1, i.e. the hexagon's surplus is paid for by an off-cycle DEFICIT  -- max l = 2.0
+      => the count to restart is NOT Sum over Z.  It is
+         Sum_v (a(v)-3) = Sum_{z in Z}(a(z)-3) + Sum_{v not in Z}(a(v)-3) <= 0,
+         with the Z-term now FULLY DETERMINED by the occupied-slot set (G57+G55)
+         and the off-cycle term the open half.
+      observed INSTANCE-D: n=9 Sum a=15 l=1.6667 | Z-term=-6 off-term=-6 total=-12
+  [PASS] B4d/INSTANCE-D: Sum_v(a(v)-3) <= 0, i.e. l <= 3 holds here  -- total=-12
+      observed INSTANCE-E: n=12 Sum a=27 l=2.2500 | Z-term=0 off-term=-9 total=-9
+  [PASS] B4d/INSTANCE-E: Sum_v(a(v)-3) <= 0, i.e. l <= 3 holds here  -- total=-9
+
+=== SUMMARY ===
+checks run: 33   failures: 0
+elapsed: 0.06 s

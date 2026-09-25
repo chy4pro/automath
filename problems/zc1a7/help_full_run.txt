@@ -1,0 +1,133 @@
+control C5 (ordinary table rows vs the paper's printed Table 1, on (1a,2a,3a,3b,6a)): MATCH
+   (my chi5/chi6 are the GAP chi6/chi5 -- the two degree-14 irreducibles are indexed in the other order; 3a/3b agree with GAP, as the mod-7 and mod-2 checks below confirm)
+   paper: 7-modular irreducible with chi(1)=5, chi(3a)=2, chi(3b)=-1              MATCH
+   paper: 2-modular irreducible with chi(1)=4, chi(3a)=-2, chi(3b)=1              MATCH
+   paper Table 2b: 3-modular psi_5 of degree 13 with psi_5(2a)=1                  MATCH
+   paper Brauer tree (3-block of defect 1, chi2-chi8-chi7): degrees 6 and 15      MATCH
+   round 1 (verified 3 ways): 7-modular degree 5 has (1a,2a,4a) = (5,1,-1)        MATCH
+
+==============================================================================
+ORDER 3  (complete system: ordinary + 2-, 5-, 7-modular)
+   order 3: search region = [(0, 1), (-3, 6)] (20 integer points), bounded by ord chi1(deg 1), ord chi2(deg 6)
+   characters used: 29  (ord chi1(deg 1), ord chi2(deg 6), ord chi3(deg 10), ord chi4(deg 10), ord chi5(deg 14), ord chi6(deg 14), ord chi7(deg 15), ord chi8(deg 21), ord chi9(deg 35), 2-mod phi(deg 1), 2-mod phi(deg 6), 2-mod phi(deg 14), 2-mod phi(deg 4), 2-mod phi(deg 4), 2-mod phi(deg 20), 5-mod phi(deg 6), 5-mod phi(deg 1), 5-mod phi(deg 8), 5-mod phi(deg 13), 5-mod phi(deg 15), 5-mod phi(deg 35), 5-mod phi(deg 10), 7-mod phi(deg 1), 7-mod phi(deg 5), 7-mod phi(deg 14), 7-mod phi(deg 14), 7-mod phi(deg 10), 7-mod phi(deg 35), 7-mod phi(deg 21))
+   SOLUTIONS (eps_3a, eps_3b): [(0, 1), (1, 0)]
+   paper: eps_3a in {0,1}, eps_3b = 1-eps_3a   -> REPRODUCED EXACTLY
+
+==============================================================================
+ORDER 4  (complete system: ordinary + 3-, 5-, 7-modular; p=2 inadmissible)
+   characters used: 28
+      ord chi1(deg 1)          (1a,2a,4a) = (1,1,1)
+      ord chi2(deg 6)          (1a,2a,4a) = (6,2,0)
+      ord chi3(deg 10)         (1a,2a,4a) = (10,-2,0)
+      ord chi4(deg 10)         (1a,2a,4a) = (10,-2,0)
+      ord chi5(deg 14)         (1a,2a,4a) = (14,2,0)
+      ord chi6(deg 14)         (1a,2a,4a) = (14,2,0)
+      ord chi7(deg 15)         (1a,2a,4a) = (15,-1,-1)
+      ord chi8(deg 21)         (1a,2a,4a) = (21,1,-1)
+      ord chi9(deg 35)         (1a,2a,4a) = (35,-1,1)
+      3-mod phi(deg 1)         (1a,2a,4a) = (1,1,1)
+      3-mod phi(deg 6)         (1a,2a,4a) = (6,2,0)
+      3-mod phi(deg 13)        (1a,2a,4a) = (13,1,-1)
+      3-mod phi(deg 15)        (1a,2a,4a) = (15,-1,-1)
+      3-mod phi(deg 10)        (1a,2a,4a) = (10,-2,0)
+      5-mod phi(deg 6)         (1a,2a,4a) = (6,2,0)
+      5-mod phi(deg 1)         (1a,2a,4a) = (1,1,1)
+      5-mod phi(deg 8)         (1a,2a,4a) = (8,0,0)
+      5-mod phi(deg 13)        (1a,2a,4a) = (13,1,-1)
+      5-mod phi(deg 15)        (1a,2a,4a) = (15,-1,-1)
+      5-mod phi(deg 35)        (1a,2a,4a) = (35,-1,1)
+      5-mod phi(deg 10)        (1a,2a,4a) = (10,-2,0)
+      7-mod phi(deg 1)         (1a,2a,4a) = (1,1,1)
+      7-mod phi(deg 5)         (1a,2a,4a) = (5,1,-1)
+      7-mod phi(deg 14)        (1a,2a,4a) = (14,2,0)
+      7-mod phi(deg 14)        (1a,2a,4a) = (14,2,0)
+      7-mod phi(deg 10)        (1a,2a,4a) = (10,-2,0)
+      7-mod phi(deg 35)        (1a,2a,4a) = (35,-1,1)
+      7-mod phi(deg 21)        (1a,2a,4a) = (21,1,-1)
+   order 4: search region = [(-1, 1), (-4, 4)] (27 integer points), bounded by ord chi1(deg 1), ord chi2(deg 6)
+   SOLUTIONS (eps_2a, eps_4a): [(0, 1), (2, -1)]
+
+-- which constraint kills which t (t = eps_2a, eps_4a = 1-t) --
+   t=-4  killed by 11 constraint(s): ord chi2(deg 6) mu_0=-2<0; ord chi3(deg 10) mu_2=-2<0; ord chi4(deg 10) mu_2=-2<0; 3-mod phi(deg 6) mu_0=-2<0
+   t=-3  killed by 10 constraint(s): Hertweck congruence mod 2; ord chi2(deg 6) mu_0=-1<0; ord chi3(deg 10) mu_2=-1<0; ord chi4(deg 10) mu_2=-1<0
+   t=-2  killed by 1 constraint(s): 7-mod phi(deg 5) mu_0=-1<0
+   t=-1  killed by 1 constraint(s): Hertweck congruence mod 2
+   t=0   SURVIVES
+   t=1   killed by 1 constraint(s): Hertweck congruence mod 2
+   t=2   SURVIVES
+   t=3   killed by 10 constraint(s): Hertweck congruence mod 2; ord chi2(deg 6) mu_2=-1<0; ord chi3(deg 10) mu_0=-1<0; ord chi4(deg 10) mu_0=-1<0
+   t=4   killed by 9 constraint(s): ord chi2(deg 6) mu_2=-2<0; ord chi3(deg 10) mu_0=-2<0; ord chi4(deg 10) mu_0=-2<0; 3-mod phi(deg 6) mu_2=-2<0
+
+-- (eps_2a,eps_4a) = (2,-1): full eigenvalue multiplicity table --
+   ord chi1(deg 1)          deg 1    mu = (1, 0, 0, 0)   <== TIGHT
+   ord chi2(deg 6)          deg 6    mu = (4, 1, 0, 1)   <== TIGHT
+   ord chi3(deg 10)         deg 10   mu = (0, 3, 4, 3)   <== TIGHT
+   ord chi4(deg 10)         deg 10   mu = (0, 3, 4, 3)   <== TIGHT
+   ord chi5(deg 14)         deg 14   mu = (6, 3, 2, 3)
+   ord chi6(deg 14)         deg 14   mu = (6, 3, 2, 3)
+   ord chi7(deg 15)         deg 15   mu = (3, 4, 4, 4)
+   ord chi8(deg 21)         deg 21   mu = (7, 5, 4, 5)
+   ord chi9(deg 35)         deg 35   mu = (7, 9, 10, 9)
+   3-mod phi(deg 1)         deg 1    mu = (1, 0, 0, 0)   <== TIGHT
+   3-mod phi(deg 6)         deg 6    mu = (4, 1, 0, 1)   <== TIGHT
+   3-mod phi(deg 13)        deg 13   mu = (5, 3, 2, 3)
+   3-mod phi(deg 15)        deg 15   mu = (3, 4, 4, 4)
+   3-mod phi(deg 10)        deg 10   mu = (0, 3, 4, 3)   <== TIGHT
+   5-mod phi(deg 6)         deg 6    mu = (4, 1, 0, 1)   <== TIGHT
+   5-mod phi(deg 1)         deg 1    mu = (1, 0, 0, 0)   <== TIGHT
+   5-mod phi(deg 8)         deg 8    mu = (2, 2, 2, 2)
+   5-mod phi(deg 13)        deg 13   mu = (5, 3, 2, 3)
+   5-mod phi(deg 15)        deg 15   mu = (3, 4, 4, 4)
+   5-mod phi(deg 35)        deg 35   mu = (7, 9, 10, 9)
+   5-mod phi(deg 10)        deg 10   mu = (0, 3, 4, 3)   <== TIGHT
+   7-mod phi(deg 1)         deg 1    mu = (1, 0, 0, 0)   <== TIGHT
+   7-mod phi(deg 5)         deg 5    mu = (3, 1, 0, 1)   <== TIGHT
+   7-mod phi(deg 14)        deg 14   mu = (6, 3, 2, 3)
+   7-mod phi(deg 14)        deg 14   mu = (6, 3, 2, 3)
+   7-mod phi(deg 10)        deg 10   mu = (0, 3, 4, 3)   <== TIGHT
+   7-mod phi(deg 35)        deg 35   mu = (7, 9, 10, 9)
+   7-mod phi(deg 21)        deg 21   mu = (7, 5, 4, 5)
+   -> ALL multiplicities are non-negative integers: (2,-1) SURVIVES the complete system
+   -> characters whose constraint is TIGHT (mu = 0, i.e. one step from killing it): 13
+        ord chi1(deg 1)          mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        ord chi2(deg 6)          mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        ord chi3(deg 10)         mu_0 = 0   (eigenvalue 1 is absent from D(u))
+        ord chi4(deg 10)         mu_0 = 0   (eigenvalue 1 is absent from D(u))
+        3-mod phi(deg 1)         mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        3-mod phi(deg 6)         mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        3-mod phi(deg 10)        mu_0 = 0   (eigenvalue 1 is absent from D(u))
+        5-mod phi(deg 6)         mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        5-mod phi(deg 1)         mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        5-mod phi(deg 10)        mu_0 = 0   (eigenvalue 1 is absent from D(u))
+        7-mod phi(deg 1)         mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        7-mod phi(deg 5)         mu_2 = 0   (eigenvalue -1 is absent from D(u))
+        7-mod phi(deg 10)        mu_0 = 0   (eigenvalue 1 is absent from D(u))
+   -> CENSUS.  Total constraints in the complete order-4 system: 112 (28 characters x 4 eigenvalues).
+      Of these, 40 actually DEPEND on the partial augmentations (mu_1 and mu_3 never do,
+      and mu_0, mu_2 do not either when chi(2a) = chi(4a)).  The other 72 are satisfied by
+      any candidate whatsoever, because the trivial solution (0,1) -- an actual element of 4a --
+      already satisfies them.  So the number this round is entitled to report is 40 constraints
+      that COULD have killed (2,-1) and did not, not 112.
+
+==============================================================================
+ORDER 6  (complete system: ordinary + 5-, 7-modular) -- FALSIFICATION TEST
+   characters used: 23
+   order 6: search region = [(1, 1), (-1, 5), (-5, 7), (-7, 5)] (1183 integer points), bounded by ord chi1(deg 1), ord chi2(deg 6), ord chi3(deg 10), ord chi5(deg 14)
+   u^2 ~ 3a : classes ['2a', '3a', '3b', '6a']
+      SOLUTIONS: [(-2, 1, 2, 0), (0, 0, 0, 1), (2, 0, 0, -1)]
+   order 6: search region = [(1, 1), (-4, 2), (-5, 7), (-10, 8)] (1729 integer points), bounded by ord chi1(deg 1), ord chi2(deg 6), ord chi3(deg 10), ord chi5(deg 14)
+   u^2 ~ 3b : classes ['2a', '3a', '3b', '6a']
+      SOLUTIONS: [(-2, 2, 1, 0), (0, 1, -1, 1), (2, -1, 1, -1)]
+   paper (complete GAP run):
+      u^2~3a: {(-2,1,2,0), (2,0,0,-1)} plus the trivial (0,1,0,0)/(0,0,0,1)
+      u^2~3b: {(-2,2,1,0), (0,1,-1,1), (2,-1,1,-1)} plus trivial
+
+==============================================================================
+REJECTION CONTROL -- the survival test must have teeth
+   (a) the same test applied to the OTHER integer points: see the t-table above;
+       t = -2 is rejected by exactly ONE constraint out of 112, and t = -1, 1, 3
+       are rejected too.  The system is not vacuous.
+   (b) perturbing ONE Brauer/ordinary value by +-1 or +-2: 181 of the 224 single-entry perturbations kill (2,-1).
+       => the survival of (2,-1) is a property of the ACTUAL table, not an artefact of the test being weak.
+   (c) named example: corrupting the 7-modular degree-5 character from 2a=1 to 2a=-1
+       kills (2,-1) via [('7-mod phi(deg 5)', 0, Fraction(1, 2)), ('7-mod phi(deg 5)', 1, Fraction(3, 2)), ('7-mod phi(deg 5)', 2, Fraction(3, 2)), ('7-mod phi(deg 5)', 3, Fraction(3, 2))]

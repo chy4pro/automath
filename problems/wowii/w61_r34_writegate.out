@@ -1,0 +1,19 @@
+=== w61 r34 write gate on §7.49 (population BEFORE verdict) ===
+  §7.49 chars 16817, lines 246
+  L1 private local-part    0
+  G4' key shape            0
+  G1' AH1 over-read        0
+  G2 AH3 closure           raw=1 marked=1 CARRIERS=0
+  POSITIVE CONTROLS, REAL instances, MINIMAL-PAIRED where two species co-occur:
+      L1(emphasis)             True
+      G2(possessive,bare)      True
+      G4'(sk-ant)              True
+      G1'(md interposition)    True
+      G2 MINIMAL PAIR on 'only statement standing between' -> fires=False
+        DECLARED, NOT HIDDEN: G2 is BLIND to that construction. It is the referent
+        species and no regex reaches it. §7.49 (e) says so; the gate does not
+        pretend otherwise, and this line is why the gate's CLEAN is not a class claim.
+  DECLARED: §7.49 states that round 31's A rows all had residue 2. Via Prop C1-B
+  that DETERMINES the A-row answers. §7.49 therefore carries held-out key content
+  on exactly the same footing as §7.48 and MUST NEVER BE PASTED INTO A BRIEF.
+VERDICT: CLEAN

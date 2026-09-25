@@ -1,0 +1,11 @@
+=== w61 r33 write gate on §7.48 (population BEFORE verdict) ===
+  §7.48 chars 16630, lines 250
+  L1 private local-part (loose)   0
+  G2 raw=6 marked=6 CARRIERS=0
+  G4' key shape                   0
+  POSITIVE CONTROLS, corrupted copy, SAME RUN -- REAL instances (RULING CZ):
+      L1(emphasis)=True  G2(possessive)=True  G4'(sk-ant)=True  G4'(sk-or)=True
+  NOTE, declared not hidden: §7.48 PRINTS the held-out key values. That is
+  correct here -- the key file is repo-internal and the null cannot be reported
+  without them -- but it means §7.48 MUST NEVER be pasted into a brief.
+VERDICT: CLEAN

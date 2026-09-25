@@ -1,0 +1,315 @@
+==============================================================================
+(D) ZERO-PADDING INERTNESS  — pad p in {0,1,2,3,4,8}, all shapes of nu<=4
+==============================================================================
+   480 lists x 6 paddings: padding-dependent step counts = 0
+   => zero entries are INERT for hh_steps; the draft's [0,0,0] padding is
+      a convenience, not a modelling choice.
+
+==============================================================================
+(A) E = 0 : the L-independent criterion  s0(lam) = lam_1   (Lemma TAIL)
+    columns: lam | lam_1 | s0(lam) | verdict | FAN-6' certificate
+==============================================================================
+--- nu = 1 :  partitions of 2nu = 2  (p(2) = 2)
+    lam=(2,)                   lam1=2   s0=2     SURVIVES  w=2, 2nd=0, mult(w)=1, FAN-6'=YES
+    lam=(1, 1)                 lam1=1   s0=2     dies      
+    => E=0 survivors for nu=1: [(2,)]
+    => survivors NOT killed by FAN-6': NONE
+--- nu = 2 :  partitions of 2nu = 4  (p(4) = 5)
+    lam=(4,)                   lam1=4   s0=4     SURVIVES  w=4, 2nd=0, mult(w)=1, FAN-6'=YES
+    lam=(3, 1)                 lam1=3   s0=4     dies      
+    lam=(2, 2)                 lam1=2   s0=3     dies      
+    lam=(2, 1, 1)              lam1=2   s0=3     dies      
+    lam=(1, 1, 1, 1)           lam1=1   s0=3     dies      
+    => E=0 survivors for nu=2: [(4,)]
+    => survivors NOT killed by FAN-6': NONE
+--- nu = 3 :  partitions of 2nu = 6  (p(6) = 11)
+    lam=(6,)                   lam1=6   s0=6     SURVIVES  w=6, 2nd=0, mult(w)=1, FAN-6'=YES
+    lam=(5, 1)                 lam1=5   s0=6     dies      
+    lam=(4, 2)                 lam1=4   s0=5     dies      
+    lam=(4, 1, 1)              lam1=4   s0=5     dies      
+    lam=(3, 3)                 lam1=3   s0=4     dies      
+    lam=(3, 2, 1)              lam1=3   s0=4     dies      
+    lam=(3, 1, 1, 1)           lam1=3   s0=5     dies      
+    lam=(2, 2, 2)              lam1=2   s0=4     dies      
+    lam=(2, 2, 1, 1)           lam1=2   s0=4     dies      
+    lam=(2, 1, 1, 1, 1)        lam1=2   s0=4     dies      
+    lam=(1, 1, 1, 1, 1, 1)     lam1=1   s0=4     dies      
+    => E=0 survivors for nu=3: [(6,)]
+    => survivors NOT killed by FAN-6': NONE
+--- nu = 4 :  partitions of 2nu = 8  (p(8) = 22)
+    lam=(8,)                   lam1=8   s0=8     SURVIVES  w=8, 2nd=0, mult(w)=1, FAN-6'=YES
+    lam=(7, 1)                 lam1=7   s0=8     dies      
+    lam=(6, 2)                 lam1=6   s0=7     dies      
+    lam=(6, 1, 1)              lam1=6   s0=7     dies      
+    lam=(5, 3)                 lam1=5   s0=6     dies      
+    lam=(5, 2, 1)              lam1=5   s0=6     dies      
+    lam=(5, 1, 1, 1)           lam1=5   s0=7     dies      
+    lam=(4, 4)                 lam1=4   s0=5     dies      
+    lam=(4, 3, 1)              lam1=4   s0=5     dies      
+    lam=(4, 2, 2)              lam1=4   s0=6     dies      
+    lam=(4, 2, 1, 1)           lam1=4   s0=6     dies      
+    lam=(4, 1, 1, 1, 1)        lam1=4   s0=6     dies      
+    lam=(3, 3, 2)              lam1=3   s0=5     dies      
+    lam=(3, 3, 1, 1)           lam1=3   s0=5     dies      
+    lam=(3, 2, 2, 1)           lam1=3   s0=5     dies      
+    lam=(3, 2, 1, 1, 1)        lam1=3   s0=5     dies      
+    lam=(3, 1, 1, 1, 1, 1)     lam1=3   s0=6     dies      
+    lam=(2, 2, 2, 2)           lam1=2   s0=4     dies      
+    lam=(2, 2, 2, 1, 1)        lam1=2   s0=5     dies      
+    lam=(2, 2, 1, 1, 1, 1)     lam1=2   s0=5     dies      
+    lam=(2, 1, 1, 1, 1, 1, 1)  lam1=2   s0=5     dies      
+    lam=(1, 1, 1, 1, 1, 1, 1, 1) lam1=1   s0=5     dies      
+    => E=0 survivors for nu=4: [(8,)]
+    => survivors NOT killed by FAN-6': NONE
+--- nu = 5 :  partitions of 2nu = 10  (p(10) = 42)
+    lam=(10,)                  lam1=10  s0=10    SURVIVES  w=10, 2nd=0, mult(w)=1, FAN-6'=YES
+    lam=(9, 1)                 lam1=9   s0=10    dies      
+    lam=(8, 2)                 lam1=8   s0=9     dies      
+    lam=(8, 1, 1)              lam1=8   s0=9     dies      
+    lam=(7, 3)                 lam1=7   s0=8     dies      
+    lam=(7, 2, 1)              lam1=7   s0=8     dies      
+    lam=(7, 1, 1, 1)           lam1=7   s0=9     dies      
+    lam=(6, 4)                 lam1=6   s0=7     dies      
+    lam=(6, 3, 1)              lam1=6   s0=7     dies      
+    lam=(6, 2, 2)              lam1=6   s0=8     dies      
+    lam=(6, 2, 1, 1)           lam1=6   s0=8     dies      
+    lam=(6, 1, 1, 1, 1)        lam1=6   s0=8     dies      
+    lam=(5, 5)                 lam1=5   s0=6     dies      
+    lam=(5, 4, 1)              lam1=5   s0=6     dies      
+    lam=(5, 3, 2)              lam1=5   s0=7     dies      
+    lam=(5, 3, 1, 1)           lam1=5   s0=7     dies      
+    lam=(5, 2, 2, 1)           lam1=5   s0=7     dies      
+    lam=(5, 2, 1, 1, 1)        lam1=5   s0=7     dies      
+    lam=(5, 1, 1, 1, 1, 1)     lam1=5   s0=8     dies      
+    lam=(4, 4, 2)              lam1=4   s0=6     dies      
+    lam=(4, 4, 1, 1)           lam1=4   s0=6     dies      
+    lam=(4, 3, 3)              lam1=4   s0=6     dies      
+    lam=(4, 3, 2, 1)           lam1=4   s0=6     dies      
+    lam=(4, 3, 1, 1, 1)        lam1=4   s0=6     dies      
+    lam=(4, 2, 2, 2)           lam1=4   s0=6     dies      
+    lam=(4, 2, 2, 1, 1)        lam1=4   s0=7     dies      
+    lam=(4, 2, 1, 1, 1, 1)     lam1=4   s0=7     dies      
+    lam=(4, 1, 1, 1, 1, 1, 1)  lam1=4   s0=7     dies      
+    lam=(3, 3, 3, 1)           lam1=3   s0=5     dies      
+    lam=(3, 3, 2, 2)           lam1=3   s0=5     dies      
+    lam=(3, 3, 2, 1, 1)        lam1=3   s0=6     dies      
+    lam=(3, 3, 1, 1, 1, 1)     lam1=3   s0=6     dies      
+    lam=(3, 2, 2, 2, 1)        lam1=3   s0=6     dies      
+    lam=(3, 2, 2, 1, 1, 1)     lam1=3   s0=6     dies      
+    lam=(3, 2, 1, 1, 1, 1, 1)  lam1=3   s0=6     dies      
+    lam=(3, 1, 1, 1, 1, 1, 1, 1) lam1=3   s0=7     dies      
+    lam=(2, 2, 2, 2, 2)        lam1=2   s0=5     dies      
+    lam=(2, 2, 2, 2, 1, 1)     lam1=2   s0=5     dies      
+    lam=(2, 2, 2, 1, 1, 1, 1)  lam1=2   s0=6     dies      
+    lam=(2, 2, 1, 1, 1, 1, 1, 1) lam1=2   s0=6     dies      
+    lam=(2, 1, 1, 1, 1, 1, 1, 1, 1) lam1=2   s0=6     dies      
+    lam=(1, 1, 1, 1, 1, 1, 1, 1, 1, 1) lam1=1   s0=6     dies      
+    => E=0 survivors for nu=5: [(10,)]
+    => survivors NOT killed by FAN-6': NONE
+--- nu = 6 :  partitions of 2nu = 12  (p(12) = 77)
+    lam=(12,)                  lam1=12  s0=12    SURVIVES  w=12, 2nd=0, mult(w)=1, FAN-6'=YES
+    lam=(11, 1)                lam1=11  s0=12    dies      
+    lam=(10, 2)                lam1=10  s0=11    dies      
+    lam=(10, 1, 1)             lam1=10  s0=11    dies      
+    lam=(9, 3)                 lam1=9   s0=10    dies      
+    lam=(9, 2, 1)              lam1=9   s0=10    dies      
+    lam=(9, 1, 1, 1)           lam1=9   s0=11    dies      
+    lam=(8, 4)                 lam1=8   s0=9     dies      
+    lam=(8, 3, 1)              lam1=8   s0=9     dies      
+    lam=(8, 2, 2)              lam1=8   s0=10    dies      
+    lam=(8, 2, 1, 1)           lam1=8   s0=10    dies      
+    lam=(8, 1, 1, 1, 1)        lam1=8   s0=10    dies      
+    lam=(7, 5)                 lam1=7   s0=8     dies      
+    lam=(7, 4, 1)              lam1=7   s0=8     dies      
+    lam=(7, 3, 2)              lam1=7   s0=9     dies      
+    lam=(7, 3, 1, 1)           lam1=7   s0=9     dies      
+    lam=(7, 2, 2, 1)           lam1=7   s0=9     dies      
+    lam=(7, 2, 1, 1, 1)        lam1=7   s0=9     dies      
+    lam=(7, 1, 1, 1, 1, 1)     lam1=7   s0=10    dies      
+    lam=(6, 6)                 lam1=6   s0=7     dies      
+    lam=(6, 5, 1)              lam1=6   s0=7     dies      
+    lam=(6, 4, 2)              lam1=6   s0=8     dies      
+    lam=(6, 4, 1, 1)           lam1=6   s0=8     dies      
+    lam=(6, 3, 3)              lam1=6   s0=8     dies      
+    lam=(6, 3, 2, 1)           lam1=6   s0=8     dies      
+    lam=(6, 3, 1, 1, 1)        lam1=6   s0=8     dies      
+    lam=(6, 2, 2, 2)           lam1=6   s0=8     dies      
+    lam=(6, 2, 2, 1, 1)        lam1=6   s0=9     dies      
+    lam=(6, 2, 1, 1, 1, 1)     lam1=6   s0=9     dies      
+    lam=(6, 1, 1, 1, 1, 1, 1)  lam1=6   s0=9     dies      
+    lam=(5, 5, 2)              lam1=5   s0=7     dies      
+    lam=(5, 5, 1, 1)           lam1=5   s0=7     dies      
+    lam=(5, 4, 3)              lam1=5   s0=7     dies      
+    lam=(5, 4, 2, 1)           lam1=5   s0=7     dies      
+    lam=(5, 4, 1, 1, 1)        lam1=5   s0=7     dies      
+    lam=(5, 3, 3, 1)           lam1=5   s0=7     dies      
+    lam=(5, 3, 2, 2)           lam1=5   s0=7     dies      
+    lam=(5, 3, 2, 1, 1)        lam1=5   s0=8     dies      
+    lam=(5, 3, 1, 1, 1, 1)     lam1=5   s0=8     dies      
+    lam=(5, 2, 2, 2, 1)        lam1=5   s0=8     dies      
+    lam=(5, 2, 2, 1, 1, 1)     lam1=5   s0=8     dies      
+    lam=(5, 2, 1, 1, 1, 1, 1)  lam1=5   s0=8     dies      
+    lam=(5, 1, 1, 1, 1, 1, 1, 1) lam1=5   s0=9     dies      
+    lam=(4, 4, 4)              lam1=4   s0=6     dies      
+    lam=(4, 4, 3, 1)           lam1=4   s0=6     dies      
+    lam=(4, 4, 2, 2)           lam1=4   s0=6     dies      
+    lam=(4, 4, 2, 1, 1)        lam1=4   s0=7     dies      
+    lam=(4, 4, 1, 1, 1, 1)     lam1=4   s0=7     dies      
+    lam=(4, 3, 3, 2)           lam1=4   s0=6     dies      
+    lam=(4, 3, 3, 1, 1)        lam1=4   s0=7     dies      
+    lam=(4, 3, 2, 2, 1)        lam1=4   s0=7     dies      
+    lam=(4, 3, 2, 1, 1, 1)     lam1=4   s0=7     dies      
+    lam=(4, 3, 1, 1, 1, 1, 1)  lam1=4   s0=7     dies      
+    lam=(4, 2, 2, 2, 2)        lam1=4   s0=7     dies      
+    lam=(4, 2, 2, 2, 1, 1)     lam1=4   s0=7     dies      
+    lam=(4, 2, 2, 1, 1, 1, 1)  lam1=4   s0=8     dies      
+    lam=(4, 2, 1, 1, 1, 1, 1, 1) lam1=4   s0=8     dies      
+    lam=(4, 1, 1, 1, 1, 1, 1, 1, 1) lam1=4   s0=8     dies      
+    lam=(3, 3, 3, 3)           lam1=3   s0=6     dies      
+    lam=(3, 3, 3, 2, 1)        lam1=3   s0=6     dies      
+    lam=(3, 3, 3, 1, 1, 1)     lam1=3   s0=6     dies      
+    lam=(3, 3, 2, 2, 2)        lam1=3   s0=6     dies      
+    lam=(3, 3, 2, 2, 1, 1)     lam1=3   s0=6     dies      
+    lam=(3, 3, 2, 1, 1, 1, 1)  lam1=3   s0=7     dies      
+    lam=(3, 3, 1, 1, 1, 1, 1, 1) lam1=3   s0=7     dies      
+    lam=(3, 2, 2, 2, 2, 1)     lam1=3   s0=6     dies      
+    lam=(3, 2, 2, 2, 1, 1, 1)  lam1=3   s0=7     dies      
+    lam=(3, 2, 2, 1, 1, 1, 1, 1) lam1=3   s0=7     dies      
+    lam=(3, 2, 1, 1, 1, 1, 1, 1, 1) lam1=3   s0=7     dies      
+    lam=(3, 1, 1, 1, 1, 1, 1, 1, 1, 1) lam1=3   s0=8     dies      
+    lam=(2, 2, 2, 2, 2, 2)     lam1=2   s0=6     dies      
+    lam=(2, 2, 2, 2, 2, 1, 1)  lam1=2   s0=6     dies      
+    lam=(2, 2, 2, 2, 1, 1, 1, 1) lam1=2   s0=6     dies      
+    lam=(2, 2, 2, 1, 1, 1, 1, 1, 1) lam1=2   s0=7     dies      
+    lam=(2, 2, 1, 1, 1, 1, 1, 1, 1, 1) lam1=2   s0=7     dies      
+    lam=(2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) lam1=2   s0=7     dies      
+    lam=(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) lam1=1   s0=7     dies      
+    => E=0 survivors for nu=6: [(12,)]
+    => survivors NOT killed by FAN-6': NONE
+
+==============================================================================
+(B) E = 0 boundary rows  nu+1 <= L < lam_1  (outside Lemma TAIL's range)
+==============================================================================
+  nu=1: boundary pairs (L,lam) checked = 0    survivors = NONE   not killed by FAN-6' = NONE
+  nu=2: boundary pairs (L,lam) checked = 1    survivors = [(3, (4,))]   not killed by FAN-6' = NONE
+  nu=3: boundary pairs (L,lam) checked = 3    survivors = [(5, (6,))]   not killed by FAN-6' = NONE
+  nu=4: boundary pairs (L,lam) checked = 7    survivors = [(5, (7, 1)), (7, (8,))]   not killed by FAN-6' = NONE
+  nu=5: boundary pairs (L,lam) checked = 14   survivors = [(7, (9, 1)), (9, (10,))]   not killed by FAN-6' = NONE
+  nu=6: boundary pairs (L,lam) checked = 26   survivors = [(7, (10, 1, 1)), (9, (11, 1)), (11, (12,))]   not killed by FAN-6' = NONE
+
+==============================================================================
+(C) E >= 1 : finite by FAN-8' (L <= 2nu-E) and MB1 (L >= nu+1)
+    every survivor listed with its FAN-6' certificate
+==============================================================================
+--- nu = 1: shapes tested = 0   per-E split = {}
+    survivors (clear in exactly L steps) = 0
+    survivors NOT killed by FAN-6' = NONE
+--- nu = 2: shapes tested = 3   per-E split = {1: 3}
+    survivors (clear in exactly L steps) = 1
+      L=3 E=1 e=(1,0,0,0) C=(4, 3, 3, 3) lam=(3,)   w=3, 2nd=0, mult(w)=1, FAN-6'=YES
+    survivors NOT killed by FAN-6' = NONE
+--- nu = 3: shapes tested = 24   per-E split = {1: 14, 2: 10}
+    survivors (clear in exactly L steps) = 4
+      L=4 E=1 e=(1,0,0,0,0) C=(5, 4, 4, 4, 4) lam=(5,)   w=5, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=5 E=1 e=(1,0,0,0,0,0) C=(6, 5, 5, 5, 5, 5) lam=(5,)   w=5, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=4 E=2 e=(1,1,0,0,0) C=(5, 5, 4, 4, 4) lam=(4,)   w=4, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=4 E=2 e=(2,0,0,0,0) C=(6, 4, 4, 4, 4) lam=(3, 1)   w=3, 2nd=1, mult(w)=1, FAN-6'=YES
+    survivors NOT killed by FAN-6' = NONE
+--- nu = 4: shapes tested = 110   per-E split = {1: 45, 2: 44, 3: 21}
+    survivors (clear in exactly L steps) = 9
+      L=6 E=1 e=(1,0,0,0,0,0,0) C=(7, 6, 6, 6, 6, 6, 6) lam=(7,)   w=7, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=7 E=1 e=(1,0,0,0,0,0,0,0) C=(8, 7, 7, 7, 7, 7, 7, 7) lam=(7,)   w=7, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=5 E=2 e=(1,1,0,0,0,0) C=(6, 6, 5, 5, 5, 5) lam=(6,)   w=6, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=5 E=2 e=(2,0,0,0,0,0) C=(7, 5, 5, 5, 5, 5) lam=(5, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=6 E=2 e=(1,1,0,0,0,0,0) C=(7, 7, 6, 6, 6, 6, 6) lam=(6,)   w=6, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=6 E=2 e=(2,0,0,0,0,0,0) C=(8, 6, 6, 6, 6, 6, 6) lam=(5, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=5 E=3 e=(1,1,1,0,0,0) C=(6, 6, 6, 5, 5, 5) lam=(5,)   w=5, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=5 E=3 e=(2,1,0,0,0,0) C=(7, 6, 5, 5, 5, 5) lam=(4, 1)   w=4, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=5 E=3 e=(3,0,0,0,0,0) C=(8, 5, 5, 5, 5, 5) lam=(3, 1, 1)   w=3, 2nd=1, mult(w)=1, FAN-6'=YES
+    survivors NOT killed by FAN-6' = NONE
+--- nu = 5: shapes tested = 397   per-E split = {1: 120, 2: 132, 3: 90, 4: 55}
+    survivors (clear in exactly L steps) = 20
+      L=6 E=1 e=(1,0,0,0,0,0,0) C=(7, 6, 6, 6, 6, 6, 6) lam=(8, 1)   w=8, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=1 e=(1,0,0,0,0,0,0,0,0) C=(9, 8, 8, 8, 8, 8, 8, 8, 8) lam=(9,)   w=9, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=9 E=1 e=(1,0,0,0,0,0,0,0,0,0) C=(10, 9, 9, 9, 9, 9, 9, 9, 9, 9) lam=(9,)   w=9, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=6 E=2 e=(2,0,0,0,0,0,0) C=(8, 6, 6, 6, 6, 6, 6) lam=(7, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=2 e=(1,1,0,0,0,0,0,0) C=(8, 8, 7, 7, 7, 7, 7, 7) lam=(8,)   w=8, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=7 E=2 e=(2,0,0,0,0,0,0,0) C=(9, 7, 7, 7, 7, 7, 7, 7) lam=(7, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=2 e=(1,1,0,0,0,0,0,0,0) C=(9, 9, 8, 8, 8, 8, 8, 8, 8) lam=(8,)   w=8, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=8 E=2 e=(2,0,0,0,0,0,0,0,0) C=(10, 8, 8, 8, 8, 8, 8, 8, 8) lam=(7, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=6 E=3 e=(1,1,1,0,0,0,0) C=(7, 7, 7, 6, 6, 6, 6) lam=(7,)   w=7, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=6 E=3 e=(2,1,0,0,0,0,0) C=(8, 7, 6, 6, 6, 6, 6) lam=(6, 1)   w=6, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=6 E=3 e=(3,0,0,0,0,0,0) C=(9, 6, 6, 6, 6, 6, 6) lam=(5, 1, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=3 e=(1,1,1,0,0,0,0,0) C=(8, 8, 8, 7, 7, 7, 7, 7) lam=(7,)   w=7, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=7 E=3 e=(2,1,0,0,0,0,0,0) C=(9, 8, 7, 7, 7, 7, 7, 7) lam=(6, 1)   w=6, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=3 e=(3,0,0,0,0,0,0,0) C=(10, 7, 7, 7, 7, 7, 7, 7) lam=(5, 1, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=6 E=4 e=(1,1,1,1,0,0,0) C=(7, 7, 7, 7, 6, 6, 6) lam=(6,)   w=6, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=6 E=4 e=(2,1,1,0,0,0,0) C=(8, 7, 7, 6, 6, 6, 6) lam=(5, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=6 E=4 e=(2,2,0,0,0,0,0) C=(8, 8, 6, 6, 6, 6, 6) lam=(4, 2)   w=4, 2nd=2, mult(w)=1, FAN-6'=YES
+      L=6 E=4 e=(2,2,0,0,0,0,0) C=(8, 8, 6, 6, 6, 6, 6) lam=(4, 1, 1)   w=4, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=6 E=4 e=(3,1,0,0,0,0,0) C=(9, 7, 6, 6, 6, 6, 6) lam=(4, 1, 1)   w=4, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=6 E=4 e=(4,0,0,0,0,0,0) C=(10, 6, 6, 6, 6, 6, 6) lam=(3, 1, 1, 1)   w=3, 2nd=1, mult(w)=1, FAN-6'=YES
+    survivors NOT killed by FAN-6' = NONE
+--- nu = 6: shapes tested = 1211   per-E split = {1: 280, 2: 336, 3: 270, 4: 220, 5: 105}
+    survivors (clear in exactly L steps) = 38
+      L=8 E=1 e=(1,0,0,0,0,0,0,0,0) C=(9, 8, 8, 8, 8, 8, 8, 8, 8) lam=(10, 1)   w=10, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=10 E=1 e=(1,0,0,0,0,0,0,0,0,0,0) C=(11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10) lam=(11,)   w=11, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=11 E=1 e=(1,0,0,0,0,0,0,0,0,0,0,0) C=(12, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11) lam=(11,)   w=11, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=7 E=2 e=(1,1,0,0,0,0,0,0) C=(8, 8, 7, 7, 7, 7, 7, 7) lam=(9, 1)   w=9, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=2 e=(2,0,0,0,0,0,0,0,0) C=(10, 8, 8, 8, 8, 8, 8, 8, 8) lam=(9, 1)   w=9, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=9 E=2 e=(1,1,0,0,0,0,0,0,0,0) C=(10, 10, 9, 9, 9, 9, 9, 9, 9, 9) lam=(10,)   w=10, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=9 E=2 e=(2,0,0,0,0,0,0,0,0,0) C=(11, 9, 9, 9, 9, 9, 9, 9, 9, 9) lam=(9, 1)   w=9, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=10 E=2 e=(1,1,0,0,0,0,0,0,0,0,0) C=(11, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10) lam=(10,)   w=10, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=10 E=2 e=(2,0,0,0,0,0,0,0,0,0,0) C=(12, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10) lam=(9, 1)   w=9, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=3 e=(2,1,0,0,0,0,0,0) C=(9, 8, 7, 7, 7, 7, 7, 7) lam=(8, 1)   w=8, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=3 e=(3,0,0,0,0,0,0,0) C=(10, 7, 7, 7, 7, 7, 7, 7) lam=(7, 1, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=3 e=(1,1,1,0,0,0,0,0,0) C=(9, 9, 9, 8, 8, 8, 8, 8, 8) lam=(9,)   w=9, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=8 E=3 e=(2,1,0,0,0,0,0,0,0) C=(10, 9, 8, 8, 8, 8, 8, 8, 8) lam=(8, 1)   w=8, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=3 e=(3,0,0,0,0,0,0,0,0) C=(11, 8, 8, 8, 8, 8, 8, 8, 8) lam=(7, 1, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=9 E=3 e=(1,1,1,0,0,0,0,0,0,0) C=(10, 10, 10, 9, 9, 9, 9, 9, 9, 9) lam=(9,)   w=9, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=9 E=3 e=(2,1,0,0,0,0,0,0,0,0) C=(11, 10, 9, 9, 9, 9, 9, 9, 9, 9) lam=(8, 1)   w=8, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=9 E=3 e=(3,0,0,0,0,0,0,0,0,0) C=(12, 9, 9, 9, 9, 9, 9, 9, 9, 9) lam=(7, 1, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=4 e=(1,1,1,1,0,0,0,0) C=(8, 8, 8, 8, 7, 7, 7, 7) lam=(8,)   w=8, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=7 E=4 e=(2,1,1,0,0,0,0,0) C=(9, 8, 8, 7, 7, 7, 7, 7) lam=(7, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=4 e=(2,2,0,0,0,0,0,0) C=(9, 9, 7, 7, 7, 7, 7, 7) lam=(6, 2)   w=6, 2nd=2, mult(w)=1, FAN-6'=YES
+      L=7 E=4 e=(2,2,0,0,0,0,0,0) C=(9, 9, 7, 7, 7, 7, 7, 7) lam=(6, 1, 1)   w=6, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=4 e=(3,1,0,0,0,0,0,0) C=(10, 8, 7, 7, 7, 7, 7, 7) lam=(6, 1, 1)   w=6, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=4 e=(4,0,0,0,0,0,0,0) C=(11, 7, 7, 7, 7, 7, 7, 7) lam=(5, 1, 1, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=4 e=(1,1,1,1,0,0,0,0,0) C=(9, 9, 9, 9, 8, 8, 8, 8, 8) lam=(8,)   w=8, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=8 E=4 e=(2,1,1,0,0,0,0,0,0) C=(10, 9, 9, 8, 8, 8, 8, 8, 8) lam=(7, 1)   w=7, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=4 e=(2,2,0,0,0,0,0,0,0) C=(10, 10, 8, 8, 8, 8, 8, 8, 8) lam=(6, 2)   w=6, 2nd=2, mult(w)=1, FAN-6'=YES
+      L=8 E=4 e=(2,2,0,0,0,0,0,0,0) C=(10, 10, 8, 8, 8, 8, 8, 8, 8) lam=(6, 1, 1)   w=6, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=4 e=(3,1,0,0,0,0,0,0,0) C=(11, 9, 8, 8, 8, 8, 8, 8, 8) lam=(6, 1, 1)   w=6, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=8 E=4 e=(4,0,0,0,0,0,0,0,0) C=(12, 8, 8, 8, 8, 8, 8, 8, 8) lam=(5, 1, 1, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(1,1,1,1,1,0,0,0) C=(8, 8, 8, 8, 8, 7, 7, 7) lam=(7,)   w=7, 2nd=0, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(2,1,1,1,0,0,0,0) C=(9, 8, 8, 8, 7, 7, 7, 7) lam=(6, 1)   w=6, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(2,2,1,0,0,0,0,0) C=(9, 9, 8, 7, 7, 7, 7, 7) lam=(5, 2)   w=5, 2nd=2, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(2,2,1,0,0,0,0,0) C=(9, 9, 8, 7, 7, 7, 7, 7) lam=(5, 1, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(3,1,1,0,0,0,0,0) C=(10, 8, 8, 7, 7, 7, 7, 7) lam=(5, 1, 1)   w=5, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(3,2,0,0,0,0,0,0) C=(10, 9, 7, 7, 7, 7, 7, 7) lam=(4, 2, 1)   w=4, 2nd=2, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(3,2,0,0,0,0,0,0) C=(10, 9, 7, 7, 7, 7, 7, 7) lam=(4, 1, 1, 1)   w=4, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(4,1,0,0,0,0,0,0) C=(11, 8, 7, 7, 7, 7, 7, 7) lam=(4, 1, 1, 1)   w=4, 2nd=1, mult(w)=1, FAN-6'=YES
+      L=7 E=5 e=(5,0,0,0,0,0,0,0) C=(12, 7, 7, 7, 7, 7, 7, 7) lam=(3, 1, 1, 1, 1)   w=3, 2nd=1, mult(w)=1, FAN-6'=YES
+    survivors NOT killed by FAN-6' = NONE
+
+==============================================================================
+(E) SUMMARY TABLE (the one the draft prints)
+==============================================================================
+ nu | E=0 surv | E=0 misses | E>=1 tested | E>=1 surv | E>=1 misses | verdict
+  1 | [(2,)]     | none       |           0 |         0 | none        | ELIMINATED
+  2 | [(4,)]     | none       |           3 |         1 | none        | ELIMINATED
+  3 | [(6,)]     | none       |          24 |         4 | none        | ELIMINATED
+  4 | [(8,)]     | none       |         110 |         9 | none        | ELIMINATED
+  5 | [(10,)]    | none       |         397 |        20 | none        | ELIMINATED
+  6 | [(12,)]    | none       |        1211 |        38 | none        | ELIMINATED
+
+==============================================================================
+(F) E>=1 shape-count closed form check:  S(nu) = sum_{E=1}^{?} N(E,nu)
+==============================================================================
+  nu=1: S(nu) = 0
+  nu=2: S(nu) = 3
+  nu=3: S(nu) = 24
+  nu=4: S(nu) = 110
+  nu=5: S(nu) = 397
+  nu=6: S(nu) = 1211
+done

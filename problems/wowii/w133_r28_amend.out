@@ -1,0 +1,83 @@
+draft: notes/proofs/wowii133_draft.md, 5518 lines
+gate is ANCHOR-addressed (RULING CV): no line number is load-bearing anywhere below.
+
+PART 0. POSITIVE CONTROLS -- every predicate fired where it MUST return True
+  [OK ] ANCHOR_RE fires on a real registration line                            got=True want=True
+  [OK ] ANCHOR_RE does NOT fire on prose about the address                     got=False want=False
+  [OK ] QUAL_RE fires on the r26 form                                          got=True want=True
+  [OK ] QUAL_RE fires on the r27 form                                          got=True want=True
+  [OK ] has_old_form fires on the r26 string (MUST be True)                    got=True want=True
+  [OK ] has_all_new_frags fires on the r27 string (MUST be True)               got=True want=True
+  [OK ] has_all_new_frags is False on the r26 string (discrimination)          got=False want=False
+  [OK ] normalise_block REJOINS a wrapped qualifier (MUST be True)             got=True want=True
+  [OK ] normalise_block WITHOUT reflow would MISS it (the defect it defends against) got=False want=False
+
+PART 1. THE ANCHOR -- the statement's own address, enumerated not probed
+   G60 registration anchor at line 5230: > **`G60` (Theorem — elementary + finite enumeration; the (Z1)–(Z6) assembly).**
+  [OK ] exactly one G60 registration anchor in the whole draft                 got=1 want=1
+   statement block = the blockquote run it opens: 18 lines, 1402 chars
+  [OK ] statement block is a blockquote run of >= 3 lines                      got=True want=True
+
+PART 2. FULL CENSUS of qualifier-shaped occurrences in the WHOLE draft
+        (RULING CG/CP -- absence is read off a complete census, never probed)
+   line 5231  r27-NEW  IN-BLOCK  > **Modulo the §35–§37 enumerations — two independent implementations agreeing as of r27,
+   line 5243  r27-NEW  IN-BLOCK  > `G60` that does not carry *"modulo the §35–§37 enumerations — two independent implementations
+   line 5381  r26-OLD  outside   > ~~modulo the §35–§37 enumerations, single-source as of r26~~   ← **SUPERSEDED, r28**
+   line 5386  r27-NEW  outside   > **modulo the §35–§37 enumerations — two independent implementations agreeing as of r27, still
+   census: {'r26-OLD/in-block': 0, 'r26-OLD/outside': 1, 'r27-NEW/in-block': 2, 'r27-NEW/outside': 1, 'UNCLASSIFIED': 0}
+  [OK ] r26-OLD occurrences INSIDE the statement block                         got=0 want=0
+  [OK ] r27-NEW occurrences INSIDE the statement block                         got=2 want=2
+  [OK ] no qualifier-shaped occurrence is UNCLASSIFIED                         got=0 want=0
+   (r26-OLD occurrences OUTSIDE the block are HISTORICAL RECORD -- §39 quotes the
+    superseded form in order to record what was superseded, which is not a carrier.)
+
+PART 3. THE AMENDED QUALIFIER IS INSIDE THE STATEMENT, fragment by fragment
+  [OK ] fragment 'modulo the §35–§37 enumerations' inside the statement block  got=True want=True
+  [OK ] fragment 'two independent implementations agreeing as of' inside the statement block got=True want=True
+  [OK ] fragment 'still single-author and single-specification' inside the statement block got=True want=True
+  [OK ] malformed-citation clause survived the amendment                       got=True want=True
+  [OK ] the amended qualifier is carried TWICE (opening + citation clause)     got=2 want=2
+  [OK ] NFKC normalisation does not change the verdict (no encoding-invisible text) got=True want=True
+
+   THE VERDICT ON THE LIVE DRAFT:
+   verdict(live) = PASS (no reasons to fail)
+  [OK ] live draft PASSES the amendment gate                                   got=[] want=[]
+
+PART 4. THE GATE MUST FIRE -- four corrupted copies, in this same run
+        A gate returning 0 has said nothing until it has been shown returning 1.
+   C1 r26 form reverted into the block    -> ['SUPERSEDED r26 form is carried INSIDE the statement block', 'amended qualifier appears 1 time(s) inside the block; the opening qualifier AND the malformed-citation clause must both carry it']
+  [OK ] gate FIRES on C1 r26 form reverted into the block                      got=True want=True
+  [OK ]    ...and fires for the RIGHT reason ('SUPERSEDED r26 form')           got=True want=True
+   C2 date bumped, STATE dropped          -> ["amended qualifier fragments missing from the statement block: ['still single-author and single-specification']"]
+  [OK ] gate FIRES on C2 date bumped, STATE dropped                            got=True want=True
+  [OK ]    ...and fires for the RIGHT reason ('fragments missing')             got=True want=True
+   C3 qualifier evicted to prose          -> ["amended qualifier fragments missing from the statement block: ['modulo the §35–§37 enumerations', 'two independent implementations agreeing as of r27']", 'amended qualifier appears 0 time(s) inside the block; the opening qualifier AND the malformed-citation clause must both carry it']
+  [OK ] gate FIRES on C3 qualifier evicted to prose                            got=True want=True
+  [OK ]    ...and fires for the RIGHT reason ('fragments missing')             got=True want=True
+   C4 duplicate G60 registration          -> ['anchor count 2 != 1']
+  [OK ] gate FIRES on C4 duplicate G60 registration                            got=True want=True
+  [OK ]    ...and fires for the RIGHT reason ('anchor count')                  got=True want=True
+   C5 malformed-citation clause deleted   -> ['the malformed-citation clause did not survive the amendment']
+  [OK ] gate FIRES on C5 malformed-citation clause deleted                     got=True want=True
+  [OK ]    ...and fires for the RIGHT reason ('malformed-citation clause')     got=True want=True
+
+PART 5. RULING CV DEMONSTRATED -- the anchor survives insertion; a line number does not
+   inserted 40 lines ABOVE the statement block (round 27's defect, reproduced)
+   anchor line before insertion: 5230 ; after insertion: 5270
+  [OK ] the anchor MOVED (so the insertion really happened)                    got=5269 want=5269
+  [OK ] ANCHOR-addressed verdict is UNCHANGED by the insertion                 got=[] want=[]
+   line-number-addressed gate: block found BEFORE insertion = 18 lines; AFTER = 0 lines
+  [OK ] line-number gate WAS correct before the insertion                      got=True want=True
+  [OK ] line-number gate is DESTROYED by the insertion (RULING CV, made visible) got=False want=False
+   ^ that pair IS ruling CV: same question, same draft, one addressing scheme survives.
+
+PART 6. What this gate does NOT check -- stated against the round's interest
+   * it does NOT check that the amended qualifier is TRUE.  That is cert_w133_r27 §1
+     and §5, which certified the agreement and ruled the amendment; this gate checks
+     only that the carrier says what the ruling said it may say.
+   * it does NOT re-verify the §35–§37 enumerations.  w133_r27_reimpl.out did that.
+   * it does NOT bank §27.4's corollary.  Parts (2) and (3) of the corrected
+     three-part discharge condition (cert_w133_r27 §4) are both open: (D3-C6) is
+     unadopted, and the links are still ONE family until Q41 lands.
+
+checks: 35, failures: 0

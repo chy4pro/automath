@@ -1,0 +1,92 @@
+*** REDACTED BY owner-w61 ROUND 34, and the reason is stated rather than hidden ***
+This file was produced by w61_r33_recontrol.py, whose CZ diagnostic printer echoes the
+REAL INSTANCE a gate is blind to.  For the L1/G4-email probes that real instance IS the
+assembled private local-part, so 2 occurrences of it were written into this artifact.
+They are replaced above.  The standing constraint is absolute -- the private local-part
+may not appear in ANY artifact -- and the r33 script violated it while testing the very
+gate that exists to prevent it.  w61_r34_gates.py replaces that printer with a redacting
+one.  SEPARATELY AND NOT REDACTED: this file also prints held-out A-row key values, for
+the same reason.  That is repo-internal and acceptable on the same footing as SS7.48 --
+but like SS7.48, THIS FILE MUST NEVER BE PASTED INTO A BRIEF.
+========================================================================================
+==========================================================================================
+RULING CZ RE-CONTROL -- every gate on the WOWII-61 line, real instance injected
+==========================================================================================
+
+-- round 31 build gates, problems/wowii/w61_r31_build_q41.py ------------------
+  [G1 pattern verified byte-present in w61_r31_build_q41.py]
+  G1 AH1 'reduced to'        r31 build_q41 / S7.13 D strip easy=True  REAL=True   PASS
+  G1 AH1 'reduced to'        r31 build_q41 / S7.25 heading easy=True  REAL=False  **CZ FAIL**
+       REAL INSTANCE THE GATE IS BLIND TO: "C1's general case is **reduced to** an independence-number statement"
+  G1 AH1 'reduced to'        r31 build_q41 / C1-C's own title easy=True  REAL=True   PASS
+  G1 AH1 'reduced to'        r31 build_q41 / papers/body.tex easy=True  REAL=False  **CZ FAIL**
+       REAL INSTANCE THE GATE IS BLIND TO: 'so the general case is **reduced to** a construction problem'
+
+-- round 31 G2 (the AK1 species) vs round 32's repaired G2 -------------------
+  G2 AH3 (r31 version)       r31 build_q41          easy=True  REAL=False  **CZ FAIL**
+       this is Repair AK1, already ruled; re-measured here for the record
+       REAL INSTANCE THE GATE IS BLIND TO: "the one round that closes WOWII-61's S3 surface"
+  G2 AH3 (r32 repaired)      r32 writegate          easy=True  REAL=True   PASS
+  G2 'only thing' (r31)      r31 build_q41          easy=True  REAL=False  **CZ FAIL**
+       the r32 task book's own sentence -- 'standing' interposed
+       REAL INSTANCE THE GATE IS BLIND TO: 'it is the only thing standing between two clean families and a promotion'
+  G2 'only thing' (r32)      r32 writegate          easy=True  REAL=True   PASS
+
+-- round 31 G3, held-out answer leak ----------------------------------------
+  G3 leak, ASCII s0          r31 build_q41          easy=True  REAL=True   PASS
+       trivially passes: identical forms
+  G3 leak, HOUSE notation    r31 build_q41          easy=True  REAL=False  **CZ FAIL**
+       s-subscript-0 is the notation the draft uses THROUGHOUT; bold values likewise
+       REAL INSTANCE THE GATE IS BLIND TO: 's₀((6,4,2)) = **8**'
+  G3 leak, prose form        r31 build_q41          easy=True  REAL=False  **CZ FAIL**
+       REAL INSTANCE THE GATE IS BLIND TO: 's0 of (6,4,2) is 8'
+
+-- round 31 G4, identity / status leak ---------------------------------------
+  G4 email, plain            r31 build_q41          easy=True  REAL=True   PASS
+       trivially passes
+  G4 email, EMPHASISED       r31 build_q41          easy=True  REAL=False  **CZ FAIL**
+       markdown emphasis inside the local part -- the same interposition species as AK1
+       REAL INSTANCE THE GATE IS BLIND TO: 'contact <PRIVATE-LOCAL-PART-REDACTED-r34>@example.invalid'
+  G4 key shape, generic      r31 build_q41          easy=True  REAL=True   PASS
+       trivially passes
+  G4 key shape, REAL vendor  r31 build_q41          easy=True  REAL=False  **CZ FAIL**
+       the ACTUAL Anthropic key prefix: 'ant' is 3 chars before a hyphen, so {8,} fails
+       REAL INSTANCE THE GATE IS BLIND TO: 'token sk-ant-api03-XXXXXXXXXXXX'
+  G4 key shape, OpenRouter   r31 build_q41          easy=True  REAL=False  **CZ FAIL**
+       OR_KEY is this line's own channel
+       REAL INSTANCE THE GATE IS BLIND TO: 'token sk-or-v1-XXXXXXXXXXXXXXXX'
+
+-- round 32 writegate L1 / L2 -------------------------------------------------
+  L1 local-part              r32 writegate          easy=True  REAL=True   PASS
+       trivially passes
+  L1 local-part, EMPHASISED  r32 writegate          easy=True  REAL=False  **CZ FAIL**
+       same interposition species; L1 is a plain substring test
+       REAL INSTANCE THE GATE IS BLIND TO: '<PRIVATE-LOCAL-PART-REDACTED-r34>'
+  L2 key-beside-row          r32 writegate          easy=True  REAL=True   PASS
+       trivially passes
+  L2 key-beside-row, TABLE   r32 writegate          easy=True  REAL=False  **CZ FAIL**
+       the answer spelled as a word -- the form a harvest transcript actually uses
+       REAL INSTANCE THE GATE IS BLIND TO: '| **A1** | s₀((6,4,2)) | correct | the value returned was eight |'
+
+==========================================================================================
+SUMMARY -- gates whose VERDICT CHANGES under a real-instance control
+==========================================================================================
+  controls run : 20 ; CZ FAILURES : 11 ; dead gates : 0
+    CZ FAIL  G1 AH1 'reduced to'        r31 build_q41 / S7.25 heading
+    CZ FAIL  G1 AH1 'reduced to'        r31 build_q41 / papers/body.tex
+    CZ FAIL  G2 AH3 (r31 version)       r31 build_q41
+    CZ FAIL  G2 'only thing' (r31)      r31 build_q41
+    CZ FAIL  G3 leak, HOUSE notation    r31 build_q41
+    CZ FAIL  G3 leak, prose form        r31 build_q41
+    CZ FAIL  G4 email, EMPHASISED       r31 build_q41
+    CZ FAIL  G4 key shape, REAL vendor  r31 build_q41
+    CZ FAIL  G4 key shape, OpenRouter   r31 build_q41
+    CZ FAIL  L1 local-part, EMPHASISED  r32 writegate
+    CZ FAIL  L2 key-beside-row, TABLE   r32 writegate
+
+  NOTE, and it is a limit not a failure: G5 (schema completeness) is a
+  PRESENCE test on tokens and heading numbers.  It cannot be given a 'hardest
+  real instance' of the species it guards, because the species it misses is
+  'every token present, content wrong' -- which no phrase test can reach.
+  Recorded as OUT OF SCOPE FOR CZ rather than passed.
+elapsed 0.0s

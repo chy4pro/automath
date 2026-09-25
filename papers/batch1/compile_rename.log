@@ -1,0 +1,29 @@
+note: Running TeX ...
+warning: main.tex:475: Overfull \hbox (5.35092pt too wide) in paragraph at lines 472--475
+warning: main.tex:718: Overfull \hbox (7.92676pt too wide) in paragraph at lines 707--718
+warning: main.tex:718: Overfull \hbox (3.71317pt too wide) in paragraph at lines 707--718
+warning: main.tex:1279: Overfull \hbox (37.43646pt too wide) in paragraph at lines 1259--1279
+warning: main.tex:1279: Overfull \hbox (10.78293pt too wide) in paragraph at lines 1259--1279
+warning: main.tex:1553: Underfull \hbox (badness 3417) in paragraph at lines 1549--1553
+warning: main.tex:1553: Underfull \hbox (badness 4582) in paragraph at lines 1549--1553
+note: Rerunning TeX because "main.out" changed ...
+warning: main.tex:475: Overfull \hbox (5.35092pt too wide) in paragraph at lines 472--475
+warning: main.tex:718: Overfull \hbox (7.92676pt too wide) in paragraph at lines 707--718
+warning: main.tex:718: Overfull \hbox (3.71317pt too wide) in paragraph at lines 707--718
+warning: main.tex:1279: Overfull \hbox (37.43646pt too wide) in paragraph at lines 1259--1279
+warning: main.tex:1279: Overfull \hbox (10.78293pt too wide) in paragraph at lines 1259--1279
+warning: main.tex:1553: Underfull \hbox (badness 3417) in paragraph at lines 1549--1553
+warning: main.tex:1553: Underfull \hbox (badness 4582) in paragraph at lines 1549--1553
+note: Rerunning TeX because "main.out" changed ...
+warning: main.tex:475: Overfull \hbox (5.35092pt too wide) in paragraph at lines 472--475
+warning: main.tex:718: Overfull \hbox (7.92676pt too wide) in paragraph at lines 707--718
+warning: main.tex:718: Overfull \hbox (3.71317pt too wide) in paragraph at lines 707--718
+warning: main.tex:1279: Overfull \hbox (37.43646pt too wide) in paragraph at lines 1259--1279
+warning: main.tex:1279: Overfull \hbox (10.78293pt too wide) in paragraph at lines 1259--1279
+warning: main.tex:1553: Underfull \hbox (badness 3417) in paragraph at lines 1549--1553
+warning: main.tex:1553: Underfull \hbox (badness 4582) in paragraph at lines 1549--1553
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+warning: Object @table.1 already defined.
+note: Writing `main.pdf` (203.2763671875 KiB)
+note: Skipped writing 2 intermediate files (use --keep-intermediates to keep them)

@@ -1,0 +1,189 @@
+CALIBRATION (printed before all review enumeration)
+  residue(K2) got=1 expected=1 pass=True
+  residue(C3) got=1 expected=1 pass=True
+  residue(C4) got=2 expected=2 pass=True
+  residue(C5) got=2 expected=2 pass=True
+  residue(C6) got=2 expected=2 pass=True
+  residue(C7) got=3 expected=3 pass=True
+  residue(C8) got=3 expected=3 pass=True
+  residue(C9) got=3 expected=3 pass=True
+CALIBRATION PASS
+
+GFAN2 DIRECT REFUTATION ATTEMPT
+  L=4 E=0 lambda=2+2 valid=True steps=5 target=4
+  L=4 E=0 lambda=2+1+1 valid=True steps=5 target=4
+  L=4 E=0 lambda=1+1+1+1 valid=True steps=6 target=4
+  L=5 E=0 lambda=2+2 valid=True steps=6 target=5
+  L=5 E=0 lambda=2+1+1 valid=True steps=6 target=5
+  L=5 E=0 lambda=1+1+1+1 valid=True steps=7 target=5
+  L=8 E=0 lambda=2+2 valid=True steps=9 target=8
+  L=8 E=0 lambda=2+1+1 valid=True steps=9 target=8
+  L=8 E=0 lambda=1+1+1+1 valid=True steps=10 target=8
+  complete L=3 rows
+    E=0 e=empty lambda=4 valid=True steps=3 target=3 FAN6=True
+    E=0 e=empty lambda=3+1 valid=True steps=4 target=3 FAN6=True
+    E=0 e=empty lambda=2+2 valid=True steps=4 target=3 FAN6=False
+    E=0 e=empty lambda=2+1+1 valid=True steps=4 target=3 FAN6=False
+    E=0 e=empty lambda=1+1+1+1 valid=True steps=5 target=3 FAN6=False
+    E=1 e=1 lambda=3 valid=True steps=3 target=3 FAN6=True
+    E=1 e=1 lambda=2+1 valid=True steps=4 target=3 FAN6=False
+    E=1 e=1 lambda=1+1+1 valid=True steps=4 target=3 FAN6=False
+  generated_rows=8 exact-step_survivors=2 un-killed=0
+
+GFANnu FINITE ENUMERATION (generated without printed data)
+  nu=1 s0_rows=2 values=2:2 | 1+1:2
+    tail_exact=1 tail_survivors=2 un-killed=0
+    boundary_pairs=0 survivors=none
+    boundary_survivor_count=0 un-killed=0
+    Epositive tested=0 closed_form=0 terms=[] per_E={}
+    Epositive survivors=0 un-killed=0
+  nu=2 s0_rows=5 values=4:4 | 3+1:4 | 2+2:3 | 2+1+1:3 | 1+1+1+1:3
+    tail_exact=1 tail_survivors=4 un-killed=0
+    boundary_pairs=1 survivors=L3/lambda=4
+    boundary_survivor_count=1 un-killed=0
+    Epositive tested=3 closed_form=3 terms=[3] per_E={1: 3}
+    Epositive survivors=1 un-killed=0
+      L3 E1 e=1 lambda=3 cert=(3,0) kill=True
+  nu=3 s0_rows=11 values=6:6 | 5+1:6 | 4+2:5 | 4+1+1:5 | 3+3:4 | 3+2+1:4 | 3+1+1+1:5 | 2+2+2:4 | 2+2+1+1:4 | 2+1+1+1+1:4 | 1+1+1+1+1+1:4
+    tail_exact=1 tail_survivors=6 un-killed=0
+    boundary_pairs=3 survivors=L5/lambda=6
+    boundary_survivor_count=1 un-killed=0
+    Epositive tested=24 closed_form=24 terms=[14, 10] per_E={1: 14, 2: 10}
+    Epositive survivors=4 un-killed=0
+      L4 E1 e=1 lambda=5 cert=(5,0) kill=True
+      L5 E1 e=1 lambda=5 cert=(5,0) kill=True
+      L4 E2 e=2 lambda=3+1 cert=(3,1) kill=True
+      L4 E2 e=1+1 lambda=4 cert=(4,0) kill=True
+  nu=4 s0_rows=22 values=8:8 | 7+1:8 | 6+2:7 | 6+1+1:7 | 5+3:6 | 5+2+1:6 | 5+1+1+1:7 | 4+4:5 | 4+3+1:5 | 4+2+2:6 | 4+2+1+1:6 | 4+1+1+1+1:6 | 3+3+2:5 | 3+3+1+1:5 | 3+2+2+1:5 | 3+2+1+1+1:5 | 3+1+1+1+1+1:6 | 2+2+2+2:4 | 2+2+2+1+1:5 | 2+2+1+1+1+1:5 | 2+1+1+1+1+1+1:5 | 1+1+1+1+1+1+1+1:5
+    tail_exact=1 tail_survivors=8 un-killed=0
+    boundary_pairs=7 survivors=L7/lambda=8, L5/lambda=7+1
+    boundary_survivor_count=2 un-killed=0
+    Epositive tested=110 closed_form=110 terms=[45, 44, 21] per_E={1: 45, 2: 44, 3: 21}
+    Epositive survivors=9 un-killed=0
+      L6 E1 e=1 lambda=7 cert=(7,0) kill=True
+      L7 E1 e=1 lambda=7 cert=(7,0) kill=True
+      L5 E2 e=2 lambda=5+1 cert=(5,1) kill=True
+      L5 E2 e=1+1 lambda=6 cert=(6,0) kill=True
+      L6 E2 e=2 lambda=5+1 cert=(5,1) kill=True
+      L6 E2 e=1+1 lambda=6 cert=(6,0) kill=True
+      L5 E3 e=3 lambda=3+1+1 cert=(3,1) kill=True
+      L5 E3 e=2+1 lambda=4+1 cert=(4,1) kill=True
+      L5 E3 e=1+1+1 lambda=5 cert=(5,0) kill=True
+  nu=5 s0_rows=42 values=10:10 | 9+1:10 | 8+2:9 | 8+1+1:9 | 7+3:8 | 7+2+1:8 | 7+1+1+1:9 | 6+4:7 | 6+3+1:7 | 6+2+2:8 | 6+2+1+1:8 | 6+1+1+1+1:8 | 5+5:6 | 5+4+1:6 | 5+3+2:7 | 5+3+1+1:7 | 5+2+2+1:7 | 5+2+1+1+1:7 | 5+1+1+1+1+1:8 | 4+4+2:6 | 4+4+1+1:6 | 4+3+3:6 | 4+3+2+1:6 | 4+3+1+1+1:6 | 4+2+2+2:6 | 4+2+2+1+1:7 | 4+2+1+1+1+1:7 | 4+1+1+1+1+1+1:7 | 3+3+3+1:5 | 3+3+2+2:5 | 3+3+2+1+1:6 | 3+3+1+1+1+1:6 | 3+2+2+2+1:6 | 3+2+2+1+1+1:6 | 3+2+1+1+1+1+1:6 | 3+1+1+1+1+1+1+1:7 | 2+2+2+2+2:5 | 2+2+2+2+1+1:5 | 2+2+2+1+1+1+1:6 | 2+2+1+1+1+1+1+1:6 | 2+1+1+1+1+1+1+1+1:6 | 1+1+1+1+1+1+1+1+1+1:6
+    tail_exact=1 tail_survivors=10 un-killed=0
+    boundary_pairs=14 survivors=L9/lambda=10, L7/lambda=9+1
+    boundary_survivor_count=2 un-killed=0
+    Epositive tested=397 closed_form=397 terms=[120, 132, 90, 55] per_E={1: 120, 2: 132, 3: 90, 4: 55}
+    Epositive survivors=20 un-killed=0
+      L6 E1 e=1 lambda=8+1 cert=(8,1) kill=True
+      L8 E1 e=1 lambda=9 cert=(9,0) kill=True
+      L9 E1 e=1 lambda=9 cert=(9,0) kill=True
+      L6 E2 e=2 lambda=7+1 cert=(7,1) kill=True
+      L7 E2 e=2 lambda=7+1 cert=(7,1) kill=True
+      L7 E2 e=1+1 lambda=8 cert=(8,0) kill=True
+      L8 E2 e=2 lambda=7+1 cert=(7,1) kill=True
+      L8 E2 e=1+1 lambda=8 cert=(8,0) kill=True
+      L6 E3 e=3 lambda=5+1+1 cert=(5,1) kill=True
+      L6 E3 e=2+1 lambda=6+1 cert=(6,1) kill=True
+      L6 E3 e=1+1+1 lambda=7 cert=(7,0) kill=True
+      L7 E3 e=3 lambda=5+1+1 cert=(5,1) kill=True
+      L7 E3 e=2+1 lambda=6+1 cert=(6,1) kill=True
+      L7 E3 e=1+1+1 lambda=7 cert=(7,0) kill=True
+      L6 E4 e=4 lambda=3+1+1+1 cert=(3,1) kill=True
+      L6 E4 e=3+1 lambda=4+1+1 cert=(4,1) kill=True
+      L6 E4 e=2+2 lambda=4+2 cert=(4,2) kill=True
+      L6 E4 e=2+2 lambda=4+1+1 cert=(4,1) kill=True
+      L6 E4 e=2+1+1 lambda=5+1 cert=(5,1) kill=True
+      L6 E4 e=1+1+1+1 lambda=6 cert=(6,0) kill=True
+  nu=6 s0_rows=77 values=12:12 | 11+1:12 | 10+2:11 | 10+1+1:11 | 9+3:10 | 9+2+1:10 | 9+1+1+1:11 | 8+4:9 | 8+3+1:9 | 8+2+2:10 | 8+2+1+1:10 | 8+1+1+1+1:10 | 7+5:8 | 7+4+1:8 | 7+3+2:9 | 7+3+1+1:9 | 7+2+2+1:9 | 7+2+1+1+1:9 | 7+1+1+1+1+1:10 | 6+6:7 | 6+5+1:7 | 6+4+2:8 | 6+4+1+1:8 | 6+3+3:8 | 6+3+2+1:8 | 6+3+1+1+1:8 | 6+2+2+2:8 | 6+2+2+1+1:9 | 6+2+1+1+1+1:9 | 6+1+1+1+1+1+1:9 | 5+5+2:7 | 5+5+1+1:7 | 5+4+3:7 | 5+4+2+1:7 | 5+4+1+1+1:7 | 5+3+3+1:7 | 5+3+2+2:7 | 5+3+2+1+1:8 | 5+3+1+1+1+1:8 | 5+2+2+2+1:8 | 5+2+2+1+1+1:8 | 5+2+1+1+1+1+1:8 | 5+1+1+1+1+1+1+1:9 | 4+4+4:6 | 4+4+3+1:6 | 4+4+2+2:6 | 4+4+2+1+1:7 | 4+4+1+1+1+1:7 | 4+3+3+2:6 | 4+3+3+1+1:7 | 4+3+2+2+1:7 | 4+3+2+1+1+1:7 | 4+3+1+1+1+1+1:7 | 4+2+2+2+2:7 | 4+2+2+2+1+1:7 | 4+2+2+1+1+1+1:8 | 4+2+1+1+1+1+1+1:8 | 4+1+1+1+1+1+1+1+1:8 | 3+3+3+3:6 | 3+3+3+2+1:6 | 3+3+3+1+1+1:6 | 3+3+2+2+2:6 | 3+3+2+2+1+1:6 | 3+3+2+1+1+1+1:7 | 3+3+1+1+1+1+1+1:7 | 3+2+2+2+2+1:6 | 3+2+2+2+1+1+1:7 | 3+2+2+1+1+1+1+1:7 | 3+2+1+1+1+1+1+1+1:7 | 3+1+1+1+1+1+1+1+1+1:8 | 2+2+2+2+2+2:6 | 2+2+2+2+2+1+1:6 | 2+2+2+2+1+1+1+1:6 | 2+2+2+1+1+1+1+1+1:7 | 2+2+1+1+1+1+1+1+1+1:7 | 2+1+1+1+1+1+1+1+1+1+1:7 | 1+1+1+1+1+1+1+1+1+1+1+1:7
+    tail_exact=1 tail_survivors=12 un-killed=0
+    boundary_pairs=26 survivors=L11/lambda=12, L9/lambda=11+1, L7/lambda=10+1+1
+    boundary_survivor_count=3 un-killed=0
+    Epositive tested=1211 closed_form=1211 terms=[280, 336, 270, 220, 105] per_E={1: 280, 2: 336, 3: 270, 4: 220, 5: 105}
+    Epositive survivors=38 un-killed=0
+      L8 E1 e=1 lambda=10+1 cert=(10,1) kill=True
+      L10 E1 e=1 lambda=11 cert=(11,0) kill=True
+      L11 E1 e=1 lambda=11 cert=(11,0) kill=True
+      L7 E2 e=1+1 lambda=9+1 cert=(9,1) kill=True
+      L8 E2 e=2 lambda=9+1 cert=(9,1) kill=True
+      L9 E2 e=2 lambda=9+1 cert=(9,1) kill=True
+      L9 E2 e=1+1 lambda=10 cert=(10,0) kill=True
+      L10 E2 e=2 lambda=9+1 cert=(9,1) kill=True
+      L10 E2 e=1+1 lambda=10 cert=(10,0) kill=True
+      L7 E3 e=3 lambda=7+1+1 cert=(7,1) kill=True
+      L7 E3 e=2+1 lambda=8+1 cert=(8,1) kill=True
+      L8 E3 e=3 lambda=7+1+1 cert=(7,1) kill=True
+      L8 E3 e=2+1 lambda=8+1 cert=(8,1) kill=True
+      L8 E3 e=1+1+1 lambda=9 cert=(9,0) kill=True
+      L9 E3 e=3 lambda=7+1+1 cert=(7,1) kill=True
+      L9 E3 e=2+1 lambda=8+1 cert=(8,1) kill=True
+      L9 E3 e=1+1+1 lambda=9 cert=(9,0) kill=True
+      L7 E4 e=4 lambda=5+1+1+1 cert=(5,1) kill=True
+      L7 E4 e=3+1 lambda=6+1+1 cert=(6,1) kill=True
+      L7 E4 e=2+2 lambda=6+2 cert=(6,2) kill=True
+      L7 E4 e=2+2 lambda=6+1+1 cert=(6,1) kill=True
+      L7 E4 e=2+1+1 lambda=7+1 cert=(7,1) kill=True
+      L7 E4 e=1+1+1+1 lambda=8 cert=(8,0) kill=True
+      L8 E4 e=4 lambda=5+1+1+1 cert=(5,1) kill=True
+      L8 E4 e=3+1 lambda=6+1+1 cert=(6,1) kill=True
+      L8 E4 e=2+2 lambda=6+2 cert=(6,2) kill=True
+      L8 E4 e=2+2 lambda=6+1+1 cert=(6,1) kill=True
+      L8 E4 e=2+1+1 lambda=7+1 cert=(7,1) kill=True
+      L8 E4 e=1+1+1+1 lambda=8 cert=(8,0) kill=True
+      L7 E5 e=5 lambda=3+1+1+1+1 cert=(3,1) kill=True
+      L7 E5 e=4+1 lambda=4+1+1+1 cert=(4,1) kill=True
+      L7 E5 e=3+2 lambda=4+2+1 cert=(4,2) kill=True
+      L7 E5 e=3+2 lambda=4+1+1+1 cert=(4,1) kill=True
+      L7 E5 e=3+1+1 lambda=5+1+1 cert=(5,1) kill=True
+      L7 E5 e=2+2+1 lambda=5+2 cert=(5,2) kill=True
+      L7 E5 e=2+2+1 lambda=5+1+1 cert=(5,1) kill=True
+      L7 E5 e=2+1+1+1 lambda=6+1 cert=(6,1) kill=True
+      L7 E5 e=1+1+1+1+1 lambda=7 cert=(7,0) kill=True
+  TOTAL Epositive tested=1745 survivors=72 un-killed=0
+
+SPECIFICATION CONTROLS
+  TAIL direct_pairs=1817 mismatches=0
+  zero-padding base_lists=2709 paddings=7 pairs=18963 mismatches=0
+  empty-residue boundary
+    L=1 valid=True steps=1 residue=1
+    L=2 valid=True steps=2 residue=1
+    L=3 valid=True steps=3 residue=1
+    L=4 valid=True steps=4 residue=1
+    L=5 valid=True steps=5 residue=1
+    L=6 valid=True steps=6 residue=1
+  single-part FAN-6 convention
+    lambda=[1] second=0 kill=False
+    lambda=[2] second=0 kill=True
+    lambda=[3] second=0 kill=True
+    lambda=[4] second=0 kill=True
+    lambda=[5] second=0 kill=True
+    lambda=[6] second=0 kill=True
+
+CONSTRUCTION AND QUANTIFIER CONTROLS
+  nu=0 extension counterexample: K5 as GFan(4,4,0)
+    vertices=['a0', 'b0', 'b1', 'b2', 'b3']
+    edges=[('a0', 'b0'), ('a0', 'b1'), ('a0', 'b2'), ('a0', 'b3'), ('b0', 'b1'), ('b0', 'b2'), ('b0', 'b3'), ('b1', 'b2'), ('b1', 'b3'), ('b2', 'b3')]
+    connected=True
+    A=['a0'] independent=True maximum_by_exhaustive_enumeration=True alpha=1 one_maximum=['a0']
+    diameter=1
+    forest_number=2 f_eq_alpha_plus_1=True
+    nonforest=True
+    degrees=[4, 4, 4, 4, 4] HH_valid=True HH_steps=4 residue=1 residue_eq_alpha=True
+    GFan_check={'tau': 4, 'L': 4, 'nu': 0, 'low_universal': True, 'low_degA_1': True, 'common_a0_allB': True, 'nonedges_inside_high': True, 'high_condition': True, 'low_condition': True, 'no_Aprime_low': True, 'all': True}
+  counterfactual GFan(6,3,2) violating residue=alpha
+    vertices=['a0', 'x1', 'x2', 'x3', 'x4', 'b0', 'b1', 'b2', 'h0', 'h1', 'h2']
+    edges=[('a0', 'b0'), ('a0', 'b1'), ('a0', 'b2'), ('a0', 'h0'), ('a0', 'h1'), ('a0', 'h2'), ('x1', 'h0'), ('x1', 'h1'), ('x1', 'h2'), ('x2', 'h0'), ('x2', 'h2'), ('x3', 'h0'), ('x4', 'h1'), ('b0', 'b1'), ('b0', 'b2'), ('b0', 'h0'), ('b0', 'h1'), ('b0', 'h2'), ('b1', 'b2'), ('b1', 'h0'), ('b1', 'h1'), ('b1', 'h2'), ('b2', 'h0'), ('b2', 'h1'), ('b2', 'h2'), ('h1', 'h2')]
+    connected=True
+    A=['a0', 'x1', 'x2', 'x3', 'x4'] independent=True maximum_by_exhaustive_enumeration=True alpha=5 one_maximum=['a0', 'x1', 'x2', 'x3', 'x4']
+    diameter=4
+    forest_number=6 f_eq_alpha_plus_1=True
+    nonforest=True
+    degrees=[6, 3, 2, 1, 1, 6, 6, 6, 7, 7, 7] HH_valid=True HH_steps=8 residue=3 residue_eq_alpha=False
+    GFan_check={'tau': 6, 'L': 3, 'nu': 2, 'low_universal': True, 'low_degA_1': True, 'common_a0_allB': True, 'nonedges_inside_high': True, 'high_condition': True, 'low_condition': True, 'no_Aprime_low': True, 'all': True}
+  boundary search for GFan(*,L,2), L in {1,2}
+    L=1 candidates_checked=8232 found=False
+      no instance found in p=3, |A'| in {3,4} search box
+    L=2 candidates_checked=8232 found=False
+      no instance found in p=3, |A'| in {3,4} search box
+
+CHECKER VERDICT: finite GFAN2/GFANnu shape searches found no un-killed survivor.

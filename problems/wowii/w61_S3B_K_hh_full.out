@@ -1,0 +1,11 @@
+[A exhaustive n<=7 (atlas)] graphs=995 traces=4975 res=alpha:554  fails=0
+[C structured families] graphs=151 traces=755 res=alpha:55  fails=0
+[D random n=8..13] graphs=6000 traces=30000 res=alpha:805  fails=0
+[B exhaustive n=8 cover] graphs=108331 traces=541655 res=alpha:35554  fails=0
+
+TOTAL fails  = ALL ZERO
+TOTAL counts = {'graphs': 115477, 'traces': 577385, 'res_eq_alpha': 36968, 'hyp_i': 18860, 'ThmK_hits': 7470, 'ThmK_clique': 7470, 'CorK1_hits': 840, 'N2patch_hits': 90, 'N2raw_hits': 850, 'N2raw_fails': 760, 'ctrlA_hits': 3133735, 'ctrlA_fails': 1337715, 'CNTnomin_fails': 108346, 'DICHb_hits': 288185, 'DICHc_hits': 2845550, 'Zplus_hits': 140005, 'diam4': 8101}
+
+WITNESS[CNTnomin] E=[(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)] tau=5 hs=10 m=15 Delta=5 bad=55 closed=4
+WITNESS[N2raw] E=[(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4)] A=[2, 3, 4] tau=2 m=6 Delta=3
+WITNESS[ctrlA] degseq=[2, 2, 2, 2] heads=[2, 2]

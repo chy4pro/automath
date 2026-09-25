@@ -1,0 +1,100 @@
+==============================================================================
+r4_alt.py  --  ROUND 4, zc1a7
+==============================================================================
+
+JOB 1 -- CONTROL: ordinary character table of A_7 on rational classes,
+         obtained as the Brauer table at p = 11 (11 does not divide |A_7| =
+         2520, so F_11 A_7 is semisimple and its Brauer characters are the
+         ordinary characters).  THIRD independent derivation.
+   |A_7| = 2520, 9 conjugacy classes, cycle types [(1, 1, 1, 1, 1, 1, 1), (2, 2, 1, 1, 1), (3, 3, 1), (3, 1, 1, 1, 1), (4, 2, 1), (5, 1, 1), (3, 2, 2), (7,), (7,)]
+   rational classes: [(1, 1, 1, 1, 1, 1, 1), (2, 2, 1, 1, 1), (3, 3, 1), (3, 1, 1, 1, 1), (4, 2, 1), (5, 1, 1), (3, 2, 2)]
+   p=11  9 p-regular classes; Berman orbit count (g -> g^p) = 9
+   p=11  9 absolutely irreducible Brauer characters, degrees [1, 6, 10, 10, 14, 14, 15, 21, 35]
+         completeness: sum_S dim End(S) = 9 = #{p-regular classes}  OK
+   (deg, chi(2a), chi(4a)) from p=11 : [(1, 1, 1), (6, 2, 0), (10, -2, 0), (10, -2, 0), (14, 2, 0), (14, 2, 0), (15, -1, -1), (21, 1, -1), (35, -1, 1)]
+   r1/r2 table (Murnaghan-Nakayama)  : [(1, 1, 1), (6, 2, 0), (10, -2, 0), (10, -2, 0), (14, 2, 0), (14, 2, 0), (15, -1, -1), (21, 1, -1), (35, -1, 1)]
+   MATCH.  Control passed.
+
+==============================================================================
+JOB 2 -- A_6, the transfer site
+==============================================================================
+   |A_6| = 360, 7 classes, cycle types [(1, 1, 1, 1, 1, 1), (2, 2, 1, 1), (3, 1, 1, 1), (3, 3), (4, 2), (5, 1), (5, 1)]
+   rational classes: [(1, 1, 1, 1, 1, 1), (2, 2, 1, 1), (3, 1, 1, 1), (3, 3), (4, 2)]
+   |2a| = 45, |4a| = 90
+   A_6 has exactly ONE class of involutions (1 classes of order 2) and ONE
+   class of elements of order 4 (1).
+
+   THE FUSION (computed, not assumed): embed A_6 in A_7 as the stabiliser of
+   the point 7.  Cycle types are preserved with a fixed point added.
+      A_6 (2,2)   -> A_7 (2,2,1,1,1) = 2a
+      A_6 (4,2)   -> A_7 (4,2,1)     = 4a
+   so eps^{A_7}_{2a}(u) = eps^{A_6}_{2a}(u) and eps^{A_7}_{4a}(u) = eps^{A_6}_{4a}(u)
+   for any u in Z A_6, because 2a and 4a each receive exactly ONE A_6-class
+   and no other A_6-class of 2-power order exists.
+
+   ordinary table of A_6 on rational classes, via p = 7 (7 does not divide 360):
+   p=7   7 p-regular classes; Berman orbit count (g -> g^p) = 6
+   p=7   6 absolutely irreducible Brauer characters, degrees [1, 5, 5, 8, 9, 10]
+         completeness: sum_S dim End(S) = 7 = #{p-regular classes}  OK
+      ord deg 1    chi(2a)=1   chi(4a)=1    blind
+      ord deg 5    chi(2a)=1   chi(4a)=-1   DISTINGUISHES
+      ord deg 5    chi(2a)=1   chi(4a)=-1   DISTINGUISHES
+      ord deg 8    chi(2a)=0   chi(4a)=0    blind
+      ord deg 9    chi(2a)=1   chi(4a)=1    blind
+      ord deg 10   chi(2a)=-2  chi(4a)=0    DISTINGUISHES
+
+   complete modular Brauer tables of A_6 at the ADMISSIBLE primes 3 and 5
+   (p must not divide |u| = 4):
+   p=3   5 p-regular classes; Berman orbit count (g -> g^p) = 4
+   p=3   4 absolutely irreducible Brauer characters, degrees [1, 3, 4, 9]
+         completeness: sum_S dim End(S) = 5 = #{p-regular classes}  OK
+   p=5   5 p-regular classes; Berman orbit count (g -> g^p) = 5
+   p=5   5 absolutely irreducible Brauer characters, degrees [1, 5, 5, 8, 10]
+         completeness: sum_S dim End(S) = 5 = #{p-regular classes}  OK
+      3-mod deg 1    phi(2a)=1   phi(4a)=1    blind
+      3-mod deg 4    phi(2a)=0   phi(4a)=-2   DISTINGUISHES
+      3-mod deg 9    phi(2a)=1   phi(4a)=1    blind
+      3-mod deg 3    phi(2a)=-1  phi(4a)=1    DISTINGUISHES
+      5-mod deg 1    phi(2a)=1   phi(4a)=1    blind
+      5-mod deg 5    phi(2a)=1   phi(4a)=-1   DISTINGUISHES
+      5-mod deg 8    phi(2a)=0   phi(4a)=0    blind
+      5-mod deg 5    phi(2a)=1   phi(4a)=-1   DISTINGUISHES
+      5-mod deg 10   phi(2a)=-2  phi(4a)=0    DISTINGUISHES
+
+   HeLP for |u| = 4 in V(Z A_6) / V(Z_2 A_6), eps_2a = t, eps_4a = 1-t:
+      t  | ordinary only | +cong(p=2) | + 3-,5-modular
+     ----+---------------+------------+----------------
+      -4 | killed(3)     | -          | -
+      -3 | killed(3)     | -          | -
+      -2 | killed(2)     | -          | -
+      -1 | SURVIVES      | killed     | -
+       0 | SURVIVES      | SURVIVES   | SURVIVES
+       1 | SURVIVES      | killed     | -
+       2 | SURVIVES      | SURVIVES   | killed by 3-mod deg 3 mu_0=-1
+       3 | killed(3)     | -          | -
+       4 | killed(3)     | -          | -
+
+   ==> 2-LOCAL admissible set for |u|=4 in V(Z_2 A_6):  t in [0, 2]
+   ==> GLOBAL admissible set for |u|=4 in V(Z A_6):     t in [0]
+
+   INTERPRETATION (this is the point of JOB 2):
+      (2,-1) is killed GLOBALLY for A_6 by: 3-mod deg 3 mu_0=-1
+      but it SURVIVES 2-localisation (the killer is an odd-p Brauer
+      character, which a unit of V(Z_2 A_6) does not have to satisfy).
+      ==> the A_6 analogue of the ROUND-4 QUESTION IS OPEN TOO, in a group
+          where (ZC1) is a THEOREM.  A_6 is NOT excluded as a construction
+          site by HeLP.
+
+   CONTROLS for JOB 2
+     positive: t = 0 (a genuine g in 4a) must survive everything: OK
+     rejection: t = 3, 4, -3, -4 must be killed by ordinary characters alone:
+        t=  3 killed by 3 ordinary inequalities, e.g. ord deg 5 mu_2=-1
+        t=  4 killed by 3 ordinary inequalities, e.g. ord deg 5 mu_2=-2
+        t= -3 killed by 3 ordinary inequalities, e.g. ord deg 5 mu_0=-2
+        t= -4 killed by 3 ordinary inequalities, e.g. ord deg 5 mu_0=-3
+     rejection: t = 1, -1 must be ordinary-admissible but killed by the
+                p = 2 congruence:
+        t=  1 OK
+        t= -1 OK
+
+done.

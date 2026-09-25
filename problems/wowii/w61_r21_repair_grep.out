@@ -1,0 +1,85 @@
+=== owner-w61 ROUND 21 CLOSING GREP -- run AFTER 7.36 was appended (RW61-4 as amended) ===
+Sat Aug 22 22:28:27 CDT 2026
+
+draft: notes/proofs/wowii61_draft.md              563503 bytes /     7939 lines
+brief: prompts/w61_S3_GFAN_r20.md                 102422 bytes   md5=6fc6cc062028496e36661fbef66907d3
+       sha256=1dde17a46a1c855798c9bbfaab207962d102987eb4c7176568016ade432cdbe3
+
+--- [1] dispatched brief IDENTITY is unchanged by this round (md5 and sha must match r20) ---
+  md5 must be 6fc6cc062028496e36661fbef66907d3 : 6fc6cc062028496e36661fbef66907d3
+  sha must be 1dde17a46a1c855798c9bbfaab207962d102987eb4c7176568016ade432cdbe3
+           is 1dde17a46a1c855798c9bbfaab207962d102987eb4c7176568016ade432cdbe3
+
+--- [2] r18 base brief UNTOUCHED (family-1 lineage; md5 must be 3a2c17cb1a3a45cd741ae63cad35de3f) ---
+  r18 md5 : 3a2c17cb1a3a45cd741ae63cad35de3f
+
+--- [3] the STALE dispatch identity table is repaired (each must be as annotated) ---
+  '95 414' bare, unannotated, in dispatch record : 1  (expect 1, inside the CORRECTED cell)
+  '6fc6cc06' present in dispatch identity table  : 1
+  'CORRECTED r21' markers                        : 4
+  dispatch record self-consistent on bytes       : 3
+
+--- [4] held-out answers still absent from the dispatched brief (each must be ZERO) ---
+  98384        : 0
+  98 384       : 0
+  791          : 0
+  131          : 0
+  1002         : 0
+  1 002        : 0
+  s0(\[12+6+4\]) : 0
+
+--- [5] the EXECUTION-ENVIRONMENT template lines are OURS, not a judge claim (both must be >=1 in the BRIEF) ---
+25:* `EXECUTION ENVIRONMENT: I ran code. <name the language/runtime>.`
+26:* `EXECUTION ENVIRONMENT: I did NOT run code. Everything below is hand-derived.`
+  'Python 3' anywhere in the brief (must be ZERO -- the runtime token in the r20 title signal is NOT ours) : 0
+
+--- [6] 7.36 present and last section of the draft ---
+6929:## §7.34 owner-w61 round 19: **Q36 HARVESTED — OPS-8 DISCHARGED FROM THE SERVER STORE: the send DID split, and BOTH panes are `Qwen3.8-Max`, so this is two samples of ONE family. `Response 2` is VOID on a wrong `H5` (stated `17`, truth `16`, settled by an independent reimplementation). `Response 1` passes the void gate 3/3-hand + 2 pre-registered `CANNOT COMPUTE` and returns **GAP / zero mathematics defects**, with J-SPEC CLEAN on the merits. NO family 2 this round** (2026-08-22, 21:1x–21:5x CDT)
+7306:## §7.35 owner-w61 round 20: **Q37 BUILT AND DISPATCHED TO GEMINI WEB — the fourth family, and the first time this seat has ever judged. RULING Q's brief pass ran on its first round and returned 6 real findings, one of them a stale-version defect three previous greps did not contain and one of them my own new rubric steering the verdict. AC5/AC6 landed with the two new builder asserts SHOWN LIVE against the very artifact that motivated them. OPS-6 discharged by WHOLE-DOCUMENT SHA-256. OPS-8 at this site is UNSOLVED and that is stated before the harvest, not after. The RULING L sweep owed from r19 is DONE and found one genuine self-satisfied invariant** (2026-08-22, 21:4x–22:0x CDT)
+7677:## §7.36 owner-w61 round 21: **Q37 HARVESTED — the FIRST CODE-RUNNING JUDGE this text has ever had, and the execution claim is CORROBORATED BY THREE THINGS BEYOND ITS OWN ASSERTION: a site-rendered `Code output` panel, its verbatim Python, and that Python RE-RUN ON OUR MACHINE reproducing the key. The void gate passes `5/5` — including **both** NON-HAND rows, `H3 = 791` with its full ten-entry per-`E` split and `H4 = 131`, the first time any judge has computed them. Theorem GFANν takes a per-statement `CLEAN`; Corollary GFANν-HC takes a `GAP` on a MATHEMATICS defect that is NOT completeness. Rubric 2b got its chance and returned nothing. The r20 "code-running" pre-harvest signal is RETIRED anyway — instrumented, it emitted BOTH answers** (2026-08-22, 22:0x–22:4x CDT)
+
+--- [7] AC4 class sweep: '480' in the DISPATCHED brief (must be ZERO) ---
+0
+
+--- [8] duplicated '(C-8)' heading in the dispatched brief (must be 1) ---
+1
+
+--- [9] no per-message attribution claim is written anywhere in the draft (must be ZERO) ---
+  'per-message attribution established' : 0
+  'Gemini has no A/B'                   : 1
+  'no A/B feature'                      : 1
+
+--- [10] the RULING AC strength sentence is present VERBATIM in 7.36 (must be >=1) ---
+1
+
+--- [11] the harvest artifact exists and carries its provenance digest ---
+  bytes : 10608
+  in-page sha recorded in the file : 1
+  same sha recorded in the draft    : 1
+  fidelity caveat present (NOT byte-verified) : 1
+
+--- [12] the judge's non-held-out figures ARE in the brief (each must be >=1) ---
+  '77 373' in brief : 2
+  '427'    in brief : 1
+
+--- [13] no held-out ANSWER leaked into the brief, re-checked after the harvest (each ZERO) ---
+  98384    : 0
+  791      : 0
+  131      : 0
+
+--- [14] 7.36 does NOT claim the r20 title signal was a hit (must be >=1 for the retirement wording) ---
+  'is not being scored as a hit' : 1
+
+--- [15] OPS-11 is registered once and does not collide ---
+  OPS-11 headings in web_model_ops : 1
+  OPS-10 headings in web_model_ops : 1
+
+=== READING OF CHECK [9], since it returns 1 and 1 rather than 0 and 0 ===
+Both hits are the SAME line, draft 7749:
+  "RULING Y nothing here asserts that Gemini has no A/B feature. Nine selectors returned zero;"
+That is the sentence FORBIDDING the claim, not the claim. This is the disclosed regress
+recorded in §7.35 (i): writing the prohibition into the draft creates a grep site for the
+prohibited string by the same standard that clears the historical lines. Recorded rather
+than chased -- rewording it to dodge the grep would weaken the prohibition to protect the
+check, which is backwards. Check [9]'s ZERO-tolerance line is 'per-message attribution
+established', which returns 0 as required.

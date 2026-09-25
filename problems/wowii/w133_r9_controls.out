@@ -1,0 +1,36 @@
+=== CONTROL A: Petersen (Kneser K(5,2)) — Q15's control ===
+  [OK ] Petersen edges: got 15, expected 15
+  [OK ] Petersen C4-free: got True, expected True
+  [OK ] Petersen triangle-free: got False, expected False
+  [OK ] Petersen rad: got 2, expected 2
+  [OK ] Petersen diam: got 2, expected 2
+  [OK ] Petersen l = mean a(v): got 3.0, expected 3.0
+  [OK ] Petersen path (vertices) [Q15 claims 5]: got 5, expected 5
+=== CONTROL B: STS(15)=PG(3,2) point-line incidence graph — Q16's control ===
+  [OK ] STS(15) block count: got 35, expected 35
+  [OK ] STS incidence n: got 50, expected 50
+  [OK ] STS incidence C4-free: got True, expected True
+  [OK ] STS incidence triangle-free (bipartite): got False, expected False
+  [OK ] a(point) set [Q16 claims 7]: got {7}, expected {7}
+  [OK ] a(block) set [Q16 claims 3]: got {3}, expected {3}
+  [OK ] Sum a(v) [Q16 claims 210]: got 210, expected 210
+  [OK ] l = S/n [Q16 claims 4.2]: got 4.2, expected 4.2
+  [OK ] STS rad [Q16 claims 3]: got 3, expected 3
+  [OK ] STS diam [Q16 claims 4]: got 4, expected 4
+  [OK ] point eccentricities: got {3}, expected {3}
+  [OK ] block eccentricities: got {4}, expected {4}
+  [OK ] mu = min a [Q16 claims 3]: got 3, expected 3
+  [INFO] STS(15) induced path >= 12 (search capped at 12); Q16 claims >= 9 > rad+4 = 7
+  [OK ] STS path >= 9 (Q16's claim): got True, expected True
+=== TOTAL FAILURES (controls A+B): 0 ===
+=== NON-VACUITY WITNESS for Q15's theorem: PG(2,3) incidence graph ===
+  [OK ] PG(2,3) n: got 26, expected 26
+  [OK ] PG(2,3) 4-regular: got {4}, expected {4}
+  [OK ] PG(2,3) C4-free: got True, expected True
+  [OK ] PG(2,3) triangle-free: got False, expected False
+  [OK ] PG(2,3) rad: got 3, expected 3
+  [OK ] PG(2,3) diam D: got 3, expected 3
+  [OK ] PG(2,3) l = 4 > 3: got 4.0, expected 4.0
+  [INFO] PG(2,3) induced path >= 9; Q15's theorem demands >= D+4 = 7
+  [OK ] Q15 theorem conclusion holds on witness: got True, expected True
+=== TOTAL FAILURES (incl. appendix): 0 ===

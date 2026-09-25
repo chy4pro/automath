@@ -1,0 +1,11 @@
+impl-1 (round-17 primitives, re-driven) : 791 survivor rows, per-E {1: 6, 2: 14, 3: 21, 4: 35, 5: 47, 6: 85, 7: 110, 8: 155, 9: 170, 10: 148}
+impl-2 (round-22 spec-only helper)      : 791 survivor rows
+impl-1 duplicate rows : 0
+impl-2 duplicate rows : 0
+
+IN impl-1 NOT IN impl-2 : 0
+IN impl-2 NOT IN impl-1 : 0
+
+ORDERED IDENTITY (sorted lists equal) : True
+TWO-WAY DIFF CLEAN : True
+elapsed 2.81s

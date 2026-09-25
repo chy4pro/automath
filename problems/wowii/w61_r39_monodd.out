@@ -1,0 +1,67 @@
+====================================================================================================
+w61 r39 ITEM 2 -- the ODD-sum half of (MON): the half r38 leaves open
+====================================================================================================
+
+[0] CONTROLS -- fired on the feature, before any verdict (RULING CZ')
+   known-value  residue(M((5,4,3)))          = 2          expect 2          OK
+   known-value  [1,1,0,0] boundary           = (1, 3)     expect (1, 3)     OK
+   known-value  W+(2)u[2] boundary           = 3          expect 3          OK
+   known-value  W-(3)u[2] boundary           = 3          expect 3          OK
+   known-value  f(1^5)  (C1-U: ceil(5/2)+2)  = 5          expect 5          OK
+   known-value  MUST_ABORT inputs aborting   = 4          expect 4          OK
+   TOOL CONTROL  residue is a trajectory invariant: 119 lists, 0 violations
+   CORRUPT: 'step COUNT is also invariant' is violated      hits=34       OK
+
+[1] MON-ODD ISOLATED AS A LIST STATEMENT -- and it has TWO shapes, not one
+    r38 [5] describes shape S1 only.  Raising a part can also move the MAXIMUM,
+    and then the head block changes SIZE, not just parity branch.
+   population: 4073 MON instances with sum(T) ODD, over partitions T with sum(T) <= 18
+   S1_head_parity_flip    n=3057    delta = f(T)-f(T+e_i) histogram {0: 2473, 1: 584}
+   S2_max_rises           n=1016    delta = f(T)-f(T+e_i) histogram {0: 836, 1: 180}
+   violations of 0 <= delta <= 1, BY SHAPE, with the exclusion list beside each:
+      S1_head_parity_flip    violations=0     exclusions: none (all terminating instances counted); list=[]
+      S2_max_rises           violations=0     exclusions: none (all terminating instances counted); list=[]
+   CORRUPT: 'delta is always 0' is violated                 hits=764      OK
+   S1 pairs whose difference IS 'raise two entries by 1' (r38's (UP2) shape): 709 of 709
+
+[2] ABSORPTION -- residue is a trajectory invariant, so step BOTH lists in lockstep
+    and ask at which step the (UP2) difference becomes something (RH) already covers.
+   S1 pairs stepped in lockstep: 709   (all with sum(T) <= 14)
+   first step at which the difference is EQ / UNIT_DOWN / DOM (an (RH)-covered shape):
+      by relation: {'EQ': 500, 'RAN_OUT': 158, 'UNIT_DOWN': 51}
+      by step index: {'step=11': 3, 'step=2': 83, 'step=3': 120, 'step=4': 141, 'step=5': 97, 'step=6': 48, 'step=7': 39, 'step=8': 7, 'step=9': 13}
+   pairs that never absorb before a trajectory ends: 158
+   CROSS-TAB (absorption relation, delta = f(T)-f(T+e_i)): {('EQ', 0): 500, ('RAN_OUT', 1): 158, ('UNIT_DOWN', 0): 51}
+   the non-absorbing pairs, at the state where a trajectory ended
+   (state_A, state_B, step, relation, res_A, res_B, delta) -- first 4 of 158:
+      ((0, 0, 0), (1, 1, 0), 5, 'UP2', 3, 2, 1)
+      ((0, 0, 0), (1, 1, 0), 4, 'UP2', 3, 2, 1)
+      ((0, 0, 0), (1, 1, 0), 7, 'UP2', 3, 2, 1)
+      ((0, 0, 0, 0), (1, 1, 0, 0), 6, 'UP2', 4, 3, 1)
+   non-absorbing pairs by (relation at the end, delta): {('UP2', 1): 158}
+   non-absorbing pairs where res_B <= res_A anyway: 158 of 158
+   CORRUPT: 'the pair is already (RH)-shaped at step 0' is violated hits=551      OK
+   [2b] CANDIDATE LEMMA (C1-W): inside the head-block family the difference is
+        STEP-INVARIANT -- every state pair is EQ or again a 'raise two by 1' pair.
+        state pairs examined: 6469   breaks of the invariant: 0 []
+        terminal signature of the pairs that never merge: {('EQ', (0, 0, 0), (0, 0, 0)): 0, ('UP2', (0, 0, 0), (1, 1, 0)): 0, ('A all zeros', 'B = 1,1,0^r'): 158, ('EQ', (0, 0, 0, 0), (0, 0, 0, 0)): 0, ('EQ', (0, 0), (0, 0)): 0, ('UP2', (0, 0, 0, 0), (1, 1, 0, 0)): 0, ('EQ', (0, 0, 0, 0, 0), (0, 0, 0, 0, 0)): 0, ('UP2', (0, 0, 0, 0, 0), (1, 1, 0, 0, 0)): 0, ('EQ', (0, 0, 0, 0, 0, 0), (0, 0, 0, 0, 0, 0)): 0, ('UP2', (0, 0, 0, 0, 0, 0), (1, 1, 0, 0, 0, 0)): 0, ('EQ', (0, 0, 0, 0, 0, 0, 0), (0, 0, 0, 0, 0, 0, 0)): 0, ('UP2', (0, 0, 0, 0, 0, 0, 0), (1, 1, 0, 0, 0, 0, 0)): 0, ('EQ', (0, 0, 0, 0, 0, 0, 0, 0), (0, 0, 0, 0, 0, 0, 0, 0)): 0}
+
+[3] WHY THE HEAD BLOCK EXCLUDES THE COUNTEREXAMPLES -- r37 saw it on 2 hand examples;
+    here it is measured on EVERY (UP2) violating pair r38 printed a count for.
+   (UP2) re-swept to reproduce r38 [5]: ok=5842  VIOLATIONS=97
+   multiplicity of the MAXIMUM in a VIOLATING L : {1: 60, 2: 24, 3: 11, 4: 2}
+   multiplicity of the MAXIMUM in ALL terminating L: {1: 126, 2: 39, 3: 15, 4: 12, 5: 5, 6: 4, 7: 2, 8: 2, 10: 1, 12: 1, 14: 1, 16: 1}
+   violating L with max-multiplicity >= 3: 13 [((2, 2, 2, 1, 1), (3, 3, 2, 1, 1), 2, 3), ((2, 2, 2, 1, 1, 1, 1), (3, 3, 2, 1, 1, 1, 1), 3, 4), ((2, 2, 2, 1, 1, 1, 1, 1, 1), (3, 3, 2, 1, 1, 1, 1, 1, 1), 4, 5)]
+   violating L that CONTAIN a head block W^eps(c) u tail: 12 [((2, 2, 2, 1, 1), (3, 3, 2, 1, 1), 2, 3), ((2, 2, 1, 1, 1, 1), (3, 3, 1, 1, 1, 1), 3, 4), ((2, 2, 2, 1, 1, 1, 1), (3, 3, 2, 1, 1, 1, 1), 3, 4)]
+   exclusion list for the two 0s above: none -- every terminating partition of every
+   N in 2..16 was swept, aborting lists skipped and counted nowhere else.
+   CORRUPT: '(UP2) has no violations at all' is violated    hits=97       OK
+
+[4] SELF-AUDIT
+   declared blocks: 4   executed: 4   missing: none
+   diffed runA/runB calls: 10862   disagreements: 0 (any would have exited 2)
+   controls: 12, all firing: True
+   internal time limit 90s hit: False   elapsed: 0.3s
+====================================================================================================
+NO DEFECTS.
+====================================================================================================

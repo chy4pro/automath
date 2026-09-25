@@ -1,0 +1,189 @@
+==========================================================================
+(A) CALIBRATION of the Havel-Hakimi primitives (before any review number)
+==========================================================================
+  [PASS] residue(K2) = 1  got 1
+  [PASS] residue(C3) = ceil(3/3) = 1  got 1
+  [PASS] residue(C4) = ceil(4/3) = 2  got 2
+  [PASS] residue(C5) = ceil(5/3) = 2  got 2
+  [PASS] residue(C6) = ceil(6/3) = 2  got 2
+  [PASS] residue(C7) = ceil(7/3) = 3  got 3
+  [PASS] residue(C8) = ceil(8/3) = 3  got 3
+  [PASS] residue(C9) = ceil(9/3) = 3  got 3
+  [PASS] [3,3,1] aborts (not a step sequence)
+  [PASS] [5,1] aborts
+  [PASS] steps+residue=|M| on [2, 2, 2, 2]  steps=2 residue=2 n=4
+  [PASS] steps+residue=|M| on [4, 4, 4, 4, 4]  steps=4 residue=1 n=5
+  [PASS] steps+residue=|M| on [3, 3, 2, 2, 2]  steps=3 residue=2 n=5
+  [PASS] steps+residue=|M| on [1, 1]  steps=1 residue=1 n=2
+
+==========================================================================
+(B) Q33's REFUTATION re-derived: K5 as GFan(4,4,0) with residue = alpha
+==========================================================================
+  K5: alpha=1 (witness (0,)), f=2 (witness (0, 1)), connected=True, diam=1, forest=False
+  degree sequence [4, 4, 4, 4, 4]  residue=1
+  [PASS] K5 connected
+  [PASS] K5 alpha = 1
+  [PASS] K5 A={a0} is A MAXIMUM independent set
+  [PASS] K5 non-forest
+  [PASS] K5 f = alpha+1  f=2 alpha+1=2
+  [PASS] K5 REDUCTIO residue = alpha  residue=1 alpha=1
+    tau: 4
+    L: 4
+    p: 0
+    nu: 0
+    tau=p+L: True
+    B_lo nonempty: True
+    B_lo all B-universal: True
+    B_lo degA==1: True
+    B_lo share one a0: True
+    a0: 0
+    a0 adjacent to all B: True
+    all nu non-edges inside B_hi: True
+    B_hi all high: True
+    A' has no B_lo neighbour: True
+    ALL CLAUSES: True
+  [PASS] K5 satisfies EVERY GFan clause
+  [PASS] K5 has (tau,L,nu) = (4,4,0)  got (4, 4, 0)
+  [PASS] literal Theorem GFANnu range: nu<=6 and L>=nu+1
+  [PASS] K5 diam != 4 (so the FRAME is NOT satisfied -- the hole is exactly the missing frame/positivity)  diam=1
+  ==> Q33's MATHEMATICS defect 1 is REPRODUCED: the literal statement 'for every nu<=6' is FALSE.
+
+  -- searching for further nu=0 witnesses among complete graphs K_{m+1} --
+    K3: alpha=1 f=2 residue=1 (tau,L,nu)=(2,2,0) clauses=True -> counterexample=True
+    K4: alpha=1 f=2 residue=1 (tau,L,nu)=(3,3,0) clauses=True -> counterexample=True
+    K5: alpha=1 f=2 residue=1 (tau,L,nu)=(4,4,0) clauses=True -> counterexample=True
+    K6: alpha=1 f=2 residue=1 (tau,L,nu)=(5,5,0) clauses=True -> counterexample=True
+    K7: alpha=1 f=2 residue=1 (tau,L,nu)=(6,6,0) clauses=True -> counterexample=True
+    K8: alpha=1 f=2 residue=1 (tau,L,nu)=(7,7,0) clauses=True -> counterexample=True
+  [PASS] every K_n with n>=3 is a literal counterexample (so the hole is a whole family, not one graph)
+
+==========================================================================
+(C) the judge's own RIG frame construction, validated independently
+==========================================================================
+  alpha=4 witness=['a0', 'a1', 'a2', 'a3']
+  f=5 witness=['a0', 'a1', 'a2', 'a3', 'b0']
+  connected=True diam=4 forest=False
+  degrees={'a0': 4, 'a1': 1, 'a2': 1, 'a3': 2, 'b0': 4, 'b1': 5, 'b2': 5, 'b3': 4}
+  residue=3
+  [PASS] claimed alpha = 4  got 4
+  [PASS] claimed A = {a0,a1,a2,a3} is independent AND maximum
+  [PASS] claimed diam = 4  got 4
+  [PASS] claimed f = 5 = alpha+1  got f=5
+  [PASS] claimed connected
+  [PASS] claimed non-forest
+  B_lo=['b0', 'b3']  B_hi=['b1', 'b2']  nu=1
+  [PASS] claimed B_lo = {b0,b3}  got ['b0', 'b3']
+  [PASS] claimed B_hi = {b1,b2}  got ['b1', 'b2']
+  [PASS] claimed the only B non-edge is b1-b2 (nu=1)
+  [PASS] claimed both low vertices are B-universal
+  [PASS] all five RIG conclusions hold on this witness
+  [PASS] claimed residue = 3 != alpha = 4 (FRAME witness, reductio FAILS)  residue=3
+  ==> Q33's T12 counterfactual control is REAL: a frame graph on which FAN-4'/8'/6' are unavailable.
+
+==========================================================================
+(D) FULL re-enumeration of SS7.22 (c) for nu = 1..6, diffed against the DRAFT's printed data
+==========================================================================
+  nu=1: p(2nu)=2  tail-survivors=['2']  boundary-pairs=0 boundary-survivors=0  E>=1 tested=0 (closed form 0) survivors=0  FAN-6' MISSES=0
+  [PASS] nu=1: closed form S(nu) reproduces the enumeration count  0 vs 0
+  [PASS] nu=1: the ONLY E=0 tail survivor is the single part [2]  got [(2,)]
+  [PASS] nu=1: FAN-6' kills EVERY survivor
+  nu=2: p(2nu)=5  tail-survivors=['4']  boundary-pairs=1 boundary-survivors=1  E>=1 tested=3 (closed form 3) survivors=1  FAN-6' MISSES=0
+  [PASS] nu=2: closed form S(nu) reproduces the enumeration count  3 vs 3
+  [PASS] nu=2: the ONLY E=0 tail survivor is the single part [4]  got [(4,)]
+  [PASS] nu=2: FAN-6' kills EVERY survivor
+  nu=3: p(2nu)=11  tail-survivors=['6']  boundary-pairs=3 boundary-survivors=1  E>=1 tested=24 (closed form 24) survivors=4  FAN-6' MISSES=0
+  [PASS] nu=3: closed form S(nu) reproduces the enumeration count  24 vs 24
+  [PASS] nu=3: the ONLY E=0 tail survivor is the single part [6]  got [(6,)]
+  [PASS] nu=3: FAN-6' kills EVERY survivor
+  nu=4: p(2nu)=22  tail-survivors=['8']  boundary-pairs=7 boundary-survivors=2  E>=1 tested=110 (closed form 110) survivors=9  FAN-6' MISSES=0
+  [PASS] nu=4: closed form S(nu) reproduces the enumeration count  110 vs 110
+  [PASS] nu=4: the ONLY E=0 tail survivor is the single part [8]  got [(8,)]
+  [PASS] nu=4: FAN-6' kills EVERY survivor
+  nu=5: p(2nu)=42  tail-survivors=['10']  boundary-pairs=14 boundary-survivors=2  E>=1 tested=397 (closed form 397) survivors=20  FAN-6' MISSES=0
+  [PASS] nu=5: closed form S(nu) reproduces the enumeration count  397 vs 397
+  [PASS] nu=5: the ONLY E=0 tail survivor is the single part [10]  got [(10,)]
+  [PASS] nu=5: FAN-6' kills EVERY survivor
+  nu=6: p(2nu)=77  tail-survivors=['12']  boundary-pairs=26 boundary-survivors=3  E>=1 tested=1211 (closed form 1211) survivors=38  FAN-6' MISSES=0
+  [PASS] nu=6: closed form S(nu) reproduces the enumeration count  1211 vs 1211
+  [PASS] nu=6: the ONLY E=0 tail survivor is the single part [12]  got [(12,)]
+  [PASS] nu=6: FAN-6' kills EVERY survivor
+
+  -- draft's own printed numbers, PARSED from the file and diffed --
+  parsed 159 printed s0 values from (c-2) (expected 2+5+11+22+42+77 = 159)
+  [PASS] (c-2) prints exactly 159 s0 values  got 159
+  [PASS] every printed s0 value matches my own recomputation  mismatches: []
+  [PASS] (c-2) nu=1: printed partition set == all p(2) partitions  missing set() extra set()
+  [PASS] (c-2) nu=2: printed partition set == all p(4) partitions  missing set() extra set()
+  [PASS] (c-2) nu=3: printed partition set == all p(6) partitions  missing set() extra set()
+  [PASS] (c-2) nu=4: printed partition set == all p(8) partitions  missing set() extra set()
+  [PASS] (c-2) nu=5: printed partition set == all p(10) partitions  missing set() extra set()
+  [PASS] (c-2) nu=6: printed partition set == all p(12) partitions  missing set() extra set()
+  parsed 6 boundary-table rows from (c-3)
+  [PASS] (c-3) nu=1: printed pair count 0 == mine 0
+  [PASS] (c-3) nu=1: printed boundary survivors == mine  printed [] mine []
+  [PASS] (c-3) nu=1: printed FAN-6' certificates == mine  printed [] mine []
+  [PASS] (c-3) nu=2: printed pair count 1 == mine 1
+  [PASS] (c-3) nu=2: printed boundary survivors == mine  printed [(3, (4,))] mine [(3, (4,))]
+  [PASS] (c-3) nu=2: printed FAN-6' certificates == mine  printed [('4', '0')] mine [(4, 0)]
+  [PASS] (c-3) nu=3: printed pair count 3 == mine 3
+  [PASS] (c-3) nu=3: printed boundary survivors == mine  printed [(5, (6,))] mine [(5, (6,))]
+  [PASS] (c-3) nu=3: printed FAN-6' certificates == mine  printed [('6', '0')] mine [(6, 0)]
+  [PASS] (c-3) nu=4: printed pair count 7 == mine 7
+  [PASS] (c-3) nu=4: printed boundary survivors == mine  printed [(5, (7, 1)), (7, (8,))] mine [(5, (7, 1)), (7, (8,))]
+  [PASS] (c-3) nu=4: printed FAN-6' certificates == mine  printed [('7', '1'), ('8', '0')] mine [(7, 1), (8, 0)]
+  [PASS] (c-3) nu=5: printed pair count 14 == mine 14
+  [PASS] (c-3) nu=5: printed boundary survivors == mine  printed [(7, (9, 1)), (9, (10,))] mine [(7, (9, 1)), (9, (10,))]
+  [PASS] (c-3) nu=5: printed FAN-6' certificates == mine  printed [('9', '1'), ('10', '0')] mine [(9, 1), (10, 0)]
+  [PASS] (c-3) nu=6: printed pair count 26 == mine 26
+  [PASS] (c-3) nu=6: printed boundary survivors == mine  printed [(7, (10, 1, 1)), (9, (11, 1)), (11, (12,))] mine [(7, (10, 1, 1)), (9, (11, 1)), (11, (12,))]
+  [PASS] (c-3) nu=6: printed FAN-6' certificates == mine  printed [('10', '1'), ('11', '1'), ('12', '0')] mine [(10, 1), (11, 1), (12, 0)]
+  parsed 72 printed E>=1 survivor rows from (c-4) (expected 72)
+  [PASS] (c-4) prints exactly 72 E>=1 survivor rows  got 72
+  [PASS] (c-4) nu=2: header count 1 == rows printed 1 == mine 1
+  [PASS] (c-4) nu=2: printed roster == my independent survivor set  printed-only [] mine-only []
+  [PASS] (c-4) nu=2: printed FAN-6' certificates == mine
+  [PASS] (c-4) nu=3: header count 4 == rows printed 4 == mine 4
+  [PASS] (c-4) nu=3: printed roster == my independent survivor set  printed-only [] mine-only []
+  [PASS] (c-4) nu=3: printed FAN-6' certificates == mine
+  [PASS] (c-4) nu=4: header count 9 == rows printed 9 == mine 9
+  [PASS] (c-4) nu=4: printed roster == my independent survivor set  printed-only [] mine-only []
+  [PASS] (c-4) nu=4: printed FAN-6' certificates == mine
+  [PASS] (c-4) nu=5: header count 20 == rows printed 20 == mine 20
+  [PASS] (c-4) nu=5: printed roster == my independent survivor set  printed-only [] mine-only []
+  [PASS] (c-4) nu=5: printed FAN-6' certificates == mine
+  [PASS] (c-4) nu=6: header count 38 == rows printed 38 == mine 38
+  [PASS] (c-4) nu=6: printed roster == my independent survivor set  printed-only [] mine-only []
+  [PASS] (c-4) nu=6: printed FAN-6' certificates == mine
+
+  -- (c-7) controls, re-run independently --
+  [PASS] Lemma TAIL formula (L-lam1)+s0 == direct simulation on 1817 (lam,L) pairs  0 mismatches; draft claims 1817 pairs, I generated 1817
+  [PASS] zero-padding inertness on 2880 (list,padding) pairs  0 disagreements
+
+==========================================================================
+(E) does nu = 0 escape the proof's own case split?
+==========================================================================
+  At nu=0: FAN-4' gives A'-residue mass 2nu-E = -E, so E=0 is forced and
+  lambda is the EMPTY partition of 0.
+  [PASS] Lemma TAIL is stated for lambda NON-EMPTY, so the E=0/L>=lam1 branch is undefined at nu=0
+  [PASS] the boundary branch nu+1 <= L < lam_1 <= 2nu is EMPTY at nu=0 (2nu = 0, no L)
+  [PASS] the E>=1 branch is EMPTY at nu=0 (E<=nu-1 = -1)
+  [PASS] SS7.22 (c-2) prints NO nu=0 column
+  ==> the three branches jointly cover nu>=1 ONLY. The proof never treats
+      nu=0; the theorem statement quantifies over it. Defect CONFIRMED as
+      a genuine gap in the STATEMENT, not merely a rider.
+
+==========================================================================
+(F) downstream: is Corollary GFANnu-HC damaged?
+==========================================================================
+  GFANnu-HC's route is: hard core + every low vertex B-universal
+    -> Theorem RIG (d) gives nu = mbar and nu >= 1 via Observation R1
+       (diam = 4 => B is not a clique)
+    -> so only 1 <= nu <= 6 is ever fed to Theorem GFANnu.
+  [PASS] RIG witness (diam=4) has nu >= 1  nu=1
+  [PASS] K5 (diam=1, frame FAILS) is the only way to reach nu=0
+  ==> Corollary GFANnu-HC and Corollary GFAN2-HC are UNAFFECTED; the
+      repair `1 <= nu <= 6` is conclusion-preserving downstream.
+
+==========================================================================
+FAILURE_COUNT = 0
+==========================================================================

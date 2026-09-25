@@ -1,0 +1,33 @@
+=== CALIBRATION (run before any adjudication number) ===
+  K2   residue=1 expected=1  OK
+  C3   residue=1 expected=1  OK
+  C4   residue=2 expected=2  OK
+  C5   residue=2 expected=2  OK
+  C6   residue=2 expected=2  OK
+  C7   residue=3 expected=3  OK
+  C8   residue=3 expected=3  OK
+  C9   residue=3 expected=3  OK
+
+=== Q26 CONTROL R (claimed: C5, reductio-only, NOT in the frame) ===
+  connected=True  alpha=2  #max-ind-sets=5  residue=2  tau=3  diam=2  f=4
+  reductio (residue == alpha)? True   in the frame (diam==4 and f==alpha+1)? False
+
+=== Q26 CONTROL F (claimed: hard-core FRAME, residue < alpha) ===
+  degrees=[1, 1, 3, 3, 2, 2]
+  connected=True  alpha=4  residue=3  tau=2  diam=4  f=5  non-forest=True
+  A={0,1,4,5} independent and maximum? True
+  frame (connected, non-forest, diam==4, f==alpha+1)? True
+  reductio (residue == alpha)? False   -> frame-only control: CONFIRMED
+  tau = 2: does the FRAME by itself supply tau >= 4? NO — this instance has tau=2
+
+=== Q26 SL boundary instance E={03,12,13,23}, A={0,1} ===
+  alpha=2  residue=2  tau=2  reductio? True  A={0,1} maximum? True
+
+=== D1: is `tau >= 4` needed, or does diam=4 already give tau >= 2? ===
+  Claim to check: a connected graph with vertex-cover number tau <= 1 has
+  diameter <= 2, so diam = 4 forces tau >= 2 with no appeal to Theorem T3.
+  stars tested = 27; connected graphs with tau <= 1 and diam > 2: 0
+  => diam = 4 implies tau >= 2.  Theorem SL's numerical hypothesis is met
+     WITHOUT the `tau >= 4` rider; the rider is therefore unused in SL-HC.
+
+done

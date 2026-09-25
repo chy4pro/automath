@@ -1,0 +1,30 @@
+GF(4) tables self-checked (char 2, a^2=a+1, all nonzero invertible).
+  PASS  PG(2,4) has 21 projective triples   [got 21]
+  PASS  core size 42   [got 42]
+  PASS  core is 5-regular   [degree set [5]]
+  PASS  any 2 points on exactly 1 line; any 2 lines meet in exactly 1 point   [0 violations]
+  PASS  n = 54   [got 54]
+  PASS  C4-free (no two vertices share >=2 common neighbours)   [0 violating pairs]
+  PASS  connected
+  PASS  F1 identity a(v) = d(v) - t(v) holds vertexwise
+  PASS  graph is triangle-free
+  PASS  Sum a(v) = 234   [got 234]
+  PASS  l(G) = 13/3 > 4   [l = 234/54]
+  PASS  a-profile {6:6, 5:36, 2:6, 1:6}   [{6: 6, 5: 36, 2: 6, 1: 6}]
+  PASS  rad(G) = 5   [got 5]
+  PASS  diam(G) = 7   [got 7]
+  PASS  NO geodesic of length >= rad satisfies (FAR-2)   [0 hits]
+  PASS  the cap-break configuration is NON-VACUOUS (F4 executes)   [480 cap-break (u0,u1,ud) frames]
+  PASS  every non-3-capped geodesic of length >= rad has length EXACTLY rad (F12 demand)   [cap-break lengths [5]]
+  PASS  every cap-break geodesic has an a=1 vertex at its far end   [far-end a-values [1]]
+  PASS  peeling removed exactly the 12 hair vertices   [peeled 12]
+  PASS  peeled graph is exactly the PG(2,4) incidence graph
+  PASS  peeled radius = 3 (A1 REFUTED: 5 -> 3)   [rad' = 3]
+  PASS  peeled graph still has l > 4   [l' = 210/42]
+  PASS  the 9 named vertices are distinct core vertices
+  PASS  the 9 named vertices form an INDUCED path (consecutive adjacent, no chords)   [cons=True chords=[]]
+  PASS  path(G) >= 9 = rad(G)+4, so Problem A is NOT refuted by this graph
+  PASS  independent search confirms an induced path on >= 9 vertices   [longest induced path found (search capped at 14): 14]
+
+vertices 54, edges 117, Sum a = 234, l = 234/54, rad = 5, diam = 7, rad(peeled) = 3, induced path >= 14
+FAILURES: 0

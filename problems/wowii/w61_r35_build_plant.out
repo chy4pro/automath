@@ -1,0 +1,65 @@
+================================================================================================
+w61 r35 ITEM 2 -- PLANTED-DEFECT BRIEF BUILD  (RULING DC route 1)
+================================================================================================
+base    : w61_S3_C125_r31.md  sha256 f8c159fccec1fba6
+
+HUNK MANIFEST -- every difference from r31 is declared here or the build refuses
+------------------------------------------------------------------------------------------------
+  H1-exemplar              occurrences of the anchor in the running text: 1
+  H2-import-solicitation   occurrences of the anchor in the running text: 1
+  H3-import-site           occurrences of the anchor in the running text: 1
+  H4-THE-PLANT             occurrences of the anchor in the running text: 1
+  H5-drop-r31-note         occurrences of the anchor in the running text: 1
+  H6-statement6-neutral    occurrences of the anchor in the running text: 1
+  H7-rows                  occurrences of the anchor in the running text: 1
+  H8-row-rules             occurrences of the anchor in the running text: 1
+  H9-row-count             occurrences of the anchor in the running text: 1
+  H10-part3                occurrences of the anchor in the running text: 1
+
+(1) DIFF ASSERTION -- produced text vs r31, hunk by hunk
+------------------------------------------------------------------------------------------------
+   replace  r31[15:16] -> brief[15:16]  declared
+   replace  r31[29:31] -> brief[29:30]  declared
+   replace  r31[105:108] -> brief[104:105]  declared
+   insert   r31[169:169] -> brief[166:172]  declared
+   delete   r31[170:177] -> brief[173:173]  declared
+   replace  r31[212:215] -> brief[208:210]  declared
+   replace  r31[240:241] -> brief[235:236]  declared
+   replace  r31[248:249] -> brief[243:245]  declared
+   replace  r31[250:258] -> brief[246:251]  declared
+   replace  r31[261:267] -> brief[254:257]  declared
+   replace  r31[288:289] -> brief[278:279]  declared
+   11 changed regions, all declared. The brief is r31 plus the manifest, exactly.
+
+(2)(3) PLANT CONTAINMENT -- the plant lives in the brief only
+------------------------------------------------------------------------------------------------
+   planted sentence: sha256 fcb4cfd8219ed042f5ac44c7, 97 chars, head '**`s0(lambda) != lambd' ... tail 'ha(G) <= k`.**'
+   occurrences in the brief                       : 1 OK
+   files anywhere in the repo containing it       : 2
+      prompts/w61_S3_C125_r35_PLANT.md                         1  declared carrier
+      notes/proofs/wowii61_draft.md                            1  declared carrier
+
+(4) QUARANTINE INVARIANT on the ledger copy
+------------------------------------------------------------------------------------------------
+   On THIS line a quotation is how a defect becomes a carrier: AH3 reached twelve
+   sites and AH1 five, every one of them by being quoted. Pre-registration REQUIRES
+   the plant to appear in the round record, so the rule is containment, not absence.
+   occurrences in notes/proofs/wowii61_draft.md   : 1
+      occurrence at char 812407 : marker=True  FALSE=True  OK
+
+(5) WRITE-TIME GATES, with the plant exempted BY EXACT STRING (RULING CW)
+------------------------------------------------------------------------------------------------
+   G1 AH1/AH4 over-read           brief: 0  positive control: 1  OK
+   CW control A: with the exemption LIFTED, the gate fires on the plant : 1 hit(s) OK
+   CW control B: exemption ON, gate still fires on ANOTHER species sentence: 1 hit(s) OK
+   G2 AH3 closure claim           brief: 0  positive control: 1  OK
+   G3 held-out answer leak        brief: 0  positive control: 1  OK
+   G4 identity/status/plant leak  brief: 0  positive control: 4  OK
+   G5 schema completeness         brief: 0  positive control: 1  OK
+   G6 no tell (new r35)           brief: 0  positive control: 1  OK
+
+================================================================================================
+WROTE prompts/w61_S3_C125_r35_PLANT.md
+   chars 15124   bytes 15206   sha256 9f989c00ff8fca8510fea2b4b072913a2c7efce76f98f2844817036253b4a618
+   HELD, NOT DISPATCHED. No seat this round.
+   elapsed 9.3s

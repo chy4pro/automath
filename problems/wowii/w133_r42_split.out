@@ -1,0 +1,1462 @@
+WOWII-133 round 42 -- E44's CLASS SPLITS IN TWO
+interpreter: 3.9.6
+
+==============================================================================
+PART 0 -- primitive self-tests and the guard on THIS round's predicate
+==============================================================================
+  a(.) brute vs matching formula agreed at 35 vertices of PG(2,3)/PG(2,5)
+
+  GUARD.  CLASS CLAIMED: any evaluator of E44's membership predicate
+    E44(G,w) := C4-free AND mu>=2 AND ecc(w)=rad+1 AND (d(c,w)=rad for EVERY
+    centre c) AND rad>=5 AND l>4
+  that (i) reads the ECCENTRICITY conjunct off the DIAMETER instead of off w, or
+  (ii) computes l as a mean DEGREE instead of a mean a(.).  Neither is r34's
+  zero-step, r35's one-step, r36's late-block, r37's off-by-one/anchor-drift,
+  r38's cost-evaluator, r39's centre-widen/quantifier-swap/stratum-offset,
+  r40's sphere-shift, nor r41's table-trust/peri-as-noncentral.
+  (D7) DIAM-FOR-ECC: tests diam == rad+1 in place of ecc(w) == rad+1.
+  (D8) MEAN-DEG-FOR-L: computes l as mean deg(v) in place of mean a(v).
+  correct predicate (conjuncts 2+3) fires on 52 vertices over 28 guard hosts,
+  10 of which CARRY it.
+  (D7) DIAM-FOR-ECC : fires 48 | fires where correct does NOT 0 | misses a real one 4
+  (D8) MEAN-DEG-FOR-L: disagrees with the correct l on 26 of 28 guard hosts (agrees on 2)
+  NOTE, PRINTED BECAUSE IT MATTERS FOR PART 4: on a TRIANGLE-FREE host a(v) = deg(v),
+  so (D8) is INVISIBLE there.  Every necklace host of PART 4 is triangle-free, so
+  the l column of PART 4 is NOT protected by (D8); it is protected by the brute
+  a(.) cross-check run on those hosts directly.
+
+==============================================================================
+PART 1 -- (SPLIT): E44's class is the DISJOINT UNION of two named sub-classes
+==============================================================================
+
+  Round 41 proved, and this file re-asserts below on live data:
+    (PER-A)  diam = rad+1 and w not a centre  =>  ecc(w) = diam.
+    (PER-B)  ecc(w) = 2*rad                   =>  ecc(w) = diam.
+    (PER-C)  so a condition-3 vertex can fail to be peripheral ONLY at
+             diam >= rad+2 AND ecc(w) < 2*rad.
+
+  (SPLIT).  Let (G,w) satisfy E44's conditions 1-4, i.e. G is C4-free with mu >= 2,
+  ecc(w) = rad+1, d(c,w) = rad for every centre c, and rad = r >= 2.  Then EXACTLY ONE of
+
+    CASE A   diam(G) = r+1.  Here ecc(w) = rad+1 is IMPLIED by condition 3 and needs no
+             separate search: condition 3 forces w out of the centre (d(w,w)=0 != r), and
+             (PER-A) then gives ecc(w) = diam = r+1.  So on a CASE A host the whole of
+             E44's question is "is there a vertex maximally far from every centre?".
+
+    CASE B   diam(G) >= r+2.  Here ecc(w) = r+1 < diam, so w is condition-3 and NOT
+             peripheral: (G,w) is a COUNTEREXAMPLE to (RXM-PERI), and it carries rad >= 5
+             and l > 4, so it is a counterexample to exactly the restricted form round 41
+             left open.
+
+  Proof that the cases are exhaustive and disjoint: diam >= ecc(w) = r+1 always, so
+  diam = r+1 or diam >= r+2, never both.  Proof that CASE B is what it is said to be:
+  w satisfies (RXM-PERI)'s hypothesis (condition 3) and ecc(w) = r+1 < diam denies its
+  conclusion.  Proof of CASE A's freeness: (PER-A) above.  QED.
+
+  TWO CONSEQUENCES, both new with round 41 and neither available to brief E44:
+   (C1) If the restricted (RXM-PERI) (l > 4 AND rad >= 5) is TRUE, CASE B is EMPTY, and
+        E44's question collapses to CASE A alone.  The two open questions round 41 left
+        are not independent: one is half of the other.
+   (C2) A CASE B instance would refute the restricted (RXM-PERI) -- so any engine that
+        builds one has answered two questions, and must be told so.
+
+  NOTE ON rad >= 2, which is where the split needs it: at r >= 2, ecc(w) = r+1 < 2r is
+  automatic, so (PER-B) can NEVER force a pass in E44's class.  Only (PER-A) can.  E44
+  asks for rad >= 5, so this is free there.
+
+  asserted: r+1 < 2r for r = 2..39, so (PER-B) never forces a pass in E44's class.
+  (PER-A) asserted at 151 (host,w) pairs; (PER-B) at 11.
+  conditions 2+3 instances on these 45 hosts: CASE A 66 | CASE B 0
+  POPULATION: the 45 hosts listed in this part's source, ALL of them, no filter.
+  CASE B is empty here -- as it must be on any host set where (RXM-PERI) has no
+  counterexample.  This is NOT evidence for the restricted (RXM-PERI): round 41
+  already refuted the unrestricted one with 961 in-class violations.
+
+==============================================================================
+PART 2 -- the 417-host family, re-measured for CASE A HOSTS
+==============================================================================
+  Round 39's control asked whether any l>4 AND rad>=5 host carries a condition-3
+  vertex at offset +1.  PART 1 says such a vertex is CASE A if the host has
+  diam = rad+1 and CASE B otherwise.  So the control's reach is decided by ONE
+  number that round 39 never printed: how many of its in-class hosts are CASE A
+  hosts at all.  PREDICTION REGISTERED BEFORE THIS RUN: zero, because every
+  l>4 AND rad>=5 host of that family is a dense core with a long tail attached,
+  and a tail of length L pushes diam to rad+L-ish.
+  hosts measured: 420  (skipped as too big / out of time: 0)
+  self-centred (diam = rad)          : 176
+  CASE A hosts (diam = rad+1)        : 51
+  in-class hosts (l > 4 AND rad >= 5): 25
+  ... of those, CASE A hosts         : 0
+  offset diam-rad on the in-class hosts:
+    +3 : 7, +4 : 2, +5 : 6, +6 : 4, +7 : 4, +8 : 1, +9 : 1
+
+  ==> PREDICTION HELD.  NOT ONE in-class host of this family is a CASE A host.
+  WHAT THAT MEANS, AND ONLY WHAT THIS RUN MEASURED: every condition-3 vertex on
+  the in-class hosts OF THIS FAMILY is a CASE B candidate, so on this family the
+  number that could have come out CASE A is ZERO.  Round 39's census is UNDAMAGED
+  -- it says what it says -- but on this family its reach is HALF of what the row
+  needs.  Read through (SPLIT), a 0 at offset +1 here is evidence that (RXM-PERI)
+  HOLDS at rad>=5 and l>4, which is a different and strictly narrower statement
+  than the one round 41 refuted.
+  NOT MEASURED HERE, AND THEREFORE NOT ASSERTED: round 39 also built 24 EXTRA
+  control hosts (PG(2,7) cores, long tails, two-root tails, two joined cores).
+  This run does not rebuild them, so it says NOTHING about whether any of those
+  24 is a CASE A host.  They are core-plus-tail shapes and I expect not; an
+  expectation is not a measurement and is printed as an expectation.
+
+==============================================================================
+PART 3 -- round 36's base family: the two rad = 4 instances, and WHICH CASE
+==============================================================================
+  Brief E44 5(b) carries an inherited datum: 'on a different family of 145 base
+  graphs we previously found exactly 2 vertices satisfying conditions 1-3, both at
+  rad = 4' with l = 2.333 and 2.455.  E44 could not say which CASE they are because
+  the split did not exist yet.  TWO THINGS ARE CHECKED HERE: where those two
+  instances actually come from, and which CASE they are.
+
+  3a.  THE TWO INSTANCES, REBUILT FROM ROUND 32's OWN GENERATOR (rand(s,n0)):
+    rand(s=7,n0=18): n=18 mu=2 rad=4 diam=7 l=2.333  conditions-1-3 w's=[11]
+        w=11 -> CASE B   (|Ctr|=1, ecc(w)=5)
+    rand(s=30,n0=22): n=22 mu=2 rad=4 diam=7 l=2.455  conditions-1-3 w's=[13]
+        w=13 -> CASE B   (|Ctr|=1, ecc(w)=5)
+
+  3b.  ROUND 36's BASE FAMILY -- the family E44 5(b) ATTRIBUTES them to:
+  configurations generated: 816
+  of those: C4-free and connected 816 ; and mu >= 2 as well 5
+  vertices satisfying conditions 1-3 IN FULL (C4-free, mu>=2, ecc=rad+1, cond 3): 0
+  vertices satisfying them with mu >= 2 DROPPED (C4-free only)                  : 69
+    C6        roots=(0, 2)    hs=(2, 2)    n=10 w= 4 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C6        roots=(1, 3)    hs=(2, 2)    n=10 w= 5 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C6        roots=(0, 1, 2) hs=(2, 1, 2) n=11 w= 4 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C6        roots=(0, 1, 3) hs=(1, 1, 2) n=10 w= 5 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C6        roots=(0, 1, 3) hs=(1, 2, 2) n=11 w= 5 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C6        roots=(0, 2, 3) hs=(2, 1, 1) n=10 w= 4 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C6        roots=(0, 2, 3) hs=(2, 2, 1) n=11 w= 4 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C6        roots=(1, 2, 3) hs=(2, 1, 2) n=11 w= 5 mu=1 rad=3 diam=6 l=2.000  -> CASE B
+    C9        roots=(0, 3)    hs=(2, 2)    n=13 w= 6 mu=1 rad=4 diam=7 l=2.000  -> CASE B
+    C9        roots=(0, 1, 3) hs=(2, 1, 2) n=14 w= 6 mu=1 rad=4 diam=7 l=2.000  -> CASE B
+    C9        roots=(0, 2, 3) hs=(2, 1, 2) n=14 w= 6 mu=1 rad=4 diam=7 l=2.000  -> CASE B
+    Petersen  roots=(0, 1)    hs=(1, 1)    n=12 w= 3 mu=1 rad=2 diam=3 l=2.833  -> CASE A
+    Petersen  roots=(0, 2)    hs=(1, 1)    n=12 w= 3 mu=1 rad=2 diam=4 l=2.833  -> CASE B
+    Petersen  roots=(0, 3)    hs=(1, 1)    n=12 w= 1 mu=1 rad=2 diam=4 l=2.833  -> CASE B
+    Petersen  roots=(1, 2)    hs=(1, 1)    n=12 w= 4 mu=1 rad=2 diam=3 l=2.833  -> CASE A
+    Petersen  roots=(1, 3)    hs=(1, 1)    n=12 w= 0 mu=1 rad=2 diam=4 l=2.833  -> CASE B
+    Petersen  roots=(2, 3)    hs=(1, 1)    n=12 w= 0 mu=1 rad=2 diam=3 l=2.833  -> CASE A
+    Petersen  roots=(0, 1, 2) hs=(1, 1, 1) n=13 w= 3 mu=1 rad=2 diam=4 l=2.769  -> CASE B
+    Petersen  roots=(1, 2, 3) hs=(1, 1, 1) n=13 w= 0 mu=1 rad=2 diam=4 l=2.769  -> CASE B
+    Theta333  roots=(0, 3)    hs=(2, 2)    n=12 w= 5 mu=1 rad=3 diam=6 l=2.167  -> CASE B
+    (27 distinct (config,rad,diam,l,mu) rows; at most 20 shown)
+  over the C4-free-only bucket: CASE A 12   CASE B 57
+  rows at rad = 4 (the ones E44 5(b) quotes): 3
+  POPULATION THAT COULD HAVE COME OUT THE OTHER WAY (rule 90): the 816 C4-free
+  configurations (5 of them with mu >= 2); every one tested at every vertex.
+
+==============================================================================
+PART 4 -- THE NECKLACE FAMILY: a shape that CAN be a CASE A host at rad >= 5
+==============================================================================
+
+  PART 2 says every in-class host this line has ever run has diam >= rad+2, so CASE A has
+  never been sampled at rad >= 5.  A family that could sample it must be ROUND (diam close
+  to rad) and DENSE (l > 4) and LONG (rad >= 5) at the same time.  Cores with tails are
+  round-2-and-long or dense-and-short; they are never both.
+
+  THE NECKLACE.  Take m blocks in a CYCLE, block i the incidence graph of PG(2,q_i).  Join
+  block i to block i+1 by a partial injection whose SOURCES form an independent set of
+  block i (its points).  Every such graph is C4-free: a cross-block C4 would need two
+  matched vertices adjacent inside block i, and independent sources forbid that.  Density
+  comes from the blocks (a = 6 inside PG(2,5), 4 inside PG(2,3), plus the cross edges);
+  length comes from m.  The construction argument is written down because a brief must
+  carry it -- but NOTHING below is certified by it.  Every host is checked by machine.
+
+  MY OWN CONSTRUCTION ARGUMENT WAS WRONG AT m = 4, AND THIS RUN CAUGHT IT.
+  At m = 4 blocks i and i+2 are joined by TWO routes (through i+1 and through
+  i-1 = i+3), so a vertex of block i and a vertex of block i+2 can pick up one
+  common neighbour on each route: a C4 the independent-sources argument does not
+  exclude.  The corrected statement needs m >= 5.  Measured, on m = 4 hosts only:
+    m = 4 necklaces built: 15 ; C4-FREE 13 ; NOT C4-free 2
+    So m = 4 is EXCLUDED below by construction, and the exclusion is earned.
+
+  necklace hosts built and connected (m >= 5 only): 396
+  C4-free: 396 of 396   (brute a(.) cross-checked at 2231 vertices)
+
+  host                 n   mu       l   rad   diam  offset  |Ctr|
+  NL(3^5,s1)         130    4   5.000     5      6      +1    114
+  NL(3^5,s2)         130    4   5.000     5      6      +1    109
+  NL(3^5,s3)         130    4   5.000     5      6      +1    108
+  NL(3^6,s1)         156    4   5.000     5      7      +2     10
+  NL(3^6,s2)         156    4   5.000     5      7      +2      7
+  NL(3^6,s3)         156    4   5.000     5      7      +2     14
+  NL(3^7,s1)         182    4   5.000     6      7      +1    124
+  NL(3^7,s2)         182    4   5.000     6      7      +1     94
+  NL(3^7,s3)         182    4   5.000     6      7      +1    122
+  NL(3^8,s1)         208    4   5.000     6      8      +2     14
+  NL(3^8,s2)         208    4   5.000     6      8      +2     14
+  NL(3^8,s3)         208    4   5.000     6      8      +2      6
+  NL(3^9,s1)         234    4   5.000     7      8      +1     84
+  NL(3^9,s2)         234    4   5.000     7      9      +2     77
+  NL(3^9,s3)         234    4   5.000     7      8      +1     80
+  NL(3^10,s1)        260    4   5.000     7      9      +2      2
+  NL(3^10,s2)        260    4   5.000     8      9      +1    179
+  NL(3^10,s3)        260    4   5.000     7      9      +2      7
+  NL(3^12,s1)        312    4   5.000     9     11      +2    173
+  NL(3^12,s2)        312    4   5.000     8     10      +2      3
+  NL(3^12,s3)        312    4   5.000     9     10      +1    157
+  NLh(3^5,s1)        130    4   4.462     5      8      +3      7
+  NLp(3^5,s1)        130    4   5.000     5      6      +1     99
+  NLh(3^5,s2)        130    4   4.462     5      8      +3      3
+  NLp(3^5,s2)        130    4   5.000     5      6      +1     93
+  NLh(3^6,s1)        156    4   4.462     6      9      +3      8
+  NLp(3^6,s1)        156    4   5.000     6      7      +1    135
+  NLh(3^6,s2)        156    4   4.462     6      9      +3     13
+  NLp(3^6,s2)        156    4   5.000     6      7      +1    140
+  NLh(3^7,s1)        182    4   4.462     7     10      +3     19
+  NLp(3^7,s1)        182    4   5.000     6      7      +1    110
+  NLh(3^7,s2)        182    4   4.462     7     10      +3     11
+  NLp(3^7,s2)        182    4   5.000     6      7      +1    126
+  NLh(3^8,s1)        208    4   4.462     7     10      +3      2
+  NLp(3^8,s1)        208    4   5.000     7      8      +1    176
+  NLh(3^8,s2)        208    4   4.462     7     10      +3      4
+  NLp(3^8,s2)        208    4   5.000     7      8      +1    167
+  NL(5^5,s1)         310    6   7.000     5      6      +1    260
+  NLmix(5,s1)        238    5   6.479     5      6      +1    144
+  NL(5^5,s2)         310    6   7.000     5      6      +1    275
+  NLmix(5,s2)        238    5   6.479     5      6      +1    145
+  NL(5^6,s1)         372    6   7.000     5      7      +2      5
+  NLmix(6,s1)        264    5   6.295     5      7      +2     22
+  NL(5^6,s2)         372    6   7.000     5      7      +2      9
+  NLmix(6,s2)        264    5   6.295     5      7      +2     26
+  NL(5^7,s1)         434    6   7.000     6      7      +1    261
+  NLmix(7,s1)        326    5   6.429     6      7      +1    123
+  NL(5^7,s2)         434    6   7.000     6      7      +1    258
+  NLmix(7,s2)        326    5   6.429     6      7      +1    128
+  NLt(3^5,s1)        130    4   4.308     5      8      +3      3
+  NLt(3^5,s2)        130    4   4.308     6      9      +3     14
+  NLt(3^6,s1)        156    4   4.308     6      9      +3      2
+  NLt(3^6,s2)        156    4   4.308     7     10      +3     17
+  NLt(3^7,s1)        182    4   4.308     7     12      +5      2
+  NLt(3^7,s2)        182    4   4.308     8     11      +3     32
+  NLt(3^8,s1)        208    4   4.308     8     12      +4      3
+  NLt(3^8,s2)        208    4   4.308     9     12      +3      5
+  NLja(3^5,s1)       130    4   4.754     5      7      +2     26
+  NLjb(3^5,s1)       130    4   4.708     5      7      +2     14
+  NLjc(3^5,s1)       130    4   4.631     5      7      +2      7
+  NLja(3^5,s2)       130    4   4.754     5      7      +2     21
+  NLjb(3^5,s2)       130    4   4.708     5      7      +2     28
+  NLjc(3^5,s2)       130    4   4.631     5      8      +3      5
+  NLja(3^5,s3)       130    4   4.754     5      7      +2     22
+  NLjb(3^5,s3)       130    4   4.708     5      7      +2     15
+  NLjc(3^5,s3)       130    4   4.631     5      7      +2      7
+  NLja(3^6,s1)       156    4   4.692     6      8      +2     38
+  NLjb(3^6,s1)       156    4   4.641     6      8      +2     30
+  NLjc(3^6,s1)       156    4   4.564     6      9      +3      5
+  NLja(3^6,s2)       156    4   4.692     6      8      +2     35
+  NLjb(3^6,s2)       156    4   4.641     6      8      +2     13
+  NLjc(3^6,s2)       156    4   4.564     6      8      +2     10
+  NLja(3^6,s3)       156    4   4.692     6      8      +2     54
+  NLjb(3^6,s3)       156    4   4.641     6      9      +3     28
+  NLjc(3^6,s3)       156    4   4.564     6      8      +2     11
+  NLja(3^7,s1)       182    4   4.736     6      8      +2      5
+  NLjb(3^7,s1)       182    4   4.692     6      9      +3      3
+  NLjc(3^7,s1)       182    4   4.582     7      9      +2     46
+  NLja(3^7,s2)       182    4   4.736     6      8      +2      5
+  NLjb(3^7,s2)       182    4   4.692     6      9      +3      6
+  NLjc(3^7,s2)       182    4   4.582     6      9      +3      1
+  NLja(3^7,s3)       182    4   4.736     6      8      +2      6
+  NLjb(3^7,s3)       182    4   4.692     6      9      +3      5
+  NLjc(3^7,s3)       182    4   4.582     6      9      +3      1
+  NLja(3^8,s1)       208    4   4.692     7     10      +3      8
+  NLjb(3^8,s1)       208    4   4.683     7      9      +2     15
+  NLjc(3^8,s1)       208    4   4.558     8     10      +2     42
+  NLja(3^8,s2)       208    4   4.692     7     10      +3     13
+  NLjb(3^8,s2)       208    4   4.683     7      9      +2      7
+  NLjc(3^8,s2)       208    4   4.558     8     10      +2     22
+  NLja(3^8,s3)       208    4   4.692     7      9      +2     17
+  NLjb(3^8,s3)       208    4   4.683     7      9      +2     13
+  NLjc(3^8,s3)       208    4   4.558     7     10      +3      6
+  NLja(3^9,s1)       234    4   4.726     7     10      +3      2
+  NLjb(3^9,s1)       234    4   4.641     7     11      +4      1
+  NLjc(3^9,s1)       234    4   4.598     8     11      +3     14
+  NLja(3^9,s2)       234    4   4.726     7     10      +3      2
+  NLjb(3^9,s2)       234    4   4.641     7     10      +3      3
+  NLjc(3^9,s2)       234    4   4.598     8     11      +3      3
+  NLja(3^9,s3)       234    4   4.726     7     10      +3      4
+  NLjb(3^9,s3)       234    4   4.641     8     10      +2     27
+  NLjc(3^9,s3)       234    4   4.598     8     11      +3     22
+  NLjm(5,s1)         202    4   5.931     5      7      +2     27
+  NLjm(5,s2)         202    4   5.931     5      7      +2     29
+  NLjm(6,s1)         264    4   6.114     5      8      +3      2
+  NLjm(6,s2)         264    4   6.114     5      8      +3      2
+  NLjm(7,s1)         290    4   6.014     6      9      +3     11
+  NLjm(7,s2)         290    4   6.014     6      8      +2     13
+  NLsa(5,s1)         106    3   4.585     5      7      +2     21
+  NLka(3^5,s1)       130    4   4.754     5      7      +2     12
+  NLsb(5,s1)         106    3   4.415     5      7      +2     13
+  NLkb(3^5,s1)       130    4   4.708     5      8      +3     10
+  NLsc(5,s1)         106    3   4.415     5      8      +3      4
+  NLkc(3^5,s1)       130    4   4.631     5      8      +3      4
+  NLsd(5,s1)         106    4   4.736     5      6      +1     76
+  NLkd(3^5,s1)       130    4   5.000     5      6      +1    115
+  NLsa(5,s2)         106    3   4.585     5      7      +2     24
+  NLka(3^5,s2)       130    4   4.754     5      7      +2     25
+  NLsb(5,s2)         106    3   4.415     5      7      +2     15
+  NLkb(3^5,s2)       130    4   4.708     5      7      +2     25
+  NLsc(5,s2)         106    3   4.415     5      8      +3      5
+  NLkc(3^5,s2)       130    4   4.631     5      7      +2     16
+  NLsd(5,s2)         106    4   4.736     4      6      +2      4
+  NLkd(3^5,s2)       130    4   5.000     5      6      +1    119
+  NLsa(5,s3)         106    3   4.585     5      7      +2     22
+  NLka(3^5,s3)       130    4   4.754     5      7      +2     18
+  NLsb(5,s3)         106    3   4.415     5      7      +2     17
+  NLkb(3^5,s3)       130    4   4.708     5      7      +2     25
+  NLsc(5,s3)         106    3   4.415     5      8      +3      3
+  NLkc(3^5,s3)       130    4   4.631     5      8      +3      8
+  NLsd(5,s3)         106    3   4.736     4      6      +2      2
+  NLkd(3^5,s3)       130    4   5.000     5      6      +1    101
+  NLsa(5,s4)         106    3   4.585     5      7      +2     25
+  NLka(3^5,s4)       130    4   4.754     5      7      +2     23
+  NLsb(5,s4)         106    3   4.415     5      7      +2      9
+  NLkb(3^5,s4)       130    4   4.708     5      7      +2     20
+  NLsc(5,s4)         106    3   4.415     5      8      +3      7
+  NLkc(3^5,s4)       130    4   4.631     5      7      +2      8
+  NLsd(5,s4)         106    3   4.736     4      6      +2      1
+  NLkd(3^5,s4)       130    4   5.000     5      6      +1    111
+  NLsa(5,s5)         106    3   4.585     5      7      +2     20
+  NLka(3^5,s5)       130    4   4.754     5      7      +2     23
+  NLsb(5,s5)         106    3   4.415     5      8      +3     16
+  NLkb(3^5,s5)       130    4   4.708     5      7      +2     19
+  NLsc(5,s5)         106    3   4.415     5      8      +3      3
+  NLkc(3^5,s5)       130    4   4.631     5      7      +2      8
+  NLsd(5,s5)         106    4   4.736     5      6      +1     87
+  NLkd(3^5,s5)       130    4   5.000     5      6      +1    107
+  NLsa(5,s6)         106    3   4.585     5      7      +2     23
+  NLka(3^5,s6)       130    4   4.754     5      7      +2     22
+  NLsb(5,s6)         106    3   4.415     5      8      +3     16
+  NLkb(3^5,s6)       130    4   4.708     5      7      +2     14
+  NLsc(5,s6)         106    3   4.415     5      8      +3      6
+  NLkc(3^5,s6)       130    4   4.631     5      8      +3      9
+  NLsd(5,s6)         106    4   4.736     5      6      +1     83
+  NLkd(3^5,s6)       130    4   5.000     5      6      +1    103
+  NLsa(6,s1)         120    3   4.450     5      7      +2      3
+  NLka(3^6,s1)       156    4   4.692     6      8      +2     59
+  NLsb(6,s1)         120    3   4.283     6      8      +2     28
+  NLkb(3^6,s1)       156    4   4.641     5      8      +3      1
+  NLsc(6,s1)         120    3   4.267     6      9      +3      4
+  NLkc(3^6,s1)       156    4   4.564     6      8      +2     15
+  NLsd(6,s1)         120    4   4.650     5      7      +2     15
+  NLkd(3^6,s1)       156    4   5.000     5      7      +2     18
+  NLsa(6,s2)         120    3   4.450     5      7      +2      2
+  NLka(3^6,s2)       156    4   4.692     5      8      +3      1
+  NLsb(6,s2)         120    3   4.283     6      9      +3     10
+  NLkb(3^6,s2)       156    4   4.641     6      8      +2     37
+  NLsc(6,s2)         120    3   4.267     6      9      +3      1
+  NLkc(3^6,s2)       156    4   4.564     6      8      +2     14
+  NLsd(6,s2)         120    3   4.650     5      7      +2     17
+  NLkd(3^6,s2)       156    4   5.000     5      7      +2     15
+  NLsa(6,s3)         120    3   4.450     5      8      +3      2
+  NLka(3^6,s3)       156    4   4.692     5      8      +3      1
+  NLsb(6,s3)         120    3   4.283     5      8      +3      1
+  NLkb(3^6,s3)       156    4   4.641     6      8      +2     22
+  NLsc(6,s3)         120    3   4.267     6      9      +3      2
+  NLkc(3^6,s3)       156    4   4.564     6      8      +2     12
+  NLsd(6,s3)         120    3   4.650     5      6      +1     25
+  NLkd(3^6,s3)       156    4   5.000     5      6      +1     12
+  NLsa(6,s4)         120    3   4.450     5      8      +3      1
+  NLka(3^6,s4)       156    4   4.692     6      8      +2     49
+  NLsb(6,s4)         120    3   4.283     6      9      +3     13
+  NLkb(3^6,s4)       156    4   4.641     5      8      +3      1
+  NLsc(6,s4)         120    3   4.267     6      9      +3      5
+  NLkc(3^6,s4)       156    4   4.564     6      8      +2     19
+  NLsd(6,s4)         120    3   4.650     5      6      +1     20
+  NLkd(3^6,s4)       156    4   5.000     5      7      +2     18
+  NLsa(6,s5)         120    3   4.450     5      8      +3      6
+  NLka(3^6,s5)       156    4   4.692     6      8      +2     37
+  NLsb(6,s5)         120    3   4.283     5      8      +3      1
+  NLkb(3^6,s5)       156    4   4.641     6      8      +2     34
+  NLsc(6,s5)         120    3   4.267     6      9      +3      5
+  NLkc(3^6,s5)       156    4   4.564     6      8      +2     11
+  NLsd(6,s5)         120    4   4.650     5      6      +1     26
+  NLkd(3^6,s5)       156    4   5.000     5      7      +2     10
+  NLsa(6,s6)         120    3   4.450     6      8      +2     46
+  NLka(3^6,s6)       156    4   4.692     6      7      +1     63
+  NLsb(6,s6)         120    3   4.283     6      8      +2     27
+  NLkb(3^6,s6)       156    4   4.641     5      8      +3      1
+  NLsc(6,s6)         120    3   4.267     6      9      +3      4
+  NLkc(3^6,s6)       156    4   4.564     6      8      +2     18
+  NLsd(6,s6)         120    3   4.650     5      7      +2     19
+  NLkd(3^6,s6)       156    4   5.000     5      7      +2     14
+  NLsa(7,s1)         146    4   4.548     6      8      +2      8
+  NLka(3^7,s1)       182    4   4.736     6      9      +3     14
+  NLsb(7,s1)         146    3   4.411     7      9      +2     33
+  NLkb(3^7,s1)       182    4   4.692     6      9      +3      7
+  NLsc(7,s1)         146    3   4.342     7     10      +3      5
+  NLkc(3^7,s1)       182    4   4.582     6      9      +3      3
+  NLsd(7,s1)         146    4   4.712     6      7      +1     89
+  NLkd(3^7,s1)       182    4   5.000     6      7      +1     96
+  NLsa(7,s2)         146    3   4.548     6      8      +2     15
+  NLka(3^7,s2)       182    4   4.736     6      9      +3      5
+  NLsb(7,s2)         146    3   4.411     6      9      +3      4
+  NLkb(3^7,s2)       182    4   4.692     7      9      +2     55
+  NLsc(7,s2)         146    3   4.342     7     10      +3      8
+  NLkc(3^7,s2)       182    4   4.582     7      9      +2     18
+  NLsd(7,s2)         146    3   4.712     6      7      +1     88
+  NLkd(3^7,s2)       182    4   5.000     6      7      +1     89
+  NLsa(7,s3)         146    3   4.548     6      8      +2     13
+  NLka(3^7,s3)       182    4   4.736     6      9      +3     14
+  NLsb(7,s3)         146    3   4.411     6      9      +3      4
+  NLkb(3^7,s3)       182    4   4.692     6      9      +3      1
+  NLsc(7,s3)         146    3   4.342     6     10      +4      1
+  NLkc(3^7,s3)       182    4   4.582     7      9      +2     30
+  NLsd(7,s3)         146    3   4.712     5      7      +2      1
+  NLkd(3^7,s3)       182    4   5.000     6      7      +1     95
+  NLsa(7,s4)         146    3   4.548     6      9      +3     11
+  NLka(3^7,s4)       182    4   4.736     6      9      +3      5
+  NLsb(7,s4)         146    3   4.411     6      9      +3      2
+  NLkb(3^7,s4)       182    4   4.692     6      9      +3      7
+  NLsc(7,s4)         146    3   4.342     7     10      +3      5
+  NLkc(3^7,s4)       182    4   4.582     6      9      +3      1
+  NLsd(7,s4)         146    4   4.712     6      7      +1     74
+  NLkd(3^7,s4)       182    4   5.000     6      7      +1    110
+  NLsa(7,s5)         146    3   4.548     6      8      +2     13
+  NLka(3^7,s5)       182    4   4.736     6      8      +2      9
+  NLsb(7,s5)         146    3   4.411     6      9      +3      6
+  NLkb(3^7,s5)       182    4   4.692     6      9      +3      7
+  NLsc(7,s5)         146    3   4.342     6      9      +3      1
+  NLkc(3^7,s5)       182    4   4.582     6      9      +3      5
+  NLsd(7,s5)         146    4   4.712     6      7      +1     86
+  NLkd(3^7,s5)       182    4   5.000     6      7      +1    130
+  NLsa(7,s6)         146    3   4.548     6      8      +2     13
+  NLka(3^7,s6)       182    4   4.736     6      8      +2      6
+  NLsb(7,s6)         146    3   4.411     6      9      +3      3
+  NLkb(3^7,s6)       182    4   4.692     6      8      +2      5
+  NLsc(7,s6)         146    3   4.342     7      9      +2     11
+  NLkc(3^7,s6)       182    4   4.582     7      9      +2     48
+  NLsd(7,s6)         146    3   4.712     6      7      +1    102
+  NLkd(3^7,s6)       182    4   5.000     6      7      +1     90
+  NLsa(8,s1)         160    3   4.450     6     10      +4      1
+  NLka(3^8,s1)       208    4   4.692     7      9      +2     32
+  NLsb(8,s1)         160    3   4.338     6     10      +4      1
+  NLkb(3^8,s1)       208    4   4.683     6      9      +3      1
+  NLsc(8,s1)         160    3   4.250     8     11      +3      5
+  NLkc(3^8,s1)       208    4   4.558     7     10      +3      5
+  NLsd(8,s1)         160    3   4.650     6      8      +2     20
+  NLkd(3^8,s1)       208    4   5.000     6      8      +2      8
+  NLsa(8,s2)         160    3   4.450     6     10      +4      1
+  NLka(3^8,s2)       208    4   4.692     7     10      +3      8
+  NLsb(8,s2)         160    3   4.338     7     10      +3      9
+  NLkb(3^8,s2)       208    4   4.683     7      9      +2     26
+  NLsc(8,s2)         160    3   4.250     8     12      +4      6
+  NLkc(3^8,s2)       208    4   4.558     8     11      +3     33
+  NLsd(8,s2)         160    3   4.650     6      8      +2      7
+  NLkd(3^8,s2)       208    4   5.000     6      8      +2      8
+  NLsa(8,s3)         160    3   4.450     6     10      +4      2
+  NLka(3^8,s3)       208    4   4.692     7      9      +2     11
+  NLsb(8,s3)         160    3   4.338     7      9      +2     21
+  NLkb(3^8,s3)       208    4   4.683     7     10      +3     16
+  NLsc(8,s3)         160    3   4.250     7     12      +5      1
+  NLkc(3^8,s3)       208    4   4.558     7     10      +3      2
+  NLsd(8,s3)         160    3   4.650     6      8      +2     16
+  NLkd(3^8,s3)       208    4   5.000     6      8      +2      8
+  NLsa(8,s4)         160    3   4.450     7      9      +2     24
+  NLka(3^8,s4)       208    4   4.692     7     10      +3      5
+  NLsb(8,s4)         160    3   4.338     7      9      +2     11
+  NLkb(3^8,s4)       208    4   4.683     7      9      +2      8
+  NLsc(8,s4)         160    3   4.250     7     11      +4      1
+  NLkc(3^8,s4)       208    4   4.558     8     11      +3     11
+  NLsd(8,s4)         160    3   4.650     6      9      +3     14
+  NLkd(3^8,s4)       208    4   5.000     6      8      +2      6
+  NLsa(8,s5)         160    3   4.450     7      9      +2     22
+  NLka(3^8,s5)       208    4   4.692     7      9      +2     13
+  NLsb(8,s5)         160    3   4.338     7     10      +3      8
+  NLkb(3^8,s5)       208    4   4.683     7      9      +2     19
+  NLsc(8,s5)         160    3   4.250     8     12      +4      1
+  NLkc(3^8,s5)       208    4   4.558     8     10      +2     52
+  NLsd(8,s5)         160    3   4.650     6      8      +2     19
+  NLkd(3^8,s5)       208    4   5.000     6      8      +2      2
+  NLsa(8,s6)         160    3   4.450     7      9      +2     23
+  NLka(3^8,s6)       208    4   4.692     7     10      +3     28
+  NLsb(8,s6)         160    3   4.338     7      9      +2      9
+  NLkb(3^8,s6)       208    4   4.683     7      9      +2     35
+  NLsc(8,s6)         160    3   4.250     8     12      +4      2
+  NLkc(3^8,s6)       208    4   4.558     7     10      +3      7
+  NLsd(8,s6)         160    3   4.650     6      8      +2      7
+  NLkd(3^8,s6)       208    4   5.000     6      8      +2     12
+  NLsa(9,s1)         186    3   4.527     7     10      +3      1
+  NLka(3^9,s1)       234    4   4.726     7     10      +3      3
+  NLsb(9,s1)         186    3   4.333     8     11      +3      8
+  NLkb(3^9,s1)       234    4   4.641     7     10      +3      2
+  NLsc(9,s1)         186    3   4.344     8     11      +3      2
+  NLkc(3^9,s1)       234    4   4.598     7     11      +4      1
+  NLsd(9,s1)         186    3   4.699     6      8      +2      1
+  NLkd(3^9,s1)       234    4   5.000     7      9      +2     65
+  NLsa(9,s2)         186    3   4.527     7     10      +3      2
+  NLka(3^9,s2)       234    4   4.726     7     10      +3      1
+  NLsb(9,s2)         186    3   4.333     8     11      +3     13
+  NLkb(3^9,s2)       234    4   4.641     8     10      +2      7
+  NLsc(9,s2)         186    3   4.344     8     11      +3      4
+  NLkc(3^9,s2)       234    4   4.598     8     11      +3      1
+  NLsd(9,s2)         186    3   4.699     7      8      +1     58
+  NLkd(3^9,s2)       234    4   5.000     7      8      +1    101
+  NLsa(9,s3)         186    3   4.527     7     10      +3      5
+  NLka(3^9,s3)       234    4   4.726     7     10      +3      4
+  NLsb(9,s3)         186    3   4.333     7     10      +3      1
+  NLkb(3^9,s3)       234    4   4.641     8     10      +2     27
+  NLsc(9,s3)         186    3   4.344     8     11      +3     10
+  NLkc(3^9,s3)       234    4   4.598     8     11      +3     23
+  NLsd(9,s3)         186    3   4.699     7      9      +2     73
+  NLkd(3^9,s3)       234    4   5.000     7      8      +1    100
+  NLsa(9,s4)         186    3   4.527     7     10      +3      2
+  NLka(3^9,s4)       234    4   4.726     7     10      +3      3
+  NLsb(9,s4)         186    3   4.333     9     11      +2     50
+  NLkb(3^9,s4)       234    4   4.641     7     10      +3      2
+  NLsc(9,s4)         186    3   4.344     8     12      +4      3
+  NLkc(3^9,s4)       234    4   4.598     7     10      +3      1
+  NLsd(9,s4)         186    3   4.699     7      8      +1     62
+  NLkd(3^9,s4)       234    4   5.000     7      9      +2     36
+  NLsa(9,s5)         186    3   4.527     7     10      +3      1
+  NLka(3^9,s5)       234    4   4.726     7     10      +3      4
+  NLsb(9,s5)         186    3   4.333     8     11      +3      4
+  NLkb(3^9,s5)       234    4   4.641     8     10      +2     22
+  NLsc(9,s5)         186    3   4.344     9     11      +2     21
+  NLkc(3^9,s5)       234    4   4.598     8     11      +3     20
+  NLsd(9,s5)         186    3   4.699     7      9      +2     58
+  NLkd(3^9,s5)       234    4   5.000     7      9      +2     67
+  NLsa(9,s6)         186    3   4.527     8     10      +2     49
+  NLka(3^9,s6)       234    4   4.726     8     10      +2     43
+  NLsb(9,s6)         186    3   4.333     8     10      +2     20
+  NLkb(3^9,s6)       234    4   4.641     8     11      +3     37
+  NLsc(9,s6)         186    3   4.344     8     12      +4      1
+  NLkc(3^9,s6)       234    4   4.598     8     10      +2     14
+  NLsd(9,s6)         186    3   4.699     7      8      +1     70
+  NLkd(3^9,s6)       234    4   5.000     7      8      +1     71
+  NLsa(10,s1)        200    3   4.450     8     11      +3     13
+  NLka(3^10,s1)      260    4   4.692     8     10      +2     12
+  NLsb(10,s1)        200    3   4.310     8     12      +4      2
+  NLkb(3^10,s1)      260    4   4.677     8     11      +3      2
+  NLsc(10,s1)        200    3   4.260     9     13      +4      4
+  NLkc(3^10,s1)      260    4   4.562     8     11      +3      1
+  NLsd(10,s1)        200    4   4.650     7      9      +2      8
+  NLkd(3^10,s1)      260    4   5.000     7      9      +2      3
+  NLsa(10,s2)        200    3   4.450     8     11      +3      3
+  NLka(3^10,s2)      260    4   4.692     8     11      +3     15
+  NLsb(10,s2)        200    3   4.310     9     12      +3     24
+  NLkb(3^10,s2)      260    4   4.677     8     11      +3      3
+  NLsc(10,s2)        200    3   4.260    10     13      +3      1
+  NLkc(3^10,s2)      260    4   4.562     8     11      +3      1
+  NLsd(10,s2)        200    3   4.650     7      9      +2      7
+  NLkd(3^10,s2)      260    4   5.000     7      9      +2      6
+  NLsa(10,s3)        200    3   4.450     8     11      +3     14
+  NLka(3^10,s3)      260    4   4.692     9     11      +2     37
+  NLsb(10,s3)        200    3   4.310     8     12      +4      3
+  NLkb(3^10,s3)      260    4   4.677     8     11      +3      1
+  NLsc(10,s3)        200    3   4.260     9     13      +4      4
+  NLkc(3^10,s3)      260    4   4.562     9     11      +2      1
+  NLsd(10,s3)        200    3   4.650     7      9      +2      7
+  NLkd(3^10,s3)      260    4   5.000     7      9      +2      5
+  NLsa(10,s4)        200    3   4.450     8     11      +3      5
+  NLka(3^10,s4)      260    4   4.692     8     11      +3      8
+  NLsb(10,s4)        200    3   4.310     8     11      +3      1
+  NLkb(3^10,s4)      260    4   4.677     8     11      +3      1
+  NLsc(10,s4)        200    3   4.260    10     13      +3      3
+  NLkc(3^10,s4)      260    4   4.562     8     11      +3      2
+  NLsd(10,s4)        200    3   4.650     7      9      +2      1
+  NLkd(3^10,s4)      260    4   5.000     7      9      +2      3
+  NLsa(10,s5)        200    3   4.450     8     10      +2      7
+  NLka(3^10,s5)      260    4   4.692     8     11      +3     15
+  NLsb(10,s5)        200    3   4.310     8     11      +3      1
+  NLkb(3^10,s5)      260    4   4.677     8     11      +3     12
+  NLsc(10,s5)        200    3   4.260     9     13      +4      1
+  NLkc(3^10,s5)      260    4   4.562     9     12      +3     12
+  NLsd(10,s5)        200    4   4.650     7      9      +2      6
+  NLkd(3^10,s5)      260    4   5.000     7      9      +2      4
+  NLsa(10,s6)        200    3   4.450     9     11      +2     49
+  NLka(3^10,s6)      260    4   4.692     8     11      +3      4
+  NLsb(10,s6)        200    3   4.310     9     11      +2     19
+  NLkb(3^10,s6)      260    4   4.677     8     11      +3     10
+  NLsc(10,s6)        200    3   4.260    10     13      +3     17
+  NLkc(3^10,s6)      260    4   4.562     8     12      +4      3
+  NLsd(10,s6)        200    3   4.650     7      9      +2      6
+  NLkd(3^10,s6)      260    4   5.000     7      9      +2      6
+
+  THE POPULATION THIS PART'S VERDICT IS ABOUT (rule 90, stated before the verdict):
+    necklace hosts certified C4-free with mu >= 2 : 396
+    ... IN CLASS (l > 4 AND rad >= 5)             : 393
+    ... of those, CASE A hosts (diam = rad+1)     : 57
+    On a CASE B host a condition-3 vertex at offset +1 is a counterexample to the
+    restricted (RXM-PERI); on a CASE A host it is E44's object outright.  BOTH are
+    findings, so no host in the table above is wasted -- but only the CASE A count
+    measures the thing round 39's family could not reach.
+
+  (CS-1') AS A DECISION PROCEDURE, APPLIED HOST BY HOST BEFORE ANY COUNTING.
+  (CS-1') says a condition-3 vertex w has Ctr contained in the sphere S_rad(w),
+  hence |Ctr| <= |S_rad(w)|.  So if |Ctr| > max_w |S_rad(w)| the host CANNOT carry
+  a condition-3 vertex AT ALL -- proved, not measured.  Counting condition-3
+  vertices on such a host is counting in a class that is provably empty.
+    in-class CASE A hosts                                   : 57
+    ... DECIDED EMPTY BY (CS-1') alone (|Ctr| > max_w |S_r(w)|): 53
+    ... LIVE: condition 3 is not excluded by counting        : 4
+      NLsd(6,s3)       n=120 rad=5 diam=6 l=4.650 |Ctr|= 25 max|S_r(w)|= 41
+      NLkd(3^6,s3)     n=156 rad=5 diam=6 l=5.000 |Ctr|= 12 max|S_r(w)|= 44
+      NLsd(6,s4)       n=120 rad=5 diam=6 l=4.650 |Ctr|= 20 max|S_r(w)|= 42
+      NLsd(6,s5)       n=120 rad=5 diam=6 l=4.650 |Ctr|= 26 max|S_r(w)|= 43
+    ** THE ONLY CASE A HOSTS ON WHICH A 0 BELOW MEANS ANYTHING ARE THESE 4. **
+    THE CONTENTFUL CASE A POPULATION, counted in vertices: 516 vertices on those 4
+    hosts, of which 433 are NON-CENTRAL and so could satisfy condition 3;
+    condition-3 vertices actually found on them: 0.
+
+  SEARCH FOR E44's OBJECT (conditions 1-5) OVER EVERY VERTEX OF EVERY IN-CLASS HOST:
+    vertices on in-class CASE A hosts / CASE B hosts: 10796 / 61090
+    non-central vertices on in-class hosts          : 61004
+    vertices with ecc(w) = rad+1 (condition 2)      : 35698
+    vertices maximally far from EVERY centre (c3)   : 1095
+    ... of them on CASE A hosts / CASE B hosts      : 0 / 1095
+    offset profile of the condition-3 vertices      : +1 : 146, +2 : 627, +3 : 284, +4 : 36, +5 : 2
+    **E44 INSTANCES (conditions 1-5 together)       : 146**
+      NLjc(3^7,s2)     n=182 w=15 rad=6 diam=9 l=4.582 |Ctr|=1 -> CASE B
+      NLjc(3^7,s2)     n=182 w=166 rad=6 diam=9 l=4.582 |Ctr|=1 -> CASE B
+      NLjc(3^7,s2)     n=182 w=176 rad=6 diam=9 l=4.582 |Ctr|=1 -> CASE B
+      NLja(3^9,s2)     n=234 w=177 rad=7 diam=10 l=4.726 |Ctr|=2 -> CASE B
+      NLjm(6,s1)       n=264 w=69 rad=5 diam=8 l=6.114 |Ctr|=2 -> CASE B
+      NLjm(6,s1)       n=264 w=70 rad=5 diam=8 l=6.114 |Ctr|=2 -> CASE B
+      NLjm(6,s1)       n=264 w=85 rad=5 diam=8 l=6.114 |Ctr|=2 -> CASE B
+      NLkb(3^6,s1)     n=156 w=140 rad=5 diam=8 l=4.641 |Ctr|=1 -> CASE B
+      NLkb(3^6,s1)     n=156 w=145 rad=5 diam=8 l=4.641 |Ctr|=1 -> CASE B
+      NLsa(6,s2)       n=120 w=57 rad=5 diam=7 l=4.450 |Ctr|=2 -> CASE B
+      NLka(3^6,s2)     n=156 w=39 rad=5 diam=8 l=4.692 |Ctr|=1 -> CASE B
+      NLka(3^6,s2)     n=156 w=47 rad=5 diam=8 l=4.692 |Ctr|=1 -> CASE B
+
+  LIVENESS OF THE DETECTOR, so a 0 above is not a broken detector:
+    the SAME detector, run on the dense seeded hosts, fires at 48 vertices.
+
+==============================================================================
+PART 5 -- THE WITNESSES, GRADED AS OBJECTS (rule 91 applied to MY OWN output)
+==============================================================================
+  Every witness below is re-verified from its EDGE LIST with independent code
+  paths: c4-freeness by brute pair scan, mu and l by BRUTE alpha(G[N(v)]) at EVERY
+  vertex (not the matching formula), and all distances by FLOYD-WARSHALL (not BFS).
+
+  NLsa(6,s2) : n=120  m=267  mu=3  l=4.4500  rad=5  diam=7  |Ctr|=2  Ctr=[80, 114]
+    w= 57  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [57, 40, 72, 75, 69, 74, 70, 48, 56]
+
+  NLsb(6,s3) : n=120  m=257  mu=3  l=4.2833  rad=5  diam=8  |Ctr|=1  Ctr=[109]
+    w= 52  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [52, 65, 43, 57, 40, 29, 33, 12, 25]
+
+  NLsa(6,s4) : n=120  m=267  mu=3  l=4.4500  rad=5  diam=8  |Ctr|=1  Ctr=[83]
+    w= 15  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [15, 3, 107, 80, 97, 81, 93, 66, 78]
+    w= 26  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [26, 34, 29, 33, 7, 13, 1, 18, 9]
+    w= 30  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [30, 34, 26, 3, 107, 80, 97, 81, 98]
+    w= 34  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [34, 26, 3, 107, 80, 97, 81, 98, 89]
+    w= 36  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [36, 26, 34, 29, 2, 22, 9, 32, 37]
+    w= 39  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [39, 28, 1, 17, 2, 24, 11, 20, 12]
+
+  NLsc(7,s3) : n=146  m=317  mu=3  l=4.3425  rad=6  diam=10  |Ctr|=1  Ctr=[43]
+    w=115  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 10 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [115, 112, 83, 97, 80, 103, 88, 99, 85, 102]
+
+  NLsd(7,s3) : n=146  m=344  mu=3  l=4.7123  rad=5  diam=7  |Ctr|=1  Ctr=[45]
+    w= 23  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [23, 0, 132, 136, 106, 81, 66, 74, 69]
+    w= 96  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [96, 88, 99, 81, 66, 40, 57, 41, 53]
+    w=102  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [102, 89, 98, 81, 66, 40, 60, 50, 62]
+    w=103  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [103, 80, 97, 81, 66, 40, 60, 50, 61]
+    w=106  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [106, 136, 128, 8, 16, 2, 24, 11, 36]
+    w=107  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [107, 128, 136, 124, 13, 1, 17, 0, 14]
+    w=109  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [109, 129, 6, 39, 28, 45, 54, 44, 53]
+    w=110  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [110, 131, 135, 129, 6, 39, 28, 45, 65]
+    w=111  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [111, 113, 90, 93, 81, 97, 80, 69, 73]
+    w=113  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [113, 90, 93, 81, 97, 80, 69, 74, 51]
+    w=114  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [114, 106, 136, 128, 8, 16, 2, 38, 32]
+    w=116  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [116, 80, 97, 83, 101, 88, 96, 84, 71]
+    w=119  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [119, 108, 121, 4, 13, 10, 32, 37, 27]
+    w=120  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [120, 134, 124, 136, 106, 81, 66, 40, 60]
+    w=122  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [122, 3, 15, 9, 18, 1, 30, 49, 73]
+    w=127  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [127, 133, 121, 4, 14, 0, 17, 1, 18]
+    w=128  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [128, 136, 124, 13, 1, 17, 0, 14, 5]
+    w=130  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [130, 1, 13, 10, 32, 43, 65, 52, 56]
+    w=131  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [131, 135, 129, 6, 39, 28, 45, 65, 43]
+    w=136  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [136, 128, 8, 16, 2, 24, 11, 36, 26]
+    w=141  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [141, 128, 136, 124, 13, 10, 32, 43, 65]
+    w=143  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 7 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [143, 120, 137, 121, 4, 15, 3, 17, 0]
+
+  NLkb(3^6,s1) : n=156  m=362  mu=4  l=4.6410  rad=5  diam=8  |Ctr|=1  Ctr=[56]
+    w=140  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [140, 107, 121, 104, 79, 96, 90, 94, 80]
+    w=145  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [145, 139, 152, 132, 116, 84, 99, 88, 98]
+
+  NLka(3^6,s2) : n=156  m=366  mu=4  l=4.6923  rad=5  diam=8  |Ctr|=1  Ctr=[136]
+    w= 39  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [39, 33, 49, 26, 1, 136, 148, 131, 147]
+    w= 47  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [47, 32, 40, 8, 16, 2, 24, 11, 15]
+    w= 58  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [58, 66, 56, 89, 93, 81, 116, 138, 149]
+    w= 95  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [95, 80, 100, 88, 99, 84, 59, 32, 50]
+    w= 99  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [99, 81, 116, 129, 107, 155, 137, 154, 136]
+    w=102  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [102, 80, 100, 88, 99, 81, 116, 129, 107]
+
+  NLka(3^6,s3) : n=156  m=366  mu=4  l=4.6923  rad=5  diam=8  |Ctr|=1  Ctr=[114]
+    w= 15  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [15, 3, 32, 40, 26, 49, 33, 39, 27]
+    w= 19  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [19, 8, 16, 2, 135, 144, 136, 151, 106]
+    w= 32  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [32, 3, 17, 0, 133, 145, 111, 128, 106]
+    w= 33  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [33, 0, 133, 145, 139, 152, 132, 154, 104]
+    w= 66  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [66, 52, 72, 64, 87, 114, 125, 112, 123]
+
+  NLkb(3^6,s4) : n=156  m=362  mu=4  l=4.6410  rad=5  diam=8  |Ctr|=1  Ctr=[3]
+    w= 78  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [78, 98, 88, 105, 144, 136, 154, 137, 143]
+    w=129  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [129, 107, 121, 104, 124, 114, 148, 136, 144]
+
+  NLkb(3^6,s6) : n=156  m=362  mu=4  l=4.6410  rad=5  diam=8  |Ctr|=1  Ctr=[86]
+    w=  3  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [3, 140, 143, 137, 153, 130, 107, 86, 99]
+    w=  5  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [5, 14, 0, 17, 1, 132, 152, 116, 122]
+    w= 50  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [50, 32, 40, 1, 132, 146, 138, 149, 131]
+
+  NLsa(8,s1) : n=160  m=356  mu=3  l=4.4500  rad=6  diam=10  |Ctr|=1  Ctr=[66]
+    w=147  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 10 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [147, 4, 35, 32, 41, 69, 73, 71, 79, 70]
+    w=149  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 10 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [149, 129, 143, 120, 140, 130, 133, 121, 139, 125]
+
+  NLsa(8,s2) : n=160  m=356  mu=3  l=4.4500  rad=6  diam=10  |Ctr|=1  Ctr=[146]
+    w= 67  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 10 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [67, 73, 69, 74, 41, 57, 40, 60, 50, 62]
+    w= 72  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 10 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [72, 42, 64, 46, 58, 30, 37, 11, 19, 8]
+    w= 75  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 10 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [75, 72, 81, 97, 80, 106, 145, 123, 155, 152]
+    w= 78  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 10 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [78, 72, 81, 97, 80, 106, 145, 123, 155, 152]
+
+  NLsc(8,s5) : n=160  m=340  mu=3  l=4.2500  rad=8  diam=12  |Ctr|=1  Ctr=[120]
+    w= 62  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 12 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [62, 42, 64, 51, 59, 48, 67, 77, 72, 102, 89, 98]
+
+  NLjc(3^7,s2) : n=182  m=417  mu=4  l=4.5824  rad=6  diam=9  |Ctr|=1  Ctr=[78]
+    w= 15  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [15, 3, 17, 0, 168, 172, 164, 179, 163, 180]
+    w=166  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [166, 169, 160, 17, 2, 27, 62, 65, 56, 67]
+    w=176  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [176, 166, 169, 160, 17, 1, 34, 45, 27, 62]
+
+  NLkb(3^7,s3) : n=182  m=427  mu=4  l=4.6923  rad=6  diam=9  |Ctr|=1  Ctr=[59]
+    w=134  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [134, 143, 137, 153, 130, 162, 170, 160, 169, 163]
+    w=162  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [162, 130, 105, 81, 99, 88, 100, 80, 58, 76]
+    w=166  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [166, 169, 160, 172, 168, 0, 39, 33, 59, 65]
+    w=170  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [170, 160, 169, 163, 8, 21, 3, 17, 2, 31]
+    w=171  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [171, 160, 169, 163, 8, 19, 11, 40, 26, 49]
+    w=173  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [173, 156, 176, 168, 0, 39, 33, 59, 77, 64]
+    w=177  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [177, 162, 130, 105, 81, 99, 86, 97, 89, 98]
+    w=180  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [180, 162, 130, 105, 81, 99, 88, 100, 80, 102]
+
+  NLkc(3^7,s4) : n=182  m=417  mu=4  l=4.5824  rad=6  diam=9  |Ctr|=1  Ctr=[137]
+    w= 30  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [30, 39, 33, 49, 4, 16, 8, 162, 177, 166]
+    w= 70  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [70, 64, 68, 56, 29, 41, 35, 49, 4, 13]
+    w= 72  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [72, 64, 68, 56, 29, 43, 26, 49, 4, 14]
+
+  NLsa(9,s1) : n=186  m=421  mu=3  l=4.5269  rad=7  diam=10  |Ctr|=1  Ctr=[132]
+    w= 38  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [38, 32, 64, 42, 56, 44, 76, 66, 78, 72, 75]
+    w= 63  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [63, 40, 71, 73, 67, 77, 72, 75, 52, 56, 44]
+
+  NLsd(9,s1) : n=186  m=437  mu=3  l=4.6989  rad=6  diam=8  |Ctr|=1  Ctr=[120]
+    w= 26  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [26, 1, 17, 0, 163, 175, 171, 184, 162, 182]
+    w= 29  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [29, 65, 43, 57, 41, 79, 68, 81, 98, 92]
+    w= 30  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [30, 34, 26, 1, 17, 167, 184, 162, 176, 168]
+    w= 34  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [34, 26, 1, 17, 167, 184, 162, 176, 164, 175]
+    w= 35  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [35, 32, 64, 42, 56, 48, 68, 81, 111, 113]
+    w= 37  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [37, 32, 64, 42, 56, 48, 68, 81, 111, 113]
+    w= 38  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [38, 32, 64, 42, 56, 44, 76, 66, 87, 103]
+    w= 39  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [39, 28, 40, 71, 88, 96, 82, 109, 115, 112]
+    w= 40  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [40, 71, 88, 96, 82, 104, 91, 113, 111, 120]
+    w= 49  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [49, 66, 74, 69, 102, 89, 98, 81, 111, 120]
+    w= 51  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [51, 64, 32, 37, 0, 163, 175, 164, 176, 168]
+    w= 55  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [55, 43, 65, 29, 10, 165, 182, 162, 176, 168]
+    w= 73  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 8 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [73, 42, 64, 32, 37, 0, 163, 175, 169, 178]
+
+  NLsb(9,s3) : n=186  m=403  mu=3  l=4.3333  rad=7  diam=10  |Ctr|=1  Ctr=[118]
+    w=  6  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [6, 170, 180, 160, 177, 161, 179, 168, 176, 164, 175]
+    w= 39  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [39, 8, 16, 4, 13, 1, 26, 34, 9, 22, 5]
+
+  NLsa(9,s5) : n=186  m=421  mu=3  l=4.5269  rad=7  diam=10  |Ctr|=1  Ctr=[166]
+    w= 51  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [51, 64, 42, 56, 48, 61, 50, 75, 72, 77, 70]
+    w= 66  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [66, 74, 48, 56, 44, 53, 32, 37, 2, 161, 177]
+
+  NLsc(9,s6) : n=186  m=404  mu=3  l=4.3441  rad=8  diam=12  |Ctr|=1  Ctr=[140]
+    w= 46  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 12 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [46, 64, 42, 56, 48, 66, 74, 69, 80, 97, 81, 98]
+
+  NLsb(10,s1) : n=200  m=431  mu=3  l=4.3100  rad=8  diam=12  |Ctr|=2  Ctr=[8, 10]
+    w=138  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 12 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [138, 129, 143, 120, 146, 156, 147, 162, 184, 171, 179, 168]
+
+  NLsb(10,s3) : n=200  m=431  mu=3  l=4.3100  rad=8  diam=12  |Ctr|=3  Ctr=[4, 11, 31]
+    w=113  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 12 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [113, 107, 88, 96, 68, 75, 40, 54, 44, 55, 49, 32]
+    w=119  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 12 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [119, 108, 89, 98, 81, 97, 80, 94, 85, 105, 87, 104]
+
+  NLsd(10,s4) : n=200  m=465  mu=3  l=4.6500  rad=7  diam=9  |Ctr|=1  Ctr=[129]
+    w=  1  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [1, 34, 26, 51, 64, 42, 56, 48, 69, 87, 104]
+    w=  2  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [2, 38, 32, 61, 48, 56, 42, 57, 40, 79, 68]
+    w=  3  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [3, 15, 9, 18, 1, 19, 8, 16, 192, 170, 173]
+    w=  4  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [4, 36, 26, 34, 29, 54, 40, 79, 68, 100, 91]
+    w=  6  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [6, 32, 61, 48, 56, 42, 66, 89, 112, 115, 109]
+    w= 10  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [10, 33, 27, 37, 32, 61, 48, 56, 42, 66, 89]
+    w= 11  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [11, 15, 9, 18, 1, 17, 0, 14, 5, 189, 193]
+    w= 29  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [29, 33, 10, 21, 8, 16, 192, 170, 180, 172, 176]
+    w= 33  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [33, 10, 21, 3, 17, 0, 14, 4, 16, 192, 170]
+    w= 34  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [34, 1, 17, 0, 20, 10, 21, 8, 16, 192, 170]
+    w= 36  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [36, 26, 34, 1, 17, 0, 20, 10, 21, 8, 31]
+    w= 44  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [44, 77, 72, 98, 89, 102, 82, 119, 108, 115, 84]
+    w= 49  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [49, 70, 74, 66, 89, 98, 92, 118, 106, 121, 133]
+    w= 54  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [54, 40, 57, 41, 72, 98, 89, 102, 82, 96, 84]
+    w= 56  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [56, 48, 61, 32, 35, 0, 23, 190, 165, 174, 166]
+    w= 58  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [58, 41, 72, 98, 89, 102, 82, 119, 108, 143, 120]
+    w= 59  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [59, 48, 56, 42, 66, 89, 102, 82, 96, 88, 106]
+    w= 63  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [63, 40, 57, 41, 72, 98, 92, 118, 112, 115, 108]
+    w= 64  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 9 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [64, 42, 56, 48, 69, 73, 67, 101, 88, 96, 82]
+
+  NLsb(10,s5) : n=200  m=431  mu=3  l=4.3100  rad=8  diam=11  |Ctr|=1  Ctr=[33]
+    w=129  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [129, 135, 123, 137, 120, 140, 130, 154, 150, 162, 177, 160]
+    w=138  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [138, 129, 143, 120, 147, 157, 152, 176, 168, 179, 161, 177]
+
+  NLkb(3^8,s1) : n=208  m=487  mu=4  l=4.6827  rad=6  diam=9  |Ctr|=1  Ctr=[194]
+    w= 58  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [58, 66, 56, 65, 59, 75, 61, 74, 54, 98]
+    w= 89  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [89, 97, 83, 100, 80, 94, 82, 91, 85, 120]
+    w=102  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [102, 80, 100, 88, 108, 117, 105, 121, 104, 149]
+    w=126  ecc(w)=7 = rad+1  d(c,w) = [6] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 7 < 9 = diam.
+           endpath(G,w) >= 10 = ecc(w)+3 : BUILT and checker-verified
+           path = [126, 106, 128, 81, 99, 88, 108, 117, 105, 122]
+
+  NLja(3^9,s2) : n=234  m=553  mu=4  l=4.7265  rad=7  diam=10  |Ctr|=2  Ctr=[35, 60]
+    w=177  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [177, 162, 170, 160, 186, 197, 193, 201, 190, 203, 192]
+
+  NLka(3^9,s2) : n=234  m=553  mu=4  l=4.7265  rad=7  diam=10  |Ctr|=1  Ctr=[85]
+    w=187  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [187, 196, 186, 195, 192, 202, 167, 175, 161, 178, 166]
+    w=196  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [196, 182, 213, 3, 15, 9, 23, 0, 28, 48, 35]
+    w=197  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [197, 185, 207, 194, 224, 216, 10, 32, 40, 26, 49]
+    w=202  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [202, 192, 203, 185, 156, 179, 164, 140, 113, 122, 105]
+    w=215  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [215, 231, 208, 225, 209, 25, 5, 33, 54, 69, 52]
+    w=224  ecc(w)=8 = rad+1  d(c,w) = [7] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 8 < 10 = diam.
+           endpath(G,w) >= 11 = ecc(w)+3 : BUILT and checker-verified
+           path = [224, 194, 200, 183, 201, 168, 134, 144, 116, 129, 107]
+
+  NLkc(3^9,s2) : n=234  m=538  mu=4  l=4.5983  rad=8  diam=11  |Ctr|=1  Ctr=[232]
+    w= 98  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [98, 88, 124, 104, 121, 105, 145, 141, 154, 137, 153, 138]
+    w= 99  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [99, 88, 124, 104, 121, 105, 145, 141, 154, 137, 153, 138]
+    w=100  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [100, 80, 94, 64, 35, 8, 16, 2, 24, 11, 15, 9]
+    w=112  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [112, 86, 97, 89, 98, 88, 100, 80, 95, 62, 74, 57]
+    w=116  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [116, 129, 107, 121, 104, 131, 162, 193, 201, 187, 232, 219]
+    w=120  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [120, 106, 128, 115, 152, 140, 164, 177, 166, 176, 168, 181]
+
+  NLkc(3^10,s1) : n=260  m=593  mu=4  l=4.5615  rad=8  diam=11  |Ctr|=1  Ctr=[137]
+    w=  3  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [3, 39, 33, 49, 26, 40, 32, 62, 65, 56, 67, 55]
+    w= 17  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [17, 0, 237, 259, 241, 258, 217, 223, 211, 185, 161, 178]
+
+  NLkb(3^10,s3) : n=260  m=608  mu=4  l=4.6769  rad=8  diam=11  |Ctr|=1  Ctr=[185]
+    w= 62  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [62, 65, 56, 66, 57, 77, 64, 37, 41, 35, 48, 12]
+
+  NLkc(3^10,s3) : n=260  m=593  mu=4  l=4.5615  rad=9  diam=11  |Ctr|=1  Ctr=[253]
+    w=117  ecc(w)=10 = rad+1  d(c,w) = [9] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 10 < 11 = diam.
+           endpath(G,w) >= 13 = ecc(w)+3 : BUILT and checker-verified
+           path = [117, 105, 121, 104, 132, 146, 134, 144, 136, 148, 139, 170, 160]
+    w=119  ecc(w)=10 = rad+1  d(c,w) = [9] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 10 < 11 = diam.
+           endpath(G,w) >= 13 = ecc(w)+3 : BUILT and checker-verified
+           path = [119, 107, 129, 116, 141, 154, 137, 153, 138, 146, 134, 144, 135]
+    w=120  ecc(w)=10 = rad+1  d(c,w) = [9] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 10 < 11 = diam.
+           endpath(G,w) >= 13 = ecc(w)+3 : BUILT and checker-verified
+           path = [120, 112, 123, 105, 140, 143, 137, 153, 130, 144, 136, 148, 142]
+    w=122  ecc(w)=10 = rad+1  d(c,w) = [9] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 10 < 11 = diam.
+           endpath(G,w) >= 13 = ecc(w)+3 : BUILT and checker-verified
+           path = [122, 105, 121, 104, 132, 146, 138, 153, 137, 155, 133, 164, 197]
+    w=124  ecc(w)=10 = rad+1  d(c,w) = [9] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 10 < 11 = diam.
+           endpath(G,w) >= 13 = ecc(w)+3 : BUILT and checker-verified
+           path = [124, 104, 121, 105, 140, 151, 136, 144, 130, 153, 139, 170, 160]
+
+  NLkb(3^10,s4) : n=260  m=608  mu=4  l=4.6769  rad=8  diam=11  |Ctr|=1  Ctr=[79]
+    w=234  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [234, 257, 241, 247, 235, 2, 42, 34, 53, 70, 64, 100]
+    w=248  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [248, 240, 258, 241, 23, 0, 27, 39, 33, 50, 37, 60]
+    w=250  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [250, 236, 256, 243, 25, 3, 38, 42, 34, 53, 69, 52]
+    w=257  ecc(w)=9 = rad+1  d(c,w) = [8] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 9 < 11 = diam.
+           endpath(G,w) >= 12 = ecc(w)+3 : BUILT and checker-verified
+           path = [257, 234, 11, 15, 4, 16, 2, 42, 34, 53, 69, 52]
+
+  NLjm(6,s1) : n=264  m=807  mu=4  l=6.1136  rad=5  diam=8  |Ctr|=2  Ctr=[176, 178]
+    w= 69  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [69, 4, 35, 6, 32, 0, 42, 226, 263]
+    w= 70  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [70, 130, 114, 131, 98, 167, 151, 163, 160]
+    w= 85  ecc(w)=6 = rad+1  d(c,w) = [5] for every centre  -> CASE B
+           and therefore ALSO a counterexample to (RXM-PERI) restricted
+           to l > 4 and rad >= 5: ecc(w) = 6 < 8 = diam.
+           endpath(G,w) >= 9 = ecc(w)+3 : BUILT and checker-verified
+           path = [85, 2, 36, 6, 32, 0, 42, 226, 254]
+
+  SMALLEST WITNESS, EXPLICIT EDGE LIST (NLsa(6,s2), n=120):
+    (0,32) (0,14) (0,17) (0,20) (0,23) (1,34) (1,13) (1,110) (1,17) (1,18) (1,19) (2,37)
+    (2,16) (2,17) (2,22) (2,24) (3,15) (3,17) (3,21) (3,25) (3,26) (4,36) (4,13) (4,14)
+    (4,15) (4,16) (5,38) (5,14) (5,19) (5,22) (5,25) (6,14) (6,18) (6,21) (6,24) (6,29)
+    (7,13) (7,23) (7,24) (7,25) (7,30) (8,35) (8,16) (8,19) (8,21) (8,23) (9,15) (9,18)
+    (9,22) (9,23) (9,28) (10,39) (10,13) (10,20) (10,21) (10,22) (11,15) (11,19) (11,20) (11,24)
+    (11,31) (12,16) (12,18) (12,20) (12,25) (12,27) (14,111) (21,106) (26,34) (26,36) (26,38) (27,33)
+    (27,36) (27,37) (28,35) (28,36) (28,39) (28,61) (29,33) (29,34) (29,35) (30,64) (30,34) (30,37)
+    (30,39) (31,33) (31,38) (31,39) (31,40) (32,35) (32,37) (32,38) (40,72) (40,54) (40,57) (40,60)
+    (40,63) (41,68) (41,53) (41,57) (41,58) (41,59) (42,64) (42,78) (42,56) (42,57) (42,62) (43,65)
+    (43,73) (43,55) (43,57) (43,61) (44,79) (44,53) (44,54) (44,55) (44,56) (45,65) (45,69) (45,54)
+    (45,59) (45,62) (46,64) (46,74) (46,54) (46,58) (46,61) (47,64) (47,65) (47,66) (47,53) (47,63)
+    (48,70) (48,56) (48,59) (48,61) (48,63) (49,77) (49,55) (49,58) (49,62) (49,63) (50,67) (50,53)
+    (50,60) (50,61) (50,62) (51,64) (51,76) (51,55) (51,59) (51,60) (52,65) (52,75) (52,56) (52,58)
+    (52,60) (66,74) (66,76) (66,78) (66,92) (67,73) (67,76) (67,77) (68,75) (68,76) (68,79) (68,89)
+    (69,100) (69,73) (69,74) (69,75) (70,74) (70,77) (70,79) (71,73) (71,78) (71,79) (72,75) (72,77)
+    (72,78) (80,97) (80,100) (80,103) (80,110) (80,94) (81,97) (81,98) (81,99) (81,116) (81,93) (82,96)
+    (82,97) (82,102) (82,104) (82,115) (83,97) (83,101) (83,105) (83,106) (83,95) (84,96) (84,108) (84,93)
+    (84,94) (84,95) (85,99) (85,102) (85,105) (85,112) (85,94) (86,98) (86,101) (86,104) (86,107) (86,94)
+    (87,103) (87,104) (87,105) (87,119) (87,93) (88,96) (88,99) (88,101) (88,103) (88,113) (89,98) (89,102)
+    (89,103) (89,117) (89,95) (90,100) (90,101) (90,102) (90,109) (90,93) (91,99) (91,100) (91,104) (91,118)
+    (91,95) (92,96) (92,98) (92,100) (92,105) (92,114) (106,114) (106,116) (106,118) (107,113) (107,116) (107,117)
+    (108,115) (108,116) (108,119) (109,113) (109,114) (109,115) (110,114) (110,117) (110,119) (111,113) (111,118) (111,119)
+    (112,115) (112,117) (112,118)
+
+==============================================================================
+PARTS RUN: PART0, PART1, PART2, PART3, PART4, PART5
+CHECKS: 3154   FAILURES: 0   elapsed 8.5s
+==============================================================================

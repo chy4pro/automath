@@ -1,0 +1,68 @@
+==============================================================================
+AGGREGATE vs POINTWISE on the p=5 class  A_e1={(0,0),(1,0)}, |A_e2|<=3
+==============================================================================
+  reference values, computed not narrated:
+     (2p-1)^2                      = 81   <- the conjecture's target
+     3p^2 - p - 1                  = 69   <- the paper's PROVED bound
+     4(p-1)^2                      = 64   <- total the POINTWISE floor would deliver on mixed w
+
+  class enumerated completely = True ; normal-form f = 10925 ; de-normalised = 273125
+  elapsed_s so far = 4.9
+
+==============================================================================
+CONTROL
+==============================================================================
+  [PASS] G1  Sec.6 fibre sum  ==  literal |T_f - T_f| in (Z/25Z)^2 : 0 violations
+       population: ALL 10925 normal-form f of the class; exclusion list EMPTY (no sampling).
+
+==============================================================================
+Q1 -- does the AGGREGATE mixed-direction bound survive?
+==============================================================================
+  min over the class of  sum over mixed w of |A_w|   = 62
+  the pointwise floor would deliver                   = 64
+  members BELOW the pointwise total                   = 300
+  population: all 10925 normal-form f (273125 de-normalised); exclusion list EMPTY.
+
+  distribution of sum over mixed w of |A_w|:
+      62 :    300 normal-form f
+      64 :    400 normal-form f
+      66 :    350 normal-form f
+      68 :    350 normal-form f
+      70 :    950 normal-form f
+      72 :   1300 normal-form f
+      74 :    600 normal-form f
+      76 :    800 normal-form f
+      78 :    850 normal-form f
+      80 :   1350 normal-form f
+      84 :    450 normal-form f
+      86 :    200 normal-form f
+      88 :    450 normal-form f
+      90 :    100 normal-form f
+      92 :    150 normal-form f
+      94 :    100 normal-form f
+      96 :   1225 normal-form f
+      98 :    100 normal-form f
+     104 :    100 normal-form f
+     112 :    450 normal-form f
+     120 :    150 normal-form f
+     128 :    200 normal-form f
+
+==============================================================================
+Q2 -- is the CONJECTURE true on this class?
+==============================================================================
+  min over the class of |T_f - T_f|      = 81
+  the conjecture's target (2p-1)^2       = 81
+  the paper's proved bound 3p^2-p-1      = 69
+  members with |T_f - T_f| < (2p-1)^2    = 0
+  population: all 10925 normal-form f (273125 de-normalised); exclusion list EMPTY -- every member tested, none skipped, none sampled.
+
+==============================================================================
+THE COUNTEREXAMPLES SPECIFICALLY (pointwise floor fails on these)
+==============================================================================
+  count                                   = 900
+  min over THEM of sum over mixed |A_w|   = 62  (pointwise total = 64)
+  min over THEM of |T_f - T_f|            = 85  (target = 81)
+
+==============================================================================
+  controls_ok = True
+  elapsed_s = 4.93

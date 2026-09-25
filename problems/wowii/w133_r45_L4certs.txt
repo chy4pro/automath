@@ -1,0 +1,6 @@
+# host anchor_v  path...   (an induced path of H on diam(H)+4 vertices,
+# with ecc_H(anchor_v) = diam(H); certifies path(H) >= diam(H)+4)
+W43a 0 0 381 16 303 93 369 25 293 4 333
+W43b 0 0 245 221 213 398 202 74 162 228 58
+W43c 0 0 369 371 197 92 104 143 176 6 164
+W44a 0 0 420 163 342 361 5 19 82 71 60

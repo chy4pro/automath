@@ -1,0 +1,33 @@
+note: Running TeX ...
+warning: main.tex:1442: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1436--1442
+warning: main.tex:1452: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1444--1452
+warning: main.tex:1735: Overfull \hbox (11.70905pt too wide) detected at line 1735
+warning: main.tex:1862: Overfull \hbox (17.6817pt too wide) detected at line 1862
+warning: main.tex:3780: Overfull \hbox (8.30586pt too wide) in paragraph at lines 3772--3780
+warning: main.tex:3967: Overfull \hbox (2.73108pt too wide) in paragraph at lines 3964--3967
+warning: main.tex:4214: Overfull \hbox (3.82489pt too wide) in paragraph at lines 4210--4214
+warning: main.tex:5147: Overfull \hbox (0.55708pt too wide) in paragraph at lines 5144--5147
+note: Rerunning TeX because "main.aux" changed ...
+warning: main.tex:1442: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1436--1442
+warning: main.tex:1452: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1444--1452
+warning: main.tex:1735: Overfull \hbox (11.70905pt too wide) detected at line 1735
+warning: main.tex:1862: Overfull \hbox (17.6817pt too wide) detected at line 1862
+warning: main.tex:3780: Overfull \hbox (8.30586pt too wide) in paragraph at lines 3772--3780
+warning: main.tex:3967: Overfull \hbox (2.73108pt too wide) in paragraph at lines 3964--3967
+warning: main.tex:4214: Overfull \hbox (3.82489pt too wide) in paragraph at lines 4210--4214
+warning: main.tex:5147: Overfull \hbox (0.55708pt too wide) in paragraph at lines 5144--5147
+warning: main.tex:5322: Overfull \hbox (0.9986pt too wide) in paragraph at lines 5306--5322
+note: Rerunning TeX because "main.aux" changed ...
+warning: main.tex:1442: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1436--1442
+warning: main.tex:1452: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1444--1452
+warning: main.tex:1735: Overfull \hbox (11.70905pt too wide) detected at line 1735
+warning: main.tex:1862: Overfull \hbox (17.6817pt too wide) detected at line 1862
+warning: main.tex:3780: Overfull \hbox (8.30586pt too wide) in paragraph at lines 3772--3780
+warning: main.tex:3967: Overfull \hbox (2.73108pt too wide) in paragraph at lines 3964--3967
+warning: main.tex:4214: Overfull \hbox (3.82489pt too wide) in paragraph at lines 4210--4214
+warning: main.tex:5147: Overfull \hbox (0.55708pt too wide) in paragraph at lines 5144--5147
+warning: main.tex:5322: Overfull \hbox (0.9986pt too wide) in paragraph at lines 5306--5322
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `main.pdf` (659.29296875 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)

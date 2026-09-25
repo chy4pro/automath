@@ -1,0 +1,32 @@
+=== owner-w61 r21 -- held-out key arithmetic self-check ===
+
+[A] H2 -- the printed per-E terms must sum to the printed S(11)
+  sum of H2 terms                       98384  expect    98384  PASS
+
+[B] H3 -- the per-E split must sum to the printed survivor count
+  sum of H3 per-E split                   791  expect      791  PASS
+
+[C] H3 -- the per-E SHAPES TESTED must equal S(11), term by term
+  sum of H3 per-E shapes                98384  expect    98384  PASS
+  H3 shapes == H2 terms (per E)          True  expect     True  PASS
+
+[D] H4 -- the recorded histogram must sum to p(22), and its 13-bucket to the key value
+  sum of H4 histogram                    1002  expect     1002  PASS
+  H4 bucket at s0 = 13                    131  expect      131  PASS
+
+[E] INDEPENDENT re-derivation: p(n) by Euler's pentagonal recurrence
+  p(22)                                  1002  expect     1002  PASS
+  S(11) = sum (11-E) p(E) p(22-E)       98384  expect    98384  PASS
+    term E=1                             7920  expect     7920  PASS
+    term E=2                            11286  expect    11286  PASS
+    term E=3                            11760  expect    11760  PASS
+    term E=4                            13475  expect    13475  PASS
+    term E=5                            12474  expect    12474  PASS
+    term E=6                            12705  expect    12705  PASS
+    term E=7                            10560  expect    10560  PASS
+    term E=8                             8910  expect     8910  PASS
+    term E=9                             6060  expect     6060  PASS
+    term E=10                            3234  expect     3234  PASS
+
+KEY SELF-CHECK: PASS
+NOT ESTABLISHED HERE: H3 = 791 and H4 = 131 remain single-implementation counts.

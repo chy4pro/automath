@@ -1,0 +1,342 @@
+w133 round 47 -- (HUG-EQ) AS A SPEC; (ROW-BUDGET) RETRACTED.  system python3.
+started 2026-08-23 22:58:32
+WOWII-133 owner round 47 -- (HUG-EQ) READ AS A SPECIFICATION, AND ROUND 46's OWN
+(ROW-BUDGET) DEMOTED TO A COROLLARY.
+
+The planner's round-47 dispatch, in his order:
+  1. Build FROM (HUG-EQ) as a CONSTRUCTION SPEC, not a filter for it.
+  2. The 15 residuals of the (TAIL-2S)/(TAIL-2S') pair.
+  3. Sum (ROW-BUDGET) against (ROW-CT).
+
+Item 3 is answered FIRST because the answer kills the lane, and it is my own lane:
+
+  PART 1  (BUDGET-SUB).  On a TRIANGLE-FREE C4-free host -- which is the ONLY population on
+          which (ROW-BUDGET)'s proof is valid, since it needs (HUG-DEG) -- the budget test
+          FIRES ONLY WHERE (TAIL-3'') ALREADY FIRES.  Proof: a(z) = deg(z) when the host is
+          triangle-free, so `some z has deg(z) >= 2+k3(z)' IS `(TAIL-3'') fires at z'.  So
+          (ROW-BUDGET) closes a SUBSET of the frames (TAIL-3'') closes and there is nothing
+          to sum it against.  Round 46 section 4's sentence -- "it closes a frame at which
+          no single vertex looks closable" -- is FALSE, and its own (P2) (`every closed
+          frame carries an explicitly firing z', 0 failures) was the PROOF of the
+          subsumption, which I read as a soundness check.  RETRACTED HERE, not defended.
+          And with it: r46's (P3) `fires on 0 frames of Petersen/C7/C8' was NOT an
+          independent soundness test -- (TAIL-3'') fires on 0 frames there, so a subsumed
+          test CANNOT fire.  A control that could not have failed.
+
+  GENERAL PRINCIPLE, stated once and applied to my own ledger: ANY test derived from the
+  contrapositive of `(TAIL-3'') fires nowhere' is a COROLLARY of (TAIL-3''), never a new
+  lane -- it can only re-detect a firing frame more cheaply, and exhaustive (TAIL-3'')
+  checking already costs seconds.  A genuinely NEW lane must build a DIFFERENT PATH
+  ((TAIL-2S), (TAIL-2S')), not re-read the same non-firing condition.  By that test
+  (ROW-BUDGET), (HUG-EQ)-as-filter and (HUG-VAR) are all corollaries; their ONLY value is
+  as CONSTRUCTION CONSTRAINTS, which is exactly what the dispatch's item 1 asks for.
+
+  PART 2  (SHELL) -- the spec, completed.  Round 46 pinned the step-3 shell only.  On a
+          triangle-free C4-free host the ADMISSIBLE set is exactly N(u_d) \ {u_{d-1}}, and
+          at every frame   deg(y) = 1 + k2(y) + |Z(y)|   EXACTLY (an identity, not a bound),
+          so an open instance ALSO pins the y-shell: Z(y) empty forces deg(y) <= 3.
+
+  PART 3  (SPEC-CT) -- the spec summed against the l-budget, with the missing ingredient
+          named rather than hidden: everything reduces to a LOWER bound on |T|/n, which
+          this line does not have.  |T| measured EXHAUSTIVELY on the four CASE A hosts.
+
+  PART 4  THE VACUOUS ROUTE, RECLASSIFIED.  Round 46 separated C5/C6 as `VACUOUS (F=0)' and
+          set them aside.  For the design target that is BACKWARDS: F(H) = 0 means there is
+          no step-3 frame at all, so (TAIL-3'') can never fire and (ROW-LADDER) j=3 does not
+          close the instance.  F = 0 is not a vacuum, it is a WIN CONDITION -- a fourth
+          integer, and the cheapest one to state.  Measured across the library, with the
+          theorem that says what it costs.
+
+  PART 5  THE 15 RESIDUALS, EXHAUSTIVELY.  Round 46's residual count SAMPLED geodesics (3)
+          and far ends (8), so `does not close' was INCONCLUSIVE.  Here every geodesic and
+          every far end of every condition-4 vertex is enumerated, so BOTH directions are
+          sound and the number is entitled.
+
+  PART 6  A CONSTRUCTION, BUILT FROM THE SPEC AND NOT SEARCHED FOR.  (HUG-EQ) says a
+          non-firing step-3 vertex has deg(z) = k3(z)+1; the eleven non-firing CASE A frames
+          all sit at ONE planted degree-2 vertex.  So PLANT MORE OF THEM.  Planting a
+          degree-2 vertex on a pair at distance >= 3 preserves C4-freeness and
+          triangle-freeness, and -- this is why the lane is worth taking -- it preserves
+          floor(l) = 4 EXACTLY: it adds 2 to Sum a at the new vertex and 1 at each of two
+          attachment points, i.e. +4 for +1 vertex, and (Sa+4k)/(n+k) stays inside [4,5)
+          whenever it started there.  The l-budget is therefore NOT the obstruction to this
+          construction, and PART 6 reports what is.
+
+DIRECTIONS OF ERROR, FIXED BEFORE ANY NUMBER IS READ (doctrine 129, dispatch item (d)):
+  * PART 1/2/3: frames enumerated EXHAUSTIVELY per host (every diametral vertex, every far
+    end, every geodesic, no cap) -- both directions sound.  Where a host is skipped for the
+    frame budget it is PRINTED and excluded from every quoted total.
+  * PART 4: F(H) = 0 is a claim about a host, so it needs the EXHAUSTIVE census; a host
+    whose census is truncated may NOT be quoted as F = 0.
+  * PART 5: EXHAUSTIVE over geodesics and far ends, so `does NOT close' is SOUND here --
+    that is the whole point of the part, and it is what round 46 could not say.
+  * PART 6: `the construction reached FIRE-GAP x%' is SOUND (it is measured on the built
+    host); `no construction can do better' would be INCONCLUSIVE and is not claimed.
+
+PREDICTIONS REGISTERED BEFORE THE RUN (dispatch item (c): a diagnosis is a conjecture):
+  (Q1) BUDGET-only frames -- closed by (ROW-BUDGET) and by no single z -- number ZERO on
+       every triangle-free host.  If this FAILS the subsumption proof is wrong.
+  (Q2) TAIL3-only frames are MANY, so the containment is STRICT and (ROW-BUDGET) is
+       strictly weaker, not equivalent.
+  (Q3) deg(y) = 1 + k2(y) + |Z(y)| at every frame of every triangle-free C4-free host:
+       0 violations.  And the admissible set equals N(u_d) \ {u_{d-1}}: 0 mismatches.
+  (Q4) No host in the library with floor(l) >= 4 has F(H) = 0.  (If one does, the design
+       target is ALREADY MET by a host on disk and this line has been looking past it.)
+  (Q5) The exhaustive residual count is <= 15 -- exhaustiveness can only CLOSE more
+       instances, never fewer, so a number ABOVE 15 would mean round 46's 15 was wrong.
+  (Q6) Planting degree-2 vertices RAISES the non-firing frame count above 11 and keeps
+       floor(l) = 4.  Registered because it is the construction's own claim; PART 6 reports
+       the trajectory whatever it does.
+
+NO SAT.  NO local exhaustive search over a large space (the frame enumerations are over the
+frames of a FIXED host, which is the object under study, not a search space).  Pure stdlib,
+system python3.  Primitives, frame machinery, host builders, fires3 and the two sidestep
+generators are COPIED VERBATIM from w133_r46_hug.py / w133_r46b_budget.py, never imported
+(round 45 error 1 was a builder RETYPED instead of copied).
+
+
+==============================================================================
+PART 0 -- the host library, and what each host is here FOR
+==============================================================================
+
+  Three independent sources, because 260 instances from FOUR hosts is what round 45 had to
+  print against its own headline (136).  (A) the four CASE A hosts this line actually
+  holds, read off disk; (B) NAMED graphs whose C4-freeness is a theorem about them, built
+  from their own definitions -- these are the candidates for the design target, because the
+  design target wants SHORT cycles everywhere and the named C4-free families are exactly
+  the ones with a transitive supply of them; (C) round 42/45's random and necklace hosts,
+  which are the family the line's own measurements came from.
+
+  DROPPED (not C4-free, which this file ASSERTS rather than assumes): PG(2,4)inc
+  hosts kept: 68  (CASE-A 4, NAMED 22, NECK 12, RAND 30);  dropped for connectivity/C4: 1
+  INDEPENDENT SOURCES represented: 4 (CASE-A on disk / NAMED from definitions / RAND greedy / NECK block designs)
+
+==============================================================================
+PART 1 -- (BUDGET-SUB): round 46's own (ROW-BUDGET) is a COROLLARY, not a lane
+PART 2 -- (SHELL): the y-shell is pinned by an IDENTITY, not a bound
+==============================================================================
+
+  (BUDGET-SUB).  H C4-free and TRIANGLE-FREE -- the only population on which (ROW-BUDGET)'s
+  proof is valid, because it needs (HUG-DEG), which needs triangle-freeness.  Then at every
+  frame:  (ROW-BUDGET) FIRES  ==>  (TAIL-3'') FIRES AT SOME z IN Z(y).
+  Proof.  In a C4-free graph N(z) induces a matching, so a(z) = deg(z) - t(z) with t(z) the
+  number of edges inside N(z); triangle-free means t(z) = 0, so a(z) = deg(z) EXACTLY.
+  (ROW-BUDGET) fires iff SUM_z (deg(z)-1) > |B| >= SUM_z k3(z), which forces some z with
+  deg(z) - 1 > k3(z), i.e. deg(z) >= 2 + k3(z), i.e. a(z) >= 2 + k3(z) -- which IS
+  (TAIL-3'')'s sufficient condition at z. []
+  So the set of frames (ROW-BUDGET) closes is a SUBSET of the set (TAIL-3'') closes, and
+  there is nothing to sum it against: it carries no information (TAIL-3'') does not already
+  carry.  Round 46 section 4's "it closes a frame at which no single vertex looks closable"
+  is FALSE -- its own proof exhibits the single vertex.  RETRACTED.
+
+  AND THE CONTROL THAT COULD NOT HAVE FAILED.  Round 46's (P3) -- `the budget test fires on
+  0 frames of Petersen / C7 / C8' -- was recorded as the check that could have shown the
+  lane unsound.  Those are exactly the three hosts with N(H) = 0, i.e. (TAIL-3'') fires on
+  none of their frames; by (BUDGET-SUB) a subsumed test then CANNOT fire.  (P3) was FORCED.
+  That is dispatch item (a) firing on my own control, one round later.
+
+  (SHELL) -- and this is the part that is worth keeping.  H C4-free TRIANGLE-FREE, P a
+  geodesic from a diametral v to a far end x = u_d.
+   (a) ADMISSIBILITY IS FREE: the (TAIL-1)-admissible y are EXACTLY N(x) \ {u_{d-1}}.
+       (y !~ u_{d-1} because N(x) is independent; y !~ u_{d-2} would give u_{d-2}, x the two
+       common neighbours u_{d-1} and y; y !~ u_i for i <= d-3 by distance.)
+   (b) THE IDENTITY:  deg(y) = 1 + k2(y) + |Z(y)|  EXACTLY.
+       (N(y) splits into x; the vertices of N(y) meeting N(u_{d-2}) or N(u_{d-3}), at most
+       one each by C4-freeness and never the same vertex by triangle-freeness, i.e. exactly
+       k2(y) of them; and the rest, which is precisely Z(y).  Nothing else can be blocked:
+       a neighbour of y adjacent to u_{d-1} would give a C4 with x, and one adjacent to
+       u_{d-4} or earlier would contradict d(u_j, x) = d - j.)
+   (c) CONSEQUENCE FOR AN OPEN INSTANCE: if Z(y) is EMPTY at a frame then deg(y) = 1+k2(y)
+       <= 3.  So the open case pins the y-shell too, not only round 46's z-shell:
+       AT EVERY FRAME, EITHER deg(y) <= 3, OR every z in Z(y) has deg(z) = k3(z)+1 <= 5.
+
+  (Q1) BUDGET-only frames = 0 on every triangle-free host.   (Q2) TAIL3-only frames > 0.
+  (Q3) identity violations = 0 and admissible-set mismatches = 0.
+
+  triangle-free hosts in the library: 38 ; fully scanned: 38 ; skipped: 0 
+
+  host                 n    frames    with Z    BUDGET     TAIL3  BUD only   T3 only
+  W43a               420    121226    121226    113788    121226         0      7438
+  W43b               420     97890     97890     92139     97890         0      5751
+  W43c               420    106864    106864    101350    106864         0      5514
+  W44a               421    124759    124759    116932    124759         0      7827
+  Petersen            10       120       120         0         0         0         0
+  Heawood=PG(2,2)     14       336       336         0       336         0       336
+  PG(2,3)inc          26      2808      2808         0      2808         0      2808
+  PG(2,5)inc          62     46500     46500     46500     46500         0         0
+  C5                   5        10         0         0         0         0         0
+  C6                   6        12         0         0         0         0         0
+  C7                   7        14        14         0         0         0         0
+  C8                   8        16        16         0         0         0         0
+  C9                   9        18        18         0        18         0        18
+  C11                 11        22        22        22        22         0         0
+  C13                 13        26        26        26        26         0         0
+  O4=K(7,3)           35      3780      3780      2520      3780         0      1260
+  Desargues           20       480       480         0       480         0       480
+  Pappus              18       300       288         0       288         0       288
+  Coxeter             28       672       672         0       672         0       672
+  MoebiusKantor       16       192       192         0        96         0        96
+  Nauru               24       864       864         0       864         0       864
+  Dodecahedron        20       240       240         0       240         0       240
+  GP(7,2)             14       196       196         0       168         0       168
+  GP(9,2)             18        72        72         0        72         0        72
+  GP(11,3)            22       264       264         0       264         0       264
+  GP(13,5)            26       520       520         0       520         0       520
+  SUB1(3^5,s1)       143     16868     16868     11607     16868         0      5261
+  THIN2(3^5,s1)      130      5762      5762      1825      5762         0      3937
+  SUB1(3^5,s2)       143     15190     15190     10876     15190         0      4314
+  THIN2(3^5,s2)      130      1717      1717       726      1717         0       991
+  SUB1(3^6,s1)       169      8595      8595      6338      8595         0      2257
+  THIN2(3^6,s1)      156       774       774       292       774         0       482
+  SUB1(3^6,s2)       169      8234      8234      5501      8234         0      2733
+  THIN2(3^6,s2)      156      3675      3675      1693      3675         0      1982
+  SUB1(3^7,s1)       195       302       302       209       302         0        93
+  THIN2(3^7,s1)      182      4772      4772      2299      4772         0      2473
+  SUB1(3^7,s2)       195      1218      1218       895      1218         0       323
+  THIN2(3^7,s2)      182      6133      6133      2686      6133         0      3447
+  TOTAL                     581441    581407    518224    581133         0     62909
+
+  (Q1) VERDICT: HELD -- BUDGET-only frames 0.  (ROW-BUDGET) IS SUBSUMED.
+  (Q2) VERDICT: HELD -- TAIL3-only frames 62909 of 581407 with Z (10.8%).  The containment is STRICT.
+  (Q3) VERDICT: HELD -- identity violations 0, admissible mismatches 0, empty-Z degree violations 0
+  frames with Z(y) EMPTY (the vacuous route, PART 4): 34 of 581441 (0.0%)
+  frames closed by NEITHER test: 274
+
+==============================================================================
+PART 3 -- (SPEC-CT): the spec summed against the l-budget, and what is MISSING
+==============================================================================
+
+  (SPEC-CT).  H a TRIANGLE-FREE C4-free CASE A host that is NOT closed by (ROW-LADDER) at
+  j = 3.  Let T := the set of vertices that occur as a step-3 vertex at SOME frame of SOME
+  diametral vertex.  By (HUG-EQ), deg(z) = k3(z)+1 for every z in T, and by (ROW-CT)
+  SUM_{v in V(H)} (deg(v) - 4) >= 2.  Splitting the sum at T:
+
+        SUM_{v NOT in T} (deg(v) - 4)  >=  2 + SUM_{z in T} (3 - k3(z)).
+
+  With Delta := max degree this needs  (n - |T|)(Delta - 4)  >=  2 + SUM_T (3 - k3(z)).
+  Since k3 <= 4, every z with k3 <= 2 costs at least one unit; by (HUG-CYC) a BIPARTITE host
+  has k3 <= 2 at every step-3 vertex, so for bipartite H the demand is at least 2 + |T|:
+
+        BIPARTITE OPEN CASE A  ==>  |T| <= ( n (Delta-4) - 2 ) / (Delta - 3).
+
+  WHAT IS MISSING, NAMED: a LOWER bound on |T|/n.  This line does not have one.  Everything
+  else in the display is a theorem; |T| is measured, and a measurement on a CLOSED host is a
+  coordinate, not evidence about an open one.  Printed anyway, because the size of the gap
+  is the only honest way to say how far the construction has to travel.
+
+  ALSO MEASURED HERE: (HUG-VAR).  deg(z) is one number, so if z occurs as a step-3 vertex at
+  two frames with DIFFERENT k3, the equality fails at one of them.  Per (BUDGET-SUB)'s
+  general principle this is a COROLLARY of (TAIL-3''), not a new lane -- it is printed as a
+  CONSTRUCTION CONSTRAINT: the builder must make k3(z) frame-invariant.
+
+  W43a  n=420  diam=6 rad=5  Delta=5  SUM(deg-4)=418  l=4.9952  step-3 frames=477275
+        |T|=420 (100.0% of n)   k3max-per-z histogram 1:81 2:328 3:11   z with VARYING k3: 420
+        DEMAND 2+SUM_T(3-k3) = 492   vs   ACTUAL SUM_{v not in T}(deg-4) = 0   vs   CAPACITY (n-|T|)(Delta-4) = 0
+        => the spec is violated by 492 units on this host, which is another way of saying it is CLOSED.
+  W43b  n=420  diam=6 rad=5  Delta=5  SUM(deg-4)=418  l=4.9952  step-3 frames=385685
+        |T|=420 (100.0% of n)   k3max-per-z histogram 1:148 2:269 3:3   z with VARYING k3: 420
+        DEMAND 2+SUM_T(3-k3) = 567   vs   ACTUAL SUM_{v not in T}(deg-4) = 0   vs   CAPACITY (n-|T|)(Delta-4) = 0
+        => the spec is violated by 567 units on this host, which is another way of saying it is CLOSED.
+  W43c  n=420  diam=6 rad=5  Delta=5  SUM(deg-4)=420  l=5.0000  step-3 frames=421890
+        |T|=420 (100.0% of n)   k3max-per-z histogram 1:104 2:309 3:7   z with VARYING k3: 420
+        DEMAND 2+SUM_T(3-k3) = 519   vs   ACTUAL SUM_{v not in T}(deg-4) = 0   vs   CAPACITY (n-|T|)(Delta-4) = 0
+        => the spec is violated by 519 units on this host, which is another way of saying it is CLOSED.
+  W44a  n=421  diam=6 rad=5  Delta=5  SUM(deg-4)=416  l=4.9881  step-3 frames=490540
+        |T|=421 (100.0% of n)   k3max-per-z histogram 1:80 2:330 3:11   z with VARYING k3: 421
+        DEMAND 2+SUM_T(3-k3) = 492   vs   ACTUAL SUM_{v not in T}(deg-4) = 0   vs   CAPACITY (n-|T|)(Delta-4) = 0
+        => the spec is violated by 492 units on this host, which is another way of saying it is CLOSED.
+
+==============================================================================
+PART 4 -- THE VACUOUS ROUTE, RECLASSIFIED: F(H) = 0 IS A WIN, NOT A VACUUM
+==============================================================================
+
+  Round 46 measured F(H) := # step-3 frames and set C5, C6 aside as `VACUOUS (F = 0)',
+  separating them from the exhibits.  For the question `can (TAIL-3'') fail to close a CASE
+  A instance' that is BACKWARDS: if there is no step-3 frame at all then (TAIL-3'') has
+  nothing to fire on and (ROW-LADDER) at j = 3 does not close the instance.  F = 0 is the
+  cheapest possible way to meet the design target -- a FOURTH integer after Z, N and 11.
+
+  WHAT IT COSTS, and it is (SHELL) read backwards.  F(H) = 0 means Z(y) is empty at EVERY
+  frame, so by (SHELL)(c)
+
+        deg(y) = 1 + k2(y) <= 3   for EVERY y in N(x) \ {u_{d-1}}, at every far end x
+        of every diametral vertex and every geodesic reaching it.
+
+  i.e. ALL BUT AT MOST ONE NEIGHBOUR OF EVERY FAR END HAS DEGREE <= 3.  Against l >= 4 that
+  is the real tension, and it is LOCAL -- no covering hypothesis needed, unlike (SPEC-CT).
+
+  (Q4) PREDICTION: no host in the library with floor(l) >= 4 has F(H) = 0.
+  DIRECTION (129): a host whose census is TRUNCATED may not be quoted as F = 0; truncated
+  hosts are printed and excluded.
+
+  hosts with F(H) = 0, census EXHAUSTIVE (the design target, met vacuously):
+    C5               n=5    l=2.0000  mu=2  rad=2 diam=2  offset=+0  floor(l)=2
+    C6               n=6    l=2.0000  mu=2  rad=3 diam=3  offset=+0  floor(l)=2
+  hosts with F(H) > 0: 66 ;  truncated (excluded from every total): 0 
+  (Q4) VERDICT: HELD -- hosts with F = 0 AND l >= 4: 0 
+  max l among the F = 0 hosts: 2.0000   (the target needs floor(l) = 4)
+
+  THE LOCAL COST OF F = 0, measured where the line actually works:
+    W43a  (diametral v, far end x) pairs 2492 ; neighbours y of a far end with deg(y) >= 4: 12434 of 12434 (100.0%) -- every one of them is a frame F = 0 would have to forbid
+    W43b  (diametral v, far end x) pairs 1870 ; neighbours y of a far end with deg(y) >= 4: 9316 of 9316 (100.0%) -- every one of them is a frame F = 0 would have to forbid
+    W43c  (diametral v, far end x) pairs 2066 ; neighbours y of a far end with deg(y) >= 4: 10330 of 10330 (100.0%) -- every one of them is a frame F = 0 would have to forbid
+    W44a  (diametral v, far end x) pairs 2698 ; neighbours y of a far end with deg(y) >= 4: 13208 of 13232 (99.8%) -- every one of them is a frame F = 0 would have to forbid
+
+==============================================================================
+PART 5 -- THE RESIDUALS OF THE (TAIL-2S)/(TAIL-2S') PAIR, EXHAUSTIVELY
+==============================================================================
+
+  Round 46 ran both sidesteps over 3 geodesics and 8 far ends per condition-4 vertex, so
+  `closes' was SOUND and `does not close' was INCONCLUSIVE, and the 15 was a number the file
+  was NOT entitled to read as a residual.  Here EVERY far end and EVERY geodesic of EVERY
+  condition-4 vertex is enumerated (the same enumeration round 46 used for its 1 775 390
+  frame census), so BOTH directions are sound and the count is entitled.
+
+  (Q5) PREDICTION: the exhaustive residual count is <= 15.  Exhaustiveness can only find
+  MORE closing frames, never fewer, so a count ABOVE 15 would mean round 46's number was
+  wrong rather than merely inconclusive.
+
+  W43a  condition-4 vertices 128 ;  (TAIL-2S) closes 126 ;  (TAIL-2S') closes 121 ;  both 120 ;  NEITHER   1
+  W43b  condition-4 vertices   1 ;  (TAIL-2S) closes   1 ;  (TAIL-2S') closes   1 ;  both   1 ;  NEITHER   0
+  W43c  condition-4 vertices   2 ;  (TAIL-2S) closes   2 ;  (TAIL-2S') closes   2 ;  both   2 ;  NEITHER   0
+  W44a  condition-4 vertices 129 ;  (TAIL-2S) closes 127 ;  (TAIL-2S') closes 122 ;  both 121 ;  NEITHER   1
+  CASE A instances 260 ; (TAIL-2S) 256 ; (TAIL-2S') 246 ; both 244 ; UNION MISSES 2
+  (Q5) VERDICT: HELD -- exhaustive residual 2 vs round 46's sampled 15
+  residual list dumped to problems/wowii/w133_r47_resid.txt (2 lines)
+
+==============================================================================
+PART 6 -- BUILT FROM THE SPEC: plant the (HUG-EQ) equality instead of filtering
+==============================================================================
+
+  The eleven non-firing CASE A frames all sit at ONE vertex -- W44a's planted degree-2
+  vertex 420, at k3 = 1, i.e. deg = 2 = k3+1.  (HUG-EQ) says that IS the shape a non-firing
+  step-3 vertex must have.  So build more of them, to the spec, rather than sampling hosts
+  and filtering.
+
+  WHY THE l-BUDGET IS NOT THE OBSTRUCTION (this is the reason the lane is worth taking).
+  Planting a degree-2 vertex on a triangle-free C4-free host adds a(z) = 2 at the new vertex
+  and +1 at each of the two attachment points: SUM a goes up by 4 and n by 1.  So
+  l -> (Sa + 4k)/(n + k), which stays in [4, 5) whenever it started there -- for W44a,
+  4.988 -> 4.99..., never leaving floor(l) = 4.  ROUND 45's dead end (`a <= 5 everywhere is
+  CONSISTENT with l < 5') is therefore not a barrier to THIS construction either.
+
+  (Q6) PREDICTION, registered before the run: planting raises the non-firing frame count
+  (FIRE-GAP) above eleven and keeps floor(l) = 4.  Whether it raises the RATIO -- which is
+  what the design target actually needs, 100% -- is the question, and this part prints the
+  ratio beside the count whichever way it goes.
+  DIRECTION (129): every number below is measured on the BUILT host by the exhaustive
+  census, so it is SOUND as a statement about that host; nothing here is a statement about
+  what planting can achieve in general.
+
+  W44a (base)    n=421  rad=5  diam=6  offset=+1  l=4.9881  mu=2  cond4=129  F=490540  N=490529  FIRE-GAP=11 (0.0022%)
+  +1 planted     n=422  rad=6  diam=7  offset=+1  l=4.9858  mu=2  cond4=0    F=749     N=749     FIRE-GAP=0 (0.0000%)
+       ^ NOTE: this host is NO LONGER a CASE A instance (offset +1, condition-4 vertices 0) -- printed, not hidden.
+  +5 planted     n=426  rad=6  diam=7  offset=+1  l=4.9765  mu=2  cond4=0    F=2824    N=2824    FIRE-GAP=0 (0.0000%)
+       ^ NOTE: this host is NO LONGER a CASE A instance (offset +1, condition-4 vertices 0) -- printed, not hidden.
+  +20 planted    n=441  rad=6  diam=7  offset=+1  l=4.9433  mu=2  cond4=0    F=2518    N=2518    FIRE-GAP=0 (0.0000%)
+       ^ NOTE: this host is NO LONGER a CASE A instance (offset +1, condition-4 vertices 0) -- printed, not hidden.
+  +60 planted    n=481  rad=6  diam=7  offset=+1  l=4.8649  mu=2  cond4=0    F=9569    N=9556    FIRE-GAP=13 (0.1359%)
+       ^ NOTE: this host is NO LONGER a CASE A instance (offset +1, condition-4 vertices 0) -- printed, not hidden.
+
+PARTS RUN: PART0, PART1+2, PART3, PART4, PART5, PART6
+CHECKS 174   FAILS 0   elapsed 13.8s

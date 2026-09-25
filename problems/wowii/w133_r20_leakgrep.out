@@ -1,0 +1,117 @@
+==============================================================================
+[0] INPUTS   brief=w133_r20_P7G32.md  12769 B   key rows=9
+==============================================================================
+  PASS  brief file is non-empty and >5 KB   [12769 B]
+  PASS  key has exactly 9 rows V1..V9   [['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9']]
+  PASS  PART 6 header found   [line 178]
+
+==============================================================================
+[1] BLOCKING — the two held-out graphs must not be mentioned before PART 6
+==============================================================================
+  PASS  token X1 appears 0 times before PART 6   [count=0]
+  PASS  token X2 appears 0 times before PART 6   [count=0]
+  PASS  token N1 appears 0 times before PART 6   [count=0]
+  PASS  token N2 appears 0 times before PART 6   [count=0]
+
+==============================================================================
+[2] BLOCKING — no held-out ANSWER is stated as a fact about its own graph, anywhere
+==============================================================================
+  PASS  V1 answer 'YES' never asserted about N1 anywhere in the brief
+  PASS  V2 answer '3' never asserted about N1 anywhere in the brief
+  PASS  V3 answer 'YES' never asserted about N1 anywhere in the brief
+  PASS  V4 answer '2' never asserted about N1 anywhere in the brief
+  PASS  V5 answer '0' never asserted about N1 anywhere in the brief
+  PASS  V6 answer '7' never asserted about N1 anywhere in the brief
+  PASS  V7 answer '31' never asserted about N1 anywhere in the brief
+  PASS  V8 answer '9' never asserted about N2 anywhere in the brief
+  PASS  V9 answer '4' never asserted about N2 anywhere in the brief
+
+==============================================================================
+[3] BLOCKING — the PART 6 table asks, and does not answer
+==============================================================================
+  PASS  all 9 table rows present   [9 rows]
+  PASS  V1 row asserts no answer (format prompts and vertex labels excluded)   [| **V1** | H | Is `X1` C4-free? . |]
+  PASS  V1 row declares its tier H   [| **V1** | H | Is `X1` C4-free? YES or N]
+  PASS  V2 row asserts no answer (format prompts and vertex labels excluded)   [| **V2** | H | `` in `X1`. |]
+  PASS  V2 row declares its tier H   [| **V2** | H | `a(6)` in `X1`. |]
+  PASS  V3 row asserts no answer (format prompts and vertex labels excluded)   [| **V3** | H | Do `{}` induce a 6-cycle in `X1`? . |]
+  PASS  V3 row declares its tier H   [| **V3** | H | Do `{0,1,2,3,4,5}` induce]
+  PASS  V4 row asserts no answer (format prompts and vertex labels excluded)   [| **V4** | H | The distance from `6` to `8` in `X1`. |]
+  PASS  V4 row declares its tier H   [| **V4** | H | The distance from `6` to ]
+  PASS  V5 row asserts no answer (format prompts and vertex labels excluded)   [| **V5** | H | `\|N(9) ∩ {}\|` in `X1`. |]
+  PASS  V5 row declares its tier H   [| **V5** | H | `\|N(9) ∩ {0,1,2,3,4,5}\|]
+  PASS  V6 row asserts no answer (format prompts and vertex labels excluded)   [| **V6** | C | ``, with a longest induced path written out as a vertex]
+  PASS  V6 row declares its tier C   [| **V6** | C | `path(X1)`, with a longes]
+  PASS  V7 row asserts no answer (format prompts and vertex labels excluded)   [| **V7** | C | `` over all 11 vertices of `X1`. |]
+  PASS  V7 row declares its tier C   [| **V7** | C | `Σ_v a(v)` over all 11 ve]
+  PASS  V8 row asserts no answer (format prompts and vertex labels excluded)   [| **V8** | C | ``, with a longest induced path written out as a vertex]
+  PASS  V8 row declares its tier C   [| **V8** | C | `path(X2)`, with a longes]
+  PASS  V9 row asserts no answer (format prompts and vertex labels excluded)   [| **V9** | C | The number of induced 6-cycles in `X2`. |]
+  PASS  V9 row declares its tier C   [| **V9** | C | The number of induced 6-c]
+
+==============================================================================
+[4] BLOCKING — RULING W: G49 by name and location only, none of its data
+==============================================================================
+  PASS  brief cites G49 by name
+  PASS  brief cites G49's registry location
+  PASS  brief states G49's CONCLUSION
+  PASS  G49 data item NOT present: G49 family symbol
+  PASS  G49 data item NOT present: a size formula in n and k
+  PASS  G49 data item NOT present: an a-value sum for the family
+  PASS  G49 data item NOT present: the family's explicit vertex count
+  PASS  G49 data item NOT present: the family's path value
+
+==============================================================================
+[5] BLOCKING — harness elements the planner's conditions require
+==============================================================================
+  PASS  CANNOT COMPUTE appears at least 3 times (prominent)   [count=3]
+  PASS  CANNOT COMPUTE is stated to cost nothing
+  PASS  tiers are DISCLOSED with Tier H and Tier C explained
+  PASS  Tier-C rows are declared not reliably hand-derivable
+  PASS  word cap ~1100 stated
+  PASS  EXECUTION declaration required
+  PASS  no-SAT red line stated
+  PASS  edge-list-and-validate rule present
+  PASS  the configuration-vs-graph trap is stated
+  PASS  no API key pattern anywhere
+
+==============================================================================
+[6] BLOCKING — B6: the values the ARGUMENT needs are DISCLOSED, with witnesses
+==============================================================================
+  PASS  path(Q) is disclosed
+  PASS  path(Q) ships an induced witness
+  PASS  path(Petersen) is disclosed as 5
+  PASS  path(Petersen) ships an induced witness
+  PASS  the round-12 fabrication is named so it cannot be re-inherited
+  PASS  diam(Q) = 3 disclosed and the false 2 named
+  PASS  l(Petersen) = 3 disclosed (tightness, so no proof may give l < 3)
+  PASS  W-nonemptiness disclosed so B5 is enforceable
+
+==============================================================================
+[7] ADVISORY (NEW) — residual guessability: does an answer VALUE appear at all?
+==============================================================================
+  A value printed about a DIFFERENT graph is not a leak, but it cheapens a guess.
+  Measured, not assumed. These do NOT block dispatch.
+  PASS  V1 ('YES') — boolean row, prior appearances of YES/NO before PART 6   [count=0]
+  ADVIS V2 ('3') — value never appears as an '=' fact before PART 6   [(cyclic distance 3), and `|N(w) ∩ Z| = 3` is impossible because every 3-subset o | * **`path(Q) = 6`**, witness `0–4–6–2–3–9` induced. So `Q` **has no induced P7**]
+  PASS  V3 ('YES') — boolean row, prior appearances of YES/NO before PART 6   [count=0]
+  ADVIS V4 ('2') — value never appears as an '=' fact before PART 6   [C4-free graph and let `w ∉ Z`. Then `|N(w) ∩ Z| ≤ 2`, and **cyclic distance 2 is | `w`, a C4. So a 2-element trace is **consecutive** (cyclic distance 1) or **anti]
+  ADVIS V5 ('0') — value never appears as an '=' fact before PART 6   [* **`path(Q) = 6`**, witness `0–4–6–2–3–9` induced. So `Q` **has no induced P7** | * Take `Z = (0,1,2,3,7,4)` (cyclic, induced) — one of `Q`'s induced 6-cycles. Th]
+  ADVIS V6 ('7') — value never appears as an '=' fact before PART 6   [* Take `Z = (0,1,2,3,7,4)` (cyclic, induced) — one of `Q`'s induced 6-cycles. Th | `0={1,2} 1={1,3} 2={1,4} 3={1,5} 4={2,3} 5={2,4} 6={2,5} 7={3,4} 8={3,5} 9={4,5}]
+  PASS  V7 ('31') — value never appears as an '=' fact before PART 6
+  ADVIS V8 ('9') — value never appears as an '=' fact before PART 6   [* **`path(Q) = 6`**, witness `0–4–6–2–3–9` induced. So `Q` **has no induced P7** | `0={1,2} 1={1,3} 2={1,4} 3={1,5} 4={2,3} 5={2,4} 6={2,5} 7={3,4} 8={3,5} 9={4,5}]
+  ADVIS V9 ('4') — value never appears as an '=' fact before PART 6   [*Why: if `x ~ y ~ z` inside `N(v)` then `v–x–y–z–v` is a 4-cycle.* | * **`path(Q) = 6`**, witness `0–4–6–2–3–9` induced. So `Q` **has no induced P7**]
+
+==============================================================================
+CHECKS: 70
+BLOCKING FAILURES: 0
+ADVISORY FLAGS:    6
+   ~ V2 ('3') — value never appears as an '=' fact before PART 6
+   ~ V4 ('2') — value never appears as an '=' fact before PART 6
+   ~ V5 ('0') — value never appears as an '=' fact before PART 6
+   ~ V6 ('7') — value never appears as an '=' fact before PART 6
+   ~ V8 ('9') — value never appears as an '=' fact before PART 6
+   ~ V9 ('4') — value never appears as an '=' fact before PART 6
+
+VERDICT: DISPATCH CLEARED
+elapsed 0.0s

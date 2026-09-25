@@ -1,0 +1,97 @@
+==============================================================================
+w133 r14 — held-out key (G0) + W1 C4-preservation debt (G2)
+==============================================================================
+
+[0] PG(2,5) point/line incidence graph, rebuilt from GF(5) and verified
+  PASS  n(PG(2,5) incidence) = 62   [got 62]
+  PASS  6-regular
+  PASS  C4-free (strong form)   [0 violating pairs]
+  PASS  connected
+  PASS  every a(v) = 6 (bipartite => t=0)
+
+[1] W1 = 2 copies of PG(2,5) joined by a path with L = 5 internal vertices
+  PASS  G2 DEBT: W1 is C4-free (strong form) -- path-joining preserves it   [0 violating pairs]
+  PASS  W1 connected
+  PASS  n(W1) = 129   [got 129]
+  PASS  a-histogram = {2:5, 6:122, 7:2}   [{2: 5, 6: 122, 7: 2}]
+  PASS  sum a(v) = 756   [got 756]
+  PASS  l(W1) = 252/43   [252/43]
+  PASS  rad(W1) = 6   [got 6]
+  PASS  diam(W1) = 12   [got 12]
+  PASS  mu(W1) = 2
+       l(W1) = 756/129 = 5.8605  (brief printed 5.8604...)
+
+[1b] G2 DEBT: path-joining tested over many attachment choices, and the
+     judge's worry (two attachment vertices in ONE copy at distance < 3)
+  PASS  C4-free for every (attach_a, attach_b, L) sampled -- 4x6x4 = 96 chains   [the two copies are DISJOINT, so the join creates no cycle at all]
+  PASS  control: a 2-internal-vertex bridge across an ADJACENT pair DOES create a C4   [2 violating pairs -- confirms the judge's B1 concern is real in general]
+  PASS  control: a 1-internal-vertex bridge across an adjacent pair -> triangle, not C4   [0 violating pairs]
+  PASS  control: a 5-internal bridge inside one copy is C4-free (cycle length >= 5)
+
+[2] H1 — the 2-copy chain with L = 7 internal path vertices
+  PASS  C4-free FIRST   [0 violating pairs]
+  PASS  H1 KEY: n = 131   [got 131]
+  PASS  H1 KEY: sum a(v) = 760   [got 760]
+  PASS  H1 bookkeeping: {2:7, 6:122, 7:2}   [{2: 7, 6: 122, 7: 2}]
+       H1 KEY: l = 760/131 = 5.8015
+
+[3] H3 — W1 + one leaf, computed at every one of the 129 attachment sites
+  PASS  every leaf attachment preserves C4-freeness   [0 failures]
+  PASS  H3 KEY: n = 130 for every site   [{130}]
+  PASS  H3 KEY: sum a(v) = 758 for every site -- INDEPENDENT of the site   [{758}]
+       H3 KEY: l = 379/65 = 5.8308   (delta sum = +2: leaf a=1, parent a+1)
+
+[4] H4 — W1 + one triangle-leaf, computed at every one of W1's edges
+       W1 has 378 edges
+  PASS  H4 KEY: EVERY edge of W1 is a legal site (W1 is triangle-free)   [0 illegal]
+  PASS  H4 KEY: n = 130   [{130}]
+  PASS  H4 KEY: sum a(v) = 757 for every edge   [{757}]
+       H4 KEY: l = 757/130 = 5.8231   (delta sum = +1 < +2, so l(H4) < l(H3))
+  PASS  W1 is triangle-free (this is what makes every edge legal)   [0 triangles]
+
+[5] H2 — W2 = Cay(PSL(2,11), S), rebuilt from GF(11) matrices
+  PASS  n(W2) = 660 = |PSL(2,11)|   [got 660]
+  PASS  connection set has 6 elements   [got 6]
+  PASS  6-regular
+  PASS  connected (S generates)
+  PASS  H2 KEY: |E(W2)| = 1980   [got 1980]
+  PASS  W2 triangle-free   [0 triangles]
+  PASS  W2 C4-free (strong form)   [0 violating pairs]
+  PASS  every a(v) = 6, so l(W2) = 6 exactly
+  PASS  rad = diam = 5 (vertex-transitive)   [rad 5 diam 5]
+
+[6] H5 — does the PG(2,3) incidence graph contain an induced P7?
+  PASS  n = 26   [got 26]
+  PASS  4-regular
+  PASS  C4-free   [0 violating pairs]
+  PASS  every a(v) = 4, l = 4.0 exactly
+  PASS  H5 KEY: induced P7 EXISTS, witness re-verified chordless   [[0, 14, 4, 13, 1, 18, 9]]
+       H5 KEY: YES. witness (point/line indices, points 0..12, lines 13..25):
+       0 - 14 - 4 - 13 - 1 - 18 - 9
+       as (a:b:c) triples: P(0, 0, 1) - L(0, 1, 0) - P(1, 0, 0) - L(0, 0, 1) - P(0, 1, 0) - L(1, 0, 1) - P(1, 1, 2)
+
+[7] H6/H7 structural asserts (no free-standing numeric key)
+  PASS  H6 KEY: >= 1 component survives when a(x) = 4 exactly   [4 - 1 - 1 - 1 = 1]
+  PASS  H6 KEY: dist(w,u_i) >= i-2 >= 2 for every i >= 4, so no u_4-kill is needed
+  PASS  H7 KEY: the constructed path has d+3 vertices and omits NO u_i (y = u_d)
+
+[8] G1(a) — F4 peeling arithmetic, checked on real graphs in BOTH directions
+  PASS  F4 DELETION of a leaf raises sum-3n by exactly +1   [S(W1)=369  S(W1+leaf)=368]
+  PASS  F4 DELETION of a triangle-leaf raises sum-3n by exactly +2   [S(W1)=369  S(W1+triangle-leaf)=367]
+  PASS  the ADDITION direction lowers it by 1 -- this is the sign callB R12-B2(iv) chased and (finally) got right
+  PASS  G1(a): F4 is stated for DELETION; both constants confirmed on real graphs
+
+[9] G3 — the void trigger on the recovered ox `P7G32` report, confirmed here
+  PASS  Petersen 3-regular
+  PASS  Petersen C4-free
+  PASS  Petersen triangle-free
+  PASS  every a(v) = 3, so l(Petersen) = 3
+  PASS  G3 VOID TRIGGER: path(Petersen) = 5 VERTICES, not 6   [got 5 -- ox `P7G32` row H4 states 6 and supplies a witness]
+  PASS  Petersen DOES contain an induced C6 (the report's other H4 half is right)   [[0, 1, 2, 6, 8, 9]]
+  PASS  CE-2 (= graph Q) C4-free, rebuilt from the repo edge list
+  PASS  path(Q) = 6 -- the report's H2 VALUE is correct
+  PASS  the report's H2 WITNESS 3-2-1-0-8-9 carries the chord 3-9   [[(3, 9)]]
+
+==============================================================================
+checks run: 59   failures: 0
+ALL CHECKS PASS

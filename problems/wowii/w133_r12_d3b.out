@@ -1,0 +1,15 @@
+========================================================================
+SECTION F -- named controls for the target (D3-C6)
+  (D3-C6): C4-free + contains an induced C6 + no induced P7  ==>  l <= 3
+  Petersen             n= 10  l=3.0000  induced C6=True  has induced P7=False  path>=5  rad=2 diam=2
+  Heawood (PG(2,2))    n= 14  l=3.0000  induced C6=True  has induced P7=True  path>=7  rad=3 diam=3
+  PG(2,3) incidence    n= 26  l=4.0000  induced C6=True  has induced P7=True  path>=10  rad=3 diam=3
+  PG(2,5) incidence    n= 62  l=6.0000  induced C6=True  has induced P7=True  path>=10  rad=3 diam=3
+  => (D3-C6) is TIGHT at Petersen: l = 3 exactly with an induced C6 and no induced P7.
+  => Petersen carries NO 3-frame (diam = 2), so it does not touch the D=3 layer.
+========================================================================
+SECTION G -- Lemma G47 (peeling reduction) asserted
+  graphs meeting 'C4-free + induced C6 + no induced P7' : 26   (G47 asserted on 26)
+  max (Sigma a - 3n) over the class in this pool = 0  (l = 3.0000 at n = 10)
+========================================================================
+FAILURES: 0

@@ -1,0 +1,22 @@
+=== judge-A finding 1: P~A, P~B, P~Q, Q~A, Q~B each force a C4 ===
+  P~A   -> C4 witness ('u1', 'A', ['u2', 'P'])
+  P~B   -> C4 witness ('y', 'B', ['x', 'P'])
+  P~Q   -> C4 witness ('u1', 'Q', ['u2', 'P'])
+  Q~A   -> C4 witness ('u1', 'Q', ['u2', 'A'])
+  Q~B   -> C4 witness ('y', 'Q', ['x', 'B'])
+  baseline (P,Q both present, no P-Q edge): C4-free  => P !~ Q is the ONLY obstruction
+
+=== judge-A finding 2: A~B is NOT a C4 (the round-8 induced-P6 route is needed) ===
+  A~B -> C4 witness NONE  => (u,x,B,A,u2,z) induced-P6 route stands (draft 20.2)
+
+=== consequence: with P !~ Q, N(P) = {u1,y} + W_P is EDGE-FREE, a(P) = d(P) ===
+  u1 !~ y (antipodal on an induced C6), u1,y !~ W (no Z-neighbour), P !~ Q
+  => a(P) = 2 + |W_P| <= 3 with |W_P| <= 1  (unchanged cap, simpler proof)
+
+=== judge-A finding 3: G25(d) is NOT unconditional (label fix, no math change) ===
+  its proof consumes (R3b) for ecc(h)=2 and G24(b) for beta_q >= 1;
+  G24(b) is RES(b)-internal (it consumes (**) and l>3).  Recorded in draft 20.7.
+  G26 step (1) needs beta_p,beta_q >= 1 (G24(b)) for a(p)-2, a(q)-2 >= 0:
+  verified beta_p - 1 - floor(beta_p/2) >= 0 for beta_p = 1..8   => the clause holds
+
+TOTAL ASSERT FAILURES: 0

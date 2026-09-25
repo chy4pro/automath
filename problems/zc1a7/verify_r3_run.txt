@@ -1,0 +1,67 @@
+cycle types of A_7 and their sizes: {(1, 1, 1, 1, 1, 1, 1): 1, (2, 2, 1, 1, 1): 105, (3, 1, 1, 1, 1): 70, (3, 2, 2): 210, (3, 3, 1): 280, (4, 2, 1): 630, (5, 1, 1): 504, (7,): 720}
+class sizes recomputed from the explicit group: [1, 105, 70, 280, 630, 504, 210, 360, 360]
+power map (class, k) -> class, recomputed by exponentiating real elements: OK
+============================================================================================
+V1  The Margolis-del Rio double-action Lemma, reduced and TESTED
+============================================================================================
+  ind_{[g]}^{UxG}(1)(u^i,h) = #{ (a,x)[g] : (a,x)^{-1}(u^i,h)(a,x) in [g] }.
+  Since U is abelian this is  |C_G(h)| if h ~_G g^i, and 0 otherwise.  And
+  chi_alpha(u^i,h) = |C_G(h)| eps_h(u^i).  So the Lemma
+      chi_alpha = sum_{g^G} eps_g(u) ind_{[g]}^{UxG}(1)
+  is EQUIVALENT to the purely combinatorial identity
+      eps_h(u^i) = sum_{ g^G : g^i in h^G } eps_g(u)      for all i and all classes h.
+  u = genuine g in 4a          : 0 of 36 (i,h) pairs VIOLATE the identity
+  u = the OPEN case (2,-1)     : 2 of 36 (i,h) pairs VIOLATE the identity
+        i=2  h=1a   eps_h(u^i)=  0  but  sum_{g^i in h} eps_g(u) =   2
+        i=2  h=2a   eps_h(u^i)=  1  but  sum_{g^i in h} eps_g(u) =  -1
+  ==> The Lemma HOLDS for a group element (as it must: chi_alpha is then literally the
+      permutation module on (UxG)/[g]) and FAILS for the open case.  So the nilpotency
+      hypothesis of arXiv:1706.02483 is ESSENTIAL, not cosmetic: without it the character
+      of the double action module is NOT the integral combination of permutation
+      characters on which the Cliff-Weiss inequalities are built.
+============================================================================================
+V2  <chi_alpha, lambda_j (x) theta> = mu(zeta^{-j}, u, theta), by SUMMING OVER ALL
+============================================================================================
+     10080 elements of C_4 x A_7 one at a time (no class algebra).
+  36 / 36 inner products match the HeLP multiplicity exactly.
+  ==> CONFIRMED by a route that touches every group element: for ANY finite group and
+      ANY torsion unit, the 'global' double-action inequalities <chi_alpha, psi> >= 0 for
+      psi irreducible are EXACTLY the HeLP inequalities.  The extra strength of the
+      Cliff-Weiss inequalities lives entirely in the restriction to U x N with N a proper
+      nilpotent normal subgroup, which A_7 does not have.
+============================================================================================
+V3  UB1 / UB2 / UB3 re-derived by BRUTE-FORCE enumeration of summand supports
+============================================================================================
+  An indecomposable Z_2 C_4-lattice has support S a non-empty subset of {T,Sg,W}
+  (each simple at most once, [BG64] Thm 4.1).  rank = |S cap {T}| + |S cap {Sg}| + 2|S cap {W}|.
+  Per-summand maxima, PROVED in the state file:
+      r_1 <= rank - 1                       (a reduction has >= 1 Jordan block)
+      r_1 >= 1  if W in S                   ((i-1)/2 is not an algebraic integer)
+      r_2 <= |S cap {T}| + |S cap {Sg}|  if W in S, else 0
+      r_3 <= 1  if S = {T,Sg,W}, else 0     (a J_4 needs rank >= 4)
+  Enumerate ALL multisets of supports with the right (m0,m1,m2) and maximise.
+
+  chi deg | brute(UB1,UB2,UB3) | closed-form(UB1,UB2,UB3) | agree
+  1     1 | (0, 0, 0)          | (0, 0, 0)                | True
+  2     6 | (2, 1, 0)          | (2, 1, 0)                | True
+  3    10 | (6, 3, 0)          | (6, 3, 0)                | True
+  4    10 | (6, 3, 0)          | (6, 3, 0)                | True
+  5    14 | (8, 5, 2)          | (8, 5, 2)                | True
+  6    14 | (8, 5, 2)          | (8, 5, 2)                | True
+  7    15 | (11, 7, 3)         | (11, 7, 3)               | True
+  8    21 | (14, 9, 4)         | (14, 9, 4)               | True
+  9    35 | (25, 16, 7)        | (25, 16, 7)              | True
+  ALL NINE closed-form bounds reproduced by brute-force enumeration: True
+============================================================================================
+V4  F_2 ranks on the degree-6 lattice, in the OTHER model, with a different routine
+============================================================================================
+  r3_2local.py used  L = Z^7/<all-ones>  with basis e_1..e_6 (the paper's own model).
+  Here we use  L' = the SUM-ZERO SUBLATTICE of Z^7,  basis f_a = e_a - e_{a+1}, a=1..6,
+  and a bit-vector rank routine over F_2 sharing no code with the first.
+  rank_F2(g-1) for g in 2a on L' : 2   (r3_2local.py got 2 on the quotient model)
+  (r_1,r_2,r_3) for g in 4a on L' : (4,2,1)   (r3_2local.py got (4,2,1))
+  => coordinates re-chosen (Sec.97), same numbers.
+  and our UB2 for the open case on chi2 is 1 < 2, the paper's contradiction, intact.
+============================================================================================
+VERIFY_R3: ALL CHECKS PASSED
+============================================================================================

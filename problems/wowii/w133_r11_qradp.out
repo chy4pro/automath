@@ -1,0 +1,21 @@
+=== (Q-RAD') hunt: vertex-transitive C4-free Cayley graphs of PSL(2,p) ===
+    vertex-transitive => rad = diam => diam <= rad+2 automatic
+
+  p=11 n=660    deg=6  girth>=5 OK  ecc(id)=rad=diam=5   l=6
+  p=13 n=1092   deg=6  girth>=5 OK  ecc(id)=rad=diam=6   l=6
+  p=17 n=2448   deg=6  girth>=5 OK  ecc(id)=rad=diam=7   l=6
+  p=19 n=3420   deg=6  girth>=5 OK  ecc(id)=rad=diam=7   l=6
+  p=23 n=6072   deg=6  girth>=5 OK  ecc(id)=rad=diam=7   l=6
+
+=== WITNESS W2: Cayley(PSL(2,11), 3 gens), n=660 ===
+    generators (as SL(2,11) matrices [a b; c d]): [(5, 0, 2, 9), (1, 5, 0, 1), (1, 6, 10, 6)]
+    n=660  l=6  rad=diam=5   path(G) >= 168   (rad+4 = 9)  -> conjecture (G+k) k=2 SATISFIED on this witness
+    HARD-WINDOW CHECK: diam+1 = 6 < rad+4 = 9  ==> the (R1) device does NOT
+    settle this graph; it is a genuine hard instance of pocket 2 at rad >= 5.
+=== WITNESS W2: Cayley(PSL(2,13), 3 gens), n=1092 ===
+    generators (as SL(2,13) matrices [a b; c d]): [(1, 8, 0, 1), (6, 12, 8, 1), (1, 2, 4, 9)]
+    n=1092  l=6  rad=diam=6   path(G) >= 239   (rad+4 = 10)  -> conjecture (G+k) k=2 SATISFIED on this witness
+    HARD-WINDOW CHECK: diam+1 = 7 < rad+4 = 10  ==> the (R1) device does NOT
+    settle this graph; it is a genuine hard instance of pocket 2 at rad >= 5.
+
+FAILURES: 0

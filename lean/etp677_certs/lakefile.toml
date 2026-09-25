@@ -1,0 +1,6 @@
+name = "etp677_certs"
+version = "0.1.0"
+defaultTargets = ["ETP677Certs"]
+
+[[lean_lib]]
+name = "ETP677Certs"

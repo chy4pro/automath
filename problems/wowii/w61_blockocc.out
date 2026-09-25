@@ -1,0 +1,4 @@
+[A n<=7 exhaustive] tested=995 residue=alpha:554 fails={'BO': 0, 'ZERO': 0, 'DEC': 0, 'KB': 0, 'NP': 0, 'CNT': 0} hits={'KB': 264, 'NP': 11, 'CNT': 2216, 'NP_new': 0, 'N_old': 11}
+[+B n=8 exhaustive cover] tested=109326 residue=alpha:36108 fails={'BO': 0, 'ZERO': 0, 'DEC': 0, 'KB': 0, 'NP': 0, 'CNT': 0} hits={'KB': 5812, 'NP': 110, 'CNT': 144432, 'NP_new': 0, 'N_old': 110}
+[+C random n=9..12] tested=116108 residue=alpha:36633 fails={'BO': 0, 'ZERO': 0, 'DEC': 0, 'KB': 0, 'NP': 0, 'CNT': 0} hits={'KB': 5836, 'NP': 110, 'CNT': 146532, 'NP_new': 0, 'N_old': 110}
+[+D structured (incl. Family I)] tested=116189 residue=alpha:36664 fails={'BO': 0, 'ZERO': 0, 'DEC': 0, 'KB': 0, 'NP': 0, 'CNT': 0} hits={'KB': 5888, 'NP': 137, 'CNT': 146656, 'NP_new': 0, 'N_old': 137}

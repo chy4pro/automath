@@ -1,0 +1,20 @@
+=== ADDRESS SPACE, PRINTED BEFORE ANY WRITE (RULING AS / BB) ===
+  R-family addresses spent : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+  lowest free              : R-25
+  minted this round        : NONE (no promotion, no registry move)
+
+draft md5 c5d0586c85b26d736c534811f4755a79 -> bcda3ef4891a3228a1e1fb1f46735645   (589068 -> 619756 chars)
+  [OK ] SS7.40 present exactly once: 1 (want 1)
+  [OK ] SS7.40 is the LAST section: True (want True)
+  [OK ] three bounded-weakening notes landed: 3 (want 3)
+  [OK ] all four weakened rows named (R-20/R-21, R-22, R-23): (1, 1, 1) (want (1, 1, 1))
+  [OK ] void gate PASS recorded, not asserted: 1 (want 1)
+  [OK ] no family 2 stated plainly: 1 (want 1)
+  [OK ] withdrawal outcome recorded as (1)-weak, never as a pass: 1 (want 1)
+  [OK ] the live leak is named as live: 1 (want 1)
+  [OK ] my own checker failure recorded: 1 (want 1)
+  [OK ] no address minted this round: 1 (want 1)
+  [OK ] sweep limits ride the citation: 1 (want 1)
+  [OK ] audit limits ride the citation: 1 (want 1)
+  [OK ] no stale count: SEVEN findings, not SIX: 1 (want 1)
+ALL RECORD ASSERTIONS PASS

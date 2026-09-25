@@ -1,0 +1,114 @@
+WOWII-133 round 40 -- where the centre set sits under condition 3
+interpreter: 3.9.6
+started: 2026-08-23 16:03:01
+family built: 420 host slots
+
+==============================================================================
+PART 0 -- primitive self-tests and the guard on THIS round's predicate
+==============================================================================
+  a(.) identity re-checked at 53 vertices
+  planted (D4) SPHERE-SHIFT caught on 298 of 298 (host,w) probes
+
+==============================================================================
+PART 1 -- THE CONDITION-3 CLASS, SPLIT BY ECCENTRICITY OFFSET
+==============================================================================
+condition 3 := d(c,w) = rad for EVERY centre c   (draft 42.4 / (RAD-1P)).
+offset := ecc(w) - rad.  Round 39 proved offset >= 1 and measured offset 2 never.
+
+  offset  count   |Ctr| range   |S_rad(w)| range   |B_{rad-1}(w)| range   n range     rad range    l range
+   +1       414           1-4                4-27                    3-10     11-38          2-2   2.23-3.66
+   +3       553           1-1                1-32                    5-44     32-68          3-3   2.91-5.73
+   +4        62           1-1                 1-6                    6-62     69-74          4-4   5.41-5.62
+   +5        76           1-1                 1-6                    9-63    55-127          5-5   3.93-5.92
+   +6       103           1-1                 1-6                   10-64    57-129          6-6   3.86-5.86
+   +7        53           1-1                 1-6                   12-65     59-86          7-7   3.80-5.21
+   +8        18           1-1                 1-1                   30-30     61-61          8-8   3.74-3.74
+   +9        18           1-1                 1-1                   31-31     63-63          9-9   3.68-3.68
+
+  total condition-3 vertices: 1297
+
+==============================================================================
+PART 2 -- A FALSIFIABLE PREDICTION, REGISTERED BEFORE ITS RUN
+==============================================================================
+PREDICTION (mine, written before the run below and reported either way):
+  an offset-+1 condition-3 vertex needs the ENTIRE graph inside B_{rad+1}(w) with
+  every centre on the sphere S_rad(w).  On a host whose a(.)-mean is high the ball
+  B_{rad-1}(w) is large, so by (CS-1) the centre set is squeezed.  I therefore
+  predict: at offset +1 the ratio |Ctr| / n is SMALL (below 0.35), and at higher
+  offsets it is not systematically smaller.
+  THIS CAN FAIL.  If offset-+1 vertices carry a large centre fraction, the whole
+  mechanism story of round 39 sec.2 is wrong and I say so.
+
+  offset   count   |Ctr|/n  min    mean     max
+   +1        414         0.026    0.069   0.333
+   +3        553         0.015    0.023   0.031
+   +4         62         0.014    0.014   0.014
+   +5         76         0.008    0.011   0.018
+   +6        103         0.008    0.011   0.018
+   +7         53         0.012    0.014   0.017
+   +8         18         0.016    0.016   0.016
+   +9         18         0.016    0.016   0.016
+
+  PREDICTION HELD on its first half: every offset-+1 vertex has |Ctr|/n = 0.333 or less.
+  SECOND HALF FAILED: offset +1's mean centre fraction 0.069 is NOT the
+  smallest; some higher offset reaches 0.011.  The squeeze is not what
+  separates offset +1 -- the separation must come from somewhere else.
+
+==============================================================================
+PART 3 -- (CS-1'), THE SPHERE BOUND REFINED BY THE ECCENTRICITY, PROVED AND CHECKED
+==============================================================================
+(CS-1) says a condition-3 vertex forces Ctr cap B_{rad-1}(w) = empty.  Under
+ecc(w) = rad + t the complement of that ball is S_rad u ... u S_{rad+t}, and Ctr
+lies in S_rad ALONE, so:
+
+  (CS-1')  |Ctr| <= |S_rad(w)| = n - |B_{rad-1}(w)| - sum_{j=1..t} |S_{rad+j}(w)|.
+
+  Proof: c in Ctr => d(c,w) = rad exactly, so c lies on the sphere S_rad(w) and on
+  no other layer; the layers partition V.  QED -- strictly sharper than (CS-1),
+  which discards the layers beyond rad.
+
+  condition-3 vertices checked against (CS-1'): 1297
+  instances where (CS-1') is TIGHT (|Ctr| = |S_rad(w)|): 300
+  loosest instance: dense(s=7,n0=50)+C7 w=25, |Ctr|=1, |S_rad(w)|=32, slack 31
+
+  WHAT THIS DOES AND DOES NOT BUY, stated plainly: (CS-1') is a real sharpening and
+  it is TIGHT on some instances, so it is not slack-for-free.  It still does NOT
+  decide the open row, because bounding |Ctr| above never contradicts a SMALL centre
+  set, and every offset-+1 instance found so far has a small one.  Naming that is
+  the point: the open row will not fall to a counting bound on |Ctr|.
+
+==============================================================================
+PART 4 -- WHAT PART 1's TABLE ACTUALLY SAYS: A CONJECTURE, AND ITS LIVENESS
+==============================================================================
+PART 1's offset buckets are rad = 2 at offset +1, and rad = t at offset +t for every
+t >= 3.  The second family is ecc(w) = 2*rad; the first is ecc(w) = rad+1 on hosts
+whose DIAMETER is rad+1.  Both read as one statement:
+
+  (RXM-PERI)  w maximally far from every centre  =>  ecc(w) = diam(G).
+
+i.e. such a w is PERIPHERAL.  Tested on every condition-3 vertex of the family.
+
+  condition-3 vertices tested : 1297
+  (RXM-PERI) HOLDS at         : 1297
+  VIOLATIONS                  : 0
+
+  LIVENESS -- the test is a real restriction, not something every vertex satisfies:
+    peripheral vertices among ALL 16247 vertices of these hosts: 9124 (56.2%)
+
+  NO VIOLATION on this family.  A MEASUREMENT, NOT A THEOREM -- designed plus
+  seeded-random, not exhaustive.  What it would buy IF proved, stated so the
+  next round is not tempted to assume it: draft 42.4's open row needs
+  ecc(w) = rad+1 AND condition 3, so under (RXM-PERI) it needs diam = rad+1.
+  Route A2's hosts are a dense core with a long attached tail, where diam is far
+  above rad+1 -- so (RXM-PERI) would make round 39 sec.2's emptiness a THEOREM
+  on that class instead of a census.  It is not proved and is not used.
+
+  PROVED, not conjectured (round 39): condition 3 => w is not a centre => ecc(w) >=
+  rad+1.  And ecc(w) <= d(w,c) + ecc(c) = 2*rad for any centre c.  So a condition-3
+  vertex always satisfies rad+1 <= ecc(w) <= 2*rad -- both bounds proved, and the
+  table above sits strictly inside them.
+
+==============================================================================
+parts run: PART0,PART1,PART2,PART3,PART4
+CHECKS=3582 FAILS=0 elapsed=0.7s
+==============================================================================

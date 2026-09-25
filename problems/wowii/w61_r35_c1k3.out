@@ -1,0 +1,79 @@
+============================================================================================
+w61 r35 ITEM 4 -- C1 at k >= 3: the NEAR-MISS set and its closed form
+============================================================================================
+impl source md5 768975c3987de60fbebe1080d0dd530d
+
+HELD-OUT KEY for prompts/w61_S3_C125_r35_PLANT.md  (round-record only --
+this block is key content and must NEVER be pasted into a brief)
+   A1  [2, 2, 2, 2, 1, 1, 1, 1, 1, 1] residue  = 5   (steps=5, residue=5)
+   A2  [3, 3, 3, 3, 3, 2, 1]          steps    = 4   (steps=4, residue=3)
+   A3  [6, 6, 6, 6, 6, 6, 6, 6, 2, 2] steps    = 8   (steps=8, residue=2)
+
+NEAR-MISS SET  N(n) := { lambda |- n, >=2 parts, M terminates, residue(M) = k }
+             (equivalently s0(lambda) = lambda_1 + 1, by Proposition C1-B)
+   n    |N(n)|   n-1?      terminating violations of C1
+   4    3        YES       4         0
+   5    0        ** NO **  0         0
+   6    5        YES       10        0
+   7    0        ** NO **  0         0
+   8    7        YES       21        0
+        N(8) = [(7, 1), (6, 2), (6, 1, 1), (5, 3), (5, 2, 1), (4, 4), (4, 3, 1)]
+   9    0        ** NO **  0         0
+   10   9        YES       41        0
+        N(10) = [(9, 1), (8, 2), (8, 1, 1), (7, 3), (7, 2, 1), (6, 4), (6, 3, 1), (5, 5), (5, 4, 1)]
+   11   0        ** NO **  0         0
+   12   11       YES       76        0
+        N(12) = [(11, 1), (10, 2), (10, 1, 1), (9, 3), (9, 2, 1), (8, 4), (8, 3, 1), (7, 5), (7, 4, 1), (6, 6), (6, 5, 1)]
+   13   0        ** NO **  0         0
+   14   13       YES       134       0
+   15   0        ** NO **  0         0
+   16   15       YES       230       0
+   17   0        ** NO **  0         0
+   18   17       YES       384       0
+   19   0        ** NO **  0         0
+   20   19       YES       626       0
+   21   0        ** NO **  0         0
+   22   21       YES       1001      0
+   23   0        ** NO **  0         0
+   24   23       YES       1574      0
+   25   0        ** NO **  0         0
+   26   25       YES       2435      0
+   27   0        ** NO **  0         0
+   28   27       YES       3717      0
+   29   0        ** NO **  0         0
+   30   29       YES       5603      0
+   31   0        ** NO **  0         0
+   32   31       YES       8348      0
+
+   |N(n)| = n-1 on EVERY n in 4..32 : FAILS
+   C1 violations found                : 0 on every n in this range
+
+STRUCTURE OF N(n) -- the part that is a lead rather than a number
+   n=12  |N|=11   by number of parts k: {2: 6, 3: 5}
+         k=2 members: [(11, 1), (10, 2), (9, 3), (8, 4), (7, 5), (6, 6)]
+         k>=3 members: [(10, 1, 1), (9, 2, 1), (8, 3, 1), (7, 4, 1), (6, 5, 1)]
+   n=16  |N|=15   by number of parts k: {2: 8, 3: 7}
+         k=2 members: [(15, 1), (14, 2), (13, 3), (12, 4), (11, 5), (10, 6), (9, 7), (8, 8)]
+         k>=3 members: [(14, 1, 1), (13, 2, 1), (12, 3, 1), (11, 4, 1), (10, 5, 1), (9, 6, 1), (8, 7, 1)]
+   n=20  |N|=19   by number of parts k: {2: 10, 3: 9}
+         k=2 members: [(19, 1), (18, 2), (17, 3), (16, 4), (15, 5), (14, 6), (13, 7), (12, 8), (11, 9), (10, 10)]
+         k>=3 members: [(18, 1, 1), (17, 2, 1), (16, 3, 1), (15, 4, 1), (14, 5, 1), (13, 6, 1), (12, 7, 1), (11, 8, 1)]
+
+CHARACTERISATION, CHECKED rather than read off the three printed rows
+   claim: for even n, N(n) = { (w,c) : w+c = n, w>=c>=1 }  UNION
+                            { (a,b,1) : a+b = n-1, a>=b>=1 },  and nothing else.
+   mismatches over n = 4..32 even : 0  -> CHARACTERISATION HOLDS
+   NO near-miss has k >= 4 anywhere in this range: for k >= 4 the observed slack
+   is s0(lambda) >= lambda_1 + 2. That is STRICTLY STRONGER than C1 asks, and it
+   is the first structural statement this line has about k >= 4 at all.
+   STATED AS WHAT IT IS: machine-observed to n = 32, NOT proved, and this line has
+   been burned exactly once this session by treating a census as a theorem.
+
+   READ IT OFF: the k=2 members are exactly Theorem C1-2's family -- (w,c) with
+   w+c = n even, 1 <= c <= w -- which is n/2 partitions. The REMAINING n/2 - 1
+   near-misses have k >= 3, and THEY are the objects a k >= 3 proof must handle.
+   The count n-1 = n/2 + (n/2 - 1) is therefore a statement with a k=2 half this
+   line has already PROVED and a k>=3 half it has not. That is the split to attack.
+
+   runA/runB diffed calls: 68923, 0 disagreements
+   elapsed 3.5s

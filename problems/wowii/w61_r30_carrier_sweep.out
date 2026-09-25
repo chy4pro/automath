@@ -1,0 +1,165 @@
+source statement blocks indexed from the draft: 202
+==============================================================================
+PART 0 — CONTROLS (RULING CQ: a detector whose output is a NEGATIVE must be
+         positive-controlled on inputs where the answer is YES).
+==============================================================================
+
+[P1 POSITIVE] historical sec7.28 (d)2 pre-AG3 text vs Corollary C1-C source
+   source block found: True  ->  D-HEDGE fires: True  [('Corollary C1-C', ['claim nothing', 'sufficient condition', 'if '], ['reduced by'])]
+
+[P2 POSITIVE] sec7.28 (c) pre-registered gate  ->  D-CLOSE fires: 'entire s3 surface of wowii-61 clos'
+
+[P3] synthetic hedge-strip   stripped fires: True   original (false-positive probe) fires: False
+
+[P4] synthetic hedge-strip   stripped fires: True   original (false-positive probe) fires: False
+
+[P5] synthetic hedge-strip   stripped fires: True   original (false-positive probe) fires: True
+[N1 FALSE-POSITIVE PROBE] D-CLOSE fires: None   (want None)
+[N2 FALSE-POSITIVE PROBE] D-CLOSE fires: None   (want None)
+
+PART 0 verdict: PASS -- detectors are live in both directions
+
+==============================================================================
+PART 1 — D-CLOSE over 27 carrier blocks/files on this line
+==============================================================================
+
+--- SUSPECT C1  notes/proofs/wowii61_draft.md:5500  [(c) **TOP RESUME POINTER — the one re-round that closes the ]
+    trigger      : 'the one re-round that closes'
+    claim        : ### (c) **TOP RESUME POINTER — the one re-round that closes the GFAN family's S3 surface** 〔heading repaired, **AH3**: it read *"WOWII-61's S3 surface"*; the §7.25 family stands at `0` rounds and is not in this round's target list〕
+    same carrier records no open statement (external check needed)
+
+--- SUSPECT C2  notes/proofs/wowii61_draft.md:5500  [(c) **TOP RESUME POINTER — the one re-round that closes the ]
+    trigger      : 's3 surface clos'
+    claim        : > **Pre-registered gate:** if this round is clean on the mathematics, **the GFAN > family's S3 surface closes down to one round** — the ten statements above reach two > families, Theorem GFANν reaches one, and GFANν's second family remains. **WOWII-61's > S3 surface does NOT close**: the five §7.25 
+    same carrier records no open statement (external check needed)
+
+--- SUSPECT C3  notes/proofs/wowii61_draft.md:6066  [(o) **TOP RESUME POINTER — the one round that closes the GFA]
+    trigger      : 'the one round that closes'
+    claim        : ### (o) **TOP RESUME POINTER — the one round that closes the GFAN family's S3 surface** 〔heading repaired, **AH3**, round 30〕
+    same carrier records no open statement (external check needed)
+
+--- SUSPECT C4  notes/proofs/wowii61_draft.md:6240  [(g) Resume pointer for round 16]
+    trigger      : "closes the **gfan family's** s3 surface"
+    claim        : 3. Family 2 for GFANν on the same text closes the **GFAN family's** S3 surface. It does
+    same carrier records no open statement (external check needed)
+
+--- SUSPECT C5  notes/proofs/wowii61_draft.md:6240  [(g) Resume pointer for round 16]
+    trigger      : 'closes the s3 surface'
+    claim        : **not** close WOWII-61's: item 4 below is five statements at `0` rounds. 〔**AH3**, round 30 — this line read *"closes the S3 surface of WOWII-61"*, contradicted by the next bullet in its own list.〕
+    same carrier records no open statement (external check needed)
+
+--- SUSPECT C6  notes/proofs/wowii61_draft.md:6503  [(h) **Named next round**]
+    trigger      : "closes the gfan family's s3 surface"
+    claim        : > **Q36 — Theorem GFANν (`1 ≤ ν ≤ 10`) + Corollary GFANν-HC (`ν ≥ 11`, `L ≥ 12`), > family 2. This is the round that closes the GFAN family's S3 surface** (**not** > WOWII-61's — see the §7.25 bullet below, five statements at `0` rounds; **AH3**, round 30)**. >
+    same carrier also records an OPEN statement: 'still queued'
+
+--- SUSPECT C7  HANDOVER.md:1  [HANDOVER.md]
+    trigger      : 's3 面闭合'
+    claim        : - **Q34 冷启动规格已写好**（draft §7.28，含盲预登记先验）：一次 sol/非 Qwen 轮，brief 必须随文粘贴 FAN-1、DICH(b)、L2(a)(b)、L1-short 四个 import（两轮 GAP-on-imports 的 教训）。该轮洁 ⟹ **GFAN 族 S3 面闭合**；**w61 全线 S3 面不闭**——§7.25 五条 （C1-A/C1-A′/C1-B/C1-C/C1-2）仍 0 轮、需两族。〔**Repair AH3**，2026-08-23 round 30： 原文写「w61 全部 S3 面闭合」，与 draft §7.28 (b) 自己
+    same carrier also records an OPEN statement: '0 轮'
+
+--- SUSPECT C8  orchestration/STATUS.md:1  [orchestration/STATUS.md]
+    trigger      : '只差一个族轮'
+    claim        : > **WOWII-61 的 S3 面只差一个族轮就全闭，简报已建好、已过全部闸门、正被握在手里没发**—— > 因为四个判官族（Meta / Qwen / Gemini / OpenAI）全部用尽，而**新族够不着**： > 该 key `limit: 0`，只能碰 `:free` 层，DeepSeek / xAI / Mistral / Moonshot 全部返回 > "Key limit exceeded"，**而账上 $22 已付额度卡在这个上限后面用不了**。
+    same carrier also records an OPEN statement: '0 轮'
+
+--- SUSPECT C9  orchestration/STATUS.md:1  [orchestration/STATUS.md]
+    trigger      : '只差一个族轮'
+    claim        : 1. **OpenRouter 消费上限卡在 $0（高杠杆，正卡住 w61 的收官）**：该 key `limit: 0`，只能碰 `:free` 层，**$22 已付额度用不了**；DeepSeek/xAI/Mistral/Moonshot 全部返回 "Key limit exceeded"。 抬起上限 ≈ **$0.15/轮**。w61 的 S3 面**只差一个族轮**而族席已空（四族用尽）。
+    same carrier also records an OPEN statement: '0 轮'
+
+D-CLOSE suspects: 9
+
+==============================================================================
+PART 2 — D-HEDGE over the same carriers
+==============================================================================
+
+--- SUSPECT H1  notes/proofs/wowii61_draft.md:5500  object=Corollary GFAN2-HC
+    source hedges dropped by carrier: ['unproved', 'cannot', 'if ']
+    carrier assertive markers       : ['entire']
+    claim: > **(4) Corollary L1-short** — or, better, drop its citation entirely since Repair AB4 > already removed **Corollary GFAN2-HC's** use of it. 〔**Repair AH2**, 2026-08-23 > round 30: this line read *"the only use"*. It is not the only use — **Corollary > FAN-HC'
+
+--- SUSPECT H2  notes/proofs/wowii61_draft.md:5500  object=Corollary FAN-HC
+    source hedges dropped by carrier: ['not proved', 'measured', 'except']
+    carrier assertive markers       : ['entire']
+    claim: > **(4) Corollary L1-short** — or, better, drop its citation entirely since Repair AB4 > already removed **Corollary GFAN2-HC's** use of it. 〔**Repair AH2**, 2026-08-23 > round 30: this line read *"the only use"*. It is not the only use — **Corollary > FAN-HC'
+
+--- SUSPECT H3  notes/proofs/wowii61_draft.md:5500  object=Corollary L1-short
+    source hedges dropped by carrier: ['if ']
+    carrier assertive markers       : ['entire']
+    claim: > **(4) Corollary L1-short** — or, better, drop its citation entirely since Repair AB4 > already removed **Corollary GFAN2-HC's** use of it. 〔**Repair AH2**, 2026-08-23 > round 30: this line read *"the only use"*. It is not the only use — **Corollary > FAN-HC'
+
+--- SUSPECT H4  notes/proofs/wowii61_draft.md:5500  object=Repair AH3
+    source hedges dropped by carrier: ['except']
+    carrier assertive markers       : ['closes', 'entire']
+    claim: > **Pre-registered gate:** if this round is clean on the mathematics, **the GFAN > family's S3 surface closes down to one round** — the ten statements above reach two > families, Theorem GFANν reaches one, and GFANν's second family remains. **WOWII-61's > S3 s
+
+--- SUSPECT H5  notes/proofs/wowii61_draft.md:5500  object=Theorem GFAN
+    source hedges dropped by carrier: ['not a reduction', 'conjecture', 'never queued', '0 s3 rounds', '0 rounds', '1 family']
+    carrier assertive markers       : ['closes', 'entire']
+    claim: > **Pre-registered gate:** if this round is clean on the mathematics, **the GFAN > family's S3 surface closes down to one round** — the ten statements above reach two > families, Theorem GFANν reaches one, and GFANν's second family remains. **WOWII-61's > S3 s
+
+--- SUSPECT H6  notes/proofs/wowii61_draft.md:5548  object=Corollary GFAN
+    source hedges dropped by carrier: ['conjecture', 'never queued', '0 s3 rounds', '0 rounds', '1 family', 'one family']
+    carrier assertive markers       : ['must ']
+    claim: 1. **Fold §7.25 (c)'s `ν ≤ 10` extension in** — a one-line edit strengthening Corollary GFANν-HC from "`ν ≥ 7`, `L ≥ 8`" to "`ν ≥ 11`, `L ≥ 12`". It was held out only for review integrity while Q30/Q33 were live; both have landed, so the block is released. **M
+
+--- SUSPECT H7  notes/proofs/wowii61_draft.md:6503  object=Corollary GFAN
+    source hedges dropped by carrier: ['conjecture', 'never queued', '0 s3 rounds', '0 rounds', '1 family', 'one family']
+    carrier assertive markers       : ['closes']
+    claim: > **Q36 — Theorem GFANν (`1 ≤ ν ≤ 10`) + Corollary GFANν-HC (`ν ≥ 11`, `L ≥ 12`), > family 2. This is the round that closes the GFAN family's S3 surface** (**not** > WOWII-61's — see the §7.25 bullet below, five statements at `0` rounds; **AH3**, round 30)**. 
+
+--- SUSPECT H8  notes/proofs/wowii61_draft.md:6503  object=Theorem GFAN
+    source hedges dropped by carrier: ['not a reduction', 'conjecture', 'never queued', '0 s3 rounds', '0 rounds', '1 family']
+    carrier assertive markers       : ['closes']
+    claim: > **Q36 — Theorem GFANν (`1 ≤ ν ≤ 10`) + Corollary GFANν-HC (`ν ≥ 11`, `L ≥ 12`), > family 2. This is the round that closes the GFAN family's S3 surface** (**not** > WOWII-61's — see the §7.25 bullet below, five statements at `0` rounds; **AH3**, round 30)**. 
+
+--- SUSPECT H9  notes/proofs/wowii61_draft.md:7479  object=RULING Q
+    source hedges dropped by carrier: ['held', 'if ', 'candidate']
+    carrier assertive markers       : ['discharged', 'done']
+    claim: ## §7.35 owner-w61 round 20: **Q37 BUILT AND DISPATCHED TO GEMINI WEB — the fourth family, and the first time this seat has ever judged. RULING Q's brief pass ran on its first round and returned 6 real findings, one of them a stale-version defect three previou
+
+--- SUSPECT H10  notes/proofs/wowii61_draft.md:7637  object=Lemma FAN-6′
+    source hedges dropped by carrier: ['cannot', 'if ', 'only']
+    carrier assertive markers       : ['discharged']
+    claim: **F3b, stated plainly, because it bounds what a discharged obligation actually certifies.** Force the Lemma FAN-6′ kill test to accept everything and the recomputation still prints `FAN-6' misses : 0` at every `ν` and still ends `FAILURE_COUNT = 0`. So the mis
+
+--- SUSPECT H11  notes/proofs/wowii61_draft.md:8542  object=Corollary GFAN
+    source hedges dropped by carrier: ['conjecture', 'never queued', '0 s3 rounds', '0 rounds', '1 family', 'one family']
+    carrier assertive markers       : ['closed', 'is the only thing', 'the only thing']
+    claim: 1. **Corollary GFANν-HC needs family 2, and it is the only thing between the GFAN family and a closed S3 surface** — **not** between WOWII-61 and one: item 5 of this same list is five statements at `0` rounds, which need **two** families. 〔**AH3**, round 30. T
+
+--- SUSPECT H12  notes/proofs/wowii61_draft.md:8542  object=RULING CT
+    source hedges dropped by carrier: ['one family', 'if ', 'may ']
+    carrier assertive markers       : ['closed', 'is the only thing', 'the only thing']
+    claim: 1. **Corollary GFANν-HC needs family 2, and it is the only thing between the GFAN family and a closed S3 surface** — **not** between WOWII-61 and one: item 5 of this same list is five statements at `0` rounds, which need **two** families. 〔**AH3**, round 30. T
+
+--- SUSPECT H13  notes/proofs/wowii61_draft.md:8784  object=RULING AZ
+    source hedges dropped by carrier: ['1 family', 'open', 'held', 'only']
+    carrier assertive markers       : ['will ']
+    claim: 2. **J-NEWTEXT and J-AZGUARD are the two rows to read first** in the returned joint table. A `CLEAN` on J-AZGUARD is the first evidence this project will have that a locally supplied guard is actually locally checkable — the claim RULING AZ rests on.
+
+--- SUSPECT H14  notes/proofs/wowii61_draft.md:9356  object=GUARD B
+    source hedges dropped by carrier: ['would ', 'does not prove', 'only']
+    carrier assertive markers       : ['proves']
+    claim: **And the limit that rides with this round's own headline.** GUARD B proves that **a statement block exists** for each covered name. It does **not** prove the statement is
+
+--- SUSPECT H15  notes/proofs/wowii61_draft.md:9638  object=GUARD E
+    source hedges dropped by carrier: ['cannot', 'open', 'held', 'would ', 'only']
+    carrier assertive markers       : ['closes', 'proves']
+    claim: **And the limit that rides with this round's headline, stated before a judge states it.** GUARD E proves that the brief's transcription **matches the draft**. It does **not** prove the draft is right, and it does **not** prove the *meaning* survived — it match
+
+--- SUSPECT H16  notes/proofs/wowii61_draft.md:9901  object=Theorem MB
+    source hedges dropped by carrier: ['if ', 'only']
+    carrier assertive markers       : ['closed']
+    claim: 2. **The open J-SCOPE question is now open ON THE RECORD**, not closed by a gloss: does Theorem MB's proof consume `τ ≥ 4`? The brief supplies MB's proof and refuses to answer. §7.9's X3(ii)/AA2 audit says no; **that audit is ours and has never been judged**, 
+
+--- SUSPECT H17  notes/proofs/wowii61_draft.md:9946  object=Corollary C1-C
+    source hedges dropped by carrier: ['claim nothing', 'sufficient condition', 'conjecture', 'if ']
+    carrier assertive markers       : ['closed']
+    claim: ## §7.44 owner-w61 round 29: **the §7.25 own-attack family is MACHINE-AUDITED for the first time in fourteen rounds — all five STATEMENTS survive at wide scope, and TWO PROOFS do not: both base cases carry a defect, one of them a printed intermediate that brea
+
+D-HEDGE suspects: 17
+
+NOTE: a SUSPECT is not a verdict.  Every one is adjudicated by hand against
+the draft, and the adjudication is what goes in the ledger.

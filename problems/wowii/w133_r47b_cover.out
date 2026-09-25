@@ -1,0 +1,339 @@
+w133 round 47 slice 2 -- (COVER), (SPEC-COV), (VAC-CTR).  system python3.
+started 2026-08-23 23:05:07
+WOWII-133 owner round 47, SLICE 2 -- (COVER): the step-3 shell is the WHOLE HOST, and
+what that does to the spec.
+
+Slice 1's PART 3 measured, exhaustively on all four CASE A hosts, that the set T of vertices
+occurring as a step-3 vertex at SOME frame of SOME diametral vertex is ALL OF V(H) --
+420/420, 420/420, 420/420, 421/421.  Slice 1 had written `what is missing is a LOWER bound
+on |T|/n'.  On this family the bound is not merely large, it is 1, and that changes what
+(SPEC-CT) says.  This slice does three things:
+
+  PART A  (COVER) MEASURED ON THE WHOLE LIBRARY, not just the family that suggested it.
+          A ratio measured on four hosts of one family is exactly the mixed-population
+          mistake the planner's round-46 certificate opens with (143), in the other
+          direction: four hosts of ONE family are not a population.  So |T|/n is measured
+          on every host, exhaustively, and the conjecture is stated with the spread beside
+          it -- including the hosts where it FAILS.
+
+  PART B  (SPEC-COV) -- what (COVER) would buy, stated as a CONDITIONAL, because (COVER) is
+          a CONJECTURE (dispatch item (c)) and not a theorem:
+             T = V(H)  =>  SUM_v deg(v) = SUM_v (k3(v) + 1) = n + SUM_v k3(v),
+             and (ROW-CT)'s SUM_v (deg(v)-4) >= 2 gives  SUM_v k3(v) >= 3n + 2.
+          With k3 <= 4 that forces  #{v : k3(v) <= 2} <= (n-2)/2  and  #{v : k3(v) = 4} >= 2.
+          By (HUG-CYC) a BIPARTITE host has k3 <= 2 everywhere, so #{k3<=2} = n > (n-2)/2:
+             ** (COVER) + bipartite + CASE A + floor(l)=4  is CONTRADICTORY. **
+          i.e. under (COVER) no BIPARTITE CASE A instance survives (ROW-LADDER) at j = 3.
+          Measured beside it: what fraction of vertices actually have k3 <= 2.
+
+  PART C  (VAC-CTR) -- the price of slice 1's PART 4 route, as a theorem:
+             H triangle-free C4-free, offset +1, floor(l(G)) = 4, F(H) = 0, L := {deg >= 4},
+             Delta := max degree (>= 5, since SUM(deg-4) >= 2 forbids Delta <= 4).
+             Every x with ecc(x) = diam has |N(x) & L| <= 1, so
+                SUM_{h in L} deg(h) - SUM_{c in Centre} |N(c) & L|  <=  n - |Centre|,
+             while deg <= 3 off L forces SUM_{h in L} deg(h) >= n + 3|L| + 2.  Hence
+                ** SUM_{c in Centre} (deg(c) - 1)  >=  3|L| + 2  >=  3(n+2)/(Delta-3) + 2 **
+             and in particular |Centre| >= (3(n+2)/(Delta-3) + 2)/(Delta - 1).
+          THE VACUOUS ROUTE COSTS A LARGE CENTRE.  The two counting steps are verified as
+          IDENTITIES on every host (they are identities; only the `<= 1' is hypothetical),
+          and max_x |N(x) & L| is measured as the distance from the route.
+
+  WHY |N(x) & L| <= 1.  With F(H)=0 every admissible y has deg(y) = 1 + k2(y) <= 3 (slice 1
+  PART 2(c)), and by (SHELL)(a) the admissible set at a geodesic P is N(x) minus its own
+  penultimate vertex.  If x has two distinct penultimate vertices -- either two on one
+  geodesic system from one diametral v, or two different ones coming from two different
+  diametral v -- then each is admissible via the other's geodesic (N(x) is independent, and
+  a neighbour of x adjacent to some u_{d-2} would give a C4), so ALL of N(x) is admissible.
+  Otherwise exactly one vertex of N(x) is ever excluded.  Either way at most one neighbour
+  of x escapes deg <= 3. []
+
+DIRECTIONS OF ERROR, FIXED BEFORE THE NUMBERS (129):
+  * PART A enumerates every step-3 frame of every diametral vertex with NO cap, so |T| is
+    EXACT for a host that completes; a host that hits the frame budget is PRINTED and
+    excluded from every quoted figure -- a truncated scan can only UNDER-count T.
+  * PART B's inequality is a CONDITIONAL on (COVER); the measured k3 fractions are a
+    statement about the hosts measured and about nothing else.
+  * PART C's identities are verified on real hosts; the `<= 1' hypothesis is FALSE on them,
+    which is why the theorem is about an object nobody has, and the measurement of
+    max_x |N(x) & L| is printed as the distance, not as evidence.
+
+Pure stdlib, system python3.  No SAT.  Primitives and host builders COPIED VERBATIM from
+w133_r47_spec.py (which copied them from w133_r46_hug.py).
+
+
+==============================================================================
+PART 0 -- the host library, and what each host is here FOR
+==============================================================================
+
+  Three independent sources, because 260 instances from FOUR hosts is what round 45 had to
+  print against its own headline (136).  (A) the four CASE A hosts this line actually
+  holds, read off disk; (B) NAMED graphs whose C4-freeness is a theorem about them, built
+  from their own definitions -- these are the candidates for the design target, because the
+  design target wants SHORT cycles everywhere and the named C4-free families are exactly
+  the ones with a transitive supply of them; (C) round 42/45's random and necklace hosts,
+  which are the family the line's own measurements came from.
+
+  DROPPED (not C4-free, which this file ASSERTS rather than assumes): PG(2,4)inc
+  hosts kept: 68  (CASE-A 4, NAMED 22, NECK 12, RAND 30);  dropped for connectivity/C4: 1
+  INDEPENDENT SOURCES represented: 4 (CASE-A on disk / NAMED from definitions / RAND greedy / NECK block designs)
+
+==============================================================================
+PART A -- (COVER): |T|/n on EVERY host, not on the four that suggested it
+==============================================================================
+  hosts scanned exhaustively: 68 ; truncated and EXCLUDED: 0 
+
+  host             family      n      l   rad  diam 3-frames     |T|  |T|/n bip
+  W43a             CASE-A    420  4.995     5     6   477275     420 100.0% no
+  W43b             CASE-A    420  4.995     5     6   385685     420 100.0% no
+  W43c             CASE-A    420  5.000     5     6   421890     420 100.0% no
+  W44a             CASE-A    421  4.988     5     6   490540     421 100.0% no
+  Petersen         NAMED      10  3.000     2     2      120      10 100.0% no
+  Heawood=PG(2,2)  NAMED      14  3.000     3     3      336      14 100.0% yes
+  PG(2,3)inc       NAMED      26  4.000     3     3     5616      26 100.0% yes
+  PG(2,5)inc       NAMED      62  6.000     3     3   186000      62 100.0% yes
+  C5               NAMED       5  2.000     2     2        0       0   0.0% no
+  C6               NAMED       6  2.000     3     3        0       0   0.0% yes
+  C7               NAMED       7  2.000     3     3       14       7 100.0% no
+  C8               NAMED       8  2.000     4     4       16       8 100.0% yes
+  C9               NAMED       9  2.000     4     4       18       9 100.0% no
+  C11              NAMED      11  2.000     5     5       22      11 100.0% no
+  C13              NAMED      13  2.000     6     6       26      13 100.0% no
+  O4=K(7,3)        NAMED      35  4.000     3     3    10080      35 100.0% no
+  Desargues        NAMED      20  3.000     5     5      720      20 100.0% yes
+  Pappus           NAMED      18  2.667     4     4      468      18 100.0% yes
+  Coxeter          NAMED      28  3.000     4     4     1344      28 100.0% no
+  MoebiusKantor    NAMED      16  3.000     4     4      288      16 100.0% yes
+  Nauru            NAMED      24  3.000     4     4     1584      24 100.0% yes
+  Dodecahedron     NAMED      20  3.000     5     5      360      20 100.0% no
+  GP(7,2)          NAMED      14  3.000     3     3      238      14 100.0% no
+  GP(9,2)          NAMED      18  3.000     3     4      108      18 100.0% no
+  GP(11,3)         NAMED      22  3.000     4     4      484      22 100.0% no
+  GP(13,5)         NAMED      26  3.000     4     4     1040      26 100.0% no
+  RD(11,24)        RAND       24  3.000     3     3     1666      24 100.0% no
+  RD(11,40)        RAND       40  3.575     3     3    16588      40 100.0% no
+  RD(11,60)        RAND       60  4.750     3     3    77326      60 100.0% no
+  RD(23,24)        RAND       24  3.000     3     3     2018      24 100.0% no
+  RD(23,40)        RAND       40  3.925     3     3    15188      40 100.0% no
+  RD(23,60)        RAND       60  4.467     3     3    79062      60 100.0% no
+  RD(37,24)        RAND       24  3.083     2     3     1734      24 100.0% no
+  RD(37,40)        RAND       40  3.825     3     3    16288      40 100.0% no
+  RD(37,60)        RAND       60  4.733     3     3    80890      60 100.0% no
+  RD(53,24)        RAND       24  2.875     3     3     1678      24 100.0% no
+  RD(53,40)        RAND       40  3.875     3     3    17040      40 100.0% no
+  RD(53,60)        RAND       60  4.683     3     3    81642      60 100.0% no
+  RD(71,24)        RAND       24  3.292     2     3     1586      24 100.0% no
+  RD(71,40)        RAND       40  3.900     3     3    16556      40 100.0% no
+  RD(71,60)        RAND       60  4.500     3     3    73974      60 100.0% no
+  RD(97,24)        RAND       24  3.208     3     3     1900      24 100.0% no
+  RD(97,40)        RAND       40  3.825     3     3    15614      40 100.0% no
+  RD(97,60)        RAND       60  4.350     3     3    72642      60 100.0% no
+  RD(131,24)       RAND       24  2.917     2     3     1608      24 100.0% no
+  RD(131,40)       RAND       40  3.975     3     3    16476      40 100.0% no
+  RD(131,60)       RAND       60  4.483     3     3    73018      60 100.0% no
+  RD(179,24)       RAND       24  3.250     3     3     1820      24 100.0% no
+  RD(179,40)       RAND       40  3.875     3     3    15356      40 100.0% no
+  RD(179,60)       RAND       60  4.433     3     3    77820      60 100.0% no
+  RD(233,24)       RAND       24  3.208     3     3     1932      24 100.0% no
+  RD(233,40)       RAND       40  3.750     3     3    16530      40 100.0% no
+  RD(233,60)       RAND       60  4.483     3     3    79666      60 100.0% no
+  RD(307,24)       RAND       24  3.125     3     3     1960      24 100.0% no
+  RD(307,40)       RAND       40  4.025     3     3    17308      40 100.0% no
+  RD(307,60)       RAND       60  4.433     3     3    79180      60 100.0% no
+  SUB1(3^5,s1)     NECK      143  4.727     5     6    64969     143 100.0% no
+  THIN2(3^5,s1)    NECK      130  4.831     5     7    18438      97  74.6% no
+  SUB1(3^5,s2)     NECK      143  4.727     5     6    58462     143 100.0% no
+  THIN2(3^5,s2)    NECK      130  4.831     5     7     5974      94  72.3% no
+  SUB1(3^6,s1)     NECK      169  4.769     6     7    33755     168  99.4% no
+  THIN2(3^6,s1)    NECK      156  4.859     5     8     2605      41  26.3% no
+  SUB1(3^6,s2)     NECK      169  4.769     6     7    31071     169 100.0% no
+  THIN2(3^6,s2)    NECK      156  4.859     5     8    11727      50  32.1% no
+  SUB1(3^7,s1)     NECK      195  4.800     6     8     1165      69  35.4% no
+  THIN2(3^7,s1)    NECK      182  4.879     6     8    16682     176  96.7% no
+  SUB1(3^7,s2)     NECK      195  4.800     6     8     4855     125  64.1% no
+  THIN2(3^7,s2)    NECK      182  4.879     6     8    22252     168  92.3% no
+
+  hosts with at least one step-3 frame: 66 ; of those, T = V(H) EXACTLY: 57 (86.4%)
+
+==============================================================================
+PART B -- (SPEC-COV): what (COVER) would buy, and how far the family is from it
+==============================================================================
+
+  CONDITIONAL.  IF T = V(H) at an open CASE A instance, then (HUG-EQ) gives
+  deg(v) = k3(v)+1 for EVERY vertex, so SUM deg = n + SUM k3, and (ROW-CT)'s
+  SUM (deg - 4) >= 2 becomes  SUM_v k3(v) >= 3n + 2:  MEAN k3 >= 3 over the WHOLE host.
+  With k3 <= 4 that forces  #{k3 <= 2} <= (n-2)/2  and  #{k3 = 4} >= 2.
+  (HUG-CYC): k3 = 4 needs cycles of ALL FOUR lengths 5, 6, 7, 8 through the frame, and a
+  BIPARTITE host has k3 <= 2 everywhere -- so under (COVER), bipartite + CASE A + floor(l)=4
+  is CONTRADICTORY, i.e. every bipartite CASE A instance is CLOSED by (ROW-LADDER) at j = 3.
+  (COVER) IS A CONJECTURE.  The row below is what the hosts actually do.
+
+  host                 n   |T|/n   #k3<=2     frac   needed #k3=4 (need >=2)
+  W43a               420  100.0%      409    97.4% <=50.0%          0
+  W43b               420  100.0%      417    99.3% <=50.0%          0
+  W43c               420  100.0%      413    98.3% <=50.0%          0
+  W44a               421  100.0%      410    97.4% <=50.0%          0
+  Petersen            10  100.0%       10   100.0% <=50.0%          0
+  Heawood=PG(2,2)     14  100.0%       14   100.0% <=50.0%          0
+  PG(2,3)inc          26  100.0%       26   100.0% <=50.0%          0
+  PG(2,5)inc          62  100.0%       62   100.0% <=50.0%          0
+  C7                   7  100.0%        7   100.0% <=50.0%          0
+  C8                   8  100.0%        8   100.0% <=50.0%          0
+  C9                   9  100.0%        9   100.0% <=50.0%          0
+  C11                 11  100.0%       11   100.0% <=50.0%          0
+  C13                 13  100.0%       13   100.0% <=50.0%          0
+  O4=K(7,3)           35  100.0%       35   100.0% <=50.0%          0
+  Desargues           20  100.0%       20   100.0% <=50.0%          0
+  Pappus              18  100.0%       18   100.0% <=50.0%          0
+  Coxeter             28  100.0%       28   100.0% <=50.0%          0
+  MoebiusKantor       16  100.0%       16   100.0% <=50.0%          0
+  Nauru               24  100.0%       24   100.0% <=50.0%          0
+  Dodecahedron        20  100.0%       20   100.0% <=50.0%          0
+  GP(7,2)             14  100.0%       14   100.0% <=50.0%          0
+  GP(9,2)             18  100.0%       18   100.0% <=50.0%          0
+  GP(11,3)            22  100.0%       22   100.0% <=50.0%          0
+  GP(13,5)            26  100.0%       26   100.0% <=50.0%          0
+  RD(11,24)           24  100.0%        2     8.3% <=50.0%          0
+  RD(11,40)           40  100.0%        0     0.0% <=50.0%          0
+  RD(11,60)           60  100.0%        0     0.0% <=50.0%          0
+  RD(23,24)           24  100.0%        3    12.5% <=50.0%          0
+  RD(23,40)           40  100.0%        0     0.0% <=50.0%          0
+  RD(23,60)           60  100.0%        0     0.0% <=50.0%          0
+  RD(37,24)           24  100.0%        1     4.2% <=50.0%          0
+  RD(37,40)           40  100.0%        0     0.0% <=50.0%          0
+  RD(37,60)           60  100.0%        0     0.0% <=50.0%          0
+  RD(53,24)           24  100.0%        0     0.0% <=50.0%          0
+  RD(53,40)           40  100.0%        1     2.5% <=50.0%          0
+  RD(53,60)           60  100.0%        0     0.0% <=50.0%          0
+  RD(71,24)           24  100.0%        0     0.0% <=50.0%          0
+  RD(71,40)           40  100.0%        0     0.0% <=50.0%          0
+  RD(71,60)           60  100.0%        0     0.0% <=50.0%          0
+  RD(97,24)           24  100.0%        0     0.0% <=50.0%          0
+  RD(97,40)           40  100.0%        0     0.0% <=50.0%          0
+  RD(97,60)           60  100.0%        0     0.0% <=50.0%          0
+  RD(131,24)          24  100.0%        2     8.3% <=50.0%          0
+  RD(131,40)          40  100.0%        0     0.0% <=50.0%          0
+  RD(131,60)          60  100.0%        0     0.0% <=50.0%          0
+  RD(179,24)          24  100.0%        2     8.3% <=50.0%          0
+  RD(179,40)          40  100.0%        0     0.0% <=50.0%          0
+  RD(179,60)          60  100.0%        0     0.0% <=50.0%          0
+  RD(233,24)          24  100.0%        3    12.5% <=50.0%          0
+  RD(233,40)          40  100.0%        0     0.0% <=50.0%          0
+  RD(233,60)          60  100.0%        0     0.0% <=50.0%          0
+  RD(307,24)          24  100.0%        4    16.7% <=50.0%          0
+  RD(307,40)          40  100.0%        0     0.0% <=50.0%          0
+  RD(307,60)          60  100.0%        0     0.0% <=50.0%          0
+  SUB1(3^5,s1)       143  100.0%      139    97.2% <=50.0%          0
+  THIN2(3^5,s1)      130   74.6%       97    74.6% <=50.0%          0
+  SUB1(3^5,s2)       143  100.0%      141    98.6% <=50.0%          0
+  THIN2(3^5,s2)      130   72.3%       94    72.3% <=50.0%          0
+  SUB1(3^6,s1)       169   99.4%      166    98.2% <=50.0%          0
+  THIN2(3^6,s1)      156   26.3%       41    26.3% <=50.0%          0
+  SUB1(3^6,s2)       169  100.0%      168    99.4% <=50.0%          0
+  THIN2(3^6,s2)      156   32.1%       50    32.1% <=50.0%          0
+  SUB1(3^7,s1)       195   35.4%       69    35.4% <=50.0%          0
+  THIN2(3^7,s1)      182   96.7%      176    96.7% <=50.0%          0
+  SUB1(3^7,s2)       195   64.1%      125    64.1% <=50.0%          0
+  THIN2(3^7,s2)      182   92.3%      168    92.3% <=50.0%          0
+
+  OWNER ERROR, CAUGHT BY THIS TABLE AND CORRECTED BEFORE THE FIGURE WAS QUOTED.
+  The first draft of this line read `nothing in the library is anywhere near
+  either'.  THE TABLE ABOVE CONTRADICTS IT three rows down: the RAND hosts sit
+  at #{k3<=2} = 0.0%%, which MEETS the <= 50%% half of the spec outright.  The
+  narration was the r45-error-3 species -- a sentence contradicting the number
+  below it -- and it is corrected by RUNNING the count, not by deleting it:
+    hosts meeting  #{k3<=2} <= (n-2)/2 :  33 of 66
+    hosts meeting  #{k3=4}  >= 2       :  0 of 66
+  SO THE BINDING HALF IS  #{k3 = 4} >= 2,  AND IT IS MET BY NOTHING.  k3 = 4 is
+  draft 46.2's never-attained cell; under (COVER) an open CASE A instance is
+  OBLIGED to attain it at >= 2 vertices, i.e. to carry cycles of ALL FOUR
+  lengths 5, 6, 7, 8 through one step-3 frame, twice over.  Per-vertex k3 is
+  read as the MAXIMUM over that vertex's frames, which is the reading most
+  FAVOURABLE to the spec, so the zero above is not an artefact of the choice.
+
+==============================================================================
+PART C -- (VAC-CTR): the F = 0 route costs a LARGE CENTRE
+==============================================================================
+
+  The two counting steps are IDENTITIES and are checked as such on every host:
+     (i)  SUM_{x : ecc(x)=diam} |N(x) & L|  =  SUM_{h in L} ( deg(h) - |N(h) & Centre| )
+     (ii) SUM_{h in L} |N(h) & Centre|      =  SUM_{c in Centre} |N(c) & L|
+  Only the hypothesis |N(x) & L| <= 1 is about the (non-existent) F = 0 host, and the
+  measurement below is how far a real host is from it.  L := {v : deg(v) >= 4}.
+
+  host                 n    |L| |Centre|  offset max|N(x)&L| x with >=2
+  W43a               420    420       1      +1         5       419
+  W43b               420    420       8      +1         5       412
+  W43c               420    420       6      +1         5       414
+  W44a               421    420       1      +1         5       420
+  Petersen            10      0      10      +0         0         0
+  Heawood=PG(2,2)     14      0      14      +0         0         0
+  PG(2,3)inc          26     26      26      +0         4        26
+  PG(2,5)inc          62     62      62      +0         6        62
+  C5                   5      0       5      +0         0         0
+  C6                   6      0       6      +0         0         0
+  C7                   7      0       7      +0         0         0
+  C8                   8      0       8      +0         0         0
+  C9                   9      0       9      +0         0         0
+  C11                 11      0      11      +0         0         0
+  C13                 13      0      13      +0         0         0
+  O4=K(7,3)           35     35      35      +0         4        35
+  Desargues           20      0      20      +0         0         0
+  Pappus              18      0      18      +0         0         0
+  Coxeter             28      0      28      +0         0         0
+  MoebiusKantor       16      0      16      +0         0         0
+  Nauru               24      0      24      +0         0         0
+  Dodecahedron        20      0      20      +0         0         0
+  GP(7,2)             14      0      14      +0         0         0
+  GP(9,2)             18      0       9      +1         0         0
+  GP(11,3)            22      0      22      +0         0         0
+  GP(13,5)            26      0      26      +0         0         0
+  RD(11,24)           24     19      24      +0         5        24
+  RD(11,40)           40     39      40      +0         7        40
+  RD(11,60)           60     60      60      +0         9        60
+  RD(23,24)           24     20      24      +0         5        24
+  RD(23,40)           40     39      40      +0         9        40
+  RD(23,60)           60     60      60      +0         9        60
+  RD(37,24)           24     19       1      +1         5        23
+  RD(37,40)           40     39      40      +0         8        40
+  RD(37,60)           60     60      60      +0         9        60
+  RD(53,24)           24     21      24      +0         5        24
+  RD(53,40)           40     39      40      +0         7        40
+  RD(53,60)           60     60      60      +0         9        60
+  RD(71,24)           24     20       1      +1         6        23
+  RD(71,40)           40     39      40      +0         7        40
+  RD(71,60)           60     60      60      +0         9        60
+  RD(97,24)           24     19      24      +0         5        24
+  RD(97,40)           40     38      40      +0         9        40
+  RD(97,60)           60     60      60      +0        12        60
+  RD(131,24)          24     15       1      +1         6        23
+  RD(131,40)          40     40      40      +0         8        40
+  RD(131,60)          60     60      60      +0        13        60
+  RD(179,24)          24     20      24      +0         5        24
+  RD(179,40)          40     39      40      +0         8        40
+  RD(179,60)          60     59      60      +0        11        60
+  RD(233,24)          24     19      24      +0         5        24
+  RD(233,40)          40     39      40      +0         8        40
+  RD(233,60)          60     60      60      +0        11        60
+  RD(307,24)          24     18      24      +0         5        24
+  RD(307,40)          40     40      40      +0         7        40
+  RD(307,60)          60     60      60      +0         9        60
+  SUB1(3^5,s1)       143    130      24      +1         6       119
+  THIN2(3^5,s1)      130    130      32      +2         5        20
+  SUB1(3^5,s2)       143    130      25      +1         6       118
+  THIN2(3^5,s2)      130    130      32      +2         5        13
+  SUB1(3^6,s1)       169    156     101      +1         6        68
+  THIN2(3^6,s1)      156    156       3      +3         4         4
+  SUB1(3^6,s2)       169    156      95      +1         6        74
+  THIN2(3^6,s2)      156    156       3      +3         5         7
+  SUB1(3^7,s1)       195    182      11      +2         5         4
+  THIN2(3^7,s1)      182    182      18      +2         6        36
+  SUB1(3^7,s2)       195    182       9      +2         5        14
+  THIN2(3^7,s2)      182    182      25      +2         6        31
+
+  identity violations: 0
+  EVERY host with a vertex x carrying two degree->=4 neighbours is a host the
+  F = 0 route excludes.  The route survives only on hosts where NO far end has
+  two neighbours of degree >= 4 -- and l >= 4 needs degree somewhere.
+
+PARTS RUN: PART0, PARTA, PARTB, PARTC
+CHECKS 139   FAILS 0   elapsed 5.0s

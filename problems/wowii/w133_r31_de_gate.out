@@ -1,0 +1,164 @@
+
+w133 round 31 -- ITEM 2: RULING DE AS A PRE-DISPATCH GATE.
+
+    RULING DA asks whether the held-out ANSWER was reachable from the bytes we shipped.
+    RULING DE asks whether the VERDICT was.  They are different failure modes and until
+    r30 only one of them was gated.
+
+    DE, operationally: before dispatch, assert that the brief does not supply BOTH
+      (L) the LOCATION of the finding it is most likely to receive -- a site named AND
+          declared unverifiable, which is what makes it the likely site -- and
+      (M) the METHOD -- a check prescribed for that site.
+    Where a guard that cannot travel HAS to be declared, L alone is permitted; the
+    resulting finding is then recorded as UN-INDEPENDENT and does not count as engagement.
+
+POSITIVE CONTROL, per RULING CZ: the real historical instance.  This line has a perfect
+one -- its own r29 "A GUARD THAT CANNOT MOVE" paragraph, which shipped L and M together
+and duly received back a GAP at exactly that location, found by exactly that method.
+The dispatched bytes are on disk and are read here, not paraphrased from memory.
+
+RULING CZ' -- THE GATE MUST FIRE ON THE FEATURE, NOT ON THE INSTANCE STRING.  Two things
+are done about that, and neither is an assertion:
+  * a DELIBERATELY-WRONG comparator (exact-substring against the historical paragraph) is
+    run beside the real gate on every probe.  Where the naive one misses and the real one
+    fires, the real one demonstrably read the feature;
+  * the gate's coverage on PARAPHRASES is MEASURED AND PRINTED AS A FRACTION, not claimed.
+    r30's DA-coverage lesson: an instrument reported as "clean" without a denominator is
+    worth an unknown amount.  This one reports its denominator.
+
+NEGATIVE CONTROLS, hardest form: the same paragraph with ONLY the prescribed-check clause
+removed must come back LOCATION-ONLY, not DETERMINED -- otherwise the gate is firing on
+"the brief admits an enumeration exists" rather than on the method.
+
+No SAT.  Wall-clock self-limit 120 s, exit(2) on overrun -- never a silent `return`.
+
+
+=== PART 0 -- EVERY PREDICATE SHIPS AN INPUT ON WHICH IT MUST RETURN TRUE ===
+  [PASS] MUST-FIRE unverifiable: 'You cannot re-run those'
+  [PASS] MUST-FIRE unverifiable: 'these counts are not reproducible here'
+  [PASS] specificity: a plain sentence with no unverifiability marker does NOT fire
+  [PASS] MUST-FIRE site: 'frame tables of 32 to 872 frames'
+  [PASS] MUST-FIRE site: an address '(Z3)'
+  [PASS] specificity: a sentence naming no site does NOT fire
+  [PASS] MUST-FIRE method: 'check them for internal consistency'
+  [PASS] MUST-FIRE method: 'e.g. that a table's N frames is the product of the free bits'
+  [PASS] specificity: 'say so - that is a legitimate finding' prescribes NO check
+  [PASS] MUST-FIRE verdict: L and M together give DETERMINED
+  [PASS] MUST-FIRE verdict: L alone gives LOCATION-ONLY
+  [PASS] MUST-FIRE verdict: neither gives CLEAN
+
+=== PART 1 -- POSITIVE CONTROL ON THE REAL HISTORICAL INSTANCE (RULING CZ) ===
+  The DISPATCHED bytes, read off disk: $HOME/workspace/claudecode/automath-sandbox/briefs/w133_r29_q41.md
+  [PASS] the historical guard paragraph is present in the dispatched bytes, exactly once  -- 1 blocks
+      verdict on the r29 guard paragraph: DETERMINED
+        unverifiable markers hit: ["\\b(cannot|can not|can't|could not|couldn't|unable to|no way to|impossible to)\\s+(\\w+\\s+){0,3}(re-?run|re-?generate|reproduce|reconstruct|repeat|re-?derive|re-?execute)", '\\bun(-?re-?runnable|reproducible|verifiable|checkable)\\b', '\\bdoes not pretend you can\\b']
+        site markers hit        : ['\\bframe tables?\\b', '\\btables?\\b', '\\bsweeps?\\b', '\\benumerations?\\b', '\\b\\d[\\d ,]{1,9}\\s+(frames|regions|configurations)\\b']
+        method markers hit      : ['\\b(check|verify|confirm|test|audit)\\b\\s+(\\w+\\s+){0,3}\\b(that|whether|them|these|it|for)\\b', '\\bso that you (can|could|may)\\b', '\\byou can at least\\b', '\\be\\.?g\\.?\\s+that\\b']
+  [PASS] *** POSITIVE CONTROL: the gate returns DETERMINED on the real r29 guard paragraph -- the instance that actually determined a verdict
+      whole-brief verdict for the DISPATCHED r29 brief: DETERMINED (3 flagged blocks)
+  [PASS] and the whole dispatched brief is flagged DETERMINED, so the gate would have REFUSED that dispatch
+
+=== PART 2 -- RULING CZ': DOES IT READ THE FEATURE OR THE STRING? ===
+  Five paraphrases, increasingly far from the original wording.  The naive
+  whole-text comparator is run on each, beside the gate.  MEASURED, not claimed.
+      paraphrase 1: gate=DETERMINED     naive=CLEAN      longest shared 6-gram: yes
+      paraphrase 2: gate=DETERMINED     naive=CLEAN      longest shared 6-gram: NONE
+      paraphrase 3: gate=DETERMINED     naive=CLEAN      longest shared 6-gram: NONE
+      paraphrase 4: gate=DETERMINED     naive=CLEAN      longest shared 6-gram: NONE
+      paraphrase 5: gate=DETERMINED     naive=CLEAN      longest shared 6-gram: NONE
+      COVERAGE, as a fraction and not as a pass: gate 5/5, naive comparator 0/5
+  [PASS] the gate fires on a MAJORITY of paraphrases (a number, not a pass): 5/5  -- 5/5
+  [PASS] *** CZ' DISCHARGED BY CONSTRUCTION: the naive whole-text comparator fires on ZERO of them, so wherever the gate fired it read the FEATURE and not the instance string  -- naive 0/5
+
+  HARDEST-FORM NEGATIVE CONTROL: the SAME historical paragraph with ONLY the
+  prescribed-check clause deleted -- everything else byte-identical.
+  [PASS] the deletion actually landed (the stripped block is shorter)  -- 610 -> 456 chars
+      verdict with the method clause removed: LOCATION-ONLY (method markers [])
+  [PASS] *** NEGATIVE CONTROL: removing ONLY the method clause drops the verdict from DETERMINED to LOCATION-ONLY, so the gate is not firing on 'the brief admits an enumeration exists'
+      verdict with a prescription but NO named site: METHOD-ONLY
+
+=== PART 3 -- THE GATE RUN ON THIS ROUND'S REBUILT BRIEF ===
+      whole-brief verdict for the r31 rebuild: LOCATION-ONLY (3 flagged blocks)
+        LOCATION-ONLY  Two ranked below it, attempt them only if (P1) is settled:
+          site=2 unverifiable=1 method=0
+        LOCATION-ONLY  **A LOCATED GAP IS THE BEST OUTCOME OF THIS REVIEW, better than a clean verdict.** If one link
+          site=1 unverifiable=1 method=0
+        LOCATION-ONLY  **A GUARD THAT CANNOT MOVE, said here rather than hidden.** Parts of the argument rest on
+          site=2 unverifiable=4 method=0
+  [PASS] *** the rebuilt brief is NOT DETERMINED: the withdrawal removed the METHOD while the declaration (which cannot travel, so must be declared) remains  -- verdict LOCATION-ONLY
+
+  ENGAGEMENT LEDGER, the second half of RULING DE.  The guard is still
+  LOCATION-ONLY, because a guard that cannot travel HAS to be declared.
+  Consequence, recorded before dispatch rather than argued after it:
+      * a returned finding LOCATED AT an enumeration is UN-INDEPENDENT and
+        DOES NOT COUNT AS ENGAGEMENT;
+      * a returned finding that names the METHOD as well DOES count, because
+        no method is supplied by these bytes;
+      * a finding anywhere else is scored normally.
+
+=== PART 4 -- WHAT THE GATE WOULD HAVE SAID ABOUT r30'S ACTUAL VERDICT ===
+  The returned GAPs were: (Z3)'s frame counts 832/858/872, and (Z5)'s 32/384.
+  Both sites were named in the guard; both were reached by the guard's own
+  prescribed check.  Under DE both are UN-INDEPENDENT and neither counts as
+  engagement.  What is NOT determined, and therefore still counts:
+      * WHICH tables the reviewer declined and WHY -- the guard says nothing
+        about that, and 49 = 7x7 / 686 = 7x7x7x2 are printed nowhere;
+      * (P2)'s six-step re-derivation of (Z1), volunteered and not requested.
+  And one thing the gate CANNOT decide, stated rather than assumed away:
+      the (Z5) row's population in the shipped bytes was ITSELF WRONG (384 for
+      768).  A reviewer reporting that row unreconstructible was reporting a
+      true thing about a false number.  Determinedness and correctness are
+      independent, and this gate measures only the first.
+
+=== PART 5 -- THE (Z3)/(Z5) GAP, RE-GRADED ===
+  The planner asked whether the returned GAP survives on its own merits once
+  the unsatisfiable check is withdrawn.  It splits, and the two halves grade
+  DIFFERENTLY.  The discriminator is not rhetoric, it is arithmetic:
+
+      A reviewer executing ONLY the guard's prescribed check would have
+      flagged exactly the populations that are NOT powers of two.
+      table                       N power of 2?    prescribed check
+      (Z3)/(Z4) 832             832 NO             flags it    
+      (Z4) 858                  858 NO             flags it    
+      (Z4) 872                  872 NO             flags it    
+      (Z5) one slot 32           32 yes            PASSES      
+      (Z5) two slots 384*       384 NO             flags it    
+      * 384 is the number the SHIPPED bytes carried; the true population is 768
+        (PART 4).  Either way it is not a power of two, so the prescribed check
+        would have flagged it -- the independent content of the (Z5) bullet is
+        specifically the 32 flag, not the 384 flag.
+  [PASS] the prescribed check FLAGS 832/858/872 -- so the (Z3) half of the returned GAP is exactly what the shipped method produces
+  [PASS] *** and the prescribed check PASSES (Z5)'s 32 (= 2^5) -- so the (Z5) half of the returned GAP CANNOT have come from the shipped method
+
+  RIVAL EXPLANATION, tested rather than dismissed (OPS-15: a right answer from
+  a constant looks the same in a log as a right answer from a measurement).
+  Rival: 'the reviewer flagged everything in Link 3, so 32 tells us nothing.'
+      populations the reviewer PASSED inside Link 3: ['802 853', '8 feasible']
+      populations the reviewer FLAGGED             : 832, 858, 872, 32, 384
+  [PASS] the rival is FALSIFIED: the reviewer passed populations inside the SAME link it flagged, so the flag is per-table and not a blanket over Link 3  -- passed in Link 3: ['802 853', '8 feasible']
+  [PASS] and 32 is flagged in the GAPS section although it passes the prescribed check
+
+  RE-GRADE, stated as two separate verdicts:
+    (Z3) HALF -- DETERMINED, and it does NOT survive as engagement.
+        Location supplied (the guard names the frame tables and declares them
+        un-re-runnable) AND method supplied (the prescribed product check).
+        Its CLAIM is nonetheless TRUE: reconstructing 872 needs an 18-branch
+        list with f_b in {1,2,4,6,9}, printed nowhere in the brief
+        (w133_r31_frames.py).  True, un-independent, not engagement.
+        Against the MATHEMATICS it is worth nothing: a second implementation
+        reproduces 832/832/858/872/858/832 and survivors 0/0/0/2/0/0, so (Z3)
+        and (Z4) stand as stated.
+    (Z5) HALF -- SURVIVES, as a PARTIALLY INDEPENDENT finding.
+        Location supplied (the guard's '32 to 872 frames' names the range);
+        METHOD NOT SUPPLIED -- the prescribed check passes 32, so flagging it
+        required a per-table reconstruction test the reviewer brought itself.
+        Under DE's ledger a finding whose METHOD is not supplied counts.
+        And it is worth more than the reviewer could know: the brief's 384 was
+        WRONG (768).  The reviewer reported a true thing about a false number.
+    NET: r30's verdict buys LESS than one independent finding and MORE than
+    zero.  The honest ledger entry is ONE HALF-FINDING, at (Z5), and that is
+    an upgrade on r30's accounting, which priced 32/384 as a WEAK decline.
+
+=== SUMMARY ===
+  checks run: 24, failures: 0 
+  wall clock: 0.02 s (self-limit 120 s)

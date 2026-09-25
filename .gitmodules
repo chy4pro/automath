@@ -1,0 +1,33 @@
+[submodule "problems/erdos708/repo"]
+	path = problems/erdos708/repo
+	url = https://github.com/chy4pro/erdos-708-explicit-upper-bounds.git
+[submodule "publish/automath-papers"]
+	path = publish/automath-papers
+	url = https://github.com/chy4pro/automath-papers.git
+[submodule "problems/erdos128_repo"]
+	path = problems/erdos128_repo
+	url = https://github.com/chy4pro/erdos-128-sparse-halves.git
+[submodule "problems/erdos357/repo"]
+	path = problems/erdos357/repo
+	url = https://github.com/chy4pro/erdos-357-distinct-block-sums.git
+[submodule "problems/erdos1212/repo"]
+	path = problems/erdos1212/repo
+	url = https://github.com/chy4pro/erdos-1212-arithmetic-percolation-notes.git
+[submodule "problems/erdos700_770/repo"]
+	path = problems/erdos700_770/repo
+	url = https://github.com/chy4pro/erdos-700-770-tables.git
+[submodule "problems/erdos693/repo"]
+	path = problems/erdos693/repo
+	url = https://github.com/chy4pro/erdos-693-divisor-gaps.git
+[submodule "problems/erdos1189/repo"]
+	path = problems/erdos1189/repo
+	url = https://github.com/chy4pro/erdos-1189-irreducible-covering-sets.git
+[submodule "problems/formal-conjectures"]
+	path = problems/formal-conjectures
+	url = https://github.com/google-deepmind/formal-conjectures.git
+[submodule "problems/erdosproblems"]
+	path = problems/erdosproblems
+	url = https://github.com/teorth/erdosproblems.git
+[submodule "danus-eval"]
+	path = danus-eval
+	url = https://github.com/frenzymath/Danus.git

@@ -1,0 +1,23 @@
+  PASS  Kneser K(5,2) is 3-regular on 10 vertices (Petersen)
+  PASS  Kneser K(5,2) is triangle-free
+  PASS  R is C4-free (bitmask common-neighbour popcount)   [[]]
+  PASS  CE-2 is C4-free (bitmask common-neighbour popcount)   [[]]
+  PASS  Petersen is C4-free (bitmask common-neighbour popcount)   [[]]
+  R: 1 induced C6s
+  CE-2: 4 induced C6s
+  Petersen: 10 induced C6s
+  TOTAL induced C6s = 15   off-cycle (Z,w) pairs M = 59
+  trace-size histogram = {0: 10, 1: 9, 2: 40}
+  distance classes among 2-traces = {1: 4, 3: 36}
+  PASS  INDEPENDENT AGREEMENT: 15 induced C6s   [15]
+  PASS  INDEPENDENT AGREEMENT: M = 59 off-cycle pairs   [59]
+  PASS  INDEPENDENT AGREEMENT: trace histogram {0:10, 1:9, 2:40}   [{0: 10, 1: 9, 2: 40}]
+  PASS  INDEPENDENT AGREEMENT: 2-trace distance classes {1:4, 3:36}   [{1: 4, 3: 36}]
+  PASS  INDEPENDENT AGREEMENT: 0 traces at cycle-distance 2 (the claim's whole content)   [0]
+
+  ==> the null expectation stands on TWO implementations sharing no code and no
+      representation: 1.000000 inside the C4-free class, because the violating trace
+      is the one C4-freeness forbids.
+
+FAILURES: 0
+elapsed 0.0s

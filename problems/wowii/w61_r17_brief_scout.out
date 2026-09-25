@@ -1,0 +1,32 @@
+=== ROUND-18 BUILDER SCOUT: the r15 brief's patch sites, enumerated now so round 18's build is mechanical ===
+brief: prompts/w61_S3_GFAN_r15.md  md5=8b215db92bb076ab78da14e208530509  bytes=   62854  chars=   60714
+
+--- AC4 sites (must be REPLACED, not annotated) ---
+781:2. **Zero entries are inert.** Verified, not assumed: over all `480` lists
+949:was run on `480` lists × `6` paddings — `0` disagreements. (iv) `S(ν)`'s closed form
+
+--- fold sites: '1 ≤ ν ≤ 6' ---
+695:> **Theorem GFANν (`1 ≤ ν ≤ 6`).** For every `τ`, every `ν` with **`1 ≤ ν ≤ 6`** and
+720:> clearing in exactly `L` steps is the single part `[2ν]`, for every `1 ≤ ν ≤ 6`, and
+740:> `ν` with `1 ≤ ν ≤ 6`, which by that lower bound is every `ν ≤ 6` available here. ∎
+
+--- fold sites: 'ν ≤ 6' (all) ---
+10
+
+--- Corollary GFANnu-HC range 'ν ≥ 7' / 'L ≥ 8' ---
+653:> 〔**Superseded by Corollary GFANν-HC of Appendix C**, which raises this to `ν ≥ 7`,
+654:> `L ≥ 8`. Kept because its proof is the hand-written one.〕
+736:> **`ν ≥ 7` and `L ≥ 8`**.
+
+--- roster carve-out to WITHDRAW ---
+69:  `NOT IN SCOPE (no execution)` on that row. Guessing it, or waving it through because
+204:| **J-DATA** *(TARGET)* | The printed data. Recompute `s0(lam)` for the partitions of `2nu`, `nu <= 6`; check the boundary pair counts `0,1,3,7,14,26`; derive the closed form `S(nu)` yourself and check `0,3,24,110,397,1211`; and **if and only if you ran code**, regenerate the roster of `72` surviving `E >= 1` rows and ask whether it is **complete** — does your run produce a survivor that is not printed? Is any printed row not actually a survivor? **If you did not run code, write `NOT IN SCOPE (no execution)` for the completeness sub-claim** and answer the rest of this joint, which is hand-checkable. |
+
+--- Section 0 held-out block (to rebuild from w61_r17_heldout_key.txt) ---
+33:## Section 0 — HELD-OUT CHECKS (mandatory; answer these FIRST, before the joints)
+48:| **G1** | The **number of head-deletions to reach all-zeros** — the *step count* `s`, not the residue — **and** the residue, for each of these four explicit lists: `La = [3,3,2,2,2]`, `Lb = [4,4,3,3,2,2]`, `Lc = [5,5,4,4,3,3,2,2]`, `Ld = [6,6,6,6,6,6,6]`. Eight numbers. Use the run of Appendix A.0 exactly; if a list is not a step sequence in the sense of Appendix C.1 (C-1)(4), say so instead of giving a number. |
+200:| **J-RIG1** *(context)* | Corollary RIG-1. It claims that Proposition L2 (a),(b) force `B_lo+ = empty` and that Theorem RIG then supplies the rest, **removing** a tightness argument from L2's own proof. Proposition L2 is printed in Appendix A.1: does the corollary use exactly clauses (a),(b), does it use them in the direction stated, and is the removal real or circular (does the shorter route secretly re-use the thing it claims to remove)? |
+253:0. **the Section 0 held-out table** — five rows, G1...G5, each with its derivation in at
+
+--- leak probe: any nu>=7 datum already in the r15 brief? (must be ZERO) ---
+0

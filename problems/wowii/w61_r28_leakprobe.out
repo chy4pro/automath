@@ -1,0 +1,83 @@
+=== LEAK PROBE POPULATION (RULING AS), printed as MASKS before any verdict ===
+  key file            : $HOME/workspace/claudecode/automath/problems/wowii/w61_r27_heldout_key.txt
+  discriminating ints : 53  -> 1<2d># 1<2d># 1<2d># 1<2d># 1<2d># 1<2d># 1<2d># 1<2d># 1<2d># 1<2d># 2<2d># 2<2d># 2<2d># 2<2d># 2<2d># 2<2d># 3<2d># 3<2d># 4<2d># 4<2d># 5<2d># 6<2d># 7<2d># 9<2d># 9<2d># 1<3d>## 1<3d>## 1<3d>## 1<3d>## 1<3d>## 2<3d>## 2<3d>## 2<3d>## 2<3d>## 2<3d>## 2<3d>## 2<3d>## 2<3d>## 4<3d>## 1<4d>### 1<4d>### 5<4d>### 1<5d>#### 1<5d>#### 1<5d>#### 2<5d>#### 2<5d>#### 2<5d>#### 2<5d>#### 2<5d>#### 2<5d>#### 2<5d>#### 2<6d>#####
+  discriminating shapes: 6 -> [3p] [2p] [3p] [1p] [4p] [2p]
+
+=== CORPUS (RULING CH: the whole of it, not the outing count) ===
+  draft                : 1
+  shipped briefs       : 35
+  ledger + planner msgs: 196
+  problems/wowii md+out: 198
+  TOTAL FILES SCANNED  : 429
+
+=== PER-VALUE VERDICT (masks only; a cleartext print here would BE the leak) ===
+  1<2d>#     hits=4871 677_r10.md x5, 677_r11.md x5, 677_r4.md x1   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=4503 677_r11.md x3, 677_r13.md x5, 677_r24.md x1   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=3914 677_r13.md x7, 677_r14.md x3, 677_r16.md x1   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=2575 677_r13.md x3, 677_r14.md x6, 677_r8.md x5   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=2085 677_r14.md x2, 677_r15.md x2, 677_r18.md x1   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=1389 677_r10.md x1, 677_r11.md x1, 677_r15.md x2   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=1002 677_r16.md x2, 677_r17.md x2, 677_r18.md x3   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=736  677_r15.md x1, 677_r17.md x2, 677_r18.md x1   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=1210 677_r18.md x2, 677_r19.md x1, 677_r22.md x1   (non-discriminating: 2-digit, collides with prose)
+  1<2d>#     hits=499  677_r19.md x2, 677_r20.md x4, 677_r21.md x1   (non-discriminating: 2-digit, collides with prose)
+  2<2d>#     hits=946  677_r13.md x1, 677_r14.md x2, 677_r15.md x1   (non-discriminating: 2-digit, collides with prose)
+  2<2d>#     hits=386  677_r17.md x1, 677_r18.md x1, 677_r21.md x3   (non-discriminating: 2-digit, collides with prose)
+  2<2d>#     hits=961  677_r10.md x1, 677_r11.md x1, 677_r13.md x1   (non-discriminating: 2-digit, collides with prose)
+  2<2d>#     hits=402  677_r21.md x1, 677_r22.md x1, 677_r23.md x3   (non-discriminating: 2-digit, collides with prose)
+  2<2d>#     hits=513  677_r24.md x2, 677_r25.md x3, 677_r26.md x1   (non-discriminating: 2-digit, collides with prose)
+  2<2d>#     hits=456  677_r10.md x1, 677_r26.md x2, 677_r27.md x2   (non-discriminating: 2-digit, collides with prose)
+  3<2d>#     hits=187  RESOURCES.md x13, TARGETS.md x2, agrawal_A1_probe.md x4   (non-discriminating: 2-digit, collides with prose)
+  3<2d>#     hits=215  677_r17.md x1, RESOURCES.md x6, TARGETS.md x2   (non-discriminating: 2-digit, collides with prose)
+  4<2d>#     hits=111  RESOURCES.md x10, STATUS.md x1, T005_case_intel_scan.md x2   (non-discriminating: 2-digit, collides with prose)
+  4<2d>#     hits=112  RESOURCES.md x4, STATUS.md x1, T004_zenodo_publish.md x1   (non-discriminating: 2-digit, collides with prose)
+  5<2d>#     hits=77   R9F_q9_test.md x1, RESOURCES.md x13, T001_r9d_psi1.md x1   (non-discriminating: 2-digit, collides with prose)
+  6<2d>#     hits=24   677_r17.md x2, agrawal_A1_probe.md x1, cert_677_r16.md x2   (non-discriminating: 2-digit, collides with prose)
+  7<2d>#     hits=118  T005_case_intel_scan.md x2, T006_zenodo_publish_r2.md x1, TARGETS.md x6   (non-discriminating: 2-digit, collides with prose)
+  9<2d>#     hits=67   677_r4.md x1, 677_r4_hughes.md x10, R9E_keyfusion.md x2   (non-discriminating: 2-digit, collides with prose)
+  9<2d>#     hits=58   RESOURCES.md x7, T002_qwen_harvest.md x1, agrawal_A1_probe.md x1   (non-discriminating: 2-digit, collides with prose)
+  1<3d>##    hits=78   RESOURCES.md x3, TARGETS.md x1, cert_targets_v2.md x1   (non-discriminating: 3-digit, collides with prose)
+  1<3d>##    hits=26   agrawal_A1_probe.md x2, cert_agrawal_A1.md x1, intel_20cand_rebuild.md x1   (non-discriminating: 3-digit, collides with prose)
+  1<3d>##    hits=74   cert_w61_r21.md x1, qwen_queue.md x2, w133_r23_offcycle.out x2   (non-discriminating: 3-digit, collides with prose)
+  1<3d>##    hits=10   RESOURCES.md x1, TARGETS.md x2, cert_677_r25.md x1   (non-discriminating: 3-digit, collides with prose)
+  1<3d>##    hits=2    w133_S3_R23_opus.md x1, w61_r22_h34_second_impl.out x1   (non-discriminating: 3-digit, collides with prose)
+  2<3d>##    hits=7    RESOURCES.md x1, qwen_queue.md x1, w133_S3_GDIFF_qwen.md x1   (non-discriminating: 3-digit, collides with prose)
+  2<3d>##    hits=0    none
+  2<3d>##    hits=33   w133_r24_branch.out x1, w133_state.md x1, w61_S3_GFAN_r18.md x1   (non-discriminating: 3-digit, collides with prose)
+  2<3d>##    hits=1    w133_S3_R23_opus.md x1   (non-discriminating: 3-digit, collides with prose)
+  2<3d>##    hits=30   PLAN.md x1, T001_r9d_psi1.md x9, T007_dashboard_refresh.md x2   (non-discriminating: 3-digit, collides with prose)
+  2<3d>##    hits=0    none
+  2<3d>##    hits=1    w61_r25_qint_scan.out x1   (non-discriminating: 3-digit, collides with prose)
+  2<3d>##    hits=10   TARGETS.md x2, agrawal_s0s1.md x1, cert_lonely_runner_drop.md x1   (non-discriminating: 3-digit, collides with prose)
+  4<3d>##    hits=45   w61_S3_76_sol.md x1, w61_S3_GFAN_r18.md x1, w61_S3_GFAN_r20.md x3   (non-discriminating: 3-digit, collides with prose)
+  1<4d>###   hits=0    none
+  1<4d>###   hits=0    none
+  5<4d>###   hits=0    none
+  1<5d>####  hits=0    none
+  1<5d>####  hits=0    none
+  1<5d>####  hits=0    none
+  2<5d>####  hits=0    none
+  2<5d>####  hits=0    none
+  2<5d>####  hits=0    none
+  2<5d>####  hits=0    none
+  2<5d>####  hits=0    none
+  2<5d>####  hits=0    none
+  2<5d>####  hits=0    none
+  2<6d>##### hits=0    none
+
+=== PER-SHAPE VERDICT ===
+  [3p]       hits=0    none
+  [2p]       hits=0    none
+  [3p]       hits=0    none
+  [1p]       hits=0    none
+  [4p]       hits=0    none
+  [2p]       hits=0    none
+
+==========================================================================
+  population = 59 entries (53 ints + 6 shapes)
+  DISCRIMINATING HITS = 0
+  BURNED: nu <= 11.   LIVE: nu = 12 (this key).
+  Measured against the corpus, not inferred from the outing count.
+
+  LIVE KEY CLEAN.  (This says nothing about whether the key's ANSWERS are
+  right -- that is the calibration's job, and it is a separate check.)

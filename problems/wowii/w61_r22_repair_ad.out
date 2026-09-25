@@ -1,0 +1,11 @@
+  [AD1/MB1] landed
+  [AD1/GFAN2-HC] landed
+  [AD1/GFANnu-HC] landed
+  [AD3/FAN-6] landed
+  [AD3/FAN-6p] landed
+  [AD3/FAN-6p-lead] landed
+
+patches landed : 6
+draft md5 pre  : a4f04beafc05c6e50d56763c6cd48e1f
+draft md5 post : 5508104694060d84cb29ab8901cdecae
+draft lines pre/post : 7956 -> 7989

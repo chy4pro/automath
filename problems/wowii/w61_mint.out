@@ -1,0 +1,9 @@
+R-family addresses spent in the draft : 24
+  lowest free : R-25
+  R-22 line numbers (the r23 collision, kept visible) : [5936, 5943, 5945, 5974, 6001, 6019, 6097, 6126, 6177, 6353, 6355, 6468, 6692, 6720, 8350, 8352, 8353, 8678, 8686, 8690, 8690, 8888, 8890, 8891, 8939, 8969, 8988, 9005]
+  R-23 line numbers                                   : [3331, 8304, 8306, 8311, 8319, 8321, 8353, 8468, 8512, 8681, 8686, 8687, 8688, 8875, 8892, 8893, 8954, 8964, 9005, 9010, 9044]
+  R addresses minted as REGISTRY ROWS  : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+  mentioned in prose but never a row   : [24]
+  NEXT-FREE WARNING: R-24 is free as a row but is MENTIONED at lines [8680, 9075] (prose, not a row). Returning it anyway -- read those lines.
+  lowest free ROW                      : R-24
+  SELF-TEST PASS: ADDRESS COLLISION AT MINT TIME: R-23 is already spent at lines [3331, 8304, 8306, 8311, 83...

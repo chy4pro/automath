@@ -1,0 +1,58 @@
+==========================================================================
+w133 round 8 -- Claim Q6.1: slot non-adjacency, mass caps, closure
+==========================================================================
+
+=== (A) POOL: exhaustive n<=7 C4-free table + explicit/greedy carriers ===
+  connected C4-free graphs on 6 <= n <= 7: 111508
+  extra explicit/greedy carriers: 47
+
+=== (B) G32: off-C6 vertices carry only ANTIPODAL pairs; mass identity ===
+  induced C6 in C4-free P6-free pool members : 1330
+  off-C6 vertices classified (G32)           : 1300
+  antipodal mass identity instances          : 15960
+  two antipodal slots simultaneously occupied: 10
+
+=== (B2) G32' unconditional half + the counterexamples forcing C4-free ===
+    C6 + w with N(w)=(0, 2): P6-free=True, C4-free=False  => violates G32-without-C4-free
+    C6 + w with N(w)=(0, 1, 2): P6-free=True, C4-free=False  => violates G32-without-C4-free
+    C6 + w with N(w)=(0, 2, 4): P6-free=True, C4-free=False  => violates G32-without-C4-free
+    C6 + w with N(w)=(0, 1, 3): P6-free=True, C4-free=False  => violates G32-without-C4-free
+  4 machine counterexamples  =>  the C4-free hypothesis is NECESSARY
+  G32' : 129 frames whose vertex 6 has EXACTLY the consecutive pair (v0,v1),
+         with arbitrary edges elsewhere and NO C4-free filter; P6-free ones = 0
+  G32 (C4-free version): 2105408 frames on C6 + <=3 vertices, 10136 C4-free;
+         violations among the C4-free AND P6-free ones = 0
+
+=== (C) G34: every CONSECUTIVE-pair slot forces an induced P6 ===
+  C4-free frames carrying a consecutive-pair slot: 176
+  each carries the named induced P6  =>  u1', u2', A, B ALL die under (C6)
+
+=== (D) exhaustive frame enumeration: Z + {P,Q} + <=3 W-vertices ===
+  admissible frames kept: 5
+    a(P)<=3               : 3 instances
+    a(Q)<=3               : 3 instances
+    mass-id               : 5 instances
+    N(w) in {P,Q}uW_P     : 1 instances
+    |W_P|<=1              : 3 instances
+    n<=9 (G35.2)          : 5 instances
+    budget                : 5 instances
+  max Sigma_H(a-2) realised in any admissible frame: 6 (slots=[10, 11], |W|=1, n=9)
+
+=== (E) the closing arithmetic (bounded sweep over the 4 slot flags) ===
+  max achievable Sigma_H (a-2) over all slot patterns : 6
+  (**) requires Sigma_H (a-2) > n >= 6  ==>  mass >= 7 > 6 : IMPOSSIBLE
+  ==> the a(u)=a(z)=2 branch of RES(b) ^ (C6) is EMPTY  [Claim Q6.1]
+
+=== (F) controls: first failing step named (T12) ===
+  HS           n=  50  first failing step: diam=2!=3
+  HS+leaf      n=  51  first failing step: has induced P6 -> (C6) fails
+  ER_5         n=  31  first failing step: diam=2!=3
+  ER_5+leaf    n=  32  first failing step: has induced P6 -> (C6) fails
+  ER_7         n=  57  first failing step: diam=2!=3
+  ER_7+leaf    n=  58  first failing step: has induced P6 -> (C6) fails
+  Petersen     n=  10  first failing step: diam=2!=3
+  rand0        n=  11  first failing step: rad=3!=2
+
+==========================================================================
+TOTAL ASSERT FAILURES: 0
+==========================================================================

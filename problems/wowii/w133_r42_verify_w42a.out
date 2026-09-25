@@ -1,0 +1,13 @@
+n            = 96
+|E|          = 193
+mu           = 3
+l            = 4.020833
+rad          = 5
+diam         = 8
+centre       = [70, 71]
+witnesses w  = [33, 35]   (ecc(w) = rad+1 and d(c,w) = rad for EVERY centre)
+CASE         = B   (A iff diam = rad+1)
+Each w above has ecc(w) = 6 < 8 = diam, so each
+is ALSO a counterexample to (RXM-PERI) restricted to l > 4 and rad >= 5.
+
+CHECKS: 14   FAILURES: 0

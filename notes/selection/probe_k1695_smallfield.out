@@ -1,0 +1,13 @@
+exit=0
+PROBE P-K1 start; hard limit 600s
+n=2 q=2  |GL| enumerated=6 expected=6 order_ok=True  counterexamples=0  elapsed=0.0s
+n=2 q=3  |GL| enumerated=48 expected=48 order_ok=True  counterexamples=0  elapsed=0.0s
+n=2 q=5  |GL| enumerated=480 expected=480 order_ok=True  counterexamples=0  elapsed=0.0s
+n=2 q=7  |GL| enumerated=2016 expected=2016 order_ok=True  counterexamples=0  elapsed=0.0s
+n=3 q=2  |GL| enumerated=168 expected=168 order_ok=True  counterexamples=0  elapsed=0.0s
+n=3 q=3  |GL| enumerated=11232 expected=11232 order_ok=True  counterexamples=0  elapsed=0.4s
+n=4 q=2  |GL| enumerated=20160 expected=20160 order_ok=True  counterexamples=0  elapsed=1.8s
+n=3 q=5  |GL| enumerated=1488000 expected=1488000 order_ok=True  counterexamples=0  elapsed=47.2s
+VERDICT: NO counterexample in any scanned cell -- 16.95 holds on all of GL(n,q) for the cells above
+total elapsed 47.2s
+

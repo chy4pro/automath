@@ -1,0 +1,135 @@
+==============================================================================
+w133 r13b — CE-2 + k pendant triangles at vertex 2: family certification
+==============================================================================
+
+[0] CE-2 re-verified from its edge list (nothing inherited)
+  PASS  CE-2 is C4-free (strong form)   [0 violating pairs]
+  PASS  n(CE-2) = 10   [got 10]
+  PASS  CE-2 is connected
+  PASS  sum a(v) = 25 on CE-2   [got 25]
+  PASS  path(CE-2) = 6 (VERTICES)   [got 6]
+  PASS  CE-2 has exactly 2 three-frames   [got 2]
+  PASS  both are Case-2-forced
+  PASS  they are exactly the two named in round 13   [[(2, 1, 0, 8, 3), (2, 6, 4, 8, 3)]]
+
+[1] the family F_k, k = 0..10 — every property re-derived per k
+     k    n    E   sum_a       l        path   #frames  named frames  C4-free
+     0   10   14      25       5/2     6       2     True         True
+     1   12   17      28       7/3     6       2     True         True
+     2   14   20      31     31/14     6       2     True         True
+     3   16   23      34      17/8     6       2     True         True
+     4   18   26      37     37/18     6       2     True         True
+     5   20   29      40         2     6       2     True         True
+     6   22   32      43     43/22     6       2     True         True
+     7   24   35      46     23/12     6       2     True         True
+     8   26   38      49     49/26     6       2     True         True
+     9   28   41      52      13/7     6       2     True         True
+    10   30   44      55      11/6     6       2     True         True
+
+  PASS  k= 0: C4-free (strong form)
+  PASS  k= 0: connected
+  PASS  k= 0: n = 10 + 2k   [got 10]
+  PASS  k= 0: sum a = 25 + 3k   [got 25]
+  PASS  k= 0: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 0: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 0: l = (25+3k)/(10+2k)   [l = 5/2]
+  PASS  k= 0: l < 3 (family sits BELOW the l>3 line)   [l = 5/2]
+  PASS  k= 1: C4-free (strong form)
+  PASS  k= 1: connected
+  PASS  k= 1: n = 10 + 2k   [got 12]
+  PASS  k= 1: sum a = 25 + 3k   [got 28]
+  PASS  k= 1: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 1: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 1: l = (25+3k)/(10+2k)   [l = 7/3]
+  PASS  k= 1: l < 3 (family sits BELOW the l>3 line)   [l = 7/3]
+  PASS  k= 2: C4-free (strong form)
+  PASS  k= 2: connected
+  PASS  k= 2: n = 10 + 2k   [got 14]
+  PASS  k= 2: sum a = 25 + 3k   [got 31]
+  PASS  k= 2: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 2: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 2: l = (25+3k)/(10+2k)   [l = 31/14]
+  PASS  k= 2: l < 3 (family sits BELOW the l>3 line)   [l = 31/14]
+  PASS  k= 3: C4-free (strong form)
+  PASS  k= 3: connected
+  PASS  k= 3: n = 10 + 2k   [got 16]
+  PASS  k= 3: sum a = 25 + 3k   [got 34]
+  PASS  k= 3: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 3: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 3: l = (25+3k)/(10+2k)   [l = 17/8]
+  PASS  k= 3: l < 3 (family sits BELOW the l>3 line)   [l = 17/8]
+  PASS  k= 4: C4-free (strong form)
+  PASS  k= 4: connected
+  PASS  k= 4: n = 10 + 2k   [got 18]
+  PASS  k= 4: sum a = 25 + 3k   [got 37]
+  PASS  k= 4: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 4: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 4: l = (25+3k)/(10+2k)   [l = 37/18]
+  PASS  k= 4: l < 3 (family sits BELOW the l>3 line)   [l = 37/18]
+  PASS  k= 5: C4-free (strong form)
+  PASS  k= 5: connected
+  PASS  k= 5: n = 10 + 2k   [got 20]
+  PASS  k= 5: sum a = 25 + 3k   [got 40]
+  PASS  k= 5: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 5: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 5: l = (25+3k)/(10+2k)   [l = 2]
+  PASS  k= 5: l < 3 (family sits BELOW the l>3 line)   [l = 2]
+  PASS  k= 6: C4-free (strong form)
+  PASS  k= 6: connected
+  PASS  k= 6: n = 10 + 2k   [got 22]
+  PASS  k= 6: sum a = 25 + 3k   [got 43]
+  PASS  k= 6: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 6: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 6: l = (25+3k)/(10+2k)   [l = 43/22]
+  PASS  k= 6: l < 3 (family sits BELOW the l>3 line)   [l = 43/22]
+  PASS  k= 7: C4-free (strong form)
+  PASS  k= 7: connected
+  PASS  k= 7: n = 10 + 2k   [got 24]
+  PASS  k= 7: sum a = 25 + 3k   [got 46]
+  PASS  k= 7: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 7: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 7: l = (25+3k)/(10+2k)   [l = 23/12]
+  PASS  k= 7: l < 3 (family sits BELOW the l>3 line)   [l = 23/12]
+  PASS  k= 8: C4-free (strong form)
+  PASS  k= 8: connected
+  PASS  k= 8: n = 10 + 2k   [got 26]
+  PASS  k= 8: sum a = 25 + 3k   [got 49]
+  PASS  k= 8: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 8: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 8: l = (25+3k)/(10+2k)   [l = 49/26]
+  PASS  k= 8: l < 3 (family sits BELOW the l>3 line)   [l = 49/26]
+  PASS  k= 9: C4-free (strong form)
+  PASS  k= 9: connected
+  PASS  k= 9: n = 10 + 2k   [got 28]
+  PASS  k= 9: sum a = 25 + 3k   [got 52]
+  PASS  k= 9: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k= 9: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k= 9: l = (25+3k)/(10+2k)   [l = 13/7]
+  PASS  k= 9: l < 3 (family sits BELOW the l>3 line)   [l = 13/7]
+  PASS  k=10: C4-free (strong form)
+  PASS  k=10: connected
+  PASS  k=10: n = 10 + 2k   [got 30]
+  PASS  k=10: sum a = 25 + 3k   [got 55]
+  PASS  k=10: path = 6 EXACTLY (>=6 yes, >=7 no)   [p6=True p7=False]
+  PASS  k=10: BOTH named 3-frames survive and stay Case-2-forced
+  PASS  k=10: l = (25+3k)/(10+2k)   [l = 11/6]
+  PASS  k=10: l < 3 (family sits BELOW the l>3 line)   [l = 11/6]
+
+[2] monotonicity and limits of l on the family
+  PASS  sup l = l(k=0) = 5/2   [l0 = 5/2]
+  PASS  l is STRICTLY DECREASING in k   [5/2 ... 11/6]
+  PASS  l stays strictly > 3/2 for every k   [l(k=10) = 11/6]
+  PASS  EXACT: l(k) - 3/2 = 10/(10+2k), hence l -> 3/2 from above   [gap(k=10) = 1/3]
+
+[3] conclusions
+  PASS  E3(i) is NO: n is UNBOUNDED in the bad class (C4-free + Case-2-forced 3-frame + path = 6)
+  PASS  E3(iii): the infinite family EXISTS, n = 10+2k -> oo, l = (25+3k)/(10+2k) decreasing
+
+[4] STRATEGIC CONSEQUENCE (recorded with the result)
+    Since n is unbounded in the bad class, NO route to (T-C+)/(T-D) can proceed by
+    bounding n.  Every surviving route must come through the hypothesis l > 3.
+    This family is consistent with that hypothesis being the live one: its l is
+    strictly below 5/2 < 3 for every k, so it never enters the l > 3 class and
+    therefore constrains the n-route only.
+
+FAILURES: 0

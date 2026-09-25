@@ -1,0 +1,83 @@
+====================================================================================================
+w61 r48b -- the joint walk as arithmetic: T-STEP, T0-STEP, U-EXACT, the mark law,
+            and (WALK-SHAPE) reduced to ONE inequality (U-INV).
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+[N<=16]  partitions of N <= 16 with <= 10 parts that TERMINATE : 181 ; transfer edges : 567
+    joint states on transfer walks : 1744 ; shapes {'T': 771, 'EQ': 468, 'U': 505}
+    states of NO admissible shape : 0   e.g. None
+    [ok] [N<=16] CONTROL: transfer walks visit states                                         hits=1744
+    (U) states 505 ; of them INVERSIONS (v2 = max A) 88 ; with v2 > max A (delta=2) 0
+    v1 over ALL (U) states     : {0: 467, 1: 38}
+    v1 at the INVERSION states : {0: 72, 1: 16}
+    (U-INV)  v1 <= A_{d+1} : holds 505 , FAILS 0   e.g. None
+    LEMMA T-STEP  instances 382 , failures 0
+    LEMMA T0-STEP instances 327 , failures 0
+    (U)->(U) steps 178 , failures 0 ; MARK LAW instances 178 , failures 0  e.g. None
+    [ok] [N<=16] CONTROL: (U) states occur                                                    hits=505
+    [ok] [N<=16] CONTROL: LEMMA T-STEP was exercised                                          hits=382
+    [ok] [N<=16] CONTROL: LEMMA T0-STEP was exercised                                         hits=327
+    [ok] [N<=16] CONTROL: (U)->(U) propagation was exercised                                  hits=178
+    v1 >= 2 inversions (the ONLY case in which (U-INV) is not free) : 0
+    LEMMA U-EXACT: instances 505  (hypothesis TRUE 355 , FALSE 150)
+      'if'      failures (hyp holds, <| breaks)     : 0
+      'only if' failures (hyp fails, <| survives)   : 0   e.g. None
+    [ok] [N<=16] CONTROL: U-EXACT tested where the hypothesis HOLDS                           hits=355
+    [ok] [N<=16] CORRUPT CONTROL: U-EXACT tested where the hypothesis FAILS -- and <| breaks at every one of them hits=150
+
+----------------------------------------------------------------------------------------------------
+[N<=20]  partitions of N <= 20 with <= 12 parts that TERMINATE : 531 ; transfer edges : 2233
+    joint states on transfer walks : 8208 ; shapes {'T': 3324, 'EQ': 2313, 'U': 2571}
+    states of NO admissible shape : 0   e.g. None
+    [ok] [N<=20] CONTROL: transfer walks visit states                                         hits=8208
+    (U) states 2571 ; of them INVERSIONS (v2 = max A) 395 ; with v2 > max A (delta=2) 0
+    v1 over ALL (U) states     : {0: 2336, 1: 231, 2: 4}
+    v1 at the INVERSION states : {0: 307, 1: 84, 2: 4}
+    (U-INV)  v1 <= A_{d+1} : holds 2571 , FAILS 0   e.g. None
+    LEMMA T-STEP  instances 1774 , failures 0
+    LEMMA T0-STEP instances 1381 , failures 0
+    (U)->(U) steps 1190 , failures 0 ; MARK LAW instances 1190 , failures 0  e.g. None
+    [ok] [N<=20] CONTROL: (U) states occur                                                    hits=2571
+    [ok] [N<=20] CONTROL: LEMMA T-STEP was exercised                                          hits=1774
+    [ok] [N<=20] CONTROL: LEMMA T0-STEP was exercised                                         hits=1381
+    [ok] [N<=20] CONTROL: (U)->(U) propagation was exercised                                  hits=1190
+    v1 >= 2 inversions (the ONLY case in which (U-INV) is not free) : 4
+    LEMMA U-EXACT: instances 1674  (hypothesis TRUE 1094 , FALSE 580)
+      'if'      failures (hyp holds, <| breaks)     : 0
+      'only if' failures (hyp fails, <| survives)   : 0   e.g. None
+    [ok] [N<=20] CONTROL: U-EXACT tested where the hypothesis HOLDS                           hits=1094
+    [ok] [N<=20] CORRUPT CONTROL: U-EXACT tested where the hypothesis FAILS -- and <| breaks at every one of them hits=580
+
+----------------------------------------------------------------------------------------------------
+[N<=24]  partitions of N <= 24 with <= 14 parts that TERMINATE : 1428 ; transfer edges : 7566
+    joint states on transfer walks : 32176 ; shapes {'T': 12122, 'EQ': 9538, 'U': 10516}
+    states of NO admissible shape : 0   e.g. None
+    [ok] [N<=24] CONTROL: transfer walks visit states                                         hits=32176
+    (U) states 10516 ; of them INVERSIONS (v2 = max A) 1452 ; with v2 > max A (delta=2) 0
+    v1 over ALL (U) states     : {0: 9427, 1: 1053, 2: 36}
+    v1 at the INVERSION states : {0: 1095, 1: 336, 2: 21}
+    (U-INV)  v1 <= A_{d+1} : holds 10516 , FAILS 0   e.g. None
+    LEMMA T-STEP  instances 6847 , failures 0
+    LEMMA T0-STEP instances 4855 , failures 0
+    (U)->(U) steps 5661 , failures 0 ; MARK LAW instances 5661 , failures 0  e.g. None
+    [ok] [N<=24] CONTROL: (U) states occur                                                    hits=10516
+    [ok] [N<=24] CONTROL: LEMMA T-STEP was exercised                                          hits=6847
+    [ok] [N<=24] CONTROL: LEMMA T0-STEP was exercised                                         hits=4855
+    [ok] [N<=24] CONTROL: (U)->(U) propagation was exercised                                  hits=5661
+    v1 >= 2 inversions (the ONLY case in which (U-INV) is not free) : 21
+    LEMMA U-EXACT: instances 4959  (hypothesis TRUE 3051 , FALSE 1908)
+      'if'      failures (hyp holds, <| breaks)     : 0
+      'only if' failures (hyp fails, <| survives)   : 0   e.g. None
+    [ok] [N<=24] CONTROL: U-EXACT tested where the hypothesis HOLDS                           hits=3051
+    [ok] [N<=24] CORRUPT CONTROL: U-EXACT tested where the hypothesis FAILS -- and <| breaks at every one of them hits=1908
+
+====================================================================================================
+sec 111: THREE sizes now, not two.  inversion states 88 / 395 / 1452 ; (U-INV) failures 0 / 0 / 0
+v1 at inversions, by size : {0: 72, 1: 16} | {0: 307, 1: 84, 2: 4} | {0: 1095, 1: 336, 2: 21}
+v1 >= 2 inversions by size : [0, 4, 21]  -- EMPTY at the smallest size and non-empty after it
+    [ok] CONTROL: the v1 >= 2 case, which I first predicted to be empty, is NOT empty once the population grows hits=25
+stepA vs stepC (conjugate coordinates) diffed calls : 41810 , 0 disagreements
+ELAPSED 2.62 s / 300 s internal limit ; PARTIAL=False
+CONTROLS 22/22 firing ; DEFECTS 0
+====================================================================================================

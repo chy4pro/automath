@@ -1,0 +1,18 @@
+=== D2: the k=0 branch's unique graph, and Lemma U on it
+   deg=[3, 3, 3, 3, 3, 2, 1] n=7 m=9 alpha=4 tau=3 diam=4 residue=3
+   X = max deg over B = 3;  R (A-side degrees) = [3, 3, 2, 1];  Delta = 3
+   Lemma U 2nd hypothesis 'Delta >= #{3s in R}': 3 >= 2 ? holds
+   misapplied Lemma U would give m <= X+4 = 7, but m = 9  => a FALSE contradiction (slack 2)
+   the k=0 bullet's own ending instead computes HH directly: D=(3,3,2), sum=8=m-1<m => s=4, residue=3=alpha-1  [alpha=4]
+
+=== D1: is the branch k<=1, e_B=0, p=3 really an infinite family?
+    family: B={x,y,z} independent, 3 universal A-vertices, t pendants at x
+    t=0: n=6 diam=2 k=0 alpha=3 tau=3 OK (diam != 4)
+    t=1: n=7 diam=3 k=1 alpha=4 tau=3 OK (diam != 4)
+    t=2: n=8 diam=3 k=1 alpha=5 tau=3 OK (diam != 4)
+    t=3: n=9 diam=3 k=1 alpha=6 tau=3 OK (diam != 4)
+    t=4: n=10 diam=3 k=1 alpha=7 tau=3 OK (diam != 4)
+    t=5: n=11 diam=3 k=1 alpha=8 tau=3 OK (diam != 4)
+    closed form: every A-vertex is adjacent to x, so any two A-vertices are at
+    distance 2 through x, and dist(a,b) <= 3 for b in B; hence diam <= 3 for ALL t.
+done

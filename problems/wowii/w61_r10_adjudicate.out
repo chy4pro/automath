@@ -1,0 +1,62 @@
+[CALIBRATION] (must pass before anything else)
+  residue(K2) = 1 expect 1 OK
+  residue(C3) = 1  expect 1  OK
+  residue(C4) = 2  expect 2  OK
+  residue(C5) = 2  expect 2  OK
+  residue(C6) = 2  expect 2  OK
+  residue(C7) = 3  expect 3  OK
+  residue(C8) = 3  expect 3  OK
+  residue(C9) = 3  expect 3  OK
+  CALIBRATION PASS
+
+[Q24-D1] equality case L = lambda_1 (proof parenthetical claims t>lam1 'true at t=L')
+   partitions |lam|<=12 tested at L=lam1: formula mismatches = 0
+   => statement survives at L=lam1; only the parenthetical 't>lam1 true at t=L' is false.
+
+[Q24-D3] judge's named witnesses (recomputed from scratch)
+   lam=[4] L=2: list=[4, 2, 2, 2] direct steps=3 formula=2 s0=4 lam1=4 in-scope=False
+   lam=[3] L=1: list=[3, 1, 1] direct steps=1 formula=2 s0=4 lam1=3 in-scope=False
+   lam=[2] L=0: list=[2, 0] direct steps=1 formula=0 s0=2 lam1=2 in-scope=False
+   lam=[2] L=2: list=[2, 2, 2, 2] direct steps=2 formula=2 s0=2 lam1=2 in-scope=True
+   lam=[2, 2] L=2: list=[2, 2, 2, 2, 2] direct steps=3 formula=3 s0=3 lam1=2 in-scope=True
+
+[Q24-SWEEP] |lam|<=12, L=0..15
+   in-scope pairs=3125 mismatches=0
+   out-of-scope pairs=1211 mismatches=462
+   five smallest out-of-scope failures (by |lam|, then lam1):
+     |lam|=2 lam1=2 lam=[2] L=0 direct=1 formula=0
+     |lam|=3 lam1=3 lam=[3] L=1 direct=1 formula=2
+     |lam|=4 lam1=2 lam=[2, 2] L=0 direct=2 formula=1
+     |lam|=4 lam1=3 lam=[3, 1] L=1 direct=1 formula=2
+     |lam|=4 lam1=4 lam=[4] L=0 direct=1 formula=0
+
+[Q24-JFAN5] Observation FAN-5 second half: steps([L]^{L+1} u [2]) == L ?
+   s0([2]) = steps([2,2,2,2]) = 2 (lam1 = 2)
+   L=2..29 counterexamples to 'total = L': none
+   L=0,1 (outside L>=lam1): [(0, 1), (1, 1)]
+
+[Q24-D3b] rider 'clears in exactly L steps <=> s0(lam)=lam1' with L>=lam1 dropped
+   smallest =>-direction failure (s0=lam1 but does NOT clear in L): (2, 2, [2], 0)
+   smallest <=-direction failure (clears in L but s0!=lam1):       (3, 3, [3], 1)
+   judge named lam=[4],L=2 as 'smallest'; it IS a failure but not the smallest: True
+
+[Q24-D2] lambda = empty set: 'lam1 := max lam' is undefined
+   max([]) raises: max() arg is an empty sequence
+   consumers: TAIL is invoked only at E=0 where FAN-4' gives |lam| = 2*nu >= 2 (nu>=1 by R1),
+   so lam is nonempty at every call site; steps([L]^{L+1}) alone = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
+
+[Q23-D4] Fan(tau,L) slack = L-1 ?  (symbolic check + explicit instances)
+   In Fan(tau,L): every b in B_lo is B-universal with deg_A(b)=1, so deg(b)=(tau-1)+1=tau;
+   nu = 1 (B = K_tau - uv).  slack = L(tau+1) - (L*tau + 1) = L - 1.
+   verified as an identity for tau=4..8, L=1..tau-1: slack == L-1 everywhere.
+
+[Q23-D1] Prop L2(c): the forced Sum deg_A = 2 needs BOTH bounds simultaneously
+   MB lower bound  : Sum deg_A >= L + |B_lo+| + c = 2
+   SL (LOW3) upper : Sum deg_A <= 2L + nu(B_lo) - 1 - mbar = 2
+   squeeze => Sum deg_A = 2 forced
+
+[Q23-D2] Theorem MB's 'every such b lies in B_lo+' vs the draft's own Prop L2 config
+   Prop L2(d): T1={u}, T2={v} with u,v in B_hi.  B_lo+ subset B_lo, and B_hi cap B_lo = {}.
+   => u,v in T1 u T2 but u,v NOT in B_lo+: the universally-quantified sentence is false as written.
+   The count only uses c = |B_lo cap (T1 u T2)|, and B_lo cap (T1 u T2) subset B_lo+ IS true,
+   so the inequality |B_lo+| + c + mbar <= L + nu(B_lo) - 1 is unaffected.

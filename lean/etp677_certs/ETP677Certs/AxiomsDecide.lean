@@ -1,0 +1,12 @@
+import ETP677Certs.R45L02Decide
+import ETP677Certs.L03Decide
+import ETP677Certs.L05Decide
+import ETP677Certs.L06Decide
+
+#print axioms ETP677Certs.R45L02Decide.r45_l02_q3_certificate_decide
+#print axioms ETP677Certs.R45L02Decide.r45_l02_q3_perfect_rows_exact
+#print axioms ETP677Certs.L03Decide.l03_q3_four_perfect_certificate_decide
+#print axioms ETP677Certs.L03Decide.l03_q3_perfect_rows_exact
+#print axioms ETP677Certs.L05Decide.l05_q4_p6_certificate_decide
+#print axioms ETP677Certs.L05Decide.l05_q4_perfect_rows_exact
+#print axioms ETP677Certs.L06Decide.l06_q7_perfect_rows_exact

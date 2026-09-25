@@ -1,0 +1,85 @@
+============================================================================================
+1. THE ANCHORED RE-CUT.  Every boundary is a SECTION ANCHOR, asserted UNIQUE.
+   The superseded builder's hard-coded ranges are printed beside them, so the drift
+   this replaces is visible rather than asserted.
+============================================================================================
+  [OK] S35: opening anchor '## 35.1 The statement' is UNIQUE                  got=1 want=1
+  [OK] S35: closing anchor '## 35.5' is UNIQUE                                got=1 want=1
+     S35 anchored 4592..4717 (126 lines) | r26 hard-coded 4592..4717 | drift lo=+0 hi=+0
+  [OK] S35: the anchored cut is non-empty and starts on its heading           got=True want=True
+  [OK] S36: opening anchor '## 36.1 The statement' is UNIQUE                  got=1 want=1
+  [OK] S36: closing anchor '## 36.2' is UNIQUE                                got=1 want=1
+     S36 anchored 4793..4905 (113 lines) | r26 hard-coded 4793..4897 | drift lo=+0 hi=+8
+  [OK] S36: the anchored cut is non-empty and starts on its heading           got=True want=True
+  [OK] S37: opening anchor '## 37.1 The statement' is UNIQUE                  got=1 want=1
+  [OK] S37: closing anchor '## 37.2' is UNIQUE                                got=1 want=1
+     S37 anchored 5013..5101 (89 lines) | r26 hard-coded 5005..5093 | drift lo=+8 hi=+8
+  [OK] S37: the anchored cut is non-empty and starts on its heading           got=True want=True
+  [OK] r26's S37 range would today begin on a BLANK line (the silent-drop defect) got= want=
+  [OK] r26's S37 range would today TRUNCATE the link's tail by 8 lines        got=8 want=8
+  [OK] r26's S36 range would today TRUNCATE the link's tail by 8 lines        got=8 want=8
+
+============================================================================================
+2. THE DECLARED SCRUB -- category and count only, and MACHINE-CHECKABLE.
+   Deletions only.  Listing the removed text would re-inject exactly what it removes,
+   so the brief declares the CATEGORY and the COUNT and this gate proves the rest.
+============================================================================================
+  [OK] S35: the scrub is DELETIONS ONLY (scrubbed is shorter)                 got=True want=True
+  [OK] S35: NO MATHEMATICAL TOKEN removed (set equality before/after)         got=set() want=set()
+  [OK] S36: the scrub is DELETIONS ONLY (scrubbed is shorter)                 got=True want=True
+  [OK] S36: NO MATHEMATICAL TOKEN removed (set equality before/after)         got=set() want=set()
+  [OK] S37: the scrub is DELETIONS ONLY (scrubbed is shorter)                 got=True want=True
+  [OK] S37: NO MATHEMATICAL TOKEN removed (set equality before/after)         got=set() want=set()
+   annotations removed: 5
+      S35  heading status label                                  (57 chars)
+      S35  adjudicator reference                                 (22 chars)
+      S35  tier proposal + review-status bullet + adjudicator reference  (340 chars)
+      S36  heading status label                                  (57 chars)
+      S37  heading status label                                  (56 chars)
+  [OK] the declared COUNT equals the executed count                           got=5 want=5
+  [OK] LIVENESS: math-preservation FIRES when a deletion takes a math token with it got=True want=True
+  [OK] LIVENESS: and it PASSES when the same deletion spares the math token   got=set() want=set()
+
+============================================================================================
+3. THE ROWS, and THE BLIND-GUESS RATE, computed BEFORE dispatch
+============================================================================================
+  [OK] rows read from the key                                                 got=7 want=7
+   row   tier   p_formal  p_plaus    defence of the range
+   V1    H      0.0167    0.0909     m for a connected C4-free P7-free graph on n=11: 10..20
+   V5    H      0.1250    0.2500     a(v) plausibly in 1..4, with a strong modal prior at 3
+   V7    C      0.0040    0.0500     T_Z in 0..6 and sum_Z(a-3) in -6..0, anchored, effectively ~20 live pairs
+   V9    C      0.0028    0.0250     T_Z in 0..6 and sum_v(a-3) in -15..0 for n=10, anchored, ~40 live pairs
+   V10   H      0.0076    0.0500     max degree in 3..5 and 11 vertices, but a guesser picks an off-Z vertex: ~20
+   V11   H      0.0119    0.0250     compositions of 6 into 4 parts is 84; |W_anti|<=3 and plausibility -> ~40
+   V12   C      0.0040    0.0500     same shape as V7 on a different host
+
+   CONJUNCTION over all 7 rows            : 8.774e-15 .. 1.776e-09
+   CONJUNCTION over the 6 INDEPENDENT rows: 2.167e-12 .. 3.551e-08   <-- the one to cite
+   (V7 and V12 are the same species on different hosts: one working method answers both,
+    so the 7-row product overstates the evidence and is NOT the number cited.)
+  [OK] the cited conjunction upper bound is below 1e-6                        got=True want=True
+
+============================================================================================
+4. ASSEMBLE
+============================================================================================
+
+============================================================================================
+5. PRE-WRITE GATES on the assembled bytes
+============================================================================================
+  [OK] no ANSWER string appears in an answer-shaped context (see the DA gate below) got=True want=True
+  [OK] `CANNOT COMPUTE` appears at least TWICE, in bold (D5, w61 r31's standard) got=True want=True
+  [OK]    ... and at least one of them is at the OUTPUT TEMPLATE              got=True want=True
+  [OK] leak census: 'planner' (adjudicator reference) is ABSENT from the shipped bytes got=False want=False
+  [OK] leak census: 'NOT an S1 candidate' (tier proposal) is ABSENT from the shipped bytes got=False want=False
+  [OK] leak census: 'TIER, proposed' (tier proposal) is ABSENT from the shipped bytes got=False want=False
+  [OK] leak census: 'UNREGISTERED' (review-status label) is ABSENT from the shipped bytes got=False want=False
+  [OK] LIVENESS: the leak census FIRES on a planted occurrence                got=True want=True
+  [OK] the struck rows are absent from the shipped table                      got=False want=False
+  [OK] all 7 kept rows appear in the shipped table                            got=True want=True
+  [OK] K4 is not shipped (it existed only for the struck rows)                got=False want=False
+  [OK] the declared annotation count in the prose matches the executed count  got=1 want=1
+
+BRIEF WRITTEN: $HOME/workspace/claudecode/automath-sandbox/briefs/w133_r29_q41.md  (36056 bytes, 6230 words)
+BLIND-GUESS CONJUNCTION TO CITE (6 independent rows): 3.6e-08
+
+checks: 35, failures: 0

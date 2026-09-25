@@ -1,0 +1,7 @@
+[tau=3] MAXMULT=5  parameter tuples scanned = 1119744
+[tau=3] graphs in hard-core-minus-residue (connected, non-forest,
+        diam=4, f=alpha+1, tau=3): 591710
+[tau=3] by e_B: {'e_B=0': 224035, 'e_B=1': 196075, 'e_B=2': 171600}
+[tau=3] residue >= alpha (would be COUNTEREXAMPLES): 0
+[tau=3] distribution of slack3 = m - (D1+D2+D3): {1: 171614, 2: 196571, 3: 223525}
+[tau=3] minimal-slack witness: {'mu': (0, 0, 1, 1, 0, 0, 2), 'eb': 0, 'n': 7, 'm': 9, 'alpha': 4, 'tau': 3, 'degB': [3, 3, 3], 'p': 2, 'q': 1, 'r': 1, 'heads': [3, 3, 2, 1], 's': 4, 'residue': 3, 'slack3': 1}

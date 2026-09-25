@@ -1,0 +1,13 @@
+[Lemma FAN-6 structural hypotheses] Fan(tau,L>=2) superset box tau<=9 R<=16 k<=12, 3 tie-breaks each
+  high-phase runs = 508239
+  H0_head_not_high   failures = 0
+  H1                 failures = 0
+  H2                 failures = 0
+  H3_count           failures = 0
+  H3_pos             failures = 0
+  H4_max_escapes     failures = 0
+  H4_not_prefix      failures = 0
+  H5                 failures = 0
+  ran_out            failures = 0
+  (C-part == [L]^(L+1) ?, A'-residual partition) histogram:
+     (True, (1, 1)) : 508239

@@ -1,0 +1,58 @@
+=== (A) ADJUDICATION: Qwen's claimed GAP on joint G12-J1 ===
+  literal claim under review (draft 13.1 Step 1, as written):
+    triangle-free + C4-free + diam 2  ==>  girth 5, Moore, k in {2,3,7,57}
+  K_1,2  n=3   tri=False C4free=True diam=2 girth=inf regular=False l=1.333
+  K_1,3  n=4   tri=False C4free=True diam=2 girth=inf regular=False l=1.500
+  K_1,5  n=6   tri=False C4free=True diam=2 girth=inf regular=False l=1.667
+  K_1,9  n=10  tri=False C4free=True diam=2 girth=inf regular=False l=1.800
+  K_1,20 n=21  tri=False C4free=True diam=2 girth=inf regular=False l=1.905
+  => the literal step is FALSE as stated: stars satisfy the hypotheses,
+     are not regular and contain no 5-cycle.  QWEN'S GAP IS REAL.
+
+  Repair actually adopted (Lemma G12.1, owner's route, 2 lines):
+    (i) connected + acyclic + diam 2 => star => l < 2, killed by l > 3;
+    (ii) a graph WITH a cycle has girth <= 2*diam+1 = 5, and triangle-free
+         + C4-free gives girth >= 5, hence girth = 5 exactly;
+    (iii) diam 2 + girth 5 => Moore (Hoffman-Singleton), k in {2,3,7,57}.
+  exhaustive check over ALL labelled graphs on n <= 7 vertices:
+    connected C4-free graphs found: 111843
+    of these triangle-free with diam 2: 37
+    shape census: {'star': 25, 'girth5': 12}   (only stars and girth-5 Moore graphs)
+    control Petersen  n=10  girth=5 k=3 l=3.000 (l>3? False)
+    control HS        n=50  girth=5 k=7 l=7.000 (l>3? True)
+  => after G12.1 the l>3 hypothesis leaves exactly k in {7,57}: G12 Step 1 REPAIRED.
+
+=== (B) Lemma G22 (NEW, unconditional): C4-free + P6-free =>
+        every endpoint of an induced P5 has degree <= 5 ===
+  exhaustive n<=7 C4-free P6-free graphs: 70803; induced-P5 endpoints tested: 194280
+  max degree over all tested P5-endpoints: 3 (bound 5)
+  greedy C4-free+P6-free carriers (n=8..14): 17; P5-endpoints tested: 66; max endpoint degree: 2; max degree in pool: 8
+  general form G22(k): C4-free + no induced P_{k+1} => every endpoint of an
+  induced P_k has degree <= k.  (k=5 is the case used by the line.)
+    k=3: 4226 endpoints tested over the exhaustive n<=7 pool, bound 3
+    k=4: 67344 endpoints tested over the exhaustive n<=7 pool, bound 4
+    k=5: 194280 endpoints tested over the exhaustive n<=7 pool, bound 5
+  Petersen        n=10  C4free=True P6free=True #P5-endpoints=10 maxdeg=3 maxdeg(P5-endpoint)=3
+  C5              n=5   C4free=True P6free=True #P5-endpoints=0 maxdeg=2 maxdeg(P5-endpoint)=-
+  C6              n=6   C4free=True P6free=True #P5-endpoints=6 maxdeg=2 maxdeg(P5-endpoint)=2
+  friendship F_2  n=5   C4free=True P6free=True #P5-endpoints=0 maxdeg=4 maxdeg(P5-endpoint)=-
+  friendship F_3  n=7   C4free=True P6free=True #P5-endpoints=0 maxdeg=6 maxdeg(P5-endpoint)=-
+  friendship F_5  n=11  C4free=True P6free=True #P5-endpoints=0 maxdeg=10 maxdeg(P5-endpoint)=-
+  friendship F_10 n=21  C4free=True P6free=True #P5-endpoints=0 maxdeg=20 maxdeg(P5-endpoint)=-
+  => friendship F_k: C4-free, P6-free, degree 2k unbounded, but it has NO
+     induced P5 at all -- the P5-endpoint hypothesis of G22 is necessary.
+
+=== (C) Lemma G23 (NEW): ball structure at a triangular diameter endpoint ===
+  claim: C4-free, a(u)=1, ecc(u)=3.  Then N(u)={p,q} with p~q, and
+    ball_2(u) = {u,p,q} + B_p + B_q  (disjoint), |ball_2(u)| = d(p)+d(q)-1,
+    and every h in B_p has |N(h) & ({p,q} u B_p u B_q)| <= 3.
+  G23/G24 instances tested (a(u)=1 vertices of eccentricity 3): 79852
+  G24(a) layer decomposition + parent-injectivity carriers: 79852
+
+  refutation of Tab B's claimed 'minimal example' (w133_RES_qwen_r5.md 7.2):
+    two triangles u,p,q and z,r,s joined by cross-edges p~r, q~s
+    n=6 C4-free=False  (cycle p-r-s-q-p is a C4)  l=1.667
+    => the example is invalid twice over; it is only an illustration in
+       their text, but it is a verified error in the harvest.
+
+TOTAL ASSERT FAILURES: 0

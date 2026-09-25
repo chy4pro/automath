@@ -1,0 +1,8 @@
+draft md5 bcda3ef4891a3228a1e1fb1f46735645 -> cf587a54ec148435a50b7512841aee6c
+  [OK ] BB2 recorded exactly once: 1 (want 1)
+  [OK ] stale R-24 'lowest free' accounting claim gone: 0 (want 0)
+  [OK ] corrected accounting present: 1 (want 1)
+  [OK ] noisy-vs-silent named at the defect: 1 (want 1)
+  [OK ] SS7.40 still the last section: True (want True)
+  [OK ] three bounded weakenings still present: 3 (want 3)
+ALL RECORD ASSERTIONS PASS

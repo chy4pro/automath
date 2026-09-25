@@ -1,0 +1,32 @@
+Lean 4.27.0 kernel-decide timing record
+========================================
+
+Direct module checks (`/usr/bin/time -p lake env lean MODULE`):
+  R45L02Decide.lean: real 2.57 s, user 2.75 s, sys 0.15 s
+  L03Decide.lean:    real 2.68 s, user 2.86 s, sys 0.18 s
+  L05Decide.lean:    real 9.82 s, user 10.85 s, sys 0.37 s
+  L06Decide.lean:    real 138.73 s, user 58.86 s, sys 56.94 s
+
+Filtered `-Dtrace.profiler=true` proof elaboration times:
+  r45_l02_q3_certificate_decide:       1.450736 s
+  r45_l02_q3_perfect_rows_exact:       0.569440 s
+  l03_q3_four_perfect_certificate_decide: 1.124543 s
+  l03_q3_perfect_rows_exact:           0.385577 s
+  l05_q4_p6_certificate_decide:        9.491973 s
+  l05_q4_perfect_rows_exact:           1.578587 s
+  l06_q7_perfect_rows_exact:           138.73 s module wall time (one theorem)
+
+Default project build (`/usr/bin/time -p lake build -v`):
+  R45L02Decide target: 7.2 s
+  L03Decide target:    7.5 s
+  L05Decide target:   25 s
+  L06Decide target:  100 s
+  whole build: real 100.95 s, user 94.35 s, sys 5.14 s; 13 jobs successful
+
+Options used by every new proof:
+  maxRecDepth  = 100000
+  maxHeartbeats = 10000000
+
+The q=7 exactness theorem needed command-scoped options: before that change, elaboration
+stopped after 8.38 s at the default 200000-heartbeat limit while reducing the theorem type.
+No successful attempt approached the ticket's 20-minute per-decide cap.

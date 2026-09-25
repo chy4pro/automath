@@ -1,0 +1,71 @@
+=== owner-w61 round 17 -- Q36 HELD-OUT KEY, nu = 11 ===
+NOT PASTED INTO ANY BRIEF.  Grading is exact-match; a stated wrong
+value voids the round, 'CANNOT COMPUTE' does not.
+
+--- SELF-CALIBRATION against PRINTED draft data (run BEFORE any key value) ---
+  nu=1   E0surv=[2]    bdpairs=0   (pub 0   ) bdsurv=0(pub 0) S=0     (pub 0     )  PASS
+  nu=2   E0surv=[4]    bdpairs=1   (pub 1   ) bdsurv=1(pub 1) S=3     (pub 3     )  PASS
+  nu=3   E0surv=[6]    bdpairs=3   (pub 3   ) bdsurv=1(pub 1) S=24    (pub 24    )  PASS
+  nu=4   E0surv=[8]    bdpairs=7   (pub 7   ) bdsurv=2(pub 2) S=110   (pub 110   )  PASS
+  nu=5   E0surv=[10]   bdpairs=14  (pub 14  ) bdsurv=2(pub 2) S=397   (pub 397   )  PASS
+  nu=6   E0surv=[12]   bdpairs=26  (pub 26  ) bdsurv=3(pub 3) S=1211  (pub 1211  )  PASS
+  nu=7   E0surv=[14]   bdpairs=45  (pub 45  ) bdsurv=3(pub 3) S=3340  (pub 3340  )  PASS
+  nu=8   E0surv=[16]   bdpairs=75  (pub 75  ) bdsurv=4(pub 4) S=8457  (pub 8457  )  PASS
+  nu=9   E0surv=[18]   bdpairs=120 (pub 120 ) bdsurv=4(pub 4) S=20126 (pub 20126 )  PASS
+  nu=10  E0surv=[20]   bdpairs=187 (pub 187 ) bdsurv=5(pub 5) S=45450 (pub 45450 )  PASS
+  s0([1+1+1+1+1+1+1+1+1+1+1+1]) = 7 (printed 7)  PASS
+  s0([2+2+2+2+2+2]) = 6 (printed 6)  PASS
+  s0([3+3+3+3]) = 6 (printed 6)  PASS
+  s0([4+4+4]) = 6 (printed 6)  PASS
+  s0([6+6]) = 7 (printed 7)  PASS
+  s0([11+1]) = 12 (printed 12)  PASS
+  s0([12]) = 12 (printed 12)  PASS
+  CALIBRATION PASS = True
+
+--- THE KEY ---
+
+H1  [HAND, echo-proof: four independent values]
+    s0(lambda) := steps([lambda_1]^{lambda_1+1} u lambda), lambda |- 22
+      s0([12+6+4]) = 14
+      s0([9+7+3+3]) = 12
+      s0([14+5+2+1]) = 16
+      s0([8+8+6]) = 10
+
+H2  [HAND: the published closed form, evaluated at an unpublished nu]
+    S(11) = sum_{E=1}^{10} (11-E) p(E) p(22-E) = 98384
+      E=1   10 * p(1)=1   * p(21)=792  = 7920
+      E=2    9 * p(2)=2   * p(20)=627  = 11286
+      E=3    8 * p(3)=3   * p(19)=490  = 11760
+      E=4    7 * p(4)=5   * p(18)=385  = 13475
+      E=5    6 * p(5)=7   * p(17)=297  = 12474
+      E=6    5 * p(6)=11  * p(16)=231  = 12705
+      E=7    4 * p(7)=15  * p(15)=176  = 10560
+      E=8    3 * p(8)=22  * p(14)=135  = 8910
+      E=9    2 * p(9)=30  * p(13)=101  = 6060
+      E=10   1 * p(10)=42  * p(12)=77   = 3234
+
+H3  [NON-HAND: a count over 98384 enumerated shapes, WITH per-E split]
+    E>=1 survivors at nu = 11 : 791
+    per-E split               : {1: 6, 2: 14, 3: 21, 4: 35, 5: 47, 6: 85, 7: 110, 8: 155, 9: 170, 10: 148}
+    per-E shapes tested       : {1: 7920, 2: 11286, 3: 11760, 4: 13475, 5: 12474, 6: 12705, 7: 10560, 8: 8910, 9: 6060, 10: 3234}
+    (the published counts 0,1,4,9,20,38,75,137,251,447 have no closed
+     form in this document; an extrapolation grades WRONG)
+
+H4  [NON-HAND: 1002 separate Havel-Hakimi runs before the first digit]
+    #{lambda |- 22 : s0(lambda) = 13} = 131
+    full histogram (NOT asked, recorded for adjudication): {8: 5, 9: 70, 10: 152, 11: 201, 12: 185, 13: 131, 14: 91, 15: 62, 16: 41, 17: 26, 18: 17, 19: 10, 20: 6, 21: 3, 22: 2}
+
+H5  [HAND: one explicit shape, one trajectory]
+    nu=11, L=13, E=3, e=[2+1], lambda=[5+4+4+3+3]
+    list = [15, 14, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 5, 4, 4, 3, 3]
+    clears in exactly L = 13 steps?  NO   (actual step count 16)
+
+--- OPS-3 accounting ---
+    HAND-derivable rows      : H1, H2, H5  = 3   (>= 2 required)
+    NON-hand-derivable rows  : H3, H4      = 2   (>= 2 required)
+    OPS-3 MET.  H1 is the echo-proof discriminator (4 independent values).
+
+--- controls ---
+    nu=11 E>=1 shapes tested : 98384  (= S(11), loop and closed form agree)
+    FAN-6' misses over the nu=11 survivor roster : 0
+    elapsed 2.9s (hard limit 900s)

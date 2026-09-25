@@ -1,0 +1,6402 @@
+[
+  {
+    "number": "7",
+    "tier": "A",
+    "state": "verifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "covering systems"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/7"
+  },
+  {
+    "number": "23",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A389646"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/23"
+  },
+  {
+    "number": "242",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A073101",
+      "A075245",
+      "A075246",
+      "A075247",
+      "A075248",
+      "A287116"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/242"
+  },
+  {
+    "number": "287",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/287"
+  },
+  {
+    "number": "307",
+    "tier": "A",
+    "state": "verifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/307"
+  },
+  {
+    "number": "364",
+    "tier": "A",
+    "state": "verifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A060355",
+      "A076445"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/364"
+  },
+  {
+    "number": "375",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/375"
+  },
+  {
+    "number": "398",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A146968",
+      "A141399"
+    ],
+    "tags": [
+      "number theory",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/398"
+  },
+  {
+    "number": "458",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A056604"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/458"
+  },
+  {
+    "number": "506",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/506"
+  },
+  {
+    "number": "617",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/617"
+  },
+  {
+    "number": "628",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/628"
+  },
+  {
+    "number": "699",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/699"
+  },
+  {
+    "number": "723",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/723"
+  },
+  {
+    "number": "742",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/742"
+  },
+  {
+    "number": "779",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005235"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/779"
+  },
+  {
+    "number": "982",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A004526"
+    ],
+    "tags": [
+      "geometry",
+      "convex",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/982"
+  },
+  {
+    "number": "1041",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis"
+    ],
+    "ai_partial_progress": false,
+    "score": 8,
+    "url": "https://www.erdosproblems.com/1041"
+  },
+  {
+    "number": "64",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "$1000",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "cycles"
+    ],
+    "ai_partial_progress": false,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/64"
+  },
+  {
+    "number": "97",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "$100",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "distances",
+      "convex"
+    ],
+    "ai_partial_progress": false,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/97"
+  },
+  {
+    "number": "107",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A000051"
+    ],
+    "tags": [
+      "geometry",
+      "convex"
+    ],
+    "ai_partial_progress": false,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/107"
+  },
+  {
+    "number": "128",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "$250",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/128"
+  },
+  {
+    "number": "366",
+    "tier": "A",
+    "state": "verifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A060355"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/366"
+  },
+  {
+    "number": "488",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/488"
+  },
+  {
+    "number": "647",
+    "tier": "A",
+    "state": "verifiable",
+    "prize": "\u00a325",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A062249",
+      "A087280"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/647"
+  },
+  {
+    "number": "672",
+    "tier": "A",
+    "state": "verifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/672"
+  },
+  {
+    "number": "835",
+    "tier": "A",
+    "state": "verifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "hypergraphs"
+    ],
+    "ai_partial_progress": true,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/835"
+  },
+  {
+    "number": "1082",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": true,
+    "score": 7,
+    "url": "https://www.erdosproblems.com/1082"
+  },
+  {
+    "number": "475",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/475"
+  },
+  {
+    "number": "547",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/547"
+  },
+  {
+    "number": "548",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/548"
+  },
+  {
+    "number": "551",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/551"
+  },
+  {
+    "number": "556",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "A389335"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/556"
+  },
+  {
+    "number": "580",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/580"
+  },
+  {
+    "number": "583",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/583"
+  },
+  {
+    "number": "743",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/743"
+  },
+  {
+    "number": "993",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "A000055",
+      "possible"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/993"
+  },
+  {
+    "number": "1020",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "hypergraphs"
+    ],
+    "ai_partial_progress": false,
+    "score": 6,
+    "url": "https://www.erdosproblems.com/1020"
+  },
+  {
+    "number": "5",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A001223"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/5"
+  },
+  {
+    "number": "9",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006286"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/9"
+  },
+  {
+    "number": "10",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A387053"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/10"
+  },
+  {
+    "number": "11",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A001220",
+      "A377587"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/11"
+  },
+  {
+    "number": "14",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A143824",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "sidon sets",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/14"
+  },
+  {
+    "number": "15",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/15"
+  },
+  {
+    "number": "17",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A038133"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/17"
+  },
+  {
+    "number": "18",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005153"
+    ],
+    "tags": [
+      "number theory",
+      "divisors",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/18"
+  },
+  {
+    "number": "19",
+    "tier": "A",
+    "state": "decidable",
+    "prize": "$500",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/19"
+  },
+  {
+    "number": "32",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/32"
+  },
+  {
+    "number": "33",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/33"
+  },
+  {
+    "number": "44",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "sidon sets",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/44"
+  },
+  {
+    "number": "51",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A002202",
+      "A014197"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/51"
+  },
+  {
+    "number": "60",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006855"
+    ],
+    "tags": [
+      "graph theory",
+      "cycles"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/60"
+  },
+  {
+    "number": "61",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/61"
+  },
+  {
+    "number": "68",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A331373"
+    ],
+    "tags": [
+      "number theory",
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/68"
+  },
+  {
+    "number": "70",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory",
+      "set theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/70"
+  },
+  {
+    "number": "80",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/80"
+  },
+  {
+    "number": "82",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A120414",
+      "A390256",
+      "A390257",
+      "A390919",
+      "A392636",
+      "A394400",
+      "A394462",
+      "A394539",
+      "A394563",
+      "A394564",
+      "A394573",
+      "A394574",
+      "A394930",
+      "A394933"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/82"
+  },
+  {
+    "number": "85",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006672",
+      "possible"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/85"
+  },
+  {
+    "number": "91",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A186704",
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/91"
+  },
+  {
+    "number": "96",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances",
+      "convex"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/96"
+  },
+  {
+    "number": "98",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/98"
+  },
+  {
+    "number": "100",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/100"
+  },
+  {
+    "number": "106",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry"
+    ],
+    "ai_partial_progress": true,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/106"
+  },
+  {
+    "number": "108",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number",
+      "cycles"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/108"
+  },
+  {
+    "number": "114",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "$250",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "polynomials",
+      "analysis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/114"
+  },
+  {
+    "number": "130",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/130"
+  },
+  {
+    "number": "137",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/137"
+  },
+  {
+    "number": "141",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006560"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "primes",
+      "arithmetic progressions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/141"
+  },
+  {
+    "number": "145",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005117"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/145"
+  },
+  {
+    "number": "153",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "sidon sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/153"
+  },
+  {
+    "number": "155",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A143824",
+      "A227590",
+      "A003022"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "sidon sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/155"
+  },
+  {
+    "number": "156",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A382397"
+    ],
+    "tags": [
+      "sidon sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/156"
+  },
+  {
+    "number": "158",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "sidon sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/158"
+  },
+  {
+    "number": "160",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "arithmetic progressions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/160"
+  },
+  {
+    "number": "167",
+    "tier": "A",
+    "state": "falsifiable",
+    "prize": "no",
+    "formalized_statement": false,
+    "lean_statement_in_fc": false,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/167"
+  },
+  {
+    "number": "168",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A004059",
+      "A057561",
+      "A094708",
+      "A386439"
+    ],
+    "tags": [
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/168"
+  },
+  {
+    "number": "170",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A046693"
+    ],
+    "tags": [
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/170"
+  },
+  {
+    "number": "172",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/172"
+  },
+  {
+    "number": "184",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "graph theory",
+      "cycles"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/184"
+  },
+  {
+    "number": "193",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A231255"
+    ],
+    "tags": [
+      "geometry"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/193"
+  },
+  {
+    "number": "195",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "arithmetic progressions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/195"
+  },
+  {
+    "number": "196",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "arithmetic progressions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/196"
+  },
+  {
+    "number": "197",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "arithmetic progressions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/197"
+  },
+  {
+    "number": "200",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005115"
+    ],
+    "tags": [
+      "primes",
+      "arithmetic progressions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/200"
+  },
+  {
+    "number": "203",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "primes",
+      "covering systems"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/203"
+  },
+  {
+    "number": "208",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005117",
+      "A076259"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/208"
+  },
+  {
+    "number": "212",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/212"
+  },
+  {
+    "number": "213",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/213"
+  },
+  {
+    "number": "233",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A074741"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/233"
+  },
+  {
+    "number": "234",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/234"
+  },
+  {
+    "number": "236",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A039669",
+      "A109925"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/236"
+  },
+  {
+    "number": "238",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/238"
+  },
+  {
+    "number": "243",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A000058"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/243"
+  },
+  {
+    "number": "244",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/244"
+  },
+  {
+    "number": "247",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/247"
+  },
+  {
+    "number": "249",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A256936"
+    ],
+    "tags": [
+      "number theory",
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/249"
+  },
+  {
+    "number": "252",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A227988",
+      "A227989",
+      "A307036",
+      "A359060",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/252"
+  },
+  {
+    "number": "254",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/254"
+  },
+  {
+    "number": "257",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/257"
+  },
+  {
+    "number": "260",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/260"
+  },
+  {
+    "number": "267",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/267"
+  },
+  {
+    "number": "269",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/269"
+  },
+  {
+    "number": "272",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "arithmetic progressions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/272"
+  },
+  {
+    "number": "273",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "covering systems"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/273"
+  },
+  {
+    "number": "274",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "group theory",
+      "covering systems"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/274"
+  },
+  {
+    "number": "276",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "covering systems"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/276"
+  },
+  {
+    "number": "279",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "covering systems",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/279"
+  },
+  {
+    "number": "282",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/282"
+  },
+  {
+    "number": "288",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/288"
+  },
+  {
+    "number": "289",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/289"
+  },
+  {
+    "number": "291",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A110566"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/291"
+  },
+  {
+    "number": "295",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A192881"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/295"
+  },
+  {
+    "number": "302",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A390395"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/302"
+  },
+  {
+    "number": "304",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A097847",
+      "A097849"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/304"
+  },
+  {
+    "number": "312",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/312"
+  },
+  {
+    "number": "313",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A054377"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/313"
+  },
+  {
+    "number": "317",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/317"
+  },
+  {
+    "number": "319",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/319"
+  },
+  {
+    "number": "323",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A004825",
+      "A004831",
+      "A004832",
+      "A004833",
+      "A004842",
+      "A004843",
+      "A004844",
+      "A004845",
+      "A004857",
+      "A004869",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "powers"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/323"
+  },
+  {
+    "number": "324",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "powers"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/324"
+  },
+  {
+    "number": "329",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/329"
+  },
+  {
+    "number": "332",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/332"
+  },
+  {
+    "number": "340",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A080200",
+      "A005282"
+    ],
+    "tags": [
+      "number theory",
+      "additive combinatorics",
+      "sidon sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/340"
+  },
+  {
+    "number": "341",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/341"
+  },
+  {
+    "number": "348",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "complete sequences"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/348"
+  },
+  {
+    "number": "357",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A364132",
+      "A364153",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/357"
+  },
+  {
+    "number": "359",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A002048"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/359"
+  },
+  {
+    "number": "361",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/361"
+  },
+  {
+    "number": "371",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A070089"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/371"
+  },
+  {
+    "number": "373",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A003135"
+    ],
+    "tags": [
+      "number theory",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/373"
+  },
+  {
+    "number": "376",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A030979"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients",
+      "base representations"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/376"
+  },
+  {
+    "number": "377",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/377"
+  },
+  {
+    "number": "383",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/383"
+  },
+  {
+    "number": "385",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A322292"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/385"
+  },
+  {
+    "number": "386",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A280992"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/386"
+  },
+  {
+    "number": "389",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A375071"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/389"
+  },
+  {
+    "number": "390",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A193429"
+    ],
+    "tags": [
+      "number theory",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/390"
+  },
+  {
+    "number": "394",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A344005"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/394"
+  },
+  {
+    "number": "400",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/400"
+  },
+  {
+    "number": "406",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "base representations"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/406"
+  },
+  {
+    "number": "409",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A039651",
+      "A229487"
+    ],
+    "tags": [
+      "number theory",
+      "iterated functions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/409"
+  },
+  {
+    "number": "410",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A007497",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "iterated functions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/410"
+  },
+  {
+    "number": "412",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A007497",
+      "A051572"
+    ],
+    "tags": [
+      "number theory",
+      "iterated functions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/412"
+  },
+  {
+    "number": "413",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005236"
+    ],
+    "tags": [
+      "number theory",
+      "iterated functions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/413"
+  },
+  {
+    "number": "414",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A064491",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "iterated functions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/414"
+  },
+  {
+    "number": "416",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A264810"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/416"
+  },
+  {
+    "number": "417",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A264810",
+      "A061070"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/417"
+  },
+  {
+    "number": "421",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A389544",
+      "A390848"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/421"
+  },
+  {
+    "number": "422",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005185"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/422"
+  },
+  {
+    "number": "424",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005244"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/424"
+  },
+  {
+    "number": "428",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/428"
+  },
+  {
+    "number": "445",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/445"
+  },
+  {
+    "number": "450",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/450"
+  },
+  {
+    "number": "454",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A389676",
+      "A389677"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/454"
+  },
+  {
+    "number": "455",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/455"
+  },
+  {
+    "number": "456",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A034694",
+      "A061026",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/456"
+  },
+  {
+    "number": "463",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/463"
+  },
+  {
+    "number": "479",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A036236",
+      "A015919",
+      "A050259",
+      "A015921",
+      "A006521",
+      "A006517",
+      "A015940"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/479"
+  },
+  {
+    "number": "486",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primitive sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/486"
+  },
+  {
+    "number": "489",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/489"
+  },
+  {
+    "number": "495",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "diophantine approximation",
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/495"
+  },
+  {
+    "number": "501",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "combinatorics",
+      "set theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/501"
+  },
+  {
+    "number": "508",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/508"
+  },
+  {
+    "number": "509",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/509"
+  },
+  {
+    "number": "510",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/510"
+  },
+  {
+    "number": "517",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/517"
+  },
+  {
+    "number": "520",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "probability"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/520"
+  },
+  {
+    "number": "522",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis",
+      "polynomials",
+      "probability"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/522"
+  },
+  {
+    "number": "538",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/538"
+  },
+  {
+    "number": "562",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory",
+      "hypergraphs"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/562"
+  },
+  {
+    "number": "566",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/566"
+  },
+  {
+    "number": "567",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/567"
+  },
+  {
+    "number": "579",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "turan number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/579"
+  },
+  {
+    "number": "596",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory",
+      "set theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/596"
+  },
+  {
+    "number": "598",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "set theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/598"
+  },
+  {
+    "number": "600",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "graph theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/600"
+  },
+  {
+    "number": "623",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "set theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/623"
+  },
+  {
+    "number": "624",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/624"
+  },
+  {
+    "number": "653",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/653"
+  },
+  {
+    "number": "655",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/655"
+  },
+  {
+    "number": "660",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances",
+      "convex"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/660"
+  },
+  {
+    "number": "677",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/677"
+  },
+  {
+    "number": "680",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/680"
+  },
+  {
+    "number": "681",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A389680"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/681"
+  },
+  {
+    "number": "683",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006530",
+      "A074399",
+      "A121359",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "primes",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/683"
+  },
+  {
+    "number": "688",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/688"
+  },
+  {
+    "number": "689",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/689"
+  },
+  {
+    "number": "695",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A061092"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/695"
+  },
+  {
+    "number": "700",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A091963",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/700"
+  },
+  {
+    "number": "701",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "combinatorics",
+      "intersecting family"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/701"
+  },
+  {
+    "number": "726",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/726"
+  },
+  {
+    "number": "727",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A002503",
+      "A343507",
+      "A389396"
+    ],
+    "tags": [
+      "number theory",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/727"
+  },
+  {
+    "number": "730",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A129515"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients",
+      "base representations"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/730"
+  },
+  {
+    "number": "740",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/740"
+  },
+  {
+    "number": "757",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances",
+      "sidon sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/757"
+  },
+  {
+    "number": "769",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A014544",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "geometry"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/769"
+  },
+  {
+    "number": "770",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A263647",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/770"
+  },
+  {
+    "number": "774",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/774"
+  },
+  {
+    "number": "786",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A143301",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/786"
+  },
+  {
+    "number": "789",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/789"
+  },
+  {
+    "number": "796",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/796"
+  },
+  {
+    "number": "812",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A059442"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/812"
+  },
+  {
+    "number": "817",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/817"
+  },
+  {
+    "number": "821",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A014197"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/821"
+  },
+  {
+    "number": "826",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/826"
+  },
+  {
+    "number": "828",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/828"
+  },
+  {
+    "number": "830",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A259180"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/830"
+  },
+  {
+    "number": "849",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A003016",
+      "A003015",
+      "A059233",
+      "A098565",
+      "A090162",
+      "A180058",
+      "A182237"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/849"
+  },
+  {
+    "number": "850",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A343101"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/850"
+  },
+  {
+    "number": "853",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A001223",
+      "A390769"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/853"
+  },
+  {
+    "number": "855",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A023193"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/855"
+  },
+  {
+    "number": "857",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/857"
+  },
+  {
+    "number": "859",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/859"
+  },
+  {
+    "number": "873",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/873"
+  },
+  {
+    "number": "881",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/881"
+  },
+  {
+    "number": "885",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/885"
+  },
+  {
+    "number": "886",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/886"
+  },
+  {
+    "number": "887",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/887"
+  },
+  {
+    "number": "889",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/889"
+  },
+  {
+    "number": "890",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/890"
+  },
+  {
+    "number": "891",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/891"
+  },
+  {
+    "number": "893",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A046801",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/893"
+  },
+  {
+    "number": "906",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis",
+      "iterated functions"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/906"
+  },
+  {
+    "number": "912",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A071626"
+    ],
+    "tags": [
+      "number theory",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/912"
+  },
+  {
+    "number": "913",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A359747"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/913"
+  },
+  {
+    "number": "918",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/918"
+  },
+  {
+    "number": "930",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/930"
+  },
+  {
+    "number": "932",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A387864"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/932"
+  },
+  {
+    "number": "933",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/933"
+  },
+  {
+    "number": "936",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A146968",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/936"
+  },
+  {
+    "number": "938",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A001694",
+      "A076446",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/938"
+  },
+  {
+    "number": "939",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/939"
+  },
+  {
+    "number": "940",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/940"
+  },
+  {
+    "number": "944",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/944"
+  },
+  {
+    "number": "945",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible",
+      "A048892"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/945"
+  },
+  {
+    "number": "950",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/950"
+  },
+  {
+    "number": "952",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/952"
+  },
+  {
+    "number": "955",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/955"
+  },
+  {
+    "number": "959",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/959"
+  },
+  {
+    "number": "961",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A213253"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/961"
+  },
+  {
+    "number": "962",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A327909"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/962"
+  },
+  {
+    "number": "968",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A387591"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/968"
+  },
+  {
+    "number": "972",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/972"
+  },
+  {
+    "number": "973",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/973"
+  },
+  {
+    "number": "975",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A147807",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/975"
+  },
+  {
+    "number": "978",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/978"
+  },
+  {
+    "number": "979",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A385316",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/979"
+  },
+  {
+    "number": "1002",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis",
+      "diophantine approximation"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1002"
+  },
+  {
+    "number": "1003",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A001274"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1003"
+  },
+  {
+    "number": "1049",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "irrationality"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1049"
+  },
+  {
+    "number": "1055",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005113"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1055"
+  },
+  {
+    "number": "1056",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A060427"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1056"
+  },
+  {
+    "number": "1057",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006931"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1057"
+  },
+  {
+    "number": "1059",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A064152"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1059"
+  },
+  {
+    "number": "1060",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A327153"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1060"
+  },
+  {
+    "number": "1061",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A110177",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1061"
+  },
+  {
+    "number": "1063",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A389360"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1063"
+  },
+  {
+    "number": "1065",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A074781",
+      "A339465"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1065"
+  },
+  {
+    "number": "1068",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "set theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1068"
+  },
+  {
+    "number": "1072",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A073944",
+      "A072937",
+      "A154554"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1072"
+  },
+  {
+    "number": "1073",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A256519"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1073"
+  },
+  {
+    "number": "1074",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A063980",
+      "A064164"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1074"
+  },
+  {
+    "number": "1085",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A186705",
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1085"
+  },
+  {
+    "number": "1093",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1093"
+  },
+  {
+    "number": "1094",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1094"
+  },
+  {
+    "number": "1101",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1101"
+  },
+  {
+    "number": "1104",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A292528"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1104"
+  },
+  {
+    "number": "1106",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A194259",
+      "A194260"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1106"
+  },
+  {
+    "number": "1107",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A056828",
+      "A392342",
+      "A392343",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "powerful"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1107"
+  },
+  {
+    "number": "1108",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A051761",
+      "A115645",
+      "A025494"
+    ],
+    "tags": [
+      "number theory",
+      "factorials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1108"
+  },
+  {
+    "number": "1109",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A392164",
+      "A392165"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1109"
+  },
+  {
+    "number": "1110",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1110"
+  },
+  {
+    "number": "1113",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A076336"
+    ],
+    "tags": [
+      "number theory",
+      "covering systems"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1113"
+  },
+  {
+    "number": "1133",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis",
+      "polynomials"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1133"
+  },
+  {
+    "number": "1137",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A083550",
+      "A005250"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1137"
+  },
+  {
+    "number": "1139",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A037143",
+      "A101041"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1139"
+  },
+  {
+    "number": "1142",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A039669"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1142"
+  },
+  {
+    "number": "1145",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1145"
+  },
+  {
+    "number": "1146",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1146"
+  },
+  {
+    "number": "1167",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "set theory",
+      "probability"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1167"
+  },
+  {
+    "number": "1175",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "set theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1175"
+  },
+  {
+    "number": "1188",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "covering systems"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1188"
+  },
+  {
+    "number": "1192",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1192"
+  },
+  {
+    "number": "1199",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1199"
+  },
+  {
+    "number": "1201",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1201"
+  },
+  {
+    "number": "1203",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1203"
+  },
+  {
+    "number": "1210",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1210"
+  },
+  {
+    "number": "1212",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": false,
+    "score": 5,
+    "url": "https://www.erdosproblems.com/1212"
+  },
+  {
+    "number": "1",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A276661"
+    ],
+    "tags": [
+      "number theory",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1"
+  },
+  {
+    "number": "12",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/12"
+  },
+  {
+    "number": "25",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/25"
+  },
+  {
+    "number": "28",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/28"
+  },
+  {
+    "number": "36",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A393584",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/36"
+  },
+  {
+    "number": "39",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "sidon sets",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/39"
+  },
+  {
+    "number": "40",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/40"
+  },
+  {
+    "number": "41",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "sidon sets",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/41"
+  },
+  {
+    "number": "50",
+    "tier": "B",
+    "state": "open",
+    "prize": "$250",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/50"
+  },
+  {
+    "number": "74",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number",
+      "cycles"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/74"
+  },
+  {
+    "number": "75",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "chromatic number"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/75"
+  },
+  {
+    "number": "89",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A186704",
+      "A131628"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/89"
+  },
+  {
+    "number": "99",
+    "tier": "B",
+    "state": "open",
+    "prize": "$100",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/99"
+  },
+  {
+    "number": "101",
+    "tier": "B",
+    "state": "open",
+    "prize": "$100",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006065",
+      "possible"
+    ],
+    "tags": [
+      "geometry"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/101"
+  },
+  {
+    "number": "124",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "base representations"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/124"
+  },
+  {
+    "number": "126",
+    "tier": "B",
+    "state": "open",
+    "prize": "$250",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/126"
+  },
+  {
+    "number": "143",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "primitive sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/143"
+  },
+  {
+    "number": "188",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry",
+      "ramsey theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/188"
+  },
+  {
+    "number": "218",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A333230",
+      "A333231",
+      "A064113"
+    ],
+    "tags": [
+      "number theory",
+      "primes"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/218"
+  },
+  {
+    "number": "241",
+    "tier": "B",
+    "state": "open",
+    "prize": "$100",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A387704"
+    ],
+    "tags": [
+      "additive combinatorics",
+      "sidon sets"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/241"
+  },
+  {
+    "number": "251",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A098990"
+    ],
+    "tags": [
+      "number theory",
+      "irrationality"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/251"
+  },
+  {
+    "number": "263",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "irrationality"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/263"
+  },
+  {
+    "number": "264",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "irrationality"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/264"
+  },
+  {
+    "number": "306",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "unit fractions"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/306"
+  },
+  {
+    "number": "325",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A004825",
+      "A004832",
+      "A004843",
+      "A004854",
+      "A004865",
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "powers"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/325"
+  },
+  {
+    "number": "342",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A002858"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/342"
+  },
+  {
+    "number": "349",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "complete sequences"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/349"
+  },
+  {
+    "number": "352",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/352"
+  },
+  {
+    "number": "354",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/354"
+  },
+  {
+    "number": "396",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A375077"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/396"
+  },
+  {
+    "number": "470",
+    "tier": "B",
+    "state": "open",
+    "prize": "$10",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006037",
+      "A002975"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/470"
+  },
+  {
+    "number": "477",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/477"
+  },
+  {
+    "number": "503",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A175769"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/503"
+  },
+  {
+    "number": "507",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "geometry"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/507"
+  },
+  {
+    "number": "513",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/513"
+  },
+  {
+    "number": "521",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis",
+      "polynomials",
+      "probability"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/521"
+  },
+  {
+    "number": "535",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/535"
+  },
+  {
+    "number": "536",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/536"
+  },
+  {
+    "number": "539",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/539"
+  },
+  {
+    "number": "564",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "graph theory",
+      "ramsey theory",
+      "hypergraphs"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/564"
+  },
+  {
+    "number": "593",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "set theory",
+      "graph theory",
+      "hypergraphs",
+      "chromatic number"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/593"
+  },
+  {
+    "number": "595",
+    "tier": "B",
+    "state": "open",
+    "prize": "$250",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "graph theory",
+      "set theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/595"
+  },
+  {
+    "number": "602",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "combinatorics",
+      "set theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/602"
+  },
+  {
+    "number": "686",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/686"
+  },
+  {
+    "number": "749",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/749"
+  },
+  {
+    "number": "829",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/829"
+  },
+  {
+    "number": "872",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory",
+      "primitive sets"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/872"
+  },
+  {
+    "number": "931",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/931"
+  },
+  {
+    "number": "942",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/942"
+  },
+  {
+    "number": "943",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/943"
+  },
+  {
+    "number": "949",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "ramsey theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/949"
+  },
+  {
+    "number": "951",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/951"
+  },
+  {
+    "number": "971",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A226521"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/971"
+  },
+  {
+    "number": "985",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A002233",
+      "A219429",
+      "A103309",
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/985"
+  },
+  {
+    "number": "1004",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1004"
+  },
+  {
+    "number": "1038",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1038"
+  },
+  {
+    "number": "1052",
+    "tier": "B",
+    "state": "open",
+    "prize": "$10",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A002827"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1052"
+  },
+  {
+    "number": "1054",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A167485"
+    ],
+    "tags": [
+      "number theory",
+      "divisors"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1054"
+  },
+  {
+    "number": "1062",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A038372"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1062"
+  },
+  {
+    "number": "1084",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A045945",
+      "possible"
+    ],
+    "tags": [
+      "geometry",
+      "distances"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1084"
+  },
+  {
+    "number": "1095",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A003458"
+    ],
+    "tags": [
+      "number theory",
+      "binomial coefficients"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1095"
+  },
+  {
+    "number": "1097",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1097"
+  },
+  {
+    "number": "1135",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A006370",
+      "A008908"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": false,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1135"
+  },
+  {
+    "number": "1150",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "analysis",
+      "polynomials"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1150"
+  },
+  {
+    "number": "1209",
+    "tier": "B",
+    "state": "open",
+    "prize": "no",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "possible"
+    ],
+    "tags": [
+      "number theory"
+    ],
+    "ai_partial_progress": true,
+    "score": 4,
+    "url": "https://www.erdosproblems.com/1209"
+  },
+  {
+    "number": "52",
+    "tier": "B",
+    "state": "open",
+    "prize": "$250",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A263996"
+    ],
+    "tags": [
+      "number theory",
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": true,
+    "score": 3,
+    "url": "https://www.erdosproblems.com/52"
+  },
+  {
+    "number": "66",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "N/A"
+    ],
+    "tags": [
+      "number theory",
+      "additive basis"
+    ],
+    "ai_partial_progress": true,
+    "score": 3,
+    "url": "https://www.erdosproblems.com/66"
+  },
+  {
+    "number": "138",
+    "tier": "B",
+    "state": "open",
+    "prize": "$500",
+    "formalized_statement": true,
+    "lean_statement_in_fc": true,
+    "oeis": [
+      "A005346"
+    ],
+    "tags": [
+      "additive combinatorics"
+    ],
+    "ai_partial_progress": true,
+    "score": 3,
+    "url": "https://www.erdosproblems.com/138"
+  }
+]

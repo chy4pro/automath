@@ -1,0 +1,27 @@
+A_7 built explicitly; class sizes [1, 105, 70, 280, 630, 504, 210, 360, 360] ; exponent 420
+
+THEOREM 1 of Bovdi-Maroti, tested on both HeLP survivors
+  admissible (k,n):  k coprime to exp(G)=420 and k = n = 1 (mod |u|=4)
+  k in [1, 13, 17, 29, 37, 41, 53]  n in [1, 5, 9, 13, 17, 21, 25, 29]
+  TRIVIAL (0,1)    : 504 (k,n,s) instances tested, 0 violations
+  OPEN (2,-1)      : 504 (k,n,s) instances tested, 0 violations
+
+  REJECTION CONTROL -- the implementation must be able to say NO.
+  Feed it a vector that is NOT the partial-augmentation vector of any torsion unit,
+  supported on the two IRRATIONAL classes 7a/7b where x^13 = x^{-1} genuinely moves:
+  fake vector {2a:2, 7a:1, 7b:-2} : 48 of 504 instances VIOLATE Theorem 1.
+  e.g. (13, 1, '7a', 1, -2)
+  ==> Theorem 1 is VACUOUS for a unit of order 4 in ZA_7.  Reason, and it is structural:
+      the hypothesis forces k = 1 (mod |u|) = 1 (mod 4), while Hertweck's theorem forces
+      nu_x(u) = 0 unless ord(x) divides 4.  So x^k = x for every x in the support of nu,
+      the inner sum collapses to nu_s(u) times a statement about G alone, and the identity
+      holds for ANY vector of partial augmentations supported on {2a,4a}.  It therefore
+      cannot separate the two HeLP survivors.
+
+THEOREM 2 (q=2, p=2) -- reduces to Hertweck's congruence, already used by HeLP
+  TRIVIAL (0,1)    : 0 of 9 classes violate the mod-2 congruence []
+  OPEN (2,-1)      : 0 of 9 classes violate the mod-2 congruence []
+  ==> both survivors satisfy it; it is the congruence round 2 already used.
+
+VERDICT: arXiv:2108.06977 supplies NO new constraint on the A_7 open case.
+         Round 1 cleared it on topic; this round clears it on CONTENT, by running it.

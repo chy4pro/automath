@@ -1,0 +1,148 @@
+=== AC4 grep: '480' over the WHOLE draft, after the repair (RW61-4) ===
+4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+4453:   not hypothetical damage — §7.29 (2) records a judge taking `480` from the sentence
+4456:   longer printed anywhere in the reviewed text; the two former `480` sites are
+4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+4771:8. **Scale.** 1 480 graphs, 4 627 `(G,A)` instances, 849 reductio graphs, 20 682
+4862:agreeing — `1 480 / 1 159 / 4 627 / 849 / 3 447 / 20 682`, frame `8`/`9`,
+5138:   1 817 TAIL pairs, 480 padding lists, two constructed graph witnesses.
+5565:**(2) A control whose own arithmetic does not close.** It wrote "`480` `E = 0` lists +
+5566:`1745` `E ≥ 1` shapes × `7` paddings = `18 963` pairs". `(480 + 1745) × 7 = 15 575`.
+5567:The true scope is `(964 + 1745) × 7 = 18 963`. Repair AB7 *replaced* the 480 with the
+5622:ruling — the multiplication `(480+1745)×7 = 15 575 ≠ 18 963 = (964+1745)×7`, and a hand
+6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+6287:hypothetical damage — **§7.29 (2) records muse-spark, last round, taking `480` from one
+
+=== AC4 grep: '× `6` paddings' / '6 paddings' ===
+4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+(no output above = clean)
+
+=== AC4 grep: r15 brief (family 1, FROZEN - must still read 480) ===
+781:2. **Zero entries are inert.** Verified, not assumed: over all `480` lists
+949:was run on `480` lists × `6` paddings — `0` disagreements. (iv) `S(ν)`'s closed form
+
+=== AC1b grep: 'MB1' over the WHOLE draft ===
+1538:> **Corollary MB1 (a floor on L).** In the hard core, if every low vertex is
+1596:Corollary MB1, Proposition L1, Corollary L1', Proposition L2 — **PROVED-S3**
+2182:  every `L ≥ 3`** (and `ν = 2` needs `L ≥ 3` by Corollary MB1's `ν ≤ L−1`).
+2187:**Why this matters for `L ≥ 3`.** Corollary MB1 gives `ν = m̄ ≤ L−1` when every low
+2198:Corollary MB1 in a way that needs checking. Do not cite as a result.*
+2422:> **Corollary L1′**, **Corollary MB1**, Corollaries SL-HC, L1-short, FAN-HC, and the
+2430:reductio tier), **Corollary L1′** (§7.6 B) and **Corollary MB1** (§7.6 G).
+2434:**Corollary MB1**, **Proposition L1**, **Corollary L1′**, **Proposition L2** and
+2472:> `ν ≤ L−1` (it is Corollary MB1), **Corollary RIG-1**, **Corollary RIG-2**,
+2480:Corollary L1′ and Corollary MB1, so it was not the complete audit this sentence
+2560:   L1-short / Corollary MB1 / Proposition L2, all **PROVED, 0 clean S3 rounds** (the
+2655:L1-short / MB1 / SL-HC / L1', Propositions L1/L2): PROVED-S3** [updated 2026-08-22
+2738:> never written.〕. The final bound `ν ≤ L−1` is **Corollary MB1** applied
+2857:  reductio, exactly as the proof says (it enters only through Corollary MB1 →
+2864:R1, and — for the `ν ≤ L−1` clause only — Corollary MB1, hence Theorem SL, hence
+3146:> MB1** (`L ≥ ν + 1`)". Corollary MB1 is stated **in the hard core**; Theorem GFANν
+4147:   Corollary MB1 / Proposition L2, which are **PROVED, 0 clean S3 rounds** (§7.6's own
+4218:  L1-short / Corollary MB1 / Proposition L2, all at 0 clean S3 rounds. Theorem FAN
+4228:| S3-D1 | **Theorem MB**, **Corollary L1-short**, **Corollary MB1**, **Proposition L2** — the §7.6 chain that **Corollary FAN-HC** hangs on (FAN-HC's own promotion is blocked on exactly this) | §7.6 | PROVED, **0 clean rounds** (the B-76 judge never returned) |
+4240:queue **Q23** (joints J-MB / J-L1s / J-MB1 / J-L2, with J-LOW / J-SL carried because MB
+4279:| 3 | §7.10 tier list (Repair F3 as amended by V2/W1) and its closing "*With that reading **every** statement in §7.6/§7.8 is correctly scoped*" | **UPHELD in both parts.** (i) The list omits **Lemma HI**, **Corollary L1′**, **Corollary MB1** — three statements of §7.6 — so the closing sentence is an over-claim about an incomplete audit. (ii) Six statements are filed under `τ ≥ 4` though their proofs consume only frame + reductio (+`τ ≥ 2` via Theorem SL): Theorem MB, Corollary L1-short, Corollary MB1, Proposition L1, Corollary L1′, Proposition L2. No consumer is harmed — every call site is inside the hard core. | **X3 landed** — three statements inserted, filed-vs-needed note added, closing sentence withdrawn and replaced |
+4348:| S3-D1 | Theorem MB, Corollary L1-short, Corollary MB1, Proposition L2 (the chain **Corollary FAN-HC** hangs on) | §7.6 | **1 round returned (PARTIAL, 0 math defects), repairs X1–X4 landed**; second family queued as Q26 (`sol`, time-gated 22:49 CDT) |
+4393:  exhaustive, `λ₁ ≤ 2ν` justified, the MB1 and TAIL imports legitimate). So the
+4407:| **D3** (BOOKKEEPING) | Appendix/§7.10 tier list covers §7.6/§7.8 but assigns no tier to the new §7.12/§7.13 statements. | **UPHELD.** Reproduced: the X3-amended list names Lemma HI, Corollary L1′, Corollary MB1 but stops at §7.8; Lemma CAP, Corollary CAP1, Theorem RIG, RIG-1, RIG-2, FAN-4′, FAN-8′, FAN-6′, GFAN2, TAIL, GFANν, GFAN2-HC, GFAN2-L3, GFANν-HC are unfiled. The same audit-completeness objection that produced X3 applies verbatim. **Conclusion unaffected.** | **Z3 landed** — a fourth block appended to the §7.10 tier list, below |
+4480:defect Repair AC1 fixed only at its first site. AC1 removed the **Corollary MB1**
+4481:citation from Theorem GFANν's four-bounds sentence, on the ground that MB1 is stated
+4672:   Corollary L1-short / Corollary MB1 / Proposition L2, whose second family is
+4703:| S3-D1 | Theorem MB, Corollary L1-short, Corollary MB1, Proposition L2 (**Corollary FAN-HC** hangs on this) | §7.6 | 1 round (Q23, PARTIAL/0 math, X1–X4 landed); **Q26 (`sol`) live** — FAN-HC promotes iff it is clean on mathematics |
+4813:  Corollary MB1, Proposition L1, Corollary L1′, Proposition L2, Theorem LOW, Theorem
+4844:| S3-D1 | Theorem MB, Corollary L1-short, Corollary MB1, Proposition L2 (+ Proposition L1, Corollary L1′) — the chain **Corollary FAN-HC** hangs on | §7.6 | **2 rounds, 2 families, 0 mathematics defects**; X1–X4 + AA1–AA2 landed. **Pre-registered promotion condition MET — awaiting planner confirmation** |
+4875:| R-17 | **Theorem MB**, **Corollary L1-short**, **Corollary MB1**, **Proposition L1**, **Corollary L1′**, **Proposition L2** (a)–(e) | §7.6 B, §7.6 G | **PROVED-S3** | same two-family chain; joints J-MB, J-L1s, J-MB1, J-L2(a)–(e) all CLEAN in Q26 with independent re-derivation, including the two-sided squeeze of L2(c) that Repair X2 wrote out |
+4895:| S3-D1 | Theorem MB / L1-short / MB1 / L1 / L1′ / L2 | §7.6 | **CLOSED — PROVED-S3** (R-17) |
+5165:MB1 + FAN-8′. Prior 12-b (*superset/monotonicity* misread, `P = 0.30`) — **MISS**;
+5353:| **§7.6 chain** | **Theorem LOW** (LOW1/2/3), **Theorem SL**, **Corollary SL-HC**, **Theorem MB**, **Corollary L1-short**, **Corollary MB1**, **Proposition L1**, **Corollary L1′**, **Proposition L2** (a)–(e) | **PROVED-S3** (rows R-16, R-17, R-18) |
+5441:(a),(b); **Corollary L1-short**. Also stated: MB1, Lemma 4, Observation R1, Lemma C\*,
+5818:| **D1** (MATHEMATICS) | Theorem GFANν lists **Corollary MB1** among the four bounds making its case list finite. MB1 is stated **"in the hard core"**; GFANν assumes only a `GFan(τ,L,ν)` configuration, the reductio, `1 ≤ ν ≤ 6` and `L ≥ ν+1` — not connectedness, `diam = 4`, `f = α+1`, non-forest or `τ ≥ 4`. The import's supplied hypotheses do not match its required ones. | **UPHELD.** I checked MB1's statement against GFANν's and the mismatch is exact: MB1's hypothesis set is strictly larger. By this document's own rule — the one the brief states and the one Q33 was asked to apply — **a mismatched import IS a MATHEMATICS defect**, and it is right that the discipline caught this even though nothing breaks. **The theorem is NOT refuted and nothing downstream changes**: the only conclusion the citation ever supplied, `L ≥ ν+1`, is *already an explicit hypothesis of the theorem*, so deleting the citation repairs the proof outright. Species: **a true import nobody needs**, now **7-for-7** — and the first instance carrying a real scope mismatch rather than mere redundancy. | **AC1 landed** — the slot now reads "the theorem's own hypothesis `L ≥ ν+1`", with the diagnosis at the site |
+5873:| 14-f | **the three judges disagree on a MATHEMATICS finding** | 0.20 | **HIT.** muse-spark's J-FIN and J-IMPORT both PASS the GFANν→MB1 call; sol tags the same call MATHEMATICS. Same site, same text, opposite verdicts — and **sol is right**. This is the third time in this document that a defect was *seen* by one judge and *classified away* by another (§7.27 (b) `ν = 0`; §7.26 (c) D2; now this) |
+5969:## §7.30 owner-w61 round 15: **Q35 DISPATCHED — Theorem GFANν / Corollary GFANν-HC, family 1; the four dispatch conditions checked and recorded; Repair AC1b landed pre-dispatch (the MB1 mismatched import survived AC1 at two further sites, both of which reached the brief)** (2026-08-22, 20:07–20:14 CDT)
+5988:deleted the **Corollary MB1** citation from Theorem GFANν's four-bounds sentence, on the
+5989:adjudicated ground (defect D1, UPHELD) that MB1 is stated *in the hard core* while
+6003:two `MB1` strings in the brief are legitimate and were left: its own statement in
+6011:| **2** | **imports pasted verbatim, not cited** — two rounds lost to GAP-on-imports; §7.28 (c) names which | Appendix A.0 (run vocabulary) and A.1 (Lemma FAN-1 with proof **and** the transfer paragraph licensing it on `GFan`, Lemma DICH (a)(b)(c), Proposition L2 (a)–(e) with proof, Corollary L1-short, Corollary MB1, Lemma 4, Observation R1, Lemma C\*, (F-b), Theorem MB, Theorem SL, Theorem FAN, Theorem K, Favaron–Mahéo–Saclé) are carried through unchanged; the builder's import-completeness and L1-short checks both print **clean** (`stated True / cited False`). **And the check went further than the task book asked**: reading the import sites is what found AC1b, (b) above | **MET, and it earned its keep** |
+6206:| "GFAN2-HC uses … MB1" | MB1 is **not** cited at GFAN2-HC; it enters transitively, as RIG's `ν ≤ L−1` clause (brief 488). Read as a transitive-dependency claim it is right; read as a citation claim it would be wrong | **TRUE on the only defensible reading** — the one imprecision in the report |
+6214:miss, the `ν = 0` refutation, the Part-2 self-disclosure, the MB1 mismatch). This one
+6277:| **AC1/AC1b** | Corollary MB1 cited outside the hard core | draft: 2738, 2857, 2864 — all inside Theorem RIG / the hard core, where MB1 is licensed. brief: 105 (import roster), 416 (its own statement), 488 (RIG's proof) | **CLEAN** — every live citation is in-scope |
+6297:1. **§7.30 (b) says "the remaining two `MB1` strings in the brief".** There are
+
+=== RE-RUN after §7.32 was appended (final draft state) ===
+--- '480' over the whole draft ---
+4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+4453:   not hypothetical damage — §7.29 (2) records a judge taking `480` from the sentence
+4456:   longer printed anywhere in the reviewed text; the two former `480` sites are
+4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+4771:8. **Scale.** 1 480 graphs, 4 627 `(G,A)` instances, 849 reductio graphs, 20 682
+4862:agreeing — `1 480 / 1 159 / 4 627 / 849 / 3 447 / 20 682`, frame `8`/`9`,
+5138:   1 817 TAIL pairs, 480 padding lists, two constructed graph witnesses.
+5565:**(2) A control whose own arithmetic does not close.** It wrote "`480` `E = 0` lists +
+5566:`1745` `E ≥ 1` shapes × `7` paddings = `18 963` pairs". `(480 + 1745) × 7 = 15 575`.
+5567:The true scope is `(964 + 1745) × 7 = 18 963`. Repair AB7 *replaced* the 480 with the
+5622:ruling — the multiplication `(480+1745)×7 = 15 575 ≠ 18 963 = (964+1745)×7`, and a hand
+6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+6287:hypothetical damage — **§7.29 (2) records muse-spark, last round, taking `480` from one
+6487:`480` lists × `6` paddings while the bracket beside it said `964` × `7`. §7.29 (2)
+6488:records a judge taking `480` from the sentence and `18 963` from the bracket and
+6500:| **AC4** | `480` over the whole draft | `4452/4453/4456/4651` — inside the AB7/AC4 **diagnosis brackets**, which quote the superseded figure as history; `4771/4862` — the unrelated number `1 480`; `5138/5565–5567/5622/6282/6287` — **historical ledger** lines recording what a past run covered or what a judge wrote | **CLEAN** — no live reviewed-text site states `480` as the control's scope |
+6502:| **AC4** | `480` over the **r15 brief** | `781`, `949` — **still present, and correctly so**: that text is frozen for family 1 | **AS INTENDED** |
+6505:The `5138` line (*"1 817 TAIL pairs, 480 padding lists"*, §7.26) is left standing
+6507:`480` lists. Rewriting it would falsify the record — the same reasoning that left
+--- count ---
+19
+--- 'MB1' count over the whole draft ---
+47
+--- '6` paddings' ---
+4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+6487:`480` lists × `6` paddings while the bracket beside it said `964` × `7`. §7.29 (2)
+6501:| **AC4** | `6 paddings` over the whole draft | `4452`, `4651`, `6282` — all three inside diagnosis/ledger text | **CLEAN** |
+
+=== FINAL re-run, after the §7.32 (e) correction (authoritative for round 17) ===
+--- '480' whole draft: count / live-reviewed-text sites ---
+19
+(all hits are diagnosis brackets, the unrelated '1 480', or ledger text; the two former live sites 4435/4639 now read the full scope)
+2. **Zero entries are inert.** Verified, not assumed, **at the full scope of the
+   class this convention is invoked on**: the `964` `E = 0` lists `[L]^{L+1} ∪ λ`
+   **and all `1 745` `E ≥ 1` enumerated shapes** of the `ν ≤ 6` enumeration, each
+   padded with `0, 1, 2, 3, 4, 8, 13` extra zeros — `(964 + 1 745) × 7 = 18 963`
+   `(list, padding)` pairs — give **0** padding-dependent step counts
+   (`problems/wowii/w61_r13_padding_ext.py` → `.out`).
+   〔**Repair AB7 LANDED**, 2026-08-22 01:4x CDT, from Q30 Defect 4 (Qwen3.8-Max) —
+`1 817` `(λ,L)` pairs — `0` mismatches. (iii) The padding-inertness control of (c-1)(2)
+was run at the full scope stated there — `(964 + 1 745) × 7 = 18 963`
+`(list, padding)` pairs — `0` disagreements 〔**Repair AC4**, same pass as (c-1)(2):
+this line previously reported the superseded `480` lists × `6` paddings, which is the
+scope AB7 replaced〕. (iv) `S(ν)`'s closed form
+was evaluated independently of the enumeration loop and agreed on all six values.
+--- 'MB1' whole draft: count ---
+48
+--- MB1 citations outside the hard core: ---
+13
+
+--- CORRECTION to the line immediately above ---
+The "13" printed above is NOT a count of MB1 citations outside the hard core.
+The command was `grep -ci` over a pattern list of tier/registry/ledger markers,
+so 13 is the number of MB1 lines that ARE tier-list / registry / ledger text
+once 2738/2857/2864/3146 are excluded.  It is a count of BENIGN lines, not of
+offending ones, and the label was wrong.  Recorded rather than deleted, per the
+standing rule that a wrong figure is repaired in place and its history kept.
+
+THE ACTUAL AC1b VERDICT, stated without a misleading aggregate:
+  MB1 CITATIONS (a use of the corollary, not a mention of its name) in the draft:
+    2738, 2857, 2864 -- all inside Theorem RIG / the hard core, where MB1's
+                        hypotheses are supplied.  LICENSED.
+    3146             -- Repair AC1's own diagnosis text, quoting the deleted
+                        citation.  Not a citation.
+  Every other occurrence of the string "MB1" is its own statement (1538), a tier
+  list, a registry row, a debt table, or ledger prose.
+  => NO MB1 citation outside the hard core survives.  AC1b CLEAN.
+
+Note the count of "MB1" occurrences moved 47 -> 48 between the two re-runs above
+purely because this ledger mentions the object; that is why the verdict is stated
+structurally (which sites are CITATIONS) and not as a total.

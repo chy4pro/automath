@@ -1,0 +1,41 @@
+gated artifact : w61_S3_GFAN_r24.md
+  chars 108368   md5 45b79f35f9cd42dd29ddecb31dfacdde
+  key    : w61_r17_heldout_key.txt (NOT pasted; grading source)
+
+=== GATE 1 : brieflint (r22 artifact, first use as a build gate) ===
+  findings on r24 : 0  (want 0)
+  liveness: same lint on the r20 BASE : 4 findings (PASS -- the gate can fail)
+
+=== GATE 2 : RULING AX -- DERIVABILITY, not occurrence ===
+  scoping: Section 0 = 3769 chars held aside; BODY = 104599 chars
+
+  occurrence  H2 S(11)=98384         present=False  (want False)
+  occurrence  H3 survivors=791       present=False  (want False)
+  occurrence  H3 per-E split         present=False  (want False)
+  occurrence  H4 =131                present=False  (want False)
+  [OK  ] H1: printed s0 values for partitions of 22 = 0; closed form for s0 = False
+          s0 is defined only as the OUTPUT of the A.0 run; no formula is printed anywhere.
+  [OK  ] H2: closed form for S(nu) printed = True -- this row is MEANT to be derivable
+          B6: H2 tests fabrication (will it evaluate a printed formula honestly), not capacity. If the formula were absent, H2 would be miscategorised as a HAND row it cannot reach.
+  [OK  ] H3: closed form or recurrence for SURVIVOR counts printed = False; anti-extrapolation warning present = True
+          The published survivor counts 0,1,4,9,20,38,75,137,251,447 have no closed form in this document; extrapolation is the derivability route and it is named and penalised.
+  [OK  ] H4: any s0 histogram over partitions printed = False
+          H4 needs 1002 separate runs; no distributional data over partitions appears.
+  [OK  ] H5: the shape lam=[5,4,4,3,3] printed = False; a nu=11 L=13 row printed = False
+  [OK  ] GLOBAL: table rows carrying nu = 11 data = 0
+
+=== GATE 3 : B6 by ROLE OF OBJECT (RULING AU) ===
+  DISCLOSED (target must USE)  the nu <= 10 survivor rosters (C-5)    present=True  (want True)
+  DISCLOSED (target must USE)  the nu = 7..10 rosters (C-8)           present=True  (want True)
+  DISCLOSED (target must USE)  the boundary rows (C-3)                present=True  (want True)
+  DISCLOSED (target must USE)  the closed form S(nu)                  present=True  (want True)
+  DISCLOSED (target must USE)  the published counts 0,1,4,9,20        present=True  (want True)
+  HELD OUT (no mathematical role in the target):
+    every held-out row lives at nu = 11 or at partitions of 22.
+    Theorem GFANnu's range is 1 <= nu <= 10 and the corollary's conclusion is
+    nu >= 11 -- so nu = 11 data is test material the target's proof never touches.
+    Same quantity family, disclosed where it is an INPUT, held out where it is a TEST.
+    the brief states that boundary to the judge : True  (want True)
+
+======================================================================
+GATE RESULT: ALL THREE GATES PASS -- brief is dispatchable

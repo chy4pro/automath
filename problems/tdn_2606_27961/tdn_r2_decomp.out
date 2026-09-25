@@ -1,0 +1,64 @@
+==============================================================================
+DECOMPOSITION OF |T_f - T_f| BY DIRECTION CLASS -- p=5, complete class
+==============================================================================
+  class enumerated completely = True
+  normal-form f = 10925 ; de-normalised = 273125
+  [PASS] H1  1 + S_u + S_v + S_m == literal |T_f - T_f| : 0 violations
+       population: ALL 10925 normal-form f; exclusion list EMPTY.
+
+  class-by-class MINIMA, each taken independently over the whole class:
+     min S_u (over the 4 nonzero multiples of e1) = 8
+     min S_v (over the 4 nonzero multiples of e2) = 8
+     min S_m (over the 16 mixed w)                 = 62
+     ---------------------------------------------------
+     1 + sum of the three INDEPENDENT minima          = 79
+     min of the TOTAL, taken jointly                  = 81
+     the conjecture's target (2p-1)^2                 = 81
+
+  ** THE POINT: the class-by-class bookkeeping can only ever prove >= 79,
+     which is 2 SHORT of the target 81. The joint minimum is 81,
+     i.e. the three minima are NOT SIMULTANEOUSLY ATTAINABLE. Any proof
+     that bounds the direction classes separately loses exactly this.
+
+  the trade-off, tabulated. For each value of S_m, the minimum of S_u+S_v
+  attained with it, and the resulting minimum total:
+     S_m    count    min S_u+S_v min tot  note
+     62     300      22         85       <- below the pointwise total 64
+     64     400      16         81          <- attains the box exactly
+     66     350      22         89       
+     68     350      22         91       
+     70     950      22         93       
+     72     1300     20         93       
+     74     600      22         97       
+     76     800      20         97       
+     78     850      22         101      
+     80     1350     18         99       
+     84     450      22         107      
+     86     200      24         111      
+     88     450      20         109      
+     90     100      24         115      
+     92     150      24         117      
+     94     100      24         119      
+     96     1225     20         117      
+     98     100      24         123      
+     104    100      24         129      
+     112    450      22         135      
+     120    150      24         145      
+     128    200      24         153      
+
+  members attaining the box EXACTLY (|T_f - T_f| = 81): 50 of 10925
+     their S_m values           : [64]
+     their min mixed |A_w|      : [4]
+     their |A_e2|               : [2]
+
+  members violating the POINTWISE floor (min mixed |A_w| <= 3): 900
+     their totals range over    : 85 .. 97
+     how many of THEM attain the box exactly : 0
+
+  ** DISJOINTNESS: the f that break the lemma and the f that make the
+     conjecture tight are DIFFERENT f. That is why the lemma can be false
+     while the conjecture stays true and sharp.
+
+==============================================================================
+  controls_ok = True
+  elapsed_s = 4.86

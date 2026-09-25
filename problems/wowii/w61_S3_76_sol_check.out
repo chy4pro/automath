@@ -1,0 +1,1201 @@
+CALIBRATION
+  K2: residue=1, expected=1, ok=True
+  C3: residue=1, expected=1, ok=True
+  C4: residue=2, expected=2, ok=True
+  C5: residue=2, expected=2, ok=True
+  C6: residue=2, expected=2, ok=True
+  C7: residue=3, expected=3, ok=True
+  C8: residue=3, expected=3, ok=True
+  C9: residue=3, expected=3, ok=True
+SEARCH BOX
+  atlas: every unlabeled graph on 2..7 vertices (connected and disconnected)
+  random: n=8..10, p in {0.18,0.35,0.55,0.78}, 18 seeds each
+  A: every maximum independent set; ties: canonical + five random orders
+COUNTS
+{
+  "MB_degree_count_instances": 9,
+  "MB_degree_slack_0": 9,
+  "connected": 1159,
+  "frame_A": 9,
+  "frame_graphs": 8,
+  "graphs": 1480,
+  "maximum_independent_sets": 4627,
+  "reductio_A": 3447,
+  "reductio_graphs": 849,
+  "slack_L0_0": 648,
+  "slack_L1_1": 1068,
+  "slack_L2_1": 192,
+  "slack_L2_2": 1572,
+  "slack_L2_3": 672,
+  "slack_L3_2": 144,
+  "slack_L3_3": 1782,
+  "slack_L3_4": 1428,
+  "slack_L3_5": 624,
+  "slack_L3_6": 240,
+  "slack_L4_2": 54,
+  "slack_L4_3": 264,
+  "slack_L4_4": 1842,
+  "slack_L4_5": 1908,
+  "slack_L4_6": 1560,
+  "slack_L4_7": 1110,
+  "slack_L4_8": 486,
+  "slack_L4_9": 120,
+  "slack_L5_10": 198,
+  "slack_L5_11": 72,
+  "slack_L5_3": 48,
+  "slack_L5_4": 240,
+  "slack_L5_5": 708,
+  "slack_L5_6": 840,
+  "slack_L5_7": 804,
+  "slack_L5_8": 594,
+  "slack_L5_9": 366,
+  "slack_L6_10": 108,
+  "slack_L6_12": 66,
+  "slack_L6_13": 90,
+  "slack_L6_5": 36,
+  "slack_L6_6": 210,
+  "slack_L6_7": 132,
+  "slack_L6_8": 48,
+  "slack_L6_9": 48,
+  "slack_L7_10": 60,
+  "slack_L7_6": 42,
+  "slack_L7_8": 48,
+  "slack_L8_11": 72,
+  "slack_L8_12": 78,
+  "slack_L8_9": 60,
+  "trajectories": 20682
+}
+BOUNDARIES
+{
+  "B_lo_plus=empty": {
+    "A": [
+      0,
+      1
+    ],
+    "Delta": 0,
+    "L": 0,
+    "edges": [],
+    "n": 2,
+    "nu": 0,
+    "p": 0,
+    "slack": 0,
+    "source": "atlas[2]",
+    "tau": 0,
+    "tie": null
+  },
+  "B_lo_plus=nonempty": {
+    "A": [
+      0,
+      2
+    ],
+    "Delta": 1,
+    "L": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "n": 4,
+    "nu": 1,
+    "p": 0,
+    "slack": 3,
+    "source": "atlas[11]",
+    "tau": 2,
+    "tie": null
+  },
+  "Delta=tau": {
+    "A": [
+      0,
+      1
+    ],
+    "Delta": 0,
+    "L": 0,
+    "edges": [],
+    "n": 2,
+    "nu": 0,
+    "p": 0,
+    "slack": 0,
+    "source": "atlas[2]",
+    "tau": 0,
+    "tie": null
+  },
+  "Delta=tau+1": {
+    "A": [
+      1,
+      2
+    ],
+    "Delta": 2,
+    "L": 0,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "n": 3,
+    "nu": 0,
+    "p": 1,
+    "slack": 0,
+    "source": "atlas[6]",
+    "tau": 1,
+    "tie": null
+  },
+  "L=0": {
+    "A": [
+      0,
+      1
+    ],
+    "Delta": 0,
+    "L": 0,
+    "edges": [],
+    "n": 2,
+    "nu": 0,
+    "p": 0,
+    "slack": 0,
+    "source": "atlas[2]",
+    "tau": 0,
+    "tie": null
+  },
+  "L=0_positive_tau": {
+    "A": [
+      1,
+      2
+    ],
+    "Delta": 2,
+    "L": 0,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "n": 3,
+    "nu": 0,
+    "p": 1,
+    "slack": 0,
+    "source": "atlas[6]",
+    "tau": 1,
+    "tie": null
+  },
+  "L=1": {
+    "A": [
+      0
+    ],
+    "Delta": 1,
+    "L": 1,
+    "edges": [
+      [
+        0,
+        1
+      ]
+    ],
+    "n": 2,
+    "nu": 0,
+    "p": 0,
+    "slack": 1,
+    "source": "atlas[3]",
+    "tau": 1,
+    "tie": null
+  },
+  "L=1_tau_ge_2": {
+    "A": [
+      0,
+      1
+    ],
+    "Delta": 3,
+    "L": 1,
+    "edges": [
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "n": 4,
+    "nu": 0,
+    "p": 1,
+    "slack": 1,
+    "source": "atlas[15]",
+    "tau": 2,
+    "tie": null
+  },
+  "L=2": {
+    "A": [
+      0
+    ],
+    "Delta": 2,
+    "L": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "n": 3,
+    "nu": 0,
+    "p": 0,
+    "slack": 2,
+    "source": "atlas[7]",
+    "tau": 2,
+    "tie": null
+  },
+  "L=3": {
+    "A": [
+      0
+    ],
+    "Delta": 3,
+    "L": 3,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "n": 4,
+    "nu": 0,
+    "p": 0,
+    "slack": 3,
+    "source": "atlas[18]",
+    "tau": 3,
+    "tie": null
+  },
+  "L=4": {
+    "A": [
+      0
+    ],
+    "Delta": 4,
+    "L": 4,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "n": 5,
+    "nu": 0,
+    "p": 0,
+    "slack": 4,
+    "source": "atlas[52]",
+    "tau": 4,
+    "tie": null
+  },
+  "L=5": {
+    "A": [
+      0
+    ],
+    "Delta": 5,
+    "L": 5,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "n": 6,
+    "nu": 0,
+    "p": 0,
+    "slack": 5,
+    "source": "atlas[208]",
+    "tau": 5,
+    "tie": null
+  },
+  "L=6": {
+    "A": [
+      0
+    ],
+    "Delta": 6,
+    "L": 6,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "n": 7,
+    "nu": 0,
+    "p": 0,
+    "slack": 6,
+    "source": "atlas[1252]",
+    "tau": 6,
+    "tie": null
+  },
+  "L=7": {
+    "A": [
+      0,
+      2,
+      3
+    ],
+    "Delta": 7,
+    "L": 7,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        7
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        7,
+        9
+      ]
+    ],
+    "n": 10,
+    "nu": 12,
+    "p": 0,
+    "slack": 10,
+    "source": "Gnp(n=10,p=0.55,k=13)",
+    "tau": 7,
+    "tie": null
+  },
+  "L=8": {
+    "A": [
+      3,
+      4
+    ],
+    "Delta": 7,
+    "L": 8,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        3,
+        9
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        4,
+        9
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    "n": 10,
+    "nu": 10,
+    "p": 0,
+    "slack": 12,
+    "source": "Gnp(n=10,p=0.55,k=0)",
+    "tau": 8,
+    "tie": null
+  },
+  "i0=1": {
+    "A": [
+      0
+    ],
+    "Delta": 1,
+    "L": 1,
+    "edges": [
+      [
+        0,
+        1
+      ]
+    ],
+    "n": 2,
+    "nu": 0,
+    "p": 0,
+    "slack": 1,
+    "source": "atlas[3]",
+    "tau": 1,
+    "tie": null
+  },
+  "i0=tau": {
+    "A": [
+      0
+    ],
+    "Delta": 2,
+    "L": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "n": 3,
+    "nu": 0,
+    "p": 0,
+    "slack": 2,
+    "source": "atlas[7]",
+    "tau": 2,
+    "tie": null
+  },
+  "nu=0": {
+    "A": [
+      0,
+      1
+    ],
+    "Delta": 0,
+    "L": 0,
+    "edges": [],
+    "n": 2,
+    "nu": 0,
+    "p": 0,
+    "slack": 0,
+    "source": "atlas[2]",
+    "tau": 0,
+    "tie": null
+  },
+  "nu=1": {
+    "A": [
+      0,
+      2
+    ],
+    "Delta": 1,
+    "L": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "n": 4,
+    "nu": 1,
+    "p": 0,
+    "slack": 3,
+    "source": "atlas[11]",
+    "tau": 2,
+    "tie": null
+  },
+  "p=0": {
+    "A": [
+      0
+    ],
+    "Delta": 2,
+    "L": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "n": 3,
+    "nu": 0,
+    "p": 0,
+    "slack": 2,
+    "source": "atlas[7]",
+    "tau": 2,
+    "tie": null
+  },
+  "tau=2": {
+    "A": [
+      0
+    ],
+    "Delta": 2,
+    "L": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "n": 3,
+    "nu": 0,
+    "p": 0,
+    "slack": 2,
+    "source": "atlas[7]",
+    "tau": 2,
+    "tie": null
+  },
+  "tau=3": {
+    "A": [
+      0
+    ],
+    "Delta": 3,
+    "L": 3,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "n": 4,
+    "nu": 0,
+    "p": 0,
+    "slack": 3,
+    "source": "atlas[18]",
+    "tau": 3,
+    "tie": null
+  },
+  "tau=4": {
+    "A": [
+      0
+    ],
+    "Delta": 4,
+    "L": 4,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "n": 5,
+    "nu": 0,
+    "p": 0,
+    "slack": 4,
+    "source": "atlas[52]",
+    "tau": 4,
+    "tie": null
+  }
+}
+CONTROLS
+{
+  "hard_core_frame": {
+    "A": [
+      0,
+      1,
+      4,
+      5
+    ],
+    "F_b_pairs": [
+      [
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ]
+    ],
+    "alpha": 4,
+    "diameter": 4,
+    "edges": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        3,
+        5
+      ]
+    ],
+    "f": 5,
+    "nonforest": true,
+    "residue": 3
+  },
+  "reductio_only_C5": {
+    "A_examples": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "alpha": 2,
+    "diameter": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "f": 4,
+    "residue": 2
+  }
+}
+PROCESS EDGE CASES
+{
+  "disconnected_2K2": {
+    "degrees": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "heads": [
+      1,
+      1
+    ],
+    "residue": 2
+  },
+  "edgeless4": {
+    "degrees": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "heads": [],
+    "residue": 4
+  },
+  "nongraphical_[3, 3, 1]": {
+    "heads": [
+      3,
+      2
+    ],
+    "residue": 1
+  },
+  "nongraphical_[4, 4, 1, 0]": {
+    "heads": [
+      4,
+      3
+    ],
+    "residue": 2
+  },
+  "nongraphical_[5, 1]": {
+    "heads": [
+      5
+    ],
+    "residue": 1
+  }
+}
+FAILURES
+[]
+FAILURE_COUNT=0

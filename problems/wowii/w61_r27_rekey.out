@@ -1,0 +1,73 @@
+=== owner-w61 round 27 -- RE-KEY: the burn measurement, run BEFORE the choice ===
+  the r17 (nu = 11) key's OWN ANSWER values, looked for in our own artifacts:
+    98384    draft: 16 hit(s)   briefs: none   forms ['98 384', '98384']
+    791      draft: 24 hit(s)   briefs: none   forms ['791']
+    131      draft: 19 hit(s)   briefs: none   forms ['131']
+    1002     draft: 12 hit(s)   briefs: none   forms ['1 002', '1002']
+  => nu = 11 is BURNED BEYOND its four outings: 71 hits on its answers in the draft itself.
+     A fifth outing would be graded against numbers a reader of our ledger can read off.
+
+--- SELF-CALIBRATION against PRINTED draft data (BEFORE any key value) ---
+  nu=1   E0surv=[2]    bdpairs=0   (pub 0   ) bdsurv=0(pub 0) S=0     (pub 0     )  PASS
+  nu=2   E0surv=[4]    bdpairs=1   (pub 1   ) bdsurv=1(pub 1) S=3     (pub 3     )  PASS
+  nu=3   E0surv=[6]    bdpairs=3   (pub 3   ) bdsurv=1(pub 1) S=24    (pub 24    )  PASS
+  nu=4   E0surv=[8]    bdpairs=7   (pub 7   ) bdsurv=2(pub 2) S=110   (pub 110   )  PASS
+  nu=5   E0surv=[10]   bdpairs=14  (pub 14  ) bdsurv=2(pub 2) S=397   (pub 397   )  PASS
+  nu=6   E0surv=[12]   bdpairs=26  (pub 26  ) bdsurv=3(pub 3) S=1211  (pub 1211  )  PASS
+  nu=7   E0surv=[14]   bdpairs=45  (pub 45  ) bdsurv=3(pub 3) S=3340  (pub 3340  )  PASS
+  nu=8   E0surv=[16]   bdpairs=75  (pub 75  ) bdsurv=4(pub 4) S=8457  (pub 8457  )  PASS
+  nu=9   E0surv=[18]   bdpairs=120 (pub 120 ) bdsurv=4(pub 4) S=20126 (pub 20126 )  PASS
+  nu=10  E0surv=[20]   bdpairs=187 (pub 187 ) bdsurv=5(pub 5) S=45450 (pub 45450 )  PASS
+  s0([1+1+1+1+1+1+1+1+1+1+1+1]) = 7 (printed 7)  PASS
+  s0([2+2+2+2+2+2]) = 6 (printed 6)  PASS
+  s0([3+3+3+3]) = 6 (printed 6)  PASS
+  s0([4+4+4]) = 6 (printed 6)  PASS
+  s0([6+6]) = 7 (printed 7)  PASS
+  s0([11+1]) = 12 (printed 12)  PASS
+  s0([12]) = 12 (printed 12)  PASS
+  CALIBRATION PASS = True
+  RULING CD rider, printed with it and not after it: a passed calibration is
+  NOT a passed harness.  This says the generator understood the setup.  It says
+  nothing about whether anything downstream can do the work.
+
+--- LEAK PROBE: the POPULATION first, the verdict after (RULING AS) ---
+    H2 S(12)                   ###### <6ch> draft  0   briefs none                        
+    H3 survivor count          #### <4ch> draft  0   briefs none                        
+    H4 bucket count            ### <3ch> draft  0   briefs none                        
+    H3 shapes tested           ###### <6ch> draft  0   briefs none                        
+    p(24)                      #### <4ch> draft  0   briefs none                        
+    H2 term E=1                ##### <5ch> draft  0   briefs none                        
+    H2 term E=2                ##### <5ch> draft  0   briefs none                        
+    H2 term E=3                ##### <5ch> draft  0   briefs none                        
+    H2 term E=4                ##### <5ch> draft  0   briefs none                        
+    H2 term E=5                ##### <5ch> draft  0   briefs none                        
+    H2 term E=6                ##### <5ch> draft  0   briefs none                        
+    H2 term E=7                ##### <5ch> draft  0   briefs none                        
+    H2 term E=8                ##### <5ch> draft  0   briefs none                        
+    H2 term E=9                ##### <5ch> draft  0   briefs none                        
+    H2 term E=10               ##### <5ch> draft  0   briefs none                        
+    H2 term E=11               #### <4ch> draft  0   briefs none                        
+    H3 per-E survivors E=1     # <1ch>  draft 2243   briefs w61_FANRES_qwen.md x8, w61_KNEB_qwen.md x6, w61_L3RIG_qwen.md x4, w61_S3_76_qwen.md x169, w61_S3_76_sol.md x178, w61_S3_76_sol_header.md x11, w61_S3_FAN_A.md x218, w61_S3_FAN_A2.md x223, w61_S3_FAN_B.md x227, w61_S3_GFANNU_qwen.md x154, w61_S3_GFAN_qwen.md x281, w61_S3_GFAN_r14.md x172, w61_S3_GFAN_r14b.md x174, w61_S3_GFAN_r15.md x181, w61_S3_GFAN_r15_pending.md x170, w61_S3_GFAN_r18.md x463, w61_S3_GFAN_r20.md x476, w61_S3_GFAN_r24.md x476, w61_S3_GFAN_r26.md x480, w61_S3_GFAN_sol.md x165, w61_S3_N_codex.md x9, w61_S3_R2A.md x78, w61_S3_R2A2.md x88, w61_S3_T3R3.md x102, w61_S3_T3_JPASS.md x97, w61_S3_T3_codex.md x10, w61_S3_TAIL_qwen.md x71, w61_S3_TAIL_spark.md x77, w61_S3_TAIL_spark_header.md x7, w61_S3_VPASS.md x295, w61_S3_VPASS_p1.md x232, w61_S3_VPASS_p2.md x64, w61_S3_VPASS_prep.md x14, w61_S3_qwen_R2.md x46  (non-discriminating: 1-digit value, collides with prose)
+    H3 per-E survivors E=2     ## <2ch> draft 159   briefs w61_S3_76_qwen.md x4, w61_S3_76_sol.md x4, w61_S3_FAN_A.md x5, w61_S3_FAN_A2.md x5, w61_S3_FAN_B.md x5, w61_S3_GFANNU_qwen.md x3, w61_S3_GFAN_qwen.md x8, w61_S3_GFAN_r14.md x4, w61_S3_GFAN_r14b.md x4, w61_S3_GFAN_r15.md x6, w61_S3_GFAN_r15_pending.md x4, w61_S3_GFAN_r18.md x66, w61_S3_GFAN_r20.md x69, w61_S3_GFAN_r24.md x70, w61_S3_GFAN_r26.md x70, w61_S3_GFAN_sol.md x3, w61_S3_R2A.md x3, w61_S3_R2A2.md x3, w61_S3_T3R3.md x4, w61_S3_T3_JPASS.md x4, w61_S3_TAIL_qwen.md x5, w61_S3_TAIL_spark.md x5, w61_S3_VPASS.md x7, w61_S3_VPASS_p1.md x5, w61_S3_VPASS_p2.md x2, w61_S3_qwen_R2.md x2  (non-discriminating: 2-digit value, collides with prose)
+    H3 per-E survivors E=3     ## <2ch> draft 106   briefs w61_S3_76_qwen.md x8, w61_S3_76_sol.md x6, w61_S3_FAN_A.md x12, w61_S3_FAN_A2.md x12, w61_S3_FAN_B.md x14, w61_S3_GFAN_qwen.md x13, w61_S3_GFAN_r18.md x1, w61_S3_GFAN_r20.md x1, w61_S3_GFAN_r24.md x1, w61_S3_GFAN_r26.md x1, w61_S3_R2A.md x1, w61_S3_R2A2.md x1, w61_S3_T3R3.md x2, w61_S3_T3_JPASS.md x2, w61_S3_TAIL_qwen.md x3, w61_S3_TAIL_spark.md x3, w61_S3_VPASS.md x15, w61_S3_VPASS_p1.md x14, w61_S3_VPASS_p2.md x1, w61_S3_qwen_R2.md x2  (non-discriminating: 2-digit value, collides with prose)
+    H3 per-E survivors E=4     ## <2ch> draft 15   briefs w61_S3_76_qwen.md x1, w61_S3_76_sol.md x1, w61_S3_FAN_A.md x1, w61_S3_FAN_A2.md x1, w61_S3_FAN_B.md x1, w61_S3_GFAN_qwen.md x1, w61_S3_VPASS.md x1, w61_S3_VPASS_p1.md x1  (non-discriminating: 2-digit value, collides with prose)
+    H3 per-E survivors E=5     ## <2ch> draft 61   briefs w61_S3_76_qwen.md x3, w61_S3_76_sol.md x3, w61_S3_FAN_A.md x3, w61_S3_FAN_A2.md x3, w61_S3_FAN_B.md x3, w61_S3_GFAN_qwen.md x3, w61_S3_R2A.md x2, w61_S3_R2A2.md x2, w61_S3_T3R3.md x3, w61_S3_T3_JPASS.md x3, w61_S3_TAIL_qwen.md x2, w61_S3_TAIL_spark.md x2, w61_S3_VPASS.md x4, w61_S3_VPASS_p1.md x3, w61_S3_VPASS_p2.md x1, w61_S3_qwen_R2.md x2  (non-discriminating: 2-digit value, collides with prose)
+    H3 per-E survivors E=6     ## <2ch> draft 40   briefs w61_S3_FAN_A.md x3, w61_S3_FAN_A2.md x4, w61_S3_FAN_B.md x6, w61_S3_GFAN_qwen.md x5, w61_S3_VPASS.md x6, w61_S3_VPASS_p1.md x6  (non-discriminating: 2-digit value, collides with prose)
+    H3 per-E survivors E=7     ### <3ch> draft  1   briefs w61_S3_GFAN_r18.md x1, w61_S3_GFAN_r20.md x1, w61_S3_GFAN_r24.md x1, w61_S3_GFAN_r26.md x1  (non-discriminating: 3-digit value, collides with prose)
+    H3 per-E survivors E=8     ### <3ch> draft  0   briefs none                        
+    H3 per-E survivors E=9     ### <3ch> draft  0   briefs none                        
+    H3 per-E survivors E=10    ### <3ch> draft  2   briefs none                          (non-discriminating: 3-digit value, collides with prose)
+    H3 per-E survivors E=11    ### <3ch> draft  0   briefs none                        
+    H1 shape 1                 [##+#+# <6ch>] draft  0   briefs none
+    H1 shape 2                 [##+#+#+# <8ch>] draft  0   briefs none
+    H1 shape 3                 [##+#+#+# <8ch>] draft  0   briefs none
+    H1 shape 4                 [#+#+# <5ch>]  draft  0   briefs none
+    H5 lambda                  [#+#+#+#+# <9ch>] draft  0   briefs none
+  LEAK PROBE population = 32 entries; discriminating hits = 0
+  LEAK PROBE PASS: no discriminating nu = 12 value appears in the draft or in any
+  of the 34 shipped briefs.
+
+--- KEY SUMMARY (values withheld from this log; they live only in problems/wowii/w61_r27_heldout_key.txt) ---
+    H1 4 values | H2 11 terms | H3 with 11-way per-E split | H4 over #### <4ch> partitions | H5 yes/no + count
+    FAN-6' misses over the nu=12 survivor roster : 0
+wrote problems/wowii/w61_r27_heldout_key.txt  (calibration PASS, leak probe PASS, 7.2s)

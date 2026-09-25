@@ -1,0 +1,78 @@
+====================================================================================================
+w61 r47d -- LEMMA (INV-STEP), and whether it covers every inversion of every transfer walk
+====================================================================================================
+
+[N<=16] population: 869 partitions of N <= 16 with <= 10 parts ; 181 TERMINATE
+    transfer edges 567 ; INVERSION STATES 88
+    inversion shapes (index, increment) : {((0, 1), (2, 1)): 12, ((0, 1), (1, 1)): 15, ((0, 1), (4, 1)): 30, ((0, 1), (6, 1)): 14, ((0, 1), (3, 1)): 8, ((0, 1), (8, 1)): 5, ((0, 1), (5, 1)): 4}
+    A_j at the SECOND raised coordinate : {0: 72, 1: 16}
+    ==> every inversion has the (INV-STEP) shape A_j = 0 : False
+    first inversion NOT of that shape : ((1, 1, 1, 1), (2, 2, 1, 1), 1, 1)
+    [ok] [N<=16] CONTROL: inversion states exist on transfer walks                                hits=88
+
+    LEMMA (INV-STEP) censused: 181 instances ; VIOLATIONS 0
+    [ok] [N<=16] CONTROL: (INV-STEP) was tested where it could fail                               hits=181
+    CORRUPT CONTROL (second unit on a POSITIVE part, A_j >= 1): 987 instances ; 243 FAIL   e.g. ((2, 2, 1, 1), (3, 3, 1, 1), 1)
+    [ok] [N<=16] CORRUPT CONTROL: the hypothesis A_j = 0 is load-bearing -- dropping it breaks <| hits=243
+
+    ASSEMBLED: transfer edges every step of which is closed by CAP-STEP-MONO (max order) or by (INV-STEP) (the A_j = 0 shape) : 551 of 567
+    steps closed by CAP-STEP-MONO 1627 ; steps closed by (INV-STEP) 72
+    (this is the NARROW hypothesis A_j = 0 that the header of this file states.  It
+     is MY OWN SCOPING DEFECT, caught by this run: the derivation in the header shows
+     the only case that can fail is 1 <= m < A_j, and m = 0 is free by the LEGALITY
+     of B's step, so the correct hypothesis is  rho_{A_j}(A) >= max(A) + 1, which is
+     VACUOUS for A_j <= 1.  The narrow count is printed rather than deleted; block
+     (2b)/(3b) below run the corrected statement.)
+    [ok] [N<=16] CONTROL: (INV-STEP) is doing work CAP-STEP-MONO cannot                           hits=72
+
+    (2b) LEMMA (INV-STEP') with the CORRECT hypothesis rho_{A_j}(A) >= max(A)+1
+         (vacuous when A_j <= 1): 355 instances ; VIOLATIONS 0   None
+    [ok] [N<=16] CONTROL: (INV-STEP') was tested where it could fail                              hits=355
+    CORRUPT CONTROL: the SAME shape with the hypothesis FAILING: 150 instances ; 150 break <|   e.g. ((2, 2, 1, 1), (3, 3, 1, 1), 1)
+    [ok] [N<=16] CORRUPT CONTROL: rho_{A_j}(A) >= max(A)+1 is load-bearing                        hits=150
+
+    (3b) ASSEMBLED with the CORRECT hypothesis: transfer edges every step of which
+         is closed by CAP-STEP-MONO or by (INV-STEP') : 567 of 567
+         steps by CAP-STEP-MONO 1656 ; steps by (INV-STEP') 88 ; uncovered edges 0
+    [ok] [N<=16] CONTROL: (INV-STEP') carries inversion steps                                     hits=88
+
+[N<=20] population: 2593 partitions of N <= 20 with <= 12 parts ; 531 TERMINATE
+    transfer edges 2233 ; INVERSION STATES 395
+    inversion shapes (index, increment) : {((0, 1), (2, 1)): 42, ((0, 1), (1, 1)): 67, ((0, 1), (4, 1)): 104, ((0, 1), (6, 1)): 77, ((0, 1), (3, 1)): 22, ((0, 1), (8, 1)): 35, ((0, 1), (5, 1)): 27, ((0, 1), (10, 1)): 8, ((0, 1), (7, 1)): 11, ((0, 1), (9, 1)): 2}
+    A_j at the SECOND raised coordinate : {0: 307, 1: 84, 2: 4}
+    ==> every inversion has the (INV-STEP) shape A_j = 0 : False
+    first inversion NOT of that shape : ((1, 1, 1, 1), (2, 2, 1, 1), 1, 1)
+    [ok] [N<=20] CONTROL: inversion states exist on transfer walks                                hits=395
+
+    LEMMA (INV-STEP) censused: 531 instances ; VIOLATIONS 0
+    [ok] [N<=20] CONTROL: (INV-STEP) was tested where it could fail                               hits=531
+    CORRUPT CONTROL (second unit on a POSITIVE part, A_j >= 1): 3622 instances ; 999 FAIL   e.g. ((2, 2, 1, 1), (3, 3, 1, 1), 1)
+    [ok] [N<=20] CORRUPT CONTROL: the hypothesis A_j = 0 is load-bearing -- dropping it breaks <| hits=999
+
+    ASSEMBLED: transfer edges every step of which is closed by CAP-STEP-MONO (max order) or by (INV-STEP) (the A_j = 0 shape) : 2145 of 2233
+    steps closed by CAP-STEP-MONO 7607 ; steps closed by (INV-STEP) 307
+    (this is the NARROW hypothesis A_j = 0 that the header of this file states.  It
+     is MY OWN SCOPING DEFECT, caught by this run: the derivation in the header shows
+     the only case that can fail is 1 <= m < A_j, and m = 0 is free by the LEGALITY
+     of B's step, so the correct hypothesis is  rho_{A_j}(A) >= max(A) + 1, which is
+     VACUOUS for A_j <= 1.  The narrow count is printed rather than deleted; block
+     (2b)/(3b) below run the corrected statement.)
+    [ok] [N<=20] CONTROL: (INV-STEP) is doing work CAP-STEP-MONO cannot                           hits=307
+
+    (2b) LEMMA (INV-STEP') with the CORRECT hypothesis rho_{A_j}(A) >= max(A)+1
+         (vacuous when A_j <= 1): 1094 instances ; VIOLATIONS 0   None
+    [ok] [N<=20] CONTROL: (INV-STEP') was tested where it could fail                              hits=1094
+    CORRUPT CONTROL: the SAME shape with the hypothesis FAILING: 580 instances ; 580 break <|   e.g. ((2, 2, 1, 1), (3, 3, 1, 1), 1)
+    [ok] [N<=20] CORRUPT CONTROL: rho_{A_j}(A) >= max(A)+1 is load-bearing                        hits=580
+
+    (3b) ASSEMBLED with the CORRECT hypothesis: transfer edges every step of which
+         is closed by CAP-STEP-MONO or by (INV-STEP') : 2233 of 2233
+         steps by CAP-STEP-MONO 7813 ; steps by (INV-STEP') 395 ; uncovered edges 0
+    [ok] [N<=20] CONTROL: (INV-STEP') carries inversion steps                                     hits=395
+
+====================================================================================================
+N<=16 : 567 transfer edges, 88 inversions, 567 certified by the two lemmas
+N<=20 : 2233 transfer edges, 395 inversions, 2233 certified by the two lemmas
+ELAPSED 0.19 s / 420 s ; PARTIAL=False ; runA/runB diffed 712 ; stepA/stepC diffed 7320
+CONTROLS 14/14 firing ; DEFECTS 0
+EXIT=0   (script's own FLAG line; the process exit code is 0)

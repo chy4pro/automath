@@ -1,0 +1,24 @@
+============================================================================================
+RULING DA GATE -- surface: r29_q41_brief   rows: 7
+============================================================================================
+
+1. THE REACHABLE SURFACE, enumerated -- the shipped bytes PLUS every path/URL named
+   path-shaped / URL tokens named by the brief: NONE
+   surfaces actually read: 1  (r29_q41_brief)
+   named-but-unresolvable (a reviewer could not reach these either): NONE
+  [OK] the brief names no unresolved repository path                          got=[] want=[]
+
+2. POSITIVE CONTROLS -- each detector planted in a DERIVED / REFORMATTED form.
+   A bare-digit control certifies nothing here: these answers are small integers.
+  [OK] P1 D-A/integer FIRES on an EQUATION planting (m = 14, not bare digits) got=True want=True
+  [OK] P3 D-C/sum FIRES on a SUM planting (11 + 3, the value never printed)   got=True want=True
+  [OK] N1 NEGATIVE control: unrelated numbers near the same subject do NOT fire got=False want=False
+  [OK] P2 D-B/group FIRES on a SLASH-REFORMATTED tuple (2/-3)                 got=True want=True
+  [OK] P2b D-B/group FIRES on the answer EMBEDDED IN A LARGER TUPLE           got=True want=True
+  [OK] P4 D-D/percomponent FIRES when the tuple is split into per-component equations got=True want=True
+
+3. THE SCAN over every surface
+   r29_q41_brief                                36056 bytes   hits: 0
+  [OK] NO held-out row is answerable from the reachable surface               got=[] want=[]
+
+checks: 8, failures: 0

@@ -1,0 +1,147 @@
+==============================================================================
+(2a) CONTROL (a): "D_i <= d_i - (i-1)"  on degseq [3,3,3,3,3,2,1]
+  [3,3,3,3,3,2,1]              s=[4]  D=[(3, 3, 2, 1)]  #distinct-K=8  violations=0
+      heads D = [3, 3, 2, 1]  s = 4  residue = 7 - s = 3
+      i=1  D_i=3  d_i=3  d_i-(i-1)=3  ok
+      i=2  D_i=3  d_i=3  d_i-(i-1)=2  VIOLATES control (a)
+      i=3  D_i=2  d_i=3  d_i-(i-1)=1  VIOLATES control (a)
+      i=4  D_i=1  d_i=3  d_i-(i-1)=0  VIOLATES control (a)
+      DICH(c) bound s-i+2 = [5, 4, 3, 2]
+      realising graph degseq: [4, 3, 3, 3, 3, 1, 1]  connected: True
+
+==============================================================================
+(2b) CONTROL (b): K_{2,3} vs Corollary N2
+  degrees=[3, 3, 2, 2, 2]  n=5 m=6 alpha=3 tau=2 e_B=0 Delta=3
+  HH heads D=[3, 2, 1]  s=3  residue=n-s=2   alpha-1=2
+  min_B deg = 3  (tau+1 = 3)  hypothesis (i): True
+  N2 RHS  Delta + tau(tau+1)/2 - 1 = 5   m = 6   -> unqualified N2 FALSE
+  reductio standpoint residue==alpha ? False  -> patched N2 vacuous here
+  contrapositive form: m > RHS and indeed residue=2 <= alpha-1=2 : True
+  K_{2,3}                      s=[3]  D=[(3, 2, 1)]  #distinct-K=5  violations=0
+
+==============================================================================
+(2c) CONTROL (d): K_6 vs Corollary CNT (with and without the min)
+  K_6: s=5 D=[5, 4, 3, 2, 1] residue=1 alpha=1 tau=5 hs=10 m=15 Delta=5
+  CNT with min : min(tau,hs+1)*Delta + sum = 5*5 + 0 = 25   (m=15) -> holds
+  CNT min DROPPED, sum form : (hs+1)*Delta + sum = 55   -> holds (WEAKER, not false!)
+  CLOSED form (hs+1)Delta + t(t+1)/2 - (hs+1)(hs+2)/2 = 4  -> FALSE
+  NOTE: the closed form is only equal to the sum when hs+2 <= tau+1,
+        i.e. hs <= tau-1.  Here hs=10 > tau-1=4, empty sum vs negative.
+
+==============================================================================
+(3) BOUNDARY SWEEPS
+  K_2 (tau=1)                  n=2 m=1 alpha=1 tau=1 s=1 res=1 D=[1]
+       #MIS=2  with hyp(i): 0   res==alpha: True
+       A=[0]              e_B=0 min_Bdeg=1 hyp(i)=False
+       A=[1]              e_B=0 min_Bdeg=1 hyp(i)=False
+       heads: i=1 g=1 D_i=1 h_i=0 [DICHc g<=s]
+  star K_{1,4} (tau=1,e_B=0)   n=5 m=4 alpha=4 tau=1 s=1 res=4 D=[4]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[1, 2, 3, 4]     e_B=0 min_Bdeg=4 hyp(i)=True <- ThmK applies: B clique? True (e_B=0, C(tau,2)=0)
+       heads: i=1 g=4 D_i=4 h_i=0 [DICHb g>=s+1]
+  P_3                          n=3 m=2 alpha=2 tau=1 s=1 res=2 D=[2]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[0, 2]           e_B=0 min_Bdeg=2 hyp(i)=True <- ThmK applies: B clique? True (e_B=0, C(tau,2)=0)
+       heads: i=1 g=2 D_i=2 h_i=0 [DICHb g>=s+1]
+  P_5 (diam 4, tau=2)          n=5 m=4 alpha=3 tau=2 s=3 res=2 D=[2, 1, 1]
+       #MIS=1  with hyp(i): 0   res==alpha: False
+       A=[0, 2, 4]        e_B=0 min_Bdeg=2 hyp(i)=False
+       heads: i=1 g=2 D_i=2 h_i=0 [DICHc g<=s], i=2 g=2 D_i=1 h_i=1 [DICHc g<=s], i=3 g=1 D_i=1 h_i=0 [DICHc g<=s]
+  C_5                          n=5 m=5 alpha=2 tau=3 s=3 res=2 D=[2, 2, 1]
+       #MIS=5  with hyp(i): 0   res==alpha: True
+       A=[0, 2]           e_B=1 min_Bdeg=2 hyp(i)=False
+       A=[0, 3]           e_B=1 min_Bdeg=2 hyp(i)=False
+       A=[1, 3]           e_B=1 min_Bdeg=2 hyp(i)=False
+       A=[1, 4]           e_B=1 min_Bdeg=2 hyp(i)=False
+       A=[2, 4]           e_B=1 min_Bdeg=2 hyp(i)=False
+       heads: i=1 g=2 D_i=2 h_i=0 [DICHc g<=s], i=2 g=2 D_i=2 h_i=0 [DICHc g<=s], i=3 g=2 D_i=1 h_i=1 [DICHc g<=s]
+  K_{3,3}                      n=6 m=9 alpha=3 tau=3 s=4 res=2 D=[3, 3, 2, 1]
+       #MIS=2  with hyp(i): 0   res==alpha: False
+       A=[0, 1, 2]        e_B=0 min_Bdeg=3 hyp(i)=False
+       A=[3, 4, 5]        e_B=0 min_Bdeg=3 hyp(i)=False
+       heads: i=1 g=3 D_i=3 h_i=0 [DICHc g<=s], i=2 g=3 D_i=3 h_i=0 [DICHc g<=s], i=3 g=3 D_i=2 h_i=1 [DICHc g<=s], i=4 g=3 D_i=1 h_i=2 [DICHc g<=s]
+  K_{2,4}                      n=6 m=8 alpha=4 tau=2 s=3 res=3 D=[4, 3, 1]
+       #MIS=1  with hyp(i): 1   res==alpha: False
+       A=[2, 3, 4, 5]     e_B=0 min_Bdeg=4 hyp(i)=True
+       heads: i=1 g=4 D_i=4 h_i=0 [DICHb g>=s+1], i=2 g=4 D_i=3 h_i=1 [DICHb g>=s+1], i=3 g=2 D_i=1 h_i=1 [DICHc g<=s]
+  K_4                          n=4 m=6 alpha=1 tau=3 s=3 res=1 D=[3, 2, 1]
+       #MIS=4  with hyp(i): 0   res==alpha: True
+       A=[0]              e_B=3 min_Bdeg=3 hyp(i)=False
+       A=[1]              e_B=3 min_Bdeg=3 hyp(i)=False
+       A=[2]              e_B=3 min_Bdeg=3 hyp(i)=False
+       A=[3]              e_B=3 min_Bdeg=3 hyp(i)=False
+       heads: i=1 g=3 D_i=3 h_i=0 [DICHc g<=s], i=2 g=3 D_i=2 h_i=1 [DICHc g<=s], i=3 g=3 D_i=1 h_i=2 [DICHc g<=s]
+  K_6                          n=6 m=15 alpha=1 tau=5 s=5 res=1 D=[5, 4, 3, 2, 1]
+       #MIS=6  with hyp(i): 0   res==alpha: True
+       A=[0]              e_B=10 min_Bdeg=5 hyp(i)=False
+       A=[1]              e_B=10 min_Bdeg=5 hyp(i)=False
+       A=[2]              e_B=10 min_Bdeg=5 hyp(i)=False
+       A=[3]              e_B=10 min_Bdeg=5 hyp(i)=False
+       A=[4]              e_B=10 min_Bdeg=5 hyp(i)=False
+       A=[5]              e_B=10 min_Bdeg=5 hyp(i)=False
+       heads: i=1 g=5 D_i=5 h_i=0 [DICHc g<=s], i=2 g=5 D_i=4 h_i=1 [DICHc g<=s], i=3 g=5 D_i=3 h_i=2 [DICHc g<=s], i=4 g=5 D_i=2 h_i=3 [DICHc g<=s], i=5 g=5 D_i=1 h_i=4 [DICHc g<=s]
+  K_1 + 1 leaves each          n=2 m=1 alpha=1 tau=1 s=1 res=1 D=[1]
+       #MIS=2  with hyp(i): 0   res==alpha: True
+       A=[0]              e_B=0 min_Bdeg=1 hyp(i)=False
+       A=[1]              e_B=0 min_Bdeg=1 hyp(i)=False
+       heads: i=1 g=1 D_i=1 h_i=0 [DICHc g<=s]
+  K_1 + 2 leaves each          n=3 m=2 alpha=2 tau=1 s=1 res=2 D=[2]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[1, 2]           e_B=0 min_Bdeg=2 hyp(i)=True <- ThmK applies: B clique? True (e_B=0, C(tau,2)=0)
+       heads: i=1 g=2 D_i=2 h_i=0 [DICHb g>=s+1]
+  K_1 + 3 leaves each          n=4 m=3 alpha=3 tau=1 s=1 res=3 D=[3]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[1, 2, 3]        e_B=0 min_Bdeg=3 hyp(i)=True <- ThmK applies: B clique? True (e_B=0, C(tau,2)=0)
+       heads: i=1 g=3 D_i=3 h_i=0 [DICHb g>=s+1]
+  K_2 + 1 leaves each          n=4 m=3 alpha=2 tau=2 s=2 res=2 D=[2, 1]
+       #MIS=3  with hyp(i): 0   res==alpha: True
+       A=[0, 3]           e_B=0 min_Bdeg=1 hyp(i)=False
+       A=[1, 2]           e_B=0 min_Bdeg=1 hyp(i)=False
+       A=[2, 3]           e_B=1 min_Bdeg=2 hyp(i)=False
+       heads: i=1 g=2 D_i=2 h_i=0 [DICHc g<=s], i=2 g=2 D_i=1 h_i=1 [DICHc g<=s]
+  K_2 + 2 leaves each          n=6 m=5 alpha=4 tau=2 s=2 res=4 D=[3, 2]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[2, 3, 4, 5]     e_B=1 min_Bdeg=3 hyp(i)=True <- ThmK applies: B clique? True (e_B=1, C(tau,2)=1)
+       heads: i=1 g=3 D_i=3 h_i=0 [DICHb g>=s+1], i=2 g=3 D_i=2 h_i=1 [DICHb g>=s+1]
+  K_2 + 3 leaves each          n=8 m=7 alpha=6 tau=2 s=2 res=6 D=[4, 3]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[2, 3, 4, 5, 6, 7] e_B=1 min_Bdeg=4 hyp(i)=True <- ThmK applies: B clique? True (e_B=1, C(tau,2)=1)
+       heads: i=1 g=4 D_i=4 h_i=0 [DICHb g>=s+1], i=2 g=4 D_i=3 h_i=1 [DICHb g>=s+1]
+  K_3 + 1 leaves each          n=6 m=6 alpha=3 tau=3 s=3 res=3 D=[3, 2, 1]
+       #MIS=4  with hyp(i): 0   res==alpha: True
+       A=[0, 4, 5]        e_B=1 min_Bdeg=1 hyp(i)=False
+       A=[1, 3, 5]        e_B=1 min_Bdeg=1 hyp(i)=False
+       A=[2, 3, 4]        e_B=1 min_Bdeg=1 hyp(i)=False
+       A=[3, 4, 5]        e_B=3 min_Bdeg=3 hyp(i)=False
+       heads: i=1 g=3 D_i=3 h_i=0 [DICHc g<=s], i=2 g=3 D_i=2 h_i=1 [DICHc g<=s], i=3 g=3 D_i=1 h_i=2 [DICHc g<=s]
+  K_3 + 2 leaves each          n=9 m=9 alpha=6 tau=3 s=3 res=6 D=[4, 3, 2]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[3, 4, 5, 6, 7, 8] e_B=3 min_Bdeg=4 hyp(i)=True <- ThmK applies: B clique? True (e_B=3, C(tau,2)=3)
+       heads: i=1 g=4 D_i=4 h_i=0 [DICHb g>=s+1], i=2 g=4 D_i=3 h_i=1 [DICHb g>=s+1], i=3 g=4 D_i=2 h_i=2 [DICHb g>=s+1]
+  K_3 + 3 leaves each          n=12 m=12 alpha=9 tau=3 s=3 res=9 D=[5, 4, 3]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[3, 4, 5, 6, 7, 8, 9, 10, 11] e_B=3 min_Bdeg=5 hyp(i)=True <- ThmK applies: B clique? True (e_B=3, C(tau,2)=3)
+       heads: i=1 g=5 D_i=5 h_i=0 [DICHb g>=s+1], i=2 g=5 D_i=4 h_i=1 [DICHb g>=s+1], i=3 g=5 D_i=3 h_i=2 [DICHb g>=s+1]
+  K_4 + 1 leaves each          n=8 m=10 alpha=4 tau=4 s=4 res=4 D=[4, 3, 2, 1]
+       #MIS=5  with hyp(i): 0   res==alpha: True
+       A=[0, 5, 6, 7]     e_B=3 min_Bdeg=1 hyp(i)=False
+       A=[1, 4, 6, 7]     e_B=3 min_Bdeg=1 hyp(i)=False
+       A=[2, 4, 5, 7]     e_B=3 min_Bdeg=1 hyp(i)=False
+       A=[3, 4, 5, 6]     e_B=3 min_Bdeg=1 hyp(i)=False
+       A=[4, 5, 6, 7]     e_B=6 min_Bdeg=4 hyp(i)=False
+       heads: i=1 g=4 D_i=4 h_i=0 [DICHc g<=s], i=2 g=4 D_i=3 h_i=1 [DICHc g<=s], i=3 g=4 D_i=2 h_i=2 [DICHc g<=s], i=4 g=4 D_i=1 h_i=3 [DICHc g<=s]
+  K_4 + 2 leaves each          n=12 m=14 alpha=8 tau=4 s=4 res=8 D=[5, 4, 3, 2]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[4, 5, 6, 7, 8, 9, 10, 11] e_B=6 min_Bdeg=5 hyp(i)=True <- ThmK applies: B clique? True (e_B=6, C(tau,2)=6)
+       heads: i=1 g=5 D_i=5 h_i=0 [DICHb g>=s+1], i=2 g=5 D_i=4 h_i=1 [DICHb g>=s+1], i=3 g=5 D_i=3 h_i=2 [DICHb g>=s+1], i=4 g=5 D_i=2 h_i=3 [DICHb g>=s+1]
+  K_4 + 3 leaves each          n=16 m=18 alpha=12 tau=4 s=4 res=12 D=[6, 5, 4, 3]
+       #MIS=1  with hyp(i): 1   res==alpha: True
+       A=[4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] e_B=6 min_Bdeg=6 hyp(i)=True <- ThmK applies: B clique? True (e_B=6, C(tau,2)=6)
+       heads: i=1 g=6 D_i=6 h_i=0 [DICHb g>=s+1], i=2 g=6 D_i=5 h_i=1 [DICHb g>=s+1], i=3 g=6 D_i=4 h_i=2 [DICHb g>=s+1], i=4 g=6 D_i=3 h_i=3 [DICHb g>=s+1]
+
+==============================================================================
+(5) CHOICE-OF-A PROBE: graphs with >1 maximum independent set where the
+    hypothesis min_B deg >= tau+1 holds for SOME but not ALL choices of A
+    connected atlas graphs with >=2 MIS and hyp(i) A-dependent: 0
+    among those with residue==alpha (ThmK live), examples:
+    ThmK failures over ALL (graph, hypothesis-satisfying A) pairs: 0

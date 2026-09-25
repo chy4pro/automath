@@ -1,0 +1,11 @@
+nu | E0 surv | E0 miss | bnd pairs | bnd surv | bnd miss | E>=1 tested | E>=1 surv | E>=1 miss | verdict
+ 1 | [(2,)]   | none    |         0 |        0 | none     |           0 |         0 | none      | ELIMINATED
+ 2 | [(4,)]   | none    |         1 |        1 | none     |           3 |         1 | none      | ELIMINATED
+ 3 | [(6,)]   | none    |         3 |        1 | none     |          24 |         4 | none      | ELIMINATED
+ 4 | [(8,)]   | none    |         7 |        2 | none     |         110 |         9 | none      | ELIMINATED
+ 5 | [(10,)]  | none    |        14 |        2 | none     |         397 |        20 | none      | ELIMINATED
+ 6 | [(12,)]  | none    |        26 |        3 | none     |        1211 |        38 | none      | ELIMINATED
+ 7 | [(14,)]  | none    |        45 |        3 | none     |        3340 |        75 | none      | ELIMINATED
+ 8 | [(16,)]  | none    |        75 |        4 | none     |        8457 |       137 | none      | ELIMINATED
+ 9 | [(18,)]  | none    |       120 |        4 | none     |       20126 |       251 | none      | ELIMINATED
+10 | [(20,)]  | none    |       187 |        5 | none     |       45450 |       447 | none      | ELIMINATED

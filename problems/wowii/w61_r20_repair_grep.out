@@ -1,0 +1,121 @@
+=== owner-w61 ROUND 20 CLOSING GREP — run AFTER §7.35 was appended (RW61-4 as amended) ===
+Sat Aug 22 22:06:23 CDT 2026
+
+draft: notes/proofs/wowii61_draft.md             534698 bytes /   507106 chars /     7534 lines
+brief: prompts/w61_S3_GFAN_r20.md                102422 bytes /    97617 chars   md5=6fc6cc062028496e36661fbef66907d3
+       sha256=1dde17a46a1c855798c9bbfaab207962d102987eb4c7176568016ade432cdbe3
+
+--- [1] AC4 class sweep: '480' over the WHOLE draft (each hit must be diagnosis/history/unrelated) ---
+4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+4453:   not hypothetical damage — §7.29 (2) records a judge taking `480` from the sentence
+4456:   longer printed anywhere in the reviewed text; the two former `480` sites are
+4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+4771:8. **Scale.** 1 480 graphs, 4 627 `(G,A)` instances, 849 reductio graphs, 20 682
+4862:agreeing — `1 480 / 1 159 / 4 627 / 849 / 3 447 / 20 682`, frame `8`/`9`,
+5138:   1 817 TAIL pairs, 480 padding lists, two constructed graph witnesses.
+5565:**(2) A control whose own arithmetic does not close.** It wrote "`480` `E = 0` lists +
+5566:`1745` `E ≥ 1` shapes × `7` paddings = `18 963` pairs". `(480 + 1745) × 7 = 15 575`.
+5567:The true scope is `(964 + 1745) × 7 = 18 963`. Repair AB7 *replaced* the 480 with the
+5622:ruling — the multiplication `(480+1745)×7 = 15 575 ≠ 18 963 = (964+1745)×7`, and a hand
+6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+6287:hypothetical damage — **§7.29 (2) records muse-spark, last round, taking `480` from one
+6487:`480` lists × `6` paddings while the bracket beside it said `964` × `7`. §7.29 (2)
+6488:records a judge taking `480` from the sentence and `18 963` from the bracket and
+6504:| **AC4** | `480` over the whole draft | `4452/4453/4456/4651` — inside the AB7/AC4 **diagnosis brackets**, which quote the superseded figure as history; `4771/4862` — the unrelated number `1 480`; `5138/5565–5567/5622/6282/6287` — **historical ledger** lines recording what a past run covered or what a judge wrote | **CLEAN** — no live reviewed-text site states `480` as the control's scope |
+6506:| **AC4** | `480` over the **r15 brief** | `781`, `949` — **still present, and correctly so**: that text is frozen for family 1 | **AS INTENDED** |
+6523:The `5138` line (*"1 817 TAIL pairs, 480 padding lists"*, §7.26) is left standing
+6525:`480` lists. Rewriting it would falsify the record — the same reasoning that left
+6742:| **AC4** | `(C-1)(2)` and `(C-7)(iii)` **rewritten**, not annotated. `480 × 6` is gone from the brief; the sentences now state `(964 + 1 745) × 7 = 18 963` themselves |
+6838:| **[3]** | `480` in the **dispatched** brief | **ZERO — AC4 clean where it counts** |
+6839:| **[4]** | `480` in the **frozen r15** brief | **`2`, AS INTENDED** — that text is what family 1 reviewed and its md5 must not move |
+6845:| **[1]/[2]** | `480` / `6 paddings` over the whole draft | **CLEAN** — every hit is diagnosis-bracket, historical-ledger or the unrelated `1 480` |
+6848:**new** site — line `6742`, inside §7.33's own build table, where I quote `480 × 6` as the
+6858:draft: notes/proofs/wowii61_draft.md     480308 bytes /   453356 chars /     6834 lines
+6861:--- [1] AC4: '480' over the WHOLE DRAFT (must be diagnosis/ledger/unrelated only) ---
+6862:4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+6863:4453:   not hypothetical damage — §7.29 (2) records a judge taking `480` from the sentence
+6864:4456:   longer printed anywhere in the reviewed text; the two former `480` sites are
+6865:4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+6866:4771:8. **Scale.** 1 480 graphs, 4 627 `(G,A)` instances, 849 reductio graphs, 20 682
+6867:4862:agreeing — `1 480 / 1 159 / 4 627 / 849 / 3 447 / 20 682`, frame `8`/`9`,
+6868:5138:   1 817 TAIL pairs, 480 padding lists, two constructed graph witnesses.
+6869:5565:**(2) A control whose own arithmetic does not close.** It wrote "`480` `E = 0` lists +
+6870:5566:`1745` `E ≥ 1` shapes × `7` paddings = `18 963` pairs". `(480 + 1745) × 7 = 15 575`.
+6871:5567:The true scope is `(964 + 1745) × 7 = 18 963`. Repair AB7 *replaced* the 480 with the
+6872:5622:ruling — the multiplication `(480+1745)×7 = 15 575 ≠ 18 963 = (964+1745)×7`, and a hand
+6873:6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+6874:6287:hypothetical damage — **§7.29 (2) records muse-spark, last round, taking `480` from one
+6875:6487:`480` lists × `6` paddings while the bracket beside it said `964` × `7`. §7.29 (2)
+
+--- [3] '480' in the DISPATCHED r20 brief (must be ZERO) ---
+0
+
+--- [4] 'MB1' in the dispatched brief (expect 3, none as an import of Theorem GFANv) ---
+3
+
+--- [5] 'NOT IN SCOPE' in the dispatched brief (must be ZERO) ---
+0
+
+--- [6] unfolded '1 <= nu <= 6' forms in the brief (must be ZERO) ---
+0
+
+--- [7] held-out answers leaked into the brief (each must be ZERO) ---
+  98384      : 0
+  98 384     : 0
+  791        : 0
+  131        : 0
+  1002       : 0
+  1 002      : 0
+
+=== RE-RUN OF THE TWO CHECKS THAT FAILED LAST ROUND (r19 returned 2 and 1) ===
+--- [8] duplicated '(C-8)' HEADING lines in the r20 brief (r19: 2 = the defect; MUST NOW BE 1 heading, 0 dupes) ---
+1109:**(C-8) The `ν = 7…10` rosters — the fold's own data, printed in full.** The
+    distinct (C-8) heading count: 1
+
+--- [9] lower-case 'c-' cross-refs in the r20 brief PROSE (r19: 1 = the defect; MUST NOW BE 0 outside the verbatim artifact) ---
+134:B. nu <= 6 -- MINE vs the DRAFT's PRINTED roster (SS7.22 (c-2)/(c-3)/(c-4)),
+    (the three hits above, if any, must all be inside the verbatim diff artifact = the SOURCE DRAFT's labels)
+
+--- [10] ALL bold appendix headings in the r20 brief, with duplicate detection ---
+   1 **(C-1)
+   1 **(C-2)
+   1 **(C-3)
+   1 **(C-4)
+   1 **(C-5)
+   1 **(C-7)
+   1 **(C-8)
+
+=== NEW THIS ROUND — the r20 repairs and the RULING Q fixes, ON THE ARTIFACT ===
+--- [15] stale version stamps in the dispatched brief (r14 and r18 must both be ZERO; r20 must be >0) ---
+  w61_S3_GFAN_r14 : 0
+  w61_S3_GFAN_r18 : 0
+  w61_S3_GFAN_r20 : 4
+
+--- [16] the RULING Q fixes are present on the artifact (each must be >=1) ---
+  Q-1 ordering precedence clause      : 1
+  Q-2b positive-completeness-finding  : 1
+  Q-3 two per-statement verdict lines : 1
+  Q-4 de-biased rubric line 1         : 1
+  Q-4 old steering phrase (must be 0) : 0
+  Q-5b unreachable-citation clause    : 1
+
+--- [17] the structural withdrawal is really inline, not asserted (each must be >=1) ---
+  verbatim diff artifact spliced once : 1
+  control figures table               : 3
+  17 959 TAIL control scope           : 3
+  18 963 padding control scope        : 3
+
+--- [11] the RULING L sweep artifact exists and reports its own two non-trips ---
+47:SWEEP RESULT: 5/7 injected faults trip a guard; 2 do not.
+
+--- [12] the builder's OWN liveness probe is in its output (both must be present) ---
+1:LIVENESS PROBE on the BASE text : heading-uniqueness TRIPS  ({'C-8': 2})
+2:LIVENESS PROBE on the BASE text : lower-case c-ref  TRIPS  (['(c-3)'])
+
+--- [13] §7.35 present and last section of the draft ---
+6691:## §7.33 owner-w61 round 18: **Q36 DISPATCHED — family 2 on the rebuilt `ν ≤ 10` brief, judge chosen on reading quality under the superseded §7.31 (d). OPS-6 read back `90 267` code points against `90 267` `wc -m`, tail verbatim; OPS-7 model verified twice. A new UI hazard found at send time: an unannounced two-response A/B with no per-response model label** (2026-08-22, 20:5x CDT)
+6929:## §7.34 owner-w61 round 19: **Q36 HARVESTED — OPS-8 DISCHARGED FROM THE SERVER STORE: the send DID split, and BOTH panes are `Qwen3.8-Max`, so this is two samples of ONE family. `Response 2` is VOID on a wrong `H5` (stated `17`, truth `16`, settled by an independent reimplementation). `Response 1` passes the void gate 3/3-hand + 2 pre-registered `CANNOT COMPUTE` and returns **GAP / zero mathematics defects**, with J-SPEC CLEAN on the merits. NO family 2 this round** (2026-08-22, 21:1x–21:5x CDT)
+7306:## §7.35 owner-w61 round 20: **Q37 BUILT AND DISPATCHED TO GEMINI WEB — the fourth family, and the first time this seat has ever judged. RULING Q's brief pass ran on its first round and returned 6 real findings, one of them a stale-version defect three previous greps did not contain and one of them my own new rubric steering the verdict. AC5/AC6 landed with the two new builder asserts SHOWN LIVE against the very artifact that motivated them. OPS-6 discharged by WHOLE-DOCUMENT SHA-256. OPS-8 at this site is UNSOLVED and that is stated before the harvest, not after. The RULING L sweep owed from r19 is DONE and found one genuine self-satisfied invariant** (2026-08-22, 21:4x–22:0x CDT)
+
+--- [14] the r18 brief is UNTOUCHED (family-1 lineage evidence; md5 must not move) ---
+  r18 md5 : 3a2c17cb1a3a45cd741ae63cad35de3f   (must be 3a2c17cb1a3a45cd741ae63cad35de3f)

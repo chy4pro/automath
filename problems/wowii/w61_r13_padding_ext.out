@@ -1,0 +1,13 @@
+=== AB7: zero-padding inertness over the WHOLE nu<=6 enumerated class ===
+  E=0   base lists tested : 964
+  E>=1  base lists tested : 1745   (= S(1..6) = 0+3+24+110+397+1211 = 1745)
+  paddings per list       : (0, 1, 2, 3, 4, 8, 13)
+  (list, padding) pairs   : 18963
+  PADDING-DEPENDENT STEP COUNTS : 0
+
+  Reason (unchanged, and this is what carries the general case): at each step
+  the block is the d LARGEST non-head entries, so a zero can enter the block
+  only when fewer than d positive entries remain -- and in that case the run
+  aborts whether or not the zeros were written down.
+
+FAILURE_COUNT = 0

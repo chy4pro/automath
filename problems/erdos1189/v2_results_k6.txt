@@ -1,0 +1,5 @@
+[2, 4, 6, 8, 12, 24] sum=1.166667 lcm=24
+[2, 3, 4, 6, 8, 24] sum=1.416667 lcm=24
+[2, 3, 4, 8, 12, 24] sum=1.333333 lcm=24
+[2, 3, 6, 8, 12, 24] sum=1.250000 lcm=24
+# k=6 complete=True I(k)=4 sat_checked=255 pruned_private=42533 prefixes=8 elapsed=0.2s

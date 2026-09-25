@@ -1,0 +1,18 @@
+=== w61 r32 write gate on §7.47 (population BEFORE verdict) ===
+§7.47 chars 18431
+  L1 private local-part     0
+  L1 private email          0
+  L2 key-beside-row A1  0
+  L2 key-beside-row A2  0
+  L2 key-beside-row A3  0
+  L2 key-beside-row B1  0
+  L2 key-beside-row B2  0
+  L2 key-beside-row B3  0
+  G2 raw=5  marked-retraction=5  CARRIERS=0
+      +1    RETRACTION  'closes the S3 surface'
+      +1    RETRACTION  "closes WOWII-61's S3 surface"
+      +165  RETRACTION  "closes WOWII-61's S3 surface"
+      +167  RETRACTION  'closes the S3 surface'
+      +187  RETRACTION  'S3 surface does NOT clos'
+  POSITIVE CONTROLS, corrupted copy, SAME RUN: L1=True L2=True G2=True
+VERDICT: CLEAN

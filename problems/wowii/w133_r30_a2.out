@@ -1,0 +1,97 @@
+================================================================================================
+PART 0 -- CONTROLS.  Every helper fired where it MUST return a known value.
+================================================================================================
+  [OK] path P6: rad = 3 = ceil(5/2)  [I hand-wrote 2; the machine was right]  got=3 want=3
+  [OK] cycle C6: rad = 3                                                      got=3 want=3
+  [OK] C6: every vertex has a = 2, so peeling removes NOTHING                 got=True want=True
+  [OK] star K_{1,4}: the four leaves have a = 1                               got=[1, 1, 1, 1] want=[1, 1, 1, 1]
+  [OK] star K_{1,4}: peeling leaves the lone centre (a=0, not 1)  [I hand-wrote empty] got={0} want={0}
+  [OK] triangle-leaf chain: the pendant vertex 3 has a = 1                    got=1 want=1
+  [OK] triangle vertex 0 has a = deg - t = 2 - 1 = 1 too (a 'triangle-leaf', as the prompt warns) got=1 want=1
+
+================================================================================================
+PART 1 -- THE INEQUALITY HALF OF A2, fired on inputs where it MUST return True.
+          Hand proof in the docstring; this is its machine witness, not its substitute.
+================================================================================================
+    named control -- a girth-5 core plus a 2-vertex pendant hair (Q32-W's SHAPE):
+      Petersen + 2-hair                  |V|=12  |V'|=10  h=2  rad(G)=2   rad(G')=2   -> HOLDS
+  [OK] A2 HOLDS on the hairy control                                          got=True want=True
+  [OK] its peeling removes EXACTLY the two hair vertices                      got=[10, 11] want=[10, 11]
+  [OK] h = 2 there, as the ledger records for Q32-W                           got=2 want=2
+      and the trade is SLACK there: rad(G)=2 vs rad(G')+h=4 -- ONE hair cannot move
+      the radius, because the attachment vertex keeps its small eccentricity.
+      (Owner defect 3: my first version printed the word TIGHT on exactly this line.)
+    long hairs, where h is large and the bound must still hold:
+        hair length 1                    |V|=11  |V'|=10  h=1  rad(G)=2   rad(G')=2   -> HOLDS
+  [OK] A2 holds: Petersen + a 1-vertex hair                                   got=True want=True
+        hair length 2                    |V|=12  |V'|=10  h=2  rad(G)=2   rad(G')=2   -> HOLDS
+  [OK] A2 holds: Petersen + a 2-vertex hair                                   got=True want=True
+        hair length 3                    |V|=13  |V'|=10  h=3  rad(G)=3   rad(G')=2   -> HOLDS
+  [OK] A2 holds: Petersen + a 3-vertex hair                                   got=True want=True
+        hair length 4                    |V|=14  |V'|=10  h=4  rad(G)=3   rad(G')=2   -> HOLDS
+  [OK] A2 holds: Petersen + a 4-vertex hair                                   got=True want=True
+        hair length 5                    |V|=15  |V'|=10  h=5  rad(G)=4   rad(G')=2   -> HOLDS
+  [OK] A2 holds: Petersen + a 5-vertex hair                                   got=True want=True
+        hair length 6                    |V|=16  |V'|=10  h=6  rad(G)=4   rad(G')=2   -> HOLDS
+  [OK] A2 holds: Petersen + a 6-vertex hair                                   got=True want=True
+    randomised sweep -- BOUNDED (this line takes no exhaustive search):
+      random graphs with the hypotheses PRESENT: tested=1922  held=1922  skipped=2078
+  [OK] A2 held on every randomised instance where its hypotheses are present  got=1922 want=1922
+  [OK] the sweep was not vacuous (it actually tested a large population)      got=True want=True
+  [OK] the sweep actually exercised NON-TRIVIAL peeling at least once         got=True want=True
+
+================================================================================================
+PART 2 -- RULING CZ.  The inequality's HYPOTHESES are attacked one at a time, and each
+          attack is chosen to break THAT hypothesis and no other.  A proof whose
+          hypotheses cannot be shown to be load-bearing has not been located.
+================================================================================================
+  [OK] ATTACK 1a CONTROL: K3 has a = 1 at every vertex                        got=[1, 1, 1] want=[1, 1, 1]
+  [OK] ATTACK 1a: peeling K3 empties it                                       got=set() want=set()
+  [OK] ATTACK 1a: with G' EMPTY the gate DECLINES (returns None), it does not answer True got=None want=None
+  [OK] ATTACK 1b CONTROL: G itself is CONNECTED                               got=True want=True
+  [OK] ATTACK 1b: the bridge vertices peel                                    got=(False, False) want=(False, False)
+  [OK] ATTACK 1b: G' is DISCONNECTED, so rad(G') is undefined                 got=None want=None
+  [OK] ATTACK 1b: the gate DECLINES rather than answering True                got=None want=None
+      TIGHT shape h=1: |V|=20  rad(G)=3  rad(G')=2  h=1   rad(G')+h=3
+  [OK] h=1: peeling recovers exactly the core (Petersen, 10 vertices)         got=10 want=10
+  [OK] h=1: the measured h equals the hair length                             got=1 want=1
+  [OK] h=1: THE BOUND IS ATTAINED -- rad(G) == rad(G') + h                    got=3 want=3
+  [OK] h=1: A2 holds (equality is still <=)                                   got=True want=True
+  [OK] h=1: handed h-1 the gate FAILS, so h's magnitude is load-bearing and the bound cannot be improved got=False want=False
+      TIGHT shape h=2: |V|=30  rad(G)=4  rad(G')=2  h=2   rad(G')+h=4
+  [OK] h=2: peeling recovers exactly the core (Petersen, 10 vertices)         got=10 want=10
+  [OK] h=2: the measured h equals the hair length                             got=2 want=2
+  [OK] h=2: THE BOUND IS ATTAINED -- rad(G) == rad(G') + h                    got=4 want=4
+  [OK] h=2: A2 holds (equality is still <=)                                   got=True want=True
+  [OK] h=2: handed h-1 the gate FAILS, so h's magnitude is load-bearing and the bound cannot be improved got=False want=False
+      TIGHT shape h=3: |V|=40  rad(G)=5  rad(G')=2  h=3   rad(G')+h=5
+  [OK] h=3: peeling recovers exactly the core (Petersen, 10 vertices)         got=10 want=10
+  [OK] h=3: the measured h equals the hair length                             got=3 want=3
+  [OK] h=3: THE BOUND IS ATTAINED -- rad(G) == rad(G') + h                    got=5 want=5
+  [OK] h=3: A2 holds (equality is still <=)                                   got=True want=True
+  [OK] h=3: handed h-1 the gate FAILS, so h's magnitude is load-bearing and the bound cannot be improved got=False want=False
+  [OK] ATTACK 3: on a 3-hair the true h (distance to G') is 3                 got=3 want=3
+  [OK] ATTACK 3: 'peeling rounds' gives the SAME number here -- the mis-definition is NOT distinguishable on hair-shaped material, and that is reported, not hidden got=3 want=3
+  [OK] ATTACK 4 (RULING CY): the gate is NOT always-True -- it returned False on every h-1 probe above, and None on both ATTACK 1 forms got=True want=True
+
+================================================================================================
+PART 3 -- WHAT IS STILL OPEN.  Nothing below is proved here.
+================================================================================================
+  A2 closes IFF   path(G) >= path(G') + h   ... call it (A2-PATH).
+  Given F11 on G' (path(G') >= rad(G') + 4) and the inequality proved above,
+  (A2-PATH) yields  path(G) >= rad(G') + 4 + h >= rad(G) + 4,  which is Problem A.
+
+  (A2-PATH) IS NOT PROVED HERE AND IS NOT CLAIMED.  Two warnings the prompt already
+  carries and that any attempt must respect:
+    * a 'hair' can be a TRIANGLE-LEAF CHAIN, not only a bare pendant path -- PART 0
+      exhibits a triangle whose vertex has a = 1, so peeling can bite into a triangle;
+    * the peeled material must be converted into h extra INDUCED-path vertices
+      attached to a path OF G', and inducedness across the join is the hard part:
+      a hair vertex may be adjacent to several vertices of the G'-path.
+  RULING DB is NOT invoked: (A2-PATH) has not been through the hand-computability
+  filter and this round does not put it through.
+
+================================================================================================
+CHECKS: 44   FAILURES: 0
+ALL CHECKS PASS.
+================================================================================================

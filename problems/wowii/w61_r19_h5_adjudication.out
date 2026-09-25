@@ -1,0 +1,48 @@
+=== calibration of the independent Havel-Hakimi run (brief A.0) ===
+  residue(K2 ) = 1    expected 1    PASS
+  residue(C3 ) = 1    expected 1    PASS
+  residue(C4 ) = 2    expected 2    PASS
+  residue(C5 ) = 2    expected 2    PASS
+  residue(C6 ) = 2    expected 2    PASS
+  residue(C7 ) = 3    expected 3    PASS
+  CALIBRATION PASS = True
+
+=== H5 value list, rebuilt from (C-1) ===
+  nu=11, L=13, E=3, e=[2, 1], lam=[5, 4, 4, 3, 3]
+  list  = [15, 14, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 5, 4, 4, 3, 3]
+  n     = 19  sum = 204
+  == key file's printed list ? True
+  == judge's transcribed list? True
+
+=== INDEPENDENT step count ===
+  step  1: head 15 -> [13, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 4, 4, 3, 3, 3]
+  step  2: head 13 -> [11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 4, 3, 3, 3, 3]
+  step  3: head 11 -> [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 4, 3, 3, 3, 3]
+  step  4: head 10 -> [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 4, 3, 3, 3, 3]
+  step  5: head  9 -> [8, 8, 8, 8, 8, 8, 8, 8, 8, 4, 3, 3, 3, 3]
+  step  6: head  8 -> [7, 7, 7, 7, 7, 7, 7, 7, 4, 3, 3, 3, 3]
+  step  7: head  7 -> [6, 6, 6, 6, 6, 6, 6, 4, 3, 3, 3, 3]
+  step  8: head  6 -> [5, 5, 5, 5, 5, 5, 4, 3, 3, 3, 3]
+  step  9: head  5 -> [4, 4, 4, 4, 4, 4, 3, 3, 3, 3]
+  step 10: head  4 -> [4, 3, 3, 3, 3, 3, 3, 3, 3]
+  step 11: head  4 -> [3, 3, 3, 3, 2, 2, 2, 2]
+  step 12: head  3 -> [2, 2, 2, 2, 2, 2, 2]
+  step 13: head  2 -> [2, 2, 2, 2, 1, 1]
+  step 14: head  2 -> [2, 1, 1, 1, 1]
+  step 15: head  2 -> [1, 1, 0, 0]
+  step 16: head  1 -> [0, 0, 0]
+  INDEPENDENT steps = 16
+  PROJECT   steps = 16
+  agree            = True
+
+  KEY says   : 16 ; clears in exactly L=13 ? NO
+  JUDGE says : 17 ; clears in exactly L=13 ? NO
+  ADJUDICATION: correct step count = 16 -> key CORRECT, judge WRONG
+
+=== RULING L fault-injection probe: is the H5 assertion LIVE? ===
+  F1: drop one 13 from the list              -> steps None  LIVE (changed)
+  F2: bump lam_1 5 -> 6                      -> steps None  LIVE (changed)
+  F3: use L=13 escapes e=[3] not [2,1]       -> steps 16    *** TAUTOLOGICAL (unchanged) ***
+  F4: all-zero list (must be 0 steps)        -> steps 0     LIVE (changed)
+  probes tripping the assertion: 3/4
+  VERDICT: H5 step-count assertion is LIVE

@@ -1,0 +1,5 @@
+[atlas n<=7] graphs=554 checks=2194 SL_fail=0 SL1_fail=0 L1=110
+[+random n=8..14 dense] graphs=3022 checks=20325 SL_fail=0 SL1_fail=0 L1=232
+[+near-split] graphs=5913 checks=26514 SL_fail=0 SL1_fail=0 L1=1240
+[minslack per L] {0: 0, 1: 1, 2: 1, 3: 2, 4: 2, 5: 3, 6: 3, 7: 4, 8: 5, 9: 6, 10: 7, 11: 9, 12: 12}
+[L=1 profile (deg_A(b0), mbar)] {(1, 0): 1240}

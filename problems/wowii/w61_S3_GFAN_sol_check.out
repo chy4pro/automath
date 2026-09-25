@@ -1,0 +1,337 @@
+=== CALIBRATION (printed before all review numbers) ===
+K2 residue: computed=1 expected=1 pass=True
+C3 residue: computed=1 expected=ceil(3/3)=1 pass=True
+C4 residue: computed=2 expected=ceil(4/3)=2 pass=True
+C5 residue: computed=2 expected=ceil(5/3)=2 pass=True
+C6 residue: computed=2 expected=ceil(6/3)=2 pass=True
+C7 residue: computed=3 expected=ceil(7/3)=3 pass=True
+C8 residue: computed=3 expected=ceil(8/3)=3 pass=True
+C9 residue: computed=3 expected=ceil(9/3)=3 pass=True
+CALIBRATION PASS=True
+
+=== REFUTE-FIRST FINITE ENUMERATION (generated, not copied) ===
+nu=1: partitions=2; E0-tail-survivors=1; boundary-pairs=0; boundary-survivors=0; Eplus-tested=0; Eplus-survivors=0; Eplus-not-killed-by-FAN6prime=0
+  E0 tail: ['2']
+  boundary: []
+  Eplus survivors:
+nu=2: partitions=5; E0-tail-survivors=1; boundary-pairs=1; boundary-survivors=1; Eplus-tested=3; Eplus-survivors=1; Eplus-not-killed-by-FAN6prime=0
+  E0 tail: ['4']
+  boundary: [(3, '4', (4, 0))]
+  Eplus survivors:
+    L3 E1 e=1 lambda=3 steps=3 FAN6prime=(True, 3, 0)
+nu=3: partitions=11; E0-tail-survivors=1; boundary-pairs=3; boundary-survivors=1; Eplus-tested=24; Eplus-survivors=4; Eplus-not-killed-by-FAN6prime=0
+  E0 tail: ['6']
+  boundary: [(5, '6', (6, 0))]
+  Eplus survivors:
+    L4 E1 e=1 lambda=5 steps=4 FAN6prime=(True, 5, 0)
+    L5 E1 e=1 lambda=5 steps=5 FAN6prime=(True, 5, 0)
+    L4 E2 e=2 lambda=3+1 steps=4 FAN6prime=(True, 3, 1)
+    L4 E2 e=1+1 lambda=4 steps=4 FAN6prime=(True, 4, 0)
+nu=4: partitions=22; E0-tail-survivors=1; boundary-pairs=7; boundary-survivors=2; Eplus-tested=110; Eplus-survivors=9; Eplus-not-killed-by-FAN6prime=0
+  E0 tail: ['8']
+  boundary: [(7, '8', (8, 0)), (5, '7+1', (7, 1))]
+  Eplus survivors:
+    L6 E1 e=1 lambda=7 steps=6 FAN6prime=(True, 7, 0)
+    L7 E1 e=1 lambda=7 steps=7 FAN6prime=(True, 7, 0)
+    L5 E2 e=2 lambda=5+1 steps=5 FAN6prime=(True, 5, 1)
+    L5 E2 e=1+1 lambda=6 steps=5 FAN6prime=(True, 6, 0)
+    L6 E2 e=2 lambda=5+1 steps=6 FAN6prime=(True, 5, 1)
+    L6 E2 e=1+1 lambda=6 steps=6 FAN6prime=(True, 6, 0)
+    L5 E3 e=3 lambda=3+1+1 steps=5 FAN6prime=(True, 3, 1)
+    L5 E3 e=2+1 lambda=4+1 steps=5 FAN6prime=(True, 4, 1)
+    L5 E3 e=1+1+1 lambda=5 steps=5 FAN6prime=(True, 5, 0)
+nu=5: partitions=42; E0-tail-survivors=1; boundary-pairs=14; boundary-survivors=2; Eplus-tested=397; Eplus-survivors=20; Eplus-not-killed-by-FAN6prime=0
+  E0 tail: ['10']
+  boundary: [(9, '10', (10, 0)), (7, '9+1', (9, 1))]
+  Eplus survivors:
+    L6 E1 e=1 lambda=8+1 steps=6 FAN6prime=(True, 8, 1)
+    L8 E1 e=1 lambda=9 steps=8 FAN6prime=(True, 9, 0)
+    L9 E1 e=1 lambda=9 steps=9 FAN6prime=(True, 9, 0)
+    L6 E2 e=2 lambda=7+1 steps=6 FAN6prime=(True, 7, 1)
+    L7 E2 e=2 lambda=7+1 steps=7 FAN6prime=(True, 7, 1)
+    L7 E2 e=1+1 lambda=8 steps=7 FAN6prime=(True, 8, 0)
+    L8 E2 e=2 lambda=7+1 steps=8 FAN6prime=(True, 7, 1)
+    L8 E2 e=1+1 lambda=8 steps=8 FAN6prime=(True, 8, 0)
+    L6 E3 e=3 lambda=5+1+1 steps=6 FAN6prime=(True, 5, 1)
+    L6 E3 e=2+1 lambda=6+1 steps=6 FAN6prime=(True, 6, 1)
+    L6 E3 e=1+1+1 lambda=7 steps=6 FAN6prime=(True, 7, 0)
+    L7 E3 e=3 lambda=5+1+1 steps=7 FAN6prime=(True, 5, 1)
+    L7 E3 e=2+1 lambda=6+1 steps=7 FAN6prime=(True, 6, 1)
+    L7 E3 e=1+1+1 lambda=7 steps=7 FAN6prime=(True, 7, 0)
+    L6 E4 e=4 lambda=3+1+1+1 steps=6 FAN6prime=(True, 3, 1)
+    L6 E4 e=3+1 lambda=4+1+1 steps=6 FAN6prime=(True, 4, 1)
+    L6 E4 e=2+2 lambda=4+2 steps=6 FAN6prime=(True, 4, 2)
+    L6 E4 e=2+2 lambda=4+1+1 steps=6 FAN6prime=(True, 4, 1)
+    L6 E4 e=2+1+1 lambda=5+1 steps=6 FAN6prime=(True, 5, 1)
+    L6 E4 e=1+1+1+1 lambda=6 steps=6 FAN6prime=(True, 6, 0)
+nu=6: partitions=77; E0-tail-survivors=1; boundary-pairs=26; boundary-survivors=3; Eplus-tested=1211; Eplus-survivors=38; Eplus-not-killed-by-FAN6prime=0
+  E0 tail: ['12']
+  boundary: [(11, '12', (12, 0)), (9, '11+1', (11, 1)), (7, '10+1+1', (10, 1))]
+  Eplus survivors:
+    L8 E1 e=1 lambda=10+1 steps=8 FAN6prime=(True, 10, 1)
+    L10 E1 e=1 lambda=11 steps=10 FAN6prime=(True, 11, 0)
+    L11 E1 e=1 lambda=11 steps=11 FAN6prime=(True, 11, 0)
+    L7 E2 e=1+1 lambda=9+1 steps=7 FAN6prime=(True, 9, 1)
+    L8 E2 e=2 lambda=9+1 steps=8 FAN6prime=(True, 9, 1)
+    L9 E2 e=2 lambda=9+1 steps=9 FAN6prime=(True, 9, 1)
+    L9 E2 e=1+1 lambda=10 steps=9 FAN6prime=(True, 10, 0)
+    L10 E2 e=2 lambda=9+1 steps=10 FAN6prime=(True, 9, 1)
+    L10 E2 e=1+1 lambda=10 steps=10 FAN6prime=(True, 10, 0)
+    L7 E3 e=3 lambda=7+1+1 steps=7 FAN6prime=(True, 7, 1)
+    L7 E3 e=2+1 lambda=8+1 steps=7 FAN6prime=(True, 8, 1)
+    L8 E3 e=3 lambda=7+1+1 steps=8 FAN6prime=(True, 7, 1)
+    L8 E3 e=2+1 lambda=8+1 steps=8 FAN6prime=(True, 8, 1)
+    L8 E3 e=1+1+1 lambda=9 steps=8 FAN6prime=(True, 9, 0)
+    L9 E3 e=3 lambda=7+1+1 steps=9 FAN6prime=(True, 7, 1)
+    L9 E3 e=2+1 lambda=8+1 steps=9 FAN6prime=(True, 8, 1)
+    L9 E3 e=1+1+1 lambda=9 steps=9 FAN6prime=(True, 9, 0)
+    L7 E4 e=4 lambda=5+1+1+1 steps=7 FAN6prime=(True, 5, 1)
+    L7 E4 e=3+1 lambda=6+1+1 steps=7 FAN6prime=(True, 6, 1)
+    L7 E4 e=2+2 lambda=6+2 steps=7 FAN6prime=(True, 6, 2)
+    L7 E4 e=2+2 lambda=6+1+1 steps=7 FAN6prime=(True, 6, 1)
+    L7 E4 e=2+1+1 lambda=7+1 steps=7 FAN6prime=(True, 7, 1)
+    L7 E4 e=1+1+1+1 lambda=8 steps=7 FAN6prime=(True, 8, 0)
+    L8 E4 e=4 lambda=5+1+1+1 steps=8 FAN6prime=(True, 5, 1)
+    L8 E4 e=3+1 lambda=6+1+1 steps=8 FAN6prime=(True, 6, 1)
+    L8 E4 e=2+2 lambda=6+2 steps=8 FAN6prime=(True, 6, 2)
+    L8 E4 e=2+2 lambda=6+1+1 steps=8 FAN6prime=(True, 6, 1)
+    L8 E4 e=2+1+1 lambda=7+1 steps=8 FAN6prime=(True, 7, 1)
+    L8 E4 e=1+1+1+1 lambda=8 steps=8 FAN6prime=(True, 8, 0)
+    L7 E5 e=5 lambda=3+1+1+1+1 steps=7 FAN6prime=(True, 3, 1)
+    L7 E5 e=4+1 lambda=4+1+1+1 steps=7 FAN6prime=(True, 4, 1)
+    L7 E5 e=3+2 lambda=4+2+1 steps=7 FAN6prime=(True, 4, 2)
+    L7 E5 e=3+2 lambda=4+1+1+1 steps=7 FAN6prime=(True, 4, 1)
+    L7 E5 e=3+1+1 lambda=5+1+1 steps=7 FAN6prime=(True, 5, 1)
+    L7 E5 e=2+2+1 lambda=5+2 steps=7 FAN6prime=(True, 5, 2)
+    L7 E5 e=2+2+1 lambda=5+1+1 steps=7 FAN6prime=(True, 5, 1)
+    L7 E5 e=2+1+1+1 lambda=6+1 steps=7 FAN6prime=(True, 6, 1)
+    L7 E5 e=1+1+1+1+1 lambda=7 steps=7 FAN6prime=(True, 7, 0)
+
+=== AFTER-THE-FACT COMPARISON WITH PRINTED COUNTS ===
+partition counts: computed=[2, 5, 11, 22, 42, 77] printed=[2, 5, 11, 22, 42, 77] match=True
+boundary counts: computed=[0, 1, 3, 7, 14, 26] printed=[0, 1, 3, 7, 14, 26] match=True
+Eplus shape counts S(nu): computed=[0, 3, 24, 110, 397, 1211] printed=[0, 3, 24, 110, 397, 1211] match=True
+Eplus survivor counts: computed=[0, 1, 4, 9, 20, 38] printed=[0, 1, 4, 9, 20, 38] match=True
+
+=== FULL RECOMPUTED s0 TABLE ===
+nu=1
+  lambda=2 s0=2 lambda1=2 tail-survives=True FAN6prime=(True, 2, 0)
+  lambda=1+1 s0=2 lambda1=1 tail-survives=False FAN6prime=(False, 1, 1)
+nu=2
+  lambda=4 s0=4 lambda1=4 tail-survives=True FAN6prime=(True, 4, 0)
+  lambda=3+1 s0=4 lambda1=3 tail-survives=False FAN6prime=(True, 3, 1)
+  lambda=2+2 s0=3 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+1+1 s0=3 lambda1=2 tail-survives=False FAN6prime=(False, 2, 1)
+  lambda=1+1+1+1 s0=3 lambda1=1 tail-survives=False FAN6prime=(False, 1, 1)
+nu=3
+  lambda=6 s0=6 lambda1=6 tail-survives=True FAN6prime=(True, 6, 0)
+  lambda=5+1 s0=6 lambda1=5 tail-survives=False FAN6prime=(True, 5, 1)
+  lambda=4+2 s0=5 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+1+1 s0=5 lambda1=4 tail-survives=False FAN6prime=(True, 4, 1)
+  lambda=3+3 s0=4 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+2+1 s0=4 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+1+1+1 s0=5 lambda1=3 tail-survives=False FAN6prime=(True, 3, 1)
+  lambda=2+2+2 s0=4 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+1+1 s0=4 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+1+1+1+1 s0=4 lambda1=2 tail-survives=False FAN6prime=(False, 2, 1)
+  lambda=1+1+1+1+1+1 s0=4 lambda1=1 tail-survives=False FAN6prime=(False, 1, 1)
+nu=4
+  lambda=8 s0=8 lambda1=8 tail-survives=True FAN6prime=(True, 8, 0)
+  lambda=7+1 s0=8 lambda1=7 tail-survives=False FAN6prime=(True, 7, 1)
+  lambda=6+2 s0=7 lambda1=6 tail-survives=False FAN6prime=(True, 6, 2)
+  lambda=6+1+1 s0=7 lambda1=6 tail-survives=False FAN6prime=(True, 6, 1)
+  lambda=5+3 s0=6 lambda1=5 tail-survives=False FAN6prime=(True, 5, 3)
+  lambda=5+2+1 s0=6 lambda1=5 tail-survives=False FAN6prime=(True, 5, 2)
+  lambda=5+1+1+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(True, 5, 1)
+  lambda=4+4 s0=5 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+3+1 s0=5 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+2+2 s0=6 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+2+1+1 s0=6 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+1+1+1+1 s0=6 lambda1=4 tail-survives=False FAN6prime=(True, 4, 1)
+  lambda=3+3+2 s0=5 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+1+1 s0=5 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+2+2+1 s0=5 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+2+1+1+1 s0=5 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+1+1+1+1+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(True, 3, 1)
+  lambda=2+2+2+2 s0=4 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+2+1+1 s0=5 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+1+1+1+1 s0=5 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+1+1+1+1+1+1 s0=5 lambda1=2 tail-survives=False FAN6prime=(False, 2, 1)
+  lambda=1+1+1+1+1+1+1+1 s0=5 lambda1=1 tail-survives=False FAN6prime=(False, 1, 1)
+nu=5
+  lambda=10 s0=10 lambda1=10 tail-survives=True FAN6prime=(True, 10, 0)
+  lambda=9+1 s0=10 lambda1=9 tail-survives=False FAN6prime=(True, 9, 1)
+  lambda=8+2 s0=9 lambda1=8 tail-survives=False FAN6prime=(True, 8, 2)
+  lambda=8+1+1 s0=9 lambda1=8 tail-survives=False FAN6prime=(True, 8, 1)
+  lambda=7+3 s0=8 lambda1=7 tail-survives=False FAN6prime=(True, 7, 3)
+  lambda=7+2+1 s0=8 lambda1=7 tail-survives=False FAN6prime=(True, 7, 2)
+  lambda=7+1+1+1 s0=9 lambda1=7 tail-survives=False FAN6prime=(True, 7, 1)
+  lambda=6+4 s0=7 lambda1=6 tail-survives=False FAN6prime=(True, 6, 4)
+  lambda=6+3+1 s0=7 lambda1=6 tail-survives=False FAN6prime=(True, 6, 3)
+  lambda=6+2+2 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 2)
+  lambda=6+2+1+1 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 2)
+  lambda=6+1+1+1+1 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 1)
+  lambda=5+5 s0=6 lambda1=5 tail-survives=False FAN6prime=(False, 5, 5)
+  lambda=5+4+1 s0=6 lambda1=5 tail-survives=False FAN6prime=(False, 5, 4)
+  lambda=5+3+2 s0=7 lambda1=5 tail-survives=False FAN6prime=(True, 5, 3)
+  lambda=5+3+1+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(True, 5, 3)
+  lambda=5+2+2+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(True, 5, 2)
+  lambda=5+2+1+1+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(True, 5, 2)
+  lambda=5+1+1+1+1+1 s0=8 lambda1=5 tail-survives=False FAN6prime=(True, 5, 1)
+  lambda=4+4+2 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+4+1+1 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+3+3 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+3+2+1 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+3+1+1+1 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+2+2+2 s0=6 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+2+2+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+2+1+1+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+1+1+1+1+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(True, 4, 1)
+  lambda=3+3+3+1 s0=5 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+2+2 s0=5 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+2+1+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+1+1+1+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+2+2+2+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+2+2+1+1+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+2+1+1+1+1+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+1+1+1+1+1+1+1 s0=7 lambda1=3 tail-survives=False FAN6prime=(True, 3, 1)
+  lambda=2+2+2+2+2 s0=5 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+2+2+1+1 s0=5 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+2+1+1+1+1 s0=6 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+1+1+1+1+1+1 s0=6 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+1+1+1+1+1+1+1+1 s0=6 lambda1=2 tail-survives=False FAN6prime=(False, 2, 1)
+  lambda=1+1+1+1+1+1+1+1+1+1 s0=6 lambda1=1 tail-survives=False FAN6prime=(False, 1, 1)
+nu=6
+  lambda=12 s0=12 lambda1=12 tail-survives=True FAN6prime=(True, 12, 0)
+  lambda=11+1 s0=12 lambda1=11 tail-survives=False FAN6prime=(True, 11, 1)
+  lambda=10+2 s0=11 lambda1=10 tail-survives=False FAN6prime=(True, 10, 2)
+  lambda=10+1+1 s0=11 lambda1=10 tail-survives=False FAN6prime=(True, 10, 1)
+  lambda=9+3 s0=10 lambda1=9 tail-survives=False FAN6prime=(True, 9, 3)
+  lambda=9+2+1 s0=10 lambda1=9 tail-survives=False FAN6prime=(True, 9, 2)
+  lambda=9+1+1+1 s0=11 lambda1=9 tail-survives=False FAN6prime=(True, 9, 1)
+  lambda=8+4 s0=9 lambda1=8 tail-survives=False FAN6prime=(True, 8, 4)
+  lambda=8+3+1 s0=9 lambda1=8 tail-survives=False FAN6prime=(True, 8, 3)
+  lambda=8+2+2 s0=10 lambda1=8 tail-survives=False FAN6prime=(True, 8, 2)
+  lambda=8+2+1+1 s0=10 lambda1=8 tail-survives=False FAN6prime=(True, 8, 2)
+  lambda=8+1+1+1+1 s0=10 lambda1=8 tail-survives=False FAN6prime=(True, 8, 1)
+  lambda=7+5 s0=8 lambda1=7 tail-survives=False FAN6prime=(True, 7, 5)
+  lambda=7+4+1 s0=8 lambda1=7 tail-survives=False FAN6prime=(True, 7, 4)
+  lambda=7+3+2 s0=9 lambda1=7 tail-survives=False FAN6prime=(True, 7, 3)
+  lambda=7+3+1+1 s0=9 lambda1=7 tail-survives=False FAN6prime=(True, 7, 3)
+  lambda=7+2+2+1 s0=9 lambda1=7 tail-survives=False FAN6prime=(True, 7, 2)
+  lambda=7+2+1+1+1 s0=9 lambda1=7 tail-survives=False FAN6prime=(True, 7, 2)
+  lambda=7+1+1+1+1+1 s0=10 lambda1=7 tail-survives=False FAN6prime=(True, 7, 1)
+  lambda=6+6 s0=7 lambda1=6 tail-survives=False FAN6prime=(False, 6, 6)
+  lambda=6+5+1 s0=7 lambda1=6 tail-survives=False FAN6prime=(False, 6, 5)
+  lambda=6+4+2 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 4)
+  lambda=6+4+1+1 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 4)
+  lambda=6+3+3 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 3)
+  lambda=6+3+2+1 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 3)
+  lambda=6+3+1+1+1 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 3)
+  lambda=6+2+2+2 s0=8 lambda1=6 tail-survives=False FAN6prime=(True, 6, 2)
+  lambda=6+2+2+1+1 s0=9 lambda1=6 tail-survives=False FAN6prime=(True, 6, 2)
+  lambda=6+2+1+1+1+1 s0=9 lambda1=6 tail-survives=False FAN6prime=(True, 6, 2)
+  lambda=6+1+1+1+1+1+1 s0=9 lambda1=6 tail-survives=False FAN6prime=(True, 6, 1)
+  lambda=5+5+2 s0=7 lambda1=5 tail-survives=False FAN6prime=(False, 5, 5)
+  lambda=5+5+1+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(False, 5, 5)
+  lambda=5+4+3 s0=7 lambda1=5 tail-survives=False FAN6prime=(False, 5, 4)
+  lambda=5+4+2+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(False, 5, 4)
+  lambda=5+4+1+1+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(False, 5, 4)
+  lambda=5+3+3+1 s0=7 lambda1=5 tail-survives=False FAN6prime=(True, 5, 3)
+  lambda=5+3+2+2 s0=7 lambda1=5 tail-survives=False FAN6prime=(True, 5, 3)
+  lambda=5+3+2+1+1 s0=8 lambda1=5 tail-survives=False FAN6prime=(True, 5, 3)
+  lambda=5+3+1+1+1+1 s0=8 lambda1=5 tail-survives=False FAN6prime=(True, 5, 3)
+  lambda=5+2+2+2+1 s0=8 lambda1=5 tail-survives=False FAN6prime=(True, 5, 2)
+  lambda=5+2+2+1+1+1 s0=8 lambda1=5 tail-survives=False FAN6prime=(True, 5, 2)
+  lambda=5+2+1+1+1+1+1 s0=8 lambda1=5 tail-survives=False FAN6prime=(True, 5, 2)
+  lambda=5+1+1+1+1+1+1+1 s0=9 lambda1=5 tail-survives=False FAN6prime=(True, 5, 1)
+  lambda=4+4+4 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+4+3+1 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+4+2+2 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+4+2+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+4+1+1+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(False, 4, 4)
+  lambda=4+3+3+2 s0=6 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+3+3+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+3+2+2+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+3+2+1+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+3+1+1+1+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(False, 4, 3)
+  lambda=4+2+2+2+2 s0=7 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+2+2+2+1+1 s0=7 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+2+2+1+1+1+1 s0=8 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+2+1+1+1+1+1+1 s0=8 lambda1=4 tail-survives=False FAN6prime=(True, 4, 2)
+  lambda=4+1+1+1+1+1+1+1+1 s0=8 lambda1=4 tail-survives=False FAN6prime=(True, 4, 1)
+  lambda=3+3+3+3 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+3+2+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+3+1+1+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+2+2+2 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+2+2+1+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+2+1+1+1+1 s0=7 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+3+1+1+1+1+1+1 s0=7 lambda1=3 tail-survives=False FAN6prime=(False, 3, 3)
+  lambda=3+2+2+2+2+1 s0=6 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+2+2+2+1+1+1 s0=7 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+2+2+1+1+1+1+1 s0=7 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+2+1+1+1+1+1+1+1 s0=7 lambda1=3 tail-survives=False FAN6prime=(False, 3, 2)
+  lambda=3+1+1+1+1+1+1+1+1+1 s0=8 lambda1=3 tail-survives=False FAN6prime=(True, 3, 1)
+  lambda=2+2+2+2+2+2 s0=6 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+2+2+2+1+1 s0=6 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+2+2+1+1+1+1 s0=6 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+2+1+1+1+1+1+1 s0=7 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+2+1+1+1+1+1+1+1+1 s0=7 lambda1=2 tail-survives=False FAN6prime=(False, 2, 2)
+  lambda=2+1+1+1+1+1+1+1+1+1+1 s0=7 lambda1=2 tail-survives=False FAN6prime=(False, 2, 1)
+  lambda=1+1+1+1+1+1+1+1+1+1+1+1 s0=7 lambda1=1 tail-survives=False FAN6prime=(False, 1, 1)
+
+=== TAIL CONTROL ===
+pairs=1817 mismatches=0
+
+=== ZERO-PADDING CONTROL ===
+base-lists=480 paddings=[0, 1, 2, 3, 4, 8] mismatches=0
+
+=== GFAN2 DIRECT CONTROL ===
+L=3: exact-L rows=[(0, '(empty)', '4', (True, 4, 0)), (1, '1', '3', (True, 3, 0))]
+L=4: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=5: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=6: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=7: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=8: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=9: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=10: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=11: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+L=12: exact-L rows=[(0, '(empty)', '4', (True, 4, 0))]
+finite surviving shapes before FAN6prime: [('tail', (4,), (True, 4, 0)), ('boundary-L3', (4,), (True, 4, 0)), ('Eplus-L3-E1-e1', (3,), (True, 3, 0))]
+un-killed shapes: []
+
+=== RIG CONSTRUCTION AND CLASS-ORDER WITNESS VALIDATION ===
+vertices: ['a0', 'a1', 'a2', 'a3', 'b0', 'b1', 'b2', 'b3']
+edges: [('a0', 'b0'), ('a0', 'b1'), ('a0', 'b2'), ('a0', 'b3'), ('a1', 'b1'), ('a2', 'b2'), ('a3', 'b1'), ('a3', 'b2'), ('b0', 'b1'), ('b0', 'b2'), ('b0', 'b3'), ('b1', 'b3'), ('b2', 'b3')]
+1 connected: True
+2 A maximum by exhaustive subset enumeration: True A= ('a0', 'a1', 'a2', 'a3') alpha= 4 one maximum set= ('a0', 'a1', 'a2', 'a3')
+3 diameter: 4 equals4= True
+4 forest number: 5 alpha+1= 5 witness= ('a0', 'a1', 'a2', 'a3', 'b0') pass= True
+5 non-forest: True
+6 residue-vs-alpha: 3 4 equal(reductio)= False
+B_lo: ('b0', 'b3') B_hi: ('b1', 'b2') B-nonedges: [('b1', 'b2')]
+RIG conclusions: {'(a) each low deg_A=1': True, '(b) common unique a0': True, '(c) a0 adjacent all B': True, '(d) all B nonedges in Bhi and nu>=1': True, '(e) A-a0 avoids Blo': True}
+
+=== COUNTERFACTUAL AVAILABILITY CONTROL ===
+instance: nu=2 L=3 E=1 e=(1,) lambda=(2,) list=(4, 3, 3, 3, 2)
+lambda-mass=2 required-mass=3 mass-hypothesis-pass=False
+HH: valid=False steps=None residue=None trace=[(4, 3, 3, 3, 2), (2, 2, 2, 1), (1, 1, 1), (1, 0)]
+availability: FAN-4prime unavailable (its exact mass conclusion fails); FAN-8prime and FAN-6prime unavailable because this shape is not established to arise from GFan under the reductio.
+
+=== LITERAL nu=0 COUNTEREXAMPLE TO THEOREM GFANnu ===
+graph: K5
+vertices: ('a0', 'b0', 'b1', 'b2', 'b3')
+edges: [('a0', 'b0'), ('a0', 'b1'), ('a0', 'b2'), ('a0', 'b3'), ('b0', 'b1'), ('b0', 'b2'), ('b0', 'b3'), ('b1', 'b2'), ('b1', 'b3'), ('b2', 'b3')]
+1 connected: True
+2 A maximum by exhaustive subset enumeration: True A= ('a0',) alpha= 1 one maximum set= ('a0',)
+3 diameter: 1 equals4= False
+4 forest number: 2 alpha+1= 2 witness= ('a0', 'b0') pass= True
+5 non-forest: True
+6 residue-vs-alpha: 1 1 equal(reductio)= True degree-sequence= [4, 4, 4, 4, 4]
+parameters: tau= 4 L= 4 nu= 0 B_lo= ('b0', 'b1', 'b2', 'b3') B_hi= ()
+GFan clauses: {'B_lo nonempty': True, 'all B_lo B-universal': True, 'all B_lo deg_A=1': True, 'common a0 adjacent all B': True, 'all nu nonedges inside B_hi': True, 'all B_hi high': True, 'A-prime avoids B_lo': True} all-pass= True
+literal theorem range nu<=6 and L>=nu+1: True
+COUNTEREXAMPLE PASS= True
+load-bearing omitted condition: diam=4 would exclude this graph and, via Observation R1, force nu>=1.
+
+CHECKER COMPLETED

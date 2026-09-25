@@ -1,0 +1,39 @@
+=== owner-w61 round 17 -- ROSTER DIFF, BOTH DIRECTIONS (planner RW61-1(b)) ===
+
+A. nu <= 6 -- the 72-in-1745 obligation.  MINE vs SOL
+   (sol = w61_S3_GFAN_sol_check.out, the artifact current confidence rests on;
+    its .py was NOT read while w61_r17_roster_recompute.py was written)
+  E>=1 survivor roster                           |MINE| = 72     |SOL| = 72    
+      MINE \ SOL : EMPTY
+      SOL \ MINE : EMPTY
+  E=0 TAIL survivors                             |MINE| = 6      |SOL| = 6     
+      MINE \ SOL : EMPTY
+      SOL \ MINE : EMPTY
+  E=0 boundary survivors                         |MINE| = 9      |SOL| = 9     
+      MINE \ SOL : EMPTY
+      SOL \ MINE : EMPTY
+
+B. nu <= 6 -- MINE vs the DRAFT's PRINTED roster (SS7.22 (c-2)/(c-3)/(c-4)),
+   i.e. the text a judge actually reads, parsed straight out of the draft
+  E>=1 survivor roster                           |MINE| = 72     |DRAFT| = 72    
+      MINE \ DRAFT : EMPTY
+      DRAFT \ MINE : EMPTY
+  E=0 boundary survivors                         |MINE| = 9      |DRAFT| = 9     
+      MINE \ DRAFT : EMPTY
+      DRAFT \ MINE : EMPTY
+  s0 column, all 159 printed values              printed = 159    recomputed = 159   
+      value mismatches : EMPTY
+
+C. nu = 7..10 -- the 910-in-77373 obligation.
+   NO ROSTER EXISTS ANYWHERE ON DISK for this range: sol never covered it and
+   w61_r12_gfannu_ext.out prints COUNTS only.  So the diff here is a count diff
+   against EXT, and the round-17 run is the first printed roster.
+  nu |   EXT: bdpair bdsurv  tested surv |  MINE: bdpair bdsurv  tested surv | agree?
+   7 |          45      3    3340   75 |           45      3    3340   75 | AGREE
+   8 |          75      4    8457  137 |           75      4    8457  137 | AGREE
+   9 |         120      4   20126  251 |          120      4   20126  251 | AGREE
+  10 |         187      5   45450  447 |          187      5   45450  447 | AGREE
+
+D. printed-roster count for nu = 7..10, produced this round : 910 rows
+
+DIFF_FAILURE_COUNT = 0

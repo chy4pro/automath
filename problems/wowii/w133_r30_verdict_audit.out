@@ -1,0 +1,83 @@
+================================================================================================
+PART 0 -- THE GUARD PARAGRAPH.  Located by its own heading, quoted only by measurement.
+================================================================================================
+  [OK] the brief contains a paragraph headed 'A GUARD THAT CANNOT MOVE'         got=True want=True
+  [OK] the guard DECLARES the frame tables un-re-runnable                       got=True want=True
+  [OK] the guard NAMES the frame tables' numeric range                          got=True want=True
+  [OK] the guard PRESCRIBES the free-bit-product check                          got=True want=True
+
+================================================================================================
+PART 1 -- WAS THE VERDICT DETERMINED?  The test is DA's, one level up: could the
+          returned verdict have been produced from a passage of the shipped bytes
+          WITHOUT doing the work the brief asked for?
+================================================================================================
+  [OK] the returned GAP's subject ('frame counts') is the guard's own subject ('frame tables') got=True want=True
+  [OK] the guard names the flagged minimum 32 and the flagged maximum 872       got=(True, True) want=(True, True)
+  VERDICT-DETERMINEDNESS: a reviewer who read ONLY the guard paragraph could answer
+  'GAP, at the frame tables' -- location AND method both supplied. The top-level
+  verdict is therefore DETERMINED in RULING DA's sense and grades little.
+
+================================================================================================
+PART 2 -- THE RESIDUE.  The guard does not say WHICH tables satisfy the check it
+          prescribes.  Every factorisation the reviewer returned is checked here for
+          (a) absence from the brief and (b) arithmetic correctness.
+================================================================================================
+  count    in brief?        product OK?    printed in brief?          prime factorisation
+  49       yes              yes            NOT printed                [7, 7]
+  [OK] count 49 is really in the brief                                          got=True want=True
+  [OK] reviewer's product for 49 is arithmetically correct                      got=True want=True
+  64       yes              yes            NOT printed                [2, 2, 2, 2, 2, 2]
+  [OK] count 64 is really in the brief                                          got=True want=True
+  [OK] reviewer's product for 64 is arithmetically correct                      got=True want=True
+  256      yes              yes            NOT printed                [2, 2, 2, 2, 2, 2, 2, 2]
+  [OK] count 256 is really in the brief                                         got=True want=True
+  [OK] reviewer's product for 256 is arithmetically correct                     got=True want=True
+  686      yes              yes            NOT printed                [2, 7, 7, 7]
+  [OK] count 686 is really in the brief                                         got=True want=True
+  [OK] reviewer's product for 686 is arithmetically correct                     got=True want=True
+  [OK] 64's factorisation '2^6' IS printed in the brief (so it is transcription, not work) got=True want=True
+  [OK] no '7 x 7' product form is printed anywhere in the brief, so 49 and 686 both had to
+        be PRODUCED by the reviewer (digit-boundary aware; the naive substring test
+        matched '77' inside '177 316' and was wrong -- owner defect, fixed, reported) got=False want=False
+
+  DECLINED counts -- was each decline JUSTIFIED?  A count carrying a LARGE PRIME factor
+  cannot be a product of small free-bit multiplicities at all, so the brief's own
+  prescribed check is INAPPLICABLE to it.
+  count    prime factorisation      largest prime  decline
+  832      2x2x2x2x2x2x13           13             STRONGLY justified: not a bit-product
+  858      2x3x11x13                13             STRONGLY justified: not a bit-product
+  872      2x2x2x109                109            STRONGLY justified: not a bit-product
+  32       2x2x2x2x2                2              weak: bit-shaped, the brief merely omits the bit count
+  384      2x2x2x2x2x2x2x3          3              weak: bit-shaped, the brief merely omits the bit count
+  [OK] (Z3)'s three counts 832/858/872 all carry a prime factor >= 11           got=[832, 858, 872] want=[832, 858, 872]
+  [OK] (Z5)'s two counts 32/384 are bit-shaped (2-smooth or 3-smooth)           got=[32, 384] want=[32, 384]
+
+================================================================================================
+PART 3 -- SECOND DEFECT IN THE BRIEF, and it is this line's own.
+================================================================================================
+  The guard prescribes: 'a table's N frames is the product of the free bits it
+  describes'.  832 = 2^6x13, 858 = 2x3x11x13, 872 = 2^3x109.  A free-bit product is a
+  product of small multiplicities; 13, 11 and 109 cannot arise that way.  Those three
+  tables are POST-DEDUPLICATION counts (the brief itself says 'every identification
+  pattern (v' may itself be a neighbour of v; their far neighbours may coincide)'),
+  so the prescribed check CANNOT succeed on them by construction.
+  [OK] the brief's (Z3) prose does describe identification/de-duplication       got=True want=True
+  [OK] so the prescribed consistency check is inapplicable to >=3 of the brief's own tables got=3 want=3
+  CONSEQUENCE: the brief invited the reviewer to run a check, on tables where the check
+  cannot pass, and then received the failure as the verdict.  That is a defect in the
+  DISPATCH, not in the reviewer, and not in the mathematics.
+
+================================================================================================
+PART 4 -- RULING CZ.  This file's own predicates fired on adversarial inputs.
+================================================================================================
+  [OK] POSITIVE: the real returned subject 'frame tables' IS named by the guard got=True want=True
+  [OK] NEGATIVE (hardest): the guard does NOT name '152 neighbourhood configurations' got=False want=False
+  [OK] CONTROL: that other region really does exist in the brief (so the negative is live) got=True want=True
+  [OK] NEGATIVE: the guard does NOT name the (Z2) table's count 152             got=False want=False
+  So the gate fires on the guard's CONTENT, not on the presence of enumeration talk:
+  it distinguishes the region the guard singles out from a region it does not.
+
+================================================================================================
+CHECKS: 24   FAILURES: 0
+ALL CHECKS PASS.
+================================================================================================

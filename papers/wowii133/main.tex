@@ -1,0 +1,2507 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[T1]{fontenc}
+\usepackage[htt]{hyphenat}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\ecc}{\operatorname{ecc}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\pth}{\operatorname{path}}
+\newcommand{\comp}{\operatorname{comp}}
+\newcommand{\ball}{\operatorname{ball}}
+\newcommand{\gir}{\operatorname{girth}}
+
+% ---- verification-status markers -------------------------------------------
+\emergencystretch=4em
+\hbadness=10000
+\newcommand{\statusbox}[1]{{\small\sloppy\textsf{[#1]}}}
+\newcommand{\PRV}[1]{\statusbox{proved here; assertions machine-checked by \texttt{#1}}}
+\newcommand{\PRVn}{\statusbox{proved here}}
+\newcommand{\REV}[1]{\statusbox{proved here; machine-checked by \texttt{#1};
+\textbf{two-family review}}}
+\newcommand{\AD}[1]{\statusbox{machine-assisted proof, re-derived here;
+machine-checked by \texttt{#1}; \textbf{one adversarial review pass}}}
+\newcommand{\MV}[1]{\statusbox{machine-verified: \texttt{#1}}}
+% ----------------------------------------------------------------------------
+
+\title{Partial Results on the WOWII-133 Graffiti Conjecture\\
+{\large The $C_4$-free branch below $\lfloor \ell \rfloor = 4$}}
+
+\author{Haoyu Chen\thanks{%
+\textbf{Disclosure of the production pipeline.}
+This paper reports the certified by-products of an autonomous, still-running attack on
+Conjecture~133 of the \emph{Written on the Wall II} list. \emph{The conjecture is not
+resolved here, and this paper does not claim to resolve it.} Every mathematical statement
+below was produced by automated systems: an orchestrating agent (Claude Fable~5) that set
+the attack targets, adjudicated the returning reports line by line, executed the promotion
+protocol of \S\ref{sec:conventions} and drafted this document; a free exploration channel
+(Qwen3.8-Max, web interface) that was given self-contained task briefs and whose output was
+never adopted without independent re-derivation; adversarial reviewers drawn from a model
+family disjoint from the one that produced the argument under review (Claude Opus-family
+instances and Qwen3.8-Max, each run blind or diff-scoped, in isolation, forbidden to consult
+the project's other files); and machine checkers (purpose-written C and Python enumerators
+and independent from-scratch re-verifiers). No human supplied a definition, a lemma, a proof
+idea, or a correction. Provenance is recorded per result in \S\ref{sec:provenance}: several
+of the arguments below originated in the free channel and were re-proved before being
+admitted, and one of the paper's results --- Theorem~\ref{thm:g45}, a refutation --- was
+found by a reviewer whose assignment was to look for defects. Several of the campaign's own
+working claims were refuted by its own later rounds; those self-refutations are recorded in
+\S\ref{sec:limits} rather than quietly deleted. Responsibility for what follows rests with
+the reader who re-runs the scripts of Appendix~\ref{app:artifacts}.}}
+
+\date{22 August 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Conjecture~133 of the \emph{Written on the Wall II} series, produced by the Graffiti.pc
+conjecture-making program, asserts that a connected graph $G$ satisfies
+$\rad(G) + \lfloor \ell(G)\rfloor^{c} \le \pth(G)$, where $\pth(G)$ is the order of a
+longest induced path, $\ell(G)$ is the average over $v$ of the independence number of the
+open neighbourhood $N(v)$, and $c = 1$ if $G$ is $C_4$-free and $c = 0$ otherwise. We report
+partial progress. The $C_4$-containing branch and the whole range $\lfloor \ell\rfloor \le 2$
+are settled unconditionally. For the first open band $\lfloor \ell\rfloor = 3$ we prove that
+a counterexample of minimum order must have radius at least $4$: the radius-$2$ layer is
+closed by a fibre-counting theorem, and the radius-$3$ layer is closed by a rigidity
+analysis of the induced $6$-cycle that such a counterexample is forced to carry, whose engine
+is an unconditional rigidity lemma --- in a $C_4$-free graph with no induced $P_6$, a vertex
+outside an induced $C_6$ has $0$ or $2$ neighbours on the cycle, and if $2$ they are
+antipodal. At radius $\ge 5$ in the band $\lfloor \ell\rfloor \ge 4$ we close the case
+$\mu \ge 2$ and reduce what remains to a single configuration, which we are careful to note
+is not exhibited by any graph we know; a $54$-vertex witness refutes the reformulation of that
+residual which we had been treating as equivalent to it. We also prove the $D = 2$ case of the
+natural strengthening
+$\pth \ge \diam + 4$ for $C_4$-free graphs of diameter $D$ with $\ell > 3$, and, in the band
+$\lfloor \ell\rfloor \ge 4$, that a $C_4$-free graph all of whose peripheral geodesics have
+low-independence side-neighbours satisfies $\ell < 4$. A deliberate part of the report is
+negative: we record an infinite family showing that no two-endpoint local extension lemma
+can reach $\rad + k$ for $k \ge 4$, a $150$-vertex witness killing the layered-counting route
+at radius $3$, and two counterexamples showing that the deep endpoint-extension lemma
+available at geodesic length $d \ge 4$ is false at $d = 3$ both with and without the natural
+repair hypothesis. Every statement carries an explicit epistemic marker, and the verification
+scripts are inventoried in an appendix.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The conjecture}
+
+Throughout, $G$ is a finite simple graph on $n = |V(G)| \ge 2$ vertices with $m$ edges and
+$T$ triangles, $d(v)$ is the degree of $v$, $t(v)$ the number of triangles through $v$,
+$\delta$ and $\Delta$ the minimum and maximum degree, $\rad$, $\diam$, $\ecc$ the radius,
+diameter and eccentricity, and $N(v)$ the \emph{open} neighbourhood of $v$. We write
+\[
+  a(v) := \alpha\bigl(G[N(v)]\bigr), \qquad
+  \ell(G) := \frac1n \sum_{v \in V} a(v), \qquad
+  \mu(G) := \min_{v} a(v),
+\]
+where $\alpha$ is the independence number, and $\pth(G)$ for the number of \emph{vertices} of
+a longest induced (chordless) path of $G$. We call $a(v)$ the \emph{$a$-value} of $v$ and
+$\ell$ the \emph{neighbourhood independence average}.
+
+We take the statement of the conjecture from its Lean transcription in the
+\texttt{formal-conjectures} corpus, file
+\texttt{FormalConjectures/} \texttt{WrittenOnTheWallII/} \texttt{GraphConjecture133.lean},
+where it is recorded as conjecture $133$ of the \emph{Written on the Wall II} series produced by the Graffiti.pc
+conjecture-making program of E.~DeLaVi\~na. We have not consulted the original \emph{Written
+on the Wall II} document; the numbering and the attribution here are those of the Lean file,
+and the reader who needs the primary source should check it. The Lean statement reads
+
+\begin{verbatim}
+theorem conjecture133 (G : SimpleGraph a) [DecidableRel G.Adj]
+    (h : G.Connected) :
+    let rad := G.radius.toNat
+    let hasC4 := exists a b c d, (pairwise distinct) and
+      G.Adj a b and G.Adj b c and G.Adj c d and G.Adj d a
+    let cC4 : N := if hasC4 then 0 else 1
+    (rad : R) + (floor (l G) : R) ^ cC4 <= (path G : R)
+\end{verbatim}
+
+Three points of the transcription matter and were checked against the Lean sources before any
+mathematics was attempted. First, \texttt{path} is the induced-path order, not the
+``average distance'' homonym that the same corpus uses elsewhere. Second, \texttt{hasC4} asks
+for a $4$-cycle as a \emph{subgraph}, chords allowed; equivalently, $G$ fails to be
+$C_4$-free exactly when some two distinct vertices have two common neighbours. This
+\emph{strong} form of $C_4$-freeness is the one used everywhere below, and the distinction is
+load-bearing: several lemmas are false under the induced-only reading. Third, the exponent
+$c \in \{0,1\}$ is applied through \texttt{Monoid.npow}, so on the $C_4$-containing branch the
+right-hand side is $\rad + 1$ whatever $\ell$ is.
+
+Both sides being integers cast into $\R$, the Lean goal is equivalent to the conjunction of
+
+\begin{itemize}
+\item \textbf{(C133-a)} \; $G$ connected with a $4$-cycle: \; $\pth(G) \ge \rad(G) + 1$;
+\item \textbf{(C133-b)} \; $G$ connected and $C_4$-free: \;
+      $\pth(G) \ge \rad(G) + \lfloor \ell(G)\rfloor$.
+\end{itemize}
+
+\subsection{What is proved here, and what is not}
+
+The conjecture is open. Table~\ref{tab:status} is the honest ledger; the numbers in it are
+justified in the sections named.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Region & Status & Where \\
+\midrule
+$G$ contains a $4$-cycle & closed & Thm.~\ref{thm:A} \\
+$C_4$-free, $\lfloor\ell\rfloor \le 1$ & closed & Thm.~\ref{thm:B} \\
+$C_4$-free, $\lfloor\ell\rfloor = 2$ & closed & Thm.~\ref{thm:D}, Cor.~\ref{cor:D1} \\
+$C_4$-free, $\lfloor\ell\rfloor = 3$, $\mu \ge 2$ & closed & Thm.~\ref{thm:gplus},
+   Cor.~\ref{cor:gplus1} \\
+$C_4$-free, $\lfloor\ell\rfloor = 3$, $\rad = 2$ & closed & Thm.~\ref{thm:g7},
+   Cor.~\ref{cor:g8} \\
+$C_4$-free, $\lfloor\ell\rfloor = 3$, $\rad = 3$ & closed \emph{for a minimum-order
+   counterexample} & Thm.~\ref{thm:r3} \\
+$C_4$-free, $\lfloor\ell\rfloor = 3$, $\rad \ge 4$ & \textbf{open}; reduced to
+   Problem~\ref{prob:rpd} & \S\ref{sec:peeling} \\
+$C_4$-free, $\lfloor\ell\rfloor \ge 4$, $\rad \ge 5$, $\mu \ge 2$ & closed &
+   Thm.~\ref{thm:g42} \\
+$C_4$-free, $\lfloor\ell\rfloor \ge 4$, otherwise & \textbf{open}; partial results in
+   \S\ref{sec:adopted}, \S\ref{sec:pocket2} & Table~\ref{tab:pocket2} \\
+\bottomrule
+\end{tabular}
+\caption{Status of Conjecture~133 after the work reported here.}
+\label{tab:status}
+\end{table}
+
+The main contributions are these.
+
+\begin{enumerate}
+\item \textbf{The closed half, with sharp constants.} Theorem~\ref{thm:A} settles (C133-a) in
+four lines. Theorem~\ref{thm:D} --- every connected $C_4$-free graph of radius $\ge 2$ has
+$\pth \ge \rad + 2$ --- settles $\lfloor \ell\rfloor \le 2$. Both are tight on the five
+extremal graphs $K_2, K_3, C_5, C_6$ and Petersen (\S\ref{sec:falsification}), which is what
+forbids any argument that loses a constant.
+
+\item \textbf{An endpoint-extension calculus and the band $\lfloor\ell\rfloor = 3$ with no
+$a = 1$ vertex.} Lemmas~\ref{lem:g10}, \ref{lem:g1}, \ref{lem:g9} extend a geodesic by
+one or two vertices from data at its ends. Theorem~\ref{thm:gplus} combines them:
+$\mu \ge 2$ together with one vertex of $a$-value $\ge 3$ forces $\pth \ge \rad + 3$. This
+alone closes every $C_4$-free graph on at most $13$ vertices (\S\ref{sec:falsification}).
+
+\item \textbf{The radius-$2$ layer.} Theorem~\ref{thm:g7}: a connected $C_4$-free graph with
+$\rad = 2$ and $\ell \ge 3$ always contains a pair of vertices at distance $2$ with
+$a$-values $(\ge 3, \ge 2)$. The proof is a fibre decomposition of the ball of radius $2$
+around a high vertex followed by an exact count. Together with Lemma~\ref{lem:g1} this closes
+$\rad = 2$.
+
+\item \textbf{The radius-$3$ layer} (\S\ref{sec:r3}, the longest part of the paper). A
+minimum-order counterexample of radius $3$ is reduced --- by a peeling induction whose
+residual is made explicit --- to a graph $C$ that is $C_4$-free, has $\rad(C) = 2$,
+$\diam(C) = 3$, $\ell(C) > 3$, no induced $P_6$, and the extra property (R3b) that every
+vertex of $a$-value $\ge 3$ has eccentricity $\le 2$. Two theorems empty that class.
+Theorem~\ref{thm:g26} shows no vertex of such a graph has $a$-value $1$ and eccentricity $3$;
+Theorem~\ref{thm:g35} then shows the surviving branch is empty, by way of
+Lemma~\ref{lem:g32}, an unconditional rigidity fact about induced $6$-cycles in $P_6$-free
+$C_4$-free graphs which collapses the configuration to at most nine vertices.
+
+\item \textbf{The integer form of the floor-free strengthening at $D = 2$.}
+Theorem~\ref{thm:g12}: $C_4$-free, $\diam = 2$, $\ell > 3$ imply $\pth \ge 6 = \rad + 4$.
+This is a non-trivial instance of the real-valued strengthening
+$\ell \le \pth - \rad$ (\S\ref{sec:aux}) and is the $D = 2$ case of Problem~\ref{prob:rpd},
+to which all of $\rad \ge 4$ has been reduced.
+
+\item \textbf{The band $\lfloor\ell\rfloor \ge 4$} (\S\ref{sec:adopted}). Three results at the
+lower reviewed tier: the deep endpoint-extension lemma known at geodesic length $d \ge 5$ is
+extended to $d = 4$ unconditionally (Lemma~\ref{lem:g36}) and to $d = 3$ under one extra
+hypothesis (Lemma~\ref{lem:g37}); and Theorem~\ref{thm:g38}, a global counting theorem: a
+connected $C_4$-free graph in which every geodesic of length $\ge \rad$ has all its usable
+side-neighbours of $a$-value $\le 3$ satisfies $\ell < 4$. Contrapositively, every $C_4$-free
+graph with $\ell > 4$ supplies, at every radius, a peripheral geodesic with a side-neighbour
+of $a$-value $\ge 4$.
+
+\item \textbf{The same band at radius $\ge 5$} (\S\ref{sec:pocket2}), at the higher
+two-family reviewed tier. Theorem~\ref{thm:g42} closes the slice $\rad \ge 5$,
+$\mu \ge 2$ outright, and Lemma~\ref{lem:g43} with Corollary~\ref{cor:g44} reduces what
+remains at $\rad \ge 5$ to a single configuration --- one that no known graph realises, a
+limit on the reduction which Remark~\ref{rem:nonexhibited} states rather than files away.
+Proposition~\ref{prop:w2} supplies the regime's hard positive control, a $660$-vertex Cayley
+graph of $\mathrm{PSL}(2,11)$; Theorem~\ref{thm:g48} refutes, by a $54$-vertex witness, the
+reformulation of the residual that the campaign had been treating as equivalent, and kills
+with the same graph the assumption that peeling preserves the radius.
+
+\item \textbf{Negative results} (\S\ref{sec:limits}), reported because they close routes.
+An infinite family $T_m$ of trees shows that ``both endpoints of $a$-value $\ge k$ implies
+$\pth \ge \rad + k$'' is false for every $k \ge 4$. A $150$-vertex graph (Hoffman--Singleton
+with two pendant vertices at each vertex) has $\lfloor\ell\rfloor = 3$, radius $3$, and
+\emph{no} pair at distance $\ge \rad$ with $a$-values $(\ge 3, \ge 2)$, which kills the
+layered-counting route above radius $2$. Two ten-vertex graphs refute the $d = 3$ analogue of
+Lemma~\ref{lem:g36}, one without and one with the natural repair hypothesis
+(Theorem~\ref{thm:g45}); the conclusion is that the free local route at $d = 3$ is closed and
+a global hypothesis must be paid for. Finally we record two defects that the review protocol
+found in the project's own earlier text --- a statement stated more widely than its proof
+supported, and an arithmetic error in the peeling bookkeeping --- together with their
+repairs, since both are instructive.
+\end{enumerate}
+
+Nothing here is formalised in Lean, and no claim below should be read as a formal
+verification. The scripts of Appendix~\ref{app:artifacts} check assertions over stated finite
+ranges and on named explicit graphs; the proofs are ordinary mathematics.
+
+\subsection{Verification conventions and epistemic markers}\label{sec:conventions}
+
+Because this is an automated campaign's output, the status of each statement is recorded
+explicitly and is \emph{not} uniform. Four markers are used, attached to every numbered
+assertion; definitions and open problems assert nothing and carry none.
+
+\begin{itemize}
+\item \PRV{script} --- the proof is reproduced here in full, and the assertions it makes are
+checked by the named script over exactly the range stated at the point of use, usually an
+exhaustive table of small graphs plus explicit large witnesses. A script never checks more
+than the statement it is attached to.
+
+\item \REV{script} --- as above, and in addition the statement passed the campaign's
+\emph{two-family} adversarial protocol: an independent reviewer from a model family disjoint
+from the one that produced the argument, run blind (given the text and nothing else, with no
+access to the project's other files and no internet, permitted to write and run its own
+verification code), \emph{plus} a second, diff-scoped pass over the same material by a
+different reviewer, both returning no surviving defect at any joint classified as
+mathematics. Every such statement in this paper survived at least one reviewer finding a
+\emph{real} defect elsewhere in its neighbourhood; the repairs are in the text.
+
+\item \AD{script} --- \emph{machine-assisted}: the argument originated in an automated solve
+attempt in the free exploration channel, was re-derived line by line here before admission
+(and in two places repaired --- the repairs are marked in the proofs), is machine-checked as
+above, and passed \emph{one} adversarial review pass returning no mathematics defect. This is
+a strictly weaker tier than \REV{}: one review family, not two. The three results of
+\S\ref{sec:adopted} carry it, and the reader should treat them accordingly.
+
+\item \MV{script} --- a purely computational statement: an explicit finite graph together
+with its invariants, or a completed bounded sweep. It is evidence of exactly the stated scope
+and of nothing beyond it. In particular a \emph{failed} bounded search is never a proof of
+impossibility, and \S\ref{sec:limits} records the one occasion on which the campaign
+misreported such a search: a sweep over $1112$ local \emph{frames} that found no
+counterexample was written up in a way that read as evidence about \emph{graphs}, and a graph
+counterexample was found later (Theorem~\ref{thm:g45}).
+\end{itemize}
+
+Two further conventions. No result below was obtained with a SAT solver; the only exhaustive
+searches are over labelled small-graph tables (explicitly stated), over bounded local
+configurations with all edge patterns, and over the neighbourhoods of named explicit graphs.
+And where a numerical claim is a \emph{lower bound} on $\pth$ obtained by an early-exit
+search, we say ``$\pth \ge k$'' rather than ``$\pth = k$''.
+
+\subsection{Provenance of the arguments}\label{sec:provenance}
+
+The results below were produced by three channels, and it matters which.
+
+The orchestrating agent produced, and is solely responsible for,
+Lemmas~\ref{lem:g10}--\ref{lem:g9}, Theorems~\ref{thm:gplus}, \ref{thm:g12},
+Lemmas~\ref{lem:g13}--\ref{lem:g34}, Theorems~\ref{thm:g26} and \ref{thm:g35}, the
+reductions of \S\ref{sec:peeling}, and every negative result of \S\ref{sec:limits} except
+Theorem~\ref{thm:g45}.
+
+The free exploration channel produced first drafts of the extension lemma
+Lemma~\ref{lem:g1}, of the radius-$2$ theorem Theorem~\ref{thm:g7}, and of the three results
+of \S\ref{sec:adopted}. None was adopted as written: each was re-derived independently before
+admission, three claimed solutions of the residual problem of \S\ref{sec:r3} were checked and
+\emph{rejected}, and the eventual proof of Theorem~\ref{thm:g35} runs by a route
+(Lemma~\ref{lem:g32}) that the free channel never produced. Two garbled justifications inside
+the arguments of \S\ref{sec:adopted} were replaced by correct ones during re-derivation and
+are marked in place.
+
+The adversarial reviewers produced no positive result by design, with one exception: the
+reviewer assigned to \S\ref{sec:adopted} constructed the graph $H$ of
+Theorem~\ref{thm:g45}, which refutes a target that the orchestrating agent's own sweep had
+recorded as open. That is recorded here as a result of the review channel.
+
+Section~\ref{sec:pocket2} splits the same way. Lemmas~\ref{lem:g41}, \ref{lem:g43},
+Theorem~\ref{thm:g42} and Corollary~\ref{cor:g44} are the orchestrating agent's, and they
+are the only results in this paper produced by that agent which have been through
+\emph{two} adversarial passes from disjoint reviewer families. The witness $Q$ of
+Theorem~\ref{thm:g48} came from the free exploration channel, which was asked for the
+residual configuration and returned instead a refutation of the reformulation; its recipe was
+re-derived and every invariant recomputed here before admission, and its accompanying general
+claims were not adopted. The control $W_2$ of Proposition~\ref{prop:w2} is the orchestrating
+agent's.
+
+\subsection{Related routes and what is known to be impossible}
+
+Section~\ref{sec:limits} lists five named obstacles, of which one deserves mention up front.
+Every bound proved in \S\ref{sec:closed} is driven by $\delta$ or by $\rad$, and both are
+destroyed by a single local modification while $\ell$ moves by $O(1/n)$: Hoffman--Singleton
+with one edge subdivided is $C_4$-free with $n = 51$, $\delta = 2$, $\rad = 3$,
+$\ell = 6.902$, so that $\max(\rad + 2, \delta + 2, \rad + \lfloor \delta/2\rfloor) = 5$
+while the conjecture demands $9$. Hence Theorems~\ref{thm:D}, \ref{thm:E}, \ref{thm:F}
+\emph{cannot} be combined into a proof; a correct proof must use a quantity as robust as
+$\ell$ itself. That observation is why the campaign moved to the $a$-value calculus of
+\S\ref{sec:calculus}.
+
+\section{Preliminaries}\label{sec:prelim}
+
+\begin{lemma}[local matching]\label{lem:matching}
+\PRV{wowii133\_verify.c}
+Let $G$ be $C_4$-free. Then for every $v$ the graph $G[N(v)]$ has maximum degree $\le 1$,
+i.e.\ it is a disjoint union of $t(v)$ edges and $d(v) - 2t(v)$ isolated vertices.
+Consequently
+\[
+  a(v) = d(v) - t(v), \qquad \lceil d(v)/2\rceil \le a(v) \le d(v), \qquad
+  \ell(G) = \frac{2m - 3T}{n}.
+\]
+\end{lemma}
+
+\begin{proof}
+If $u \in N(v)$ had two neighbours $w_1, w_2 \in N(v)$ then $v w_1 u w_2 v$ is a $4$-cycle on
+four distinct vertices. So $G[N(v)]$ is a matching plus isolated vertices; an edge inside
+$N(v)$ is exactly a triangle through $v$, so there are $t(v)$ of them. A maximum independent
+set takes one endpoint of each edge and every isolated vertex, giving
+$t(v) + (d(v) - 2t(v)) = d(v)-t(v)$. Summing and using $\sum_v t(v) = 3T$, $\sum_v d(v) = 2m$
+gives the last identity.
+\end{proof}
+
+So (C133-b) is the statement $\pth(G) \ge \rad(G) + \lfloor (2m-3T)/n \rfloor$; for graphs of
+girth $\ge 5$ it is $\pth \ge \rad + \lfloor \bar d\rfloor$ with $\bar d$ the average degree.
+Note $\ell \ge 1$ always, so the open region is $\lfloor \ell\rfloor \ge 3$, i.e.\
+$2m - 3T \ge 3n$.
+
+The following vocabulary is used throughout. For $v$ in a $C_4$-free graph, the
+\emph{components of $N(v)$} always means the components of $G[N(v)]$, which by
+Lemma~\ref{lem:matching} are single vertices and single edges; their number is exactly
+$a(v)$. A \emph{geodesic} $u_0 \dots u_d$ is a shortest path, hence automatically induced. A
+vertex $x \in N(u_0)$ is a \emph{usable side-neighbour} of the end $u_0$ of that geodesic if
+$x$ lies outside $u_1$'s component of $N(u_0)$; one exists iff $a(u_0) \ge 2$, and a usable
+side-neighbour satisfies $x \not\sim u_1$ by definition. A vertex $h$ with $a(h) \ge 3$ is
+called \emph{high}, or a \emph{hub}, and $H := \{v : a(v) \ge 3\}$.
+
+\begin{lemma}[classification of $a = 1$]\label{lem:g2}
+\PRV{wowii133\_gplus.c}
+Let $G$ be $C_4$-free. Then $a(v) = 1$ if and only if $N(v)$ is a clique of size $\le 2$,
+i.e.\ $v$ is a leaf, or $d(v) = 2$ and the two neighbours of $v$ are adjacent. We call the
+latter a \emph{triangle-leaf}.
+\end{lemma}
+
+\begin{proof}
+$a(v)$ is the number of components of $G[N(v)]$, which is a matching plus isolated vertices;
+it equals $1$ iff there is exactly one component, i.e.\ one vertex or one edge.
+\end{proof}
+
+\section{The closed part of the conjecture}\label{sec:closed}
+
+\begin{theorem}[the $C_4$-containing branch]\label{thm:A}
+\PRV{wowii133\_verify.c}
+For every connected $G$, $\pth(G) \ge \rad(G) + 1$. In particular (C133-a) holds.
+\end{theorem}
+
+\begin{proof}
+Let $c$ be a centre, $\ecc(c) = r = \rad$, and let $z$ satisfy $\mathrm{dist}(c,z) = r$. A
+shortest $c$--$z$ path $u_0\dots u_r$ is induced, since a chord $u_iu_j$ with $j \ge i+2$
+would give a shorter $c$--$z$ walk. It has $r+1$ vertices.
+\end{proof}
+
+\begin{theorem}\label{thm:B}
+\PRVn
+If $\lfloor \ell(G)\rfloor \le 1$ then (C133-b) holds.
+\end{theorem}
+
+\begin{proof}
+Immediate from Theorem~\ref{thm:A}.
+\end{proof}
+
+\begin{theorem}[radius $\le 1$]\label{thm:C}
+\PRV{wowii133\_verify.c}
+If $G$ is connected, $C_4$-free, $n \ge 2$ and $\rad(G) \le 1$, then $\ell(G) < 2$; hence
+$\lfloor \ell(G)\rfloor = 1$ and (C133-b) holds.
+\end{theorem}
+
+\begin{proof}
+Let $v$ dominate, so $N(v) = V \setminus \{v\}$. By Lemma~\ref{lem:matching} $G - v$ is a
+matching: say $a$ edges and $b$ isolated vertices, $n = 1 + 2a + b$. Then $a(v) = a+b$; a
+vertex $u$ matched to $u'$ has $N(u) = \{v, u'\}$ with $v \sim u'$, so $a(u) = 1$; an
+unmatched $u$ has $N(u) = \{v\}$, $a(u) = 1$. Hence
+$\sum_w a(w) = (a+b) + 2a + b = 3a + 2b < 2(1+2a+b) = 2n$.
+\end{proof}
+
+\begin{theorem}[radius $\ge 2$]\label{thm:D}
+\PRV{wowii133\_verify.c}
+If $G$ is connected, $C_4$-free and $\rad(G) \ge 2$, then $\pth(G) \ge \rad(G) + 2$.
+\end{theorem}
+
+\begin{proof}
+Write $r = \rad(G)$.
+
+\emph{Case 1: $\diam(G) \ge r+1$.} A geodesic between two vertices at distance $\diam$ is
+induced and has $\diam + 1 \ge r+2$ vertices.
+
+\emph{Case 2: $\diam(G) = r$.} Since $r \le \ecc(v) \le \diam$ for every $v$, every vertex is
+a centre.
+
+\emph{Case 2a: some vertex $c$ has $d(c) \ge 3$.} Pick $z$ with
+$\mathrm{dist}(c,z) = \ecc(c) = r \ge 2$ and a geodesic $c = u_0, u_1, \dots, u_r = z$. At
+most one vertex of $N(c)\setminus\{u_1\}$ is adjacent to $u_1$: two such vertices $x, x'$
+would give the $4$-cycle $c\,x\,u_1\,x'$. As $|N(c)\setminus\{u_1\}| \ge 2$, choose
+$x \in N(c)\setminus\{u_1\}$ with $x \not\sim u_1$. Then $x, c, u_1, \dots, u_r$ is an
+induced path on $r+2$ vertices: $x \ne u_i$ for all $i$; $x \not\sim u_1$ by choice;
+$x\not\sim u_2$, else $c\,x\,u_2\,u_1$ is a $4$-cycle; and $x \not\sim u_i$ for $i \ge 3$
+since $\mathrm{dist}(x,u_i) \ge i-1 \ge 2$.
+
+\emph{Case 2b: $\Delta \le 2$.} Then $G$ is a path or a cycle. A path $P_n$ has
+$\diam = n-1$ and $\rad = \lceil (n-1)/2\rceil$, so $\diam = \rad$ forces $n \le 2$,
+contradicting $\rad \ge 2$. So $G = C_n$; $C_3$ has radius $1$ and $C_4$ is not $C_4$-free,
+so $n \ge 5$, and $\pth(C_n) = n-1 \ge \lfloor n/2\rfloor + 2 = \rad + 2$.
+\end{proof}
+
+\begin{corollary}\label{cor:D1}
+\PRVn
+Conjecture~133 holds for every connected graph containing a $4$-cycle, and for every
+connected $C_4$-free graph with $\lfloor \ell(G)\rfloor \le 2$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:A}; and for $C_4$-free $G$: if $\lfloor\ell\rfloor \le 1$ use
+Theorem~\ref{thm:B}; if $\lfloor\ell\rfloor = 2$ then $\rad \ge 2$ by Theorem~\ref{thm:C},
+and Theorem~\ref{thm:D} applies.
+\end{proof}
+
+Theorem~\ref{thm:D} is tight on $C_5$ and $C_6$. Two greedy bounds complete the picture of
+what elementary arguments give.
+
+\begin{theorem}[greedy induced path]\label{thm:E}
+\PRV{wowii133\_verify.c}
+{\rm (E1)} If $G$ is $C_4$-free and triangle-free (girth $\ge 5$) with $\delta \ge 2$, then
+$\pth(G) \ge \delta + 2$.
+{\rm (E2)} If $G$ is $C_4$-free with $\delta \ge 3$, then $\pth(G) \ge \delta + 1$.
+\end{theorem}
+
+\begin{proof}
+Grow an induced path $v_1 \dots v_k$ greedily. A vertex $x \in N(v_k)$ fails to extend it iff
+$x$ lies on the path or $x \sim v_i$ for some $i \le k-1$. Count failures: $v_{k-1}$ is the
+only path vertex in $N(v_k)$; a common neighbour of $v_{k-1}$ and $v_k$ is a triangle-mate,
+of which $C_4$-freeness allows at most one, and none if $G$ is triangle-free; $v_{k-1}$ is
+already a common neighbour of $v_{k-2}$ and $v_k$, so $C_4$-freeness gives no other; and each
+$v_i$ with $i \le k-3$ has at most one common neighbour with $v_k$. Hence an extension exists
+as soon as $d(v_k) \ge k$ ($C_4$-free, $k \ge 3$), resp.\ $d(v_k) \ge k-1$ and $\ge 2$
+(girth $\ge 5$). With min degree $\delta$ the greedy runs to $k = \delta+1$, resp.\
+$k = \delta + 2$.
+\end{proof}
+
+E1 is tight for $C_5$ and for Petersen. In particular every regular graph of girth $\ge 5$
+and radius $2$ satisfies the conjecture, since there $\ell = \delta$ exactly and
+$\pth \ge \delta + 2 = \rad + \ell$; this covers all Moore graphs of diameter $2$.
+
+\begin{theorem}[geodesic $+$ greedy]\label{thm:F}
+\PRV{wowii133\_verify.c}
+If $G$ is connected $C_4$-free with $\delta \ge 4$, then
+$\pth(G) \ge \rad(G) + \lfloor \delta/2\rfloor$.
+\end{theorem}
+
+\begin{proof}
+Let $c$ be a centre, $r = \rad$, $z$ at distance $r$, $u_0 \dots u_r$ a geodesic; set
+$w_0 = z$ and extend greedily $w_1, w_2, \dots$ at the $z$ end. One step changes the BFS
+layer from $c$ by at most $1$, so $w_{j-1}$ lies in a layer $\ge r-j+1$, hence
+$\mathrm{dist}(u_i, w_{j-1}) \ge (r-j+1) - i$, so only the $\le j+2$ vertices $u_i$ with
+$i \ge r-j-1$ can be within distance $2$ of $w_{j-1}$. Each path vertex $y \ne w_{j-1}$
+blocks at most one candidate, since $|N(y) \cap N(w_{j-1})| \le 1$, and one further slot is
+lost to $w_{j-2} \in N(w_{j-1})$. Hence at most $(j+2) + (j-2) + 1 = 2j+1$ neighbours of
+$w_{j-1}$ are unusable and step $j$ succeeds whenever $d(w_{j-1}) \ge 2j+2$. All steps
+$j \le \lfloor\delta/2\rfloor - 1$ succeed.
+\end{proof}
+
+\subsection{Falsification and coverage}\label{sec:falsification}
+
+\begin{proposition}\label{prop:falsification}
+\MV{wowii133\_verify.c, wowii133\_families.py, wowii133\_sa.c}
+No counterexample to Conjecture~133 exists in any of the following ranges:
+\begin{center}
+\small
+\begin{tabular}{@{}llr@{}}
+\toprule
+range & evaluations & violations \\
+\midrule
+all connected graphs, $n \le 9$ & $2\,950\,981$ & $0$ \\
+all connected graphs, $n \le 10$ & $136\,362\,861$ & $0$ \\
+all connected $C_4$-free graphs, $n \le 13$ & $13\,544\,784$ & $0$ \\
+$79$ structured graphs, $n \le 183$ & --- & $0$ \\
+simulated annealing, $C_4$-free, $n = 10..24$ & $\approx 2\cdot 10^{6}$ proposals & $0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+The enumerator generates connected graphs by vertex augmentation, which is complete because
+every connected graph on $k+1 \ge 2$ vertices has a non-cut vertex; isomorph rejection uses a
+canonical certificate, and at the last level no rejection is performed, so that level is a
+superset of all classes. The generator self-validates: its class counts
+$1, 2, 6, 21, 112, 853, 11117, 261080$ for $n = 2..9$ are the numbers of connected graphs on
+$n$ nodes, and in $C_4$-free mode the full enumerator and the $C_4$-free-only enumerator agree
+exactly ($36\,810$ graphs up to $n = 10$). The structured family includes Petersen, the
+Hoffman--Singleton graph, the incidence graphs of $PG(2,q)$ for $q \le 9$, the
+Erd\H{o}s--R\'enyi orthogonal polarity graphs $ER_q$ for $q \le 13$ --- the extremal
+$C_4$-free graphs, and the most dangerous family since they maximise $\ell$ at radius $2$ ---
+cages and random girth-$5$ regular graphs.
+
+\begin{proposition}[equality cases]\label{prop:tight}
+\MV{wowii133\_verify.c}
+Over the whole exhaustive range the $C_4$-free branch is tight for exactly five graphs:
+\begin{center}
+\small
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+$G$ & $n$ & $\rad$ & $\ell$ & $\lfloor\ell\rfloor$ & $\pth$ & RHS \\
+\midrule
+$K_2$ & $2$ & $1$ & $1$ & $1$ & $2$ & $2$\\
+$K_3$ & $3$ & $1$ & $1$ & $1$ & $2$ & $2$\\
+$C_5$ & $5$ & $2$ & $2$ & $2$ & $4$ & $4$\\
+$C_6$ & $6$ & $3$ & $2$ & $2$ & $5$ & $5$\\
+Petersen & $10$ & $2$ & $3$ & $3$ & $5$ & $5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Consequently no argument that loses even one vertex on these five can prove the conjecture.
+\end{proposition}
+
+Measured against Theorems~\ref{thm:A}, \ref{thm:D}, \ref{thm:E}, \ref{thm:F} the coverage of
+the exhaustive $C_4$-free range is $100\%$ for $n \le 10$ and $99.9955\%$ for $n \le 13$,
+leaving $606$ graphs ($516$ with $\rad = 2$, $90$ with $\rad = 3$, all with
+$\lfloor\ell\rfloor = 3$), each of them one vertex short. There are $622$ $C_4$-free graphs
+with $\lfloor \ell\rfloor = 3$ on $n \le 13$ vertices at all, and none with
+$\lfloor\ell\rfloor \ge 4$ below $n = 14$. Theorem~\ref{thm:gplus} below closes all $606$:
+all $622$ have $\mu \ge 2$, and the residual over the whole exhaustive $C_4$-free range
+becomes $0$.
+
+\subsection{Auxiliary claims: verified, not proved}\label{sec:aux}
+
+The same machinery tested four statements that are \emph{not} used anywhere in this paper and
+are recorded because one of them is the natural target.
+
+\begin{proposition}\label{prop:aux}
+\MV{wowii133\_verify.c}
+The following hold over the ranges stated, with the number of violations shown.
+\begin{center}
+\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+& claim & range verified & violations \\
+\midrule
+A1 & every connected $G$: $\pth \ge 2\rad - 1$ & all connected $n \le 10$ & $0$\\
+A4 & $C_4$-free: $\pth \ge \rad + \delta - 1$ & all $C_4$-free $n \le 13$ & $0$\\
+A6 & $C_4$-free, $G \ne K_3$: $\pth \ge \rad + \delta$ & all $C_4$-free $n \le 13$ &
+   $1$ ($K_3$)\\
+A7 & $C_4$-free: $\ell(G) \le \pth(G) - \rad(G)$ & all $C_4$-free $n \le 13$;
+   all connected $n \le 10$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+None of these is proved. A7 is the floor-free strengthening of (C133-b), i.e.\
+$2m - 3T \le n(\pth - \rad)$; it is tight on the same five graphs as
+Proposition~\ref{prop:tight} and is false without $C_4$-freeness ($K_{3,3}$ has $\ell = 3$
+and $\pth - \rad = 1$).
+\end{proposition}
+
+Theorem~\ref{thm:g12} below proves a non-trivial instance of A7.
+
+\section{An endpoint-extension calculus}\label{sec:calculus}
+
+All lemmas in this section are unconditional facts about $C_4$-free graphs. They are the
+tools that replace the degree-driven bounds of \S\ref{sec:closed}, which the surgery obstacle
+of \S\ref{sec:limits} rules out.
+
+\begin{lemma}[one-vertex extension]\label{lem:g10}
+\PRV{wowii133\_gplus.c}
+Let $G$ be $C_4$-free with a geodesic $u_0 \dots u_d$, $d \ge 2$, and $a(u_d) \ge 2$. Then
+$\pth(G) \ge d+2$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:matching} the number of components of $N(u_d)$ is $a(u_d) \ge 2$; take $x$
+in a component other than $u_{d-1}$'s. Then $x \ne u_i$ for all $i$, since
+$\mathrm{dist}(u_d,x) = 1$ while $\mathrm{dist}(u_d,u_i) = d-i$, and $i = d-1$ is excluded;
+$x \not\sim u_{d-1}$ (different components); $x \not\sim u_{d-2}$, else
+$x, u_d, u_{d-1}, u_{d-2}$ are four distinct vertices forming a $4$-cycle; and for
+$i \le d-3$, $\mathrm{dist}(x,u_i) \ge (d-i)-1 \ge 2$. So $u_0 \dots u_d\,x$ is induced.
+\end{proof}
+
+\begin{lemma}[two-vertex extension]\label{lem:g1}
+\PRV{wowii133\_gplus.c}
+Let $G$ be $C_4$-free with a geodesic $u_0\dots u_d$, $d \ge 2$, $a(u_0) \ge 3$ and
+$a(u_d) \ge 2$. Then $\pth(G) \ge d+3$.
+\end{lemma}
+
+\begin{proof}
+Take $x_1, x_2$ in two components of $N(u_0)$ other than $u_1$'s (possible since
+$a(u_0) \ge 3$) and $y$ in a component of $N(u_d)$ other than $u_{d-1}$'s. If $y$ were
+adjacent to both $x_1$ and $x_2$ then $u_0$ and $y$ would have two common neighbours, a
+$C_4$; so fix $x \in \{x_1,x_2\}$ with $x \not\sim y$.
+
+We check that $x, u_0, u_1, \dots, u_d, y$ is induced. As in Lemma~\ref{lem:g10},
+$y \not\sim u_{d-1}$, $y\not\sim u_{d-2}$ and $y \not\sim u_i$ for $i \le d-3$, and
+symmetrically $x \not\sim u_1$, $x \not\sim u_2$ (else $u_0, u_2$ have the two common
+neighbours $x, u_1$), and $x \not\sim u_i$ for $i \ge 3$ by distance. For $d = 2$ the only
+remaining pair is $(y,u_0)$: $y \sim u_0$ would give $u_0, u_2$ the two common neighbours
+$u_1, y$. For $d \ge 3$, $\mathrm{dist}(u_0,y) \ge d - 1 \ge 2$. Finally $x \ne y$ and
+$x \not\sim y$ by choice, and $x, y \notin \{u_0,\dots,u_d\}$ by the distance arguments
+above.
+\end{proof}
+
+\begin{lemma}[both ends, $d \ge 4$]\label{lem:g9}
+\PRV{wowii133\_gplus.c}
+Let $G$ be $C_4$-free with a geodesic $u_0 \dots u_d$, $d \ge 4$, $a(u_0)\ge 2$ and
+$a(u_d) \ge 2$. Then $\pth(G) \ge d+3$. The hypothesis $d \ge 4$ cannot be dropped.
+\end{lemma}
+
+\begin{proof}
+Take $x \in N(u_0)$ outside $u_1$'s component and $y \in N(u_d)$ outside $u_{d-1}$'s
+component. Lemma~\ref{lem:g10}'s checks, applied at both ends, give $x,y \notin
+\{u_0,\dots,u_d\}$ and non-adjacency of $x$ and of $y$ to every $u_i$ they must avoid.
+Moreover $\mathrm{dist}(x,y) \ge \mathrm{dist}(u_0,u_d) - 2 = d - 2 \ge 2$, so $x \ne y$ and
+$x \not\sim y$. Hence $x, u_0, \dots, u_d, y$ is induced.
+\end{proof}
+
+For $d = 3$ the statement is false: over the exhaustive $C_4$-free range $n \le 13$ there are
+$334$ pairs $(u,z)$ at distance $3$ with both $a$-values $\ge 2$ and $\pth < 6$; the two
+extensions may be adjacent, producing an induced $C_6$ rather than a $P_6$. \MV{wowii133\_gplus.c}
+
+\begin{theorem}\label{thm:g}
+\PRV{wowii133\_gplus.c}
+Every connected $C_4$-free graph satisfies $\pth(G) \ge \rad(G) + \min\{3, \mu(G)\}$.
+\end{theorem}
+
+\begin{proof}
+If $\rad \le 1$ then $\ell < 2$ by Theorem~\ref{thm:C}, hence $\mu \le \ell < 2$ so
+$\mu = 1$, and Theorem~\ref{thm:A} suffices. Let $\rad \ge 2$. If $\mu = 1$ use
+Theorem~\ref{thm:A}; if $\mu = 2$ use Theorem~\ref{thm:D}; if $\mu \ge 3$, take a centre $c$
+and $z$ at distance $\rad$ and apply Lemma~\ref{lem:g1} to a $c$--$z$ geodesic.
+\end{proof}
+
+Theorem~\ref{thm:g} is tight on Petersen. Two immediate corollaries: a triangle-free
+$C_4$-free graph with $\delta \ge 3$ has $\pth \ge \rad + 3$ (there $a = d \ge 3$), and so
+does any $C_4$-free graph with $\delta \ge 5$ (there $a \ge \lceil d/2\rceil \ge 3$).
+
+The next theorem is the workhorse: it removes the gap at $\mu = 2$, where
+Theorem~\ref{thm:g} only gives $\rad + 2$.
+
+\begin{theorem}\label{thm:gplus}
+\PRV{wowii133\_gplus.c}
+Let $G$ be connected and $C_4$-free with $\mu(G) \ge 2$ and with some vertex $h$ satisfying
+$a(h) \ge 3$. Then $\pth(G) \ge \ecc(h) + 3 \ge \rad(G) + 3$, provided $\rad(G) \ge 2$.
+\end{theorem}
+
+\begin{proof}
+Take $z$ with $\mathrm{dist}(h,z) = \ecc(h) =: d \ge \rad \ge 2$. Then $a(h) \ge 3$ and
+$a(z) \ge \mu \ge 2$, so Lemma~\ref{lem:g1} applies to an $h$--$z$ geodesic.
+\end{proof}
+
+\begin{corollary}\label{cor:gplus1}
+\PRV{wowii133\_gplus.c}
+Let $G$ be connected and $C_4$-free with $\ell(G) \ge 3$ and no vertex of $a$-value $1$
+(equivalently, by Lemma~\ref{lem:g2}, no leaf and no triangle-leaf). Then
+$\pth(G) \ge \rad(G) + 3$. In particular (C133-b) holds for all such graphs with
+$\lfloor \ell\rfloor \le 3$.
+\end{corollary}
+
+\begin{proof}
+$\ell \ge 3$ gives $\sum_v a(v) \ge 3n$, so some $a(h) \ge 3$; and $\ell \ge 3 > 2$ with
+Theorem~\ref{thm:C} gives $\rad \ge 2$. Apply Theorem~\ref{thm:gplus}.
+\end{proof}
+
+This is what closes the $606$ residual graphs of \S\ref{sec:falsification}: all $622$
+$C_4$-free graphs with $\lfloor\ell\rfloor = 3$ on at most $13$ vertices have $\mu \ge 2$.
+
+Finally, a lemma that reaches one vertex further at the cost of a hypothesis on a
+side-neighbour. It is the seed of \S\ref{sec:adopted}.
+
+\begin{lemma}[deep endpoint extension, $d \ge 5$]\label{lem:g14}
+\PRV{w133\_r3\_counterexample.py}
+Let $G$ be $C_4$-free with a geodesic $u_0 \dots u_d$, $d \ge 5$, $a(u_0) \ge 3$,
+$a(u_d) \ge 2$, and a usable side-neighbour $x$ of $u_0$ with $a(x) \ge 4$. Then
+$\pth(G) \ge d + 4$. In particular $\mu \ge 4$ and $\rad \ge 5$ imply $\pth \ge \rad + 4$.
+\end{lemma}
+
+\begin{proof}
+Choose $x$ as in the hypothesis and $y \in N(u_d)$ outside $u_{d-1}$'s component. The graph
+$N(x)$ has $\ge a(x) \ge 4$ components; $u_0$'s is one. Since $x \not\sim u_2$ (else
+$u_0, u_2$ have common neighbours $x, u_1$) and $x \not\sim u_3$ (distance),
+$C_4$-freeness gives $|N(x) \cap N(u_2)| \le 1$ and $|N(x) \cap N(u_3)| \le 1$, so at most
+one further component is destroyed by each; take $w$ in a surviving component. Then
+$w \not\sim u_0$ (different components of $N(x)$); $w \not\sim u_1$, else $w, x, u_0, u_1$
+form a $C_4$; $w \not\sim u_2, u_3$ by the choice of component; and
+$\mathrm{dist}(w,u_i) \ge i - 2 \ge 2$ for $i \ge 4$. Also $w \notin \{u_0,\dots,u_d\}$
+since $\mathrm{dist}(u_0,w) = 2$ and $w \ne u_2$ because $x \not\sim u_2$. Finally
+$\mathrm{dist}(w,y) \ge (d-1) - 2 = d-3 \ge 2$ and $\mathrm{dist}(x,y) \ge (d-1)-1 = d-2 \ge
+3$, both using $d \ge 5$. So $w, x, u_0, \dots, u_d, y$ is induced on $d+4$ vertices.
+\end{proof}
+
+The two steps marked ``$d \ge 5$'' are exactly what fails at $d = 4$ and $d = 3$;
+\S\ref{sec:adopted} repairs the first and \S\ref{sec:limits} shows the second cannot be
+repaired for free.
+
+\section{The radius-2 layer}\label{sec:r2}
+
+Write $(\star)$ for the assertion that $G$ has \emph{no} pair of vertices at distance exactly
+$\rad(G)$ whose $a$-values are $(\ge 3, \ge 2)$ in some order. By Lemma~\ref{lem:g1},
+$(\star)$ is a necessary condition on any graph with $\ell \ge 3$ and
+$\pth < \rad + 3$, and it is the hypothesis under which the following two lemmas run.
+
+\begin{lemma}\label{lem:g4}
+\PRV{w133\_res\_kill.py}
+Assume $(\star)$, and let $r = \rad(G)$ in a connected $C_4$-free graph. If $a(h) \ge 3$ then
+$\ecc(h) = r$.
+\end{lemma}
+
+\begin{proof}
+Suppose $\ecc(h) \ge r+1$ and take a geodesic $p_0 = h, p_1, \dots, p_e$ with
+$e = \ecc(h)$. The vertex $p_r$ is at distance exactly $r$ from $h$, so $(\star)$ forces
+$a(p_r) \le 1$, hence $a(p_r) = 1$; by Lemma~\ref{lem:g2}, $N(p_r)$ is a clique, and since it
+contains $p_{r-1}$ and $p_{r+1}$ we get $p_{r-1} \sim p_{r+1}$. Then
+$h \to p_{r-1} \to p_{r+1}$ is a walk of length $r$, contradicting
+$\mathrm{dist}(h,p_{r+1}) = r+1$.
+\end{proof}
+
+\begin{lemma}\label{lem:g5}
+\PRV{w133\_res\_kill.py}
+Assume $(\star)$. If $a(h) \ge 3$ and $h = p_0, \dots, p_r = z$ is a geodesic to a vertex at
+distance $r = \rad$, then $a(p_i) \ge 2$ for every interior vertex $1 \le i \le r-1$.
+\end{lemma}
+
+\begin{proof}
+$a(p_i) = 1$ would make $N(p_i)$ a clique containing $p_{i-1}$ and $p_{i+1}$, hence
+$p_{i-1} \sim p_{i+1}$ and the geodesic could be shortened.
+\end{proof}
+
+So in any graph satisfying $(\star)$ a geodesic from a high vertex to the periphery has the
+rigid $a$-profile $(\ge 3), (\ge 2), \dots, (\ge 2), (1)$. The radius-$2$ case of that
+rigidity is contradictory.
+
+\begin{theorem}[the radius-$2$ layer]\label{thm:g7}
+\PRV{w133\_res\_kill.py}
+Let $G$ be connected and $C_4$-free with $\rad(G) = 2$ and $\ell(G) \ge 3$. Then $G$ has a
+pair of vertices at distance exactly $2$ whose $a$-values are $(\ge 3, \ge 2)$.
+\end{theorem}
+
+\begin{proof}
+Suppose not; then $(\star)$ holds with $r = 2$. From $\ell \ge 3$ we get
+$\sum_v a(v) \ge 3n$, so some vertex $h$ has $a(h) \ge 3$; by Lemma~\ref{lem:g4},
+$\ecc(h) = 2$. Put $A := N(h)$, $m := |A|$, and $B := V \setminus (\{h\} \cup A)$, the
+distance-$2$ layer. By $(\star)$, every $b \in B$ has $a(b) \le 1$, hence $a(b) = 1$.
+
+\emph{Step 1: unique parents.} Every $b \in B$ has at least one neighbour in $A$ (as
+$\mathrm{dist}(h,b) = 2$) and at most one, since two would give $h$ and $b$ two common
+neighbours. Write $p(b) \in A$ for that parent and $B_\alpha := p^{-1}(\alpha)$ for the fibre
+of $\alpha \in A$.
+
+\emph{Step 2: no edges between distinct fibres.} If $b \in B_\alpha$, $c \in B_\beta$ with
+$\alpha \ne \beta$ and $b \sim c$, then $N(b)$ contains $\alpha$ and $c$, which are
+non-adjacent (the unique parent of $c$ is $\beta \ne \alpha$), so $a(b) \ge 2$, contradicting
+$a(b) = 1$.
+
+\emph{Step 3: the two matchings.} $G[A] \subseteq G[N(h)]$ and
+$G[B_\alpha] \subseteq G[N(\alpha)]$ are matchings plus isolated vertices, by
+Lemma~\ref{lem:matching}. Let $p$ be the number of edges of $G[A]$, and for
+$\alpha \in A$ let $s_\alpha$ and $q_\alpha$ be the numbers of isolated vertices and of edges
+of $G[B_\alpha]$; put $S := \sum_\alpha s_\alpha$ and $Q := \sum_\alpha q_\alpha$.
+
+\emph{Step 4: the count.} First $a(h) = \comp(A) = m - p$. Next fix $\alpha \in A$. By
+Step~2, $N(\alpha) = \{h\} \cup M(\alpha) \cup B_\alpha$, where $M(\alpha)$ is $\alpha$'s
+partner in $G[A]$ if it has one; $h$ is adjacent to $M(\alpha)$ and to nothing in
+$B_\alpha$, and no vertex of $B_\alpha$ is adjacent to $M(\alpha)$ (it would then have two
+parents). Hence the components of $N(\alpha)$ are $\{h\} \cup M(\alpha)$ together with the
+$s_\alpha + q_\alpha$ components of $G[B_\alpha]$, so
+$a(\alpha) = 1 + s_\alpha + q_\alpha$. Finally $a(b) = 1$ for $b \in B$ and
+$|B| = S + 2Q$. Therefore
+\[
+  \sum_v a(v) = (m-p) + (m + S + Q) + (S+2Q) = 2m - p + 2S + 3Q,
+  \qquad n = 1 + m + S + 2Q,
+\]
+so that
+\[
+  3n - \sum_v a(v) = 3 + m + p + S + 3Q \;\ge\; 3 \;>\; 0,
+\]
+i.e.\ $\ell(G) < 3$, contradicting the hypothesis.
+\end{proof}
+
+\begin{remark}
+The proof never uses any hypothesis on $\pth(G)$: the contradiction comes from $(\star)$,
+$\rad = 2$ and the existence of a high vertex alone. This is what makes
+Theorem~\ref{thm:g7} composable with Lemma~\ref{lem:g1}.
+\end{remark}
+
+\begin{corollary}[the radius-$2$ layer is closed]\label{cor:g8}
+\PRV{w133\_res\_kill.py}
+Let $G$ be connected and $C_4$-free with $\rad(G) = 2$ and $\ell(G) \ge 3$. Then
+$\pth(G) \ge 5 = \rad(G) + 3$. In particular (C133-b) holds for every connected $C_4$-free
+graph with $\rad = 2$ and $\lfloor \ell\rfloor = 3$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:g7} supplies a pair at distance $2$ with $a$-values $(\ge 3,\ge 2)$; apply
+Lemma~\ref{lem:g1} with $d = 2$.
+\end{proof}
+
+\section{Peeling induction and the residual problem}\label{sec:peeling}
+
+From here on the target is
+\begin{equation}\label{eq:X}
+  \textbf{(X)}\qquad G \text{ connected } C_4\text{-free},\; \ell(G) \ge 3
+  \;\Longrightarrow\; \pth(G) \ge \rad(G) + 3,
+\end{equation}
+which implies (C133-b) for $\lfloor \ell\rfloor \le 3$ and is the whole content of the band
+$\lfloor\ell\rfloor = 3$. Corollary~\ref{cor:gplus1} settles \eqref{eq:X} when there is no
+vertex of $a$-value $1$; the induction below reduces the general case to a residual that can
+be attacked.
+
+\begin{lemma}[deleting an $a = 1$ vertex]\label{lem:g6}
+\PRV{wowii133\_gplus.c}
+Let $G$ be $C_4$-free and $a(v) = 1$. Then $G - v$ is connected, $C_4$-free, and preserves
+all distances between the remaining vertices.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:g2}, $v$ is a leaf or a triangle-leaf. A leaf is never an interior vertex
+of a shortest path; a triangle-leaf $v$ with $N(v) = \{x,y\}$, $x \sim y$, can always be
+bypassed by the edge $xy$. So no shortest path between surviving vertices needs $v$.
+\end{proof}
+
+\begin{lemma}[peeling arithmetic]\label{lem:g11}
+\PRV{w133\_r11\_adjudicate.py}
+Let $G$ be $C_4$-free with $a(v) = 1$, and write $\Sigma(G) := \sum_u a(u)$. Then
+\[
+  \Sigma(G-v) - 3(n-1) \;=\; \bigl(\Sigma(G) - 3n\bigr) + c, \qquad
+  c = \begin{cases} 1 & v \text{ a leaf},\\ 2 & v \text{ a triangle-leaf}.\end{cases}
+\]
+In particular the slack $\Sigma - 3n$ is strictly increasing under peeling, by at least $1$
+per deleted vertex.
+\end{lemma}
+
+\begin{proof}
+If $v$ is a leaf with neighbour $x$, then $v$ is an isolated vertex of $G[N(x)]$, so $a(x)$
+drops by exactly $1$ and no other $a$-value changes: $\Sigma$ drops by $2$ and $n$ by $1$,
+so the slack rises by $1$. If $v$ is a triangle-leaf with $N(v) = \{x,y\}$, $x \sim y$, then
+$\{v,y\}$ is an edge component of $G[N(x)]$ which degenerates to the isolated vertex $y$;
+its contribution to $a(x)$ is still $1$, so $a(x)$ is unchanged, and symmetrically $a(y)$ is
+unchanged. Hence $\Sigma$ drops by $1$ and $n$ by $1$, and the slack rises by $2$.
+\end{proof}
+
+\begin{remark}[a corrected statement]\label{rem:b10}
+Earlier internal versions of the project stated Lemma~\ref{lem:g11} as ``the slack rises by
+exactly $1$''. That is \emph{false} for triangle-leaves, as the adversarial review of
+\S\ref{sec:adopted} pointed out and as the explicit graph CE-1 of \S\ref{sec:limits} shows:
+deleting its leaf $1$ moves $(\Sigma,n)$ from $(19,10)$ to $(17,9)$, slack $-11 \to -10$;
+deleting its triangle-leaf $8$ moves it to $(18,9)$, slack $-11 \to -9$. Every use in this
+paper needs only the monotone direction ``$\ge +1$'', so no conclusion moves; but the
+``exactly'' was wrong and is corrected here.
+\end{remark}
+
+\begin{proposition}[the induction skeleton]\label{prop:skeleton}
+\PRVn
+Let $G$ be a counterexample to \eqref{eq:X} of minimum order, and put
+$\Lambda := \{v : a(v) = 1\}$. Then:
+\begin{enumerate}
+\item[(i)] $\rad(G) \ge 2$ and $\Lambda \ne \emptyset$;
+\item[(ii)] deleting any $v \in \Lambda$ strictly lowers the radius;
+\item[(iii)] the \emph{core} $C := G - \Lambda$ is connected, $C_4$-free, isometrically
+embedded in $G$, every vertex of $C$ has $a_G \ge 2$, and $\ell(C) > 3$;
+\item[(iv)] $\diam(G) \le \rad(G) + 1$, and $(\star)$ holds in $G$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) $\ell \ge 3 > 2$ and Theorem~\ref{thm:C} give $\rad \ge 2$; $\Lambda = \emptyset$ would
+contradict Corollary~\ref{cor:gplus1}. (ii) If $\rad(G-v) = \rad(G)$ for some $v \in \Lambda$
+then $G - v$ is connected, $C_4$-free (Lemma~\ref{lem:g6}) with $\ell \ge 3$
+(Lemma~\ref{lem:g11}) and smaller order, so by minimality
+$\pth(G-v) \ge \rad(G-v) + 3 = \rad(G)+3$, and $\pth(G) \ge \pth(G-v)$, a contradiction.
+(iii) Connectivity and isometry are Lemma~\ref{lem:g6} applied to the whole of $\Lambda$ at
+once, whose proof shows directly that no shortest path between core vertices uses a vertex of
+$\Lambda$. Deleting the members of $\Lambda$ one at a time --- each remains of $a$-value $1$
+when its turn comes, a triangle-leaf possibly having become a leaf --- and applying
+Lemma~\ref{lem:g11} $|\Lambda| \ge 1$ times gives
+$\Sigma(C) - 3n_C \ge (\Sigma(G) - 3n) + |\Lambda| \ge 1$, i.e.\ $\ell(C) > 3$.
+(iv) If $\diam \ge \rad + 2$ a diametral geodesic is an induced path on
+$\diam + 1 \ge \rad + 3$ vertices. $(\star)$ is Lemma~\ref{lem:g1} together with
+$\pth(G) \le \rad(G)+2$.
+\end{proof}
+
+For $\rad \ge 4$ one obtains in addition, from Lemma~\ref{lem:g9}, that all vertices of
+$a$-value $\ge 2$ lie pairwise within distance $\rad - 1$, whence $\diam(C) \le \rad - 1$ and
+$C$ is self-centred with $\rad(C) = \diam(C) = \rad(G) - 1 =: D$; moreover every core vertex
+lies at distance exactly $D$ from some vertex of the ``parent set''
+$P := \{$core vertices with a $\Lambda$-neighbour$\}$. Applying minimality to $C$ gives
+$\pth(C) \ge D + 3 = \rad(G)+2$, one vertex short. This is the residual:
+
+\begin{problem}[the residual problem]\label{prob:rp}
+Let $C$ be connected, $C_4$-free, self-centred with $\rad(C) = \diam(C) = D$ and
+$\ell(C) > 3$, and let $P \subseteq V(C)$ satisfy: for every $u$ there is $p \in P$ with
+$\mathrm{dist}(u,p) = D$. Show that $C$ has an induced path on $D+3$ vertices with at least
+one end in $P$ (or one on $D+2$ vertices with both ends in $P$).
+\end{problem}
+
+\begin{problem}[the strengthened form]\label{prob:rpd}
+$C$ connected $C_4$-free, $\diam(C) = D$, $\ell(C) > 3$ $\Longrightarrow$
+$\pth(C) \ge D + 4$.
+\end{problem}
+
+Problem~\ref{prob:rpd} implies Problem~\ref{prob:rp}, since $D+4 > D+3$ makes the endpoint
+condition free, and it is the integer form of the strengthening A7 of
+Proposition~\ref{prop:aux} in the self-centred case. Its case $D = 2$ is the following
+theorem; $D \ge 5$ is available from Lemma~\ref{lem:g14} under an extra side-neighbour
+hypothesis, $D = 4$ from Lemma~\ref{lem:g36} below, and $D = 3$ is genuinely open --- indeed
+\S\ref{sec:limits} shows that the local route to it is closed.
+
+\begin{theorem}[$\diam = 2$]\label{thm:g12}
+\PRV{wowii133\_gplus.c, w133\_g12\_nonempty.py}
+Let $C$ be connected, $C_4$-free, with $\diam(C) = 2$ and $\ell(C) > 3$ (strictly). Then
+$\pth(C) \ge 6$. Since $\diam = 2$ and $\ell > 2$ force $\rad(C) = 2$ by
+Theorem~\ref{thm:C}, this says $\pth \ge \rad + 4$.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 0.} $\diam = 2$ and $C_4$-freeness make any two non-adjacent vertices have
+\emph{exactly} one common neighbour.
+
+\emph{Step 1: the triangle-free case.} We first record the step that an adversarial review
+found missing in an earlier version of this proof.
+
+\begin{quote}
+\emph{Claim.} If $C$ is connected, $C_4$-free, triangle-free with $\diam(C) = 2$ and
+$\ell(C) > 3$, then $C$ contains a cycle and its girth is exactly $5$.\\
+\emph{Proof.} If $C$ were acyclic it would be a tree of diameter $2$, i.e.\ a star
+$K_{1,m}$, and $\ell(K_{1,m}) = 2m/(m+1) < 2$, contradicting $\ell > 3$. A graph containing a
+cycle satisfies $\gir \le 2\diam + 1 = 5$, and triangle-freeness with $C_4$-freeness gives
+$\gir \ge 5$.
+\end{quote}
+
+\noindent Without this step the claim ``girth $5$'' is false: a star is triangle-free,
+$C_4$-free and of diameter $2$ but has no cycle at all, and is not regular. Given girth $5$
+and diameter $2$, $C$ is a Moore graph, hence $k$-regular with $k \in \{2,3,7,57\}$; being
+triangle-free, $\ell(C) = k$, so $\ell > 3$ forces $k \in \{7,57\}$ and $\delta \ge 7$, and
+Theorem~\ref{thm:E}(E1) gives $\pth \ge \delta + 2 \ge 9 \ge 6$.
+
+\emph{Step 2: the case with a triangle.} Suppose $\pth(C) \le 5$ and let $\{a,b,c\}$ be a
+triangle. Put $A := N(a)\setminus\{b,c\}$, $B := N(b)\setminus\{a,c\}$,
+$C_s := N(c)\setminus\{a,b\}$ and $R := V \setminus (\{a,b,c\}\cup A \cup B \cup C_s)$.
+
+(i) \emph{$A, B, C_s$ are pairwise disjoint and pairwise non-adjacent.} $x \in A \cap B$
+would make $c, x$ two common neighbours of $a,b$; and $\alpha \in A$, $\beta \in B$ with
+$\alpha \sim \beta$ would make $b, \alpha$ two common neighbours of $a, \beta$.
+
+(ii) \emph{Every $u \in R$ has exactly one neighbour in each of $A$, $B$, $C_s$.} As
+$u \not\sim a$ and $\diam = 2$, $u$ and $a$ have exactly one common neighbour
+$w \in \{b,c\} \cup A$; since $u \not\sim b,c$ we get $w \in A$.
+
+(iii) \emph{Counting identities.} $a(a) = 1 + \comp(A)$, and for $\alpha \in A$,
+$a(\alpha) = 1 + \comp(R_\alpha)$ where $R_\alpha := N(\alpha)\cap R$. Indeed
+$N(a) = \{b,c\}\cup A$ whose internal edges are $bc$ together with the edges of $A$ (no
+$b$--$A$ edges by (i)); and $N(\alpha) = \{a\} \cup M(\alpha) \cup R_\alpha$ with internal
+edges $a$--$M(\alpha)$ and those of $R_\alpha$, since $M(\alpha) \subseteq A$ has no
+$R_\alpha$-neighbour by (ii).
+
+(iv) \emph{$R$ is a clique.} Let $\rho,\sigma \in R$ be non-adjacent, and let $f_A, f_B,
+f_C$ denote the unique neighbours supplied by (ii). If $f_A(\rho)\ne f_A(\sigma)$ and
+$f_B(\rho) \ne f_B(\sigma)$, put $\alpha := f_A(\rho)$, $\beta := f_B(\sigma)$; then
+$\rho, \alpha, a, b, \beta, \sigma$ is an induced $P_6$ --- $\rho \not\sim a,b$ by the
+definition of $R$; $\rho \not\sim\beta$ since $\rho$'s unique $B$-neighbour differs from
+$\beta$; $\alpha \not\sim b, \beta, \sigma$ and $a \not\sim \beta,\sigma$, $b \not\sim\sigma$
+by (i),(ii) --- contradicting $\pth \le 5$. Using the edges $ac$ and $bc$ likewise, at least
+two of the three coordinates coincide; but two coincidences give $\rho,\sigma$ two common
+neighbours, a $C_4$.
+
+(v) $|R| \le 3$, since a clique on $4$ vertices contains a $C_4$.
+
+(vi) \emph{The count.} Write $s := |A|+|B|+|C_s|$ and $\rho := |R|$. By (iii),
+$\sum_v a(v) = 3 + \sum_{T}\comp + s + \sum_\alpha \comp(R_\alpha) + \sum_{u \in R} a(u)$,
+where $\sum_T \comp \le s$ and $\sum_\alpha \comp(R_\alpha) \le 3\rho$ (each $R$-vertex lies
+in exactly one fibre on each of the three sides). Now $n = 3 + s + \rho$, and we compare with
+$3n$:
+\begin{itemize}
+\item $\rho = 0$: $a(\alpha) = 1$ for all $\alpha$, so $\sum a \le 3 + 2s$ while
+$3n = 9+3s$.
+\item $\rho = 1$: $d(u) = 3$ so $a(u) \le 3$, $\sum a \le 9 + 2s$ while $3n = 12+3s$.
+\item $\rho = 2$: $d(u) = 4$ so $a(u) \le 4$, $\sum a \le 17+2s$ while $3n = 15+3s$, forcing
+$s < 2$; but (ii) gives $s \ge 3$.
+\item $\rho = 3$: $R$ is a triangle, and for $u \in R$,
+$N(u) = \{\alpha_u,\beta_u,\gamma_u\} \cup (R \setminus\{u\})$ where $R\setminus\{u\}$ is an
+edge; by the matching property $\alpha_u,\beta_u,\gamma_u$ are non-adjacent to
+$R\setminus\{u\}$, so $a(u) = 4$ exactly, and $f_A$ is injective on $R$, giving
+$|A|,|B|,|C_s| \ge 3$ and $s \ge 9$. Then $\sum a \le 3+2s+9+12 = 24+2s$ while
+$3n = 18+3s$, forcing $s < 6$.
+\end{itemize}
+In every case $\sum_v a(v) \le 3n$, contradicting $\ell(C) > 3$.
+\end{proof}
+
+\begin{remark}[status of Theorem~\ref{thm:g12}]
+Step 1's Claim was added after an adversarial review pass found the gap; the star
+counterexample above is that reviewer's. The patched statement has \emph{not} itself been
+through a second, cross-family review pass --- that item is still queued in the campaign's
+ledger --- which is why Theorem~\ref{thm:g12} carries \PRV{} and not \REV{}. The structural
+steps (i)--(iv) were asserted over the exhaustive $C_4$-free range $n \le 13$ on $422$
+non-vacuous diameter-$2$ instances with $0$ failures; the theorem's own hypothesis class is
+empty in that range (the closest graph, Petersen, has $\ell = 3$ exactly and is excluded by
+strictness), so its positive evidence is the explicit witness below.
+\end{remark}
+
+\begin{proposition}[non-vacuity of Theorem~\ref{thm:g12}]\label{prop:g12nonempty}
+\MV{w133\_g12\_nonempty.py, w133\_res3\_search.py}
+Both branches of Theorem~\ref{thm:g12}'s hypothesis class are inhabited. The
+Hoffman--Singleton graph has $n = 50$, girth $5$, $\diam = 2$, is $7$-regular and
+triangle-free, so $\ell = 7 > 3$; it satisfies the conclusion with an induced-path
+certificate of $20$ vertices. The Erd\H{o}s--R\'enyi polarity graphs $ER_5, ER_7, ER_{11}$
+are $C_4$-free of diameter $2$ \emph{with} triangles and $\ell = 3.871, 4.912, 6.947$
+respectively, with induced-path certificates $15, 22, 37$.
+\end{proposition}
+
+\section{The radius-3 layer}\label{sec:r3}
+
+This section proves the main theorem of the paper.
+
+\begin{theorem}[the radius-$3$ layer]\label{thm:r3}
+\PRVn
+Let $G$ be a counterexample to \eqref{eq:X} of minimum order. Then $\rad(G) \ge 4$.
+\end{theorem}
+
+The proof occupies \S\ref{sec:reduction}--\S\ref{sec:hexagon}. It reduces the case
+$\rad(G) = 3$ to the emptiness of an explicit class, then proves that emptiness in two
+theorems.
+
+\subsection{The reduction}\label{sec:reduction}
+
+\begin{definition}
+Write (R3b) for the property: \emph{every vertex of $a$-value $\ge 3$ has eccentricity
+$\le 2$}, and let
+\[
+  \mathrm{RES} := \{\, C : C \text{ connected}, C_4\text{-free},
+  \rad(C) = 2,\ \diam(C) = 3,\ \ell(C) > 3,\ \text{(R3b)} \,\}.
+\]
+Write (C6) for the property that $C$ has no induced $P_6$, i.e.\ $\pth(C) \le 5$.
+\end{definition}
+
+Two remarks on the shape of this definition, both of which cost the campaign a round and are
+recorded so that the reader does not repeat them.
+
+\begin{remark}[the hypothesis (R3b) is not optional]\label{rem:live}
+\MV{w133\_res3\_search.py}
+The class $\{C_4$-free, $\rad = 2$, $\diam = 3$, $\ell > 3\}$ --- i.e.\ RES without (R3b) ---
+is \emph{inhabited}, with at least nine explicit members: Hoffman--Singleton minus $1,2,3,5,8$
+or $12$ vertices ($\ell$ from $6.857$ down to $5.368$) and $ER_5, ER_7$ minus one vertex
+($\ell = 3.900, 4.875$). All satisfy the conjecture, with induced-path certificates $\ge 15$.
+So no contradiction can be derived from that class as stated. Every one of the nine violates
+(R3b), for a structural reason: once a dense core has diameter $3$, the pair realising the
+diameter consists of high vertices, which (R3b) forbids.
+\end{remark}
+
+\begin{remark}[which reading of (R3)]\label{rem:r3a}
+\MV{w133\_res\_kill.py}
+The weaker reading (R3a) --- \emph{no pair at distance $\ge 3$ with $a$-values
+$(\ge 3, \ge 2)$} --- is \emph{not} equivalent to (R3b), and the class it defines is
+inhabited: Hoffman--Singleton with one pendant vertex, with one triangle-leaf, and $ER_q$
+with one pendant vertex ($q = 5,7,11$) all satisfy (R3a) and fail (R3b), because the unique
+vertex at distance $3$ from the offending high vertex is the grafted $a = 1$ vertex, which
+(R3a) never sees. All proofs below use (R3b), which is available only through
+Lemma~\ref{lem:g16}.
+\end{remark}
+
+\begin{lemma}[core lifting]\label{lem:g16}
+\PRVn
+Let $G$ be a minimum-order counterexample to \eqref{eq:X} with $\rad(G) = 3$, let
+$\Lambda = \{v : a_G(v) = 1\}$ and $C = G - \Lambda$. Then (R3b) holds in $C$.
+\end{lemma}
+
+\begin{proof}
+By Proposition~\ref{prop:skeleton}(iv), $G$ satisfies $(\star)$ at $r = 3$; more precisely,
+$\pth(G) \le \rad(G)+2 = 5$ and Lemma~\ref{lem:g1} give: no pair of $G$ at distance $\ge 3$
+has $a_G$-values $(\ge 3, \ge 2)$. Every vertex of $C$ has $a_G \ge 2$ by the definition of
+$\Lambda$. Let $h \in C$ with $a_C(h) \ge 3$; deleting vertices cannot increase $a$-values,
+so $a_G(h) \ge 3$. If $\ecc_C(h) = 3$, pick $z \in C$ with
+$\mathrm{dist}_C(h,z) = 3 = \mathrm{dist}_G(h,z)$ by isometry
+(Proposition~\ref{prop:skeleton}(iii)); then $a_G(z) \ge 2$ and $(h,z)$ is a forbidden pair.
+\end{proof}
+
+\begin{proposition}[the reduction]\label{prop:reduction}
+\PRVn
+Let $G$ be a minimum-order counterexample to \eqref{eq:X} with $\rad(G) = 3$. Then the core
+$C = G - \Lambda$ belongs to $\mathrm{RES}$ and satisfies (C6).
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{prop:skeleton}, $C$ is connected, $C_4$-free, isometric in $G$, with
+$\ell(C) > 3$ and all $a_G$-values $\ge 2$. If $C$ contained a pair at distance $\ge 4$, both
+its ends would have $a_C \ge 1$; more usefully, both have $a_G \ge 2$ and hence, by isometry
+and Lemma~\ref{lem:g9}, $\pth(G) \ge 4+3 = 7 > 5$. So $\diam(C) \le 3$. If $\diam(C) = 2$,
+Theorem~\ref{thm:g12} gives $\pth(G) \ge \pth(C) \ge 6$, a contradiction. So $\diam(C) = 3$.
+If $\rad(C) = 3$, minimality applied to $C$ (which has $\ell(C) > 3$ and fewer vertices)
+gives $\pth(C) \ge \rad(C)+3 = 6$, again a contradiction; so $\rad(C) = 2$. Property (R3b)
+is Lemma~\ref{lem:g16}, and $\pth(C) \le \pth(G) \le 5$ is (C6).
+\end{proof}
+
+Theorem~\ref{thm:r3} therefore follows from Theorems~\ref{thm:g26} and \ref{thm:g35} below,
+which together say $\mathrm{RES} \wedge (C6) = \emptyset$: with
+Corollary~\ref{cor:g8} disposing of $\rad = 2$ and Proposition~\ref{prop:skeleton}(i) of
+$\rad \le 1$, a minimum-order counterexample must have radius at least $4$.
+
+Throughout \S\ref{sec:reduction}--\S\ref{sec:hexagon} we fix $C \in \mathrm{RES}$,
+$H := \{v : a(v) \ge 3\}$ (all $a$-values are computed in $C$), and we use the following
+mass inequality repeatedly.
+
+\begin{lemma}[the mass inequalities]\label{lem:mass}
+\PRV{w133\_res\_kill.py}
+Let $C$ be $C_4$-free with $\ell(C) > 3$.
+\begin{enumerate}
+\item[(a)] If every vertex outside $H$ has $a \le 2$ --- which holds by definition of $H$ ---
+then $\sum_{h \in H}(a(h)-2) > n$. In particular $H \ne \emptyset$.
+\item[(b)] If $c$ has $\ecc(c) = 2$, $A := N(c)$, $k := |A|$ and $B$ is the distance-$2$
+layer, then $\sum_{b \in B} a(b) > 3 + k + 2|B|$; consequently $B$ contains a vertex of
+$H$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $3n < \sum_v a(v) \le \sum_H a(h) + 2(n - |H|)$.
+(b) As in the proof of Theorem~\ref{thm:g7}, every $b \in B$ has a unique parent in $A$,
+$a(c) = \comp(A) \le k$, and $a(\alpha) = 1 + \comp(B_\alpha)$ for $\alpha \in A$, with
+$\sum_\alpha \comp(B_\alpha) \le |B|$. Hence
+$\sum_v a(v) \le k + (k + |B|) + \sum_B a(b)$, while $\sum_v a(v) > 3n = 3(1+k+|B|)$. The
+consequence follows since $a(b) \le 2$ for all $b \in B$ would give
+$\sum_B a(b) \le 2|B|$.
+\end{proof}
+
+\begin{lemma}[mass--Bonferroni]\label{lem:g18}
+\PRV{w133\_res\_kill.py}
+In any $C_4$-free graph and any $S \subseteq V$,
+$\sum_{h \in S} a(h) \le |N(S)| + P(S) \le n + \binom{|S|}{2}$, where
+$N(S) = \bigcup_{h\in S}N(h)$ and $P(S)$ is the number of pairs of $S$ with a common
+neighbour. Consequently, in $\mathrm{RES}$, $|H| \ge 6$.
+\end{lemma}
+
+\begin{proof}
+Write $a(h) = |I_h|$ for a maximum independent set $I_h \subseteq N(h)$, and
+$m(v) := |\{h \in S : v \in I_h\}| \le \deg_S(v)$. Then
+$\sum_S a = \sum_v m(v) \le |N(S)| + \sum_v (m(v)-1)^+ \le |N(S)| + \sum_v
+\binom{\deg_S(v)}{2}$, and the last sum counts pairs of $S$ with a common neighbour, with
+multiplicity equal to the number of common neighbours, which is $\le 1$ by $C_4$-freeness.
+For the consequence: Lemma~\ref{lem:mass}(a) gives $\sum_H a > n + 2|H|$, so
+$n + \binom{|H|}{2} > n + 2|H|$, i.e.\ $|H| \ge 6$.
+\end{proof}
+
+\begin{lemma}[no leaf at eccentricity 3]\label{lem:g19}
+\PRV{w133\_res\_kill.py}
+In $\mathrm{RES}$ no vertex of eccentricity $3$ is a leaf.
+\end{lemma}
+
+\begin{proof}
+Let $u$ be a leaf with neighbour $p$ and $\ecc(u) = 3$. Then
+$\mathrm{dist}(u,\cdot) = 1 + \mathrm{dist}(p,\cdot) \le 3$ gives $\ecc(p) \le 2$, and
+$\ecc(p) = 1$ would force $\diam \le 2$; so $\ecc(p) = 2$. By (R3b) every $h \in H$ has
+$\mathrm{dist}(h,u) \le 2$, hence $\mathrm{dist}(h,p) \le 1$, i.e.\ no vertex of $H$ lies at
+distance exactly $2$ from $p$ --- contradicting Lemma~\ref{lem:mass}(b) at $c = p$.
+\end{proof}
+
+\subsection{The triangular endpoint branch is empty}\label{sec:tri}
+
+By (R3b), a pair $(u,z)$ realising $\diam(C) = 3$ has $a(u), a(z) \le 2$. This subsection
+kills the case $a(u) = 1$; \S\ref{sec:hexagon} kills $a(u) = a(z) = 2$.
+
+By Lemma~\ref{lem:g2} and Lemma~\ref{lem:g19}, a vertex $u$ with $a(u) = 1$ and
+$\ecc(u) = 3$ has $d(u) = 2$ and $N(u) = \{p,q\}$ with $p \sim q$: a \emph{triangular
+endpoint}. Fix such a $u$ and write
+\[
+  B_p := N(p)\setminus\{u,q\},\quad B_q := N(q)\setminus\{u,p\},\quad
+  D := \text{the distance-}3\text{ layer from } u,
+\]
+$\beta_x := |B_x|$, $\delta_h := |N(h)\cap D|$, $H' := H \cap (B_p \cup B_q)$,
+$\eta_x := |H \cap B_x|$, $e_x := $ the number of edges inside $B_x$.
+
+\begin{lemma}\label{lem:g23}
+\PRV{w133\_r7\_triend.py}
+With this notation:
+\begin{enumerate}
+\item[(a)] $N(p)\cap N(q) = \{u\}$;
+\item[(b)] $\ball_2(u) = \{u,p,q\} \sqcup B_p \sqcup B_q$ and
+$|\ball_2(u)| = d(p)+d(q)-1$; in particular $n = 3 + \beta_p + \beta_q + |D|$ and neither $p$
+nor $q$ has a neighbour in $D$;
+\item[(c)] no vertex of $B_p$ is adjacent to $q$, every vertex has at most one neighbour in
+$B_p$ and at most one in $B_q$;
+\item[(d)] $a(p) - 2 = \beta_p - 1 - e_p$ and $a(q) - 2 = \beta_q - 1 - e_q$;
+\item[(e)] $H \subseteq \{p,q\}\cup B_p \cup B_q$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $N(u) = \{p,q\}$ is a clique, and two common neighbours of $p,q$ besides $u$ would give a
+$C_4$. (b) Every $b \in \ball_2(u)\setminus\{u,p,q\}$ has exactly one neighbour in $\{p,q\}$,
+at least one by definition and at most one by (a); the count is $3 + (d(p)-2)+(d(q)-2)$. A
+neighbour of $p$ in $D$ would be at distance $2$ from $u$. (c) $h \in B_p$ adjacent to $q$
+would lie in $N(p)\cap N(q) = \{u\}$; two neighbours of a vertex $w$ inside $B_p$ would give
+$w$ and $p$ two common neighbours. (d) $N(p) = \{u,q\}\cup B_p$ and its internal edges are
+$uq$ together with the $e_p$ edges of $B_p$: there are no $q$--$B_p$ edges by (c) and no
+$u$--$B_p$ edges since $N(u) = \{p,q\}$. So $t(p) = 1 + e_p$, $d(p) = 2 + \beta_p$ and
+Lemma~\ref{lem:matching} gives $a(p) = 1 + \beta_p - e_p$. (e) By (R3b) every $h \in H$ has
+$\ecc(h)\le 2$, so $H \subseteq \ball_2(u)$; and $u \notin H$.
+\end{proof}
+
+Note that (d) forces $a(p) \ge 2$ as soon as $\beta_p \ge 1$, because
+$e_p \le \lfloor \beta_p/2\rfloor \le \beta_p - 1$ for $\beta_p \ge 2$ and $e_p = 0$ for
+$\beta_p = 1$. This is used below to add the $p$- and $q$-terms to the mass sum whether or not
+they are hubs.
+
+\begin{lemma}[$P_k$-endpoint degree bound]\label{lem:g22}
+\PRV{w133\_r6\_adjudicate.py}
+Let $G$ be $C_4$-free with no induced $P_{k+1}$, $k \ge 3$. Then every endpoint of an induced
+$P_k$ has degree $\le k$. In particular, $C_4$-free with no induced $P_6$ implies every
+endpoint of an induced $P_5$ has degree $\le 5$.
+\end{lemma}
+
+\begin{proof}
+Let $(v_0,\dots,v_{k-1})$ be an induced $P_k$ and $w \in N(v_0)\setminus\{v_1,\dots,
+v_{k-1}\}$. If $w$ had no neighbour among $v_1,\dots,v_{k-1}$ then
+$(w,v_0,\dots,v_{k-1})$ would be an induced $P_{k+1}$. So $w \in N(v_0)\cap N(v_i)$ for some
+$i \ge 1$, and each such intersection has size $\le 1$ by $C_4$-freeness: that is at most
+$k-1$ vertices, and adding $v_1$ gives $d(v_0)\le k$.
+\end{proof}
+
+The hypothesis ``endpoint of an induced $P_5$'' cannot be dropped: the friendship graphs
+$F_k$ are $C_4$-free and $P_6$-free with unbounded degree $2k$, and contain no induced $P_5$
+at all. \MV{w133\_r6\_adjudicate.py}
+
+\begin{lemma}\label{lem:g25}
+\REV{w133\_r7\_triend.py}
+In $\mathrm{RES}$ with a triangular endpoint $u$:
+\begin{enumerate}
+\item[(a)] there is no edge between $B_p$ and $B_q$;
+\item[(b)] every $h \in B_p \cup B_q$ satisfies $a(h)\le 1 + \delta_h$;
+\item[(c)] if $b \in B_p$ has $\ecc(b) = 2$ then $\beta_q \le \delta_b$, and symmetrically;
+\item[(d)] $\beta_p, \beta_q \ge 1$;
+\item[(e)] under (C6), every hub of $B_p \cup B_q$ has degree $\le 5$, hence $\delta_b \le 4$
+for such a hub; and with (c), $\beta_p,\beta_q \le 4$ as soon as both sides carry a hub.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) If $h \in B_p$, $c \in B_q$ and $h \sim c$, then $p$ and $c$ have the two common
+neighbours $h$ and $q$ (using $p \sim q$).
+
+(b) $|N(h)\cap B_p| \le 1$ by Lemma~\ref{lem:g23}(c). If $N(h)\cap B_p = \{b\}$ then $pb$ is
+an edge inside $N(h)$, so $a(h)\le d(h)-1 = 1 + \delta_h$ using (a); otherwise
+$d(h) = 1 + \delta_h \ge a(h)$.
+
+(c) For $c \in B_q$ we have $\mathrm{dist}(b,c) \ge 2$ by (a), so $\ecc(b) = 2$ gives a
+common neighbour $w$ of $b$ and $c$. Now $w \ne p$ (as $p \not\sim c$ by
+Lemma~\ref{lem:g23}(a)), $w \notin B_p$ by (a), and $w \ne u,q$; so $w \in N(b)\cap D$. Each
+$D$-vertex has at most one neighbour in $B_q$, so $c \mapsto w$ is injective.
+
+(d) Suppose $B_q = \emptyset$. Then $N(q) = \{u,p\}$ with $u \sim p$, so $a(q) = 1$ and
+$q \notin H$; every $y \in D$ has at most one neighbour in $B_p \cup B_q = B_p$. From
+$a(p) \le d(p)-1 = \beta_p + 1$ and $a(h) - 2 \le \delta_h$ for $h \in H'$ (which is (b)
+weakened), Lemma~\ref{lem:mass}(a) gives
+\[
+  n < \sum_{h\in H}(a(h)-2) \le (\beta_p - 1) + \sum_{h\in H'}\delta_h
+    \le (\beta_p-1) + |D| = (n-3)-1 = n-4,
+\]
+a contradiction.
+
+(e) Let $h \in H\cap B_p$ with $d(h)\ge 6$. By (R3b), $\ecc(h) \le 2$, and $\ecc(h) = 1$
+would force $\diam \le 2$; so $\ecc(h) = 2$. By (d), $\beta_q \ge 1$. If some
+$y \in N(h)\cap D$ had a neighbour $c \in B_q$, then $c \notin N(h)$ by (a) and
+$(h,y,c,q,u)$ is an induced $P_5$ --- $h \not\sim c$, $h \not\sim q$, $h \not\sim u$,
+$y \not\sim q, u$ (as $y \in D$), $c \not\sim u$ --- so Lemma~\ref{lem:g22} gives
+$d(h)\le 5$, a contradiction. Hence no vertex of $N(h)\cap D$ has a $B_q$-neighbour and the
+injection of (c) has empty target, giving $\beta_q \le 0$: contradiction. The last clause is
+(c) together with $\delta_b \le d(b) - 1 \le 4$.
+\end{proof}
+
+\begin{theorem}[the triangular branch is empty]\label{thm:g26}
+\REV{w133\_r7\_triend.py}
+In $\mathrm{RES} \wedge (C6)$ no vertex has $a$-value $1$ and eccentricity $3$. Equivalently,
+every pair of vertices at distance $3$ has both $a$-values equal to $2$.
+\end{theorem}
+
+\begin{proof}
+Suppose $u$ is such a vertex and keep the notation above. Let
+$D_2 := \{y \in D : y$ has a neighbour in $H'\cap B_p$ and one in $H'\cap B_q\}$.
+
+\emph{Step 1: a lower bound on $|D_2|$.} By Lemma~\ref{lem:g23}(d),(e) and
+Lemma~\ref{lem:g25}(b), and since $a(p)-2, a(q)-2 \ge 0$ by Lemma~\ref{lem:g25}(d),
+\[
+ n \;<\; \sum_{h\in H}(a(h)-2)
+   \;\le\; (\beta_p - 1 - e_p) + (\beta_q - 1 - e_q) + \sum_{h \in H'} (\delta_h - 1).
+\]
+Each $y \in D$ has at most one neighbour in $B_p$ and one in $B_q$, so it contributes at most
+$1$ to $\sum_{h\in H'}\delta_h$, and $2$ exactly when $y \in D_2$; hence
+$\sum_{h\in H'}\delta_h = \sum_{y\in D}|N(y)\cap H'| \le |D| + |D_2|$. Substituting
+$n = 3+\beta_p+\beta_q+|D|$ and $|H'| = \eta_p + \eta_q$ yields
+\[
+  |D_2| \;\ge\; 6 + \eta_p + \eta_q + e_p + e_q .
+\]
+Two vertices of $D_2$ with the same pair of parents would be two common neighbours of that
+pair, a $C_4$; so $y \mapsto (\text{its }B_p\text{-parent}, \text{its }B_q\text{-parent})$ is
+injective and $|D_2| \le \eta_p\eta_q$. Therefore
+\[
+  (\eta_p - 1)(\eta_q - 1) \;\ge\; 7 + e_p + e_q .
+\]
+
+\emph{Step 2: both sides are saturated.} The displayed inequality forces
+$\eta_p, \eta_q \ge 2$, so both sides carry hubs and Lemma~\ref{lem:g25}(e) gives
+$\beta_p,\beta_q \le 4$, hence $\eta_p,\eta_q \le 4$. The only integer pair with both entries
+$\le 4$ and $(\eta_p-1)(\eta_q-1)\ge 7$ is $\eta_p = \eta_q = 4$; so $\beta_p = \beta_q = 4$,
+\emph{every} vertex of $B_p\cup B_q$ is a hub, and $d(p) = d(q) = 6$.
+
+\emph{Step 3: the $B$-vertices are pinned.} For a hub $b \in B_p$, Lemma~\ref{lem:g25}(c)
+gives $\delta_b \ge \beta_q = 4$ while Lemma~\ref{lem:g25}(e) gives
+$5 \ge d(b) = 1 + |N(b)\cap B_p| + \delta_b$. Hence $|N(b)\cap B_p| = 0$, $\delta_b = 4$,
+$d(b) = 5$; therefore $e_p = e_q = 0$ and $a(p) = a(q) = 5$.
+
+\emph{Step 4: the graph is determined.} $a(p) = 5 \ge 3$ makes $p$ a hub, so $\ecc(p) = 2$
+and every $y \in D$ has a $B_p$-parent, and symmetrically a $B_q$-parent. Counting
+$B_p$--$D$ edges gives $|D| = \sum_{b\in B_p}\delta_b = 16$, and injectivity makes
+$y \mapsto (b,c)$ a bijection $D \to B_p\times B_q$. Thus $n = 3+4+4+16 = 27$.
+
+\emph{Step 5: the contradiction.} Fix $y \in D$ with $B_p$-parent $b_1$ and let $b$ be one of
+the other three vertices of $B_p$. As $b$ is a hub, $\ecc(b) = 2$, so $b$ and $y$ have a
+common neighbour $w$; $w \ne b_1$ since $e_p = 0$, and $w \notin B_q$ by
+Lemma~\ref{lem:g25}(a), so $w \in N(y)\cap D$ --- and the unique $B_p$-parent of $w$ is $b$,
+so the three choices of $b$ give three distinct $w$. Hence $d(y) \ge 2+3 = 5$ and, in a
+$C_4$-free graph, $a(y)\ge \lceil d(y)/2\rceil \ge 3$: $y$ is a hub at distance $3$ from
+$u$, contradicting $H \subseteq \ball_2(u)$.
+\end{proof}
+
+\begin{corollary}\label{cor:g26.1}
+\REV{w133\_r7\_triend.py}
+In $\mathrm{RES}\wedge(C6)$ every pair $(u,z)$ at distance $3$ satisfies $a(u)=a(z)=2$.
+\end{corollary}
+
+\begin{remark}
+The proof of Theorem~\ref{thm:g26} never uses the branch hypothesis that \emph{every}
+diameter pair has a low endpoint --- only the existence of one vertex of $a$-value $1$ at
+eccentricity $3$ --- which is why it yields the stronger corollary. Property (C6) enters only
+through Lemma~\ref{lem:g25}(e), via Lemma~\ref{lem:g22}. No exhaustive search over graphs is
+involved: the only sweeps are the small-graph table backing the unconditional lemmas and two
+bounded integer sweeps over $(\eta_p,\eta_q,e_p,e_q) \in [0,4]^4$.
+\end{remark}
+
+\subsection{The hexagon branch is empty}\label{sec:hexagon}
+
+By Corollary~\ref{cor:g26.1} the diameter pair $(u,z)$ of $C \in \mathrm{RES}\wedge(C6)$ has
+$a(u) = a(z) = 2$. The next lemma turns that into an induced hexagon.
+
+\begin{lemma}[the forced hexagon]\label{lem:g13}
+\PRV{wowii133\_gplus.c}
+Let $G$ be $C_4$-free with $\mathrm{dist}(u,z) = 3$ and $a(u) = a(z) = 2$. Then either
+$\pth(G)\ge 6$, or: $N(u)$ consists of $u_1$'s component together with a \emph{singleton}
+component $\{x\}$, $N(z)$ consists of $u_2$'s component together with a singleton $\{y\}$,
+and $x \sim y$ --- so that $G$ contains an induced $6$-cycle through $u$ and $z$.
+\end{lemma}
+
+\begin{proof}
+Fix a geodesic $u, u_1, u_2, z$. Take $x \in N(u)$ outside $u_1$'s component and
+$y \in N(z)$ outside $u_2$'s component. By the checks in Lemma~\ref{lem:g10} applied at both
+ends, $x,y \notin \{u,u_1,u_2,z\}$ and $x \not\sim u_1,u_2,z$, $y \not\sim u_2,u_1,u$. If
+some legitimate choice has $x\not\sim y$, then $x,u,u_1,u_2,z,y$ is an induced $P_6$. So
+suppose every legitimate $x$ is adjacent to every legitimate $y$. If $x$'s component had two
+vertices $x, \bar x$, then $x$ and $\bar x$ would both be adjacent to $u$ and to $y$, a
+$C_4$; so it is a singleton, and symmetrically for $y$.
+\end{proof}
+
+So $C$ carries an induced hexagon $Z = (u, u_1, u_2, z, y, x)$ at cyclic positions $0..5$,
+with $\{x\}$ a singleton component of $N(u)$ and $\{y\}$ a singleton component of $N(z)$.
+The next lemma is the engine of the whole collapse and is of independent interest.
+
+\begin{lemma}\label{lem:g32p}
+\REV{w133\_r8\_q61.py}
+Let $Z = (v_0,\dots,v_5)$ be an induced $C_6$ in a graph with no induced $P_6$. Then no
+vertex outside $Z$ has exactly two $Z$-neighbours that are \emph{consecutive} on $Z$. (No
+$C_4$-freeness and no other hypothesis is used.)
+\end{lemma}
+
+\begin{proof}
+Suppose $w \notin Z$ has exactly the two $Z$-neighbours $v_i, v_{i+1}$. Deleting $v_{i+1}$
+from $Z$ leaves the induced path $(v_i, v_{i-1}, v_{i-2}, v_{i-3}, v_{i-4})$ on the remaining
+five vertices, with endpoints $v_i$ and $v_{i-4} = v_{i+2}$; and $w$ is adjacent to $v_i$
+only among them, its other $Z$-neighbour having been deleted. Hence
+$(w, v_i, v_{i-1}, v_{i-2}, v_{i-3}, v_{i-4})$ is an induced $P_6$.
+\end{proof}
+
+\begin{lemma}[antipodal rigidity]\label{lem:g32}
+\REV{w133\_r8\_q61.py}
+Let $Z = (v_0,\dots,v_5)$ be an induced $C_6$ in a $C_4$-free graph with no induced $P_6$.
+Then every vertex outside $Z$ has $0$ or $2$ neighbours on $Z$, and if $2$ they are
+\emph{antipodal} (cyclic distance exactly $3$).
+\end{lemma}
+
+\begin{proof}
+Let $w \notin Z$.
+
+\emph{$|N(w)\cap Z| \ne 1$}: if $v_i$ is the unique $Z$-neighbour, delete $v_{i+1}$; the
+resulting induced $P_5$ has $v_i$ as an endpoint and $w$ extends it to an induced $P_6$.
+
+\emph{$|N(w)\cap Z| \le 2$}: any three vertices of a hexagon contain a pair at cyclic
+distance $2$. Indeed three vertices split the cycle into arcs of lengths $a+b+c = 6$ with
+$a,b,c \ge 1$, and a pair separated by an arc of length $j$ is at cyclic distance
+$\min(j,6-j)$, which equals $2$ exactly when $j \in \{2,4\}$; if no pair were at cyclic
+distance $2$ we would need $a,b,c \in \{1,3,5\}$ with $a+b+c = 6$, which has no solution.
+For such a pair $v_j, v_{j+2}$, the vertices $w$ and $v_{j+1}$ have the two common
+neighbours $v_j, v_{j+2}$, a $C_4$.
+
+\emph{Cyclic distance $2$ is excluded} by the same $C_4$, and \emph{cyclic distance $1$} by
+Lemma~\ref{lem:g32p}.
+\end{proof}
+
+\begin{remark}[a statement that outran its proof]\label{rem:g32false}
+\MV{w133\_r8\_judge20\_g32.py}
+Lemma~\ref{lem:g32} is \emph{false} without $C_4$-freeness: $C_6$ together with a vertex $w$
+adjacent to $v_0$ and $v_2$ is $P_6$-free, and $w$ has two $Z$-neighbours at cyclic distance
+$2$. The first version of this lemma in the campaign omitted the hypothesis and was refuted by
+the blind reviewer; the genuinely hypothesis-free half is Lemma~\ref{lem:g32p}. The defect was
+inherited: an upstream lemma about induced hexagons had been \emph{stated} with the
+conclusion ``$0$ or $2$ neighbours'' while its written proof only excluded ``exactly $1$'',
+never ``$\ge 3$'', and the present Lemma~\ref{lem:g32} copied the half proof together with the
+full statement. The missing line --- the arc argument above --- consumes only
+$C_4$-freeness. A sweep of all $12$ places where the upstream lemma is used confirmed that
+every one carries $C_4$-freeness, so no downstream conclusion moved.
+\end{remark}
+
+\begin{corollary}[mass identity]\label{cor:g32.1}
+\REV{w133\_r8\_q61.py}
+In a $C_4$-free $P_6$-free graph with an induced $C_6$, $t(v_i) = 0$ and
+\[
+  a(v_i) = d(v_i) = 2 + [\,\text{the } (v_i,v_{i+3}) \text{ slot is occupied}\,].
+\]
+\end{corollary}
+
+\begin{proof}
+By Lemma~\ref{lem:g32} the only off-$Z$ neighbour a cycle vertex $v_i$ can have is the vertex
+occupying the antipodal slot $(v_i,v_{i+3})$, of which there is at most one by
+$C_4$-freeness. $N(v_i) = \{v_{i-1},v_{i+1}\}$ possibly with that vertex; $v_{i-1}\not\sim
+v_{i+1}$ (cyclic distance $2$ on an induced hexagon), and the antipodal-slot vertex is
+adjacent to neither. So $N(v_i)$ is independent, $t(v_i)=0$, and Lemma~\ref{lem:matching}
+gives $a = d$.
+\end{proof}
+
+Over the exhaustive $C_4$-free table on $6 \le n \le 7$ ($111\,508$ connected graphs) plus
+$47$ explicit and greedily generated carriers, restricted to the $P_6$-free members carrying
+an induced $C_6$, the classification of Lemma~\ref{lem:g32} and the identity of
+Corollary~\ref{cor:g32.1} were asserted on $1\,330$ hexagons, $1\,300$ off-hexagon vertices
+and $15\,960$ mass identities with $0$ failures; ten hexagons carry two occupied antipodal
+slots simultaneously, so the occupied case is tested non-vacuously. \MV{w133\_r8\_q61.py}
+
+\begin{lemma}[the frame collapses]\label{lem:g33}
+\REV{w133\_r8\_q61.py}
+Let $C \in \mathrm{RES}\wedge(C6)$ with the hexagon $Z = (u,u_1,u_2,z,y,x)$ of
+Lemma~\ref{lem:g13}. Then
+\[
+ N(u) = \{u_1, x\},\quad N(z) = \{u_2,y\},\quad d(u)=d(z)=2,\quad
+ V(C) = Z \sqcup \{P?\} \sqcup \{Q?\} \sqcup W,
+\]
+where $P$ is the (at most one) vertex adjacent to $u_1$ and $y$, $Q$ the (at most one) vertex
+adjacent to $u_2$ and $x$, and $W$ the set of vertices with no $Z$-neighbour. Moreover every
+$w \in W$ is at distance $3$ from both $u$ and $z$, hence $\ecc(w) = 3$, hence $a(w) = 2$ by
+(R3b) and Corollary~\ref{cor:g26.1}: no vertex of $W$ is a hub.
+\end{lemma}
+
+\begin{proof}
+The antipodal pairs of $Z$ are $(u,z)$, $(u_1,y)$ and $(u_2,x)$. By Lemma~\ref{lem:g32},
+every off-$Z$ vertex with a $Z$-neighbour realises one of these three pairs, and $(u,z)$ is
+impossible since $\mathrm{dist}(u,z) = 3$; each of the other two is realised by at most one
+vertex, since two would be two common neighbours of the pair. Call them $P$ and $Q$. In
+particular no off-$Z$ vertex is adjacent to $u$ or to $z$, so $N(u) = N(u)\cap Z = \{u_1,x\}$
+and $N(z) = \{u_2,y\}$. If $w$ has no $Z$-neighbour then $w$ is at distance $\ge 2$ from $u$
+and shares no neighbour with $u$ (both of $N(u)$'s members lie on $Z$), so
+$\mathrm{dist}(u,w) = 3$ because $\diam(C) = 3$; same at $z$. Thus $\ecc(w) = 3$, and (R3b)
+gives $a(w)\le 2$ while Corollary~\ref{cor:g26.1} applied to the distance-$3$ pair $(u,w)$
+gives $a(w) = 2$.
+\end{proof}
+
+The four induced $P_6$'s that kill the four consecutive-pair slots explicitly are
+$(u_1', u, x, y, z, u_2)$, $(u_2', z, y, x, u, u_1)$, $(A, u_1, u, x, y, z)$ and
+$(B, x, u, u_1, u_2, z)$, where $u_1', u_2', A, B$ denote hypothetical occupants of the slots
+$(u,u_1), (u_2,z), (u_1,u_2), (y,x)$. Over $176$ $C_4$-free frames ``hexagon $+$ one
+consecutive-pair slot $+$ an arbitrary edge pattern on the other five slots'' the named
+witness is an induced $P_6$ every time. \MV{w133\_r8\_q61.py}
+
+\begin{lemma}\label{lem:g34}
+\REV{w133\_r8\_q61.py}
+In $\mathrm{RES}\wedge(C6)$, write $W_P := N(P)\cap W$. Then
+\begin{enumerate}
+\item[(a)] $N(w) \subseteq \{P,Q\}\cup W_P$ for every $w \in W_P$;
+\item[(b)] every $w \in W_P$ is adjacent to $Q$ (so $W_P \ne \emptyset$ forces $Q$ to exist);
+\item[(c)] $|W_P|\le 1$, hence $d(P) \le 4$ and $a(P)\le 3$; symmetrically $a(Q)\le 3$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $(w,P,u_1,u,x)$ is an induced $P_5$: $w$ has no $Z$-neighbour; $P \not\sim u,x$ since
+$P$'s only $Z$-neighbours are $u_1,y$; $u_1\not\sim x$ on the induced hexagon. By (C6) no
+induced $P_6$ extends it, so every $v \in N(w)\setminus\{P\}$ is adjacent to one of
+$P,u_1,u,x$. Now $v \notin Z$ (as $w$ has no $Z$-neighbour, $v$ could only be a $Z$-vertex at
+distance $1$ from $w$, which is excluded); $v \sim P$ puts $v \in W_P\cup\{Q\}$;
+$v \sim u_1$ puts $v \in \{P\}$ (the slot $(u_1,u_2)$ is empty); $v \sim u$ is impossible
+since $N(u)\subseteq Z$; and $v \sim x$ puts $v \in \{Q\}$ (the slot $(y,x)$ is empty).
+
+(b) If $w \not\sim Q$ then by (a) $N(w) \subseteq \{P\}\cup W_P$, and
+$|N(w)\cap W_P| \le 1$ since two $W_P$-neighbours of $w$ would be two common neighbours of
+$w$ and $P$. So either $N(w) = \{P\}$, or $N(w) = \{P,w'\}$ with $w' \in W_P \subseteq N(P)$ and hence
+$P \sim w'$; either way $N(w)$ is a clique, so $a(w) = 1$, contradicting $a(w) = 2$ from Lemma~\ref{lem:g33}.
+
+(c) Two vertices of $W_P$ would be two common neighbours of $P$ and $Q$ by (b), a $C_4$.
+Then $N(P) = \{u_1,y\}\sqcup(\{Q\}\cup W_P)$ with $u_1 \not\sim y$ (antipodal on an induced
+hexagon) and neither adjacent to anything else in $N(P)$, while $Q \sim w$; so
+$a(P) \le 2 + 1 = 3$.
+\end{proof}
+
+\begin{theorem}[the hexagon branch is empty]\label{thm:g35}
+\REV{w133\_r8\_q61.py, w133\_r9\_frame\_l.py}
+$\mathrm{RES}\wedge(C6) = \emptyset$. Equivalently: every connected $C_4$-free graph with
+$\rad = 2$, $\diam = 3$, $\ell > 3$ and (R3b) contains an induced $P_6$.
+\end{theorem}
+
+\begin{proof}
+Suppose $C \in \mathrm{RES}\wedge (C6)$ and set up the frame above. By
+Lemma~\ref{lem:g33} every hub of $C$ lies in $\{u_1,u_2,x,y,P,Q\}$: the vertices $u,z$ have
+$a = 2$, no vertex of $W$ is a hub, and there is nothing else. By
+Corollary~\ref{cor:g32.1} and Lemma~\ref{lem:g34},
+\[
+  a(u_1)-2 = [P],\quad a(u_2)-2 = [Q],\quad a(x)-2=[Q],\quad a(y)-2=[P],
+\]
+\[
+  a(P)-2 \le 1,\qquad a(Q)-2\le 1,
+\]
+where $[P],[Q] \in \{0,1\}$ record whether the slots are occupied. Hence
+\[
+  \sum_{h\in H}\bigl(a(h)-2\bigr) \;\le\; 3[P]+3[Q] \;\le\; 6 .
+\]
+But Lemma~\ref{lem:mass}(a) demands $\sum_{h\in H}(a(h)-2) > n$, and $n \ge |Z| = 6$, so the
+mass must be at least $7$: a contradiction.
+\end{proof}
+
+\begin{remark}[the margin, and a second kill]\label{rem:secondkill}
+\REV{w133\_r9\_frame\_l.py}
+The margin is not thin. By Lemma~\ref{lem:g18}, $|H|\ge 6$, which forces all six candidate
+slots to be hubs, hence $[P]=[Q]=1$, hence $n \ge 8$ and a required mass of $\ge 9$ against a
+cap of exactly $6$.
+
+Moreover the class dies a second time, by a route that never uses the mass inequality. By
+Lemma~\ref{lem:g33}, $V = Z\sqcup\{P?\}\sqcup\{Q?\}\sqcup W$ and $N(u) = \{u_1,x\}\subseteq
+Z$. For $w \in W$, $\mathrm{dist}(w,u) = 3$, so a shortest $w$--$u$ path is $w,a,b,u$ with
+$b \in \{u_1,x\}$ and $a \in N(u_1)\cup N(x) = \{u,u_2,P\}\cup\{u,y,Q\}$; adjacency to $w$
+forces $a \notin Z$, i.e.\ $a \in \{P,Q\}$. So $W = W_P\cup W_Q$, and
+Lemma~\ref{lem:g34}(b) gives $W_P \subseteq W_Q$ and $W_Q\subseteq W_P$, whence $W = W_P$ and
+$|W| \le 1$ and $n = 6 + [P]+[Q]+|W| \le 9$. The enumeration of all frames
+$Z \sqcup\{P?\}\sqcup\{Q?\}\sqcup W$ with $|W|\le 3$ and all edge patterns is therefore
+\emph{exhaustive} for the class; it returns exactly $5$ admissible frames, with
+\[
+ (P,Q,|W|{=}1):\; n=9,\ \ell = 8/3; \qquad (P,Q):\; n=8,\ \ell=2.5;
+\]
+\[
+ (P) \text{ or } (Q):\; n=7,\ \ell=16/7; \qquad (\text{neither}):\; n=6,\ \ell=2 .
+\]
+So $\max \ell = 8/3 < 3$, contradicting $\ell > 3$ directly. Both kills depend on
+\S\ref{sec:tri}; exactly one of them depends on the mass inequality.
+\end{remark}
+
+\begin{corollary}\label{cor:g35.1}
+\REV{w133\_r8\_q61.py}
+$C \in \mathrm{RES}$ implies $\pth(C)\ge 6$.
+\end{corollary}
+
+\begin{proof}
+Theorems~\ref{thm:g26} and \ref{thm:g35}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:r3}]
+Let $G$ be a minimum-order counterexample to \eqref{eq:X}. By
+Proposition~\ref{prop:skeleton}(i), $\rad(G)\ge 2$; $\rad(G) = 2$ is excluded by
+Corollary~\ref{cor:g8}. If $\rad(G) = 3$, Proposition~\ref{prop:reduction} puts the core $C$
+in $\mathrm{RES}$ with (C6), contradicting Corollary~\ref{cor:g35.1} since
+$\pth(G)\ge\pth(C)\ge 6 = \rad(G)+3$.
+\end{proof}
+
+\begin{remark}[what is not reproduced]
+An earlier route to Theorem~\ref{thm:g35} ran through an explicit list of eleven possible
+slots for a hub and reduced the branch to a finite window $14 \le n \le 20$. Lemma~\ref{lem:g32}
+supersedes it: the window is closed by proof rather than by search, the intermediate lemmas
+become vacuous (their subjects $u_1',u_2',A,B$ do not exist), and the window's lower endpoint
+was in any case withdrawn as unsupported by its own logs --- the correct and sufficient bound
+is $n \ge |Z| = 6$. None of that material is reproduced here. Likewise a ball-confinement
+bound $|H| \le 24$ and a centre identity, both unconditional and both used only by the
+superseded route, are omitted.
+\end{remark}
+
+\section{The band $\lfloor \ell\rfloor \ge 4$}\label{sec:adopted}
+
+The three results of this section carry the lower \AD{} tier of \S\ref{sec:conventions}: the
+arguments originated in the free exploration channel, were re-derived line by line here
+(with the two repairs marked below), and passed \emph{one} adversarial review pass, which
+returned no defect at any joint classified as mathematics. They are not on the same footing
+as \S\ref{sec:r3}.
+
+The first two extend Lemma~\ref{lem:g14} downwards. Recall that its proof used $d \ge 5$
+exactly twice, to keep the two extension vertices $w$ and $y$ far apart.
+
+\begin{lemma}[$d = 4$]\label{lem:g36}
+\AD{w133\_r10\_adjudicate.py, w133\_r11\_adjudicate.py}
+Let $G$ be $C_4$-free with a geodesic $u_0u_1u_2u_3u_4$, $a(u_0)\ge 3$, $a(u_4)\ge 2$, and a
+usable side-neighbour $x$ of $u_0$ with $a(x)\ge 4$. Then $\pth(G)\ge 8 = d+4$. No further
+hypothesis is needed.
+\end{lemma}
+
+\begin{proof}
+Choose $y \in N(u_4)$ outside $u_3$'s component, so $y \not\sim u_3$.
+
+\emph{Step 1: the kill accounting.} $N(x)$ has at least $a(x)\ge 4$ components; $u_0$'s is
+one, and we let $C_1,C_2,C_3$ be three others with representatives $w_1,w_2,w_3$. No
+neighbour of $x$ is adjacent to $u_4$, since
+$\mathrm{dist}(w,u_4)\ge \mathrm{dist}(u_0,u_4)-\mathrm{dist}(u_0,w) = 4-2 = 2$ for
+$w \in N(x)$. Each of $y, u_2, u_3$ destroys at most one component, because $x$ is adjacent
+to none of them --- $x \not\sim u_1$ by usability; $x\not\sim u_2$, else $u_0,u_2$ have the
+common neighbours $x,u_1$; $x\not\sim u_3$ by distance;
+$\mathrm{dist}(x,y)\ge\mathrm{dist}(u_0,y)-1 \ge 2$ using
+$\mathrm{dist}(u_0,y)\ge \mathrm{dist}(u_0,u_4)-1 = 3$ --- and $C_4$-freeness gives
+$|N(x)\cap N(v)|\le 1$ for every $v \not\sim x$.
+
+\emph{Step 2: the standard path.} If some $w_i$ avoids all three kills, then
+$w_i, x, u_0, u_1, u_2, u_3, u_4, y$ is an induced $P_8$. The chords: $w_i \not\sim u_0$
+(different components of $N(x)$); $w_i \not\sim u_1$, else $w_i x u_0 u_1$ is a $C_4$ (using
+$x \not\sim u_1$); $w_i \not\sim u_2,u_3$ by assumption and $w_i\not\sim u_4$ by Step~1;
+$x \not\sim u_2,u_3,u_4,y$; the geodesic supplies $u_0\not\sim u_2,u_3,u_4$,
+$u_1\not\sim u_3,u_4$, $u_2 \not\sim u_4$; $y \not\sim u_3$ by choice; $y \not\sim u_2$, else
+$u_2,u_4$ have the common neighbours $y,u_3$; and $y \not\sim u_1,u_0$ by distance. All eight
+vertices are distinct: $w_i, x \in \ball_2(u_0)$ with $w_i \ne u_2$ (as $x \not\sim u_2$),
+and $y \notin\{u_2,u_3\}$ since $y \not\sim u_3$ while $y \sim u_4$.
+
+\emph{Step 3: all three kills land, on three distinct components.} After relabelling,
+$w_y \sim y$, $w_2 \sim u_2$, $w_3 \sim u_3$ lie in three distinct components of $N(x)$, none
+of them $u_0$'s. Since $a(u_0)\ge 3$ we may pick $z \in N(u_0)$ outside \emph{both} $u_1$'s
+and $x$'s components, so $z \not\sim u_1$ and $z\not\sim x$. Then $z \not\sim y$: otherwise
+$\mathrm{dist}(u_0,y)\le 1 + \mathrm{dist}(z,y) = 2$, contradicting
+$\mathrm{dist}(u_0,y)\ge 3$. Take
+\[
+  z - u_0 - x - w_y - y - u_4 - u_3 - u_2 \qquad (8 \text{ vertices}).
+\]
+Its edges are present by construction. The twenty-one non-adjacent pairs: $z \not\sim x$
+(components of $N(u_0)$); $z\not\sim w_y$, else $u_0, w_y$ have the common neighbours $x,z$;
+$z \not\sim y$ (above); $z \not\sim u_4, u_3$ by distance; $z \not\sim u_2$, else $u_0,u_2$
+have the common neighbours $z,u_1$; $u_0 \not\sim w_y$ (components of $N(x)$);
+$u_0 \not\sim y$ by distance; $u_0\not\sim u_4,u_3,u_2$ (geodesic); $x \not\sim y$,
+$x\not\sim u_4$ by distance, $x\not\sim u_3,u_2$ (Step 1); $w_y \not\sim u_4$ (Step 1);
+$w_y \not\sim u_3$ and $w_y \not\sim u_2$, because a vertex of $N(x)$ adjacent to $u_3$
+(resp.\ $u_2$) must lie in the single component that $u_3$ (resp.\ $u_2$) kills, which is
+that of $w_3$ (resp.\ $w_2$), and $w_y$ lies in a third; $y \not\sim u_3$ by choice;
+$y \not\sim u_2$ as in Step 2; $u_4 \not\sim u_2$ (geodesic). Distinctness: $z \ne x$ and
+$z \notin N(x)$; $w_y \in N(x)$ lies at distance $2$ from $u_0$ and $w_y \ne u_2$ since
+$x \not\sim u_2$; $y \notin \{u_2,u_3\}$ as in Step 2.
+\end{proof}
+
+\begin{lemma}[$d = 3$, Case 1]\label{lem:g37}
+\AD{w133\_r10\_adjudicate.py, w133\_r11\_adjudicate.py}
+Let $G$ be $C_4$-free with a geodesic $u_0u_1u_2u_3$, $a(u_0)\ge 3$, $a(u_3)\ge 2$, a usable
+side-neighbour $x$ of $u_0$ with $a(x)\ge 4$, \emph{and} a usable side-neighbour $y$ of $u_3$
+with $y \not\sim x$. Then $\pth(G)\ge 7 = d+4$.
+\end{lemma}
+
+\begin{proof}
+Fix such a $y$. $N(x)$ has $\ge 4$ components, one of them $u_0$'s; pick representatives
+$w_1,w_2,w_3$ of three others. As in Lemma~\ref{lem:g36}, each of $y,u_2,u_3$ kills at most
+one component, using $x\not\sim u_2$ (the $C_4$ through $u_0,u_1$), $x\not\sim u_3$
+(distance) and $x \not\sim y$ (hypothesis).
+
+\emph{Subcase 1a: some $w_i$ avoids all three kills.} Then
+$w_i, x, u_0, u_1, u_2, u_3, y$ is induced, by the chord list of Lemma~\ref{lem:g36} Step 2
+read at $d = 3$: $w_i\not\sim u_0$ (component), $w_i \not\sim u_1$ (the $C_4$ through
+$x, u_0$), $w_i\not\sim u_2,u_3,y$ (kills avoided), $x \not\sim u_1,u_2,u_3,y$,
+$u_0\not\sim u_2,u_3$, $u_1\not\sim u_3$, $y \not\sim u_2$ (choice of $y$), $y\not\sim u_1$
+(else $u_1,u_3$ have the common neighbours $y,u_2$), $y \not\sim u_0$ (distance).
+
+\emph{Subcase 1b: the three kills land on three distinct components}, say $w_1 \sim y$,
+$w_2\sim u_2$, $w_3\sim u_3$. Since $a(u_0)\ge 3$, pick $z \in N(u_0)$ outside both $u_1$'s
+and $x$'s components.
+
+\emph{1b-i: $z \not\sim y$.} Then $z, u_0, x, w_1, y, u_3, u_2$ is induced:
+$z\not\sim x$ (components of $N(u_0)$); $z \not\sim w_1$, else $u_0,w_1$ have the common
+neighbours $x,z$; $z\not\sim y$ (assumed); $z \not\sim u_3$ (distance); $z \not\sim u_2$,
+else $u_0,u_2$ have the common neighbours $z,u_1$; $u_0 \not\sim w_1$ (components of $N(x)$);
+$u_0\not\sim y$ (distance); $u_0 \not\sim u_3,u_2$ (geodesic); $x \not\sim y$ (hypothesis);
+$x \not\sim u_3$ (distance); $x\not\sim u_2$ ($C_4$); $w_1\not\sim u_2,u_3$ (the $u_2$- and
+$u_3$-kills lie in other components); $y \not\sim u_2$ (choice of $y$).
+
+\emph{1b-ii: $z \sim y$.} Then $w_1, y, z, u_0, u_1, u_2, w_2$ is induced. Its edges are
+$w_1y$ (the $y$-kill), $yz$ (assumed), $zu_0$, $u_0u_1$, $u_1u_2$, $u_2w_2$ (the $u_2$-kill).
+The chords: $w_1\not\sim z$, else $u_0$ and $w_1$ have the two common neighbours $x,z$;
+$w_1\not\sim u_0$ (components of $N(x)$); $w_1\not\sim u_1$, else $x,u_1$ have the common
+neighbours $w_1,u_0$; $w_1\not\sim u_2$ and $w_1 \not\sim w_2$ (different components of
+$N(x)$); $y \not\sim u_0$ (distance); $y\not\sim u_1$ (else $u_1,u_3$ have the common
+neighbours $y,u_2$); $y \not\sim u_2$ (choice of $y$); $y \not\sim w_2$ ---
+\emph{[first repaired step]} since $x \not\sim y$, $C_4$-freeness gives
+$|N(x)\cap N(y)|\le 1$ and $w_1$ already lies in it, so $w_2 \notin N(y)$;
+$z\not\sim u_1$ (components of $N(u_0)$); $z \not\sim u_2$ (else $u_0,u_2$ have the common
+neighbours $z,u_1$); $z\not\sim w_2$ (else $u_0,w_2$ have the common neighbours $x,z$);
+$u_0\not\sim u_2$ (geodesic); $u_0 \not\sim w_2$, since $w_2 \in N(x)$ lies outside $u_0$'s
+component of $N(x)$; and $u_1 \not\sim w_2$ --- \emph{[second repaired step]}: the source text
+justified this by ``$u_1$ and $w_2$ share $u_2$ and are not adjacent'', which is not a
+reason; the correct reason is that $u_1 \sim w_2$ would give $x$ and $u_1$ the two common
+neighbours $u_0$ and $w_2$, a $C_4$ (note $x \ne u_1$ and $u_0 \ne w_2$).
+\end{proof}
+
+The complementary case at $d = 3$ --- every usable side-neighbour $y$ of $u_3$ satisfies
+$y \sim x$ --- is \emph{not} covered by Lemma~\ref{lem:g37}, and \S\ref{sec:limits} shows
+that it is false as posed, with and without the natural repair hypothesis.
+
+The third result is global.
+
+\begin{definition}
+Let $G$ be connected and $C_4$-free. A geodesic is \emph{$3$-capped at the end $u_0$} if
+every usable side-neighbour $x$ of $u_0$ has $a(x)\le 3$ (vacuously so if there is none).
+$G$ is \emph{peripherally $3$-capped} if every geodesic of length $\ge \rad(G)$ is $3$-capped
+at both of its ends.
+\end{definition}
+
+\begin{theorem}\label{thm:g38}
+\AD{w133\_r10\_adjudicate.py, w133\_r11\_adjudicate.py}
+Every connected $C_4$-free peripherally $3$-capped graph satisfies $\ell(G) < 4$.
+\end{theorem}
+
+\begin{proof}
+Write $S := \{v : a(v)\ge 4\}$, $T := \{v : a(v)\le 3\}$, $R := \rad(G)$, and suppose for
+contradiction $\sum_v a(v) \ge 4n$.
+
+\emph{Claim 1: every vertex $v$ has at most $2$ neighbours in $S$.} Since $\ecc(v)\ge R$
+there is $w$ with $\mathrm{dist}(v,w) = \ecc(v)\ge R$; any geodesic $P$ from $v$ to $w$ has
+length $\ge R$ and is therefore $3$-capped at $v$. The usable side-neighbours of $v$ with
+respect to $P$ are exactly $N(v)\setminus C_0$, where $C_0$ is the component of $P$'s first
+step in $N(v)$, and $|C_0|\le 2$ by Lemma~\ref{lem:matching}. An $S$-neighbour has $a \ge 4$
+and so cannot be a usable side-neighbour; hence every $S$-neighbour of $v$ lies in $C_0$.
+
+\emph{Claim 2: if $v$ has two $S$-neighbours $s_1,s_2$, then $s_1\sim s_2$.} By Claim~1's
+proof both lie in $C_0$, and $|C_0|\le 2$, so $C_0 = \{s_1,s_2\}$ is a matching edge of
+$N(v)$.
+
+\emph{Claim 3: $G[S]$ is a disjoint union of triangles, edges and isolated vertices.} By
+Claim~1, $\Delta(G[S])\le 2$, so the components are paths and cycles; Claim~2 forces the two
+$S$-neighbours of any degree-$2$ vertex of $G[S]$ to be adjacent, and the resulting chord
+raises a degree to $3$ unless the component is a triangle or smaller.
+
+Let $k_3,k_2,k_1$ count the $K_3$-, $K_2$- and $K_1$-components of $G[S]$, so
+$|S| = 3k_3+2k_2+k_1$.
+
+\emph{Claim 4.} For a $K_3$ component $\{a,b,c\}$, no $T$-vertex is adjacent to two of
+$a,b,c$: if $u$ is adjacent to $a$ and $b$, then $a,b$ are two common neighbours of $u$ and
+$c$. \emph{Claim 5.} For a $K_2$ component $\{a,b\}$, at most one $T$-vertex is adjacent to
+both, for the same reason. \emph{Claim 6.} If $u \in T$ has two $S$-neighbours they are the
+endpoints of a $K_2$ component: by Claim~2 applied to $u$ they are adjacent, hence form an
+edge of $G[S]$, which lies in a $K_2$ or a $K_3$ component, and $K_3$ is excluded by
+Claim~4.
+
+\emph{Upper bound.} Partition $T$ by $d_S(u)\in\{0,1,2\}$ into $T_0,T_1,T_2$. By Claims~5
+and 6, $|T_2|\le k_2$, so
+$E(S,T) = 2|T_2|+|T_1| \le k_2 + |T| = k_2 + n - |S|$.
+
+\emph{Lower bound.} For $v \in S$ split $t(v)$ into $t_{SS}+t_{ST}+t_{TT}$ by the location of
+the pair. If $v$ lies in a $K_3$ then $d_S(v) = 2$ and those two neighbours are matched to
+each other in $N(v)$, so $t_{SS}(v) = 1$, $t_{ST}(v) = 0$ and
+$a(v) = (2+d_T(v)) - (1+t_{TT}(v))$, giving $d_T(v)\ge a(v)-1$. If $v$ lies in a $K_2$ then
+$d_S(v) = 1$, $t_{SS}(v) = 0$ and $t_{ST}(v)\le 1$, giving again $d_T(v)\ge a(v)-1$. If $v$
+is a $K_1$ then $d_S(v) = 0$ and $d_T(v)\ge a(v)$. Summing, with $|S| - k_1$ the number of
+$S$-vertices in $K_3$- and $K_2$-components,
+$E(S,T) = \sum_{v\in S} d_T(v) \ge \sum_{v\in S}a(v) - (|S|-k_1)$. Bounding each $T$-vertex's
+$a$-value by $3$ in $\sum_v a(v)\ge 4n$ gives $\sum_{v\in S}a(v)\ge 4n - 3(n-|S|) = n+3|S|$,
+hence $E(S,T)\ge n+2|S|+k_1$.
+
+\emph{The contradiction.} Combining, $n+2|S|+k_1 \le k_2+n-|S|$, i.e.\
+$3|S| + k_1 \le k_2$, i.e.\ $9k_3+5k_2+4k_1\le 0$, so $k_3=k_2=k_1=0$ and $S = \emptyset$.
+But then every $a(v)\le 3$ and $\sum_v a(v)\le 3n < 4n$.
+\end{proof}
+
+\begin{corollary}\label{cor:g38}
+\AD{w133\_r10\_adjudicate.py}
+Every connected $C_4$-free graph with $\ell(G) > 4$ has, at \emph{every} radius, a geodesic
+of length $\ge \rad(G)$ with an end $u_0$ carrying a usable side-neighbour $x$ with
+$a(x)\ge 4$.
+\end{corollary}
+
+The lemma chain of Theorem~\ref{thm:g38} was machine-tested non-vacuously: $449$ peripherally
+$3$-capped graphs in the sweep, $60$ of them with $S \ne \emptyset$, with $K_1$-, $K_2$-,
+$K_3$-components and a $T_2$ straddler all realised, all passing every claim and both bounds.
+Consistency was checked on the two natural near-misses: the incidence graph of $PG(2,3)$
+($n = 26$, $4$-regular, $\ell = 4.0$) and that of $PG(3,2)$ ($n = 50$, $\ell = 4.2$) are both
+verified \emph{not} peripherally $3$-capped. \MV{w133\_r10\_adjudicate.py}
+
+\begin{remark}[the boundary, and a vacuity annotation]
+Run with strict inequalities the chain already yields $9k_3+5k_2+4k_1 < 0$ without the
+$S = \emptyset$ endgame; the non-strict run plus that endgame is exactly what buys the
+boundary case $\ell = 4$, so the conclusion is $\ell < 4$ and not merely $\ell \le 4$. The
+review pass confirmed the boundary run independently. At the time Theorem~\ref{thm:g38} was
+recorded, no connected $C_4$-free graph with $\ell > 4$ and $\rad \ge 5$ was known to the
+campaign, so the $\rad \ge 5$ slice of Corollary~\ref{cor:g38} carried an explicit
+\emph{possibly vacuous} annotation; the theorem itself is not vacuous, since it executes on
+the $\rad = 3$ class. That annotation is removed by Proposition~\ref{prop:w2}, which exhibits
+such a graph, and the $\rad \ge 5$ slice is taken up in \S\ref{sec:pocket2}.
+\end{remark}
+
+\section{The band $\lfloor \ell\rfloor \ge 4$ at large radius}\label{sec:pocket2}
+
+This section treats the slice $\rad(G)\ge 5$ of the band opened in \S\ref{sec:adopted}. Its
+numbered contents carry two different tiers, and the difference matters.
+Lemma~\ref{lem:g41}, Theorem~\ref{thm:g42}, Lemma~\ref{lem:g43} and
+Corollary~\ref{cor:g44} carry the two-family reviewed tier \REV{} of \S\ref{sec:conventions}:
+each passed two adversarial review passes by reviewers drawn from two disjoint model
+families, both returning no surviving defect at any joint classified as mathematics. That is
+one tier above the \AD{} results of the previous section, and it is a statement about
+\emph{review}, not about reach. The band $\lfloor\ell\rfloor \ge 4$ remains open, no part of
+the conjecture is closed by anything below, nothing here is formalised, and the two witness
+statements Proposition~\ref{prop:w2} and Theorem~\ref{thm:g48} are computational and carry
+\MV{} only.
+
+\subsection{A hard positive control at radius $5$}
+
+Every bound in \S\ref{sec:adopted} is proved at a peripheral geodesic, so it is worth knowing
+that the regime $\rad \ge 5$ is inhabited at all, and inhabited in the range where the cheap
+devices fail.
+
+\begin{proposition}[the control $W_2$]\label{prop:w2}
+\MV{w133\_r11\_qradp.py, w133\_r15\_key.py, w133\_r17\_w2\_recompute.py}
+There is a connected $C_4$-free graph $G$ with $\ell(G) = 6 > 4$, $\rad(G) = \diam(G) = 5$,
+and $\pth(G)\ge 168$.
+\end{proposition}
+
+The construction is worth isolating, because it is reusable. A vertex-transitive graph has
+$\rad = \diam$; a triangle-free graph has $a(v) = d(v)$ for every $v$, so a $k$-regular
+triangle-free graph has $\ell = k$ exactly. Hence \emph{any} vertex-transitive $C_4$-free
+triangle-free $k$-regular graph with $k \ge 5$ and $\diam \ge 5$ witnesses
+Proposition~\ref{prop:w2}, and Cayley graphs of $\mathrm{PSL}(2,p)$ supply them. The standing
+control is
+\[
+  W_2 \;=\; \mathrm{Cay}\bigl(\mathrm{PSL}(2,11),\, S\bigr), \qquad
+  S = \{\,g,\,g^{-1} \;:\; g \in \{M_1,M_2,M_3\}\,\},
+\]
+\[
+  M_1 = \begin{pmatrix} 5 & 0\\ 2 & 9\end{pmatrix},\quad
+  M_2 = \begin{pmatrix} 1 & 5\\ 0 & 1\end{pmatrix},\quad
+  M_3 = \begin{pmatrix} 1 & 6\\ 10 & 6\end{pmatrix}
+  \qquad \text{over } \mathrm{GF}(11),
+\]
+the matrices being taken in $\mathrm{SL}(2,11)$ modulo $\pm I$. Verified: $n = 660$,
+$1980$ edges, connected, $6$-regular, triangle-free, $C_4$-free in the strong sense (no two
+vertices with two common neighbours), hence $a(v) = 6$ at every vertex and $\ell = 6$;
+$\rad = \diam = 5$; and a greedy induced path on $168$ vertices, every one of whose
+non-consecutive pairs was certified non-adjacent.
+
+These invariants are \emph{double-sourced}, which not everything in this paper is. They were
+computed once from the matrix model above, and once again by an implementation sharing no
+code with it, in which $\mathrm{PSL}(2,11)$ is realised instead as a permutation group on the
+twelve points of the projective line over $\mathrm{GF}(11)$ under the M\"obius action, its
+faithfulness checked rather than assumed ($|{\rm image}| = 660$, not $1320$). The second
+implementation reproduces every number above and strengthens two of them: eccentricity $5$ is
+verified at \emph{all} $660$ vertices rather than at three sampled ones, and the certified
+induced path it finds has $192$ vertices, so $\pth(W_2)\ge 192$. We keep the recorded bound at
+$168$, since that is the number the results below were checked against.
+
+$W_2$ is a hard control rather than a decorative one. Here $\diam + 1 = 6$ lies strictly below
+$\rad + 4 = 9$, so the trivial diameter device does not settle it, and the conjecture holds on
+it with a factor of about $19$ to spare. A dead end follows: no counterexample in this band
+can be a vertex-transitive $C_4$-free graph of degree $\ge 5$ with an easily found long
+induced path. If tightness exists in this band it lives in graphs of low $a$-value, rich in
+triangles and irregular --- which is also where the residual of \S\ref{sec:r3} lives. Larger
+members of the same family were verified the same way and behave identically:
+$\mathrm{PSL}(2,13)$ ($n = 1092$, $\rad = \diam = 6$, $\pth \ge 239$), $\mathrm{PSL}(2,17)$
+and $\mathrm{PSL}(2,19)$ ($\rad = \diam = 7$), and $\mathrm{PSL}(2,23)$ ($n = 6072$,
+$\rad = \diam = 7$).
+
+\subsection{The seed hypothesis is redundant at $d \ge 5$}
+
+\begin{lemma}[$d\ge 5$: the seed needs only $a(u_0)\ge 2$]\label{lem:g41}
+\REV{w133\_r11\_g14sharp.py}
+Let $G$ be $C_4$-free with a geodesic $u_0u_1\cdots u_d$, $d \ge 5$, $a(u_0)\ge 2$,
+$a(u_d)\ge 2$, and a usable side-neighbour $x$ of $u_0$ with $a(x)\ge 4$. Then
+$\pth(G)\ge d+4$.
+\end{lemma}
+
+\begin{proof}
+The construction is that of Lemma~\ref{lem:g14}, unchanged. Take $y \in N(u_d)$ outside
+$u_{d-1}$'s component of $G[N(u_d)]$, and $w \in N(x)$ in a component of $G[N(x)]$ other than
+$u_0$'s and surviving the $u_2$- and $u_3$-kills, for which $a(x)\ge 4$ pays. Then
+$w, x, u_0, \dots, u_d, y$ is induced, by exactly the non-adjacencies listed in the proof of
+Lemma~\ref{lem:g14}. That construction never selects a \emph{third} component of $G[N(u_0)]$:
+it names only $x$. So all it consumes at $u_0$ is $a(u_0)\ge 2$, which the phrase ``some
+usable side-neighbour $x$'' already presupposes.
+\end{proof}
+
+The redundancy is specific to $d \ge 5$ and does not propagate downwards. At $d = 4$
+(Lemma~\ref{lem:g36}) and $d = 3$ (Lemma~\ref{lem:g37}) the proofs choose a vertex of
+$N(u_0)$ outside \emph{both} $u_1$'s and $x$'s components, which genuinely needs
+$a(u_0)\ge 3$. Lemma~\ref{lem:g41} was machine-checked where it is not vacuous, namely where
+the deleted hypothesis actually fails: on chains built from the incidence graph of
+$\mathrm{PG}(2,5)$, $120$ frames with $a(u_0) = 2$ exactly and $d \ge 5$, the construction was
+built and certified chord-free every time.
+
+\begin{theorem}[$\mu \ge 2$ at radius $\ge 5$]\label{thm:g42}
+\REV{w133\_r11\_g42.py, w133\_r15\_key.py}
+Let $G$ be connected and $C_4$-free with $\ell(G) > 4$, $\rad(G)\ge 5$ and $\mu(G)\ge 2$.
+Then $\pth(G) \ge \rad(G) + 4$.
+\end{theorem}
+
+\begin{proof}
+By Corollary~\ref{cor:g38}, $G$ is not peripherally $3$-capped: there is a geodesic
+$u_0u_1\cdots u_d$ with $d \ge \rad(G)\ge 5$ and a usable side-neighbour $x$ of $u_0$ with
+$a(x)\ge 4$. Since $\mu(G)\ge 2$, both $a(u_0)\ge 2$ and $a(u_d)\ge 2$ hold for free, and by
+Lemma~\ref{lem:g41} the first of these is all the seed needs at $d \ge 5$. Lemma~\ref{lem:g41}
+gives $\pth(G)\ge d + 4 \ge \rad(G)+4$.
+\end{proof}
+
+The mechanism was run end to end fifty times on two witnesses --- $W_2$ and a second graph
+built from two disjoint copies of the incidence graph of $\mathrm{PG}(2,5)$ joined by an
+internal path --- locating a genuine cap-break geodesic on the graph, building the path by the
+proof's own recipe, certifying it induced, and comparing it with $\rad + 4$.
+
+\begin{remark}[two numbers, not one]\label{rem:twonumbers}
+On $W_2$ the path that this mechanism \emph{constructs} has exactly $9$ vertices, and
+$9 = \rad(W_2)+4$; so the construction delivers the bound with no slack at all. The graph's
+own longest induced path is a different quantity: $\pth(W_2)\ge 168$. These are two numbers
+and they must not be merged. What is tight on $W_2$ is the \emph{mechanism}, and the $9$
+measures the mechanism's slack; the graph itself is nowhere near tight, and the $168$ measures
+the graph's. No statement of the form ``the bound is tight on $W_2$'' is being made, and none
+would be true.
+\end{remark}
+
+\subsection{The $a = 1$ case, and what is left of it}
+
+Theorem~\ref{thm:g42} leaves exactly the graphs carrying a vertex of $a$-value $1$. Peeling
+those vertices reaches $\mu \ge 2$ and preserves connectivity and $C_4$-freeness
+(Lemma~\ref{lem:g6}); it preserves $\ell > 4$ as well, since by Lemma~\ref{lem:g11}'s
+bookkeeping deleting a leaf lowers $\Sigma := \sum_u a(u)$ by $2$ and $n$ by $1$ while
+deleting a triangle-leaf lowers $\Sigma$ by $1$ and $n$ by $1$, so $\Sigma - 4n$ rises either
+way. But peeling may lower the radius, and the peeled graph's $\pth$ is only a lower bound
+for the original's. The next two statements attack the far end directly instead.
+
+\begin{lemma}[far-end truncation]\label{lem:g43}
+\REV{w133\_r11\_g43.py}
+Let $G$ be $C_4$-free with a geodesic $u_0u_1\cdots u_d$, $d \ge 6$, $a(u_0)\ge 2$, and a
+usable side-neighbour $x$ of $u_0$ with $a(x)\ge 4$. Then $\pth(G)\ge d+3$, with no hypothesis
+whatever on $a(u_d)$.
+\end{lemma}
+
+\begin{proof}
+If $a(u_d)\ge 2$ then Lemma~\ref{lem:g41} already gives $d+4$. So suppose $a(u_d) = 1$; then
+by Lemma~\ref{lem:g2}, $N(u_d)$ is either $\{u_{d-1}\}$ or $\{u_{d-1}, q\}$ with
+$q \sim u_{d-1}$. Truncate the geodesic to $u_0u_1\cdots u_{d-1}$, of length $d-1\ge 5$, and
+take $y := u_d$ as its far-side vertex. This is legitimate: $u_d \in N(u_{d-1})$, and $u_d$
+lies outside $u_{d-2}$'s component of $G[N(u_{d-1})]$. In the first case $u_d$ is isolated in
+that graph. In the second its component is $\{u_d,q\}$, and $u_{d-2} \notin \{u_d,q\}$: it is
+not $u_d$, which is at distance $2$ from it, and if it were $q$ then $u_{d-2}$ and $u_d$ would
+be adjacent, contradicting the geodesic. Nor is $u_{d-2}\sim q$, since $q$ would then have two
+neighbours inside $G[N(u_{d-1})]$, which by Lemma~\ref{lem:matching} is a matching. Hence
+$a(u_{d-1})\ge 2$, witnessed by $y = u_d$; the vertex $x$ is still a usable side-neighbour of
+$u_0$ for the truncated geodesic, whose first step is still $u_1$; and Lemma~\ref{lem:g41} at
+$d - 1 \ge 5$ gives $\pth(G) \ge (d-1)+4 = d+3$.
+\end{proof}
+
+The truncation was checked on twenty-four runs over graphs that do carry $a$-value $1$
+vertices --- the leaf and triangle-leaf variants of the second witness named after
+Theorem~\ref{thm:g42}, on $133$ and $134$ vertices, with $\ell = 764/133$ and $765/134$ and
+radius $8$ --- since a truncation lemma checked only on graphs with $\mu \ge 2$ would be
+checked exactly where it cannot be needed.
+
+\begin{corollary}[one configuration remains]\label{cor:g44}
+\REV{w133\_r11\_g43.py}
+Let $G$ be connected and $C_4$-free with $\ell(G)>4$ and $\rad(G)\ge 5$. Then
+$\pth(G)\ge \rad(G)+4$ unless every geodesic of length $\ge \rad(G)$ that fails to be
+$3$-capped at an end has length exactly $\rad(G)$ \emph{and} $a$-value $1$ at its far end.
+\end{corollary}
+
+\begin{proof}
+Some geodesic of length $\ge \rad(G)$ fails to be $3$-capped at an end, by
+Corollary~\ref{cor:g38}. If one such has length $d \ge \rad(G)+1\ge 6$, then
+Lemma~\ref{lem:g43} gives $\pth(G)\ge d+3\ge \rad(G)+4$. If one such has $a\ge 2$ at its far
+end, then Lemma~\ref{lem:g41} gives $\pth(G)\ge d+4\ge \rad(G)+4$.
+\end{proof}
+
+\begin{remark}[the exceptional configuration is not exhibited]\label{rem:nonexhibited}
+Corollary~\ref{cor:g44} reduces the slice $\rad \ge 5$ to a single configuration, and it is
+important to say precisely how much is known about that configuration: it is \emph{not
+exhibited}. What the campaign exhibits is the strictly broader class of $C_4$-free graphs with
+$\ell > 4$, $\rad \ge 5$ and at least one vertex of $a$-value $1$, which is inhabited --- the
+second witness of Theorem~\ref{thm:g42} with a leaf attached, and with a triangle-leaf
+attached, are members. No graph is known to the campaign in which \emph{every} non-$3$-capped
+geodesic of length $\ge \rad$ has length exactly $\rad$ with an $a$-value $1$ far end. So the
+``unless'' clause of Corollary~\ref{cor:g44} could in principle be vacuous. That would be good
+news; it is not knowledge, and until a witness exists the corollary must be read as reducing
+the problem rather than as locating a live obstruction. The graph $Q$ of
+Theorem~\ref{thm:g48} below is the nearest thing on file --- it has $\mu = 1$ and every one of
+its $480$ cap-break frames has length exactly $\rad$ with far-end $a$-value $1$ --- but it is
+not a witness for the exceptional configuration, because $\pth(Q)\ge 14 > \rad(Q)+4$, so the
+``unless'' clause does no work there.
+\end{remark}
+
+\subsection{A refutation inside the residual}
+
+One reformulation of the remaining problem, natural enough that the campaign pursued it as an
+equivalent, is false.
+
+\begin{theorem}[the far-end reformulation is false]\label{thm:g48}
+\MV{w133\_r13\_q32\_verify.py}
+It is not true that every connected $C_4$-free graph with $\ell > 4$ and $\rad \ge 5$ has a
+geodesic of length $\ge \rad$ carrying a usable side-neighbour of $a$-value $\ge 4$ at one end
+and $a$-value $\ge 2$ at the other.
+\end{theorem}
+
+\begin{proof}
+Let $Q$ be the incidence graph of $\mathrm{PG}(2,4)$, on $42$ vertices, with a pendant path
+$s - h_s - f_s$ of two new vertices attached at each of the six vertices given by
+$[1{:}0{:}0]$, $[0{:}1{:}0]$ and $[0{:}0{:}1]$ read both as points and as lines. Recomputed
+from that recipe rather than assumed: $Q$ has $n = 54$, $117$ edges, is connected,
+triangle-free and $C_4$-free in the strong sense; its $a$-values are $6$ six times, $5$
+thirty-six times, $2$ six times and $1$ six times, so $\sum_v a(v) = 234$ and
+$\ell(Q) = 13/3 > 4$; and $\rad(Q) = 5$, $\diam(Q) = 7$. Over all triples $(u_0,u_1,u_d)$ with
+$u_0$ and $u_d$ at distance $\ge \rad(Q)$, the number admitting a usable side-neighbour of
+$a$-value $\ge 4$ at $u_0$ together with $a(u_d)\ge 2$ is zero. The count is not vacuous:
+$480$ such triples exist with a usable side-neighbour of $a$-value $\ge 4$ at $u_0$, and every
+one of them has length exactly $\rad(Q) = 5$ with far-end $a$-value exactly $1$.
+\end{proof}
+
+The same graph kills a second route. Peeling its six $a$-value $1$ vertices removes exactly
+twelve vertices and returns the bare incidence graph of $\mathrm{PG}(2,4)$, on which $\ell$
+stays above $4$ (it is $210/42 = 5$) while $\rad$ drops from $5$ to $3$. So no argument may
+assume that peeling preserves the radius.
+
+What survives is worth stating exactly, because a refutation is easy to over-read.
+Theorem~\ref{thm:g48} does \emph{not} refute the underlying problem, which is to control the
+radius drop under peeling or to trade it against the induced path the peeled material itself
+supplies. On $Q$ that problem is comfortably satisfied: a depth-first search that makes no use
+of the reformulation finds an induced path on at least $14$ vertices, against $\rad + 4 = 9$.
+The live route is the quantitative exchange $\rad(G)\le \rad(G')+h$, where $G'$ is the peeled
+graph and $h$ the length of the peeled hairs, and $Q$ is its tight control and an equality
+instance: $h = 2$, $\rad(Q) = 5$, $\rad(Q') = 3$, and $5 \le 3+2$ holds with equality. Any
+proof of that exchange has to execute on this graph. Finally, Theorem~\ref{thm:g42},
+Lemma~\ref{lem:g43} and Corollary~\ref{cor:g44} are untouched by Theorem~\ref{thm:g48} and are
+corroborated by it: they govern the $\mu \ge 2$ branch and the reduction to one configuration,
+and $Q$ has $\mu = 1$ and is an instance of that configuration, so it shows the reduction is
+not vacuous rather than threatening it.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Slice or route & Status & Where \\
+\midrule
+$\rad \ge 5$, $\mu \ge 2$ & closed & Thm.~\ref{thm:g42} \\
+$\rad \ge 5$, $\mu = 1$ & \textbf{open}; one configuration & Lem.~\ref{lem:g43},
+   Cor.~\ref{cor:g44} \\
+\quad via the far-end reformulation & dead & Thm.~\ref{thm:g48} \\
+\quad via ``peeling preserves the radius'' & dead & Thm.~\ref{thm:g48} \\
+\quad via the exchange $\rad(G)\le \rad(G')+h$ & live, tight-controlled by $Q$ &
+   Thm.~\ref{thm:g48} \\
+$\rad \le 4$ & \textbf{open} & \S\ref{sec:open} \\
+\bottomrule
+\end{tabular}
+\caption{The band $\lfloor\ell\rfloor\ge 4$ after this section. Nothing here closes the band.}
+\label{tab:pocket2}
+\end{table}
+
+So the residual of the whole band is the single configuration of Corollary~\ref{cor:g44} at
+$\rad \ge 5$ --- every non-$3$-capped geodesic of length $\ge \rad$ having length exactly
+$\rad$ and an $a$-value $1$ far end, a configuration no known graph realises --- together with
+the radii $2$, $3$ and $4$, of which radius $4$ additionally wants the $a(u_0)\ge 3$ upgrade
+that Lemma~\ref{lem:g36} needs there.
+
+\begin{remark}[computational provenance of this section]\label{rem:pocket2prov}
+Every invariant of both witnesses has been computed twice, by implementations that share no
+code. For $W_2$ the two implementations use different models of $\mathrm{PSL}(2,11)$, as
+described in Proposition~\ref{prop:w2}. For $Q$ the first implementation,
+\texttt{w133\_r13\_q32\_verify.py}, builds $\mathrm{PG}(2,4)$ from $\mathrm{GF}(4)$
+arithmetic, normalising projective triples and testing incidence by the vanishing of the
+bilinear form; the second, \texttt{w133\_r18\_q32\_rebuild.py}, builds it from a Singer
+planar difference set, taking the points to be the residues modulo $21$, the lines to be the
+$21$ translates of $D = \{0,1,6,8,18\}$, and incidence to be $p - i \in D$. No field, no
+coordinates and no line of code are shared between the two, and the difference-set property is
+verified rather than assumed. Both rebuild the graph from the recipe and assert
+$C_4$-freeness before reading any statistic off it, and all of $n$, the degree sequence,
+triangle-freeness, $\sum_v a(v)$, the $a$-profile, $\rad$, $\diam$, the peeling behaviour and
+the induced-path bound agree. Cayley-type and incidence-type constructions are determined up
+to isomorphism by their defining data and every quantity listed is an isomorphism invariant,
+so the agreement is genuine independent confirmation rather than a re-run. The review tier
+carried by Lemma~\ref{lem:g41} to Corollary~\ref{cor:g44} is nevertheless a statement about
+human-style reading of proofs by adversarial reviewers, and it does not extend to these
+computations at all.
+\end{remark}
+
+\section{Negative results, refutations, and named obstacles}\label{sec:limits}
+
+This section is part of the report, not an appendix to it: each item closes a route, and
+three of them close routes that the campaign itself had been pursuing.
+
+\subsection{No two-endpoint lemma reaches $\rad + k$ for $k \ge 4$}
+
+\begin{proposition}\label{prop:tm}
+\MV{wowii133\_gplus.c}
+For $m \ge 1$ let $T_m$ be the tree consisting of a path $u - s - v$ with $m$ pendant vertices
+attached to $u$ and $m$ to $v$. Then $T_m$ is $C_4$-free with $n = 2m+3$, $\rad(T_m) = 2$,
+$a(u) = a(v) = m+1$, $\ell(T_m) = (4m+4)/(2m+3) \to 2$, and $\pth(T_m) = 5$ for every $m$.
+Consequently, for every $k \ge 4$ the statement
+\begin{quote}
+``$C_4$-free with a pair at distance $\rad$ whose $a$-values are both $\ge k$ implies
+$\pth \ge \rad + k$''
+\end{quote}
+is false, and no strengthening of Lemma~\ref{lem:g1} that reads only the two endpoints of a
+geodesic can prove (C133-b) in the band $\lfloor \ell\rfloor \ge 4$.
+\end{proposition}
+
+\begin{proof}
+$T_m$ is a tree, hence $C_4$-free. $\ecc(s) = 2$ and $\ecc(u) = 3$, so $\rad = 2$ and
+$\mathrm{dist}(u,v) = 2 = \rad$. The $a$-values are $m+1$ at $u$ and at $v$, $2$ at $s$ and
+$1$ at each of the $2m$ pendant vertices, giving $\sum a = 4m+4$. A longest induced path is
+$\text{leaf} - u - s - v - \text{leaf}$, on $5$ vertices. For $k \ge 4$ and $m \ge k-1$ the
+hypothesis holds while $\rad + k = 2+k \ge 6 > 5 = \pth$.
+\end{proof}
+
+Note that $T_m$ does \emph{not} contradict the conjecture: $\lfloor \ell\rfloor = 2$ and
+$\pth = 5 \ge \rad + 2$. What it kills is a proof technique. It also shows why
+Theorem~\ref{thm:gplus} is stated with the hypothesis $\mu \ge 2$ rather than with a
+hypothesis on the endpoints only: $\mu(T_m) = 1$.
+
+\subsection{The layered-counting route dies above radius 2}
+
+Theorem~\ref{thm:g7} proves the statement $(GP_2)$: \emph{$C_4$-free with $\rad = 2$ and
+$\ell \ge 3$ implies there is a pair at distance $\ge \rad$ with $a$-values
+$(\ge 3, \ge 2)$}. The obvious next step is $(GP_3)$.
+
+\begin{proposition}\label{prop:gp3}
+\MV{w133\_r3\_counterexample.py}
+$(GP_3)$ is false. Let $A$ be the Hoffman--Singleton graph with two pendant vertices attached
+to every vertex. Then $A$ is connected and $C_4$-free with $n = 150$, $m = 275$, $\rad = 3$,
+$\diam = 4$, $\sum_v a(v) = 550$, $\ell = 11/3$ and $\lfloor \ell\rfloor = 3$ --- so $A$ lies
+in the band under attack --- while the number of pairs at distance $\ge \rad$ with $a$-values
+$(\ge 3,\ge 2)$ is \emph{zero}: the largest distance between two vertices of $a$-value
+$\ge 2$ is $2 < 3 = \rad$. The graph $B$ obtained by attaching only three pendant vertices,
+at three mutually distance-$2$ vertices with no common neighbour, has $n = 53$, $\rad = 3$,
+$\lfloor\ell\rfloor = 6$ and again zero such pairs. Both satisfy the conjecture ($A$ has an
+induced path on $\ge 16$ vertices against a requirement of $6$).
+\end{proposition}
+
+\begin{proof}[Verification]
+The vertices of $a$-value $\ge 2$ are exactly the $50$ Hoffman--Singleton vertices, which lie
+pairwise within distance $\diam(\mathrm{HS}) = 2$; every vertex at distance $\ge 3$ from
+anything is a pendant vertex, of $a$-value $1$. The invariants are computed by the named
+script.
+\end{proof}
+
+The consequence is sharper than it looks. The route that proves Theorem~\ref{thm:g7} aims to
+show ``$(\star)$ and $\rad \ge 3$ and a high vertex exists $\Rightarrow 3n - \sum a > 0$'';
+the witness $A$ satisfies $(\star)$, has $\rad = 3$ and $50$ high vertices, and has
+$3n - \sum a = 450-550 = -100 < 0$. So the fibre count of Theorem~\ref{thm:g7} cannot be
+generalised to radius $3$, and any proof there must genuinely construct an induced path
+rather than count. Only three pendant vertices suffice to lift the radius from $2$ to $3$ and
+destroy every good pair.
+
+\subsection{The deep endpoint lemma cannot be pushed to $d = 3$}
+
+Lemma~\ref{lem:g36} extends Lemma~\ref{lem:g14} to $d = 4$ with no extra hypothesis, and
+Lemma~\ref{lem:g37} extends it to $d = 3$ under the hypothesis that some usable side-neighbour
+$y$ of $u_3$ satisfies $y \not\sim x$. The complementary configuration --- call a frame
+\emph{forced} if every usable side-neighbour $y$ of $u_3$ satisfies $y \sim x$ --- is not
+merely unproved. It is false, twice over.
+
+\begin{proposition}[the bare statement is false]\label{prop:ce1}
+\MV{w133\_r10\_adjudicate.py}
+Let $G_1$ be the graph on $\{0,\dots,9\}$ with edges
+\[
+  09,\; 05,\; 15,\; 23,\; 25,\; 26,\; 28,\; 49,\; 46,\; 57,\; 58 .
+\]
+Then $G_1$ is connected and $C_4$-free; $2-6-4-9$ is a geodesic of length $3$;
+$a(2) = 3$ and $a(9) = 2$; $x = 5$ is a usable side-neighbour of $u_0 = 2$ with $a(5) = 4$;
+the frame is forced (the unique usable side-neighbour of $u_3 = 9$ is $0$, and $0 \sim 5$);
+and $\pth(G_1) = 6 < 7 = d+4$. Hence the $d = 3$ analogue of Lemma~\ref{lem:g36} is false as
+stated.
+\end{proposition}
+
+The vertices of $a$-value $1$ in $G_1$ are the leaves $1,3,7$ and the triangle-leaf $8$;
+peeling them leaves a $6$-cycle, in which the frame no longer exists. This is what made the
+following ``$F4$ form'' --- the same statement with the extra hypothesis $\mu(G)\ge 2$, which
+is free in the intended application because peeling preserves $C_4$-freeness and raises the
+slack (Lemma~\ref{lem:g11}) --- look like the right repair. It is not.
+
+\begin{theorem}[the repaired statement is also false]\label{thm:g45}
+\MV{w133\_r11\_adjudicate.py}
+Let $H$ be the graph on $\{0,\dots,9\}$ with edges
+\[
+  01,\;04,\;05,\;08,\;12,\;23,\;26,\;35,\;37,\;39,\;46,\;47,\;48,\;89 .
+\]
+Then $H$ is connected and $C_4$-free with $a$-value vector
+$(3,2,3,4,3,2,2,2,2,2)$, so $\mu(H) = 2$ and \emph{no peeling is possible};
+$2-1-0-8$ is a geodesic of length $3$ with $a(u_0) = 3$ and $a(u_3) = 2$; $x = 3$ is a usable
+side-neighbour of $u_0$ with $a(x) = 4$; the frame is forced, the unique usable
+side-neighbour of $u_3 = 8$ being $9$, with $9 \sim 3$; and $\pth(H) = 6 < 7$, witnessed by
+the induced path $0-8-9-3-2-6$ and by exhaustive search for the upper bound.
+\end{theorem}
+
+\begin{proof}[Verification, from the edge list alone]
+$N(0) = \{1,4,5,8\}$ with the single internal edge $48$, so $a(0) = 3$; $N(2) = \{1,3,6\}$
+is independent, so $a(2) = 3$ and every neighbour of $2$ outside $u_1 = 1$'s component is
+usable; $N(3) = \{2,5,7,9\}$ is independent, so $a(3) = 4$; $N(8) = \{0,4,9\}$ with the
+single internal edge $04$, so $a(8) = 2$ and the usable side-neighbour set of $8$ with
+respect to the geodesic is exactly $\{9\}$, and $39$ is an edge. No two vertices have two
+common neighbours. Neither $2$ nor $8$ has a neighbour in common with the other, and
+$2-1-0-8$ is a shortest path. An exhaustive enumeration of induced paths returns $6$ as the
+maximum.
+\end{proof}
+
+\begin{remark}[scope, and why $G_1$ and $H$ do not touch \S\ref{sec:adopted}]
+$\sum_v a(v) = 25$ and $n = 10$ give $\ell(H) = 2.5 < 3$, so $H$ lies \emph{outside} the live
+class of \S\ref{sec:peeling}, which carries $\ell > 3$. What $H$ refutes is therefore the
+hypothesis-free \emph{local} route at $d = 3$ --- the deep endpoint extension cannot be
+pushed down to $d = 3$ in this currency, with or without $\mu \ge 2$ --- and not
+Problem~\ref{prob:rpd}. The next attempt at $D = 3$ must consume either a global hypothesis
+such as $\ell > 3$ or a declared $a$-value surcharge. Neither Lemma~\ref{lem:g36} nor
+Lemma~\ref{lem:g37} is touched: $\diam(H) = 3$, so $H$ carries no geodesic of length $\ge 4$
+and Lemma~\ref{lem:g36} cannot execute; and an exhaustive enumeration of $H$'s qualifying
+$d = 3$ frames returns exactly two, $2-1-0-8$ and $2-6-4-8$, both forced, so
+Lemma~\ref{lem:g37} cannot execute either.
+\end{remark}
+
+\begin{remark}[a methodological correction]\label{rem:frames}
+Theorem~\ref{thm:g45} was found by the adversarial reviewer assigned to \S\ref{sec:adopted},
+on a target that the campaign's own sweep had recorded as open after finding no
+counterexample among $1112$ \emph{forced frames} (of which $63$ satisfied $\mu \ge 2$). The
+sweep was frame-local: it enumerated local skeletons and could not see $\pth(G)$ of a
+completed graph. The lesson, recorded here because the same species of error appears twice in
+the campaign's logs, is that ``$0$ counterexamples in $N$ frames'' is evidence about frames
+and never about graphs, and must not be written in a way that reads otherwise.
+\end{remark}
+
+\subsection{Named obstacles}
+
+\begin{proposition}[surgery]\label{prop:o1}
+\MV{wowii133\_families.py}
+Let $G^\ast$ be the Hoffman--Singleton graph with one edge subdivided. Then $G^\ast$ is
+$C_4$-free with $n = 51$, $\delta = 2$, $\rad = 3$, $\ell = 6.902$ and
+$\lfloor\ell\rfloor = 6$, so the conjecture demands $\pth \ge 9$ (true: $\pth \ge 20$) while
+$\max(\rad+2,\ \delta+2,\ \rad+\lfloor\delta/2\rfloor) = 5$. Hence Theorems~\ref{thm:D},
+\ref{thm:E} and \ref{thm:F} cannot be combined into a proof of the conjecture.
+\end{proposition}
+
+Every bound in \S\ref{sec:closed} is driven by $\delta$ or $\rad$; both are destroyed by one
+local modification while $\ell$ moves by $O(1/n)$. A correct proof must use a quantity as
+robust as $\ell$.
+
+Three further obstacles are recorded without proof, since each is an observation rather than
+a theorem. \emph{(O2) The degeneracy factor $2$.} Every greedy argument really bounds $\pth$
+by $2 + \max_{H\subseteq G}\delta(H)$, i.e.\ by the degeneracy, which can be as small as half
+the average degree, whereas the conjecture needs about the average degree; closing that
+factor for $C_4$-free graphs is a sharp form of the known results on induced subdivisions in
+$K_{s,s}$-free graphs of large average degree, for which only tower-type bounds are
+available. (This attribution is from memory: the campaign ran without web access and it was
+not checked against the literature.) \emph{(O3) No per-vertex charging.} The star $K_{1,m}$
+has $a(\text{centre}) = m$ but $\pth = 3$, so no bound of the form
+``$\pth \ge f(a(v)) + g(v)$ for some vertex $v$'' can exist: any proof must genuinely
+average. \emph{(O4) Sharpness at the bottom.} By Proposition~\ref{prop:tight} five graphs
+attain equality, so no argument may lose even one vertex.
+
+Finally, one negative result that saves computation:
+
+\begin{proposition}\label{prop:circulant}
+\PRVn
+Every circulant graph of degree $\ge 4$ contains a $4$-cycle, since a connection set
+containing $\pm a$ and $\pm b$ with $a \ne b$ gives $0 = a + (-a) = b + (-b)$ and hence two
+vertices with two common neighbours. Circulants are therefore useless as test samples for any
+$C_4$-free statement with a degree floor $\ge 4$.
+\end{proposition}
+
+\section{Status and open problems}\label{sec:open}
+
+The conjecture is open. What remains, in the order in which the campaign ranks it:
+
+\begin{enumerate}
+\item \textbf{Problem~\ref{prob:rpd} at $D = 3$.} By Theorem~\ref{thm:r3}, a minimum-order
+counterexample in the band $\lfloor\ell\rfloor = 3$ has radius $\ge 4$, and
+\S\ref{sec:peeling} reduces radius $\ge 4$ to Problem~\ref{prob:rpd} at $D = \rad - 1 \ge 3$.
+The case $D = 2$ is Theorem~\ref{thm:g12}; $D = 4$ and $D \ge 5$ are available from
+Lemma~\ref{lem:g36} and Lemma~\ref{lem:g14} \emph{under the side-neighbour hypothesis}
+$a(x)\ge 4$, which still has to be discharged from $\ell > 3$. The case $D = 3$ is the first
+genuinely open one, and Theorem~\ref{thm:g45} says the local route to it is closed: a global
+hypothesis must be paid for.
+
+\item \textbf{Discharging the side-neighbour hypothesis.} Corollary~\ref{cor:g38} discharges
+exactly this hypothesis, but from $\ell > 4$ rather than $\ell > 3$. An analogue at
+$\ell > 3$ would combine with Lemmas~\ref{lem:g14} and \ref{lem:g36} to give
+Problem~\ref{prob:rpd} for $D = 4$ and $D \ge 5$ outright.
+
+\item \textbf{The band $\lfloor\ell\rfloor \ge 4$.} Corollary~\ref{cor:g38} supplies a
+peripheral geodesic with a high side-neighbour at every radius; what a proof still needs at
+that geodesic is $a(u_0)\ge 3$ and $a(u_d)\ge 2$. At $\rad \ge 5$ the first of these is
+free (Lemma~\ref{lem:g41}) and \S\ref{sec:pocket2} reduces the band to Table~\ref{tab:pocket2}:
+the surviving route is the exchange $\rad(G)\le \rad(G')+h$ under peeling, whose tight
+control is the graph $Q$ of Theorem~\ref{thm:g48}, together with the radii $\le 4$, radius
+$4$ additionally wanting the $a(u_0)\ge 3$ upgrade. The most informative single thing that
+could be done next is to exhibit --- or rule out --- a graph realising the exceptional
+configuration of Corollary~\ref{cor:g44}; see Remark~\ref{rem:nonexhibited}.
+
+\item \textbf{A7.} Proposition~\ref{prop:aux} records the real-valued strengthening
+$\ell(G)\le \pth(G)-\rad(G)$, verified over the whole exhaustive range and tight on the same
+five graphs. Proving it would prove the conjecture, and Theorem~\ref{thm:g12} is a proved
+non-trivial instance of it. It remains the campaign's recommended target.
+
+\item \textbf{Formalisation.} Nothing here is formalised. The one convention that a Lean
+formalisation must not lose is the strong reading of $C_4$-freeness (\S\ref{sec:intro}):
+several lemmas above --- Lemma~\ref{lem:g23}(a) among them --- are false under the
+induced-only reading.
+\end{enumerate}
+
+\appendix
+
+\section{Verification artifacts}\label{app:artifacts}
+
+Every script named below lives in the campaign repository at the stated relative path; each
+asserts the statements attributed to it and exits non-zero on the first violation. Logs are
+the same filename with extension \texttt{.out}. No result in this paper was obtained with a
+SAT solver.
+
+\begin{longtable}{@{}p{0.32\textwidth}p{0.62\textwidth}@{}}
+\toprule
+\textbf{Artifact} & \textbf{What it certifies} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Artifact} & \textbf{What it certifies} \\
+\midrule
+\endhead
+\texttt{notes/proofs/} \texttt{wowii133\_verify.c} &
+The exhaustive generator and assertion harness: all connected graphs on $n \le 10$
+($136\,362\,861$ evaluations) and all connected $C_4$-free graphs on $n\le 13$
+($13\,544\,784$); asserts Theorems~\ref{thm:C}, \ref{thm:D}, \ref{thm:E}, \ref{thm:F} and the
+coverage census of \S\ref{sec:falsification}; self-validates its class counts against the
+number of connected graphs on $n$ nodes. \\
+\texttt{notes/proofs/} \texttt{wowii133\_families.py} &
+The $79$ structured graphs up to $n = 183$ (Petersen, Hoffman--Singleton, incidence graphs of
+$PG(2,q)$, polarity graphs $ER_q$, cages, random girth-$5$ regular graphs), their invariants,
+and the surgery witness of Proposition~\ref{prop:o1}. \\
+\texttt{notes/proofs/} \texttt{wowii133\_sa.c} &
+The adversarial simulated-annealing search over connected $C_4$-free graphs,
+$n = 10..24$, minimising $\pth-\rad-\lfloor\ell\rfloor$ ($\approx 2\cdot10^6$ proposals,
+minimum slack $1$ for $n \ge 14$). \\
+\texttt{problems/wowii/} \texttt{wowii133\_gplus.c} &
+The same harness extended with assertions for Lemmas~\ref{lem:g10}, \ref{lem:g1},
+\ref{lem:g9} (including the $334$ failures of the $d=3$ variant), \ref{lem:g2},
+Theorem~\ref{thm:gplus}, Lemma~\ref{lem:g13}, the structural steps of
+Theorem~\ref{thm:g12}, and the hexagon-rigidity assertions ($1272$ non-vacuous induced-$C_6$
+instances); the coverage census $606 \to 0$. \\
+\texttt{problems/wowii/} \texttt{w133\_r3\_counterexample.py} &
+Proposition~\ref{prop:gp3} (witnesses $A$ and $B$) and the residual analysis of
+\S\ref{sec:peeling}; the frames backing Lemma~\ref{lem:g14}. \\
+\texttt{problems/wowii/} \texttt{w133\_g12\_nonempty.py} &
+Proposition~\ref{prop:g12nonempty}, triangle-free branch: Hoffman--Singleton lies in
+Theorem~\ref{thm:g12}'s hypothesis class, with an induced-path certificate. \\
+\texttt{problems/wowii/} \texttt{w133\_res3\_search.py} &
+Proposition~\ref{prop:g12nonempty}, triangle branch ($ER_5,ER_7,ER_{11}$); the nine witnesses
+of Remark~\ref{rem:live} and the verification that all nine violate (R3b). \\
+\texttt{problems/wowii/} \texttt{w133\_res\_kill.py} &
+Remark~\ref{rem:r3a} (the five members of $\mathrm{RES(a)}\setminus\mathrm{RES}$);
+Lemmas~\ref{lem:mass}, \ref{lem:g18}, \ref{lem:g19}, \ref{lem:g4}, \ref{lem:g5},
+Theorem~\ref{thm:g7} over a $48$-graph pool ($1363$ distance-$3$ pairs, $329$ subsets, $371$
+eccentricity-$2$ vertices, $301$ centres). \\
+\texttt{problems/wowii/} \texttt{w133\_r6\_adjudicate.py} &
+Lemma~\ref{lem:g22} for $k = 3,4,5$ ($4226 / 67\,344 / 194\,280$ endpoints) and the
+friendship-graph tightness; the star counterexample that establishes the gap repaired by
+Step~1 of Theorem~\ref{thm:g12}; the classification of triangle-free diameter-$2$ $C_4$-free
+graphs on $n \le 7$ as $25$ stars plus $12$ Moore graphs. \\
+\texttt{problems/wowii/} \texttt{w133\_r7\_triend.py} &
+Lemma~\ref{lem:g25} and the layer decomposition of Lemma~\ref{lem:g23} on $79\,852$
+triangular-endpoint carriers, plus the two bounded integer sweeps used in
+Theorem~\ref{thm:g26}. \\
+\texttt{problems/wowii/} \texttt{w133\_r8\_q61.py} &
+Lemmas~\ref{lem:g32p}, \ref{lem:g32}, Corollary~\ref{cor:g32.1} ($1330$ hexagons, $1300$
+classified off-hexagon vertices, $15\,960$ mass identities); Lemma~\ref{lem:g33}'s $176$
+frames; the exhaustive frame enumeration behind Theorem~\ref{thm:g35}, whose realised maximum
+mass is exactly $6$. \\
+\texttt{problems/wowii/} \texttt{w133\_r9\_frame\_l.py} &
+The five admissible frames of Remark~\ref{rem:secondkill} with $\ell$ computed;
+$\max \ell = 8/3$. \\
+\texttt{problems/wowii/} \texttt{w133\_r9\_controls.py} &
+The verified control graphs: Petersen, the $PG(3,2)$ incidence graph ($n=50$, $\ell = 4.2$,
+$\rad = 3$) and the $PG(2,3)$ incidence graph ($n = 26$, $\ell = 4.0$), with exact
+induced-path search. \\
+\texttt{problems/wowii/} \texttt{w133\_r10\_adjudicate.py} &
+Proposition~\ref{prop:ce1}; the $d=3$ and $d=4$ frame sweeps; the lemma chain of
+Theorem~\ref{thm:g38} on $449$ peripherally $3$-capped graphs; the verification that
+$PG(2,3)$ and $PG(3,2)$ are not peripherally $3$-capped. \\
+\texttt{problems/wowii/} \texttt{w133\_r11\_adjudicate.py} &
+Theorem~\ref{thm:g45} re-verified from the edge list by independent code, including
+$\pth(H) = 6$ by exhaustion, $\ell(H) = 2.5$, and the enumeration of $H$'s two qualifying
+$d = 3$ frames; Remark~\ref{rem:b10}'s peeling arithmetic on $G_1$. \\
+\texttt{problems/wowii/} \texttt{w133\_r11\_qradp.py} &
+The control $W_2$ of Proposition~\ref{prop:w2} in the matrix model of
+$\mathrm{PSL}(2,11)$, and the corresponding larger members of the family. \\
+\texttt{problems/wowii/} \texttt{w133\_r17\_w2\_recompute.py} &
+The independent recomputation of $W_2$: $\mathrm{PSL}(2,11)$ realised as a permutation group
+on the projective line over $\mathrm{GF}(11)$, sharing no code with the above; faithfulness
+checked, eccentricity $5$ verified at all $660$ vertices, and a certified induced path on
+$192$ vertices. Its companion \texttt{w133\_r17\_v7probe.py} settles which of its own
+assertions are refutable by injecting a fault against each. \\
+\texttt{problems/wowii/} \texttt{w133\_r11\_g14sharp.py} &
+Lemma~\ref{lem:g41} on $120$ frames with $a(u_0) = 2$ exactly --- that is, non-vacuously
+where the deleted hypothesis fails. \\
+\texttt{problems/wowii/} \texttt{w133\_r11\_g42.py} &
+Theorem~\ref{thm:g42}'s mechanism run end to end $50$ times on two witnesses, including the
+constructed path of $9 = \rad+4$ vertices on $W_2$ of Remark~\ref{rem:twonumbers}. \\
+\texttt{problems/wowii/} \texttt{w133\_r11\_g43.py} &
+Lemma~\ref{lem:g43} on $24$ truncation runs over graphs that carry $a$-value $1$ vertices. \\
+\texttt{problems/wowii/} \texttt{w133\_r13\_q32\_verify.py} &
+The graph $Q$ of Theorem~\ref{thm:g48} rebuilt from its recipe, $22$ checks: the invariants,
+the empty count of qualifying triples against the non-empty count of $480$ cap-break frames,
+and the radius drop $5 \to 3$ under peeling. \\
+\texttt{problems/wowii/} \texttt{w133\_r18\_q32\_rebuild.py} &
+The same graph $Q$ rebuilt independently, $37$ checks, with $\mathrm{PG}(2,4)$ obtained from
+a Singer planar difference set rather than from $\mathrm{GF}(4)$ arithmetic; it reproduces
+every invariant, including the count of $480$ cap-break frames exactly, and injects a fault
+against each of its four load-bearing certifiers to show they can fail. \\
+\texttt{problems/wowii/} \texttt{w133\_r15\_key.py} &
+The held-out key for the second adversarial pass over \S\ref{sec:pocket2}: the witnesses'
+invariants recomputed from scratch, $42$ checks. \\
+\texttt{prompts/} \texttt{w133\_S3\_R24.md}, \texttt{w133\_S3\_R24\_v6\_qwen.md} &
+The two self-contained briefs placed under the two adversarial passes that
+Lemmas~\ref{lem:g41}, \ref{lem:g43}, Theorem~\ref{thm:g42} and Corollary~\ref{cor:g44}
+carry: the statements and full proofs exactly as reviewed, each with its held-out table and
+its named joints. The reviewers' reports are retained in the campaign's quarantine directory
+for untrusted-channel output and were never copied into the repository. \\
+\texttt{problems/wowii/} \texttt{w133\_r8\_judge\_*.py} &
+The first reviewer's own verification code for \S\ref{sec:tri}, written independently of the
+campaign's: an exhaustive pool of all $4448$ connected $C_4$-free graphs on $n\le 10$ whose
+class counts independently reproduce the campaign's, plus explicit families;
+$\approx 90\,000$ assertions, $0$ failures. \\
+\texttt{problems/wowii/} \texttt{w133\_r8\_judge20\_*.py} &
+The blind reviewer's own verification code for \S\ref{sec:hexagon}, including the
+counterexample of Remark~\ref{rem:g32false} and a re-verification of the repaired
+Lemma~\ref{lem:g32} over $2\,105\,408$ frames. \\
+\texttt{problems/wowii/} \texttt{w133\_S3\_R23\_opus.md} &
+The adversarial review report on \S\ref{sec:adopted}, containing the refutation
+$H$ of Theorem~\ref{thm:g45} and the peeling-arithmetic defect of Remark~\ref{rem:b10}. \\
+\texttt{prompts/} \texttt{w133\_S3\_R23.md} &
+The self-contained brief placed under that review: the statements and full proofs of
+Lemmas~\ref{lem:g36}, \ref{lem:g37} and Theorem~\ref{thm:g38} exactly as reviewed, with the
+named joints and the mandatory probes. \\
+\texttt{problems/wowii/} \texttt{w133\_S3\_GDIFF\_qwen.md} &
+The diff-scoped second review pass over \S\ref{sec:hexagon} and the repair of
+Remark~\ref{rem:g32false}, returning no mathematics defect. \\
+\texttt{problems/wowii/} \texttt{w133\_S3\_G12\_qwen.md} &
+The review pass that located the gap in Theorem~\ref{thm:g12} Step~1, repaired there. \\
+\texttt{notes/proofs/} \texttt{wowii133\_draft.md} &
+The campaign's running attack report: the full round-by-round record, including every
+adjudication, every retraction, and the material omitted from this paper. \\
+\bottomrule
+\end{longtable}
+
+\end{document}

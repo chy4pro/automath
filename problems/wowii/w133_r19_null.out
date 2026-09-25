@@ -1,0 +1,84 @@
+==============================================================================
+[0] THE SAMPLE — what the round-18 '15 induced C6s, 0 violations' scan actually visited
+==============================================================================
+  PASS  R is C4-free (the class hypothesis the whole scan sits inside)
+  PASS  CE-2 is C4-free (the class hypothesis the whole scan sits inside)
+  PASS  Petersen is C4-free (the class hypothesis the whole scan sits inside)
+  induced C6 counts: R=1, CE-2=4, Petersen=10  TOTAL=15
+  PASS  the scan's C6 count is 15, as reported in round 18   [15]
+  off-cycle (Z,w) pairs visited: M = 59
+  |N(w) cap Z| histogram: {0: 10, 1: 9, 2: 40}
+  pairs that COULD violate at all (|N(w) cap Z| >= 2): 40 of 59  = 67.8%
+  PASS  the scan is NOT vacuous: at least one pair could have violated   [40]
+  PASS  round 18's '0 violations' reproduces here, independently   [0]
+  among the |N(w) cap Z| = 2 pairs, cycle-distance class histogram: {1: 4, 3: 36}
+
+==============================================================================
+[1] NULL MODEL A — the ONLY null that matches the population actually sampled:
+    same shape AND C4-free (every graph in the scan is C4-free)
+==============================================================================
+  PASS  PROOF STEP, checked at all 6 positions: w~z_i and w~z_{i+2} forces the 4-cycle z_i - z_{i+1} - z_{i+2} - w - z_i   [6/6 positions]
+  PASS  and its four vertices are distinct and its two diagonals (z_i z_{i+2}, z_{i+1} w) are non-edges -- z_i z_{i+2} because C6 is INDUCED   [z_{i+1} w may be an edge; a C4 needs only the 4 cycle edges, so C4-freeness kills it either way]
+
+  ==> NULL EXPECTATION UNDER MODEL A = 1.000000  (100.000%)
+      Every same-shape C4-free configuration shows 0 violations, because (a) is a
+      THEOREM there. Evidence weight of '15 C6s, 0 violations' as support for (a):
+      EXACTLY 0 bits.  -log2(1) = 0.
+
+==============================================================================
+[2] NULL MODELS B-D — what the number would be if the class hypothesis were DROPPED
+    (these do NOT describe the sample; they only price the check's ceiling)
+==============================================================================
+  of the 2^6 = 64 possible traces, 16 are non-violating
+  B (uniform random trace, per pair 16/64 = 0.2500):  P(0 violations over M=59) = 3.009e-36
+    size 1: 6/6 non-violating, observed 9 pairs
+    size 2: 9/15 non-violating, observed 40 pairs
+    size 0: 1/1 non-violating, observed 10 pairs
+  C (size-matched resample of WHICH vertices):  P(0 violations) = 1.337e-09
+  D (Bernoulli p = 0.2514 matched to observed attachment density, per pair 0.7092):  P(0 violations) = 1.572e-09
+  PASS  under every class-dropped null the check would be informative -- which is exactly why Model A, not these, is the honest answer
+
+==============================================================================
+[3] A SHARPER DEFECT THAN THE NULL: the scan does not even EXERCISE the whole claim
+==============================================================================
+  candidate classifications of the allowed 2-subsets: 8 (subsets of {1,2,3})
+  consistent with the ENTIRE 15-C6 scan: 2 -> {1,3}, {1,2,3}
+  PASS  the claim says 'consecutive OR opposite' (distance 1 or 3), but the scan only ever exercised distance classes [1, 3]   [observed classes [1, 3]]
+  ==> the scan under-determines the claim by log2(2) = 1.00 bits: 2 distinct statements, including strictly stronger ones, fit it equally well.
+
+==============================================================================
+[4] V7 — is the '0' REFUTABLE? plant faults and require the detector to trip
+==============================================================================
+  PASS  V7-0 baseline: Petersen scans 0 violations
+  PASS  V7-1 LIVE: planting w ~ z_0, z_2 (distance 2) makes the SAME scan report > 0 violations   [4 violations]
+  PASS  V7-1 control: and that planted graph is NOT C4-free -- the fault is unreachable inside the class, which is the whole point
+  PASS  V7-2 LIVE: planting |N(w) cap Z| = 3 also trips the detector   [7 violations]
+  PASS  V7-3 SPECIFICITY: a legal consecutive attachment does NOT trip the detector
+
+==============================================================================
+[5] SURVIVOR (b) -- the on-cycle charge identity a(z) = 2 + |W_z| - t(z)
+==============================================================================
+  PASS  (b) reproduces: 0 violations over the same 15 C6s   [0]
+  PASS  PROOF STEP: in every one of these C4-free graphs, G[N(v)] is a MATCHING at every vertex (F1) -- so alpha(N(v)) = d(v) - t(v) is forced   [0 vertices with a P3 inside a neighbourhood]
+  PASS  and F1 itself is forced by C4-freeness: x~y, y~z inside N(v) makes v-x-y-z-v a 4-cycle, so no P3 fits inside a neighbourhood
+
+  ==> NULL EXPECTATION FOR (b) UNDER MODEL A = 1.000000. Same verdict, same reason:
+      inside the class it is an identity, so 100% of same-shape configurations show 0.
+  out-of-class ceiling: of 400 random NON-C4-free G(10,0.30) graphs, 281 (70.2%) break F1 -- so the identity is NOT trivially true of all graphs; it is true because of C4-freeness.
+
+==============================================================================
+[6] SURVIVOR (c) -- the diam-2 counting identity, PETERSEN as the instance
+==============================================================================
+  PASS  Petersen: Sum a = m - Sum C(d,2) + C(n,2)  [30 = 15 - 30 + 45]   [Sum a=30, m=15, Sum C(d,2)=30, C(n,2)=45]
+  PASS  Petersen: the planner's form  Sum C(d,2) = 30  and  m + n(n-7)/2 = 15 + 15 = 30   [30 vs 30]
+  PASS  Petersen satisfies the identity's OWN hypotheses: C4-free AND diam = 2 -- unlike the CE-2 instance the engine shipped   [c4free=True, diam=2]
+  PASS  CE-2 diam = 3, NOT 2 -- the round-18 return's load-bearing 'diam(CE-2)=2' is FALSE   [diam=3]
+  (c) out-of-hypothesis ceiling: of 400 C4-free graphs with diam != 2, the identity still held on 0 (0.0%)
+  ==> inside the hypothesis (C4-free AND diam = 2) the identity is a THEOREM, so the
+      null expectation is again 1.000000 and Petersen buys 0 bits of support. It buys
+      one thing only: it certifies the ARITHMETIC, which the shipped instance got wrong twice.
+
+==============================================================================
+FAILURES: 0
+elapsed 0.0s
+==============================================================================

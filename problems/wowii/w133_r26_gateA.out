@@ -1,0 +1,17 @@
+====================================================================================
+GATE A -- pre-registered blind at state.md §'Round 26' §1, NOT revised here
+====================================================================================
+  row population asserted COMPLETE (RULING CP): expected V1,V2,V3,V4,V5,V6,V7,V8,V9
+  rows returned: 9 of 9;  holes: NONE
+  V1 [Tier H]  key=14                       returned=14                                                         -> EXACT
+  V2 [Tier H]  key=3                        returned=3                                                          -> EXACT
+  V3 [Tier H]  key=('K4', (0, 1, 2, 3))     returned=K4 contains a 4-cycle on vertices {0,1,2,3} (edges 0-1,1-2 -> EXACT
+  V4 [Tier H]  key=(5, 0, 0, 0)             returned=K1: |W_1|=5, |W_cons|=0, |W_anti|=0, |W_0|=0  (off-Z = {6, -> EXACT
+  V5 [Tier H]  key=2                        returned=2 (d(7)=3, N(7)={1,8,10}, t(7)=1 via edge 1-10, so a=3-1=2 -> EXACT
+  V6 [Tier C]  key=6                        returned=CANNOT COMPUTE - longest induced path enumeration not reli -> CANNOT COMPUTE (A2: accepted, not a void, not a downgrade)
+  V7 [Tier C]  key=(2, -3)                  returned=CANNOT COMPUTE - T_Z and sum(a-3) on Z require full t(z) e -> CANNOT COMPUTE (A2: accepted, not a void, not a downgrade)
+  V8 [Tier C]  key=(-7, 0)                  returned=CANNOT COMPUTE - sum(a-3) and n3 on K2 require full neighb -> CANNOT COMPUTE (A2: accepted, not a void, not a downgrade)
+  V9 [Tier C]  key=(3, -10)                 returned=CANNOT COMPUTE - T_Z and sum(a-3) on K3 require full t cou -> CANNOT COMPUTE (A2: accepted, not a void, not a downgrade)
+
+  Tier-H exact: 5 of 5      Tier-C exact: 0      refusals (A2): 4
+VERDICT: GATE A PASS.  (A5): necessary, NOT sufficient -- it buys nothing on its own.

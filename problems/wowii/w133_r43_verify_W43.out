@@ -1,0 +1,61 @@
+
+==========================================================================
+VERIFYING W43a  (problems/wowii/w133_r43_W43a.txt)
+==========================================================================
+  n = 420, edges read = 1049, distinct undirected edges = 1049
+    ok   C4-FREE: max common neighbours over all pairs = 1 (must be <= 1)
+    ok   mu(G) = min_v alpha(G[N(v)]) = 4 (must be >= 2)
+  rad = 5, diam = 6, |Ctr| = 1, l = 4.995238
+    ok   condition 2: rad = 5 >= 5
+    ok   condition 3: diam = 6 = rad+1
+    ok   condition 5: l = 4.995238 > 4
+    ok   condition 4: 128 vertices are at distance exactly rad from EVERY centre
+    witness w = 10 ; distances to the 1 centres: [5]
+    ok   w = 10: d(c,w) = rad for every centre
+    ok   w = 10 is peripheral, ecc(w) = 6 = rad+1 (PER-A)
+    ok   w is not itself a centre
+    ok   (FAR): condition-4 set = intersection of the spheres S_rad(c), sizes 128 and 128
+    ok   (TAIL-2): anchored induced path on 9 >= ecc(w)+3 = 9 vertices BUILT and checked: [10, 88, 38, 42, 146, 51, 45, 207, 21]
+
+==========================================================================
+VERIFYING W43b  (problems/wowii/w133_r43_W43b.txt)
+==========================================================================
+  n = 420, edges read = 1049, distinct undirected edges = 1049
+    ok   C4-FREE: max common neighbours over all pairs = 1 (must be <= 1)
+    ok   mu(G) = min_v alpha(G[N(v)]) = 4 (must be >= 2)
+  rad = 5, diam = 6, |Ctr| = 8, l = 4.995238
+    ok   condition 2: rad = 5 >= 5
+    ok   condition 3: diam = 6 = rad+1
+    ok   condition 5: l = 4.995238 > 4
+    ok   condition 4: 1 vertices are at distance exactly rad from EVERY centre
+    witness w = 119 ; distances to the 8 centres: [5]
+    ok   w = 119: d(c,w) = rad for every centre
+    ok   w = 119 is peripheral, ecc(w) = 6 = rad+1 (PER-A)
+    ok   w is not itself a centre
+    ok   (FAR): condition-4 set = intersection of the spheres S_rad(c), sizes 1 and 1
+    ok   (TAIL-2): anchored induced path on 9 >= ecc(w)+3 = 9 vertices BUILT and checked: [119, 48, 73, 15, 3, 43, 90, 58, 228]
+
+==========================================================================
+VERIFYING W43c  (problems/wowii/w133_r43_W43c.txt)
+==========================================================================
+  n = 420, edges read = 1050, distinct undirected edges = 1050
+    ok   C4-FREE: max common neighbours over all pairs = 1 (must be <= 1)
+    ok   mu(G) = min_v alpha(G[N(v)]) = 5 (must be >= 2)
+  rad = 5, diam = 6, |Ctr| = 6, l = 5.000000
+    ok   condition 2: rad = 5 >= 5
+    ok   condition 3: diam = 6 = rad+1
+    ok   condition 5: l = 5.000000 > 4
+    ok   condition 4: 2 vertices are at distance exactly rad from EVERY centre
+    witness w = 12 ; distances to the 6 centres: [5]
+    ok   w = 12: d(c,w) = rad for every centre
+    ok   w = 12 is peripheral, ecc(w) = 6 = rad+1 (PER-A)
+    ok   w is not itself a centre
+    ok   (FAR): condition-4 set = intersection of the spheres S_rad(c), sizes 2 and 2
+    ok   (TAIL-2): anchored induced path on 9 >= ecc(w)+3 = 9 vertices BUILT and checked: [12, 41, 65, 87, 20, 175, 8, 111, 104]
+
+==========================================================================
+  W43a : rad 5, diam 6, |Ctr| 1, l 4.995238, condition-4 vertices 128
+  W43b : rad 5, diam 6, |Ctr| 8, l 4.995238, condition-4 vertices 1
+  W43c : rad 5, diam 6, |Ctr| 6, l 5.000000, condition-4 vertices 2
+  CHECKS 33   FAILS 0
+==========================================================================

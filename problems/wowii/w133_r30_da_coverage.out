@@ -1,0 +1,48 @@
+================================================================================================
+RULING DA -- COVERAGE MEASUREMENT (item 2).  Rows: 7   Forms: F1 tuple / F2 sum / F3 noun-first
+================================================================================================
+
+BASELINE: the gate on the UNPLANTED shipped brief
+  hits on the clean shipped brief: 0   (r29 reported 0; re-confirmed here)
+
+------------------------------------------------------------------------------------------------
+HARD FORM -- no cue token adjacent to the value (RULING CZ: the hardest rendering)
+------------------------------------------------------------------------------------------------
+  row   ans    F1 tuple F2 sum   F3 noun 
+  V1    int    miss     miss     miss    
+  V5    int    miss     miss     miss    
+  V7    tuple  SEEN     miss     miss    
+  V9    tuple  SEEN     miss     miss    
+  V10   tuple  SEEN     miss     miss    
+  V11   tuple  SEEN     miss     miss    
+  V12   tuple  SEEN     miss     miss    
+        TOTAL  5/7      0/7      0/7     
+  OVERALL HARD COVERAGE: 5/21
+
+------------------------------------------------------------------------------------------------
+EASY FORM -- a cue token adjacent to the value (RULING CY: shows the gate CAN fire)
+------------------------------------------------------------------------------------------------
+  row   ans    F1 tuple F2 sum   F3 noun 
+  V1    int    miss     SEEN     SEEN    
+  V5    int    miss     SEEN     SEEN    
+  V7    tuple  SEEN     miss     miss    
+  V9    tuple  SEEN     miss     miss    
+  V10   tuple  SEEN     miss     miss    
+  V11   tuple  SEEN     miss     miss    
+  V12   tuple  SEEN     miss     miss    
+        TOTAL  5/7      2/7      2/7     
+  OVERALL EASY COVERAGE: 9/21
+
+================================================================================================
+THE NUMBER, and it replaces r29's 'pass':
+  RULING DA gate coverage on the HARD form: 5/21  (F1 5/7, F2 0/7, F3 0/7)
+  RULING DA gate coverage on the EASY form: 9/21  (F1 5/7, F2 2/7, F3 2/7)
+
+  READ IT THIS WAY.  The gate's real predicate is 'a decimal token in a VALUE-SHAPED
+  context (=, :, is, total, count, equals, reads) within 140 chars of one of the row's
+  own quantity tokens', plus a bracketed-group matcher for tuple rows.  Everything the
+  hard column misses is a leak shape this gate WOULD NOT HAVE SEEN in r26 either.
+================================================================================================
+
+HARNESS SELF-CHECK (RULING CY -- a measuring instrument that can only report 'miss'
+measures nothing): the EASY tuple planting on V7 must be SEEN ... SEEN

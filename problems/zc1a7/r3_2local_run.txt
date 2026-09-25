@@ -1,0 +1,198 @@
+ordinary character table of A_7 loaded and re-verified orthogonal; degrees [1, 6, 10, 10, 14, 14, 15, 21, 35]
+============================================================================================
+(0)  ORDER-4 MULTIPLICITIES, re-derived by Vandermonde inversion over Q(i)
+============================================================================================
+  chi  deg | mu(1) mu(i) mu(-1) mu(-i)   [u = the OPEN case (2,-1)]  ||  [g in 4a]
+  chi1    1 |     1     0      0      0              || [1, 0, 0, 0]
+  chi2    6 |     4     1      0      1              || [2, 1, 2, 1]
+  chi3   10 |     0     3      4      3              || [2, 3, 2, 3]
+  chi4   10 |     0     3      4      3              || [2, 3, 2, 3]
+  chi5   14 |     6     3      2      3              || [4, 3, 4, 3]
+  chi6   14 |     6     3      2      3              || [4, 3, 4, 3]
+  chi7   15 |     3     4      4      4              || [3, 4, 4, 4]
+  chi8   21 |     7     5      4      5              || [5, 5, 6, 5]
+  chi9   35 |     7     9     10      9              || [9, 9, 8, 9]
+  CONTROL vs round 2 (banked): chi2 row must be (4,1,0,1) -> True
+  CONTROL vs round 2 (banked): both deg-10 rows must be (0,3,4,3) -> True
+============================================================================================
+(A)  CLIFF-WEISS 'GLOBAL' INEQUALITY WITH N = G  ==  HeLP, VERIFIED NUMERICALLY
+============================================================================================
+  Margolis-del Rio arXiv:1706.02483, Prop. 'EquationCharacter':
+     <chi_alpha, psi>  =  sum_n a(n,psi) eps_n(u)  >= 0,   a(n,psi) = (1/|u|) sum_i psi(u^i, n^i).
+  The double-action character is  chi_alpha(u^i, h) = |C_G(h)| * eps_h(u^i)   [Sehgal 38.12].
+  For psi = lambda_j (x) theta an irreducible character of U x G we compute both sides.
+  36 pairs (9 ordinary characters x 4 characters of C_4) checked.
+  <chi_alpha, lambda_j (x) theta>  ==  mu(zeta^{-j}, u, theta)  in  36 / 36 cases.
+  ==> For N = G the Cliff-Weiss GLOBAL inequalities ARE the HeLP inequalities.
+      A_7 is simple, so N = 1 is the only nilpotent normal subgroup and V(ZG,N) = 1:
+      the LOCAL (matrix-strategy) half of Cliff-Weiss is vacuous, and the global half
+      is HeLP, which round 2 proved exhausted.  CLIFF-WEISS ADDS NOTHING TO A_7.
+  POSITIVE CONTROL (u := a genuine element of 4a, where every quantity is a real
+  eigenvalue multiplicity): identity holds in all 36 cases -> True
+  REJECTION CONTROL: the (non-solution) vector (eps_2a,eps_4a)=(3,-2) is rejected by
+  3 of the 9 ordinary characters -> the inequality set is not vacuous.
+============================================================================================
+(B)  Z_2 C_4 LATTICE BOUNDS  (p = 2, |u| = 4, 2'-part TRIVIAL)
+============================================================================================
+  Simple Z_2 C_4-modules (paper, Sec.4, citing [BG64] Sec.4 / [CR81] Sec.34C):
+      T : u -> 1        Sg : u -> -1       W : u -> [[0,-1],[1,0]]  (eigenvalues i,-i)
+  and an INDECOMPOSABLE Z_2 C_4-lattice contains each of T,Sg,W at most once as a
+  composition factor  ([BG64] Thm 4.1, quoted verbatim in the paper).  Consequences,
+  derived here (see the state file for the proofs):
+    (b1) a summand with no W has u^2 acting as the identity, so it contributes 0 to r_2;
+    (b2) a summand X with W once has u^2-eigenvalues (-1,-1) and (1)^(a+b), a,b in {0,1},
+         hence contributes at most a+b to r_2  [classification of Z_2 C_2-lattices];
+    (b3) each summand can absorb at most one T and one Sg, so
+             r_2(Lbar) <= min(m0,m1) + min(m2,m1) =: UB2
+    (b4) if u = 1 + 2A on a summand containing W then A has eigenvalue (i-1)/2, whose
+         norm to Q_2 is 1/2, not integral.  So EVERY W-summand has ubar != 1, giving
+             r_1(Lbar) >= m1 =: LB1
+    (b5) r_1(Xbar) <= dim X - 1 per summand and #summands >= m1 + max((m0-m1)^+,(m2-m1)^+),
+             r_1(Lbar) <= n - m1 - max((m0-m1)^+, (m2-m1)^+) =: UB1
+    (b6) a J_4 block needs an indecomposable summand of rank 4, i.e. support {T,Sg,W},
+             r_3(Lbar) <= min(m0,m1,m2) =: UB3
+
+  chi  deg | m0 m1 m2 | LB1 UB1 | UB2 | UB3 ||  g in 4a: (m0,m1,m2) UB1 UB2 UB3
+  chi1    1 |  1  0  0 |   0   0 |   0 |   0 || (1,0,0)    0   0   0
+  chi2    6 |  4  1  0 |   1   2 |   1 |   0 || (2,1,2)    4   2   1
+  chi3   10 |  0  3  4 |   3   6 |   3 |   0 || (2,3,2)    7   4   2
+  chi4   10 |  0  3  4 |   3   6 |   3 |   0 || (2,3,2)    7   4   2
+  chi5   14 |  6  3  2 |   3   8 |   5 |   2 || (4,3,4)   10   6   3
+  chi6   14 |  6  3  2 |   3   8 |   5 |   2 || (4,3,4)   10   6   3
+  chi7   15 |  3  4  4 |   4  11 |   7 |   3 || (3,4,4)   11   7   3
+  chi8   21 |  7  5  4 |   5  14 |   9 |   4 || (5,5,6)   15  10   5
+  chi9   35 |  7  9 10 |   9  25 |  16 |   7 || (9,9,8)   26  17   8
+  ==> the OPEN case admits a STRICTLY SMALLER 2-adic Jordan structure than a genuine
+      element of 4a on characters [2, 3, 4, 5, 6, 8, 9]  (7 of 9).  The paper observed this for chi2
+      only; it is a systematic feature of the whole ordinary character table.
+============================================================================================
+(B-CTRL)  POSITIVE CONTROL -- the bounds against ACTUAL matrices of A_7
+============================================================================================
+  the paper's own D_2(g) for g in 2a:  rank_F2(g-1) on Lbar_2 = 2
+  our UB2 for the OPEN case (2,-1) on chi2:  1
+  => r_2(u^2) <= 1  <  2 = r_2(g),  which is EXACTLY the paper's contradiction
+  for g in 4a (the TRIVIAL HeLP solution):  actual rank_F2(g^2-1) on Lbar_2 = 2,
+     our UB2 predicts 2  -> the bound is ATTAINED by a real group element (tight),
+     so it is not a vacuous over-estimate.
+  for g in 4a:  actual rank_F2(g-1) on Lbar_2 = 4;  our LB1 = 1, UB1 = 4  -> inside
+============================================================================================
+(C)  THE 2-MODULAR SYSTEM:  can the p=2 lattice method reach a contradiction?
+============================================================================================
+  2-modular decomposition matrix (round 2, test DEC, each row UNIQUE) re-checked
+  against the ordinary degrees: all 9 rows consistent.
+
+  Superadditivity: for 0 -> A -> V -> B -> 0 of F_2<ubar>-modules,
+      rank(z^j|V) >= rank(z^j|A) + rank(z^j|B)      (z = ubar - 1)
+  because z^j V contains z^j A and surjects onto z^j B.  Hence
+      r_j(Lbar_chi) >= sum_S d_{chi,S} r_j(S),
+  and r_j(S) is well defined per ISOMORPHISM TYPE because ubar is ONE element of F_2 A_7.
+
+  *** THE ONE FORCED NONZERO VALUE ***
+  chi2 (degree 6) reduces mod 2 to the SIMPLE module S6 (decomposition row = 1*S6).
+  So Lbar_{chi2} = S6 and r_1(S6) = r_1(Lbar_{chi2}) >= LB1 = m1 = 1.
+  ==> ubar acts NON-TRIVIALLY on the 6-dimensional simple F_2 A_7-module.
+      Equivalently: ubar - 1 is NOT in the Jacobson radical of F_2 A_7.
+  Upper bound on the same quantity: r_1(S6) <= UB1(chi2) = 2.
+
+  *** THE JORDAN TYPE OF ubar ON THE 6-DIMENSIONAL SIMPLE F_2 A_7-MODULE ***
+  Lbar_{chi2} = S6 exactly, so the three bounds pin S6's type directly:
+     1 = LB1 <= r_1 <= UB1 = 2,   r_2 <= UB2 = 1,   r_3 <= UB3 = 0
+  ==> the Jordan type of ubar on S6 is one of exactly 3 partitions: [(2, 1, 1, 1, 1), (2, 2, 1, 1), (3, 1, 1, 1)]
+  a genuine g in 4a on the SAME module has (r_1,r_2,r_3) = (4,2,1), type [(4, 2)].
+  NONE of the 3 admissible types for ubar is that type -> reproduces and STRENGTHENS
+  the paper's degree-6 argument (which only compared u^2 with an element of 2a).
+
+  FEASIBILITY (exact complete enumeration over the provably bounded box):
+     j=1 system  (LB1 forced, all 9 UB1 constraints): 1080 solutions
+     j=2 system  (all 9 UB2 constraints):             360 solutions
+     j=3 system  (all 9 UB3 constraints):             15 solutions
+     an explicit j=1 witness  (r_1(S1),r_1(S4),r_1(S6),r_1(S14),r_1(S20)) = (0, 0, 1, 0, 0)
+     an explicit j=2 witness  (r_2(...)) = (0, 0, 0, 0, 0)
+     an explicit j=3 witness  (r_3(...)) = (0, 0, 0, 0, 0)
+     forced-to-zero by the j=3 system: ['S1', 'S4', 'S6']
+
+  CENSUS I AM ENTITLED TO (Sec.90/104):
+     9 ordinary characters x 2 exponents (j=1,2) = 18 lattice constraints in total.
+     Characters whose j=1 constraint can bind at all (UB1 < sum of dims of the
+     non-trivial composition factors): [2, 3, 4, 5, 6, 7, 8, 9] -> 8 of 9.
+     Characters forcing r_2(S) = 0 outright (UB2 = 0): [1] -> 1 of 9.
+     Characters with a NONZERO forced lower bound (m1 > 0): [2, 3, 4, 5, 6, 7, 8, 9] -> 8 of 9.
+     Constraints that could have produced a contradiction and did not: 9.
+============================================================================================
+(D)  THE PROJECTIVE-IDEMPOTENT PROBE  e = (1+u+u^2+u^3)/4  at ODD p  -- NOT NEW
+============================================================================================
+  PROVENANCE, corrected by this round's literature check: this is NOT my invention.
+  It is the computation on l.197 of Margolis, arXiv:1706.02117 (source read):
+     "Let theta_e be the character associated to the projective RG-module RGe.  We know
+      theta_e(g) = |C_G(g)| eps_{g^G}(e).  Since theta_e vanishes on R-singular elements
+      [CR (32.15) Theorem] the result follows."
+  I derived it independently before finding it; I report it with his name on it.
+  u has order 4, so N = 1+u+u^2+u^3 satisfies N^2 = 4N and e = N/4 is an idempotent
+  of Q A_7 lying in Z_p A_7 for every ODD p.  Hence P = Z_p A_7 e is PROJECTIVE and its
+  ordinary character is  theta = sum_chi mu(1,u,chi) chi.  Two necessary conditions:
+     (d1) theta vanishes on every p-singular class;
+     (d2) theta = sum_S c_S Phi_S with c_S = <theta, phi_S> a NON-NEGATIVE INTEGER,
+          phi_S the irreducible p-Brauer characters.
+  The same for f=(1+u^2)/2 (rank mu(1)+mu(-1)) and 1-f (rank mu(i)+mu(-i)).
+  brauer_tables.json top-level keys: ['2', '3', '5', '7'] | structure of p=3 entry: dict
+
+  e = (1+u+u^2+u^3)/4,  theta = sum mu(1,u,chi) chi,  rank = 630
+    p=3 | p-singular non-vanishing: none | c_S = [('1', '1'), ('6', '4'), ('13', '5'), ('15', '3'), ('10a', '0'), ('10b', '0')] | VERDICT PASS
+    p=5 | p-singular non-vanishing: none | c_S = [('1', '1'), ('6', '4'), ('8', '2'), ('13', '5'), ('15', '3'), ('35', '7'), ('10a', '0'), ('10b', '0')] | VERDICT PASS
+    p=7 | p-singular non-vanishing: none | c_S = [('1', '1'), ('5', '3'), ('14a', '6'), ('14b', '6'), ('10', '0'), ('35', '7'), ('21', '7')] | VERDICT PASS
+
+  f = (1+u^2)/2,        theta = sum (mu(1)+mu(-1)) chi,  rank = 1260
+    p=3 | p-singular non-vanishing: none | c_S = [('1', '1'), ('6', '4'), ('13', '7'), ('15', '7'), ('10a', '4'), ('10b', '4')] | VERDICT PASS
+    p=5 | p-singular non-vanishing: none | c_S = [('1', '1'), ('6', '4'), ('8', '4'), ('13', '7'), ('15', '7'), ('35', '17'), ('10a', '4'), ('10b', '4')] | VERDICT PASS
+    p=7 | p-singular non-vanishing: none | c_S = [('1', '1'), ('5', '3'), ('14a', '8'), ('14b', '8'), ('10', '4'), ('35', '17'), ('21', '11')] | VERDICT PASS
+
+  1-f,                  theta = sum (mu(i)+mu(-i)) chi,  rank = 1260
+    p=3 | p-singular non-vanishing: none | c_S = [('1', '0'), ('6', '2'), ('13', '6'), ('15', '8'), ('10a', '6'), ('10b', '6')] | VERDICT PASS
+    p=5 | p-singular non-vanishing: none | c_S = [('1', '0'), ('6', '2'), ('8', '4'), ('13', '6'), ('15', '8'), ('35', '18'), ('10a', '6'), ('10b', '6')] | VERDICT PASS
+    p=7 | p-singular non-vanishing: none | c_S = [('1', '0'), ('5', '2'), ('14a', '6'), ('14b', '6'), ('10', '6'), ('35', '18'), ('21', '10')] | VERDICT PASS
+
+  (D-CTRL) POSITIVE CONTROL: the same probe on the TRIVIAL solution (0,1),
+  where e is literally (1+g+g^2+g^3)/4 for a group element g in 4a:
+    p=3 | p-singular non-vanishing: none | c_S = [('1', '1'), ('6', '2'), ('13', '3'), ('15', '3'), ('10a', '2'), ('10b', '2')] | VERDICT PASS
+    p=5 | p-singular non-vanishing: none | c_S = [('1', '1'), ('6', '2'), ('8', '2'), ('13', '3'), ('15', '3'), ('35', '9'), ('10a', '2'), ('10b', '2')] | VERDICT PASS
+    p=7 | p-singular non-vanishing: none | c_S = [('1', '1'), ('5', '1'), ('14a', '4'), ('14b', '4'), ('10', '2'), ('35', '9'), ('21', '5')] | VERDICT PASS
+
+  (D-CTRL) REJECTION CONTROL: single-entry perturbations of the mu(1,u,.) vector
+  (keeping sum mu(1)*deg fixed is impossible with one entry, so we perturb one
+  entry by +-1 and ask how many perturbations the probe REJECTS).
+  16 of 16 single-entry perturbations are REJECTED by the projectivity probe.
+  -> the probe has teeth; its PASS on the real vector is not vacuous.
+============================================================================================
+(D-POWER)  IS THE PROJECTIVE-IDEMPOTENT PROBE STRONGER THAN HeLP?  -- ORDER 6 OF A_7
+============================================================================================
+  A_7 is the right test bed: for |u| = 6 the HeLP method is NOT sufficient (round 2
+  reproduced the paper's complete output), and the paper needs two extra arguments -- a
+  degree-5/6 eigenvalue comparison and Theorem 'main_inequality' (Brauer tree of the
+  3-block of defect 1) -- to finish.  For |u| = 6, N = sum_{j=0}^{5} u^j has N^2 = 6N, so
+  e = N/6 is an idempotent of Z_p A_7 for p = 5 and p = 7 and the SAME probe applies.
+  If the probe kills any vector that HeLP leaves alive, it is strictly stronger.
+  (-2, 1, 2, 0)    u^2~3a | rank(e)= 420 | p=5 PASS  p=7 PASS   [paper: killed by the deg-5/6 comparison]
+  (2, 0, 0, -1)    u^2~3a | rank(e)= 420 | p=5 PASS  p=7 PASS   [paper: killed by the deg-5/6 comparison]
+  (-2, 2, 1, 0)    u^2~3b | rank(e)= 420 | p=5 PASS  p=7 PASS   [paper: killed by the deg-5/6 comparison]
+  (0, 1, -1, 1)    u^2~3b | rank(e)= 420 | p=5 PASS  p=7 PASS   [paper: killed by the deg-5/6 comparison]
+  (2, -1, 1, -1)   u^2~3b | rank(e)= 420 | p=5 PASS  p=7 PASS   [paper: killed ONLY by the Brauer-tree inequality]
+  POSITIVE CONTROL, genuine g in 6a (0,0,0,1), u^2~3a: p=5 PASS  p=7 PASS
+============================================================================================
+SUMMARY
+============================================================================================
+  (A) Cliff-Weiss collapses to HeLP for a simple group.   VERIFIED (36/36).
+  (B) The Z_2 C_4 bounds reproduce the paper's degree-6 number exactly and are ATTAINED
+      by a genuine element of 4a.                             VERIFIED.
+  (C) The p=2 lattice system is FEASIBLE  ->  no contradiction is available from it.
+      The single nonzero fact it does force is r_1(S6) >= 1, i.e. ubar-1 is NOT in the
+      Jacobson radical of F_2 A_7; and the Jordan type of ubar on the 6-dimensional
+      simple F_2 A_7-module is one of exactly 3 partitions, none of them the type (4,2)
+      of a genuine element of 4a.
+  (D) The projective-idempotent probe PASSES at p = 3, 5, 7 for the open case.
+      *** AND IT IS DEMONSTRABLY NOT STRONGER THAN HeLP. ***  The 16/16 perturbation
+      control only shows the probe detects ARITHMETIC CORRUPTION of the mu vector.  The
+      control that measures real discriminating power is the order-6 test: A_7 has FIVE
+      order-6 partial-augmentation vectors that survive HeLP and that the paper proves
+      cannot occur.  The probe kills ZERO of the five.  So its PASS on the order-4 open
+      case carries no evidence, and I report it as a probe with no demonstrated power,
+      not as a passed test.

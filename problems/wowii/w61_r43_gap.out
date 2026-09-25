@@ -1,0 +1,170 @@
+====================================================================================================
+w61 r43 -- [A] WHAT HAPPENS ON THE 51 PAIRS C1-Z's PROOF DOES NOT REACH
+           [B] IS THE PIVOT SEQUENCE MAJORIZATION-MONOTONE?  ((RH) route for E05)
+====================================================================================================
+stepA/runA/runB lifted by SOURCE TEXT from w61_r29_c1audit.py;
+Wp/Wm/head_of/L_of/relation lifted by SOURCE TEXT from w61_r39_monodd.py.
+relation() is the classifier that certified C1-W -- doctrine Sec 59.
+
+[0] CONTROLS -- fired on the feature, before any verdict (RULING CZ')
+   known-value  [1,1,0,0] boundary (steps,residue)       = (1, 3)         expect (1, 3)         OK
+   known-value  |W-(c)| = c+3, c=1..14                   = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expect [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] OK
+   known-value  |W+(c)| = c+3, c=1..14                   = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expect [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] OK
+   known-value  relation() on an EQ pair                 = EQ             expect EQ             OK
+   known-value  relation() on a hand UP2 pair            = UP2            expect UP2            OK
+   known-value  relation() on a unit-transfer-down pair  = UNIT_DOWN      expect UNIT_DOWN      OK
+   known-value  relation() on a genuinely DOM pair       = DOM            expect DOM            OK
+   known-value  MUST_ABORT inputs aborting               = 4              expect 4              OK
+   known-value  C1-Y: R(0^r)=r and R(1,1,0^{r-2})=r-1, r=2..12 = [(2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7), (9, 8), (10, 9), (11, 10), (12, 11)] expect [(2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7), (9, 8), (10, 9), (11, 10), (12, 11)] OK
+
+[1] REBUILD THE S1 LOCKSTEP POPULATION -- generator lifted from w61_r39_monodd.py
+    Population: pairs (L(T), L(T+e_i)) with sum(T) ODD, sum(T) <= 14, shape S1
+    (i.e. the raised part is NOT the maximum), both residues defined.
+   S1 pairs rebuilt: 709   (r39 printed 709 for this same population)
+   CONTROL: the S1 population is non-empty                            hits=709      OK
+
+[2] THE FULL LOCKSTEP WALK -- every pair walked to its exit, nothing stopped early
+    Per pair recorded: whether a joint state is ever OUTSIDE the NARROW class
+    {EQ, UP2}; how the lockstep exits; whether the exit signature is (0^r, 1,1,0^{r-2});
+    and the delta.  Nothing is aggregated before the walk finishes.
+   pairs walked: 709 of 709   PARTIAL=False
+   exit classification  : {'A_TERMINAL': 158, 'EQ': 551}
+   ever leaves {EQ,UP2} : {False: 658, True: 51}
+   ever OTHER           : {False: 709}
+   ----------------------------------------------------------------------------------
+   NARROW pairs (never leave {EQ,UP2}) : 658
+   WIDE   pairs (leave it at least once): 51   <-- these are the pairs C1-Z's PROOF
+                                                does not reach; Sec 7.56 (j) counted 51
+   population for both counts: the 709 S1 pairs of block [1].  Exclusions: none.
+   CONTROL: the WIDE set is non-empty (else there is nothing to report) hits=51       OK
+   CONTROL: the NARROW set is non-empty (else the split is vacuous)   hits=658      OK
+
+[3] DOES C1-Z's CONCLUSION SURVIVE ON THE WIDE PAIRS?
+    C1-Z delivers delta by exactly two proved mechanisms:
+      (M1) EQ occurs  ==> EQ absorbing + R trajectory-invariant  ==> delta = 0
+      (M2) EQ never occurs, exit signature (0^r, (1,1,0^{r-2}))  ==> C1-Y ==> delta = 1
+    A pair covered by NEITHER has its delta explained by NOTHING this line has proved.
+   coverage over ALL 709 pairs    : {'M1_EQ': 551, 'M2_terminal_signature': 158}
+   coverage over NARROW pairs    : {'M1_EQ': 500, 'M2_terminal_signature': 158}
+   coverage over WIDE pairs      : {'M1_EQ': 51}
+   UNCOVERED pairs: 0 of 709.  Population: the 709 S1 pairs.  Exclusions: none.
+   delta histogram, WIDE pairs   : {0: 51}
+   delta histogram, NARROW pairs : {0: 500, 1: 158}
+   delta histogram, UNCOVERED    : {}
+   WIDE pairs by (first relation left into, exit kind, mechanism):
+      ('UNIT_DOWN', 'EQ', 'M1_EQ')       51
+   smallest WIDE pair, printed rather than excluded:
+      A_0 = (5, 5, 5, 4, 4, 4, 4, 4, 4, 1) B_0 = (5, 5, 5, 5, 4, 4, 4, 4, 4, 2)
+      first non-{EQ,UP2} state at stage 3, relation UNIT_DOWN:
+         A_3 = (3, 3, 3, 2, 2, 2, 1)    B_3 = (3, 3, 2, 2, 2, 2, 2)   
+      lockstep exit: EQ               eq_at=4      delta=0 mechanism=M1_EQ
+   CORRUPT: 'every pair is covered by M2' is violated                 hits=551      OK
+   CORRUPT: 'no pair is covered by M1' is violated                    hits=551      OK
+
+[4] IF A WIDE STATE IS REACHED, WHAT CLOSES IT?  (this is what E07 must be aimed at)
+    At a UNIT_DOWN or DOM joint state the two lists have EQUAL SUM and EQUAL LENGTH,
+    and B is dominated by A.  So the residue comparison there is an instance of (RH)
+    -- the OPEN even half -- not of the (UP2)/C1-Y machinery of the odd half.
+   WIDE pairs whose first wide state has equal SUM   : 51 of 51
+   WIDE pairs whose first wide state has equal LENGTH : 51 of 51
+   WIDE pairs that go on to reach EQ                  : 51 of 51
+   WIDE pairs that do NOT reach EQ                    : 0 of 51
+   population: the WIDE subset of the 709 S1 pairs.  Exclusions: none.
+   R is a trajectory invariant, so delta must already be readable at the first wide
+   state: (R(A_k) - R(B_k)) == delta on 51 of 51 WIDE pairs tested (0 skipped: a run
+   aborts at that state and has no residue).
+   CONTROL: the trajectory-invariance cross-check was actually run    hits=51       OK
+
+[4b] THE SUM-GAP g_s := sum(B_s) - sum(A_s) ALONG THE LOCKSTEP
+     I1 / Lemma C1-X (ii): a step with pivot p drops the sum by exactly 2p, so
+        g_{s+1} = g_s - 2*(p_B - p_A).
+     g_0 = 2 (B_0 is A_0 with two entries raised by 1).  A UNIT_DOWN or DOM state has
+     g = 0.  QUESTION THAT DECIDES E07: once g reaches 0, can it return to 2?
+     distinct g-trajectories seen: 26   over 709 pairs
+     g values seen at any joint state: {0: 616, 2: 3736}
+     pivot difference p_B - p_A at every stepped joint state: {0: 3092, 1: 551}
+     CROSS-TAB (g_s, p_B - p_A) at every stepped joint state: {(0, 0): 65, (2, 0): 3027, (2, 1): 551}
+     CROSS-TAB (g_s, relation) at every stepped joint state  : {(0, 'UNIT_DOWN'): 65, (2, 'UP2'): 3578}
+     pairs where g reaches 0 and then RETURNS to a nonzero value: 0
+     population: the 709 S1 pairs.  Exclusions: none.
+     the 3 most common g-trajectories: [((2, 2, 2, 2, 0), 136), ((2, 2, 2, 0), 115), ((2, 2, 0), 83)]
+   CORRUPT: 'g is constant along every lockstep' is violated          hits=551      OK
+   CONTROL: g = 2 actually occurs (else the UP2 start is not represented) hits=3736     OK
+
+[4c] THE PIVOT GAP ON THE S2-DERIVED PAIRS (L, L'_1)  -- brief E07 needs this
+     Population rebuilt exactly as r42 did: the distinct (c, tail) pairs among the S2
+     instances with sum(T) ODD, sum(T) <= 18, both residues defined.  A_0 = L = W-(c)+tail,
+     B_0 = L'_1 = one HH step applied to L' = W+(c+1)+tail.
+     distinct (c,tail) pairs: 686   (r42 printed 686 for this same population)
+     joint-state relations over the whole lockstep : {'EQ': 626, 'UP2': 3394}
+     g values seen at any joint state              : {0: 626, 2: 3394}
+     p_B - p_A at every STEPPED joint state        : {0: 2708, 1: 626}
+     CROSS-TAB (g_s, p_B - p_A) at stepped states  : {(2, 0): 2708, (2, 1): 626}
+     lockstep exits                                : {'EQ': 626, 'TERMINAL': 60}
+     joint states outside {EQ, UP2}                : 0
+     population: the 686 distinct (c,tail) pairs above.  Exclusions: none.
+   CONTROL: the S2-derived population is non-empty                    hits=686      OK
+   CONTROL: UP2 states actually occur on the S2-derived family        hits=3394     OK
+
+[5] (RH) AND THE PIVOT-MAJORIZATION ROUTE  --  the measurement E05 needs
+    DEFINITIONS USED, stated so the population cannot drift:
+      pivots(pi) = the sequence of maxima removed by Havel-Hakimi, sorted decreasing.
+      C1-X (ii): 2*sum(pivots(pi)) = sum(pi).
+      unit transfer DOWN: pi' = pi - e_i + e_j with pi_i >= pi_j + 2.
+        (Sec 7.55 (b) writes 'add 1 to an entry that is not larger'.  Taken literally
+         that also admits pi_i = pi_j, which moves UP in dominance, and pi_i = pi_j+1,
+         which is the identity as a multiset.  Only pi_i >= pi_j + 2 is a genuine
+         down-move, and that is the definition used here.  Both looser readings are
+         measured separately below so the discrepancy is on the record.)
+      dominance a >= b for partitions of the SAME integer: every partial sum of a
+        (sorted decreasing, zero-padded) is >= the corresponding partial sum of b.
+   known-value  pivots([1,1,0,0])                        = (1,)           expect (1,)           OK
+   known-value  2*sum(pivots) = sum, on (3,3,2,2,2,2,2)  = 0              expect 0              OK
+   known-value  dominates((3,1),(2,2))                   = True           expect True           OK
+   known-value  dominates((2,2),(3,1))                   = False          expect False          OK
+   population: every partition pi of N in [2,16] whose HH run TERMINATES, and every
+   pi' = pi - e_i + e_j with pi_i >= pi_j + 2 whose run also terminates.
+   pairs in population: 1324.  Exclusions: lists whose run ABORTS -- skipped on BOTH
+   sides and counted nowhere else.  N > 16 is OUT OF POPULATION and claimed nowhere.
+   C1-X (ii) 2*sum(pivots) = sum : holds 209, fails 0
+   (RH)  s(pi) <= s(pi')          : holds 1324, FAILS 0
+   (PIVOT-MAJ)  p(pi) >= p(pi')   : holds 1324, FAILS 0 (first 0 printed)
+   pivots() vs the DIFFED runA/runB step count: 0 disagreements
+   loose reading pi_i == pi_j: 6986 such moves; of those, pi' DOMINATES pi (i.e. the move
+   goes UP, not down) in 6986 -- which is why the definition above requires pi_i >= pi_j+2.
+   CONTROL: the (RH) population is non-empty                          hits=1324     OK
+   CONTROL: the loose reading pi_i == pi_j really does go UP (Sec 7.55 (b) imprecision) hits=6986     OK
+
+[6] CORRUPT COMPANIONS FOR BLOCK [5] -- so the block is not vacuous
+   reversed (RH)  's(pi) >= s(pi')' fails on 873 of 1324 -- a real claim, not a tautology
+   reversed majorization 'p(pi') >= p(pi)' fails on 1072 of 1324
+   CORRUPT: reversed (RH) is violated                                 hits=873      OK
+   CORRUPT: reversed majorization is violated                         hits=1072     OK
+
+[6b] IS (PIVOT-MAJ) AN ARTIFACT OF N <= 16?  A SECOND, DISJOINT POPULATION
+     Population: N in [17, 20] ONLY -- disjoint from block [5], nothing shared.
+     pairs in population: 5006.  Exclusions: aborting runs, skipped on BOTH sides.
+     (RH)        holds 5006, FAILS 0
+     (PIVOT-MAJ) holds 5006, FAILS 0
+   CONTROL: the out-of-range population is non-empty                  hits=5006     OK
+
+[6c] IS (PIVOT-MAJ) STRICTLY STRONGER THAN (RH)?  -- i.e. is the reduction real work?
+     The implication used is STANDARD: for partitions of the same integer,
+     a >= b in dominance  ==>  a* <= b* (conjugates)  ==>  #parts(a) = a*_1 <= b*_1 =
+     #parts(b).  So (PIVOT-MAJ) ==> (RH).  The converse is NOT automatic; measured:
+     partition pairs (a,b) of the same N in [2,12] examined: 12646
+     dominance ==> fewer-or-equal parts : holds 5762, FAILS 0
+     fewer-or-equal parts WITHOUT dominance: 1458  (so the converse is false; example ((2, 2), (3, 1)))
+   CONTROL: the standard implication was actually exercised           hits=5762     OK
+   CORRUPT: the CONVERSE implication is violated (so (PIVOT-MAJ) is strictly stronger) hits=1458     OK
+
+[7] SELF-AUDIT
+   elapsed            : 0.31 s   internal limit 120 s
+   PARTIAL            : False
+   diffed runA/runB   : 3040   disagreements: 0 (any disagreement exits with code 2)
+   controls           : 30   all firing: True
+   DEFECTS            : 0 
+   interpreter        : .venv/bin/python3, pure Python; sympy/networkx NOT imported
+   no SAT, no solver, no exhaustive search of an infeasible space -- every sweep is a
+   census over the finite population named beside it.
+====================================================================================================

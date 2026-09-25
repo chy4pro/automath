@@ -1,0 +1,96 @@
+============================================================================================
+w61 r36 ITEM 1 -- Conjecture C1 for k = 3: PROOF, trajectory-audited
+============================================================================================
+impl source md5 768975c3987de60fbebe1080d0dd530d   (w61_r29_c1audit.py, extracted by source text)
+
+1. TRAJECTORY CHECKS -- every intermediate list the hand proof names
+   (multiset equality against what the process actually produces)
+   T1  Lemma C1-J two-step descent  [u]^(u+2) u mu -> [u]^1 u [u-1]^u u mu -> [u-2]^u u mu
+       1240 (u, mu) pairs, max(mu) <= u-1, |mu| <= 4      defects so far: 0
+   T2  Y(u;nu) = [u]^2 u [u-1]^u u nu  -> Y(u-1;nu)      2641 cases, defects: 0
+   T3  Q(u;nu) = [u] u [u-1]^(u+1) u nu -> Q(u-1;nu)     2641 cases, defects: 0
+   T4  [b]^(b+3) u [c] -> Y(b;[c])                       990 cases, defects: 0
+   T5  G_i(q) -> G_(i+1)(q), G_(q-1)(q) -> [q]^(q+3)     435 steps, defects: 0
+   T6  W-(c) = [c]^2 u [c-1]^(c+1) -> W+(c-1)            59 cases, defects: 0
+   T7  Q(1;[1]) = [1,1,0,0] -> [0,0,0] TERMINAL          checked, defects: 0
+
+2. VALUE CHECKS -- the closed forms the trajectories add up to
+   V0   Lemma C1-A'  V(c) = steps([c]^(c+3)) = c+1               79 cases, defects: 0
+   V1   W+(c) even: steps = c+1, residue 2; odd: aborts          69 cases, defects: 0
+   V2   W-(c): c=1 -> (1,3) BOUNDARY; c odd>=3 -> (c+1,2); c even aborts     69 cases, defects: 0
+   V2b  W+(c): c=0 -> (0,3) BOUNDARY; c even>=2 -> (c+1,2); c odd aborts     70 cases, defects: 0
+   V3   case-A base [b]^(b+3) u [c]: c even -> (b+2, 2), c odd -> abort    780 cases, defects: 0
+   V4   case-B base Q(b;[c]): c=1 ->(b,3); c odd>=3 ->(b+1,2); c even abort    780 cases, defects: 0
+   THM  Theorem C1-3 on EVERY (w,b,c), 1<=c<=b<=w<=60       37820 cases, defects: 0
+   C1J  s0 = offset + steps(base) AND residue(M) = residue(base)
+        every lam |- N <= 26 with >= 2 parts                11705 cases, defects: 0
+
+3. THE PREDICATE, AND CONTROLS THAT FIRE ON THE FEATURE (RULING CZ')
+   PRED near_miss() TRUE on 5 known near-misses, FALSE on 3 known non-, and 3 aborting lam are neither
+        defects: 0
+   CTRL-1 off-by-one on the near-miss value (w+1 -> w)        misses   144  e.g. [(2, 1, 1), (3, 2, 1), (4, 1, 1)]
+   CTRL-2 near-miss condition widened c=1 -> c<=2             misses   144  e.g. [(2, 2, 2), (3, 3, 2), (4, 2, 2)]
+   CTRL-3 parity gate dropped (claims every (w,b,c) terminates) misses  1300  e.g. [(1, 1, 1), (2, 2, 1), (3, 1, 1)]
+   CTRL-4 residue in the non-near-miss branch 2 -> 3          misses  1156  e.g. [(2, 2, 2), (3, 3, 2), (4, 2, 2)]
+   CTRL-0 the theorem itself (false-positive probe)           misses     0  <- must be 0
+   CTRL-5 corrupted descent target [u-2]^(u+1) matched by the process: 0  <- must be 0
+
+4. ITEM 1b -- is k >= 4 EASIER than k = 3?  The r35 hypothesis, TESTED.
+   The k=3 proof above bottoms out in Lemma C1-A' after TWO descents (Y or Q,
+   then G).  For k >= 4 the same Lemma C1-J applies unchanged, but the base
+   carries |mu| = k-1 >= 3 tail entries, so the descent bottoms out in a
+   family that is NOT [c]^(c+3).  Measured below: the number of DISTINCT base
+   shapes the descent must resolve, by k.
+   k   distinct base shapes reachable (n <= 26)
+   2   25
+   3   108
+   4   256
+   5   413
+   6   517
+   7   548
+   8   518
+
+   OBSERVATION C1-M (CENSUS, NOT A THEOREM): residue(M(lam)) <= ceil(k/2) + 1
+   violations over every lam |- n <= 30 with >= 2 parts : 0
+   k   max residue observed   ceil(k/2)+1
+   2   2                     2
+   3   3                     3
+   4   3                     3
+   5   4                     4
+   6   4                     4
+   7   5                     5
+   8   5                     5
+   9   6                     6
+   10  6                     6
+   11  7                     7
+   12  7                     7
+   C1-M implies C1 for every k >= 2 (ceil(k/2)+1 < k+1 exactly when k >= 2 --
+   at k = 1 the two are EQUAL, which is precisely C1's equality case) AND no
+   near-miss for k >= 4 (ceil(k/2)+1 <= k-1 exactly when k >= 4).  It is
+   ATTAINED at k = 2 and k = 3, which is why those two carry near-misses.
+   STATED AS A CENSUS.  This line was burned once already by promoting one.
+
+   VERDICT on the r35 hypothesis: the k=3 proof went through, and it did NOT
+   go through a route that k >= 4 makes shorter -- the base-shape count above
+   grows with k.  What IS easier at k >= 4 is the CONCLUSION (a slack of 2 is
+   more room), not the PROOF.  Attack order NOT inverted; the successor is
+   C1-M, which is one statement covering every k at once.
+
+DEFECT LEDGER -- both found by this script against its OWN first draft, both MINE
+  D1  V2's lemma statement claimed W-(c) = (c+1, 2) for EVERY odd c.  FALSE at
+      c = 1: W-(1) = [1,1,0,0] is (1, 3).  The one step from W-(1) lands on
+      W+(0) = [0,0,0], which is TERMINAL, so the +1 the formula charges for it
+      is not spent.  Species: BOUNDARY/BOOKKEEPING, the Repair AG2 species, in a
+      lemma written the same hour.  Theorem C1-3 is UNAFFECTED -- c = 1 was
+      already routed through its own branch -- but the LEMMA was false as stated.
+      And the boundary is not incidental: W-(1)/W+(0) having residue 3 instead of
+      2 is the ENTIRE source of the k = 3 near-miss family.  Corrected above.
+  D2  The MUST-return-True input for near_miss() contained (7,2), which ABORTS
+      (7+2 odd).  The must-be-true input was itself false.  The standing rule
+      caught it on the first run; (7,2) is now in MUST_ABORT, not deleted.
+
+============================================================================================
+runA/runB diffed calls: 104689, 0 disagreements
+DEFECTS: 0
+VERDICT: ALL CHECKS PASS
+elapsed 11.2s

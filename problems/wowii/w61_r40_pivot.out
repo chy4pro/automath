@@ -1,0 +1,51 @@
+====================================================================================================
+W61 r40 [2] PIVOT-COUNT IDENTITY (C1-X) and TERMINAL LEMMA (C1-Y)
+====================================================================================================
+   KNOWN   res(star K_1,3)                                                  got=3      want=3     OK
+   KNOWN   res(P4)                                                          got=2      want=2     OK
+   KNOWN   res(C4)                                                          got=2      want=2     OK
+   MUST_ABORT non-graphic [3,3,1]: True
+
+[1] C1-X : R(L) = n - s(L)  AND  sum of pivots = sum(L)/2
+    population: EVERY terminating partition L of EVERY N in 2..16, no other filter.
+   terminating lists tested                       : 209
+   (i)  R(L) = n - s(L)      counterexamples      : 0
+   (ii) 2*sum(pivots) = sum(L) counterexamples    : 0
+   exclusion list for those two 0s: none -- every terminating partition of every
+   N in 2..16 is included; lists whose run ABORTS are skipped (they have no s(L))
+   and are counted nowhere else.  Aborting lists skipped in this sweep:
+   aborting lists skipped                         : 704
+   CONTROL CORRUPT: 'R(L) = n - s(L) - 1' is violated                       hits=17     OK
+
+[2] C1-Y : the TERMINAL SIGNATURE, computed for every r in 2..12
+   r  | R(0^r) | R((1,1,0^{r-2})) | delta
+   2  |   2    |      1           |  1
+   3  |   3    |      2           |  1
+   4  |   4    |      3           |  1
+   5  |   5    |      4           |  1
+   6  |   6    |      5           |  1
+   7  |   7    |      6           |  1
+   8  |   8    |      7           |  1
+   9  |   9    |      8           |  1
+   10 |   10   |      9           |  1
+   11 |   11   |      10          |  1
+   12 |   12   |      11          |  1
+   r values where R(0^r)=r, R((1,1,0^{r-2}))=r-1 and delta=1 : 11 of 11
+   CONTROL CORRUPT: 'delta at the terminal signature is 0' is violated      hits=11     OK
+
+[3] (MON)'s delta REWRITTEN as a pivot-count difference, via C1-X
+    for a (UP2) pair (L, L') of the SAME length n:  R(L) - R(L') = s(L') - s(L).
+    population: the DISTINCT (UP2) pairs of block [1] of w61_r40_pop.py, N in 2..16.
+   pairs where R(L)-R(L') = s(L')-s(L)            : 732
+   pairs where it fails                           : 0
+   delta histogram over those pairs               : {-1: 97, 0: 447, 1: 188}
+   exclusion list for the 0 above: none -- pairs whose L or L' run ABORTS are
+   skipped (undefined s) and counted nowhere else.
+   CONTROL CORRUPT: 'the delta histogram is a single value' is violated     hits=2      OK
+
+[4] SELF-AUDIT
+   diffed runA/runB calls : 1216   disagreements: 0 (any would exit(2))
+   controls               : 8, all firing: True
+   PARTIAL                : False
+   elapsed                : 0.0s   internal limit 60s
+EXIT=0

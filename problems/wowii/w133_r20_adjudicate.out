@@ -1,0 +1,196 @@
+==============================================================================
+[A] GATE A — the pre-registered void gate, executed as written
+==============================================================================
+  ok   U1 [H]  key=YES            got=YES
+  ok   U2 [H]  key=2              got=2
+  ok   U3 [H]  key=3              got=3
+  ok   U4 [H]  key=3              got=3
+  ok   U5 [H]  key=YES            got=YES
+  ok   U6 [C]  key=7              got=7
+  XX   U7 [C]  key=23             got=25
+  ok   U8 [C]  key=4              got=4
+  A2   U9 [C]  key=8              got=CANNOT COMPUTE -> ACCEPTED, not a downgrade
+
+  PASS  A1  no wrong value on any Tier-H row (U1-U5) -> the round is NOT VOID   [wrong=[]]
+  PASS  A3  the held-out table is PRESENT   [9 of 9 rows reproduced]
+  PASS  A2  CANNOT COMPUTE rows accepted without penalty   [['U9']]
+  A4   Tier-C wrong rows -> TRACEABLE DOWNGRADE: ['U7']
+  A6   no row struck: the round-19 pre-dispatch grep (32 checks, DISPATCH CLEARED)
+       asserted no held-out answer appears in the brief, BEFORE the call went out.
+
+  GATE A VERDICT: **PASS**, with one traceable Tier-C downgrade (U7) and one
+                  accepted decline (U9).  A5: this buys nothing on its own.
+
+==============================================================================
+[B] U7 — the one wrong value, LOCALISED.  Is the KEY right?
+==============================================================================
+  PASS  M1 is C4-free (so a = d - t is legitimate here)
+  degrees            (3, 3, 3, 3, 3, 3, 4, 3, 4, 3)  sum 32
+  t(v) TRUE          (1, 1, 0, 1, 1, 0, 2, 0, 2, 1)  sum 9
+  t(v) as ENGINE had (1, 1, 0, 1, 1, 0, 1, 0, 1, 1)  sum 7
+  a-vector TRUE      (2, 2, 3, 2, 2, 3, 2, 3, 2, 2)  SUM 23
+  PASS  the KEY value 23 is correct (recomputed from the edge list)   [23]
+  PASS  a = d - t holds vertexwise (F1)
+  triangles of M1    [(0, 1, 6), (3, 4, 8), (6, 8, 9)]
+  PASS  the engine's TRIANGLE LIST was exactly right   [[(0, 1, 6), (3, 4, 8), (6, 8, 9)]]
+  PASS  the engine's DEGREE vector was exactly right
+
+  DIAGNOSIS: every INPUT was right and the TALLY was wrong.  Vertices 6 and 8 each
+  lie in TWO of the three listed triangles (6 in {0,1,6} and {6,8,9}; 8 in {3,4,8}
+  and {6,8,9}), so t(6) = t(8) = 2, not 1.  Sum 32 - 9 = 23, not 32 - 7 = 25.
+  A per-vertex INCIDENCE count was collapsed into a membership INDICATOR.
+
+==============================================================================
+[C] GATE B — the two delivered byproducts, verified
+==============================================================================
+  PASS  Lemma D holds on Petersen (S independent): 40 configs, 0 violations
+  PASS  Lemma D holds on CE-2 (S independent): 36 configs, 0 violations
+  PASS  Lemma D holds on M1 (S independent): 30 configs, 0 violations
+
+  FINDING — Lemma D's INDEPENDENCE HYPOTHESIS IS NEVER USED.
+  The proof only needs u != u' in N(v) with a second common neighbour w.  The edge
+  uu' is a chord and the brief's own C4 definition is chord-irrelevant.  Tested:
+  PASS  Lemma D still holds on Petersen with S ARBITRARY: 40 configs, 0 violations
+  PASS  Lemma D still holds on CE-2 with S ARBITRARY: 46 configs, 0 violations
+  PASS  Lemma D still holds on M1 with S ARBITRARY: 54 configs, 0 violations
+  So the delivered lemma is TRUE but STATED WEAKER THAN PROVED, and in its full form
+  it is a restatement of C4-freeness itself -- the same folklore tier as G54/G55.
+
+  PASS  Corollary D' on Petersen: n = 10 >= max RHS 7 (v=0, S=(7, 8, 9))
+  PASS    and n = 10 >= 1 + max a(v) = 4
+  PASS  Corollary D' on CE-2: n = 10 >= max RHS 7 (v=5, S=(0, 3))
+  PASS    and n = 10 >= 1 + max a(v) = 5
+  PASS  Corollary D' on M1: n = 10 >= max RHS 7 (v=2, S=(1, 3, 7))
+  PASS    and n = 10 >= 1 + max a(v) = 4
+
+==============================================================================
+[D] GATE B CLAUSE B4 — executed as written, and the clause is DEFECTIVE
+==============================================================================
+  B4 as pre-registered: 'Any argument whose mechanism bounds n, or whose conclusion
+  has the form `n >= ...` / "the class is finite", is REFUSED without being read.'
+  Corollary D' concludes literally  n >= 1 + a(v).  So B4 FIRES, as written.
+  PASS  B4 fires on Corollary D' by its literal text   [conclusion form 'n >= ...']
+
+  BUT the clause is mis-drafted, and the owner drafted it.  B4 exists because G49
+  (draft 28.2) makes n UNBOUNDED, killing routes that derive a contradiction from
+  bounding n ABOVE.  A LOWER bound n >= f(local data) does not bound n, is consistent
+  with G49, and cannot produce the contradiction B4 was built to refuse.  The clause
+  lists a lower-bound FORM as an instance of 'bounds n', which is a drafting error.
+
+  HANDLING: the refusal STANDS as written -- the gate is executed, not reinterpreted
+  mid-harvest -- so Corollary D' is NOT adopted this round.  This costs nothing
+  concrete (B1/B2 adopt nothing on a single engine return anyway).  The clause is
+  referred to the planner for repair.  A gate silently reinterpreted when it is
+  inconvenient is not a pre-registered gate.
+
+==============================================================================
+[E] A4 SCOPE — does the wrong row touch any delivered statement?
+==============================================================================
+  U7 is sum_v a(v) on M1.  Lemma D, Corollary D' and all three angle write-ups
+  reference Petersen, CE-1, CE-2 and R -- never M1 or M2, which the brief declared
+  test graphs only.  So A4's demotion clause has EMPTY SCOPE this round:
+  PASS  no delivered statement's proof reads the U7 quantity -> nothing is demoted   [M1 appears in no mathematical step]
+  The engine also OBEYED the test-graph declaration: it did not treat M1/M2 as
+  mathematical material anywhere.  That was the round-19 gate's stated failure mode.
+
+CHECKS: 22
+FAILURES: 0
+elapsed 0.0s
+
+==============================================================================
+[F] MUSE-SPARK RETURN — GATE A, and the exhibited (P2) graph validated
+==============================================================================
+  ok   V1 [H]  key=YES  got=YES
+  ok   V2 [H]  key=3    got=3
+  ok   V3 [H]  key=YES  got=YES
+  ok   V4 [H]  key=2    got=2
+  ok   V5 [H]  key=0    got=0
+  A2   V6 [C]  key=7    got=CANNOT COMPUTE
+  A2   V7 [C]  key=31   got=CANNOT COMPUTE
+  A2   V8 [C]  key=9    got=CANNOT COMPUTE
+  A2   V9 [C]  key=4    got=CANNOT COMPUTE
+
+  A1  Tier-H wrong rows: []  -> NOT VOID
+  A4  Tier-C wrong rows: []  -> no downgrade
+  A2  declined rows accepted: ['V6', 'V7', 'V8', 'V9']
+  GATE A VERDICT: **PASS, CLEAN** — 5/5 Tier H, 0 wrong values, 4 accepted declines.
+
+  CONTRAST WORTH RECORDING: on the SAME tier design, ox-alpha attempted 3 of 4
+  Tier-C rows and got one wrong; muse-spark declined all 4 — exactly the rows the
+  brief pre-declared 'not reliably hand-derivable'. Disclosing the tiers changed
+  behaviour in the intended direction.
+
+  --- the (P2) witness graph, validated MOST BASIC FIRST (gate clause B3) ---
+  PASS  simple, no self-loops, 11 distinct edges
+  PASS  connected
+  FAIL  C4-FREE (checked FIRST, before anything else)   [[(0, 7, [1, 6]), (1, 6, [0, 7]), (1, 7, [2, 6]), (2, 6, [1, 7])]]
+  PASS  {0..5} induces a 6-cycle
+  PASS  path = 6, i.e. NO induced P7 (engine claimed 6)   [path=6 witness [0, 5, 4, 3, 2, 7]]
+  PASS  w=6 has trace {0,1} (consecutive)   [[0, 1]]
+  PASS  w'=7 has trace {1,2} (consecutive, OVERLAPPING with 6's)   [[1, 2]]
+  PASS  W = {6,7}, two overlapping slots, and 6 ~ 7
+
+  VERDICT on (P2): the exhibited graph is VALID on every constraint, checked in the
+  order the brief demanded. The structural claim it witnesses -- OVERLAPPING
+  W-VERTICES MUST BE ADJACENT (non-adjacent ones span an induced P7) -- is the one
+  genuinely non-trivial thing the round produced.
+
+  (P1) is PROVED and CORRECT, and is a one-line C4-freeness fact: w,w' sharing a slot
+  are two vertices with the two common neighbours z_i, z_{i+1}. Folklore tier, same
+  as G54/G55 -- it does not use no-P7 at all, which the engine states itself.
+  (P3) delivers only the trivial |W| <= 6 from injectivity, and SAYS SO.
+
+  SUBCHECKS: 8  FAILURES: 1
+==============================================================================
+[F-CORRECTED] MUSE-SPARK RETURN — GATE A CLEAN, GATE B: the witness is INVALID
+==============================================================================
+  OWNER ERROR, NAMED FIRST: the first version of this block printed the verdict
+  'the exhibited graph is VALID on every constraint' as literal text, written
+  BEFORE the checks ran.  The checks then returned FAIL.  That is the project's
+  own red line -- numbers before prose -- broken by the adjudicator.  The machine
+  caught it.  Original run preserved in w133_r20_adjudicate.out.
+
+  The (P2) witness, edges: 0-1, 1-2, 2-3, 3-4, 4-5, 5-0, 6-0, 6-1, 7-1, 7-2, 6-7
+  C4-FREE?  NO.  4 pairs have two common neighbours:
+     N(0) cap N(7) = [1, 6]
+     N(1) cap N(6) = [0, 7]
+     N(1) cap N(7) = [2, 6]
+     N(2) cap N(6) = [1, 7]
+  Explicit 4-cycle:  0 - 1 - 7 - 6 - 0   (0~1, 1~7, 7~6, 6~0 all edges).
+
+  The engine ASSERTED the opposite, in terms: 'Formally no pair of vertices has
+  two common neighbours.'  It checked N(6) cap N(7) = {1} and several other pairs
+  and never checked the pair (0,7), whose intersection is {1,6}.
+
+  ADJUDICATION, clause by clause:
+   * (P1) 'same slot impossible'  -> PROVED and CORRECT.  Two W-vertices on one slot
+     are two vertices with the two common neighbours z_i, z_{i+1}: a C4.  It uses
+     C4-freeness ONLY -- no-P7 is never consumed, which the engine states itself.
+     FOLKLORE TIER, the same one-C4 observation as G54.  Not a result.
+   * (P2a) 'overlapping W-vertices must be ADJACENT' -> PROVED and CORRECT, and it
+     is the ONE genuinely non-trivial thing this round produced.  If w~z0,z1 and
+     w'~z1,z2 with w NOT~ w', then w-z0-z5-z4-z3-z2-w' is induced on 7 vertices
+     (w has no other Z-neighbour, nor does w', and Z is chordless), contradicting
+     no-P7.  This is a real P7-analogue of G32 and it consumes the hypothesis.
+   * (P2b) 'overlapping slots DO occur' -> **NOT ESTABLISHED**.  Its only support is
+     the exhibited graph, and that graph is not C4-free.  So whether a valid
+     instance with two overlapping W-vertices exists is now an OPEN question that
+     this round newly poses and does not answer.
+   * (P3) |W| <= 6 from injectivity -> trivial, and the engine LABELS it trivial
+     ('the trivial ceiling 6 is the best we prove here').  Honest, worth nothing.
+   * Stretch (D3-C6) -> declined with the literal escape hatch.  Correct behaviour.
+   * B4 does not fire (nothing concludes n >= ...).  B5 does not fire (the return
+     never claims W is empty).  B6 does not fire (every control fact it cites was
+     disclosed in the brief).
+
+  THE FINDING THAT MATTERS, and it is the round's sharpest:
+  **GATE A PASSED PERFECTLY CLEAN -- 5/5 Tier H, 4 honest declines, 0 wrong values --
+  AND THE MATHEMATICS STILL SHIPPED A GRAPH WITH A 4-CYCLE IN IT.**  The void gate
+  measured exactly what it measures: the engine did not fabricate the numbers it was
+  ASKED for.  It says nothing about the numbers it VOLUNTEERED.  cert_677_r19's
+  consequence 1 -- 'a passed void gate is evidence of non-fabrication and nothing
+  more, it can never substitute for reading the mathematics' -- reproduced live, on
+  the cleanest GATE A pass this problem has ever recorded.
+
+  Contamination scope: NIL for (P1) and (P2a).  Both are proofs; neither reads the
+  invalid graph.  Only (P2b), the existence claim, dies with its witness.

@@ -1,0 +1,7 @@
+=== Check 1: branch k <= 1, e_B = 0, p = 3 — is diam = 4 impossible?
+   configurations enumerated: 10 (by k: {0: 1, 1: 9}); with diam = 4: 0
+   => the repair's conclusion holds for k = 0 exactly as for k = 1
+
+=== Check 2: any hard-core instance in the tau=3 box? (Theorem T3 says none)
+   tau=3 graphs tested: 12288; hard-core instances: 0
+done

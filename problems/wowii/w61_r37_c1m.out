@@ -1,0 +1,100 @@
+================================================================================================
+w61 r37 ITEM 1 -- Observation C1-M through C1-J' :  what is PROVED and what stays CENSUS
+================================================================================================
+
+[0] CONTROLS -- fired on the FEATURE, before any verdict (RULING CZ')
+   known-value  s0((2,1,1))              = (3, 3)     expect (3, 3)     OK
+   known-value  s0((6,4,2))              = 8          expect 8          OK
+   known-value  residue(M((5,4,3)))      = 2          expect 2          OK
+   known-value  [1,1,0,0]                = (1, 3)     expect (1, 3)     OK
+   known-value  W-(1) boundary           = (1, 3)     expect (1, 3)     OK
+   MUST_ABORT category: 3 inputs, all abort as required
+
+[1] LEMMA C1-N (PROVED)  M(lambda) terminates  <=>  |lambda| even
+    Hand proof: Sum M = w(w+1) + n, so Sum M is even iff n is.  For the converse,
+    the Erdos-Gallai inequality holds at EVERY r for M(lambda), with no hypothesis
+    beyond lambda_1 = w:  r <= w  gives RHS >= r(r-1)+(w+2-r)r = r(w+1) > rw = LHS;
+    r = w+1 gives RHS >= r(r-1) = (w+1)w = LHS; r >= w+2 gives every d_i <= w < r so
+    RHS >= r(r-1) >= r(w+1) > rw >= LHS.  (M has >= w+2 entries equal to w, because
+    lambda_1 = w is one of them.)  Hence M(lambda) is graphical iff its sum is even,
+    and Havel-Hakimi terminates exactly on graphical sequences.
+    checked on 4506 partitions n <= 22: parity<=>termination violations 0 ; EG violations 0
+   C1-N EG checker can reject a non-graphical list      hits=1      OK
+   C1-N parity claim, corrupted to 'always terminates'  hits=388    OK
+
+[2] LEMMA C1-R (PROVED)  ONE descent that subsumes C1-J, C1-K and C1-L's G-descent
+    F_s(x,j;nu) := [x]^j u [x-1]^{x+s-j} u nu,  s >= 1, x >= 2, max(nu) <= x-1.
+    INTERIOR  1 <= j <= x+1 :   F_s(x,j;nu)  ->  F_s(x-1, j+s-2; nu)
+    ENTRY     j = x+s, s >= 2 :  F_s(x,x+s;nu) ->  F_{s-1}(x, s-1; nu)
+    Proof (interior): head x; rest = [x]^{j-1} u [x-1]^{x+s-j} u nu of size x+s-1+|nu| >= x.
+    Its top x entries are the j-1 copies of x and x-j+1 copies of x-1 (possible since
+    s >= 1 leaves x+s-j >= x-j+1), so exactly s-1 copies of x-1 and all of nu stay
+    outside; ties with nu-parts equal to x-1 are immaterial, the multiset is the same.
+    Decrementing gives [x-1]^{j-1} u [x-2]^{x-j+1}, and the union with the s-1 copies
+    left outside is [x-1]^{j+s-2} u [x-2]^{x-j+1} u nu = F_s(x-1, j+s-2; nu).  The block
+    holds no 0 because x-1 >= 1.  (Entry): head x, rest = [x]^{x+s-1} u nu, top x are x
+    copies of x -> x-1, leaving [x]^{s-1} u nu, i.e. F_{s-1}(x, s-1; nu).   []
+    INTERIOR identity verified as a MULTISET on 3644 (s,x,j,nu) instances
+    ENTRY    identity verified as a MULTISET on 291 (s,x,nu) instances
+   C1-R interior target corrupted to j+s-1 -> matched by process hits=0      OK
+   C1-R entry target corrupted to F_{s-1}(x,s) -> matched by process hits=0      OK
+
+    C1-J / C1-K / C1-L's G-descent recovered as INSTANCES of C1-R:
+    C1-J as entry+interior: 89 (u,nu) pairs | C1-K as s=2 (j invariant): 81 | C1-L G as s=3: 45
+
+[3] THE BOUNDARY, PRINTED RATHER THAN HIDDEN -- the GENERAL form of C1-P is FALSE
+    Tempting general lemma: L terminates, a,b >= 1, L u {a,b} terminates
+      ==> residue(L u {a,b}) <= residue(L) + 1  (equivalently steps rises by >= 1).
+    UNCONSTRAINED : 324 counterexamples.  minimal: L=(1, 1) + {3,1} : residue 1 -> 3
+    a,b <= max(L) : 27 counterexamples.  minimal: L=(5, 2, 2, 1, 1, 1) + {5,1} : residue 4 -> 6
+    ==> the [w]^{w+1} head block of M(lambda) is LOAD-BEARING.  C1-P is not an
+        instance of any general 'two more entries cost at most one residue' fact,
+        and a proof that does not use the head block is proving something false.
+   boundary sweep can find a counterexample at all      hits=324    OK
+   boundary survives the obvious repair a,b <= max(L)   hits=27     OK
+
+[4] KEY LEMMA C1-P (CENSUS -- NOT PROVED)
+    lambda has k >= 4 parts, |lambda| even; i<j in {2..k} with lambda_i = lambda_j mod 2;
+    lambda^- := lambda minus those two parts.  Then
+        residue(M(lambda))  <=  residue(M(lambda^-)) + 1.
+    (lambda^-_1 = lambda_1, |lambda^-| even, so C1-N makes M(lambda^-) terminate: the
+     statement never has an undefined right-hand side.)
+    37089 (lambda, pair) instances over n <= 22 : residue-delta histogram [(0, 4780), (1, 32309)] ; violations 0
+    pigeonhole: among lambda_2, lambda_3, lambda_4 two share a parity, so for k >= 4 a
+    legal pair ALWAYS exists and never has to touch lambda_1.
+    partitions with k >= 4 and NO equal-parity pair inside {lambda_2,lambda_3,lambda_4}: 0
+   C1-P bound tightened to +0 -> is violated (so the check can see a violation) hits=32309  OK
+
+[5] THEOREM C1-O (PROVED reduction)   C1-N + Thm C1-2 + Thm C1-3 + C1-P  ==>  C1-M
+    Induction on k.  k=2: Theorem C1-2 gives residue = 2 = bound(2).  k=3: Theorem C1-3
+    gives residue in {2,3}, and bound(3) = 3.  k >= 4: pick the pigeonhole pair, apply
+    C1-P and the hypothesis at k-2:  residue <= bound(k-2) + 1 = ceil((k-2)/2)+2 =
+    ceil(k/2)+1 = bound(k).   []   -- the arithmetic step is checked below.
+    bound(k-2)+1 == bound(k) for every k in 4..199 : YES
+    C1-M ==> C1 (residue != k+1) : ceil(k/2)+1 < k+1 for k >= 2 : True
+    C1-M ==> C1-I's open half (no near-miss at k >= 4, i.e. residue <= k-1) : [4, 5, 6, 7] ... first k is 4
+
+[6] OBSERVATION C1-M -- CENSUS REPRODUCED HERE (still NOT a theorem)
+    6537 terminating partitions with k >= 2 over n <= 26 : 0 violations
+    bound ATTAINED at k = [2, 3, 4, 5, 6, 7, '...']  (all of 2..26)
+    witnesses: k=2:(1, 1) | k=3:(2, 1, 1) | k=4:(1, 1, 1, 1) | k=5:(2, 1, 1, 1, 1) | k=6:(1, 1, 1, 1, 1, 1)
+   C1-M with the bound tightened by 1 IS violated (live negative control) hits=486    OK
+
+[7] PROPOSITION C1-Q (PROVED reduction)  k = 4 bottoms out on TWO families
+    lambda = (w,b,c,d).  C1-J' -> base [b]^{b+3} u [c,d]  (w-b even)  or  Q(b;(c,d)).
+    C1-R entry sends [b]^{b+3} u nu -> Y(b;nu); C1-R at s=2 descends Y and Q with j
+    invariant, down to u = c; and Y(c;(c,d)) = W+(c) u [d], Q(c;(c,d)) = W-(c) u [d].
+    Hence residue(M(w,b,c,d)) = residue(F_3(c, 3 or 2; [d])) -- NO w and NO b left.
+    residue identity verified on 1956 terminating 4-part lambda with w <= 16 : 0 defects
+    W+(c) u [d] = F_3(c,3;[d]) and W-(c) u [d] = F_3(c,2;[d]) :  True
+   C1-Q with the two parity branches SWAPPED -> mismatches hits=693    OK
+
+    THE BOTTOM, as a census (NOT proved):  residue(F_3(c,j;[d])) <= 3 for j in {2,3}
+    c <= 40 : max residue over the bottom families = 3 ; violations of '<= 3' = 0
+    residue = 3 happens exactly at d = 1 plus TWO isolated boundaries: [('W+', 2, 2), ('W-', 3, 2)]
+    (so k = 4 is REDUCED to a two-parameter family and VERIFIED, and is NOT PROVED.)
+
+================================================================================================
+diffed runA/runB calls: 92438   controls: 9, all firing: True   defects: 0   3.1s
+VERDICT: every audited identity holds.  PROVED this round: C1-N, C1-R, C1-O (reduction),
+         C1-Q (reduction).  STILL CENSUS: C1-P, C1-M, and k = 4.

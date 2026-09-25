@@ -1,0 +1,3 @@
+[atlas n<=7]  {'traj': 2740, 'L>=1': 2435, 'sharp_fail': 130, 'eqhead': 145}
+[+random+near-split]  {'traj': 19710, 'L>=1': 14275, 'sharp_fail': 1925, 'eqhead': 2300}
+[s_j histogram at equality heads] {2: 2300}

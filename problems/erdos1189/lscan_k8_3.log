@@ -1,0 +1,30 @@
+prefix (2,3,12): candidates=103600037 lemma_survivors=61546 lcm_digits={2: 2, 3: 4931, 4: 40336, 5: 16158, 6: 119} complete=True t=464s
+prefix (2,3,11): candidates=126315775 lemma_survivors=56968 lcm_digits={3: 1089, 4: 25110, 5: 29078, 6: 1691} complete=True t=467s
+prefix (2,3,10): candidates=151771478 lemma_survivors=90549 lcm_digits={2: 2, 3: 6271, 4: 52916, 5: 30722, 6: 638} complete=True t=651s
+prefix (2,3,9): candidates=176480262 lemma_survivors=79426 lcm_digits={2: 7, 3: 6643, 4: 47786, 5: 24646, 6: 344} complete=True t=665s
+prefix (2,3,8): candidates=190574071 lemma_survivors=100809 lcm_digits={2: 10, 3: 10762, 4: 58628, 5: 30853, 6: 556} complete=True t=715s
+prefix (2,3,14): candidates=66808836 lemma_survivors=45345 lcm_digits={3: 2379, 4: 24924, 5: 17716, 6: 326} complete=True t=278s
+prefix (2,3,13): candidates=83910961 lemma_survivors=36230 lcm_digits={3: 228, 4: 13384, 5: 21538, 6: 1080} complete=True t=304s
+prefix (2,3,7): candidates=198792594 lemma_survivors=115673 lcm_digits={2: 6, 3: 9257, 4: 63855, 5: 40919, 6: 1636} complete=True t=774s
+prefix (2,3,16): candidates=38767470 lemma_survivors=15357 lcm_digits={3: 590, 4: 9303, 5: 5406, 6: 58} complete=True t=133s
+prefix (2,3,20): candidates=8876555 lemma_survivors=8269 lcm_digits={3: 514, 4: 5305, 5: 2427, 6: 23} complete=True t=37s
+prefix (2,3,17): candidates=28127320 lemma_survivors=10076 lcm_digits={3: 12, 4: 2805, 5: 6902, 6: 357} complete=True t=97s
+prefix (2,3,19): candidates=13528002 lemma_survivors=4529 lcm_digits={3: 1, 4: 1267, 5: 3150, 6: 111} complete=True t=46s
+prefix (2,3,24): candidates=1022228 lemma_survivors=409 lcm_digits={3: 31, 4: 242, 5: 136} complete=True t=4s
+prefix (2,3,23): candidates=1900055 lemma_survivors=256 lcm_digits={4: 58, 5: 191, 6: 7} complete=True t=6s
+prefix (2,3,25): candidates=513568 lemma_survivors=55 lcm_digits={4: 19, 5: 36} complete=True t=2s
+prefix (2,3,27): candidates=102551 lemma_survivors=7 lcm_digits={4: 7} complete=True t=0s
+prefix (2,3,26): candidates=239232 lemma_survivors=45 lcm_digits={4: 21, 5: 24} complete=True t=1s
+prefix (2,3,29): candidates=13373 lemma_survivors=0 lcm_digits={} complete=True t=0s
+prefix (2,3,30): candidates=3851 lemma_survivors=0 lcm_digits={} complete=True t=0s
+prefix (2,3,28): candidates=39553 lemma_survivors=5 lcm_digits={4: 4, 5: 1} complete=True t=0s
+prefix (2,3,31): candidates=908 lemma_survivors=0 lcm_digits={} complete=True t=0s
+prefix (2,3,32): candidates=146 lemma_survivors=0 lcm_digits={} complete=True t=0s
+prefix (2,3,33): candidates=10 lemma_survivors=0 lcm_digits={} complete=True t=0s
+prefix (2,3,21): candidates=5565979 lemma_survivors=4105 lcm_digits={3: 210, 4: 2034, 5: 1850, 6: 11} complete=True t=23s
+prefix (2,3,22): candidates=3333027 lemma_survivors=1430 lcm_digits={3: 8, 4: 712, 5: 709, 6: 1} complete=True t=12s
+prefix (2,3,18): candidates=19825466 lemma_survivors=10902 lcm_digits={3: 653, 4: 7352, 5: 2895, 6: 2} complete=True t=78s
+prefix (2,3,15): candidates=51797458 lemma_survivors=36981 lcm_digits={3: 2197, 4: 22056, 5: 12567, 6: 161} complete=True t=213s
+prefix (2,3,5): candidates=216071394 lemma_survivors=142138 lcm_digits={2: 70, 3: 17912, 4: 85201, 5: 38115, 6: 840} complete=True t=865s
+prefix (2,3,4): candidates=225150024 lemma_survivors=135911 lcm_digits={2: 171, 3: 23140, 4: 87252, 5: 25129, 6: 219} complete=True t=894s
+prefix (2,3,6): candidates=207288004 lemma_survivors=106580 lcm_digits={2: 74, 3: 17035, 4: 69295, 5: 19995, 6: 181} complete=True t=904s

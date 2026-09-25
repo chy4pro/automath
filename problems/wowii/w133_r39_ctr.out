@@ -1,0 +1,305 @@
+WOWII-133 round 39 -- E13/E14/E39 harvest + the single-hair residual class
+interpreter: 3.9.6
+started: 2026-08-23 15:57:11
+
+==============================================================================
+PART 0 -- primitive self-tests and THE GUARD
+==============================================================================
+  a(.) matching-formula vs brute independent set: 53 / 53 vertices agree
+  BFS profile cross-checked against an independent all-pairs relaxation on 5 hosts
+  NO-OP CHECK: '>= rad' and '== rad' readings agree on 64 (host,w) pairs --
+  they are the same test because d(c,w) <= ecc(c) = rad.  A guard member built on
+  that swap would score 0 for a MATHEMATICAL reason, not because the guard is good.
+
+  GUARD hosts: 11, of which 4 CARRY the predicate (r37's threshold lesson).
+  correct residual predicate fires on 12 vertices
+  member                   fires   fires-where-correct-does-not   misses-a-real-one
+  (D1) CENTRE-WIDEN           0                              0                  12
+  (D2) QUANT-SWAP            31                             19                   0
+  (D3) STRATUM-OFFSET         0                              0                  12
+
+==============================================================================
+PART 1 -- E13 HARVEST (out/ox-alpha/E13_w133_centre_density_A_out.md)
+==============================================================================
+Each row is the engine's construction rebuilt from its OWN edge list and measured.
+
+  Graph A  n=7 conn=True C4-free=False mu=1
+           rad=2  Ctr=[2, 3]  ecc(w)=4  d(w,c1)=2 d(w,c2)=2
+  ENGINE CLAIMED ecc(w) = 3 ('ecc(u)=3 (s), ecc(w)=3 (s)').  MEASURED ecc(w) = 4.
+  -> the construction is REAL; one of its stated eccentricities is WRONG, and it is
+     the number that would have refuted E14's lemma.  w-u-c1-a1-s has length 4.
+  Graph B(m=2)  n= 7 rad=2 |Ctr|= 2 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=1  ecc(w)=4
+  Graph B(m=3)  n= 8 rad=2 |Ctr|= 3 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=1  ecc(w)=4
+  Graph B(m=4)  n= 9 rad=2 |Ctr|= 4 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=1  ecc(w)=4
+  Graph B(m=5)  n=10 rad=2 |Ctr|= 5 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=1  ecc(w)=4
+  Graph B(m=6)  n=11 rad=2 |Ctr|= 6 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=1  ecc(w)=4
+  Graph C(m=2)  n=10 rad=2 |Ctr|= 2 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=2  ecc(w)=4
+  Graph C(m=3)  n=13 rad=2 |Ctr|= 3 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=2  ecc(w)=4
+  Graph C(m=4)  n=16 rad=2 |Ctr|= 4 Ctr==claimed=True  w radius-extremal=True  C4-free=False mu=2  ecc(w)=4
+
+  VERDICT ON E13: the three constructions are REAL and their headline claims hold.
+  They carry NO C4-freeness, so they say nothing about this line's class.  E13's
+  own verdict (PARTIAL, 'under both hypotheses I could neither prove nor refute')
+  is therefore weaker than what this line already holds: r36 (CS-3) PROVES the
+  relative-threshold form under C4-free + delta >= 2.
+
+==============================================================================
+PART 2 -- E14 HARVEST (out/ox-alpha/E14_w133_centre_density_B_out.md)
+==============================================================================
+E14's verdict is CLAIM APPEARS FALSE via an infinite family H_k said to be
+connected, C4-free, mu = 2, |Ctr| = k+1 -> oo, with w radius-extremal.
+
+  reading      k    n  conn  C4f  mu  rad  |Ctr|  Ctr==claimed  w-rxm  ecc(w)  2*rad
+  literal     1   13  True  True  1    4      2  False         False      6      8
+  literal     2   16  True  True  1    4      3  False         False      6      8
+  literal     3   19  True  True  1    4      4  False         False      6      8
+  literal     4   22  True  True  1    4      5  False         False      6      8
+  literal     5   25  True  True  1    4      6  False         False      6      8
+  literal     6   28  True  True  1    4      7  False         False      6      8
+  literal     7   31  True  True  1    4      8  False         False      6      8
+  literal     8   34  True  True  1    4      9  False         False      6      8
+  repaired    1   13  True  True  2    3      2  True          True       6      6
+  repaired    2   16  True  True  2    3      3  True          True       6      6
+  repaired    3   19  True  True  2    3      4  True          True       6      6
+  repaired    4   22  True  True  2    3      5  True          True       6      6
+  repaired    5   25  True  True  2    3      6  True          True       6      6
+  repaired    6   28  True  True  2    3      7  True          True       6      6
+  repaired    7   31  True  True  2    3      8  True          True       6      6
+  repaired    8   34  True  True  2    3      9  True          True       6      6
+
+  THE DEFECT, NAMED: the engine's edge list omits b'0-c0, but its own verification
+  text uses N(c0) = {b0, b'0, c1..ck, f'0}.  With the list as printed, b'0 hangs off
+  a' alone, d(c0,b'0) = 5, and c0 is not a centre at all.  ADDING THAT ONE EDGE
+  MAKES EVERY HEADLINE CLAIM TRUE.  So the refutation stands, on a repaired witness.
+
+  H_4 repaired, explicit: n=22, rad=3, |Ctr|=5, ecc(w)=6 = 2*rad, edges:
+    0-1 0-2 1-3 1-10 1-11 1-12 1-13 2-4 3-5 4-5 5-8 5-14 5-15 5-16 5-17 6-9 6-18 6-19 6-20 6-21 7-8 7-9 10-14 11-15 12-16 13-17 14-18 15-19 16-20 17-21
+
+family built: 420 host slots
+
+==============================================================================
+PART 3 -- LEMMA AUDIT.  These are MY verdicts on the engines' DERIVATIONS, not the
+          engines'.  Constructions are checkable; justifications are not delegated.
+==============================================================================
+
+  (L1) E14's DESCENT LEMMA: ecc(v) > rad => some neighbour has SMALLER ecc.
+      tested at 2652 vertices; VIOLATIONS: 226
+      counterexample: owner C5+2p  v=0  ecc(v)=3  rad=2  (no neighbour descends)
+      counterexample: PG(2,5)+C7@0+C7@1  v=6  ecc(v)=5  rad=4  (no neighbour descends)
+      counterexample: PG(2,5)+C7@0+C7@1  v=7  ecc(v)=5  rad=4  (no neighbour descends)
+      counterexample: PG(2,5)+C7@0+C7@1  v=8  ecc(v)=5  rad=4  (no neighbour descends)
+      counterexample: PG(2,5)+C7@0+C7@1  v=9  ecc(v)=5  rad=4  (no neighbour descends)
+      counterexample: PG(2,5)+C7@0+C7@1  v=10  ecc(v)=5  rad=4  (no neighbour descends)
+      VERDICT: (L1) IS FALSE AS STATED.  Eccentricity has non-global local minima.
+      E14 used it to derive 'ecc(w) >= 2*rad'.  That derivation is INVALID.
+
+  (L2) E14's CONCLUSION: w radius-extremal => ecc(w) = 2*rad.
+      OWNER counterexample (built this round, no hypotheses): C5 (w,u1,c1,c2,u2)
+      with a pendant at c1 and at c2.  n=7 rad=2 Ctr=[2, 3] ecc(w)=3 2*rad=4 mu=1
+      VERDICT: (L2) IS FALSE without hypotheses.  (mu = 1 here, so this witness
+      alone does NOT settle it inside this line's class.  So:)
+      IN-CLASS REFUTATION (C4-free, mu >= 2 hosts of this family, n <= 60):
+      vertices that are radius-extremal with ecc(w) < 2*rad: 414
+      first witness: dense(s=1,n0=14) n=12 w=0 rad=2 ecc(w)=3 2*rad=4 a(w)=3
+      VERDICT: (L2) IS FALSE INSIDE THIS LINE'S CLASS TOO.
+
+  (L3) E14's BONUS LOCAL LEMMA (rad=2, C4-free => N(w) = {a}, so a(w)=1).
+      ITS PROOF IS INVALID AS WRITTEN: it exhibits w-a-c-m-n-w and calls it a
+      4-cycle.  Those are FIVE distinct vertices -- w,a,c,m,n -- so it is a C5 and
+      C4-freeness forbids nothing.  (It is the step that would have made rad >= 3
+      automatic for a radius-extremal vertex.)
+      MACHINE NOTE: C5 is C4-free (checked), so the cited configuration is legal.
+      AND (L3) IS FALSE, NOT MERELY UNPROVED.  Witness in this line's own class:
+      dense(s=1,n0=14)  n=12  w=0  rad=2  C4-free  a(w)=3  deg(w)=3  mu(G)=2
+      -- w IS radius-extremal at rad = 2 with a(w) >= 2, which (L3) says is
+      impossible.  So rad >= 3 does NOT follow, and any argument leaning on it
+      loses its footing.
+
+==============================================================================
+PART 4 -- THE SINGLE-HAIR RESIDUAL CLASS, LOCATED IN VERTICES, AND WHETHER THE
+          ROUND-38 COST RULE ALREADY COVERS IT
+==============================================================================
+Draft 42.4's single-hair table leaves exactly one open row:
+    h = 1,  e := ecc_{G'}(w) = rad(G')+1,  rad(G'+pendant) = rad(G')+1.
+By (RAD-1P) the third conjunct IS 'w maximally far from every centre of G''.
+So the residual class is  R(G,w) := [ ecc(w) = rad+1 ]  AND  [ w rad-extremal ].
+What that row needs is exactly  endpath(G,w) >= ecc(w)+3  -- the (TAIL-2) step.
+
+DIRECTION OF ERROR, FIXED BEFORE THE NUMBERS: a residual vertex is COVERED only by
+BUILDING an induced anchored path on ecc(w)+3 vertices and passing the independent
+checker.  So COVERED is a LOWER bound and UNCOVERED an UPPER bound.
+
+  hosts entered: 417  (skipped as too big: 3);  self-centred hosts: 176
+  EVERY host of this family is C4-free with mu >= 2 -- asserted, not assumed:
+    hosts failing C4-free or mu >= 2: 0
+  CONJUNCT POPULATIONS, printed BEFORE the verdict (r37 error (c)):
+    vertices with ecc(w) = rad+1                     : 3250
+    vertices maximally far from EVERY centre         : 1297
+    BOTH  =  THE SINGLE-HAIR RESIDUAL CLASS          : 414
+    of those, on hosts with l > 4                    : 0
+    RADIUS PROFILE of the residual class: rad=2 : 414
+    residual vertices with rad >= 5 (route A2's imported class)      : 0
+    CONDITION 3 ALONE (maximally far from every centre), by host class:
+      on hosts with l > 4                 : 378
+      on hosts with rad >= 5              : 268
+      on hosts with l > 4 AND rad >= 5 (22 such hosts) : 178
+      ecc(w)-rad profile, ALL condition-3 vertices : +1 : 414, +3 : 553, +4 : 62, +5 : 76, +6 : 103, +7 : 53, +8 : 18, +9 : 18
+      ecc(w)-rad profile, on l>4 AND rad>=5 hosts  : +5 : 58, +6 : 85, +7 : 35
+      LEMMA (proved, not measured): condition 3 => w is not a centre => ecc(w) >= rad+1,
+      so offset 0 is IMPOSSIBLE and the run asserts it.  Everything at offset >= 2 is
+      closed by (TAIL-1) alone: e >= rad+2 is draft 42.4's (B2) row, unconditional.
+      => on route A2's own host class here, the single-hair RESIDUAL row holds at 0
+         of the 178 condition-3 vertices; the other 178 are in the (B2)-closed row.
+    NOT A THEOREM: r36 found 2 residual instances at rad = 4 on its own 145-base
+    family, so the class is NOT confined to rad = 2 in general.  This is a profile
+    of THIS family, printed with its population, not a structural claim.
+
+  RESIDUAL INSTANCES, NAMED (up to 12 shown):
+    dense(s=1,n0=14)             n= 12 w=  0 rad=2 ecc(w)=3 l=2.667 |Ctr|=1
+    dense(s=1,n0=14)             n= 12 w=  2 rad=2 ecc(w)=3 l=2.667 |Ctr|=1
+    dense(s=1,n0=14)             n= 12 w=  4 rad=2 ecc(w)=3 l=2.667 |Ctr|=1
+    dense(s=1,n0=14)             n= 12 w=  6 rad=2 ecc(w)=3 l=2.667 |Ctr|=1
+    dense(s=1,n0=14)             n= 12 w=  8 rad=2 ecc(w)=3 l=2.667 |Ctr|=1
+    dense(s=1,n0=14)             n= 12 w= 10 rad=2 ecc(w)=3 l=2.667 |Ctr|=1
+    dense(s=1,n0=14)             n= 12 w= 11 rad=2 ecc(w)=3 l=2.667 |Ctr|=1
+    dense(s=4,n0=14)             n= 12 w=  6 rad=2 ecc(w)=3 l=2.250 |Ctr|=3
+    dense(s=4,n0=14)             n= 12 w=  7 rad=2 ecc(w)=3 l=2.250 |Ctr|=3
+    dense(s=5,n0=14)             n= 12 w=  6 rad=2 ecc(w)=3 l=2.500 |Ctr|=2
+    dense(s=6,n0=14)             n= 13 w=  0 rad=2 ecc(w)=3 l=2.692 |Ctr|=3
+    dense(s=6,n0=14)             n= 13 w=  3 rad=2 ecc(w)=3 l=2.692 |Ctr|=3
+
+  COVERAGE OF THE RESIDUAL CLASS BY THE ROUND-38 COST RULE (TAIL-2''):
+    residual vertices COVERED   (ecc+3 path BUILT and checker-verified): 413
+    residual vertices UNCOVERED (no firing frame found in the sample)  : 1
+      dense(s=1,n0=14)             w=  0 COVERED   built on 6 vertices
+      dense(s=1,n0=14)             w=  2 COVERED   built on 6 vertices
+      dense(s=1,n0=14)             w=  4 COVERED   built on 6 vertices
+      dense(s=1,n0=14)             w=  6 COVERED   built on 6 vertices
+      dense(s=1,n0=14)             w=  8 COVERED   built on 6 vertices
+      dense(s=1,n0=14)             w= 10 COVERED   built on 6 vertices
+      dense(s=1,n0=14)             w= 11 COVERED   built on 6 vertices
+      dense(s=4,n0=14)             w=  6 COVERED   built on 6 vertices
+      dense(s=4,n0=14)             w=  7 COVERED   built on 6 vertices
+      dense(s=5,n0=14)             w=  6 COVERED   built on 6 vertices
+      dense(s=6,n0=14)             w=  0 COVERED   built on 6 vertices
+      dense(s=6,n0=14)             w=  3 UNCOVERED built on 0 vertices
+
+  DIAGNOSIS OF EVERY UNCOVERED RESIDUAL VERTEX (r38 sec.4's split, re-run here):
+    dense(s=6,n0=14)             w=  3  CHAIN IS SHORT -- an ecc+3 path EXISTS (built, checked)
+    chain-short: 1   statement-fails: 0   undecided: 0
+
+  LIVENESS OF THE COVERAGE TEST (pre-registered, against interest): the same walk
+  is run on hosts where the ecc+3 path CANNOT exist, and must report UNCOVERED.
+    (host,w) pairs where NO ecc+3 path exists: the walk claimed one anyway 0 times
+    independent subset oracle agrees with the DFS value on 36 / 36 (host,w) pairs
+
+==============================================================================
+PART 5 -- (CS-3) AGAINST E14's FAMILY: absolute vs relative thresholds
+==============================================================================
+(CS-3), draft 45/ r36 sec.5: G connected C4-free, delta >= 2, r = rad >= 3.  If some
+vertex is maximally far from every centre then |C| <= n - 1 - delta(delta-1) - (r-3).
+
+   k    n  delta  rad  |Ctr|  (CS-3) bound  |Ctr| <= bound  |Ctr|/n
+    1   13      2    3      2            10  True           0.154
+    2   16      2    3      3            13  True           0.188
+    4   22      2    3      5            19  True           0.227
+    8   34      2    3      9            31  True           0.265
+   16   58      2    3     17            55  True           0.293
+   32  106      2    3     33           103  True           0.311
+
+  READING, and it is the harvest's real content: E14's family does NOT contradict
+  (CS-3).  It refutes only the ABSOLUTE form of the r34 target ('|Ctr| large' with a
+  universal constant), which (CS-3) never asserted.  |Ctr|/n -> 1/3 while the bound
+  stays far above it, because delta = 2 makes delta(delta-1) = 2 and the bound nearly
+  vacuous.  So the harvest CONFIRMS that (CS-3)'s dependence on n and delta is
+  NECESSARY, not an artefact of how it was proved.
+
+  WHERE (CS-3) ACTUALLY BITES, measured over this line's own host family:
+    hosts in scope (rad >= 3): 365;  hosts where (CS-3) DECIDES (|C| > bound): 175
+    every deciding host re-checked by BFS: no radius-extremal vertex found.
+
+==============================================================================
+PART 6 -- E39 HARVEST (out/ox-alpha/E39_w133_multihair_caseII_out.md), UNREAD until
+          this round.  Verdict PARTIAL, two theorems, one 'universal' lemma.
+==============================================================================
+E39's LEMMA 0: path(G') <= 2*rad(G')+1, with the proof 'd(a,b) >= d_P(a,b) = p-1'.
+THE PROOF IS INVALID: an INDUCED path is an induced SUBGRAPH; its endpoints may be
+far closer in G than along it.  d(a,b) <= p-1 is what holds, and the proof needs the
+reverse.  Whether the STATEMENT survives is a separate question, so it is measured:
+
+   host              n  rad  path(G)  2*rad+1  Lemma 0 holds
+   C6                6    3        5        7  True
+   C7                7    3        6        7  True
+   C9                9    4        8        9  True
+   Theta(3,3,3)      8    3        6        7  True
+   Petersen         10    2        5        5  True
+   P5                5    2        5        5  True
+   C5+C5 glued       9    2        7        5  False
+   PG(2,3)          26    3       11        7  False
+
+  VERDICT: E39's LEMMA 0 IS FALSE, on 2 of 8 hosts tested.  Widest gap: PG(2,3),
+  rad = 3, so the lemma allows 7 vertices and the graph carries 11 -- over by 4.
+  (PRE-REGISTERED PREDICTION THAT FAILED, recorded: I expected Petersen to be the
+  witness at path = 6.  MEASURED path(Petersen) = 5, so Lemma 0 HOLDS there.  The
+  refutation came from hosts I added for coverage, not from the one I named.)
+  CONSEQUENCE, and it is the whole point of reading this output: Lemma 0 is the LAST
+  STEP of Theorem P1 ('path(G) >= 2 rad(G) >= (2r'+1)+Delta >= path(G')+Delta') and
+  of Theorem P2.  BOTH THEOREMS FALL WITH IT.  Nothing of E39 sec.3 may be cited.
+  E39's sec.1 verification of the (MH-II) => Case-II chain is a separate matter and
+  is NOT touched by this -- that part re-derives, and I re-derived it by hand.
+
+  E39's 'LEMMA X FALSE' WITNESS, rebuilt from its own edge list:
+    n=5  connected=True  C4-free=True  mu=1  rad=2  centre=['z', 'a', 'b']
+    THE WITNESS IS C4-FREE AS CLAIMED, AND IT HAS mu = 1 < 2.
+    w and u are pendants, so a(w) = a(u) = 1.  E39's 'blocker' is therefore not
+    known to block anything inside this line's class -- the obstruction it names
+    lives on a graph route A2 never has to handle.  Not a refutation of E39's
+    honesty (it says PARTIAL); a statement about what the PARTIAL is about.
+
+==============================================================================
+PART 7 -- THE CONTROL THAT COULD BREAK PART 4's FINDING: hosts BUILT to put a
+          condition-3 vertex at offset +1 inside route A2's class (l>4, rad>=5)
+==============================================================================
+PART 4's family has 22 such hosts, ALL of them PG(2,5) with one tail.  A finding
+resting on one shape is a finding about that shape.  These hosts are new to this
+line: a denser core (PG(2,7), 8-regular, l = 8), tails of many lengths, tails at
+TWO different roots, and two cores joined by a path -- chosen because each changes
+WHERE the centre sits relative to the tail, which is what offset +1 needs.
+
+   host                       n   rad     l  cond-3 vertices   at offset +1
+   PG(2,7)+P4+C5             122     5  7.62                 0              0
+   PG(2,7)+P5+C5             123     5  7.58                51              0
+   PG(2,7)+P6+C7             126     6  7.44                51              0
+   PG(2,7)+P7+C7             127     7  7.40                 0              0
+   PG(2,7)+P8+C9             130     8  7.28                 0              0
+   PG(2,7)+C11 glued         124     5  7.53                 0              0
+   PG(2,7)+C13 glued         126     6  7.44                 0              0
+   PG(2,7)+C15 glued         128     7  7.36                 0              0
+   PG(2,7)+C17 glued         130     8  7.28                 0              0
+   PG(2,7)+C19 glued         132     9  7.20                 0              0
+   PG(2,7)+C21 glued         134    10  7.12                 0              0
+   PG(2,5)+P7+C5              73     6  5.42                27              0
+   PG(2,5)+P8+C5              74     7  5.38                 0              0
+   PG(2,5)+P9+C7              77     8  5.25                 0              0
+   PG(2,5)+P10+C7             78     8  5.21                27              0
+   PG(2,5)+P11+C9             81     9  5.09                27              0
+   PG(2,5)+P12+C9             82    10  5.05                 0              0
+   PG(2,5)+C11@0+C13@3        84     7  5.00                 0              0
+   PG(2,5)+C13@0+C15@3        88     8  4.86                 0              0
+   PG(2,5)+C15@0+C17@3        92     9  4.74                 0              0
+   2xPG(2,5)+P7              131     7  5.80                50              0
+   2xPG(2,5)+P9              133     8  5.74                50              0
+   2xPG(2,5)+P13             137    10  5.64                50              0
+   2xPG(2,5)+P15             139    11  5.58                50              0
+
+  NEW hosts in route A2's class (l > 4 AND rad >= 5): 24
+  condition-3 vertices on them: 383;  of those at offset +1 (THE RESIDUAL ROW): 0
+  THE CONTROL DID NOT BREAK THE FINDING.  It could have: condition 3 fires 383
+  times on these new shapes, so offset +1 was reachable and was not reached.
+  STILL A MEASUREMENT, NOT A THEOREM -- now over 24 NEW hosts of four shapes
+  ON TOP OF PART 4's own in-class hosts, whose count PART 4 printed above.
+
+==============================================================================
+parts run: PART0,PART1,PART2,PART3,PART4,PART5,PART6,PART7
+CHECKS=392 FAILS=0 elapsed=1.0s
+==============================================================================

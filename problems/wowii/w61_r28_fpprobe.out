@@ -1,0 +1,56 @@
+  problems/wowii/w61_S3_GFAN_r26.md              md5=1cdd169955f8bc182887c60ab46fa8fd bytes=19016
+  graded 7/7 EXACT in SS7.42 (a).  ADMISSIBILITY IS NOT IN QUESTION HERE;
+  what is under test is the GATE.
+
+==========================================================================
+POPULATION (RULING AS): the six probe inputs, printed before any verdict
+==========================================================================
+  [FP] FP-1  the Q39 report AS HARVESTED (known 7/7 EXACT)
+  [FP] FP-2  same, with the H2 term-list LABEL cosmetically relabelled
+  [FP] FP-3  same, H3 row answered CANNOT COMPUTE (pre-registered hatch)
+  [FN] FN-1  H2's stated total corrupted 98384 -> 98383
+  [FN] FN-2  one H2 TERM corrupted 7920 -> 7921
+  [FN] FN-3  H5's step count corrupted 16 -> 15
+
+  FP = must PASS (a gate that voids these MANUFACTURES a defect)
+  FN = must VOID (a gate that passes these MISSES a defect)
+
+==========================================================================
+GATE UNDER TEST: PRE-FIX parser (r27 first run)
+==========================================================================
+  FP-1  the Q39 report AS HARVESTED (known 7/7 EXACT)  VOID  exact=6/7  *** MANUFACTURED A DEFECT ***
+        falsely failed row: H2-terms (HAND)
+  FP-2  same, with the H2 term-list LABEL cosmetically VOID  exact=6/7  *** MANUFACTURED A DEFECT ***
+        falsely failed row: H2-terms (HAND)
+  FP-3  same, H3 row answered CANNOT COMPUTE (pre-regi VOID  exact=5/7  *** MANUFACTURED A DEFECT ***
+        falsely failed row: H2-terms (HAND)
+        falsely failed row: H3-split (NON-HAND)
+  FN-1  H2's stated total corrupted 98384 -> 98383     VOID  exact=5/7  OK  
+  FN-2  one H2 TERM corrupted 7920 -> 7921             VOID  exact=6/7  OK  
+  FN-3  H5's step count corrupted 16 -> 15             VOID  exact=5/7  OK  
+
+==========================================================================
+GATE UNDER TEST: FIXED parser (shipped)
+==========================================================================
+  FP-1  the Q39 report AS HARVESTED (known 7/7 EXACT)  PASS  exact=7/7  OK  
+  FP-2  same, with the H2 term-list LABEL cosmetically PASS  exact=7/7  OK  
+  FP-3  same, H3 row answered CANNOT COMPUTE (pre-regi PASS  exact=6/7  OK  
+  FN-1  H2's stated total corrupted 98384 -> 98383     VOID  exact=6/7  OK  
+  FN-2  one H2 TERM corrupted 7920 -> 7921             VOID  exact=6/7  OK  
+  FN-3  H5's step count corrupted 16 -> 15             VOID  exact=6/7  OK  
+
+==========================================================================
+WHAT THIS SHOWS
+==========================================================================
+  The PRE-FIX parser fails FP-1 and FP-2: it VOIDS a report that is 7/7 exact.
+  That is not a hypothetical -- it happened, on a real report, in round 27,
+  and only re-reading the population caught it.
+  The FIXED parser must pass all three FP probes AND void all three FN probes.
+  Neither direction alone is a test of a grading gate.
+
+  LIMIT, stated here rather than left for a judge: these probes test the
+  PARSER, not the KEY.  A gate whose key values are wrong grades every report
+  wrongly and every probe here still passes.  The key is guarded separately,
+  by re-reading each value out of the key FILE (r25's transcription guard).
+
+VERDICT: ALL PROBES CORRECT on the shipped parser

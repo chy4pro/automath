@@ -1,0 +1,12 @@
+G' : n=17  m=18  (two C9 glued at vertex 0)
+  C4-free: True
+  path(G') = 14 edges
+
+  G = G' + one pendant, over every attachment vertex w:
+     rad=4  path(G)=14   attachment(s): [0, 1, 3, 6, 8, 10, 12, 15, 17]
+     rad=4  path(G)=15   attachment(s): [2, 7, 11, 16]
+     rad=5  path(G)=14   attachment(s): [4, 5, 13, 14]
+
+  (A2-PATH) at h=1 claims  path(G) >= path(G') + 1 = 15
+  attachments with rad>=5 that VIOLATE it: [(4, 5, 14), (5, 5, 14), (13, 5, 14), (14, 5, 14)]
+  VERDICT: (A2-PATH) REFUTED — reproduced

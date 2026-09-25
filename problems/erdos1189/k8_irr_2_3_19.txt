@@ -1,0 +1,1 @@
+# file=k8_surv_2_3_19.txt checked=4529 irreducible=0 complete=True t=134s

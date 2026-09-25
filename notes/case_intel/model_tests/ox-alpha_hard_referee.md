@@ -1,0 +1,5 @@
+VERDICT: FLAWED
+
+The error is in the final step: "in a tree every maximal path extends to a longest one." A maximal path in a tree is merely a path whose endpoints are leaves; it cannot be extended at all, and its length can fall strictly short of the diameter. Hence the conclusion that every leaf lies on a diametral path is unjustified — in fact the theorem's third clause is itself false. (The first two clauses are correct: the endpoints of a longest path are leaves, and in a tree a longest path has length exactly diam(T).)
+
+Counterexample: take the path a–b–c–d–e–f and attach a new leaf g to c. The unique diametral path is a–f, of length 5, so diam(T) = 5. Any path containing the leaf g must have g as an endpoint, and the farthest vertex from g is f, at distance 4 < 5; so g lies on no diametral path. Correspondingly, the maximal path Q = g–c–b–a has leaf endpoints, is therefore non-extendable, yet has length 3 < 5 — refuting the claim that every maximal path extends to a longest one.

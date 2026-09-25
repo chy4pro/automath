@@ -1,0 +1,30 @@
+impl source : w61_r29_c1audit.py md5 768975c3987de60fbebe1080d0dd530d
+
+PART 0 -- controls.  Each predicate shown returning True AND (where it can) False.
+   terminal_is_all_zero(M((2,1,1))) [POSITIVE, brief example] got True       want True       OK
+   sum_is_twice_heads(M((2,1,1)))   [POSITIVE, brief example] got True       want True       OK
+   all_entries_nonneg_throughout([2,2,2,2,1,1]) [POSITIVE]    got True       want True       OK
+   terminal_is_all_zero([1,1,1])  aborts -> None [negative]   got None       want None       OK
+   sum_is_twice_heads([1,1,1])    aborts -> None [negative]   got None       want None       OK
+   sum_is_twice_heads is FALSIFIABLE: injected wrong head sum got False      want False      OK
+   terminal_is_all_zero is FALSIFIABLE: a non-zero 'terminal' is rejected got False      want False      OK
+
+PART 1 -- the lemma over a DECLARED population
+   population : 1653 lists (every M(lambda) for Sum<=18, both proof shapes w<=25, plus the A3 list and four ad-hoc lists)
+   terminating : 952   aborting : 701
+   terminal-all-zero failures : 0
+   Sum = 2*Sum(heads) failures : 0
+   negative-entry failures     : 0
+   zero failures across the whole terminating population      got (0, 0, 0)  want (0, 0, 0)  OK
+   the population actually CONTAINS terminating lists [not vacuous] got True       want True       OK
+   the population actually CONTAINS aborting lists [not vacuous] got True       want True       OK
+
+PART 2 -- the consequence Q42 asked for, at Statement 5's own numbers
+   Theorem C1-2 uses Sum(M) = w(w+2) + c and concludes 'odd => no completed run'.
+   pairs (w,c), 1<=c<=w<=40, with w+c ODD : 400 ; aborting : 400
+   every odd-parity pair aborts                               got 400        want 400        OK
+   pairs with w+c EVEN : 420 ; s0 = w+1 : 420
+   every even-parity pair gives s0 = w+1                      got 420        want 420        OK
+
+   controls run : 12 ; passed : 12
+elapsed 0.1s

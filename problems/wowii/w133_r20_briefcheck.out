@@ -1,0 +1,81 @@
+==============================================================================
+[A] CONTROL 1 — Q  (= CE-2), n=10; every value the brief prints
+==============================================================================
+  PASS  Q is C4-free   [None]
+  PASS  Q is connected
+  a-vector(Q) = (3, 2, 3, 4, 3, 2, 2, 2, 2, 2)   sum = 25   l(Q) = 5/2 = 2.5
+  PASS  Q a-vector sum is 25 (matches r19 briefcheck for CE-2)   [sum=25]
+  PASS  l(Q) = 5/2 exactly   [5/2]
+  path(Q) = 6   witness [0, 4, 6, 2, 3, 9]
+  PASS  path(Q) = 6, so Q HAS NO INDUCED P7 and is a positive instance   [path=6]
+  ecc-vector(Q) = (2, 3, 3, 2, 2, 3, 3, 3, 3, 3)   diam = 3   rad = 2
+  PASS  diam(Q) = 3 (NOT 2 — the round-18 false fact, corrected)   [(2, 3, 3, 2, 2, 3, 3, 3, 3, 3)]
+  induced C6 count in Q = 4
+  PASS  Q contains at least one induced C6   [count=4]
+  chosen induced C6 Z = [0, 1, 2, 3, 7, 4] (cyclic)
+    w=5: Z-neighbours [0, 3]  -> antipodal
+    w=6: Z-neighbours [2, 4]  -> antipodal
+    w=8: Z-neighbours [0, 4]  -> consecutive
+    w=9: Z-neighbours [3]  -> one
+  W (exactly two CONSECUTIVE Z-neighbours) = [8]
+  PASS  Q carries at least one W-vertex, so 'W is empty' is FALSE under no-P7   [W=[8]]
+  PASS  no vertex of Q has two Z-neighbours at cycle-distance 2 (F2/G15(b))
+  vertices of Q with a(v)=1 (peelable) = []
+
+==============================================================================
+[B] CONTROL 2 — PETERSEN, built as the Kneser graph K(5,2)
+==============================================================================
+  labelling: 0=[1, 2], 1=[1, 3], 2=[1, 4], 3=[1, 5], 4=[2, 3], 5=[2, 4], 6=[2, 5], 7=[3, 4], 8=[3, 5], 9=[4, 5]
+  Petersen edges: 0-7, 0-8, 0-9, 1-5, 1-6, 1-9, 2-4, 2-6, 2-8, 3-4, 3-5, 3-7, 4-9, 5-8, 6-7
+  PASS  Petersen is C4-free   [None]
+  PASS  Petersen is 3-regular
+  PASS  Petersen is triangle-free
+  a-vector(Petersen) = (3, 3, 3, 3, 3, 3, 3, 3, 3, 3)   sum = 30   l = 3
+  PASS  l(Petersen) = 3 exactly (the tightness control for l <= 3)   [3]
+  path(Petersen) = 5   witness [0, 7, 3, 4, 2]
+  PASS  path(Petersen) = 5 — NOT 6; this is the value round 12's return FABRICATED   [path=5]
+  induced C6 count in Petersen = 10
+  PASS  Petersen contains an induced C6   [count=10]
+  one induced C6 of Petersen = [0, 8, 2, 6, 1, 9] (cyclic)
+  PASS  diam(Petersen) = 2   [(2, 2, 2, 2, 2, 2, 2, 2, 2, 2)]
+
+==============================================================================
+[C] CONTROL 3 — PG(2,3) incidence graph: must NOT execute (fails no-P7)
+==============================================================================
+  PASS  PG(2,3) has 13 points   [13]
+  PASS  PG(2,3) incidence graph is C4-free   [None]
+  PASS  PG(2,3) incidence graph is 4-regular
+  induced P7 witness in PG(2,3): [0, 14, 4, 13, 1, 18, 9]
+  PASS  PG(2,3) HAS an induced P7, so 'no induced P7' is the FIRST hypothesis it fails
+  PASS  PG(2,3) is connected
+
+==============================================================================
+[D] HELD-OUT KEY V1-V9 — independently recomputed from the printed edge lists
+==============================================================================
+  PASS  V1  N1 is C4-free = YES   [None]
+  PASS       N2 is C4-free   [None]
+  PASS  V2  a(6) on N1 = 3   [a(6)=3]
+  PASS  V3  {0..5} induces a 6-cycle in N1 = YES
+  PASS  V4  dist(6,8) on N1 = 2   [dist=2]
+  PASS  V5  |N(9) cap {0..5}| on N1 = 0   [=0]
+  PASS  V6  path(N1) = 7   [path=7 witness [1, 7, 4, 3, 6, 10, 8]]
+  PASS  V7  sum_v a(v) on N1 = 31   [a=(3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2) sum=31]
+  PASS  V8  path(N2) = 9   [path=9 witness [6, 10, 7, 1, 2, 9, 5, 4, 8]]
+  PASS  V9  induced C6 count in N2 = 4   [count=4]
+  PASS  N1 has path > 6, so N1 is OUTSIDE the target class — test graph only
+  PASS  N2 has path > 6, so N2 is OUTSIDE the target class — test graph only
+  PASS  neither N1 nor N2 equals Q or Petersen (the two BURNED graphs)
+
+==============================================================================
+[E] V7 PROBES — the checkers must be refutable
+==============================================================================
+  PASS  V7-1 c4free() trips when edge 1-4 is planted into Q   [(0, 4, [1, 8])]
+  PASS  V7-2 the 3-regularity test trips on a Petersen with one edge removed
+  PASS  V7-3 induced_path_longest returns 3 on a star K1,4 (specificity: must NOT be 5)   [path=3]
+  PASS  V7-4 has_induced_path_atleast(P6, 7) correctly finds NOTHING
+  PASS  V7-5 induced_c6s finds exactly 1 induced C6 in a bare C6
+  PASS  V7-6 induced_c6s finds 0 induced C6 once a long chord is planted
+
+CHECKS: 40
+FAILURES: 0
+elapsed 0.0s

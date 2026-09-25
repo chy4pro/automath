@@ -1,0 +1,36 @@
+=== D-1 / D-2 witness: Fan(4,2), d_u=d_v=2, A' = [2,2]
+  Fan(4,2): deg=[5, 5, 4, 4, 4, 2, 2] n=7 alpha=3 tau=4 residue=2 s=5 | A is maximum? YES | residue vs alpha: alpha-1
+
+=== the judge's F1 witness from the brief, for comparison: A' = [2,1,1]
+  Fan(4,2): deg=[6, 4, 4, 4, 4, 2, 1, 1] n=8 alpha=4 tau=4 residue=3 s=5 | A is maximum? YES | residue vs alpha: alpha-1
+
+=== D-3: is |A'| = 1 possible?  R = sum of A'-attachments >= p+2 forces |A'| >= 2
+    (u,v miss the edge uv so each needs >= 2 A'-attachments; the other p-2 need >= 1)
+    tau=4 L=2 p=2: R >= 4, max A' degree <= p = 2 => |A'| >= 2 (single A-vertex impossible)
+    tau=5 L=2 p=3: R >= 5, max A' degree <= p = 3 => |A'| >= 2 (single A-vertex impossible)
+    tau=5 L=3 p=2: R >= 4, max A' degree <= p = 2 => |A'| >= 2 (single A-vertex impossible)
+    tau=6 L=2 p=4: R >= 6, max A' degree <= p = 4 => |A'| >= 2 (single A-vertex impossible)
+    tau=6 L=3 p=3: R >= 5, max A' degree <= p = 3 => |A'| >= 2 (single A-vertex impossible)
+    tau=6 L=4 p=2: R >= 4, max A' degree <= p = 2 => |A'| >= 2 (single A-vertex impossible)
+    tau=7 L=2 p=5: R >= 7, max A' degree <= p = 5 => |A'| >= 2 (single A-vertex impossible)
+    tau=7 L=3 p=4: R >= 6, max A' degree <= p = 4 => |A'| >= 2 (single A-vertex impossible)
+    tau=7 L=4 p=3: R >= 5, max A' degree <= p = 3 => |A'| >= 2 (single A-vertex impossible)
+    tau=7 L=5 p=2: R >= 4, max A' degree <= p = 2 => |A'| >= 2 (single A-vertex impossible)
+    tau=8 L=2 p=6: R >= 8, max A' degree <= p = 6 => |A'| >= 2 (single A-vertex impossible)
+    tau=8 L=3 p=5: R >= 7, max A' degree <= p = 5 => |A'| >= 2 (single A-vertex impossible)
+    tau=8 L=4 p=4: R >= 6, max A' degree <= p = 4 => |A'| >= 2 (single A-vertex impossible)
+    tau=8 L=5 p=3: R >= 5, max A' degree <= p = 3 => |A'| >= 2 (single A-vertex impossible)
+    tau=8 L=6 p=2: R >= 4, max A' degree <= p = 2 => |A'| >= 2 (single A-vertex impossible)
+
+=== D-4: at step j = L+1 the C-value equals p; how many A' entries TIE with it?
+    (the judge measured q = 0 always; q >= 2 would break Lemma FAN-2's proof)
+    instances with a step j = L+1 in the high phase: 837; max #A' entries at-or-above the C-value = 0
+    instances with q >= 2 (which would break FAN-2's argument): 0
+
+done
+
+=== the brief's exact F1 witness, rebuilt from the Fan(4,2) definition
+  deg=[5, 5, 4, 4, 4, 2, 1, 1] n=8 alpha=4 tau=4 residue=3 s=5 diam=4 | B_hi degrees = 5,5 (need >= tau+1 = 5)
+  NOTE (owner): the earlier row in this file used a greedy A'-attachment that put
+  3 attachments on u and 1 on v, giving deg(v) = tau — NOT a Fan configuration.
+  It is discarded; this row is the correct rebuild and it matches the brief exactly.

@@ -1,0 +1,11 @@
+  [R-22/status] landed
+  [AE1/RIG-scope] landed
+  draft md5 7a1e8e98a7b28b6bcec98b63eb3a0dee -> e6158ebb2e7afd25b6cb35637203d65c
+
+POST-REPAIR RECORD ASSERTIONS (the repair is not done until its RECORD is on the page)
+  [OK ] AE1 registered exactly once as LANDED: 1 (want 1)
+  [OK ] row R-22 named in the SS7.13 D status line: 1 (want 1)
+  [OK ] GFANnu-HC's non-promotion said in the same breath: 1 (want 1)
+  [OK ] byte-identity residual recorded as transcript-not-grades: 1 (want 1)
+
+RESULT: ALL RECORD ASSERTIONS PASS

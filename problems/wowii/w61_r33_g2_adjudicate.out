@@ -1,0 +1,77 @@
+====================================================================================
+ITEM 4 -- G2 suspects adjudicated BY READING (population before verdict)
+====================================================================================
+  draft lines matching G2 : 35   already marked : 4   to adjudicate : 31
+
+  CLASS A -- QUOTED RETRACTION (marker applied):
+     marked  (RULING CT, *"that is the round that closes the S3 surface"*). Every site is repaired
+     marked  > entire S3 surface of WOWII-61 closes"*.〕
+     marked  round 30 — this line read *"closes the S3 surface of WOWII-61"*, contradicted by the
+     marked  between WOWII-61 and a closed S3 surface"* — was **missed by D-CLOSE** because the claim
+     marked  *"**the entire S3 surface of WOWII-61 closes**"*. **The hedge and its contradiction sit
+     marked  | 2 | §7.28 (c) heading | *"the one re-round that closes WOWII-61's S3 surface"* |
+     marked  | 3 | §7.28 (c) gate | *"the entire S3 surface of WOWII-61 closes"* |
+     marked  | 4 | §7.30 (o) heading | *"the one round that closes WOWII-61's S3 surface"* |
+     marked  | 6 | §7.31 (h) | *"This is the round that closes WOWII-61's S3 surface"* |
+     marked  | 7 | §7.32 (j) | *"The round that closes WOWII-61's S3 surface"* |
+
+  CLASS B -- NEGATION FALSE POSITIVE (no marker; the sentence is TRUE):
+     kept    **So the S3 surface does NOT close this cycle.**
+     kept    > S3 surface does NOT close**: the five §7.25 statements stand at `0` S3 rounds and
+     kept    1. **Neither candidate closes WOWII-61's S3 surface.** Under (b)'s corrected arithmetic,
+
+  CLASS C -- CORRECTLY SCOPED to the GFAN family (no marker; the claim is TRUE):
+     kept    ### (c) **TOP RESUME POINTER — the one re-round that closes the GFAN family's S3 surface
+     kept    > family's S3 surface closes down to one round**
+     kept    ### (o) **TOP RESUME POINTER — the one round that closes the GFAN family's S3 surface**
+     kept    family 2. This is the round that closes the GFAN family's S3 surface**
+     kept    1. **Corollary GFANν-HC needs family 2, and it is the only thing between the GFAN family
+
+  CLASS D -- DETECTOR SPEC, makes no claim (no marker):
+     kept    | **G2** | the AH3 closure over-claim, EN **and** ZH
+
+  CLASS E -- LIVE CARRIER, REPAIRED (the detector could not tell these from C):
+     REPAIRED ox-alpha never counts. If all land clean the entire S3 surface of WOWII-61 closes.
+     REPAIRED ### (a) **What this round is, and what it is the only thing between**
+     REPAIRED and it is now the only statement standing between WOWII-61 and a closed S3 surface.
+
+====================================================================================
+POSITIVE CONTROL -- the marker must not be doing the detector's work
+====================================================================================
+     (RULING CT, *"that is the round that closes the S3 surface"*). Every s bare=True  suppressed-by-marker=True
+     > entire S3 surface of WOWII-61 closes"*.〕                             bare=True  suppressed-by-marker=True
+     round 30 — this line read *"closes the S3 surface of WOWII-61"*, contr bare=True  suppressed-by-marker=True
+     between WOWII-61 and a closed S3 surface"* — was **missed by D-CLOSE** bare=True  suppressed-by-marker=True
+     *"**the entire S3 surface of WOWII-61 closes**"*. **The hedge and its  bare=True  suppressed-by-marker=True
+     | 2 | §7.28 (c) heading | *"the one re-round that closes WOWII-61's S3 bare=True  suppressed-by-marker=True
+     | 3 | §7.28 (c) gate | *"the entire S3 surface of WOWII-61 closes"* |  bare=True  suppressed-by-marker=True
+     | 4 | §7.30 (o) heading | *"the one round that closes WOWII-61's S3 su bare=True  suppressed-by-marker=True
+     | 6 | §7.31 (h) | *"This is the round that closes WOWII-61's S3 surfac bare=True  suppressed-by-marker=True
+     | 7 | §7.32 (j) | *"The round that closes WOWII-61's S3 surface"* |    bare=True  suppressed-by-marker=True
+     ALL retraction strings fire WITHOUT the marker and are exempted WITH it: True
+
+  draft rewritten: 771335 -> 772351 chars
+  AFTER: G2 matches 36 ; unmarked 22
+  remaining unmarked, each adjudicated above as B / C / D:
+      5366  **So the S3 surface does NOT close this cycle.** What closes it is one round on a
+      5532  ### (c) **TOP RESUME POINTER — the one re-round that closes the GFAN family's S3 surface** 〔head
+      5564  > family's S3 surface closes down to one round** — the ten statements above reach two
+      5566  > S3 surface does NOT close**: the five §7.25 statements stand at `0` S3 rounds and
+      5720  ox-alpha never counts. If all land clean the **GFAN family's** S3 surface closes 〔**AH3
+      6102  ### (o) **TOP RESUME POINTER — the one round that closes the GFAN family's S3 surface** 〔heading
+      6542  > family 2. This is the round that closes the GFAN family's S3 surface** (**not**
+      8580  1. **Corollary GFANν-HC needs family 2, and it is the only thing between the GFAN family
+      8581  and a closed S3 surface** — **not** between WOWII-61 and one: item 5 of this same list
+      8607  ### (a) **What this round is, and what it is the only thing between** 〔**AH3 class,
+      8614  closed S3 surface"*. **AH3's sweep missed it because it says "only statement standing
+      8615  between", not "only thing between"** — the interposition species of RULING CZ, one
+      8842  ## §7.40 owner-w61 round 25: **Q38 HARVESTED — void gate `5/5` EXACT including BOTH non-hand row
+     10283  ## §7.45 owner-w61 round 30: **RULING CS applied across the line — the carrier sweep does NOT co
+     10353  | 5 | §7.31 (g)3 | *"Family 2 for GFANν … closes the S3 surface of WOWII-61"* — **item 4 of the 
+     10356  | 8 | §7.38 (g)1 | *"it is now **the only thing** between WOWII-61 and a closed S3 surface"* |
+     10357  | 9 | `HANDOVER.md` heading | *"WOWII-61 — **唯一残余** = GFAN 族第二族轮"* |
+     10359  | 11 | `orchestration/STATUS.md` banner | *"WOWII-61 的 S3 面**只差一个族轮**就全闭"* |
+     10360  | 12 | `orchestration/STATUS.md` item 1 | *"w61 的 S3 面**只差一个族轮**而族席已空"* |
+     10363  GFANν-HC, **because that is what closes the S3 surface**"*. **That reason is the dropped
+     10507  1. **Neither candidate closes WOWII-61's S3 surface.** Under (b)'s corrected arithmetic,
+     10635  | **G2** | the AH3 closure over-claim, EN **and** ZH (`closes … S3 surface`, `only thing between

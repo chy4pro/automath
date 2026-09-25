@@ -1,0 +1,356 @@
+w133 round 46 -- THE ONE INTEGER.  system python3, pure stdlib, no SAT.
+started 2026-08-23 21:28:25
+
+==============================================================================
+PART 0 -- the host library, and what each host is here FOR
+==============================================================================
+
+  Three independent sources, because 260 instances from FOUR hosts is what round 45 had to
+  print against its own headline (136).  (A) the four CASE A hosts this line actually
+  holds, read off disk; (B) NAMED graphs whose C4-freeness is a theorem about them, built
+  from their own definitions -- these are the candidates for the design target, because the
+  design target wants SHORT cycles everywhere and the named C4-free families are exactly
+  the ones with a transitive supply of them; (C) round 42/45's random and necklace hosts,
+  which are the family the line's own measurements came from.
+
+  DROPPED (not C4-free, which this file ASSERTS rather than assumes): PG(2,4)inc
+  hosts kept: 68  (CASE-A 4, NAMED 22, NECK 12, RAND 30);  dropped for connectivity/C4: 1
+  INDEPENDENT SOURCES represented: 4 (CASE-A on disk / NAMED from definitions / RAND greedy / NECK block designs)
+
+==============================================================================
+PART 1 -- (HUG-CYC): each index of k3 is a CYCLE OF A PRESCRIBED LENGTH
+==============================================================================
+
+  (HUG-CYC).  Let H be C4-free, v a vertex with ecc(v) = diam(H), u_0..u_d a geodesic from
+  v, y in N(u_d) admissible for (TAIL-1), and z a step-3 vertex (u_0..u_d y z induced and
+  anchored).  If index j in {d-1, d-2, d-3, d-4} of k3(z) fires -- i.e. N(z) & N(u_j) is
+  non-empty, with witness c -- then
+
+        z, c, u_j, u_{j+1}, ..., u_d, y, z
+
+  is a CYCLE of H on exactly (d-j)+4 vertices.  Hence  girth(H) <= (d-j)+4.
+
+  Proof.  The listed vertices are pairwise distinct: u_j..u_d are distinct on a geodesic;
+  y != u_i for all i and y !~ u_i for i <= d-1 by admissibility; z is off the path and off
+  its neighbourhood by inducedness, and z != y; and c is neither a path vertex (c ~ z, and
+  z !~ u_i for every i) nor y (c ~ u_j with j <= d-1, and y !~ u_i for i <= d-1).  Every
+  consecutive pair is an edge: z~c, c~u_j, the geodesic, u_d~y, y~z.  []
+
+  COROLLARIES, immediately.
+    * index d-1 needs a C5,  d-2 a C6,  d-3 a C7,  d-4 a C8.
+    * girth(H) >= 9  =>  k3 == 0 at EVERY step-3 frame.  THE DESIGN TARGET IS IMPOSSIBLE
+      ABOVE GIRTH 8.  (And then (ROW-K) closes every such instance outright, since
+      a(z) >= mu >= 2 = 2 + k3.)
+    * girth >= 8 => k3 <= 1;  girth >= 7 => k3 <= 2.
+    * H BIPARTITE kills the two ODD indices d-1 and d-3, so only d-2 and d-4 can fire and
+      k3 <= 2.  With diam(H) = 3 only d-2 survives at all, so k3 <= 1.
+
+  Read against (ROW-K) (`open => k3 >= mu-1 at every step-3 frame'), this is a new
+  necessary condition on an open instance:
+
+    (ROW-GIRTH).   mu = 2 => girth(H) <= 8;   mu = 3 => girth <= 7;   mu = 4 => girth <= 6;
+                   mu = 5 => girth <= 5 and EVERY step-3 frame lies on a C5, a C6, a C7 and
+                   a C8 simultaneously.   H bipartite => mu <= 3, and bipartite with
+                   diam = 3 => mu <= 2.
+
+  (P1) PREDICTION, registered BEFORE the run: on every step-3 frame scanned below, every
+  firing index j EXHIBITS a genuine cycle on exactly (d-j)+4 distinct vertices.
+  (P2) PREDICTION: no host with girth >= g fires an index needing a cycle shorter than g.
+
+  step-3 frames scanned: 21769 ;  firing indices examined: 26219
+  cycle lengths exhibited: C5:6597  C6:9345  C7:9101  C8:1176
+  (P1) VERDICT: HELD   (0 bad lengths, 0 not-cycles)
+  (P2) VERDICT: HELD   (0 violations)
+
+==============================================================================
+PART 2 -- (HUG-DEG): the k3 witnesses are DISTINCT, so deg(z) >= k3(z)+1
+==============================================================================
+
+  (HUG-DEG).  In (HUG-CYC)'s frame let J(z) be the set of firing indices and, for each
+  j in J(z), c_j a witness in N(z) & N(u_j).  Then the c_j are PAIRWISE DISTINCT and none
+  of them is y.  Hence  deg(z) >= |J(z)| + 1 = k3(z) + 1.
+
+  Proof.  c_j != y for every j <= d-1, because y !~ u_i for all i <= d-1 (admissibility)
+  while c_j ~ u_j.  Now suppose c_j = c_{j'} = c with j < j'.  Then c ~ u_j and c ~ u_{j'},
+  so d(u_j,u_{j'}) <= 2, and on a geodesic that forces j' - j <= 2.
+    * j' - j = 2:  c and u_{j+1} are TWO common neighbours of u_j and u_{j+2} -- a C4, and
+      c != u_{j+1} because c ~ z while z !~ u_i for every i.  EXCLUDED by C4-freeness.
+    * j' - j = 1:  {u_j, u_{j+1}, c} is a TRIANGLE.  C4-freeness does NOT forbid triangles,
+      so this case is NOT excluded in general.  It IS excluded on a triangle-free host.
+  Hence: witnesses at indices differing by >= 2 are always distinct and never y; and on a
+  TRIANGLE-FREE host all of them are distinct, giving deg(z) >= k3(z) + 1.  []
+  This file therefore MEASURES the shared-witness count on hosts with triangles instead of
+  asserting a bound its own proof does not cover.
+
+  On a TRIANGLE-FREE host the bound is exactly
+
+        deg(z) >= k3(z) + 1                        (H triangle-free)
+
+  and, since (TAIL-3'') NOT firing means max(a(z),deg(z)-1) <= 1 + k3(z), while a(z) =
+  deg(z) on a triangle-free host,
+
+    (HUG-EQ).  At every step-3 frame of a still-open TRIANGLE-FREE row instance,
+               deg(z) = k3(z) + 1  EXACTLY;  equivalently  N(z) = {y} u {c_j : j in J(z)}.
+               z has NO neighbour that is not y or a hug-witness.  In particular k3(z) is
+               the SAME at every frame in which z is the step-3 vertex, namely deg(z)-1.
+
+  That converts round 45's INEQUALITY into an EQUALITY and it is what makes the design
+  target checkable one vertex at a time.
+
+  (P3) PREDICTION, registered BEFORE the run: on every scanned step-3 frame of a
+  TRIANGLE-FREE host, deg(z) >= k3(z) + 1, and the witness set has exactly k3(z) elements.
+  (P4) PREDICTION: on hosts WITH triangles the bound may fail; this file reports how often
+  a witness is shared, rather than assuming it never is.
+
+  step-3 frames scanned: 21769  (of which on hosts WITH triangles: 12030)
+  deg(z) - (k3(z)+1) histogram on TRIANGLE-FREE hosts: +0:295  +1:1646  +2:2341  +3:1651  +4:3346  +5:460
+  (P3) VERDICT: HELD  (0 frames with deg(z) < k3+1, 0 with a shared witness)
+  (P4) on hosts WITH triangles, frames whose witnesses are NOT distinct: 2086 of 12030
+       -- reported, not assumed: that is exactly the case the proof above does
+          NOT cover, and it is why (HUG-EQ) is stated for triangle-free hosts.
+
+==============================================================================
+PART 3 -- THE ONE INTEGER, MEASURED: Z(H) := # step-3 frames with k3 = 0
+==============================================================================
+
+  THE DESIGN TARGET, restated so it cannot be met vacuously, and SHARPENED.
+      F(H) := # step-3 frames of vertices with ecc(v) = diam(H)        (the POPULATION)
+      Z(H) := # of them with k3 = 0                                    (the planner's integer)
+      N(H) := # of them at which (TAIL-3'') actually FIRES              (the REAL integer)
+  k3 = 0 forces firing (a(z) >= mu >= 2 = 2+0), so Z <= N always, and by (ROW-LADDER) at
+  j = 3 ONE firing frame at ONE diametral vertex CLOSES the offset-+1 instance.  So the
+  target an open instance really needs is  N(H) = 0, not Z(H) = 0, and N is what this part
+  reports beside Z.
+  F(H) > 0 is not decoration.  A host with NO step-3 frame at all has Z = N = 0 for the
+  EMPTY reason, and round 45's item (a) is exactly the instruction to check that BEFORE
+  claiming the host tests anything.  All three numbers are printed for every host.
+
+  DIRECTION OF ERROR, FIXED BEFORE THE NUMBERS (129).
+    phase 1 SEARCHES for a FIRING frame:   FOUND => SOUND (that frame exists, N(H) >= 1,
+                                           and the host is CLOSED at that vertex).
+                                           not found under budget => INCONCLUSIVE.
+    phase 2 enumerates EVERY frame of EVERY diametral vertex over EVERY geodesic with NO
+    cap: only a host that clears phase 2 may be quoted as N(H) = 0 or Z(H) = 0.
+
+
+  host             family     n rad diam girth  bip  mu      l     F(H)   Z(H)   N(H) mink3
+  W43a             CASE-A   420   5    6     5    n   4  4.995   477275 428261 477275     0   phase2 EXHAUSTIVE k3 0:428261 1:47324 2:1669 3:21
+  W43b             CASE-A   420   5    6     5    n   4  4.995   385685 347825 385685     0   phase2 EXHAUSTIVE k3 0:347825 1:36839 2:1017 3:4
+  W43c             CASE-A   420   5    6     5    n   5  5.000   421890 379570 421890     0   phase2 EXHAUSTIVE k3 0:379570 1:40832 2:1476 3:12
+  W44a             CASE-A   421   5    6     5    n   2  4.988   490540 440434 490529     0   phase2 EXHAUSTIVE k3 0:440434 1:48384 2:1699 3:23
+  Petersen         NAMED     10   2    2     5    n   3  3.000      120      0      0     2   phase2 EXHAUSTIVE k3 2:120
+  Heawood=PG(2,2)  NAMED     14   3    3     6    Y   3  3.000      336      0    336     1   phase2 EXHAUSTIVE k3 1:336
+  PG(2,3)inc       NAMED     26   3    3     6    Y   4  4.000     5616      0   5616     1   phase2 EXHAUSTIVE k3 1:5616
+  PG(2,5)inc       NAMED     62   3    3     6    Y   6  6.000   186000      0 186000     1   phase2 EXHAUSTIVE k3 1:186000
+  C5               NAMED      5   2    2     5    n   2  2.000        0      0      0     -   phase2 EXHAUSTIVE k3 
+  C6               NAMED      6   3    3     6    Y   2  2.000        0      0      0     -   phase2 EXHAUSTIVE k3 
+  C7               NAMED      7   3    3     7    n   2  2.000       14      0      0     1   phase2 EXHAUSTIVE k3 1:14
+  C8               NAMED      8   4    4     8    Y   2  2.000       16      0      0     1   phase2 EXHAUSTIVE k3 1:16
+  C9               NAMED      9   4    4     9    n   2  2.000       18     18     18     0   phase2 EXHAUSTIVE k3 0:18
+  C11              NAMED     11   5    5    11    n   2  2.000       22     22     22     0   phase2 EXHAUSTIVE k3 0:22
+  C13              NAMED     13   6    6    13    n   2  2.000       26     26     26     0   phase2 EXHAUSTIVE k3 0:26
+  O4=K(7,3)        NAMED     35   3    3     6    n   4  4.000    10080   2520  10080     0   phase2 EXHAUSTIVE k3 0:2520 1:7560
+  Desargues        NAMED     20   5    5     6    Y   3  3.000      720    240    720     0   phase2 EXHAUSTIVE k3 0:240 1:480
+  Pappus           NAMED     18   4    4     6    Y   2  2.667      468    108    372     0   phase2 EXHAUSTIVE k3 0:108 1:360
+  Coxeter          NAMED     28   4    4     7    n   3  3.000     1344    672   1344     0   phase2 EXHAUSTIVE k3 0:672 1:672
+  MoebiusKantor    NAMED     16   4    4     6    Y   3  3.000      288      0     96     1   phase2 EXHAUSTIVE k3 1:96 2:192
+  Nauru            NAMED     24   4    4     6    Y   3  3.000     1584    432   1584     0   phase2 EXHAUSTIVE k3 0:432 1:1152
+  Dodecahedron     NAMED     20   5    5     5    n   3  3.000      360    240    360     0   phase2 EXHAUSTIVE k3 0:240 1:120
+  GP(7,2)          NAMED     14   3    3     5    n   3  3.000      238     14    182     0   phase2 EXHAUSTIVE k3 0:14 1:168 2:56
+  GP(9,2)          NAMED     18   3    4     5    n   3  3.000      108     54    108     0   phase2 EXHAUSTIVE k3 0:54 1:54
+  GP(11,3)         NAMED     22   4    4     6    n   3  3.000      484    220    440     0   phase2 EXHAUSTIVE k3 0:220 1:220 2:44
+  GP(13,5)         NAMED     26   4    4     7    n   3  3.000     1040    468   1040     0   phase2 EXHAUSTIVE k3 0:468 1:572
+  RD(11,24)        RAND      24   3    3     3    n   2  3.000     1666    133    913     0   phase2 EXHAUSTIVE k3 0:133 1:528 2:656 3:349
+  RD(11,40)        RAND      40   3    3     3    n   2  3.575    16588   2052  15135     0   phase2 EXHAUSTIVE k3 0:2052 1:5832 2:6749 3:1955
+  RD(11,60)        RAND      60   3    3     3    n   3  4.750    77326   9877  76061     0   phase2 EXHAUSTIVE k3 0:9877 1:29579 2:28129 3:9741
+  RD(23,24)        RAND      24   3    3     3    n   2  3.000     2018    219   1307     0   phase2 EXHAUSTIVE k3 0:219 1:689 2:833 3:277
+  RD(23,40)        RAND      40   3    3     3    n   2  3.925    15188   1475  13773     0   phase2 EXHAUSTIVE k3 0:1475 1:5086 2:6114 3:2513
+  RD(23,60)        RAND      60   3    3     3    n   3  4.467    79062  10535  78276     0   phase2 EXHAUSTIVE k3 0:10535 1:30926 2:28680 3:8921
+  RD(37,24)        RAND      24   2    3     3    n   2  3.083     1734    110   1061     0   phase2 EXHAUSTIVE k3 0:110 1:495 2:634 3:495
+  RD(37,40)        RAND      40   3    3     3    n   2  3.825    16288   1680  14905     0   phase2 EXHAUSTIVE k3 0:1680 1:5842 2:6475 3:2291
+  RD(37,60)        RAND      60   3    3     3    n   2  4.733    80890   9463  79980     0   phase2 EXHAUSTIVE k3 0:9463 1:29350 2:30799 3:11278
+  RD(53,24)        RAND      24   3    3     3    n   2  2.875     1678    102    943     0   phase2 EXHAUSTIVE k3 0:102 1:403 2:648 3:525
+  RD(53,40)        RAND      40   3    3     3    n   2  3.875    17040   1550  15670     0   phase2 EXHAUSTIVE k3 0:1550 1:5921 2:7182 3:2387
+  RD(53,60)        RAND      60   3    3     3    n   3  4.683    81642   9632  80407     0   phase2 EXHAUSTIVE k3 0:9632 1:30211 2:31196 3:10603
+  RD(71,24)        RAND      24   2    3     3    n   2  3.292     1586     68    895     0   phase2 EXHAUSTIVE k3 0:68 1:371 2:593 3:554
+  RD(71,40)        RAND      40   3    3     3    n   2  3.900    16556   1277  15200     0   phase2 EXHAUSTIVE k3 0:1277 1:5164 2:6797 3:3318
+  RD(71,60)        RAND      60   3    3     3    n   2  4.500    73974  10070  72847     0   phase2 EXHAUSTIVE k3 0:10070 1:27323 2:26994 3:9587
+  RD(97,24)        RAND      24   3    3     3    n   2  3.208     1900    104   1104     0   phase2 EXHAUSTIVE k3 0:104 1:538 2:798 3:460
+  RD(97,40)        RAND      40   3    3     3    n   2  3.825    15614   1550  13956     0   phase2 EXHAUSTIVE k3 0:1550 1:5127 2:6209 3:2728
+  RD(97,60)        RAND      60   3    3     3    n   2  4.350    72642  10249  71106     0   phase2 EXHAUSTIVE k3 0:10249 1:27263 2:25757 3:9373
+  RD(131,24)       RAND      24   2    3     3    n   2  2.917     1608    152    818     0   phase2 EXHAUSTIVE k3 0:152 1:462 2:669 3:325
+  RD(131,40)       RAND      40   3    3     3    n   3  3.975    16476   1744  15219     0   phase2 EXHAUSTIVE k3 0:1744 1:5958 2:6427 3:2347
+  RD(131,60)       RAND      60   3    3     3    n   3  4.483    73018  10746  70620     0   phase2 EXHAUSTIVE k3 0:10746 1:29337 2:25397 3:7538
+  RD(179,24)       RAND      24   3    3     3    n   2  3.250     1820    121   1010     0   phase2 EXHAUSTIVE k3 0:121 1:533 2:783 3:383
+  RD(179,40)       RAND      40   3    3     3    n   2  3.875    15356   1189  13915     0   phase2 EXHAUSTIVE k3 0:1189 1:4564 2:6370 3:3233
+  RD(179,60)       RAND      60   3    3     3    n   2  4.433    77820   9789  75624     0   phase2 EXHAUSTIVE k3 0:9789 1:29258 2:29304 3:9469
+  RD(233,24)       RAND      24   3    3     3    n   2  3.208     1932    106   1155     0   phase2 EXHAUSTIVE k3 0:106 1:489 2:920 3:417
+  RD(233,40)       RAND      40   3    3     3    n   2  3.750    16530   1187  14723     0   phase2 EXHAUSTIVE k3 0:1187 1:5226 2:7013 3:3104
+  RD(233,60)       RAND      60   3    3     3    n   3  4.483    79666   9732  79095     0   phase2 EXHAUSTIVE k3 0:9732 1:29917 2:30073 3:9944
+  RD(307,24)       RAND      24   3    3     3    n   2  3.125     1960    154   1141     0   phase2 EXHAUSTIVE k3 0:154 1:637 2:846 3:323
+  RD(307,40)       RAND      40   3    3     3    n   3  4.025    17308   1514  16081     0   phase2 EXHAUSTIVE k3 0:1514 1:6152 2:7156 3:2486
+  RD(307,60)       RAND      60   3    3     3    n   2  4.433    79180   9641  77985     0   phase2 EXHAUSTIVE k3 0:9641 1:29458 2:30100 3:9981
+  SUB1(3^5,s1)     NECK     143   5    6     5    n   2  4.727    64969  44652  64721     0   phase2 EXHAUSTIVE k3 0:44652 1:18700 2:1610 3:7
+  THIN2(3^5,s1)    NECK     130   5    7     5    n   4  4.831    18438   7827  18438     0   phase2 EXHAUSTIVE k3 0:7827 1:10260 2:351
+  SUB1(3^5,s2)     NECK     143   5    6     5    n   2  4.727    58462  40082  58190     0   phase2 EXHAUSTIVE k3 0:40082 1:17142 2:1236 3:2
+  THIN2(3^5,s2)    NECK     130   5    7     5    n   4  4.831     5974   3140   5974     0   phase2 EXHAUSTIVE k3 0:3140 1:2703 2:131
+  SUB1(3^6,s1)     NECK     169   6    7     5    n   2  4.769    33755  21984  33656     0   phase2 EXHAUSTIVE k3 0:21984 1:10979 2:790 3:2
+  THIN2(3^6,s1)    NECK     156   5    8     5    n   4  4.859     2605   1035   2605     0   phase2 EXHAUSTIVE k3 0:1035 1:1463 2:107
+  SUB1(3^6,s2)     NECK     169   6    7     5    n   2  4.769    31071  20928  30988     0   phase2 EXHAUSTIVE k3 0:20928 1:9533 2:608 3:2
+  THIN2(3^6,s2)    NECK     156   5    8     5    n   4  4.859    11727   4332  11727     0   phase2 EXHAUSTIVE k3 0:4332 1:6857 2:538
+  SUB1(3^7,s1)     NECK     195   6    8     5    n   2  4.800     1165    808   1152     0   phase2 EXHAUSTIVE k3 0:808 1:351 2:6
+  THIN2(3^7,s1)    NECK     182   6    8     5    n   4  4.879    16682   9106  16682     0   phase2 EXHAUSTIVE k3 0:9106 1:7211 2:365
+  SUB1(3^7,s2)     NECK     195   6    8     5    n   2  4.800     4855   3187   4825     0   phase2 EXHAUSTIVE k3 0:3187 1:1569 2:99
+  THIN2(3^7,s2)    NECK     182   6    8     5    n   4  4.879    22252  11171  22252     0   phase2 EXHAUSTIVE k3 0:11171 1:10309 2:772
+
+  ------------------------------------------------------------------ THE ANSWER
+  (i) THE PLANNER'S INTEGER.  Hosts with F(H) > 0 and Z(H) = 0, EXHAUSTIVELY: 7
+     Petersen         n=10   diam=2 girth=5 bip=n mu=3 l=3.000  F=120  min k3=2  N(H)=0  (ROW-K) k3 >= mu-1 ? YES
+     Heawood=PG(2,2)  n=14   diam=3 girth=6 bip=Y mu=3 l=3.000  F=336  min k3=1  N(H)=336  (ROW-K) k3 >= mu-1 ? no
+     PG(2,3)inc       n=26   diam=3 girth=6 bip=Y mu=4 l=4.000  F=5616  min k3=1  N(H)=5616  (ROW-K) k3 >= mu-1 ? no
+     PG(2,5)inc       n=62   diam=3 girth=6 bip=Y mu=6 l=6.000  F=186000  min k3=1  N(H)=186000  (ROW-K) k3 >= mu-1 ? no
+     C7               n=7    diam=3 girth=7 bip=n mu=2 l=2.000  F=14  min k3=1  N(H)=0  (ROW-K) k3 >= mu-1 ? YES
+     C8               n=8    diam=4 girth=8 bip=Y mu=2 l=2.000  F=16  min k3=1  N(H)=0  (ROW-K) k3 >= mu-1 ? YES
+     MoebiusKantor    n=16   diam=4 girth=6 bip=Y mu=3 l=3.000  F=288  min k3=1  N(H)=96  (ROW-K) k3 >= mu-1 ? no
+      => THE STRUCTURE IS NOT FORBIDDEN.  A frame set with no k3 = 0 EXISTS.
+
+  (ii) THE REAL INTEGER.  Hosts with F(H) > 0 and N(H) = 0 -- i.e. NOT CLOSED by
+       (ROW-LADDER) at j = 3 at ANY diametral vertex, over EVERY frame: 3
+     Petersen         n=10   diam=2 girth=5 mu=3  l=3.000 -> floor(l) = 3   <-- the row needs floor(l(G)) = 4
+     C7               n=7    diam=3 girth=7 mu=2  l=2.000 -> floor(l) = 2   <-- the row needs floor(l(G)) = 4
+     C8               n=8    diam=4 girth=8 mu=2  l=2.000 -> floor(l) = 2   <-- the row needs floor(l(G)) = 4
+  Hosts meeting either VACUOUSLY (F(H) = 0, so the target is empty): 2 -- C5, C6
+
+  (iii) HOW FAR IS ANYTHING FROM THE TARGET?  The design target is F - N = F.
+        FIRE-GAP(H) := F(H) - N(H) = # frames at which (TAIL-3'') does NOT fire,
+        i.e. the frames an open instance is allowed to have.  Sorted, non-zero:
+        Petersen         F=120     FIRE-GAP=120     (100.0%)  l=3.000 -> floor(l)=3
+        C7               F=14      FIRE-GAP=14      (100.0%)  l=2.000 -> floor(l)=2
+        C8               F=16      FIRE-GAP=16      (100.0%)  l=2.000 -> floor(l)=2
+        MoebiusKantor    F=288     FIRE-GAP=192     ( 66.7%)  l=3.000 -> floor(l)=3
+        RD(131,24)       F=1608    FIRE-GAP=790     ( 49.1%)  l=2.917 -> floor(l)=2
+        RD(11,24)        F=1666    FIRE-GAP=753     ( 45.2%)  l=3.000 -> floor(l)=3
+        RD(179,24)       F=1820    FIRE-GAP=810     ( 44.5%)  l=3.250 -> floor(l)=3
+        RD(53,24)        F=1678    FIRE-GAP=735     ( 43.8%)  l=2.875 -> floor(l)=2
+        RD(71,24)        F=1586    FIRE-GAP=691     ( 43.6%)  l=3.292 -> floor(l)=3
+        RD(97,24)        F=1900    FIRE-GAP=796     ( 41.9%)  l=3.208 -> floor(l)=3
+        RD(307,24)       F=1960    FIRE-GAP=819     ( 41.8%)  l=3.125 -> floor(l)=3
+        RD(233,24)       F=1932    FIRE-GAP=777     ( 40.2%)  l=3.208 -> floor(l)=3
+        ---- restricted to hosts with floor(l) = 4, which is what the ROW needs:
+        RD(307,40)       F=17308   FIRE-GAP=1227    ( 7.089%)  l=4.025
+        RD(131,60)       F=73018   FIRE-GAP=2398    ( 3.284%)  l=4.483
+        RD(179,60)       F=77820   FIRE-GAP=2196    ( 2.822%)  l=4.433
+        RD(97,60)        F=72642   FIRE-GAP=1536    ( 2.114%)  l=4.350
+        RD(11,60)        F=77326   FIRE-GAP=1265    ( 1.636%)  l=4.750
+        RD(71,60)        F=73974   FIRE-GAP=1127    ( 1.524%)  l=4.500
+
+  CASE A frames at which (TAIL-3'') does NOT fire -- the first non-firing frames
+  this line has produced on a host it actually holds: 11, written to
+  problems/wowii/w133_r46_nofire.txt for the STANDALONE re-check (105).
+
+==============================================================================
+PART 4 -- (TAIL-2S'): the j = d-3 sidestep, and the 52 residuals it is aimed at
+==============================================================================
+
+  Round 45's (TAIL-2S) spends a k2-witness p in N(y) & N(u_{d-2}).  It leaves 52 CASE A
+  instances, and 52/52 of them have a far end with a(u_d) >= 3, so what is missing there is
+  the WITNESS, not a(u_d).  (ROW-K) obliges an open instance to have k2(y) >= mu-1 >= 1 at
+  every frame, and k2 counts TWO indices, d-2 and d-3.  So when p is missing, a witness at
+  d-3 must be present.  That is the lane this part derives.
+
+  (TAIL-2S').  H C4-free, u_0..u_d a geodesic from w = u_0 to a far end, d = ecc(w) >= 3,
+  y in N(u_d) admissible for (TAIL-1).  Suppose there is  q in N(y) & N(u_{d-3})  with
+  q !~ u_{d-4}  (vacuous at d = 3, and automatic whenever H is triangle-free, since q ~
+  u_{d-4} and q ~ u_{d-3} would be a triangle on the geodesic edge u_{d-4}u_{d-3}).  Then
+
+        R := u_0, ..., u_{d-3}, q, y, u_d, u_{d-1}
+
+  is an induced path on d+2 vertices anchored at w.  NOTE WHAT IT DOES: it SKIPS u_{d-2}
+  entirely and hangs u_{d-1} on the FAR end.  That is what buys the extra vertex, and it is
+  also why  q ~ u_{d-2}  costs NOTHING here -- u_{d-2} is not on the path.
+  If moreover N(u_{d-1}) has a vertex outside
+        {u_d, u_{d-2}}  u  (N(q) & N(u_{d-1}))  u  (N(u_d) & N(u_{d-1})),
+  then endpath(H,w) >= ecc(w)+3.
+
+  Proof that R is induced.
+   * q != u_i for every i:  q ~ y and y !~ u_i for i <= d-1 rules out i <= d-1; q ~ u_{d-3}
+     and d(u_{d-3},u_d) = 3 rules out i = d.
+   * q !~ u_i for i <= d-5: q ~ u_{d-3} would put d(u_i,u_{d-3}) <= 2, and d-3-i >= 2, so
+     only i = d-5 is possible; there q and u_{d-4} are two common neighbours of u_{d-5} and
+     u_{d-3} -- a C4.  FREE.   q !~ u_{d-4} is the ONE hypothesis.
+   * q !~ u_{d-1}: q and u_{d-2} would be two common neighbours of u_{d-3} and u_{d-1} --
+     a C4 (q != u_{d-2} by the first bullet).  FREE.
+   * q !~ u_d: q ~ u_d and q ~ u_{d-3} would give d(u_{d-3},u_d) <= 2 < 3.  FREE.
+   * y !~ u_i for i <= d-1 is admissibility;  u_d !~ u_i for i <= d-2 is the geodesic;
+     u_{d-1} !~ u_i for i <= d-3 is the geodesic, u_{d-1} !~ y is admissibility, and
+     u_{d-1} !~ q was just shown.  And u_{d-2} is NOT in R, so it constrains nothing.  []
+  Proof of the extension.  s in N(u_{d-1}) must miss R \ {u_{d-1}}:  s != u_d and s !~ u_d
+  (the latter is the triangle set N(u_d) & N(u_{d-1}), of size <= 1 by C4-freeness);
+  s != u_{d-2} (which is adjacent to u_{d-3} in R);  s !~ u_{d-3} is FREE (s and u_{d-2}
+  would be two common neighbours of u_{d-3} and u_{d-1});  s !~ u_i for i <= d-4 is FREE by
+  distance;  s !~ y is FREE (s, y, u_d, u_{d-1} would be a C4);  s !~ q excludes at most one
+  vertex by C4-freeness.  So at most three vertices of N(u_{d-1}) are excluded. []
+
+  WHY IT IS A DIFFERENT LANE, NOT A RESTATEMENT.  (TAIL-2S) pays at u_d (it needs
+  a(u_d) >= 3) and spends the d-2 witness.  (TAIL-2S') pays at u_{d-1} and spends the d-3
+  witness.  An instance defeating both must, at every frame, have NO usable p AND NO usable
+  q -- but (ROW-K) says k2(y) >= 1, i.e. at least one of them EXISTS.  What is left is a
+  condition on the pay-vertex, not on the witness.
+
+  (P5) PREDICTION, registered BEFORE the run: at EVERY (TAIL-2S') frame the prefix R that
+  the proof claims is induced IS induced, and EVERY s in N(u_{d-1}) minus the exclusion set
+  extends it to an anchored induced path on ecc(w)+3 vertices.  0 counterexamples of either
+  kind.  (This is a real test: the loop tries the proof's OWN candidate set, not any s that
+  happens to work.)
+  (P6) PREDICTION: GUARD (D15), which drops `q !~ u_{d-4}', over-claims on some frame -- if
+  it never does, the clause is NOT load-bearing and this file must say so (item (b)).
+
+  (TAIL-2S') frames examined: 28892, on 57 hosts from 4 independent sources (CASE-A, NAMED, NECK, RAND)
+  prefixes R the proof calls induced that are NOT induced: 0
+  candidates s in N(u_{d-1}) minus the exclusion set that FAIL to extend: 0
+  (TAIL-2S')  claims 28738   BUILDS 28738   FAILS TO BUILD 0
+  GUARD (D15) DROP-`q !~ u_{d-4}':  claims 28738   builds 28738   FALSIFIED 0
+  (P5) VERDICT: HELD
+  (P6) VERDICT: FAILED -- the dropped clause over-claims on 0 frames; the clause is NOT shown to be load-bearing here and this file says so rather than claiming it is
+
+  ---- THE 52 CASE A RESIDUALS OF (TAIL-2S) ----
+  DIRECTION (129): geodesics and far ends are SAMPLED, so `CLOSES' is SOUND and
+  `does NOT close' is INCONCLUSIVE -- it may only mean the sample missed a frame.
+  W43a  condition-4 vertices at ecc = r+1: 128 ;  (TAIL-2S) closes 102 ;  (TAIL-2S') closes  94 ;  both  76
+  W43b  condition-4 vertices at ecc = r+1:   1 ;  (TAIL-2S) closes   1 ;  (TAIL-2S') closes   1 ;  both   1
+  W43c  condition-4 vertices at ecc = r+1:   2 ;  (TAIL-2S) closes   1 ;  (TAIL-2S') closes   2 ;  both   1
+  W44a  condition-4 vertices at ecc = r+1: 129 ;  (TAIL-2S) closes 104 ;  (TAIL-2S') closes  96 ;  both  78
+  CASE A instances: 260 ;  closed by (TAIL-2S): 208 ;  by (TAIL-2S'): 193 ;  by both: 156
+  CLOSED BY NEITHER (the residual of the UNION): 15
+  k2(y) histogram over the frames of the (TAIL-2S) residuals: 0:2378  1:52
+
+==============================================================================
+PART 5 -- what is ENTITLED, what is NOT, and what each lane FAILS to close
+==============================================================================
+
+  ENTITLED.
+   * (HUG-CYC) and (HUG-DEG) are PROVED above; (HUG-EQ) is proved for TRIANGLE-FREE hosts
+     only, and the one step the proof does NOT cover (a witness shared by two CONSECUTIVE
+     indices, which needs a triangle) is measured and printed in PART 2 rather than assumed.
+   * PART 3's Z(H) = 0 may be quoted ONLY for the 68 hosts that cleared phase 2 (every
+     frame of every diametral vertex over every geodesic, no cap).  0 hosts were settled
+     in phase 1 by EXHIBITING a k3 = 0 frame -- sound.  0 hosts are INCONCLUSIVE (budget).
+   * (TAIL-2S') is verified by CONSTRUCTION, not by assertion: every frame at which it
+     claims the path had the path BUILT.
+
+  WHAT THE LANES FAIL TO CLOSE (item (b) -- a lane that closes everything has not been
+  shown to work).
+   * (HUG-CYC) closes NOTHING by itself.  It forbids a FAMILY (girth >= 9) and it is silent
+     on girth 5, which is exactly where all four CASE A hosts live.  It is reported as a
+     constraint on the DESIGN, not as a closure.
+   * (TAIL-2S') leaves 15 CASE A instances that neither sidestep closes.
+
+  WHAT IS NOT CLOSED.  CASE A is not closed.  No pocket is closed.  Nothing is promoted and
+  NOTHING GOES OUTWARD.
+
+  hosts with Z(H)=0 non-vacuously: 7 ; with N(H)=0 non-vacuously: 3 ; vacuous: 2
+
+==============================================================================
+PARTS RUN: PART0 PART1 PART2 PART3 PART4 PART5
+CHECKS 151   FAILS 0   elapsed 14.4s
+==============================================================================

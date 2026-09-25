@@ -1,0 +1,33 @@
+==============================================================================
+Every claim the round-19 brief makes about `R`, re-derived
+==============================================================================
+  PASS  brief: a-vector(R) = (3,2,2,2,4,2,1,1,1)   [(3, 2, 2, 2, 4, 2, 1, 1, 1)]
+  PASS  brief: sum a = 18 and l(R) = 2   [sum=18]
+  PASS  brief: mu(R) = 1
+  PASS  brief: diam(R) = 4   [{0: 3, 1: 3, 2: 4, 3: 4, 4: 3, 5: 3, 6: 4, 7: 4, 8: 4}]
+  PASS  brief: rad(R) = 3
+  PASS  brief: ecc(R,0) = 3
+  PASS  brief: 0-1-2-3 IS a geodesic of R
+  PASS  brief: x = 4 is a USABLE side-neighbour of u0 = 0
+  PASS  brief: a(0) >= 3, a(3) >= 2, a(4) >= 4 (the 3-frame's a-conditions)   [a(0)=3 a(3)=2 a(4)=4]
+  PASS  brief: the frame IS Case-2-forced (every usable far-side y is adjacent to x=4)   [usable far-side set = [5]]
+  PASS  brief: 1-2-3-5-4-6 IS an induced path on 6 vertices (the disclosed path(R) witness)
+  PASS  brief: (0,1,2,3,4,5) induces a 6-cycle in R
+
+==============================================================================
+Every claim the round-19 brief makes about `CE-2`
+==============================================================================
+  PASS  brief: ecc-vector(CE-2) = (2,3,3,2,2,3,3,3,3,3)   [(2, 3, 3, 2, 2, 3, 3, 3, 3, 3)]
+  PASS  brief: diam(CE-2) = 3, NOT 2
+  PASS  brief: dist(2,8) = 3 along 2-1-0-8
+  PASS  brief: CE-2's frame on 2-1-0-8 with x=3 is a Case-2-forced 3-frame with far set {9}   [far=[9] forced=True]
+  PASS  brief: a-vector(CE-2) = (3,2,3,4,3,2,2,2,2,2), sum 25, l = 2.5   [(3, 2, 3, 4, 3, 2, 2, 2, 2, 2)]
+
+==============================================================================
+Every claim the round-19 brief makes about `CE-1`
+==============================================================================
+  PASS  brief: a-vector(CE-1) = (2,1,3,1,2,4,2,1,1,2), sum 19, l = 1.9   [(2, 1, 3, 1, 2, 4, 2, 1, 1, 2)]
+  PASS  brief: CE-1's frame on 2-6-4-9 with x=5 is Case-2-forced with far set {0}   [far=[0] forced=True]
+  PASS  brief: all three controls have l < 3 (the brief's stated escape route)   [l = 1.9, 2.5, 2.0]
+
+FAILURES: 0

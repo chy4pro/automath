@@ -1,0 +1,29 @@
+WOWII-133 round 44 slice 2 -- THE DIRECT ATTEMPT TO BUILD THE BREAKER
+interpreter: system python3 3.9.6 (pure stdlib)
+start: n=420 |E|=1049 rad=5 diam=6 l=4.995238 w=10  (triangle-free: a = deg)
+   10 deletions: max SLACK = +3, |E| = 1039, l = 4.9476, rad = 5, diam = 6, mu = 4, 1s
+   20 deletions: max SLACK = +3, |E| = 1029, l = 4.9000, rad = 5, diam = 6, mu = 4, 2s
+   30 deletions: max SLACK = +3, |E| = 1019, l = 4.8524, rad = 5, diam = 6, mu = 4, 3s
+   40 deletions: max SLACK = +3, |E| = 1009, l = 4.8048, rad = 5, diam = 6, mu = 3, 5s
+   50 deletions: max SLACK = +3, |E| = 999, l = 4.7571, rad = 5, diam = 6, mu = 3, 18s
+  no deletion anywhere keeps the class alive: the greedy is STUCK after 53 deletions (804 candidates screened and rejected).
+
+
+  A SECOND INSTRUMENT, REGISTERED AFTER (P3) FAILED AND LABELLED AS SUCH.  The maximum over
+  several hundred frames cannot move when one frame's y loses one edge, so max-SLACK was the
+  wrong progress coordinate and (P3) was a badly posed prediction, not a broken greedy.  The
+  coordinate that can move is the NUMBER OF FIRING FRAMES -- (ROW-HARD) needs it to reach 0.
+  (P5), registered now and before its numbers are read: the firing-frame count will fall
+  monotonically and will NOT reach 0.
+  firing frames / total frames, first 5: [(64, 64), (64, 64), (64, 64), (64, 64), (64, 64)]
+  firing frames / total frames, last  5: [(68, 68), (68, 68), (68, 68), (68, 68), (68, 68)]
+  (P5) monotone fall: NO -- it went UP somewhere;  reached 0: False
+  SLACK trajectory (first 20): [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+  SLACK trajectory (last  10): [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+  deletions accepted: 53;  candidate deletions rejected by the screen: 804
+FAIL: (P3): the greedy drove max SLACK strictly down in 10 accepted deletions -- the instrument moves
+  (P3) FAILED: SLACK went +3 -> +3 over the first ten accepted deletions.
+  (P4) HELD: minimum max-SLACK reached = +3.
+  NO HARD INSTANCE BUILT.  Reported as a FAILED ATTEMPT, with its floor.
+
+CHECKS 4   FAILS 1   elapsed 32.5s

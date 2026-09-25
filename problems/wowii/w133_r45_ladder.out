@@ -1,0 +1,316 @@
+WOWII-133 round 45 -- (ROW-3) STOPPED ONE RUNG SHORT: THE ANCHOR-FREE LADDER
+                      REACHES CASE A TOO
+interpreter: system python3 3.9.6 (pure stdlib)
+
+==============================================================================
+PART 0 -- the step-3 and step-4 builders, with a POSITIVE and a NEGATIVE control,
+          and THIS round's guard (D12) DROP-u_d
+==============================================================================
+  POSITIVE control -- PG(2,5), a(v) = 6 everywhere, so (F11-DEG) FORCES the
+    step-3 chain at every vertex:  fired at 62 of 62 vertices.
+  NEGATIVE control -- hosts on which draft 45.4 records endpath(w) < rad+4:
+    C6            n= 6 rad=3 diam=3  step-3 chain fires at 0 of 6 vertices; exact path(G) = 5
+    Theta(3,3,3)  n= 8 rad=3 diam=3  step-3 chain fires at 0 of 8 vertices; exact path(G) = 6
+    Petersen      n=10 rad=2 diam=2  step-3 chain fires at 0 of 10 vertices; exact path(G) = 5
+    C9            n= 9 rad=4 diam=4  step-3 chain fires at 9 of 9 vertices; exact path(G) = 8
+
+  GUARD (D12) DROP-u_d -- the step-4 dodge list with u_d wrongly kept free.
+    ONE-SIDED BY THE PROOF: k4_naive <= k4_correct, so every frame the CORRECT
+    form fires on the naive form fires on too => MISSES must be 0, and every
+    disagreement is an OVER-CLAIM.  Each is settled by BUILDING the extension.
+    step-4 frames examined: 4846
+    frames where the two dodge lists actually DIFFER (k4_naive < k4_correct): 680
+    (TAIL-4'') CORRECT form: claims 3934, extension BUILT 3934, FALSIFIED 0
+    (D12) NAIVE   form:     claims 4230, extension BUILT 4178, FALSIFIED 52
+    MISSES (correct fires, naive does not): 0   <-- must be 0
+    ** THE NAIVE FORM IS FALSE, and 52 frames exhibit it. **
+
+  building and measuring the host population (quiet pass) ...
+  ... 661 specs, 661 built, 0 discarded, 661 hosts measured, 7.3s
+  population for the census: 665 hosts (round 43's three witnesses + W44a).
+  residual-row instances in it: 730.
+
+==============================================================================
+PART 1 -- (ROW-LADDER): (ROW-3) STOPPED ONE RUNG SHORT
+==============================================================================
+
+  (ROW-3) (round 44, draft 49.2) feeds (TAIL-1) and (TAIL-2) into the ANCHOR-FREE leg
+  path(G) >= path(H) >= endpath(H,v) at a DIAMETRAL v, and stops.  Draft 45.2's own
+  (F11-STRAT) already uses (TAIL-3) one level below.  Reading the whole ladder as one
+  statement, with sigma := diam(H) - rad(H) and k := floor(l(G)):
+
+    (ROW-LADDER).  Let (H,w) be a residual-row instance and G := H + one pendant at w, so
+    the target is path(G) >= rad(G) + k = (r+1) + k.  If (TAIL-j) fires at ANY ONE vertex v
+    with ecc_H(v) = diam(H), then the instance is CLOSED as soon as sigma + j >= k.
+    Proof.  (IDENT) gives path(G) >= path(H) >= endpath(H,v); (TAIL-j) at v gives
+    endpath(H,v) >= ecc(v) + 1 + j = diam(H) + 1 + j = r + sigma + 1 + j >= r + 1 + k. []
+    NO ANCHOR, NO HAIR, NO F11, NO l > 4, NO rad >= 5 -- only C4-freeness and mu(H) >= 2.
+
+  At k = 4:  sigma >= +4 needs j = 0 (a geodesic)     = (ROW-3)'s L0
+             sigma  = +3 needs j = 1  (TAIL-1)        = (ROW-3)'s L1
+             sigma  = +2 needs j = 2  (TAIL-2'')      = (ROW-3)'s L2
+             sigma  = +1 needs j = 3  (TAIL-3'')      = *** NEW: L4 ***
+  and offset +1 is exactly (SPLIT)'s CASE A.  So CASE A has an ANCHOR-FREE lane that
+  (ROW-3) does not have, and round 44's sentence "offset +1 is the ONLY lane that still
+  needs the prescribed anchor" is WRONG AS A STATEMENT ABOUT THE LADDER -- it is true only
+  about the ladder truncated at j = 2.  This is MY error from last round and it is the
+  first thing in this part.
+
+  L3 (the prescribed anchor, (TAIL-2'') at w plus the hair) and L4 are INCOMPARABLE: L3 is
+  a weaker local condition at a NAMED vertex, L4 a stronger local condition at ANY ONE of
+  ~n vertices.  They are therefore evaluated INDEPENDENTLY below; a fall-through order
+  would hide L4 behind L3, which already fires on all of CASE A.
+
+  FALL-THROUGH lanes over 730 row instances (round 44's L0/L1/L2/L3 numbers are
+  reproduced here from an independently written classifier):
+    L0            12
+    L1           122
+    L2           306
+    L3           260
+    L4            30
+  offsets diam-rad: +1:260  +2:336  +3:122  +4:12
+  DISTINCT HOSTS behind each offset (printed because instances are NOT
+  independent -- one host contributes one instance per condition-4 vertex):
+    +1:4 hosts  +2:23 hosts  +3:40 hosts  +4:7 hosts
+      offset +1 hosts: ['W43a', 'W43b', 'W43c', 'W44a']
+
+  *** CASE A (offset +1, k = 4): 260 instances, L3 and L4 evaluated INDEPENDENTLY
+      L3 = (TAIL-2'') at the PRESCRIBED w + hair;  L4 = (TAIL-3'') at ANY ONE
+      vertex with ecc = diam (anchor-free).  Both certified by BUILDING.
+        L3=True  L4=True  :   260
+        L3=True  L4=False :     0
+        L3=False L4=True  :     0
+        L3=False L4=False :     0
+      L4 alone closes 260 of 260 CASE A instances WITHOUT the prescribed anchor.
+      L3 closes 260 of 260.  Closed by NEITHER: 0.
+  2016 certificates re-checked from scratch: 0 not induced, 0 too short.
+
+==============================================================================
+PART 2 -- (ROW-HARD'): the open case is a CONJUNCTION, not a single collar
+==============================================================================
+
+  (ROW-HARD) (round 44) reads off (TAIL-2'') at w alone.  With L4 in the ladder an instance
+  that is still open has to defeat BOTH lanes:
+
+    (ROW-HARD').  Let (H,w) be a residual-row instance at offset +1 with k = 4 that is NOT
+    closed.  Then
+      (i)  at EVERY far end of w, EVERY geodesic and EVERY admissible y:
+             max(a(y), deg(y)-1) <= 1 + k2(y) <= 3        [round 44's (ROW-HARD)]
+      (ii) AND at EVERY vertex v with ecc(v) = diam(H) -- i.e. every NON-CENTRAL vertex,
+           since diam = rad+1 here -- at every far end of v, every geodesic, every
+           admissible y and every step-3 vertex z:
+             max(a(z), deg(z)-1) <= 1 + k3(z) <= 5.
+    Proof.  Contrapositive of (TAIL-2'')+(hair) and of (ROW-LADDER) at j = 3. []
+
+  (ii) is a condition on the SECOND neighbourhood of BOTH ends of EVERY diametral pair --
+  at offset +1 every non-central vertex is diametral, so (ii) constrains essentially the
+  whole periphery in every direction, not just w's own far ends.
+
+  SLACK3(H) := max over the sampled step-3 frames of [max(a(z),deg(z)-1) - (2 + k3(z))].
+  DIRECTION OF THE SAMPLING ERROR, FIXED BEFORE ANY NUMBER IS READ (129): non-central
+  vertices, far ends and geodesics are all SAMPLED, so the printed SLACK3 is a LOWER bound
+  on the true maximum.  A printed SLACK3 >= 0 is therefore SOUND (the lane really does
+  fire); a printed SLACK3 < 0 would be INCONCLUSIVE and could NOT be called an open
+  instance without an exhaustive frame enumeration.
+
+  SLACK3 over 730 instances (211341 step-3 frames scanned, NO early return):
+    ALL:    +2:4  +3:365  +4:331  +6:30
+    CASE A: +3:260
+    MINIMUM SLACK3 anywhere  : +2, at NLsa(8,s1) n=160 rad=6 diam=10 mu=3 l=4.4500 w=147
+    MINIMUM SLACK3 in CASE A : +3, at W43a n=420 rad=5 diam=6 mu=4 l=4.9952 w=10
+    instances with SLACK3 < 0 (the only ones (ii) could hold at): 0
+  k3 histogram over every step-3 frame scanned: 0:145535  1:60023  2:5655  3:128
+    (draft 46.2's blanket worst case is k3 = 4; round 42's AMENDMENT exhibits it
+     at n = 16, so `k3 = 4 never happens' is a property of the FAMILY, not a
+     theorem -- and PART 5 is written so that it does not need one.)
+
+==============================================================================
+PART 3 -- THE FORCED-HYPOTHESIS AUDIT (90): WHICH OF THESE COULD HAVE COME OUT
+          THE OTHER WAY?
+==============================================================================
+
+  Round 43 banked a 129/129 census whose passes were FORCED by (ROW-MU4), and the planner
+  certified it approvingly; round 44 caught it.  The same question has to be asked of PART
+  1's L4 column BEFORE it is quoted, so it is asked here and answered against interest.
+
+  TWO THEOREMS ALREADY FORCE L4, and both are this line's own:
+    (F11-DEG'')  (draft 46.4).  max(a(v), deg(v)-1) >= 6 at EVERY v  =>  endpath(H,v) >=
+                 ecc(v)+4 for every v.  So L4 fires by THEOREM, and such an instance is
+                 NOT evidence that the lane is live.
+    (ROW-MU6)    mu(H) >= 6  =>  a(z) >= 6 >= 2 + k3 (k3 <= 4)  =>  the same.  It is the
+                 (F11-DEG'') hypothesis restricted to the a-half, hence subsumed by it.
+  And for L3, round 44's (ROW-MU4): mu(H) >= 4 => (TAIL-2) at EVERY w.
+
+  Over the 260 CASE A (offset +1, k = 4) instances:
+    mu(H) histogram:                    2:129  4:129  5:2
+    min_v max(a(v),deg(v)-1) histogram: 2:129  4:129  5:2
+    L4 FORCED by (F11-DEG'') (min max(a,deg-1) >= 6): 0  <-- NOT evidence
+    L4 a GENUINE TEST (the hypothesis fails):         260
+      ... of those, L4 fired:                         260
+    L3 FORCED by (ROW-MU4) (mu >= 4):                 131  <-- NOT evidence
+
+  SHARPER, AT THE FRAME L4 ACTUALLY FIRED ON (260 certificates re-read):
+    k3 at the firing frame:  0:132  1:128
+    a(z) at the firing frame: 5:260
+    firings FORCED by mu alone (mu >= 2 + k3 at that frame): 260 of 260
+    firings that needed the ACTUAL a(z)/deg(z), i.e. could have failed: 0
+
+  *** AGAINST THIS ROUND'S OWN HEADLINE, AND FIRST RATHER THAN BURIED. ***
+  EVERY ONE of PART 1's L4 firings was forced: at the frame it fired on,
+  mu(H) >= 2 + k3(z) already, so a(z) >= mu made (TAIL-3'')'s sufficient condition TRUE
+  before a(z) was looked at.  THE 260/260 COULD NOT HAVE FAILED AT THOSE FRAMES.  This is
+  the SAME SPECIES as (ROW-MU4)'s retraction of round 43's 129/129, one round later, in my
+  own round -- and it is found here by asking the planner's own question of my own headline.
+
+  WHAT SURVIVES, EXACTLY.  The certificates are BUILT paths and they are real: L4 does
+  close all 260 CASE A instances anchor-free, and that claim STANDS.  What dies is any
+  reading of `260/260' as evidence that the LANE discriminates.  What the census does test,
+  and what is NOT forced, is the EXISTENCE of a frame with small k3 -- and that existence
+  is now a named theorem rather than a measurement:
+
+    (ROW-K).  H C4-free, mu := mu(H) >= 2, v with ecc(v) = D.  Since a(z) >= mu at every
+    vertex, (TAIL-2'') fires at any frame with k2(y) <= mu-2 and (TAIL-3'') fires at any
+    step-3 frame with k3(z) <= mu-2.  Hence an instance that is still open has
+        k2(y) >= mu-1  at EVERY frame from w,   and   k3(z) >= mu-1  at EVERY step-3
+        frame of EVERY vertex with ecc = D.
+    Since k2 <= 2 and k3 <= 4 this forces mu(H) <= 3 (from the step-2 half; that is exactly
+    round 44's (ROW-MU4) read backwards) and mu(H) <= 5 (from the step-3 half). []
+
+  So the open case is NOT `a low-a collar' -- it is `EVERY step-3 vertex of EVERY frame of
+  EVERY diametral vertex HUGS THE GEODESIC', in the precise sense that N(z) must meet
+  N(u_j) for at least mu-1 of the four indices j in {d-1,..,d-4}.  PART 2's k3 histogram
+  is the measurement of how rare that is.
+
+  ENTITLED READING.  The 260 instances where (F11-DEG'')'s hypothesis fails are
+  the ONLY ones on which L4's firing is information; on the other 0 it could not
+  have come out the other way.  PART 0's NEGATIVE control (C6, Theta(3,3,3),
+  Petersen: 0 firings) is what makes a firing on the tested set information at
+  all -- the detector demonstrably declines.
+
+==============================================================================
+PART 4 -- (TAIL-4''), PROVED WITH THE CORRECTED DODGE LIST, AND THE 30
+          BEYOND-k>=5 ROWS
+==============================================================================
+
+  (TAIL-4'').  In (TAIL-3'')'s frame -- u_0..u_d a geodesic from v, d = ecc(v), y in N(u_d)
+  off u_{d-1}'s matching component, z in N(y) and t in N(z) with u_0..u_d y z t induced --
+  put  k4 := #{ j in {d, d-1, d-2, d-3, d-4, d-5} : N(t) & N(u_j) != {} }.  Then
+  endpath(H,v) >= ecc(v) + 5 as soon as  max(a(t), deg(t)-1) >= 2 + k4.
+
+  Proof.  Let s in N(t); u_0..u_d y z t s is induced and anchored iff s is not in the path,
+  s !~ z, s !~ y and s !~ u_i for all i <= d.  Count the vertices of N(t) that forbids.
+  (a) s = z: 1 vertex; s ~ z: N(t) & N(z) has at most ONE element by C4-freeness (t ~ z, and
+      two common neighbours of t and z would be a C4) -- 2 vertices in all, and both lie in
+      z's own matching component of G[N(t)] (that common neighbour is adjacent to z).
+  (b) s ~ y: N(t) & N(y) has at most one element by C4-freeness; z is IN it (z ~ y, z ~ t),
+      so it IS {z} and is already paid for -- FREE.  y itself is not in N(t) (t !~ y).
+  (c) s ~ u_j: for each j, |N(t) & N(u_j)| <= 1 by C4-freeness -- k4 vertices; and u_j is
+      never in N(t), since t !~ u_i for all i.  Which j can contribute?  s ~ u_j forces
+      d(t,u_j) <= 2, and d(t,u_j) >= d(u_d,u_j) - d(u_d,t) >= (d-j) - 3, so j >= d-5.
+  (d) i <= d-6 is free by distance.
+  So at most 2 + k4 vertices of N(t) are excluded, and they meet at most 1 + k4 matching
+  components; deg(t) >= 3 + k4 or a(t) >= 2 + k4 leaves one. []
+
+  *** THE ONE PLACE THIS IS NOT A COPY OF (TAIL-3''). ***  (TAIL-3'') gets the index d for
+  FREE, because N(z) & N(u_d) = {y} and y is already paid for.  At step 4 that argument
+  DIES: y is NOT adjacent to t, so it is not a common neighbour of t and u_d, and N(t) &
+  N(u_d) can be an arbitrary (unique) vertex.  A naive generalisation copying the range
+  {d-1..d-4} onto step 4 UNDERCOUNTS the dodge list and can only OVER-CLAIM.  That is
+  guard (D12) in PART 0, and it is stated here because it is exactly the kind of one-line
+  slip this line has shipped before.
+
+  BLANKET FORM: k4 <= 6, so a(t) >= 8 suffices -- and by the same reading as (ROW-MU6),
+  mu(H) >= 8 gives endpath(H,v) >= ecc(v)+5 at EVERY v.
+
+  (ROW-LADDER) AT j = 4 therefore closes offset sigma as soon as sigma + 4 >= k, i.e.
+  offset +1 at k = 5 -- which is what the 30 BEYOND-k>=5 rows need.
+
+  BEYOND-k>=5 rows in this population: 30
+    offset +2, k = 5 :   30 instances -> (ROW-LADDER) needs rung j = 3
+  rung needed vs CLOSED (certificate BUILT and re-checked), over 30 rows:
+    j = 3  closed = True  :   30
+  30 BEYOND certificates re-checked from scratch: 0 bad.
+  BEYOND rows STILL NOT CLOSED by any rung of the ladder: 0
+
+==============================================================================
+PART 5 -- (ROW-CT): THE OPEN CASE, MOVED OUT OF THE COLLAR AND INTO A GLOBAL
+          BUDGET ON WHERE l's EXCESS IS ALLOWED TO LIVE
+==============================================================================
+
+  (ROW-HARD')(ii) is a bound on a(z) at every step-3 vertex.  It becomes a GLOBAL statement
+  the moment it is summed, because floor(l(G)) = 4 is itself a sum.
+
+    (ROW-CT).  Let (H,w) be a residual-row instance at offset +1 with k = floor(l(G)) = 4,
+    G := H + one pendant at w.  Put
+      B4 := { z : z is the step-3 vertex of an admissible frame from some v with
+                  ecc(v) = diam(H), at a frame where k3(z) <= 3 }.
+    If the instance is NOT closed by (ROW-LADDER) at j = 3, then a_H(z) <= 1 + k3(z) <= 4
+    for every z in B4, hence
+        EXCESS(H) := SUM_{v not in B4} max(a_H(v) - 4, 0)  >=  2.
+    Equivalently: EXCESS(H) <= 1  =>  the instance is CLOSED.
+
+    Proof.  floor(l(G)) = 4 gives l(G) >= 4, i.e. SUM_{V(G)} (a_G - 4) >= 0.  The pendant p
+    has a_G(p) = 1 and contributes -3; a_G(v) = a_H(v) for v != w and a_G(w) = a_H(w) + 1.
+    So SUM_{V(H)} (a_H - 4) >= 2.  On B4, a_H - 4 <= 0, so dropping B4 can only increase the
+    sum: SUM_{v not in B4} (a_H(v) - 4) >= 2, and replacing each term by its positive part
+    only increases it again. []
+
+  WHAT IT SAYS.  An instance that is still open has to carry the WHOLE of its l-budget --
+  every unit by which a exceeds 4 -- on vertices that the step-3 chain from the periphery
+  never reaches.  The obstruction stops being "a low collar" and becomes "a high core that
+  is INVISIBLE from every diametral vertex at depth 3".
+
+  DIRECTION OF THE SAMPLING ERROR, FIXED BEFORE THE NUMBER (129).  B4 is computed from
+  SAMPLED frames, so the computed B4 is a SUBSET of the true B4, so the computed EXCESS is
+  an UPPER bound on the true EXCESS.  Therefore `EXCESS <= 1 => CLOSED' is SOUND, and a
+  computed EXCESS >= 2 is INCONCLUSIVE -- it can never be quoted as evidence of openness.
+
+  Per HOST (the quantities are host quantities, not per-w quantities):
+    host                         n  S(a-4)     |B4|   |B4|/n    EXCESS
+    W43a                       420     418      241    57.4%       178
+    W43b                       420     418      248    59.0%       172
+    W43c                       420     420      231    55.0%       189
+    W44a                       421     416      246    58.4%       174
+  CASE A instances CLOSED by (ROW-CT) (EXCESS <= 1): 0 of 260
+  CASE A instances where (ROW-CT) is INCONCLUSIVE (EXCESS >= 2): 260
+
+  READ IT AGAINST THIS PART'S OWN INTEREST.  On this family (ROW-CT) closes nothing: these
+  hosts are triangle-free or near it, so a = deg and the l-budget is enormous (hundreds of
+  units), while B4 -- even sampled -- is a large fraction of n.  What (ROW-CT) buys is NOT
+  a closure here; it is a REPLACEMENT of the open coordinate.  Round 44 left the question
+  as `build a low-a collar'; slice 2 showed the only lever that lowers a on the collar also
+  enlarges the collar.  (ROW-CT) says the same object must ALSO hide every unit of its
+  l-excess from the step-3 reach of EVERY diametral vertex -- and the |B4|/n column is the
+  measurement of how much room that leaves.
+
+
+==============================================================================
+PART 6 -- (ROW-K) AS A CLOSURE TEST: WHICH CASE A INSTANCES CLOSE BY A THEOREM,
+          AND WHICH ONLY BY A BUILT PATH
+==============================================================================
+
+  DIRECTION OF THE SAMPLING ERROR, FIXED BEFORE THE NUMBERS (129).  k2min and k3min are
+  minima over SAMPLED frames, so each is an UPPER bound on the true minimum.  Therefore
+  `k2min <= mu-2 => CLOSED' and `k3min <= mu-2 => CLOSED' are SOUND; a large k2min/k3min is
+  INCONCLUSIVE and can never be quoted as evidence that an instance is open.
+
+  over 260 CASE A instances:
+    k2min at w   histogram: 0:260
+    k3min at any diametral vertex histogram: 0:260
+  CLOSED BY, in order of precedence (each instance counted ONCE):
+    (ROW-MU4) mu>=4                  131
+    (ROW-K) step-2 k2min<=mu-2       129
+    (ROW-K) step-3 k3min<=mu-2         0
+    BUILT PATH ONLY                    0
+
+  THE ENTITLED SENTENCE.  Every CASE A instance this line holds is closed by a THEOREM
+  whose hypothesis is checkable in O(frames) -- not by an unexplained successful search.
+  That is what changed this round.  What did NOT change: there is still no theorem saying
+  that a CASE A instance MUST satisfy one of these hypotheses, so CASE A is NOT closed.
+
+  L4 certificates for the named hosts written to problems/wowii/w133_r45_L4certs.txt
+
+==============================================================================
+PARTS RUN: PART0,PART1,PART2,PART3,PART4,PART5,PART6
+CHECKS 97   FAILS 0   elapsed 35.4s
+==============================================================================

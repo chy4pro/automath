@@ -1,0 +1,30 @@
+lambda        N   w+2<=3c   alpha<=2 available   agree
+(1, 1)        4      True                 True   OK
+(2, 2)        5      True                 True   OK
+(3, 1)        6     False                False   OK
+(3, 3)        6      True                 True   OK
+(4, 2)        7      True                 True   OK
+(4, 4)        7      True                 True   OK
+(5, 1)        8     False                False   OK
+(5, 3)        8      True                 True   OK
+(5, 5)        8      True                 True   OK
+(6, 2)        9     False                False   OK
+(6, 4)        9      True                 True   OK
+(6, 6)        9      True                 True   OK
+(7, 1)       10     False                False   OK
+(7, 3)       10      True                 True   OK
+(7, 5)       10      True                 True   OK
+(7, 7)       10      True                 True   OK
+(8, 2)       11     False                False   OK
+(8, 4)       11      True                 True   OK
+(8, 6)       11      True                 True   OK
+(8, 8)       11      True                 True   OK
+(9, 1)       12     False                False   OK
+(9, 3)       12     False                False   OK
+(9, 5)       12      True                 True   OK
+(9, 7)       12      True                 True   OK
+(9, 9)       12      True                 True   OK
+
+rows: 25   misses: 0
+NECESSITY is hand-proved above.  SUFFICIENCY is a MEASUREMENT over N <= 12 --
+more cases is not a proof and is not offered as one.

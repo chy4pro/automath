@@ -1,0 +1,22 @@
+=== controls FIRST (must-pass and must-abort) ===
+  s0((2,1,1)),residue = (3, 3)  expect (3, 3) -> OK
+  s0((6, 4, 2))=8 expect 8 -> OK
+  residue(M((5,4,3))) = 2  expect 2 -> OK
+  M((7,2)) must ABORT -> OK
+
+=== THEOREM C1-3, checked on all (w,b,c) with w<=40 ===
+  triples tested        : 11480
+  step sequences        : 5740  aborts: 5740
+  MISMATCHES            : 0
+
+  VERDICT: THEOREM C1-3 REPRODUCED
+
+=== C1-M (CENSUS): residue(M(lambda)) <= ceil(k/2)+1, all lambda |- n<=24, k>=2 ===
+  step-sequence lambdas tested : 4102
+  VIOLATIONS                   : 0
+  bound ATTAINED at k = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+
+  implication check: ceil(k/2)+1 <= k-1 holds exactly for k >= 4
+  negative control (bound-1 must be VIOLATED somewhere): True -> LIVE
+
+  VERDICT: C1-M reproduced as a CENSUS (not a theorem)

@@ -1,0 +1,82 @@
+w133 round 46 slice 2 -- (ROW-BUDGET).  system python3, pure stdlib, no SAT.
+started 2026-08-23 21:34:49
+WOWII-133 owner round 46, SLICE 2 -- (ROW-BUDGET): the witnesses have to FIT.
+
+(HUG-DEG) said the k3 witnesses of ONE step-3 vertex are pairwise distinct.  The same
+C4-freeness says more: the witnesses of DIFFERENT step-3 vertices hanging off the SAME y are
+distinct too, because two of them sharing a witness c would give c and y two common
+neighbours.  So all the witnesses at a frame live in one small set and have to FIT in it.
+That is a COUNTING closure test -- the first on this line that is not a per-vertex test.
+
+  (ROW-BUDGET).  H C4-free and TRIANGLE-FREE, (v, P = u_0..u_d, y) a (TAIL-1) frame at a
+  vertex v with ecc(v) = diam(H).  Let Z(y) be the admissible step-3 vertices and
+        B := ( N(u_{d-1}) u N(u_{d-2}) u N(u_{d-3}) u N(u_{d-4}) ) \ P      (the BUDGET).
+  Then      SUM over z in Z(y) of k3(z)   <=   |B|.
+  Consequently, if  SUM over z in Z(y) of (deg(z) - 1)  >  |B|,  then some z in Z(y) has
+  deg(z) >= 2 + k3(z), so (TAIL-3'') FIRES there and -- by (ROW-LADDER) at j = 3 -- the
+  offset-+1 instance is CLOSED.
+
+DIRECTION OF ERROR, FIXED BEFORE THE NUMBERS (129).  Frames are enumerated EXHAUSTIVELY per
+host (every diametral vertex, every geodesic, every admissible y), so `the budget test fires
+at this frame' is SOUND and `it fires nowhere on this host' is also sound.  What is sampled
+is the HOST LIST, so `no host escapes' would be inconclusive -- and this file's headline is
+what the test FAILS to close, which is the sound direction.
+
+Pure stdlib, system python3.  No SAT, no exhaustive search over a large space.
+Primitives COPIED VERBATIM from w133_r46_hug.py.
+
+
+  PROOF.  Let z, z' be distinct members of Z(y) and c a witness of both.  Then c and y have
+  the two common neighbours z and z' -- a C4.  So witnesses of different z are distinct.
+  Within one z they are distinct by (HUG-DEG) (H is triangle-free).  Every witness c is
+  adjacent to some u_j with j in {d-1,..,d-4}, and c is not a path vertex, because c ~ z and
+  z !~ u_i for every i.  So the whole collection injects into B, and |collection| =
+  SUM_z k3(z) <= |B|.  For the consequence: if every z had deg(z) <= 1 + k3(z), then
+  SUM_z (deg(z)-1) <= SUM_z k3(z) <= |B|, contradicting the hypothesis. []
+
+  (P1) PREDICTION, registered BEFORE the run: SUM_z k3(z) <= |B| at EVERY frame of EVERY
+       triangle-free host below.  0 violations.
+  (P2) PREDICTION: at every frame where SUM_z (deg(z)-1) > |B|, an explicitly FIRING z is
+       found.  0 failures to find one.
+  (P3) PREDICTION, the one that can embarrass this lane: the budget test fires at NO frame
+       of Petersen, C7 or C8 -- the three hosts round 46 slice 1 showed have N(H) = 0.  If
+       it fired there it would be unsound.
+
+  hosts kept (connected, C4-free, TRIANGLE-FREE): 22
+
+  host               n diam      l    frames    BUDGET     min 
+                                    (with Z)    closes   slack 
+  W43a             420    6  4.995    121226    113788      -6   
+  W43b             420    6  4.995     97890     92139      -6   
+  W43c             420    6  5.000    106864    101350      -4   
+  W44a             421    6  4.988    124759    116932      -7   
+  Petersen          10    2  3.000       120         0       1   
+  C7                 7    3  2.000        14         0       0   
+  C8                 8    4  2.000        16         0       0   
+  C9                 9    4  2.000        18         0       0   
+  C11               11    5  2.000        22        22      -1   
+  C13               13    6  2.000        26        26      -1   
+  PG(2,2)inc        14    3  3.000       336         0       2   
+  PG(2,3)inc        26    3  4.000      2808         0       1   
+  PG(2,5)inc        62    3  6.000     46500     46500      -7   
+  O4=K(7,3)         35    3  4.000      3780      2520      -2   
+  Desargues         20    5  3.000       480         0       0   
+  Pappus            18    4  2.667       288         0       0   
+  Coxeter           28    4  3.000       672         0       1   
+  MoebiusKantor     16    4  3.000       192         0       1   
+  Nauru             24    4  3.000       864         0       1   
+  Dodecahedron      20    5  3.000       240         0       0   
+  GP(11,3)          22    4  3.000       264         0       1   
+  GP(13,5)          26    4  3.000       520         0       1   
+
+  (P1) VERDICT: HELD  (0 violations of the counting bound)
+  (P2) VERDICT: HELD  (0 frames closed with no firing z found)
+  (P3) VERDICT: HELD  (the three N(H)=0 hosts are untouched)
+
+  ---- WHAT (ROW-BUDGET) FAILS TO CLOSE (item (b)) ----
+  frames carrying a step-3 vertex: 507899 ; closed by the budget test: 473277 (93.2%)
+  frames it does NOT close: 34622 (6.8%).  It is a COUNTING test and it is far
+  from closing everything -- which is the point: it DISCRIMINATES.
+  hosts it closes NOTHING on: 14 -- Petersen, C7, C8, C9, PG(2,2)inc, PG(2,3)inc, Desargues, Pappus, Coxeter, MoebiusKantor, Nauru, Dodecahedron, GP(11,3), GP(13,5)
+
+CHECKS 69   FAILS 0   elapsed 5.8s

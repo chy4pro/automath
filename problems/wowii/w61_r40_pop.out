@@ -1,0 +1,49 @@
+====================================================================================================
+W61 r40 [0] POPULATION AUDIT -- the 85, and the 5842-vs-635
+====================================================================================================
+   KNOWN   res(W+(2) u [2]) boundary                                      got=3      want=3     OK
+   KNOWN   res(W-(3) u [2]) boundary                                      got=3      want=3     OK
+   KNOWN   res(star K_1,3 = [3,1,1,1])                                    got=3      want=3     OK
+   KNOWN   res(P4 = [2,2,1,1])                                            got=2      want=2     OK
+   KNOWN   res(C4 = [2,2,2,2])                                            got=2      want=2     OK
+   MUST_ABORT non-graphic [3,3,1]: True
+
+[1] THE SAME (UP2) SWEEP, COUNTED BOTH WAYS -- r38's counter and r39's counter
+    population: every terminating partition L of every N in 2..16; L' = L with two
+    entries raised by 1 (generator up2(), byte-identical to w61_r38_c1p.py:453).
+   r38's counter -- DISTINCT (L,L',r,r') tuples : ok=635    VIOLATIONS=97   
+   r39's counter -- POSITIONAL (i,j) increments : ok=5842   VIOLATIONS=184  
+   exclusion list for this sweep: none -- every terminating partition of every N in
+   2..16 is included; lists whose Havel-Hakimi run aborts are skipped and counted
+   nowhere else, on BOTH the L side and the L' side.
+   DO THE TWO COUNTERS COUNT THE SAME OBJECTS ON THE OK SIDE?  NO
+   DO THEY AGREE ON THE VIOLATION SIDE?                        NO
+   CONTROL CORRUPT: 'distinct ok == positional ok' (must FAIL, i.e. differ) hits=1      OK
+
+[2] THE 85 -- MEASURED, NOT SUBTRACTED
+   population: the DISTINCT (UP2) violating pairs above.
+   violating pairs, ALL                                    : 97
+   violating pairs whose L CONTAINS a head block W^eps(c)  : 12
+   violating pairs whose L is HEAD-BLOCK-FREE  <-- THE 85  : 85
+   partition check  headed + free == all                   : True
+   three head-block-FREE violators, printed rather than excluded:
+      L=(3, 2, 2, 2, 1) -> L'=(4, 3, 2, 2, 1) : residue 2 -> 3
+      L=(3, 2, 2, 1, 1, 1) -> L'=(4, 3, 2, 1, 1, 1) : residue 3 -> 4
+      L=(3, 2, 1, 1, 1, 1, 1) -> L'=(4, 3, 1, 1, 1, 1, 1) : residue 4 -> 5
+   CONTROL CORRUPT: 'no violating L is head-block-free' is violated       hits=85     OK
+   CONTROL CORRUPT: 'no violating L contains a head block' is violated    hits=12     OK
+
+[3] THE DENOMINATOR -- the OK side split the same way, so the 85 can be a RATE
+   ok pairs whose L CONTAINS a head block                  : 65
+   ok pairs whose L is HEAD-BLOCK-FREE                     : 570
+   => HEAD-BLOCK-FREE population swept  = 570 ok + 85 violating = 655 pairs
+   => HEAD-BLOCK    population swept  = 65 ok + 12 violating = 77 pairs
+   (UP2) fails on 85 of 655 head-block-free pairs; on 12 of 77 head-block pairs.
+
+[4] SELF-AUDIT
+   diffed runA/runB calls : 7193   disagreements: 0 (any would exit(2))
+   controls               : 10, all firing: True
+   PARTIAL                : False
+   elapsed                : 0.1s   internal limit 60s
+   FAIL list              : empty
+EXIT=0

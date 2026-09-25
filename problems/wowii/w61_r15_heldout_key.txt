@@ -1,0 +1,31 @@
+Q35 HELD-OUT ANSWER KEY — owner-w61 round 15, 2026-08-22
+Computed by problems/wowii/w61_r15_heldout_key.py, own primitives written from the
+Appendix A.0 specification. Calibrated against printed draft data BEFORE computing any
+held-out (residues K2/C3..C9; the s0 survivor column for nu<=6; boundary-pair counts
+0,1,3,7,14,26; S(nu)=0,3,24,110,397,1211; every printed E=0 boundary survivor) — all
+five calibrations PASSED.
+This file is NOT part of any brief and must never be pasted into one.
+The round-14 key is BURNED (the ledger prints H3=45 and H4=3340); none of its values
+is reused here.
+
+G1  step counts (head-deletions to all-zeros) and residue, for four explicit lists
+    that appear in NO brief and in NO table:
+      La = [3,3,2,2,2]         -> steps = 3, residue = 2
+      Lb = [4,4,3,3,2,2]       -> steps = 4, residue = 2
+      Lc = [5,5,4,4,3,3,2,2]   -> steps = 5, residue = 3
+      Ld = [6,6,6,6,6,6,6]     -> steps = 6, residue = 1
+    (the brief prints residues for K2/Cn only, and no step count for anything)
+
+G2  s0([9, 5, 2]) = 11          [lam |- 16 = 2*8, two nu beyond every printed table]
+
+G3  E=0 boundary pairs at nu=8 = 75      [continues 0,1,3,7,14,26,...; nu=8, not nu=7]
+
+G4  S(8) = 8457                          [continues 0,3,24,110,397,1211,...]
+
+G5  (L,lam) = (10,[12, 4]) at nu=8: clears in 11 steps, target L = 10
+    -> answer NO, count 11
+
+Grading: G1 is the discriminator — echo-proof (nothing to echo), trivially
+hand-computable, four independent values so a lucky guess is negligible.
+G3/G4 are hand-derivations of the kind Qwen-class judges have demonstrated.
+G2/G5 require actually running the process on a list the brief never shows.

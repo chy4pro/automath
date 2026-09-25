@@ -1,0 +1,105 @@
+====================================================================================================
+w61 r49 ITEM A -- (BAND-EQ): LEMMA BAND-POS, and r45's `54` corrected
+====================================================================================================
+interpreter: .venv/bin/python3 (pure Python, no sympy, no networkx)
+
+[1] LEMMA BAND-POS -- a census of EVERY band-carrying gap-1 configuration in a
+    stated finite population, at THREE sizes.  Predicted per the header:
+      i0 in {2..d+1}  IMPOSSIBLE ;  i0 = 1 -> EQ ;  i0 = d+2 -> EQ iff A[d+2]=c-1 ;
+      i0 > d+2 -> UNIT_DOWN.  Prediction is checked against relation(), which is
+    lifted by source text and knows nothing about the band.
+    N<=13 parts<= 9 zeros<=3 : |pop|=1432   band states=60   configurations=390
+       i0 buckets                 : {'i0=1': 228, 'i0=d+2': 120, 'i0>d+2': 42}
+       (bucket, relation)         : {"('i0=1', 'EQ')": 228, "('i0=d+2', 'EQ')": 108, "('i0=d+2', 'UNIT_DOWN')": 12, "('i0>d+2', 'UNIT_DOWN')": 42}
+       BAND-POS mispredictions    : 0
+       i0 landing in 2..d+1       : 0   (LEMMA BAND-POS (i): must be 0)
+    N<=16 parts<=10 zeros<=3 : |pop|=3476   band states=100  configurations=722
+       i0 buckets                 : {'i0=1': 412, 'i0=d+2': 226, 'i0>d+2': 84}
+       (bucket, relation)         : {"('i0=1', 'EQ')": 412, "('i0=d+2', 'EQ')": 198, "('i0=d+2', 'UNIT_DOWN')": 28, "('i0>d+2', 'UNIT_DOWN')": 84}
+       BAND-POS mispredictions    : 0
+       i0 landing in 2..d+1       : 0   (LEMMA BAND-POS (i): must be 0)
+    N<=20 parts<=11 zeros<=2 : |pop|=7578   band states=147  configurations=1125
+       i0 buckets                 : {'i0=1': 675, 'i0=d+2': 330, 'i0>d+2': 120}
+       (bucket, relation)         : {"('i0=1', 'EQ')": 675, "('i0=d+2', 'EQ')": 261, "('i0=d+2', 'UNIT_DOWN')": 69, "('i0>d+2', 'UNIT_DOWN')": 120}
+       BAND-POS mispredictions    : 0
+       i0 landing in 2..d+1       : 0   (LEMMA BAND-POS (i): must be 0)
+   [ok ] CONTROL: the i0=1 bucket is non-empty (clause (ii) is exercised)               hits=228
+   [ok ] CONTROL: the i0=d+2 bucket is non-empty (clause (iii) is exercised)            hits=120
+   [ok ] CONTROL: the i0>d+2 bucket is non-empty (clause (iv) is exercised)             hits=42
+   [ok ] CORRUPT CONTROL: 'i0 in 2..d+1 occurs' -- must be DEAD, that is clause (i)     hits=0
+   [ok ] CORRUPT CONTROL: the naive rule 'i0>=d+2 => EQ' mispredicts                    hits=54
+   [ok ] KNOWN VALUE N<=13 EQ configurations (r45's 336)                        got=336 want=336
+   [ok ] KNOWN VALUE N<=13 UNIT_DOWN configurations (r45's 54)                  got=54 want=54
+
+[2] THE FAMILY.  P1/P2 rebuilt, band-carrying gap-1 parents located, and each one
+    classified by LEMMA BAND-POS's trichotomy.
+   [ok ] KNOWN VALUE P1 size                                                    got=709 want=709
+   [ok ] KNOWN VALUE P2 size                                                    got=686 want=686
+   [ok ] KNOWN VALUE family band-carrying gap-1 parents (r45's 100)             got=100 want=100
+    which population they come from      : {'P2': 100}
+    LEMMA BAND-POS bucket                : {'i0=d+2': 100}
+    c = d ?                              : {'c=d': 100}
+    A[d+2] = c-1 ?                       : {'A[d+2]=c-1': 100}
+    #max(A) = d+2 ?                      : {'m=d+2': 100}
+    exact A-shape [d]^{d+2}[d-1]^r + tail: {'yes': 100}
+   [ok ] CONTROL: family band parents exist                                             hits=100
+   [ok ] CORRUPT CONTROL: 'some family band parent has i0=1' -- DEAD, they all use i0=d+2 hits=0
+
+[3] r45's `54` OUT-OF-FAMILY REALISATIONS, RE-EXAMINED.  r45 booked them as the
+    corrupt control showing (BAND-EQ) is a genuine FAMILY fact.  Item (a): are they
+    54 tests, and do they test what r45 said they test?
+    enumeration slots at N<=13                    : 54
+    DISTINCT (A,B) pairs among them               : 27
+    DISTINCT pairs after deleting padded zeros    : 9
+    the raised level u over those slots           : {0: 54}
+    slots whose raised entry IS a padded zero     : 54 of 54
+       A*=(2, 2, 2, 2)                   B*=(3, 2, 2, 2, 1)                   parts 4 -> 5
+       A*=(2, 2, 2, 2, 1)                B*=(3, 2, 2, 2, 1, 1)                parts 5 -> 6
+       A*=(2, 2, 2, 2, 1, 1)             B*=(3, 2, 2, 2, 1, 1, 1)             parts 6 -> 7
+       A*=(2, 2, 2, 2, 1, 1, 1)          B*=(3, 2, 2, 2, 1, 1, 1, 1)          parts 7 -> 8
+       A*=(2, 2, 2, 2, 1, 1, 1, 1)       B*=(3, 2, 2, 2, 1, 1, 1, 1, 1)       parts 8 -> 9
+       A*=(2, 2, 2, 2, 1, 1, 1, 1, 1)    B*=(3, 2, 2, 2, 1, 1, 1, 1, 1, 1)    parts 9 -> 10
+       A*=(3, 2, 2, 2, 2)                B*=(4, 2, 2, 2, 2, 1)                parts 5 -> 6
+       A*=(3, 2, 2, 2, 2, 1)             B*=(4, 2, 2, 2, 2, 1, 1)             parts 6 -> 7
+       A*=(3, 2, 2, 2, 2, 1, 1)          B*=(4, 2, 2, 2, 2, 1, 1, 1)          parts 7 -> 8
+   [ok ] CONTROL: r45's 54 slots were reproduced                                        hits=54
+   [ok ] CORRUPT CONTROL: 'some N<=13 failure has u>=1' -- DEAD; every one is a padded zero hits=0
+
+    THE SAME QUESTION AT LARGER SIZES -- direction fixed before reading (item d):
+    I predicted, in writing, that failures with u>=1 WOULD appear above N=13, on the
+    hand-built witness A=(3,3,3,3,3,1).  Both halves of that prediction are checked.
+      N<=13 : non-EQ slots=54   distinct (A,B)=27   stripped=9    u>=1 slots=0
+      N<=16 : non-EQ slots=112  distinct (A,B)=58   stripped=19   u>=1 slots=4
+      N<=20 : non-EQ slots=189  distinct (A,B)=110  stripped=50   u>=1 slots=69
+   [ok ] CONTROL: failures with u>=1 (NOT padding artefacts) exist above N=13           hits=69
+    smallest u>=1 witness : A=(3, 3, 3, 3, 3, 1) B=(4, 3, 3, 3, 3, 2) i0=5 d=3 c=3 u=1 rel=UNIT_DOWN
+    hand-built witness A=(3,3,3,3,3,1) present in the u>=1 set : True
+
+[4] TWO CANDIDATE FAMILY INVARIANTS OF MINE, BOTH REFUTED BY THIS RUN (booked, not
+    deleted).  (N1): A[m] = A[0]-1 at every joint state, m := #max(A).
+    (N2): the two raised positions are {m,m+1} (equal pivots) or {0,m} (gap step).
+    (N1) : {'A[m]<=d-2': 128, 'A[m]=d-1': 6550, 'm=n': 517}
+    (N2) : {"('eqpiv', 'OTHER')": 1426, "('eqpiv', '{m,m+1}')": 4309, "('gap1', 'OTHER')": 752, "('gap1', '{0,m}')": 643, 'not a positional 2-raise': 65}
+      (N1) REFUTED, witness: ('P1', (3, 3, 3, 3, 3, 3, 1, 1), (4, 3, 3, 3, 3, 3, 2, 1))
+      (N1) REFUTED, witness: ('P1', (3, 3, 3, 3, 3, 3, 1, 1), (4, 3, 3, 3, 3, 3, 2, 1))
+      (N2) REFUTED, witness: ('P1', (4, 4, 3, 3, 3, 3, 3, 1), (4, 4, 4, 3, 3, 3, 3, 2), (2, 7), 2)
+      (N2) REFUTED, witness: ('P1', (3, 3, 3, 2, 2, 2, 1), (3, 3, 3, 3, 2, 2, 2), (3, 6), 3)
+   [ok ] REFUTATION: (N1) fails somewhere on the family                                 hits=128
+   [ok ] REFUTATION: (N2) fails somewhere on the family                                 hits=2178
+
+[5] WHAT THIS RUN FAILS TO CLOSE (item (b)).
+    (BAND-EQ) is NOT proved.  After LEMMA BAND-POS the residue is exactly:
+      at every band-carrying gap-1 parent of a head-block run, either i0 = 1, or
+      i0 = d+2 AND A[d+2] = c-1.
+    Measured on the family: 100 of 100 parents take the i0=d+2, A[d+2]=c-1 branch;
+    0 take the i0=1 branch.  Neither branch is PROVED to be the one the family takes.
+    LEMMA BAND-POS is a general lemma and does NOT use any family hypothesis, so it
+    cannot distinguish the family from the u>=1 counterexamples found in block [3].
+    (F2-FREE), (GAP1-OK), (PERSIST-NARROW), (MON), (S2), C1-W are untouched here.
+
+====================================================================================================
+CONTROLS 12, all fired: True
+DEFECTS  0
+diffed runA/runB calls: 1587, disagreements: 0
+PARTIAL=False  elapsed 0.14s  (internal limit 240s)
+====================================================================================================

@@ -1,0 +1,2 @@
+[2, 3, 4, 6, 12] sum=1.333333 lcm=12
+# k=5 complete=True I(k)=1 sat_checked=9 pruned_private=579 prefixes=5 elapsed=0.1s

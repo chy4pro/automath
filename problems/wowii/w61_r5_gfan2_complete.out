@@ -1,0 +1,20 @@
+=== Lemma TAIL cross-check: 1817 (lam,L) pairs, mismatches = 0
+=== COMPLETE finite check of GFan(tau,L,nu) for nu = 1..6 ===
+ nu=1: E=0 rows not killed by FAN-6' : NONE
+        E>=1 shapes tested=0, rows not killed by FAN-6': NONE
+        => GFan(tau,L,1) with L >= 2: ELIMINATED
+ nu=2: E=0 rows not killed by FAN-6' : NONE
+        E>=1 shapes tested=3, rows not killed by FAN-6': NONE
+        => GFan(tau,L,2) with L >= 3: ELIMINATED
+ nu=3: E=0 rows not killed by FAN-6' : NONE
+        E>=1 shapes tested=24, rows not killed by FAN-6': NONE
+        => GFan(tau,L,3) with L >= 4: ELIMINATED
+ nu=4: E=0 rows not killed by FAN-6' : NONE
+        E>=1 shapes tested=110, rows not killed by FAN-6': NONE
+        => GFan(tau,L,4) with L >= 5: ELIMINATED
+ nu=5: E=0 rows not killed by FAN-6' : NONE
+        E>=1 shapes tested=397, rows not killed by FAN-6': NONE
+        => GFan(tau,L,5) with L >= 6: ELIMINATED
+ nu=6: E=0 rows not killed by FAN-6' : NONE
+        E>=1 shapes tested=1211, rows not killed by FAN-6': NONE
+        => GFan(tau,L,6) with L >= 7: ELIMINATED

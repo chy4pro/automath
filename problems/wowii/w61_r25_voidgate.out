@@ -1,0 +1,46 @@
+=== ARTIFACTS ===
+  problems/wowii/w61_S3_GFAN_r24.md  md5=53be85d003001efd9413175195df46ee  bytes=14743
+  problems/wowii/w61_r17_heldout_key.txt  md5=2c524fd41a225864e63bfdb6e526a628  bytes=3701
+
+=== TRANSCRIPTION GUARD (every graded value must appear verbatim in the key file) ===
+  OK   s0([12+6+4]) = 14
+  OK   s0([9+7+3+3]) = 12
+  OK   s0([14+5+2+1]) = 16
+  OK   s0([8+8+6]) = 10
+  OK   S(11) = sum_{E=1}^{10} (11-E) p(E) p(22-E) = 98384
+  OK   E>=1 survivors at nu = 11 : 791
+  OK   {1: 6, 2: 14, 3: 21, 4: 35, 5: 47, 6: 85, 7: 110, 8: 155, 9: 170, 10: 148}
+  OK   s0(lambda) = 13} = 131
+  OK   clears in exactly L = 13 steps?  NO   (actual step count 16)
+
+=== REPORT SECTION 0, VERBATIM (5 rows found) ===
+  H1 |  `[12,6,4]→14`; `[9,7,3,3]→12`; `[14,5,2,1]→16`; `[8,8,6]→10` | The four head sequences are respectively `12,12,10,10,8,8,6,6,5,4,3,2,2,1`; `9,9,7,7,6,5,4,3,2,2,1,1`; `14,14,12,12,10,10,8,8,6,6,5,4,3,2,1,1`; `8,8,7,6,5,4,3,3,2,1`. All are valid step sequences. |
+  H2 |  `S(11)=98,384` | Terms for `E=1,…,10`: `7,920+11,286+11,760+13,475+12,474+12,705+10,560+8,910+6,060+3,234`. These are `(11-E)p(E)p(22-E)`. |
+  H3 |  `791`; per-`E` split `[6,14,21,35,47,85,110,155,170,148]` | Generated every partition `e⊢E`, every `λ⊢(22−E)`, and every `12≤L≤22−E`: `98,384` shapes. Direct HH simulation retained exactly the displayed split. |
+  H4 |  `131` | Generated all `p(22)=1,002` nonincreasing partitions recursively and ran `[λ₁]^(λ₁+1)∪λ`; exactly 131 valid runs had 13 steps. The full matching list is in the raw stdout. |
+  H5 |  **NO; actual step count `16`** | The list is `[15,14,13^12,5,4,4,3,3]`; its heads are `15,13,11,10,9,8,7,6,5,4,4,3,2,2,2,1`, so it does not clear in 13 steps. |
+
+=== GRADING (exact match) ===
+  H1 [HAND]  key=[14, 12, 16, 10]  report=[14, 12, 16, 10]
+  H2 [HAND]  key value=98384  key terms=[7920, 11286, 11760, 13475, 12474, 12705, 10560, 8910, 6060, 3234]
+             report numbers=[11, 98384, 1, 10, 7920, 11286, 11760, 13475, 12474, 12705, 10560, 8910, 6060, 3234, 11, 22]
+  H3 [NON-HAND]  key value=791  key split=[6, 14, 21, 35, 47, 85, 110, 155, 170, 148]
+                 report bracketed lists=[[6, 14, 21, 35, 47, 85, 110, 155, 170, 148]]
+                 report scalars=[791, 22, 12, 22, 98384]
+                 value_ok=True  ten-entry split exact=True
+  H4 [NON-HAND]  key=131  report numbers=[131, 22, 1002, 1, 131, 13]
+  H5 [HAND]  key=('NO', 16)   report: NO=True YES=False numbers=[16, 151413, 1254433, 15131110987654432221, 13]
+
+  hatch 'CANNOT COMPUTE' used on: []
+
+=== VERDICT (computed only now) ===
+  H1: EXACT
+  H2: EXACT
+  H3: EXACT
+  H4: EXACT
+  H5: EXACT
+
+  HAND rows wrong (any ⟹ VOID): none
+  COMPUTATIONAL rows wrong (both wrong, hatch unused ⟹ VOID): none
+
+  VOID GATE: PASS   score 5/5 exact

@@ -1,0 +1,34 @@
+==============================================================================
+CONTROLS (each could fail; population stated beside each)
+  C-A p=3  f==0 : |T-T| direct=25  fibre-sum=25  (2p-1)^2=25  MATCH=True   [population: 1 function]
+  C-A p=5  f==0 : |T-T| direct=81  fibre-sum=81  (2p-1)^2=81  MATCH=True   [population: 1 function]
+  C-B p=3  cycle identity  sum_i d_u f(x+iu) == -u : violations=0  [population: 300 random f x 8 directions x 9 basepoints = 21600 checks]
+  C-C p=3  |A_u| invariant under f -> f+lam[x1]+mu[x2] : violations=0  [population: 60 (f,lam,mu) x 8 directions = 480 checks]
+  CONTROLS ALL PASS = True
+==============================================================================
+PATH 1 -- BRUTE, p=3, the ENTIRE function space
+  population (all f with f(0)=0) = 43046721 = 3^(2*3^2-2)
+  row alphabet = 729 rows; triples enumerated/pruned = 43046721
+  R2(3) [ |A_e1| <= 3 AND |A_e2| <= 3 ] = 18225
+    min |A_w| over the WHOLE stratum, w=(1, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(1, 2) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 2) : 4
+  t=0.9s
+==============================================================================
+PATH 2 -- STRUCTURED, p=3 (same question, disjoint counting logic)
+  A-classes (translation orbits of image sets, |A| in {2,3}) = 16 ; completed = 16 ; complete=True
+  normal-form f found = 297 ; de-normalised R2(3) = 18225
+    min |A_w| over the WHOLE stratum, w=(1, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(1, 2) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 2) : 4
+  counterexamples (|A_w| <= 3) recorded: 0
+  t=0.9s
+==============================================================================
+CROSS-CHECK p=3
+  PATH1 R2(3)=18225   PATH2 R2(3)=18225   AGREE=True
+  min|A_w| tables agree across the two paths: True
+  VERDICT p=3: min over ALL mixed w and ALL stratum members = 4  (rigidity |A_w| >= 4 holds: True)
+==============================================================================
+elapsed_s = 0.9  ; controls_ok = True

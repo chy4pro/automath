@@ -1,0 +1,158 @@
+=== w61 r34 item 1 -- does the BRIEF DETERMINE Q41's REPORT? ===
+  brief w61_S3_C125_r31.md  16116 chars  sha256 f8c159fccec1fba6
+  Q41   q41_qwen38max.md  2596 chars  sha256 788c5f7af136ad6a
+  Q42   q42_gemini_pro.md  2107 chars  sha256 532d9c981c2f363d
+
+--- CHECK 1: every quoted claim is byte-present in its own report ---
+  R1    Q41  present
+  R1b   Q41  present
+  R2    Q41  present
+  R3    Q41  present
+  R4    Q41  present
+  R4b   Q41  present
+  R5    Q41  present
+  R5b   Q41  present
+  R6    Q41  present
+  R6b   Q41  present
+  P2    Q41  present
+  W1    Q41  present
+  W2    Q41  present
+  W3    Q41  present
+  W4    Q41  present
+  W5    Q41  present
+  W6    Q41  present
+  W7    Q41  present
+  W8    Q41  present
+  X1    Q42  present
+  X2    Q42  present
+  Part 1 six statement rows + Part 3 four numeric cells: verified in Q41
+
+--- CHECK 2: every DETERMINED claim's anchors are byte-present in the BRIEF ---
+  R1    2/2 anchors present
+  R1b   2/2 anchors present
+  R2    3/3 anchors present
+  R3    1/1 anchors present
+  R4    2/2 anchors present
+  R4b   2/2 anchors present
+  R5    3/3 anchors present
+  R5b   2/2 anchors present
+  R6    1/1 anchors present
+  R6b   2/2 anchors present
+  W1    1/1 anchors present
+  W2    2/2 anchors present
+  W3    2/2 anchors present
+  W4    2/2 anchors present
+  W5    1/1 anchors present
+  W6    2/2 anchors present
+  W7    3/3 anchors present
+
+--- CHECK 3: every NOT-DETERMINED claim names a string ABSENT from the brief ---
+  X1    'final sum is exactly 0'                 absent
+  X1    'all zeros'                              absent
+  X1    'sum `0`'                                absent
+  X1    'sum 0'                                  absent
+  X2    'must consist entirely of zeros'         absent
+  X2    'consist entirely of zeros'              absent
+
+--- FALSIFIABILITY: can this audit return NOT-DETERMINED at all? ---
+  Q42 claims returned NOT-DETERMINED: 2
+  the audit discriminates: it returns NOT-DETERMINED on the contribution the
+  planner independently adjudicated as real (Lemma C1-H, cert_w61_r33 §2).
+
+=== LEDGER -- Q41, claim by claim ===
+  id    part             verdict alts note
+  V1    Part 1 verdict   NDISC  -    no defect is planted in the file; a reader and an echo emit the same cell
+  V2    Part 1 verdict   NDISC  -    no defect is planted in the file; a reader and an echo emit the same cell
+  V3    Part 1 verdict   NDISC  -    no defect is planted in the file; a reader and an echo emit the same cell
+  V4    Part 1 verdict   NDISC  -    no defect is planted in the file; a reader and an echo emit the same cell
+  V5    Part 1 verdict   NDISC  -    no defect is planted in the file; a reader and an echo emit the same cell
+  V6    Part 1 verdict   NDISC  -    no defect is planted in the file; a reader and an echo emit the same cell
+  R1    Part 1 reason    DET    1    the brief's own Lemma C1-A proof, compressed
+  R1b   Part 1 reason    DET    1    
+  R2    Part 1 reason    DET    1    
+  R3    Part 1 reason    DET    1    near-verbatim; the brief prints the identity and the length in one sentenc
+  R4    Part 1 reason    DET    1    the brief prints the two hypotheses at the import site AND restates both a
+  R4b   Part 1 reason    DET    1    
+  R5    Part 1 reason    DET    1    a table of contents of the brief's own three labelled proof parts
+  R5b   Part 1 reason    DET    1    
+  R6    Part 1 reason    DET    1    
+  R6b   Part 1 reason    DET    1    `N[u]` for `{u} + N(u)` is a notation substitution, not content
+  P2    Part 2           NDISC  -    entailed by Part 1's six NONEs plus the brief's own reporting spec
+  W1    Part 4           DET    1    THE BRIEF ANSWERS ITS OWN PART 4 QUESTION, IN BOLD, at Statement 4
+  W2    Part 4           DET    1    
+  W3    Part 4           DET    1    
+  W4    Part 4           DET    1    
+  W5    Part 4           DET    1    the brief solicits this exact sentence by name
+  W6    Part 4           DET    1    the SITE is handed over in the brief's INSTRUCTIONS as its worked example 
+  W7    Part 4           DET    1    CLOSEST CALL IN THE REPORT -- see the steelman printed at the end
+  W8    Part 4           NDISC  -    unargued hedge; no mechanism given, so nothing to determine
+  T-A1  Part 3           VOID   -    cert_w61_r33 §1: harness ruled VOID as a discriminator (1.0-1.6 bits)
+  T-A2  Part 3           VOID   -    cert_w61_r33 §1: harness ruled VOID as a discriminator (1.0-1.6 bits)
+  T-A3  Part 3           VOID   -    cert_w61_r33 §1: harness ruled VOID as a discriminator (1.0-1.6 bits)
+  T-B1  Part 3           VOID   -    cert_w61_r33 §1: harness ruled VOID as a discriminator (1.0-1.6 bits)
+  T-B2  Part 3           VOID   -    cert_w61_r33 §1: harness ruled VOID as a discriminator (1.0-1.6 bits)
+  T-B3  Part 3           VOID   -    cert_w61_r33 §1: harness ruled VOID as a discriminator (1.0-1.6 bits)
+
+  Q41 claims graded: 31
+    DETERMINED by the brief          17   (anchors verified present: 33)
+    NOT DETERMINED (would discharge)  0
+    non-discriminating, excluded      8
+    VOID harness rows, excluded       6
+
+--- WHY THE VERDICT CELLS ARE EXCLUDED RATHER THAN COUNTED ---
+No defect is planted anywhere in the six statements.  When the file under review is
+clean, the correct verdict and the fluent-echo verdict are THE SAME SIX CELLS.  A review
+harness with no planted fault cannot separate a reader from an echo in Part 1, whatever
+the reviewer actually did.  That is RULING CZ in the review layer: the fault set was
+drawn from a dimension on which the check has no resolving power -- here, from the empty
+set.  Counting the six NONEs as engagement would be counting the null hypothesis.
+
+--- WHY PART 3 IS EXCLUDED RATHER THAN COUNTED ---
+Read at the letter, the discharge ("if it produced anything the brief does not
+determine") is SATISFIED BY PART 3: the brief does not print A1/A2/A3, so those three
+numbers are literally not determined by its text.  Counting them would grant the
+promotion on the instrument cert_w61_r33 §1 has just ruled VOID, and would make the
+inverted test auto-pass for any report that filled in the table at all.
+DETERMINATION and GUESSABILITY are different failure modes.  Part 3 survives the first
+and fails the second at 1.0-1.6 bits.  It is excluded here on the standing ruling.
+
+--- THE CLOSEST CALL, STATED AS A STEELMAN BEFORE IT IS REJECTED (W7) ---
+FOR engagement: the brief's section 0 exemplar ASSERTS a defect at `c = w-1` ("the
+recursion is applied at `c = w-1`").  Q41 did not report that defect; it reported that
+the case is vacuous.  A pure echo might have parroted the exemplar as a finding, which
+would have been a false positive.  Q41 instead supplied the resolution, and the
+resolution is CORRECT: `c = w-1` gives `w + c = 2w - 1`, odd, so `M` is not a step
+sequence and the recursion is never reached.
+AGAINST, and this is why it does not carry: the brief hands over all three components.
+  (i) THE SITE.  `c = w-1` is printed in the brief VERBATIM, in the same notation, at
+      line 16 -- in the INSTRUCTIONS, as the worked example of a finding "worth a great
+      deal".  It is the single most conspicuous coordinate in the document.
+  (ii) THE POLARITY.  Q41's own Part 1 had already filed Statement 5 as VALID.  Given
+      VALID, "the boundary case is handled" is the only completion consistent with its
+      own report -- and that VALID cell is the echo default (see the exclusion above).
+  (iii) THE MECHANISM.  Statement 5's proof carries exactly three labelled parts:
+      Recursion (the thing restricted), Base (`c = w`), Parity.  With the first two
+      spoken for, Parity is the only remaining named mechanism.  Alternatives: 1.
+The residual free content is the one-line arithmetic `2w - 1 is odd`, conditioned on an
+echo-default verdict.  That is not engagement; it is the brief's own exemplar returned
+with its sign flipped.  GRADED DETERMINED -- and flagged to the planner as the one claim
+where a different ruling is defensible, with the count above so the ruling can be made
+on the number rather than on the prose.
+
+=== VERDICT ===
+  all 60 checks pass (21 quotes, 33 brief anchors, 6 absence witnesses)
+
+  Q41: 17 of 17 gradeable claims are DETERMINED BY THE BRIEF. ZERO are not.
+  Excluding the 6 void harness rows and the 8 structurally non-discriminating cells,
+  the report contains NOTHING the brief does not fix.
+
+  ITEM 1 IS NOT DISCHARGED.  Engagement is NOT established for Q41.
+  The six statements DO NOT PROMOTE on this evidence.
+
+  And the round-32 reading that this test was raised against is REFUTED, not merely
+  unsupported: §7.47 (f) 2 records Q41's weakest joint as "the AH1 neighbourhood,
+  arrived at INDEPENDENTLY".  The brief names that joint itself, in bold, and calls it
+  "the joint we most want scrutinised".  That sentence in §7.47 must be corrected.
+
+  Q42 is UNAFFECTED and its discharge stands: the same audit returns NOT-DETERMINED on
+  Lemma C1-H, which the brief nowhere prints.

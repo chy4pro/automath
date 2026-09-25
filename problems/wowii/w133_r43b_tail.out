@@ -1,0 +1,128 @@
+WOWII-133 round 43 slice 2 -- the cover on the new CASE A instances, and n
+interpreter: system python3 3.9.6 (pure stdlib)
+
+==============================================================================
+PART A -- (TAIL-2) ON EVERY CONDITION-4 VERTEX OF THE NEW CASE A INSTANCES
+==============================================================================
+
+  PREDICTION, REGISTERED BEFORE THE RUN: the ecc(w)+3 anchored induced path will be BUILT on
+  every condition-4 vertex of W43a and W43b.  These hosts have girth >= 5 and 420 vertices, so
+  long induced paths should be abundant; a failure would be the first CASE A candidate for a
+  (TAIL-2) shortfall and would be reported as a FAILURE TO BUILD, not as a shortfall.
+
+  W43a  n=420 rad=5 diam=6 |Ctr|=1 condition-4 vertices=128
+    ecc(w)+3 anchored induced path BUILT and checker-verified on 128 of 128
+  W43b  n=420 rad=5 diam=6 |Ctr|=8 condition-4 vertices=1
+    ecc(w)+3 anchored induced path BUILT and checker-verified on 129 of 129
+
+  TOTAL: 129 condition-4 vertices tested, 129 covered by (TAIL-2), 0 not built.
+  (TAIL-2) STILL COVERS EVERY INSTANCE THIS LINE HOLDS ABOVE rad = 2.
+
+==============================================================================
+PART B -- HOW SMALL CAN AN INSTANCE OF CONDITIONS 1-5 BE?
+==============================================================================
+
+  FIRST, A PROOF THAT BOUNDS THE SEARCH.  a(v) <= deg(v) always, so l(G) <= mean degree.  A
+  sampler with degree cap 4 therefore has l <= 4 and CANNOT satisfy condition 5 (l > 4) --
+  slice 1's cap-4 rows printing l = 4.0000 exactly are that identity, not a coincidence.  So
+  cap >= 5 is FORCED, and the question is how few vertices a cap-5 host needs to still have
+  rad >= 5.
+
+  PREDICTION, REGISTERED BEFORE THE RUN: an instance with n < 420 exists; NO prediction on how
+  much smaller.  (Slice 1 only sampled n in {120,200,300,420,560} at three seeds each, so the
+  minimum it reported is an artefact of that grid, and this part says so before running.)
+
+       n   sd         l   rad   diam   |Ctr|   cond4
+     180    3  4.977778     5      6     174       0
+     180    4  4.988889     5      6     177       0
+     180   11  4.988889     5      6     178       0
+     220    1  4.981818     5      6     216       0
+     220    2  4.990909     5      6     216       0
+     220    3  4.981818     5      6     216       0
+     220    5  4.990909     5      6     218       0
+     220    7  4.990909     5      6     213       0
+     220    8  4.990909     5      6     218       0
+     220    9  4.990909     5      6     214       0
+     220   12  4.990909     5      6     218       0
+     220   13  5.000000     5      6     210       0
+     260    1  5.000000     5      6     245       0
+     260    2  4.992308     5      6     228       0
+     260    3  4.992308     5      6     225       0
+     260    4  5.000000     5      6     234       0
+     260    5  4.992308     5      6     219       0
+     260    6  5.000000     5      6     245       0
+     260    7  4.992308     5      6     240       0
+     260    8  5.000000     5      6     235       0
+     260    9  4.992308     5      6     229       0
+     260   10  5.000000     5      6     235       0
+     260   11  5.000000     5      6     239       0
+     260   12  4.984615     5      6     242       0
+     260   13  5.000000     5      6     244       0
+     260   14  5.000000     5      6     220       0
+     300    1  4.993333     5      6     210       0
+     300    2  4.986667     5      6     192       0
+     300    3  5.000000     5      6     199       0
+     300    4  4.993333     5      6     184       0
+     300    5  5.000000     5      6     186       0
+     300    6  4.986667     5      6     186       0
+     300    7  4.993333     5      6     193       0
+     300    8  4.993333     5      6     194       0
+     300    9  4.993333     5      6     209       0
+     300   10  4.993333     5      6     217       0
+     300   11  4.993333     5      6     181       0
+     300   12  4.993333     5      6     209       0
+     300   13  5.000000     5      6     202       0
+     300   14  4.993333     5      6     202       0
+     340    1  4.994118     5      6      96       0
+     340    2  4.994118     5      6     113       0
+     340    3  4.994118     5      6     124       0
+     340    4  5.000000     5      6     135       0
+     340    5  5.000000     5      6     131       0
+     340    6  4.994118     5      6     134       0
+     340    7  4.988235     5      6     114       0
+     340    8  5.000000     5      6     108       0
+     340    9  4.994118     5      6     108       0
+     340   10  4.982353     5      6     106       0
+     340   11  5.000000     5      6     119       0
+     340   12  4.994118     5      6     133       0
+     340   13  4.988235     5      6     119       0
+     340   14  4.988235     5      6     114       0
+     380    1  5.000000     5      6      34       0
+     380    2  4.994737     5      6      40       0
+     380    3  5.000000     5      6      65       0
+     380    4  5.000000     5      6      58       0
+     380    5  5.000000     5      6      40       0
+     380    6  4.994737     5      6      47       0
+     380    7  5.000000     5      6      39       0
+     380    8  5.000000     5      6      60       0
+     380    9  4.994737     5      6      55       0
+     380   10  5.000000     5      6      44       0
+     380   11  5.000000     5      6      51       0
+     380   12  5.000000     5      6      44       0
+     380   13  4.989474     5      6      42       0
+     380   14  5.000000     5      6      42       0
+     420    1  5.000000     5      6       6       2
+     420    2  4.995238     5      6       8       0
+     420    3  5.000000     5      6      13       0
+     420    4  5.000000     5      6      17       0
+     420    5  4.990476     5      6       7       0
+     420    6  4.995238     5      6       5       4
+     420    7  4.995238     5      6       5       1
+     420    8  4.995238     5      6       6       1
+     420    9  5.000000     5      6      10       0
+     420   10  4.995238     5      6      10       0
+     420   11  5.000000     5      6       4       5
+     420   12  4.995238     5      6       7       1
+     420   13  5.000000     5      6      12       0
+     420   14  4.995238     5      6      10       0
+
+  THE POPULATION (rule 90): cap-5 hosts in class (C4-free, mu>=2, l>4, rad>=5): 98 ;
+  ... of those ROUND (CASE A hosts): 82 ; ... carrying condition 4: 6
+
+  SMALLEST INSTANCE ON THIS GRID: SP5(420,1)  n=420 |E|=1050 mu=5 l=5.000000 rad=5 diam=6 |Ctr|=6 w=12
+  written to problems/wowii/w133_r43_W43c.txt -- NOT certified by this file;
+  the standalone `w133_r43_verify_W43.py` is what certifies it (rule 105).
+
+==============================================================================
+CHECKS 9   FAILS 0   elapsed 3.7s
+==============================================================================

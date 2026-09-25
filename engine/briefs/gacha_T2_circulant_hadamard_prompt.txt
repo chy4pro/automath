@@ -1,0 +1,30 @@
+Research problem. Work from first principles; do NOT search the web; show complete
+reasoning.
+
+Call an n x n matrix H CIRCULANT if each row is the cyclic right-shift of the row above
+it, and HADAMARD if every entry is +1 or -1 and H * H^T = n * I. Verified example: the
+4 x 4 circulant matrix with first row (-1, 1, 1, 1) is Hadamard.
+
+Statement (S): no circulant Hadamard matrix exists for any n > 4.
+
+Attempt BOTH directions, then commit to the more promising:
+(a) Prove (S), or prove it for clean infinite families of n with complete arguments
+    (congruence classes, prime-power patterns, whatever you can actually close).
+(b) Construct a counterexample: give n and the first row explicitly as a +-1 vector.
+    It will be checked mechanically; a row that fails H H^T = nI counts as no answer.
+
+Suggested tools to derive from scratch (derive, do not assume): translate the condition
+into the group ring Z[Z_n] or into character sums — writing the first row's support as a
+subset D of Z_n, relate (S) to an equation for |D| and the autocorrelations of D; then
+number-theoretic constraints (squares, valuations at 2, algebraic integers/roots of
+unity) on when solutions can exist.
+
+Value order for me:
+ 1. complete proofs for restricted n (specific congruence families), fully written;
+ 2. from-scratch structural constraints on any counterexample (size of D, n a perfect
+    square times a constant, field/multiplier obstructions) with proofs;
+ 3. an explicit candidate first row for mechanical checking;
+ 4. a precise finite reduction for a fixed n (what finite computation would settle n).
+
+End with PROVED (full proofs) vs CONJECTURED (labelled). Any explicit vectors in
+copy-pasteable form.

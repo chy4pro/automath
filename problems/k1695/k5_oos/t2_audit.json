@@ -1,0 +1,1509 @@
+{
+  "aggregate": {
+    "q=3:all_distinct": {
+      "FOUND": 29,
+      "NONE": 0
+    },
+    "q=3:one_changed": {
+      "FOUND": 435,
+      "NONE": 0
+    },
+    "q=3:ones": {
+      "FOUND": 404,
+      "NONE": 31
+    },
+    "q=4:all_distinct": {
+      "FOUND": 57,
+      "NONE": 0
+    },
+    "q=4:one_changed": {
+      "FOUND": 435,
+      "NONE": 0
+    },
+    "q=4:ones": {
+      "FOUND": 410,
+      "NONE": 25
+    },
+    "q=5:all_distinct": {
+      "FOUND": 84,
+      "NONE": 0
+    },
+    "q=5:one_changed": {
+      "FOUND": 435,
+      "NONE": 0
+    },
+    "q=5:ones": {
+      "FOUND": 403,
+      "NONE": 32
+    },
+    "q=7:all_distinct": {
+      "FOUND": 135,
+      "NONE": 0
+    },
+    "q=7:one_changed": {
+      "FOUND": 435,
+      "NONE": 0
+    },
+    "q=7:ones": {
+      "FOUND": 402,
+      "NONE": 33
+    },
+    "q=8:all_distinct": {
+      "FOUND": 159,
+      "NONE": 0
+    },
+    "q=8:one_changed": {
+      "FOUND": 435,
+      "NONE": 0
+    },
+    "q=8:ones": {
+      "FOUND": 410,
+      "NONE": 25
+    },
+    "q=9:all_distinct": {
+      "FOUND": 182,
+      "NONE": 0
+    },
+    "q=9:one_changed": {
+      "FOUND": 435,
+      "NONE": 0
+    },
+    "q=9:ones": {
+      "FOUND": 404,
+      "NONE": 31
+    }
+  },
+  "csv": "k5_gfq_table.csv",
+  "disagreements": [],
+  "found": 5689,
+  "found_check": {
+    "checked": 1000,
+    "requested": "1000",
+    "seed": 1695
+  },
+  "none": 177,
+  "none_cells": [
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 2,
+      "n": 2,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 3,
+      "k": 2,
+      "n": 4,
+      "q": 3,
+      "reported_population": 3
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 4,
+      "n": 4,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 5,
+      "n": 5,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 6,
+      "n": 6,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 7,
+      "n": 7,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 7,
+      "k": 2,
+      "n": 8,
+      "q": 3,
+      "reported_population": 7
+    },
+    {
+      "family": "ones",
+      "independent_population": 21,
+      "k": 6,
+      "n": 8,
+      "q": 3,
+      "reported_population": 21
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 8,
+      "n": 8,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 10,
+      "n": 10,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 11,
+      "n": 11,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 12,
+      "n": 12,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 13,
+      "n": 13,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 14,
+      "n": 14,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 15,
+      "n": 15,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 15,
+      "k": 2,
+      "n": 16,
+      "q": 3,
+      "reported_population": 15
+    },
+    {
+      "family": "ones",
+      "independent_population": 105,
+      "k": 14,
+      "n": 16,
+      "q": 3,
+      "reported_population": 105
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 16,
+      "n": 16,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 17,
+      "n": 17,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 18,
+      "n": 18,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 19,
+      "n": 19,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 20,
+      "n": 20,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 21,
+      "n": 21,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 22,
+      "n": 22,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 23,
+      "n": 23,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 24,
+      "n": 24,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 25,
+      "n": 25,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 26,
+      "n": 26,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 28,
+      "n": 28,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 29,
+      "n": 29,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 30,
+      "n": 30,
+      "q": 3,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 3,
+      "n": 3,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 5,
+      "n": 5,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 6,
+      "n": 6,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 7,
+      "n": 7,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 9,
+      "n": 9,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 10,
+      "n": 10,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 11,
+      "n": 11,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 12,
+      "n": 12,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 13,
+      "n": 13,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 14,
+      "n": 14,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 15,
+      "n": 15,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 17,
+      "n": 17,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 18,
+      "n": 18,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 19,
+      "n": 19,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 20,
+      "n": 20,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 21,
+      "n": 21,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 22,
+      "n": 22,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 23,
+      "n": 23,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 24,
+      "n": 24,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 25,
+      "n": 25,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 26,
+      "n": 26,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 27,
+      "n": 27,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 28,
+      "n": 28,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 29,
+      "n": 29,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 30,
+      "n": 30,
+      "q": 4,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 2,
+      "n": 2,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 3,
+      "n": 3,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 3,
+      "k": 2,
+      "n": 4,
+      "q": 5,
+      "reported_population": 3
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 4,
+      "n": 4,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 6,
+      "n": 6,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 7,
+      "n": 7,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 7,
+      "k": 2,
+      "n": 8,
+      "q": 5,
+      "reported_population": 7
+    },
+    {
+      "family": "ones",
+      "independent_population": 21,
+      "k": 6,
+      "n": 8,
+      "q": 5,
+      "reported_population": 21
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 8,
+      "n": 8,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 9,
+      "n": 9,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 10,
+      "n": 10,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 11,
+      "n": 11,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 12,
+      "n": 12,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 13,
+      "n": 13,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 14,
+      "n": 14,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 15,
+      "n": 15,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 15,
+      "k": 2,
+      "n": 16,
+      "q": 5,
+      "reported_population": 15
+    },
+    {
+      "family": "ones",
+      "independent_population": 105,
+      "k": 14,
+      "n": 16,
+      "q": 5,
+      "reported_population": 105
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 16,
+      "n": 16,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 17,
+      "n": 17,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 18,
+      "n": 18,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 19,
+      "n": 19,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 20,
+      "n": 20,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 21,
+      "n": 21,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 22,
+      "n": 22,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 23,
+      "n": 23,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 24,
+      "n": 24,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 26,
+      "n": 26,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 27,
+      "n": 27,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 28,
+      "n": 28,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 29,
+      "n": 29,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 30,
+      "n": 30,
+      "q": 5,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 2,
+      "n": 2,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 3,
+      "n": 3,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 3,
+      "k": 2,
+      "n": 4,
+      "q": 7,
+      "reported_population": 3
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 4,
+      "n": 4,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 5,
+      "n": 5,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 6,
+      "n": 6,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 7,
+      "k": 2,
+      "n": 8,
+      "q": 7,
+      "reported_population": 7
+    },
+    {
+      "family": "ones",
+      "independent_population": 21,
+      "k": 6,
+      "n": 8,
+      "q": 7,
+      "reported_population": 21
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 8,
+      "n": 8,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 9,
+      "n": 9,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 10,
+      "n": 10,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 11,
+      "n": 11,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 12,
+      "n": 12,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 13,
+      "n": 13,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 14,
+      "n": 14,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 15,
+      "n": 15,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 15,
+      "k": 2,
+      "n": 16,
+      "q": 7,
+      "reported_population": 15
+    },
+    {
+      "family": "ones",
+      "independent_population": 105,
+      "k": 14,
+      "n": 16,
+      "q": 7,
+      "reported_population": 105
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 16,
+      "n": 16,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 17,
+      "n": 17,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 18,
+      "n": 18,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 19,
+      "n": 19,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 20,
+      "n": 20,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 21,
+      "n": 21,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 22,
+      "n": 22,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 23,
+      "n": 23,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 24,
+      "n": 24,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 25,
+      "n": 25,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 26,
+      "n": 26,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 27,
+      "n": 27,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 28,
+      "n": 28,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 29,
+      "n": 29,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 30,
+      "n": 30,
+      "q": 7,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 3,
+      "n": 3,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 5,
+      "n": 5,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 6,
+      "n": 6,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 7,
+      "n": 7,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 9,
+      "n": 9,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 10,
+      "n": 10,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 11,
+      "n": 11,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 12,
+      "n": 12,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 13,
+      "n": 13,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 14,
+      "n": 14,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 15,
+      "n": 15,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 17,
+      "n": 17,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 18,
+      "n": 18,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 19,
+      "n": 19,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 20,
+      "n": 20,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 21,
+      "n": 21,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 22,
+      "n": 22,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 23,
+      "n": 23,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 24,
+      "n": 24,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 25,
+      "n": 25,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 26,
+      "n": 26,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 27,
+      "n": 27,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 28,
+      "n": 28,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 29,
+      "n": 29,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 30,
+      "n": 30,
+      "q": 8,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 2,
+      "n": 2,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 3,
+      "k": 2,
+      "n": 4,
+      "q": 9,
+      "reported_population": 3
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 4,
+      "n": 4,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 5,
+      "n": 5,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 6,
+      "n": 6,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 7,
+      "n": 7,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 7,
+      "k": 2,
+      "n": 8,
+      "q": 9,
+      "reported_population": 7
+    },
+    {
+      "family": "ones",
+      "independent_population": 21,
+      "k": 6,
+      "n": 8,
+      "q": 9,
+      "reported_population": 21
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 8,
+      "n": 8,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 10,
+      "n": 10,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 11,
+      "n": 11,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 12,
+      "n": 12,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 13,
+      "n": 13,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 14,
+      "n": 14,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 15,
+      "n": 15,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 15,
+      "k": 2,
+      "n": 16,
+      "q": 9,
+      "reported_population": 15
+    },
+    {
+      "family": "ones",
+      "independent_population": 105,
+      "k": 14,
+      "n": 16,
+      "q": 9,
+      "reported_population": 105
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 16,
+      "n": 16,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 17,
+      "n": 17,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 18,
+      "n": 18,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 19,
+      "n": 19,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 20,
+      "n": 20,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 21,
+      "n": 21,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 22,
+      "n": 22,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 23,
+      "n": 23,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 24,
+      "n": 24,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 25,
+      "n": 25,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 26,
+      "n": 26,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 28,
+      "n": 28,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 29,
+      "n": 29,
+      "q": 9,
+      "reported_population": 1
+    },
+    {
+      "family": "ones",
+      "independent_population": 1,
+      "k": 30,
+      "n": 30,
+      "q": 9,
+      "reported_population": 1
+    }
+  ],
+  "none_check": {
+    "all_exhaustive": true,
+    "checked": 177
+  },
+  "rows": 5866,
+  "verdict": "PASS"
+}

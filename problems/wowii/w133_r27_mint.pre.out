@@ -1,0 +1,29 @@
+draft length now: 5203 lines; PINNED BOUNDARY = 5202
+
+1. ADDRESS POPULATION at or before the pinned boundary, enumerated in full
+   raw  : 61 distinct addresses, G0 .. G60
+   NFKC : 61 distinct addresses
+   full population: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+   HOLES in G0..G60: []
+  [OK ] population is CONTIGUOUS G0..G60 (0 holes)                     got=[] want=[]
+  [OK ] distinct addresses                                             got=61 want=61
+  [OK ] raw and NFKC populations agree (no encoding-invisible address) got=True want=True
+  [OK ] G61 is unoccupied at the boundary                              got=False want=False
+
+2. G60 pre-boundary occurrences, printed line by line and classified
+   line 5005  [prose] ## 37.1 The statement — **UNREGISTERED, carrying its proof; `G60` left free**
+   line 5131  [prose] address**, neither a registration — **0 registration-shaped occurrences**. `G60` is unoccupied,
+  [OK ] G60 occurrences at or before the boundary                      got=2 want=2
+  [OK ] of which REGISTRATION-SHAPED                                   got=0 want=0
+
+   LIVENESS of the registration classifier -- fired on G59, whose
+   registration line exists and where the answer MUST be REGISTRATION:
+      line 5116: > **`G59` (Lemma — elementary + finite enumeration; discharging).** Under (D3-C6)'s hypotheses,
+  [OK ] classifier FIRES on G59's registration (positive control)      got=True want=True
+
+3. THE CONDITION-IN-STATEMENT GUARD (planner ruling, cert_w133_r26 section 5)
+   G60 registration line found at draft line: None
+  [FAIL] a G60 REGISTRATION line exists after the boundary              got=False want=True
+
+checks: 8, failures: 1
+   FAIL a G60 REGISTRATION line exists after the boundary got=False want=True

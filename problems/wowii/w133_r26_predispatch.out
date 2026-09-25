@@ -1,0 +1,78 @@
+====================================================================================
+PART A -- POPULATIONS ENUMERATED AND ASSERTED COMPLETE (RULING CP)
+====================================================================================
+  [OK] key row population is CONTIGUOUS V1..V9, 9 distinct, 0 holes     ids=V1,V2,V3,V4,V5,V6,V7,V8,V9
+  [OK] every key row appears in the brief's tier table exactly once     counts=[1, 1, 1, 1, 1, 1, 1, 1, 1]
+  [OK] every key row's TIER is disclosed and matches the key            
+  [OK] held-out host population is complete: K1,K2,K3,K4 all present, 4 distinct, 0 holes hosts=['K1', 'K2', 'K3', 'K4']
+  [OK] K1 edge list printed EXACTLY ONCE in the brief                   count=1
+  [OK] K1 is never NAMED outside PART 0 (no mathematical role)          occurrences after PART 1 = 0
+  [OK] K2 edge list printed EXACTLY ONCE in the brief                   count=1
+  [OK] K2 is never NAMED outside PART 0 (no mathematical role)          occurrences after PART 1 = 0
+  [OK] K3 edge list printed EXACTLY ONCE in the brief                   count=1
+  [OK] K3 is never NAMED outside PART 0 (no mathematical role)          occurrences after PART 1 = 0
+  [OK] K4 edge list printed EXACTLY ONCE in the brief                   count=1
+  [OK] K4 is never NAMED outside PART 0 (no mathematical role)          occurrences after PART 1 = 0
+  [OK] import-site population ENUMERATED: 5 IMPORT blocks, 0 holes      found=5
+  [OK] IMPORT 1 carries its GUARD at the import site                    
+  [OK] IMPORT 1 restates its HYPOTHESES in place                        
+  [OK] IMPORT 2 carries its GUARD at the import site                    
+  [OK] IMPORT 2 restates its HYPOTHESES in place                        
+  [OK] IMPORT 3 carries its GUARD at the import site                    
+  [OK] IMPORT 3 restates its HYPOTHESES in place                        
+  [OK] IMPORT 4 carries its GUARD at the import site                    
+  [OK] IMPORT 4 restates its HYPOTHESES in place                        
+  [OK] IMPORT 5 carries its GUARD at the import site                    
+  [OK] IMPORT 5 restates its HYPOTHESES in place                        
+  [OK] the guard that CANNOT move is declared in place, not hidden      
+
+====================================================================================
+PART B -- DERIVABILITY LEAK CHECK (not occurrence).  For each row: what does the brief
+          CONSTRAIN the answer to?  A row the brief pins to ONE value is STRUCK.
+====================================================================================
+  [OK] every key row has a derivability audit entry, 0 holes            audited=['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9']
+  [OK] V1  n_consistent=999  edge count of a graph the brief makes no claim about
+  [OK] V2  n_consistent=5  a degree; the brief's G58 bounds W_1 degrees by 4 but K1 carries no class claim
+  [OK] V3  n_consistent=5  which of FOUR printed graphs has a C4; the decoy makes this un-guessable (a reviewer who assumes all four are in hypothesis answers NONE and is wrong)
+  [OK] V4  n_consistent=999  a 4-tuple census; |W_cons|<=3 and |W_anti|<=3 are stated but pin nothing
+  [OK] V5  n_consistent=4  an a-value; G58's a<=3 is stated for class members, K1 is not claimed to be one
+  [OK] V6  n_consistent=999  longest induced path of the DECOY, which is out of class, so no stated bound applies
+  [OK] V7  n_consistent=999  (T_Z, sum_Z charge); the brief states the G55 identity RELATING them, so a reviewer who computes one can get the other -- that is doing the work, not a leak
+  [OK] V8  n_consistent=999  (sum charge, n_3); (Z1)/(Z6) bound both but pin neither
+  [OK] V9  n_consistent=999  (T_Z, sum charge) on a third host; same status as V7
+  [OK] no row is pinned to a single value by the brief (0 struck)       struck=[]
+
+  EVIDENCE ONLY (RULING CP: these are probes, NOT the check) -- literal answer strings,
+  raw and NFKC-normalised counts both shown.  A hit is not automatically a leak: these
+  are small integers and the brief is 36 KB of mathematics.
+    V1  answer=14                         raw=2    normalised=2   
+    V2  answer=3                          raw=238  normalised=238 
+    V3  answer=('K4', (0, 1, 2, 3))       raw=0    normalised=0   
+    V4  answer=(5, 0, 0, 0)               raw=0    normalised=0   
+    V5  answer=2                          raw=191  normalised=191 
+    V6  answer=6                          raw=80   normalised=90  
+    V7  answer=(2, -3)                    raw=0    normalised=0   
+    V8  answer=(-7, 0)                    raw=0    normalised=0   
+    V9  answer=(3, -10)                   raw=0    normalised=0   
+
+====================================================================================
+PART C -- BRIEF INTEGRITY
+====================================================================================
+  [OK] §35 / G58 is shipped VERBATIM from the draft (byte-for-byte)     8942 bytes
+  [OK] §36 / G59 is shipped VERBATIM from the draft (byte-for-byte)     7147 bytes
+  [OK] §37 is shipped VERBATIM from the draft (byte-for-byte)           6030 bytes
+  [OK] no API key material anywhere in the brief                        
+  [OK] no private email in the brief                                    
+  [OK] escape hatch present on EVERY tier (CANNOT COMPUTE accepted, Tier H included) 
+  [OK] partial-answer escape hatch present ((P2)/(P3) NOT ATTEMPTED)    
+  [OK] LOW FAN-IN: exactly one PRIMARY question, two explicitly ranked below it 
+  [OK] a located GAP is declared the SUCCESS case, in the brief         
+  [OK] the three BW controls are shipped, all three, in the author's own words 
+  [OK] pre-stated refusals shipped (n-bound refusal; W_1=∅ refusal; counterexample grading) 
+  [OK] deliverable word cap stated                                      
+  [OK] held-out table is declared TEST-ONLY with no mathematical role   
+  [OK] the decoy is disclosed as a decoy WITHOUT naming which graph it is 
+  [OK] brief is self-contained: no file path a reviewer would need to open 
+
+CHECKS RUN: 41   FAILURES: 0
+VERDICT: DISPATCH CLEARED

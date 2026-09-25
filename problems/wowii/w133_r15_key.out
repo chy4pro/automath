@@ -1,0 +1,78 @@
+==============================================================================
+w133 r15 -- held-out KEY for the second cross-family S3 round on section 24
+==============================================================================
+
+[A] PG(2,5) incidence and W1, rebuilt from GF(5) upward
+  PASS  PG(2,5) incidence: n = 62, 6-regular
+  PASS  PG(2,5) incidence is C4-free (asserted BEFORE any statistic)
+  PASS  W1 is C4-free (asserted BEFORE any statistic)
+  PASS  W1 connected
+  PASS  W1 reproduces round-14's verified profile   [n=129 sum_a=756 hist={2: 5, 6: 122, 7: 2}]
+  PASS  W1 has 0 triangles
+
+[B] K1 -- the two-copy chain with L = 9 internal path vertices
+  PASS  L=9 chain is C4-free (asserted BEFORE any statistic)
+  PASS  L=9 chain connected
+  PASS  K1 n = 133   [got 133]
+  PASS  K1 sum_v a(v) = 764   [got 764]
+  PASS  K1 a-histogram {2:9, 6:122, 7:2}   [{2: 9, 6: 122, 7: 2}]
+      KEY K1 :  n = 133   sum_a = 764   l = 764/133 = 5.7444
+
+[C] K2 -- W1 with three leaves attached
+  PASS  W1+3 leaves is C4-free (asserted BEFORE any statistic)
+  PASS  K2 n = 132   [got 132]
+  PASS  K2 sum_v a(v) = 762   [got 762]
+      KEY K2 :  n = 132   sum_a = 762   l = 127/22 = 5.7727
+  PASS  one leaf: sum_a = 758 at ALL 129 sites (site-independent)   [{758}]
+  PASS  three leaves: (n, sum_a) = (132, 762) for every tested site multiset, INCLUDING all three at the same vertex and two at adjacent vertices   [{(132, 762)}]
+
+[D] K3 -- W2 = Cay(PSL(2,11), S): distance distribution (NON-hand-derivable)
+  PASS  W2: |PSL(2,11)| = 660, |S| = 6   [n=660 |S|=6]
+  PASS  W2 6-regular
+  PASS  W2 connected
+  PASS  W2 is C4-free (asserted BEFORE any statistic)
+  PASS  W2 triangle-free   [triangles=0]
+  PASS  |E(W2)| = 1980   [got 1980]
+  PASS  ecc = 5 from vertex 0   [got 5]
+  PASS  distance profile identical from vertices 1, 17, 400 (vertex-transitive)
+  PASS  profile sums to 660
+      KEY K3 :  n0=1  n1=6  n2=30  n3=135  n4=346  n5=142
+
+[E] K4 -- bespoke C4-free graph Y (circulant C13(1,k), smallest C4-free k)
+  PASS  Y is C4-free (asserted BEFORE any statistic)
+  PASS  Y connected
+      Y edge list (21 edges): 0-1 0-2 0-5 0-6 0-9 0-12 1-2 2-3 3-4 3-7 3-8 3-11 4-5 4-11 5-6 6-7 7-8 8-9 9-10 10-11 11-12
+      KEY K4 :  degrees = [2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 5, 6]
+      KEY K4 :  a-vector = [4, 1, 2, 3, 2, 2, 2, 2, 2, 3, 2, 3, 2]   sum_a = 30   l = 30/13   mu = 1   rad = 2   diam = 3
+      KEY K4 :  path(Y) = 8 vertices (EXACT, subset enumeration over 2^13)
+  PASS  a longest induced path of Y is exhibited   [witness [5, 6, 7, 8, 9, 10, 11, 12]]
+  PASS  and Y has NO induced path on 9 vertices (two-sided)
+      KEY K4 :  witness = [5, 6, 7, 8, 9, 10, 11, 12]
+
+[F] K5 -- PG(2,3) incidence: two-sided induced-path certification
+  PASS  PG(2,3) incidence: n = 26, 4-regular
+  PASS  PG(2,3) incidence is C4-free (asserted BEFORE any statistic)
+      induced P7  : EXISTS   witness [0, 14, 4, 13, 1, 18, 9]
+      induced P8  : EXISTS   witness [0, 14, 4, 13, 1, 18, 9, 22]
+      induced P9  : EXISTS   witness [0, 14, 4, 13, 1, 18, 9, 22, 2]
+      induced P10 : EXISTS   witness [0, 14, 4, 13, 1, 18, 9, 22, 2, 24]
+      induced P11 : EXISTS   witness [0, 14, 4, 13, 1, 18, 9, 22, 2, 24, 11]
+      induced P12 : DOES NOT EXIST (search completed, no cap hit)
+  PASS  K5 two-sided: path(PG(2,3) incidence) = 11 vertices
+      KEY K5 :  path(PG(2,3) incidence) = 11 vertices, witness [0, 14, 4, 13, 1, 18, 9, 22, 2, 24, 11]
+
+[G] owner item -- 'a(u3) >= 3 <=> escapes Case 2': the CONVERSE is refuted
+  PASS  Z is C4-free (asserted BEFORE any statistic)
+  PASS  Z connected
+  PASS  0-1-2-3 is a geodesic of length 3
+  PASS  a(u0) = 3   [got 3]
+  PASS  a(x) = 4 -- x = 5 is a usable side-neighbour of u0   [got 4]
+  PASS  x is outside u1's component of G[N(u0)] (x !~ u1): x IS usable
+  PASS  a(u3) = 2 EXACTLY   [got 2]
+  PASS  y = 4 is a usable side-neighbour of u3
+  PASS  y !~ x -- the frame ESCAPES Case 2 while a(u3) = 2 < 3
+  PASS  and path(Z) = 7 >= 7, so no conflict with G37
+
+==============================================================================
+checks: 42   failures: 0   wall 2.1s
+==============================================================================

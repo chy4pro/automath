@@ -1,0 +1,64 @@
+# ============ 隐私：绝不提交 ============
+.automath_engine_keys
+.wb/
+.claude/
+.gstack/
+._*
+logs/
+**/*.credentials.json
+
+# ============ 会话与内部运营记录 ============
+engine/harvest/
+engine/out/
+cloud_archive_0904/
+orchestration/
+
+# ============ 构建产物（可重建） ============
+.lake/
+**/.lake/
+*.olean
+*.ilean
+*.trace
+.venv/
+venv*/
+**/venv_*/
+__pycache__/
+*.pyc
+
+# ============ 求解器二进制（macOS Mach-O，Linux 不可用，需重编） ============
+tools/kissat
+tools/kissat-3.1.1/
+tools/drat-trim
+tools/march_cu
+tools/breakid
+tools/E/
+tools/ladr_build/
+tools/tectonic
+
+# ============ 大体积计算转储（可重跑；且有"不私下归档"规则） ============
+*.drat
+*.lrat
+*.cnf
+*.ms
+*.gb
+problems/etp677/
+problems/etp_o5/
+**/ALL_RESULTS.txt
+**/_large_results.json
+
+# ============ 其他大文件兜底 ============
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.zst
+*.tgz
+*.zip
+
+# 2026-09-25 privacy scrub: never publish these
+engine/briefs/mining_r1/extract/
+engine/briefs/mining_r1/extract2/
+engine/gcp/
+engine/cache/
+notes/chatgpt_delete_queue.md
+notes/*dashboard-src*
+notes/*.bak*

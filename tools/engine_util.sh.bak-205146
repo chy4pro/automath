@@ -1,0 +1,31 @@
+#!/bin/sh
+# engine_util.sh -- engine utilization DIAGNOSTIC.
+#
+# ⚠️ NOT A SCORE. NOT A TARGET. There is no floor and there is no "violation".
+# User correction 2026-08-23 (inbox/directive_engine_saturation_CORRECTION.md):
+# a utilization floor "turns a KPI into a goal and invites make-work". Withdrawn.
+#
+# Idle engines are a SIGNAL TO DIAGNOSE, in this order:
+#   1. DISPATCH GAP    -- real work exists but nobody sent it  -> dispatch the WORK
+#   2. PROSPECTING GAP -- the pool is thin                      -> fix the finding line
+#   3. VERIFICATION BOTTLENECK -- Claude capacity consumed      -> say so; it is a
+#                                                                  prioritization question
+#   4. NOTHING VALUABLE TO DO -- then IDLE IS CORRECT. Zero output is fine.
+# Never dispatch filler to move this number.
+SB="$HOME/workspace/claudecode/automath-sandbox"
+[ -d "$SB/out" ] || { echo "ENGINE: sandbox out/ missing at $SB"; exit 0; }
+
+now=$(date +%s)
+inflight=$(ps axo command | grep -E "engine_call|engine_batch" | grep -v grep | wc -l | tr -d ' ')
+last=$(find "$SB/out" -type f -name "*_out.md" -exec stat -f "%m" {} \; 2>/dev/null | sort -n | tail -1)
+if [ -z "$last" ]; then idle_min="n/a"; else idle_min=$(( (now - last) / 60 )); fi
+# NOTE: `-newermt "-6H"` FAILS on this system's find (bfs): "Invalid timestamp".
+# With 2>/dev/null it returned 0 silently -- a swallowed error reported as a measurement,
+# the exact species doctrine 54 was written about, in a tool written AFTER writing 54.
+# `-mmin -360` is portable. Errors are NOT suppressed here on purpose.
+six=$(find "$SB/out" -type f -name "*_out.md" -mmin -360 | wc -l | tr -d ' ')
+pend=$(grep -c "| PENDING |" "$HOME/workspace/claudecode/automath/orchestration/ENGINE_BACKLOG.md" 2>/dev/null || echo "?")
+
+echo "ENGINE-DIAG: last6h=${six} outputs | in-flight=${inflight} | idle=${idle_min}min | real backlog items PENDING=${pend}"
+echo "ENGINE-DIAG: this is a diagnostic, not a score. If idle and PENDING>0 -> dispatch gap. If idle and PENDING=0 -> ask whether the pool is thin, whether Claude-side adjudication is the bottleneck, or whether there is genuinely nothing worth sending (in which case idle is correct)."
+exit 0

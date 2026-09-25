@@ -1,0 +1,26 @@
+note: Running TeX ...
+warning: main.tex:168: Overfull \hbox (3.11984pt too wide) in paragraph at lines 168--168
+warning: main.tex:168: Overfull \hbox (3.11984pt too wide) in paragraph at lines 168--168
+warning: body:2078: Overfull \hbox (20.86772pt too wide) in paragraph at lines 2076--2078
+warning: body:2295: Overfull \hbox (2.5239pt too wide) in paragraph at lines 2287--2295
+warning: body:2303: Overfull \hbox (54.2625pt too wide) in paragraph at lines 2296--2303
+warning: body:2599: Overfull \hbox (2.8034pt too wide) in paragraph at lines 2589--2599
+note: Rerunning TeX because "main.toc" changed ...
+warning: main.tex:168: Overfull \hbox (3.11984pt too wide) in paragraph at lines 168--168
+warning: main.tex:168: Overfull \hbox (3.11984pt too wide) in paragraph at lines 168--168
+warning: body:2078: Overfull \hbox (20.86772pt too wide) in paragraph at lines 2076--2078
+warning: body:2295: Overfull \hbox (2.5239pt too wide) in paragraph at lines 2287--2295
+warning: body:2303: Overfull \hbox (54.2625pt too wide) in paragraph at lines 2296--2303
+warning: body:2599: Overfull \hbox (2.8034pt too wide) in paragraph at lines 2589--2599
+note: Rerunning TeX because "main.toc" changed ...
+warning: main.tex:168: Overfull \hbox (3.11984pt too wide) in paragraph at lines 168--168
+warning: main.tex:168: Overfull \hbox (3.11984pt too wide) in paragraph at lines 168--168
+warning: body:2078: Overfull \hbox (20.86772pt too wide) in paragraph at lines 2076--2078
+warning: body:2295: Overfull \hbox (2.5239pt too wide) in paragraph at lines 2287--2295
+warning: body:2303: Overfull \hbox (54.2625pt too wide) in paragraph at lines 2296--2303
+warning: body:2599: Overfull \hbox (2.8034pt too wide) in paragraph at lines 2589--2599
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `main.log` (14.703125 KiB)
+note: Writing `main.pdf` (352.513671875 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)

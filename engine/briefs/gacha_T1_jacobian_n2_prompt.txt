@@ -1,0 +1,39 @@
+Research problem. Work from first principles. Do NOT search the web. Before attacking,
+spend a moment recalling from memory every technique you know that is relevant to
+polynomial maps of the affine plane, then use the best of them; show complete reasoning.
+
+Let f, g be polynomials in C[x, y] and suppose the determinant
+
+    J = (df/dx)(dg/dy) - (df/dy)(dg/dx)
+
+is a nonzero constant. Let F(x, y) = (f(x, y), g(x, y)) : C^2 -> C^2.
+
+Statement (S): every such F is bijective, with an inverse that is again polynomial.
+
+Attempt BOTH directions, then commit to the one you find more promising:
+(a) Prove (S).
+(b) Construct an explicit pair (f, g) with J a nonzero constant for which F is NOT
+    injective. Give the two polynomials in full, plus two distinct points with the same
+    image, in exact arithmetic, so the failure can be checked mechanically.
+
+Constraints you may use, they are correct and they say where a counterexample must live:
+ - The analogous statement in dimension >= 3 over C is FALSE; explicit counterexamples were
+   found in 2026. The plane case is what is asked here and is not settled by them.
+ - Over a field of characteristic p the analogous statement fails for trivial reasons
+   (x -> x^p has vanishing derivative), so characteristic 0 is essential; do not answer
+   with a characteristic-p example.
+ - It suffices to treat F = identity + H with H homogeneous of a single degree d >= 2,
+   after a standard reduction; you may work in that normal form.
+
+Partial results are valuable and welcome, in this order of value to me:
+ 1. an exact degree bound: a proof of (S) for all f, g of degree <= d for some d you can
+    actually reach, with the argument written out;
+ 2. a structural obstruction: a proof that no counterexample of a named shape can exist
+    (for example: no counterexample with H homogeneous of degree 3, or none whose
+    components have coprime degrees);
+ 3. a reduction that makes the general plane case finite-checkable, with the finite check
+    stated precisely enough to be programmed.
+
+End with a clear list: PROVED (with the proofs written out) vs CONJECTURED (labelled as
+such). If you produce any explicit polynomials, state them in a form that can be copied
+into a computer algebra system verbatim.

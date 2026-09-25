@@ -1,0 +1,19 @@
+== prompts/w61_S3_GFAN_r20.md : 4 finding(s)
+   [L1 toolkit-as-xref] line 652 : > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+   [L1 toolkit-as-xref] line 801 : > *Proof.* Theorem RIG (the certified toolkit) makes the instance `GFan(τ,L,ν)` with
+   [L1 toolkit-as-xref] line 871 : > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (C-3), each with its
+   [L2 doubled-article] line 652 : > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+
+== prompts/w61_S3_GFAN_r18.md : 6 finding(s)
+   [L1 toolkit-as-xref] line 536 : > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+   [L1 toolkit-as-xref] line 685 : > *Proof.* Theorem RIG (the certified toolkit) makes the instance `GFan(τ,L,ν)` with
+   [L1 toolkit-as-xref] line 755 : > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (c-3), each with its
+   [L2 doubled-article] line 536 : > the pre-declared failure mode **L-d** of the the certified toolkit error prior (dispatch file,
+   [L3 lowercase-cref] line 755 : > `ν+1 ≤ L < λ₁` have their **own** survivors, tabulated in the certified toolkit (c-3), each with its
+   [L4 duplicate-heading] line 0 : **(C-8) appears 2 times
+
+LIVENESS (RULING S) -- the lint fires on the very artifact that motivated it:
+  r20 findings            : 4
+  toolkit-as-xref present : True
+  doubled-article present : True
+  LIVENESS: PASS -- the check can fail

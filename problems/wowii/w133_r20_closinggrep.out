@@ -1,0 +1,30 @@
+==============================================================================
+CLOSING GREP — round 20, run AFTER the ledger entry
+==============================================================================
+  PASS  OPS-9: main.tex NOT touched this round (mtime predates the ledger write)   [21:47 22-Aug]
+  PASS  no API key pattern in w133_state.md
+  PASS  no API key pattern in wowii133_draft.md
+  PASS  no API key pattern in w133_r20_P7G32.md
+  PASS  muse engine text NOT copied into the repo (323 files scanned)   [[]]
+  PASS  ox-alpha engine text NOT copied into the repo (323 files scanned)   [[]]
+  PASS  G54's entry contains its own novelty verdict 'FOLKLORE-STRENGTH'
+  PASS  G54's entry states it is not an S1 candidate
+  PASS  G55's entry contains its own novelty verdict 'DEFINITIONAL'
+  PASS  G55's entry states it is not an S1 candidate
+  PASS  G56's entry contains its own novelty verdict 'TEXTBOOK'
+  PASS  G56's entry states it is not an S1 candidate
+  PASS  round 20 states NO pocket closed
+  PASS  round 20 states NO milestone
+  PASS  round 20 states nothing adopted from either engine
+  PASS  GATE A HAND half reported separately (task book §1)
+  PASS  GATE A NON-HAND half reported separately (task book §1)
+  PASS  both returns finish-reason-verified from the RAW file, not the log
+  PASS  RULING AG: the reasoning trace is cited as an ops datum and NOT graded
+  PASS  exactly ONE muse-spark output for round 20 (RULING AI: one call)   [1]
+  PASS  the F-vs-G prefix DEVIATION is reported to the planner, not buried
+  PASS  the B4 drafting defect is reported AND the refusal still executed
+  PASS  the owner's own prose-before-numbers error is on the ledger
+  PASS  RULING W still honoured: G49 cited by name+location, data absent from the new brief
+
+CHECKS: 24
+FAILURES: 0

@@ -1,0 +1,4 @@
+k=3 done=True I(k)=0 checked=1 elapsed=0.0s
+k=4 done=True I(k)=0 checked=17 elapsed=0.0s
+k=5 done=True I(k)=1 checked=588 elapsed=0.6s
+k=6 done=False I(k)=4 checked=35207 elapsed=1500.2s

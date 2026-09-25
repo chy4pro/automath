@@ -1,0 +1,112 @@
+==============================================================================
+verify_r4.py  --  ROUND 4 independent re-verification
+==============================================================================
+
+V1  rebuilding A_7 with the OPPOSITE multiplication convention
+    |A_7| = 2520
+    9 conjugacy classes; (cycle type, size): [((1, 1, 1, 1, 1, 1, 1), 1), ((2, 2, 1, 1, 1), 105), ((3, 3, 1), 280), ((3, 1, 1, 1, 1), 70), ((4, 2, 1), 630), ((5, 1, 1), 504), ((3, 2, 2), 210), ((7,), 360), ((7,), 360)]
+    class 2a has size 105, class 4a has size 630
+
+V2  number of 2-blocks of A_7 from Z(F_2 A_7) alone -- NO character table
+    class-algebra structure constants computed by group multiplication.
+    consistency  sum_m a_klm |C_m| = |C_k||C_l|  : OK for all 81 pairs
+    idempotents of Z(F_2 A_7)  (all 2^9 = 512 elements tested): 4
+    2^r = 4  =>  r = 2 PRIMITIVE central idempotents  =>  A_7 has 2 2-blocks.
+    MATCHES the builder (which used central characters mod a prime above 2).
+
+V3  the block PARTITION of Irr(A_7), by central characters mod p = (w),
+    w = (1+sqrt(-7))/2,  w^2 = w - 2,  N(w) = 2.  In Z[w], a + b w = a (mod p),
+    so the reduction is just 'a mod 2' -- no 2-adic square root.
+    verifying the typed table against brute-force class data:
+      sum chi(1)^2 = 2520  (must be 2520)
+      row orthogonality  sum_C |C| chi(C) psi(C)bar = |G| delta : OK, 81 pairs
+      column orthogonality against brute-force centraliser orders : OK, 9 columns
+    ==> the typed table IS the character table of the group just built.
+    blocks: [['chi1', 'chi6', 'chi7', 'chi8', 'chi9'], ['chi2', 'chi3', 'chi4', 'chi5']]
+    MATCHES the builder exactly.
+    GREEN control: every chi in the 4-element block vanishes on 4a: [0, 0, 0, 0]
+    ... and NOT every chi in the 5-element block does.  Control discriminates.
+    defect of the 4-element block = 3 - 1 = 2  ==>  |D| = 4
+
+V4  HeLP for |u| = 4 by INVERTING THE 4x4 VANDERMONDE over Q(i)
+    (chi(1a),chi(2a),chi(4a)) : [(1, 1, 1), (6, 2, 0), (10, -2, 0), (10, -2, 0), (14, 2, 0), (14, 2, 0), (15, -1, -1), (21, 1, -1), (35, -1, 1)]
+    2-local admissible t (ordinary + p=2 congruence)     : [-2, 0, 2]
+    global    admissible t (+ 7-modular degree 5)        : [0, 2]
+    the 7-modular degree-5 Brauer character is rebuilt WITHOUT a modular table:
+      pi = permutation character on 7 points; pi(2a) = #fixed points of
+      (12)(34) = 3, pi(4a) = #fixed points of (1234)(56) = 1;  7 == 0 mod 7 so
+      the all-ones vector lies in the sum-zero subspace and S/<1> is an honest
+      4-... 5-dimensional F_7 A_7-module with Brauer character pi - 2*1.
+      pi(2a) = 3, pi(4a) = 1  =>  phi = (7-2, 3-2, 1-2) = (5, 1, -1)
+      MATCH with the value used above.
+
+V5  A_6 -- the transfer site
+    |A_6| = 360, 7 classes, (type,size): [((1, 1, 1, 1, 1, 1), 1), ((2, 2, 1, 1), 45), ((3, 1, 1, 1), 40), ((3, 3), 40), ((4, 2), 90), ((5, 1), 72), ((5, 1), 72)]
+    exactly ONE class of order 2 (size 45) and ONE of order 4 (size 90): [((2, 2, 1, 1), 45), ((4, 2), 90)]
+    claimed (chi(1),chi(2a),chi(4a)) : [(1, 1, 1), (5, 1, -1), (5, 1, -1), (8, 0, 0), (8, 0, 0), (9, 1, 1), (10, -2, 0)]
+    column orthogonality against brute-force centraliser orders (8 and 4): OK
+    permutation characters on 6 points / 15 pairs / 20 triples at (1a,2a,4a):
+      [6, 2, 0]   [15, 3, 1]   [20, 4, 0]
+      6pts       decomposes over the claimed table: 2 way(s), e.g. (1, 0, 1, 0, 0, 0, 0)
+      15pairs    decomposes over the claimed table: 6 way(s), e.g. (1, 0, 1, 0, 0, 1, 0)
+      20triples  decomposes over the claimed table: 9 way(s), e.g. (1, 0, 2, 0, 0, 1, 0)
+    2-local admissible t for V(Z_2 A_6) : [0, 2]
+    the GLOBAL killer, rebuilt as an EXPLICIT F_3-module (no MeatAxe):
+      the 4-dimensional F_3 section of the 6-point permutation module is a
+      representation (M(g)^{ord g} = 1 checked at 1a, 2a, 4a).
+      Lambda^2 of it has dimension 6.
+      Brauer character of Lambda^2 at (1a,2a,4a) = (6, -2, 2)
+      HeLP with THIS module at t = 2 : mu = ['-2', '2', '4', '2']
+      mu_0 = -2 < 0  ==>  t = 2 is KILLED GLOBALLY for A_6 by an honest
+      F_3 A_6-module.  (No irreducibility needed: HeLP holds for every module.)
+      POSITIVE CONTROL: the same module at t = 0 gives mu = ['2', '2', '0', '2'], all >= 0.
+    ==> A_6: GLOBAL answer NO (t=2 dead), 2-LOCAL answer OPEN (t=2 alive),
+        and the killer is a 3-modular object that a unit of V(Z_2 A_6) is
+        under no obligation to satisfy.
+
+V5b number of 2-blocks of A_6, again from Z(F_2 A_6) alone
+    idempotents of Z(F_2 A_6) (all 128 elements tested): 4  =>  2 blocks
+    2 blocks OVER F_2.  This is FEWER than over a splitting field, and the
+    reason is instructive and was not anticipated: the two degree-8 characters
+    of A_6 have nu_2(8) = 3 = nu_2(360), so each is a block of DEFECT 0, but
+    their block idempotents have coefficients (1+-sqrt 5)/2 / 45, which lie in
+    F_4 and not in F_2 (2 is inert in Q(sqrt 5)).  Over F_2 the two fuse into a
+    single block whose centre has residue field F_4; the count 2^r = 4 is then
+    exactly right.  A_7 has no such phenomenon: 2 SPLITS in Q(sqrt -7), all
+    omega values reduce into F_2, and 2 blocks over F_2 = 2 blocks absolutely.
+    (A_5 run as a positive control by the same code gives 4 idempotents = 2
+     blocks, and there the defect-0 block of chi(4) IS defined over F_2 -- its
+     reduction is the class-sum vector actually found.)
+    OVER A SPLITTING FIELD A_6 therefore has 3 two-blocks: {deg 8}, {deg 8} of
+    defect 0, and the principal one on (1,5,5,9,10), k(B)=5, defect 3 = D_8.
+    A block of defect 2 would need EVERY chi in it to have nu_2(chi(1)) >= 1;
+    among A_6 degrees only 10 qualifies, and a block with k(B)=1 has defect 0.
+    ==> A_6 has NO block with KLEIN FOUR defect group.  A_7 does.
+    The two 2-local problems are structurally different.
+
+V6  the A_6 -> A_7 fusion, by embedding actual permutations
+    A_6 class 2a (type (2, 2, 1, 1)) embeds into A_7 cycle types {(2, 2, 1, 1, 1)}
+    A_6 class 4a (type (4, 2)) embeds into A_7 cycle types {(4, 2, 1)}
+    A_6 has exactly two classes of 2-power order, and they land in A_7's 2a
+    and 4a respectively, one-to-one.  Hence for u in Z_2 A_6 <= Z_2 A_7 the
+    A_7-partial augmentations equal the A_6 ones.  TRANSFER LEMMA VERIFIED.
+
+V7  REFUTATION of the two mathematical claims in the ox-alpha brief-A output
+    CLAIM 1 (its sec.2): 'eps(u) = 0 + 2 + (-1) = 2 != 1, so the tuple violates
+    the augmentation map and no such unit exists -- ZC1 for A_7 is complete.'
+    REFUTATION: 2 + (-1) = 1.
+    The partial augmentations DO sum to 1.  The claim is an arithmetic slip,
+    and the 'three-line proof of ZC1 for A_7' it carries is void.
+
+    CLAIM 2 (its sec.1): 'since z = ubar - 1 is nilpotent, by Schur's lemma its
+    kernel on a simple module is nonzero, hence z|_S = 0 for every simple S;
+    therefore r_j(S) = 0 identically and no lower bound can ever exist.'
+    REFUTATION: z is not an ENDOMORPHISM of S (ubar-1 is a non-central element
+    of F_2 A_7), so Schur's lemma does not apply.  Exhibited counterexample:
+      g = (1234)(56) in 4a; on the 6-dimensional SIMPLE F_2 A_7-module
+      S_6 = {sum-zero}/<all-ones>, gbar^4 = 1 and rank_{F_2}(gbar - 1) = 4 != 0.
+      So z|_S = 0 is FALSE for an actual 2-power-order element.  Moreover r3's
+      own banked result r_1(S_6) >= 1 already contradicts the claim directly.
+      CLAIM 2 is refuted; r3's feasibility verdict stands unchanged.
+
+ALL ROUND-4 VERIFICATIONS PASSED.

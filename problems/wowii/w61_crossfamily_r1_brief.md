@@ -1,0 +1,3169 @@
+# CROSS-FAMILY VERIFICATION TASK — WOWII-61 published paper (10.5281/zenodo.22054651)
+
+## Your role
+
+You are an independent verifier reading a mathematics paper end-to-end and taking
+**responsibility** for it, not producing a stylistic opinion. You are from a different
+model family than whoever drafted this paper, which is exactly why you were asked: the
+project's rule is that a paper is only trusted after a reviewer from a genuinely different
+model family has read it and signed a verification note.
+
+You are **not** a solver, **not** a co-author, and you are **not being asked to fix
+anything**. Do not attempt to correct, patch, strengthen, or complete any claim you flag —
+report only. Do not reject a claim merely because it is "only partial results": the paper
+is explicitly a partial-results paper and says so in its abstract. Judge each individual
+statement on whether **its own claimed status matches its own evidence**, not on whether
+the paper resolves the full conjecture.
+
+This note is an **internal audit artifact**. It will not be published, will not ship with
+the paper, and no one will see your working process except the team running this check —
+so there is no reason to soften a finding for presentation. State exactly what you found.
+
+## What you must do
+
+Work through the **entire** paper below — do not sample. For each of the following four
+tasks, be exhaustive, not illustrative: list every instance you found, not a representative
+handful.
+
+### 1. Every citation
+
+For every citation in the paper — both the external bibliography entries (in
+`\begin{thebibliography}`, near the end of the paper text below) and every internal
+cross-reference to the campaign's own evidence artifacts (files under `problems/wowii/`
+that the paper's own Appendix names as the source of a computation) — open it and confirm
+the source **actually says what the paper attributes to it**. Existence is not enough: a
+reference can resolve to a real object and still be misattributed, over-cited, or cited for
+more than it supports.
+
+- For external bibliography entries: check the claimed author/title/venue/result against
+  what you know or can determine about that work. Several of the entries in this paper's
+  own bibliography carry a note that their bibliographic details were "supplied by an
+  automated literature pass" — treat that as a flag to check particularly carefully, not as
+  an excuse.
+- For internal citations to evidence files (named as `problems/wowii/w61_*.py` or similar
+  in the paper's Appendix): the paper's Appendix should describe, for each such file, what
+  it computes. Open the file, read what it actually does, and confirm it matches the
+  paper's description and confirms the number/claim the paper attaches to it near that
+  citation. If you can run it yourself (Python 3), do so and report the actual output you
+  observed — do not accept a description of what a script would output as a substitute for
+  running it, when running it is feasible.
+
+Sign off on **every single citation you find**, one line each, with exactly one of:
+`resolved | says-what-we-claim | MISATTRIBUTED | COULD-NOT-OPEN`. Do not summarize a
+sample — enumerate the full list.
+
+### 2. Load-bearing numbers only
+
+A load-bearing number is a **count, bound, size, population, or rate** that the paper's
+argument or a claimed conclusion actually depends on — for example "150,905 graph
+evaluations", a percentage of graphs covered, a specific bound on a parameter, a count of
+cases in a case split, the size of a family. This does **not** include years, section/
+theorem/equation numbers, or standard mathematical constants.
+
+For every load-bearing number you find in the paper, **re-derive it independently** from
+the evidence artifacts (re-run the relevant script yourself if you can execute Python, or
+hand-recompute from first principles if the number is small enough to check by hand — state
+which method you used for each). Report, per number: the paper's claimed value, what you
+independently got, and a verdict of `MATCH / MISMATCH / COULD-NOT-REDERIVE`. Enumerate all
+of them; do not sample.
+
+### 3. Wording versus evidence status, per claim
+
+The paper marks every numbered assertion (theorem/lemma/proposition/corollary/observation/
+fact) with an explicit verification-status marker, defined in a block near the top of the
+paper (search for `\newcommand{\Scert}`, `\Sone`, `\Szero`, `\Selem`, `\Scomp`, `\Sconj` —
+these are explained in Section "Verification conventions" early in the paper). For **every**
+numbered statement in the paper:
+
+- Check that the marker attached to it matches what its proof, as actually written in the
+  paper, delivers. A statement marked as having a complete proof should have one; a
+  statement marked as certified by two independent review rounds should say so accurately.
+- Check the **verb** the surrounding prose uses about each statement (proved / shown /
+  established / follows / reduces to / implies / settles / eliminates / etc.) against what
+  the statement's own proof, as given, actually supports. Flag any claim whose verb exceeds
+  its support.
+- **Give special scrutiny to any place where an implication is reported as though it were a
+  settled conclusion** — i.e., where the text has established "A and B together would imply
+  C" (a conditional / implication), but then a nearby sentence, remark, abstract line, or
+  table entry states or treats C itself as established, when C's own status has not
+  actually been separately nailed down. This is a specific failure shape to hunt for
+  throughout the whole document, not just in one place — read every partial-progress
+  remark, every abstract sentence, and every table/summary entry with this in mind, since
+  summarizing prose is exactly where an implication is most likely to get silently
+  upgraded into a conclusion.
+
+List every claim you flag: quote the exact passage, name which of these problems it has,
+and explain briefly why the wording exceeds (or possibly falls short of) its support.
+
+### 4. Report what you could NOT verify
+
+Be explicit and itemized: internet/web access unavailable for an external reference,
+a script too expensive to actually re-run in full, an ambiguous notation you could not
+pin down, a claim whose evidence file was not locatable, etc. The scope of your note is
+part of the note — an unqualified "everything checks out" is not an acceptable substitute
+for saying exactly what you did and did not manage to check.
+
+## Hard read restriction
+
+This is a genuine, independent-engagement review: nobody is handing you the answer, and the
+project has deliberately withheld its own prior review notes so that your findings are your
+own. To keep that clean, read **only**:
+
+(a) the paper text included verbatim below in this file (you do not need to separately open
+    `papers/wowii61/main.tex` or `papers/wowii61/body.tex` — they are pasted in full below,
+    exactly as published);
+(b) files directly under `problems/wowii/` whose filename is explicitly named in the
+    paper's own Appendix (the script/evidence listing, near the end of the paper text
+    below) — open or run these ONLY for the purpose of re-deriving the number or checking
+    the computation the paper attaches to that filename;
+(c) `papers/wowii61/main.pdf`, if you want to see the compiled/rendered form of the same
+    text.
+
+Do **not** open, list, grep, or read any of the following, even if a tool surfaces them
+incidentally or curiosity suggests it: `papers/wowii61/ERRATUM_PREPARED_HOLD.md`; anything
+under `orchestration/`; `notes/proofs/wowii61_draft.md`; anything under `notes/reviews/`;
+any file whose name contains `adjudicate`, `dispatch`, `harvest`, `qwen`, `erratum`, `gap`,
+`defect`, `crossfamily`, or `verify`, other than the specific evidence scripts named in (b);
+and any file under `problems/wowii/` that is **not** explicitly named in the paper's own
+Appendix. If completing a check seems to require reading one of these, do not open it —
+mark that specific check `COULD-NOT-VERIFY` and say why.
+
+## Deliverable
+
+Write your complete verification note to `problems/wowii/w61_crossfamily_r1_note.md`.
+
+Open the note with exactly this line, filled in:
+
+> Verified by \<your model family/name\>, \<today's date\>. N citations opened, M
+> load-bearing numbers re-derived.
+
+Then include, in full:
+
+- **Findings** — every flagged claim (species: MISATTRIBUTED CITATION / UNRESOLVABLE
+  CITATION / UNSOURCED NUMBER / UNEXECUTED VERIFICATION CLAIM / CLAIM EXCEEDS EVIDENCE /
+  IMPLICATION REPORTED AS CONCLUSION / other — name the closest fit, or say "none of the
+  above" and describe it), quote, and explanation.
+- **Could not verify** — the explicit itemized list from task 4 above.
+- **Per-citation table** — every citation, one row each, per the format in task 1.
+- **Per-number table** — every load-bearing number, one row each, per the format in task 2.
+
+If you truly find nothing wrong anywhere, say so plainly and explain what you actually
+checked to reach that conclusion — a clean verdict with no visible work is worth nothing to
+the team relying on this note.
+
+Take the time this deserves. This is a responsibility-bearing pass, not a speed exercise.
+
+---
+
+# PAPER TEXT BEGINS BELOW — this is the complete, verbatim, published LaTeX source
+
+## File 1 of 2: papers/wowii61/main.tex
+
+```latex
+% =============================================================================
+%  Partial Results on the WOWII-61 Graffiti Conjecture
+%
+%  v1  2026-08-22  Closeout draft assembled from notes/proofs/wowii61_draft.md,
+%                  registry closeout at §7.28(b), and the rolling gate ledger
+%                  orchestration/tasks/w61_r6.md.
+%
+%  Status discipline: every numbered assertion carries a verification marker.
+%  Only statements at PROVED-S3 in the §7.28(b) closeout appear as theorems in
+%  Sections 4--9; Section 10 collects the one-round family, Section 11 the
+%  zero-round GFANnu statement together with the refutation that produced it.
+% =============================================================================
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,parsep=2pt,topsep=3pt}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator{\res}{residue}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\deficiency}{def}
+\newcommand{\Blo}{B_{\mathrm{lo}}}
+\newcommand{\Bhi}{B_{\mathrm{hi}}}
+\newcommand{\Bloplus}{B_{\mathrm{lo}}^{+}}
+\newcommand{\dg}{\mathrm{deg}}
+\newcommand{\degA}{\mathrm{deg}_A}
+\newcommand{\degB}{\mathrm{deg}_B}
+\newcommand{\Fan}{\mathrm{Fan}}
+\newcommand{\GFan}{\mathrm{GFan}}
+\newcommand{\mbar}{\bar{m}}
+
+% ---- verification-status markers --------------------------------------------
+% Long verbatim paths inside status markers must be breakable, or they overfull.
+\emergencystretch=4em
+\hbadness=10000
+\newcommand{\statusbox}[1]{{\small\sloppy\textsf{[#1]}}}
+\newcommand{\Scert}[1]{\statusbox{\textbf{certified}: two review rounds, distinct
+  model families, zero mathematics defects; #1}}
+\newcommand{\Sone}[1]{\statusbox{\textbf{one round}: #1; second family pending}}
+\newcommand{\Szero}[1]{\statusbox{\textbf{no completed round}: #1}}
+\newcommand{\Selem}{\statusbox{elementary; proof reproduced in full}}
+\newcommand{\Scomp}[1]{\statusbox{computational: #1}}
+\newcommand{\Sconj}[1]{\statusbox{conjecture; #1}}
+% -----------------------------------------------------------------------------
+
+\title{Partial Results on the WOWII-61 Graffiti Conjecture}
+
+\author{Haoyu Chen\thanks{%
+\textbf{Disclosure of the production pipeline.}
+This paper reports the partial results of an autonomous attack on a conjecture that it
+does \emph{not} resolve. Every mathematical statement below was produced by automated
+systems: an orchestrating agent and a per-problem owner agent (Claude Fable 5 and Claude
+Opus 5) that designed the lines of attack, adjudicated the returning reports and drafted
+this document; adversarial reviewing sessions run by models from deliberately different
+families (Claude Opus 5; Qwen3.8-Max through its web interface; and OpenAI GPT-5.6 and
+GPT-5.3 through the \texttt{codex} command-line interface, in the configurations named
+\texttt{sol} and \texttt{spark} respectively); and machine checkers, which are
+purpose-written Python enumerators together with independent from-scratch
+re-implementations used only for adjudication. No human supplied a definition, a lemma, a
+proof idea, or a correction. Problem selection, task routing, review scheduling and the
+drafting of this paper were likewise automated.
+Every numbered \emph{assertion} carries an explicit verification marker in the sense of
+Section~\ref{sec:conventions}; definitions and open problems assert nothing and carry
+none. Two of the campaign's own statements were refuted by its own later review rounds,
+and both refutations are reported here rather than quietly repaired
+(Remark~\ref{sec:upstream-selfref} and Section~\ref{sec:refutation}).
+Responsibility for what follows rests with the reader who checks it.}}
+
+\date{22 August 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Conjecture~61 of the \emph{Written on the Wall II} collection of computer-generated graph
+conjectures asserts that
+$\res(G) + \lceil \diam(G)/3 \rceil \le f(G)$
+for every connected graph $G$ on at least two vertices, where $\res(G)$ is the number of
+entries left standing when the Havel--Hakimi reduction is run to completion on the degree
+sequence of $G$, and $f(G)$ is the order of a largest induced forest. \emph{The conjecture
+is not resolved here.} This paper records what an automated campaign proved about it,
+with the epistemic status of each statement stated explicitly and separately.
+
+The inequality survives $150\,905$ graph evaluations, among them every connected graph on
+at most eight vertices, with no violation. It holds unconditionally when
+$\diam(G) \in \{1,2,3,5,6,9\}$, and whenever the decycling number of $G$ is small against
+its matching number; two conditional certificates cover $98.8\%$ of connected graphs on at
+most seven vertices and $99.2\%$ of a sample on eight, and every graph they miss in that
+range has diameter exactly~$4$. At diameter~$4$ the conjecture is equivalent to a
+dichotomy: $f(G) \ge \alpha(G)+2$ or $\res(G) \le \alpha(G)-1$. Most of the paper proves
+cases of that dichotomy. Writing $\tau = n - \alpha$ for the size of a minimum vertex
+cover and $B$ for its complement in $V$, we settle $\tau \le 3$ completely; and, under the
+standing hypothesis $\res(G) = \alpha(G)$ that a counterexample would have to satisfy, we
+prove a $\tau$-uniform budget inequality and a one-unit strengthening of it, a master
+budget inequality for the low-degree vertices of $B$, a rigidity theorem which pins the
+$B$-universal layer of the residual configuration space to an explicitly described family
+$\GFan(\tau,L,\nu)$, and the elimination of the sub-family $\Fan(\tau,L) = \GFan(\tau,L,1)$
+for every $L \ge 2$. Together these force any surviving configuration to have $\tau \ge 4$
+and at least three vertices of $B$ of degree at most $\tau$.
+
+Statements are reported in three separated tiers according to how far they have passed the
+campaign's adversarial-review protocol. Sections~\ref{sec:toolkit}--\ref{sec:rig} contain
+only statements that survived two review rounds by judges from distinct model families with
+no mathematics defect; Section~\ref{sec:oneround} collects a family that has passed one such
+round; and Section~\ref{sec:gfannu} reports a computer-assisted elimination whose current
+statement has passed none --- together with the false quantifier that a review round found
+in its predecessor, and the counterexample family that refuted it.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The conjecture}\label{sec:statement}
+
+For a finite simple graph $G$ on vertex set $V$, $|V| = n$, write $d_1 \ge d_2 \ge \cdots
+\ge d_n$ for the degree sequence in non-increasing order. The \emph{Havel--Hakimi
+reduction} deletes the first entry $d_1$ and subtracts $1$ from each of the next $d_1$
+entries, re-sorts, and repeats; it halts when the largest remaining entry is $0$. The
+number of entries standing at that moment is the \emph{residue} $\res(G)$. Let $f(G)$
+denote the order of a largest induced forest of $G$, $\alpha(G)$ its independence number,
+$\mu(G)$ its maximum matching size, $\nabla(G) := n - f(G)$ its decycling (feedback vertex)
+number, $\Delta(G)$ its maximum degree, $m$ its number of edges, and $\diam(G)$ its
+diameter.
+
+\begin{conjecture}[WOWII-61]\label{conj:main}
+For every connected graph $G$ on $n \ge 2$ vertices,
+\begin{equation}\label{eq:C61}
+\res(G) + \left\lceil \frac{\diam(G)}{3} \right\rceil \;\le\; f(G).
+\tag{C61}
+\end{equation}
+\end{conjecture}
+
+We take the conjecture in the form in which it is recorded in the
+\texttt{formal-conjectures} corpus \cite{formalconjectures}, in the file
+\texttt{FormalConjectures/WrittenOnTheWallII/GraphConjecture61.lean}, whose statement is
+\begin{verbatim}
+theorem conjecture61 (G : SimpleGraph a) [DecidableRel G.Adj] (h : G.Connected) :
+    (residue G : R) + ceil ((G.diam : R) / 3) <= (G.largestInducedForestSize : R)
+\end{verbatim}
+with \texttt{[Fintype a] [DecidableEq a] [Nontrivial a]}. That file attributes the
+statement to the \emph{Written on the Wall II} collection of conjectures generated by the
+\texttt{Graffiti.pc} program; we cite the formal file rather than the original collection
+because the formal file is the object our campaign actually consumed, and because we did
+not consult the original source (Section~\ref{sec:limits}). Since \texttt{G.diam} is a
+natural number and both sides of the Lean statement are casts of naturals, the goal is
+equivalent to the integer inequality \eqref{eq:C61} with $\lceil d/3 \rceil$ the ordinary
+integer ceiling.
+
+Three definitional points matter and are worth stating, because a formalized conjecture can
+be proved in a sense its author did not intend. First, \texttt{residue} in the corpus is
+\texttt{residueAux} applied to the descending degree sequence, where
+$\texttt{residueAux}\,[] = 0$, $\texttt{residueAux}\,(0 :: s) = 1 + |s|$, and otherwise the
+function recurses on one Havel--Hakimi step; the Python transcription used throughout the
+campaign reproduces this literally, including \texttt{List.splitAt} truncation and
+$\N$-truncated subtraction. Second, $f(G)$ is
+$\max\{|S| : G[S] \text{ acyclic}\}$. Third, since $G$ is connected and the vertex type
+finite, \texttt{G.diam} is the ordinary diameter. As a sanity check on the transcription,
+$\res(K_2) = 1$, matching the \texttt{example} in the Lean file, and
+$\res(C_n) = \lceil n/3 \rceil$ for $n = 3,\dots,9$; both are recomputed by every
+verification script cited in Appendix~\ref{app:scripts} as its first action.
+
+\subsection{What this paper contains}\label{sec:contains}
+
+Nothing here resolves Conjecture~\ref{conj:main}. What the campaign produced is
+(i) a falsification stage that found no counterexample, (ii) an elementary package that
+settles six of the possible diameters unconditionally and reduces the measured residual
+difficulty to diameter~$4$, (iii) a reformulation of the diameter-$4$ residue as a
+dichotomy, and (iv) a long chain of structural results narrowing the configurations in
+which a counterexample to that dichotomy could live. Table~\ref{tab:summary} lists the
+statements that this paper reports and the tier each occupies.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}p{0.46\textwidth}p{0.20\textwidth}p{0.26\textwidth}@{}}
+\toprule
+statements & section & tier \\
+\midrule
+Lemma~\ref{lem:hh}, Fact~\ref{fact:fms}, Lemma~\ref{lem:f-alpha},
+Theorem~\ref{thm:diam3}, Lemma~\ref{lem:starforest},
+Theorem~\ref{thm:packing}, Corollaries~\ref{cor:B1}--\ref{cor:B2},
+Theorem~\ref{thm:matching}, Corollary~\ref{cor:C1}, Theorem~\ref{thm:equivform}
+ & \ref{sec:elementary} & elementary; full proofs given \\
+\addlinespace
+Lemma~\ref{lem:S}, Lemma~\ref{lem:F3prime}, Lemma~\ref{lem:T},
+Lemma~\ref{lem:Zplus}, Lemma~\ref{lem:DICH}, Theorem~\ref{thm:K},
+Corollary~\ref{cor:K1}
+ & \ref{sec:toolkit} & certified (rows R-1\,--\,R-5) \\
+Lemma~\ref{lem:pair}, Observation~\ref{obs:R1}, Fact~\ref{fact:Fb},
+Lemma~\ref{lem:Cstar}
+ & \ref{sec:frame} & certified (root-reduction block) \\
+Theorem~\ref{thm:tau2}, Theorem~\ref{thm:T3}
+ & \ref{sec:smalltau} & certified (row R-13) \\
+Lemma~\ref{lem:HI}, Theorem~\ref{thm:LOW}, Theorem~\ref{thm:SL},
+Corollary~\ref{cor:SLHC}, Theorem~\ref{thm:MB},
+Corollaries~\ref{cor:L1short}--\ref{cor:MB1},
+Propositions~\ref{prop:L1}--\ref{prop:L2}, Corollary~\ref{cor:L1prime}
+ & \ref{sec:budget} & certified (rows R-16\,--\,R-18) \\
+the six fan lemmas, Lemma~\ref{lem:TAIL},
+Observation~\ref{obs:FAN5}, Theorem~\ref{thm:FAN}, Corollary~\ref{cor:FANHC}
+ & \ref{sec:fan} & certified (rows R-9, R-10, R-14, R-15, R-19) \\
+Lemma~\ref{lem:CAP}, Corollary~\ref{cor:CAP1}, Theorem~\ref{thm:RIG},
+Corollary~\ref{cor:RIG2}
+ & \ref{sec:rig} & certified (rows R-20, R-21) \\
+\addlinespace
+Lemmas~\ref{lem:FAN4p}--\ref{lem:FAN6p}, Theorem~\ref{thm:GFAN2},
+Corollary~\ref{cor:RIG1}, Corollaries~\ref{cor:GFAN2HC}--\ref{cor:GFAN2L3}
+ & \ref{sec:oneround} & one round only \\
+\addlinespace
+Theorem~\ref{thm:GFANnu}, Corollary~\ref{cor:GFANnuHC}
+ & \ref{sec:gfannu} & no completed round \\
+\addlinespace
+Conjectures~\ref{conj:C1} and~\ref{conj:C2}
+ & \ref{sec:open} & conjecture \\
+\bottomrule
+\end{tabular}
+\caption{The statements reported here and their verification tiers. Registry row
+identifiers are the campaign's own; the evidence chain for each is reproduced in
+Appendix~\ref{app:ledger}.}
+\label{tab:summary}
+\end{table}
+
+\subsection{Verification conventions}\label{sec:conventions}
+
+Because this is an automated campaign's output, the epistemic status of each statement is
+recorded explicitly, and it is not uniform. The campaign's protocol has a stage devoted to
+adversarial review, internally called S3, which works as follows. A completed argument is
+submitted --- in a fresh session, without the solver's reasoning trace, and under a read
+restriction forbidding the reviewer to open any other artifact of the campaign --- to a
+model from a family different from the one that produced it, with named \emph{joints}
+assigned by the dispatcher, a pre-written attack plan per joint that names the mechanism to
+test but never the expected answer, a mandatory block of control cases that the accepted
+machinery must \emph{not} also prove, and instructions to classify every objection as a
+mathematics defect or a bookkeeping defect and to return a verdict. Each returning report is
+then adjudicated by the owner agent, which reproduces every claim in it from scratch with an
+independent implementation before upholding or rejecting it. A round counts as clean for a
+statement only if it returns no mathematics defect against that statement, and --- a rule
+enforced strictly, and enforced against this campaign's own reading in one case reported in
+Section~\ref{sec:gfannu} --- only for the text \emph{as reviewed}, so that a round on text
+that was subsequently repaired does not transfer to the repaired text.
+
+Five markers are used.
+
+\begin{itemize}
+\item \Scert{registry rows} --- the statement has a complete proof, reproduced here or
+summarised with an explicit pointer, and it has passed \emph{two} review rounds by judges
+from distinct model families with zero mathematics defects against it, at least one of the
+two on the final repaired text. The registry rows named in the marker are the campaign's own
+ledger entries; Appendix~\ref{app:ledger} reproduces the judge, artifact and date for each.
+This is the strongest marker used in this paper, and it is a statement about a review
+process, not about a machine-checked proof: nothing here is formalized.
+\item \Sone{round} --- a complete proof, one clean round, and a second family still owed.
+The named round is identified in Appendix~\ref{app:ledger}.
+\item \Szero{reason} --- a complete proof in the campaign's judgement, and no completed
+review round on the current text. Section~\ref{sec:gfannu} is the only place this marker
+appears in a headline statement, and the reason it appears there is that the previous
+statement at that position was refuted.
+\item \Selem\ --- an elementary argument, three to fifteen lines, reproduced here in full,
+so that the reader can discharge it directly without reference to any review process.
+\item \Scomp{scope} --- a completed finite computation of exactly the stated scope. A
+computation is evidence of the stated scope and of nothing beyond it; in particular a
+\emph{failed} bounded search is never a proof of impossibility, and where such a search is
+reported the text says so.
+\end{itemize}
+
+A sixth marker, \Sconj{evidence}, marks statements believed but not proved.
+
+Two conventions about numerics are enforced throughout and are worth stating once. First,
+\emph{numbers before statements}: every numerical block cited below was run before the
+statement it accompanies was written, and the text says so where it matters. Second, and
+more important, the \emph{reductio firewall}: almost every statement in
+Sections~\ref{sec:toolkit}--\ref{sec:gfannu} is proved under the standing hypothesis
+$\res(G) = \alpha(G)$, and the campaign's own results say that hypothesis is unsatisfiable in
+the configurations concerned. Numerical runs on such configurations are therefore
+\emph{not} instances of those statements; they are mechanism checks on the same
+combinatorial machinery off the hypothesis, and they corroborate the shape of an argument
+rather than its conclusion. Where a numerical block is quoted below, it is quoted with that
+distinction attached.
+
+\subsection{Relation to the campaign's other output}\label{sec:relwork}
+
+The pipeline that produced this paper is the one described in the reports on four OEIS
+conjectures \cite{batch1} and on a conjecture of Fernandes \cite{fernandespaper}; those
+papers report resolved problems formalized in Lean~4, and this one reports an unresolved
+problem with no formalization at all. The difference is deliberate and is the point of the
+tiering above: an automated campaign that only publishes what it finished would be
+reporting a biased sample of its own behaviour. A companion working paper on the last open
+finite implication of the Equational Theories Project \cite{etp677} takes the same view and
+uses the same marker discipline, which we have followed here.
+
+We make no claim of priority for any statement below, and no claim that any of them is new.
+Automated literature search found no prior treatment of Conjecture~\ref{conj:main} beyond
+its appearance in the collection and in the formal corpus, but automated searches miss
+things (Section~\ref{sec:limits}).
+
+\input{body}
+
+\end{document}
+```
+
+## File 2 of 2: papers/wowii61/body.tex (this is the file main.tex pulls in via `\input{body}` above — it is the bulk of the paper: the sections, all proofs, the appendices with the evidence-script listing, and the bibliography)
+
+```latex
+\section{Notation and the basic package}\label{sec:basic}
+
+Throughout, $G$ is a finite simple connected graph on $n \ge 2$ vertices with vertex set
+$V$ and edge set $E$, $|E| = m$. We abbreviate $\alpha = \alpha(G)$, $f = f(G)$,
+$d = \diam(G)$, $\Delta = \Delta(G)$, $\nabla = \nabla(G) = n - f$, $\mu = \mu(G)$. For
+$S \subseteq V$, $G[S]$ is the induced subgraph, $N(v)$ the neighbourhood of $v$ and
+$N[v] = N(v) \cup \{v\}$.
+
+\subsection{The Havel--Hakimi trajectory}
+
+Run the Havel--Hakimi reduction on the degree sequence of $G$ with vertex labels attached,
+so that at each step we may speak of \emph{which vertex} is deleted. Let $s = s(G)$ be the
+number of steps performed before the process halts, let $D_1, \dots, D_s$ be the values of
+the successive deleted entries (the \emph{heads}), let $K$ be the set of vertices deleted
+as heads, and call the $n - s$ vertices never deleted the \emph{survivors}. The
+\emph{block} of step $j$, written $\mathrm{block}_j$, is the set of $D_j$ entries
+decremented at that step: the prefix of the remaining entries, sorted non-increasingly,
+after deleting the step-$j$ head.
+
+Ties are not broken canonically by the definition, and the campaign's protocol treats
+tie-sensitivity as a first-class failure mode: every numerical run cited below is performed
+under the canonical sort \emph{and} under several randomised adversarial tie-breaks, and
+every proof step below that could depend on a tie is either tie-invariant or says which
+tie-break it fixes and why fixing it is legitimate.
+
+\begin{lemma}[$\res = n - s$]\label{lem:hh}
+\Selem
+Let $s(G)$ be the number of Havel--Hakimi steps and $D_1,\dots,D_s$ the successive head
+values. Then
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item $\res(G) = n - s(G)$;
+\item $D_1 = \Delta \ge D_2 \ge \cdots \ge D_s \ge 1$ and $\sum_{i=1}^{s} D_i = m$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Each step shortens the list by exactly one entry, and the recursion stops on a list
+whose head --- hence, the list being sorted non-increasingly, every entry --- is $0$,
+returning its length. After $s$ steps the length is $n - s$.
+
+(2) Havel--Hakimi preserves graphicality \cite{havel,hakimi}, so at every step the head
+$D_i$ is at most the number of remaining strictly positive entries; the $\N$-truncated
+subtraction therefore never truncates, and one step decreases the sum of the list by
+exactly $2D_i$ ($D_i$ removed as the head, $D_i$ further units removed by the decrements).
+The sum starts at $2m$ and ends at $0$, giving $\sum_i D_i = m$. For monotonicity, the new
+list is obtained from the old one by deleting the head and decreasing some entries, so its
+maximum cannot increase.
+\end{proof}
+
+\begin{fact}[Favaron--Mah\'eo--Sacl\'e]\label{fact:fms}
+\Scomp{asserted by the verification script on all $30\,995$ graphs of stage E and never
+violated; cited, not reproved}
+$\res(G) \le \alpha(G)$ for every graph $G$.
+\end{fact}
+
+This is used as a black box throughout. It is due to Favaron, Mah\'eo and Sacl\'e
+\cite{fms}; a short proof is due to Griggs and Kleitman \cite{gk}. The bibliographic data
+was supplied by an automated literature pass and should be re-checked before any
+formalization (Section~\ref{sec:limits}); the inequality itself is asserted by the
+campaign's verification script on the whole exhaustive range and never fails there.
+
+\subsection{The cover \texorpdfstring{$B$}{B} and the reductio hypothesis}
+\label{sec:cover}
+
+Fix a \emph{maximum} independent set $A$ and put $B := V \setminus A$, $\tau := |B| = n -
+\alpha$. Then $B$ is a minimum vertex cover, every $a \in A$ has $N(a) \subseteq B$ and
+hence $\dg(a) \le \tau$, and every $b \in B$ has at least one neighbour in $A$ (otherwise
+$A \cup \{b\}$ would be independent). We write $\degA(v) = |N(v) \cap A|$,
+$\degB(v) = |N(v) \cap B|$, $e_B = |E(G[B])|$, and
+\[
+\nu := \binom{\tau}{2} - e_B
+\]
+for the number of non-adjacent pairs inside $B$. Since $A$ is independent, every edge has
+an endpoint in $B$, so $m = \sum_{b \in B} \dg(b) - e_B$.
+
+By Lemma~\ref{lem:hh}(1) and Fact~\ref{fact:fms}, $n - s = \res \le \alpha = n - \tau$, so
+$s \ge \tau$ always. The campaign's central standing hypothesis is the opposite extreme:
+
+\begin{definition}[reductio hypothesis]\label{def:reductio}
+The \emph{reductio hypothesis} is $\res(G) = \alpha(G)$, equivalently $s(G) = \tau(G)$.
+\end{definition}
+
+Under the reductio hypothesis the Havel--Hakimi process must terminate in exactly $\tau$
+steps, and it is that scarcity of steps which the whole of
+Sections~\ref{sec:toolkit}--\ref{sec:gfannu} exploits. We also fix the low/high split of
+$B$ that organises everything from Section~\ref{sec:budget} onwards:
+\[
+\Bhi := \{b \in B : \dg(b) \ge \tau+1\}, \quad p := |\Bhi|, \qquad
+\Blo := B \setminus \Bhi, \quad L := |\Blo| = \tau - p.
+\]
+For $S \subseteq B$ let $\nu(S)$ be the number of non-adjacent pairs inside $S$, and put
+$\mbar := \nu(\Bhi)$. A vertex $b \in B$ is \emph{$B$-universal} if it is adjacent to every
+other vertex of $B$; $\Bloplus$ denotes the set of low vertices that are \emph{not}
+$B$-universal.
+
+\section{Elementary certificates, and the concentration at diameter four}
+\label{sec:elementary}
+
+This section is self-contained and elementary. Every proof in it is short and is given in
+full, so that the reader can discharge the whole section without reference to the review
+process; only Fact~\ref{fact:fms} and the classical graphicality theorem behind
+Lemma~\ref{lem:hh} are used as black boxes.
+
+\subsection{Diameter at most three}
+
+\begin{lemma}\label{lem:f-alpha}
+\Selem
+For every connected $G$ with $n \ge 2$: $f(G) \ge \alpha(G) + 1$.
+\end{lemma}
+
+\begin{proof}
+$G$ is connected with $n \ge 2$, so it has an edge; hence no independent set is all of $V$.
+Take a maximum independent set $A$ and any $v \in V \setminus A$. In $G[A \cup \{v\}]$ the
+set $A$ is independent, so every edge is incident with $v$: the graph is the star with
+centre $v$ and leaves $N(v) \cap A$, together with $|A| - |N(v) \cap A|$ isolated vertices.
+A star plus isolated vertices is acyclic, and $|A \cup \{v\}| = \alpha(G) + 1$.
+\end{proof}
+
+\begin{theorem}\label{thm:diam3}
+\Selem
+If $\diam(G) \le 3$ then \eqref{eq:C61} holds.
+\end{theorem}
+
+\begin{proof}
+$n \ge 2$ and $G$ connected give $d \ge 1$, so $\lceil d/3 \rceil = 1$. By
+Fact~\ref{fact:fms} and Lemma~\ref{lem:f-alpha},
+$\res(G) + 1 \le \alpha(G) + 1 \le f(G)$.
+\end{proof}
+
+This alone settles $89.7\%$ of connected graphs on at most seven vertices and $78.4\%$ of
+those on eight.
+
+\subsection{The 2-packing certificate}
+
+Call $B' \subseteq V$ a \emph{2-packing} if $\dist(b,b') \ge 3$ for all distinct
+$b,b' \in B'$.
+
+\begin{lemma}[star-forest lemma]\label{lem:starforest}
+\Selem
+If $A$ is independent, $B'$ is a 2-packing and $A \cap B' = \emptyset$, then
+$G[A \cup B']$ is a forest --- indeed a disjoint union of stars and isolated vertices.
+\end{lemma}
+
+\begin{proof}
+$B'$ is independent because its members are at distance $\ge 3 > 1$, and $A$ is
+independent; hence every edge of $G[A \cup B']$ joins $A$ to $B'$. If distinct
+$b,b' \in B'$ had a common neighbour $a \in A$ then $\dist(b,b') \le 2$, a contradiction;
+so the sets $N(b) \cap A$, $b \in B'$, are pairwise disjoint. Therefore $G[A \cup B']$ is
+the disjoint union of the stars with centre $b$ and leaf set $N(b) \cap A$, together with
+the uncovered vertices of $A$.
+\end{proof}
+
+\begin{theorem}[2-packing certificate]\label{thm:packing}
+\Selem
+Let
+$\rho^{*}(G) := \max\{ |B'| : B'$ a 2-packing with $B' \cap A = \emptyset$ for some maximum
+independent set $A \}$.
+Then $f(G) \ge \alpha(G) + \rho^{*}(G)$; consequently, if
+$\rho^{*}(G) \ge \lceil d/3 \rceil$ then \eqref{eq:C61} holds for $G$.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:starforest} applied to a witnessing pair $(A,B')$ gives an induced forest of
+order $\alpha + |B'|$; then apply Fact~\ref{fact:fms}.
+\end{proof}
+
+\begin{corollary}\label{cor:B1}
+\Selem
+For every connected $G$ with $n \ge 2$:
+$f(G) \ge \alpha(G) + \lfloor (d-1)/4 \rfloor + 1$.
+\end{corollary}
+
+\begin{proof}
+Fix a maximum independent set $A$ and a shortest path $P = v_0v_1\cdots v_d$ realising the
+diameter; a shortest path is induced and $\dist(v_i,v_j) = |i-j|$. Since $A \cap V(P)$ is
+independent in $P$, no two consecutive indices lie in $A$; hence
+$I := \{ i \in [0,d] : v_i \notin A \}$ meets $\{i,i+1\}$ for every $0 \le i \le d-1$.
+Consequently consecutive elements of $I$ differ by at most $2$, $\min I \le 1$ and
+$\max I \ge d-1$.
+
+Greedily set $i_1 := \min I$ and $i_{j+1} := \min\{ i \in I : i \ge i_j + 3 \}$ while such
+an $i$ exists. Because consecutive elements of $I$ differ by at most $2$ we have
+$i_{j+1} \le i_j + 4$, so $i_k \le 1 + 4(k-1)$. The process stops at index $k$ with
+$\max I < i_k + 3$, i.e.\ $i_k > \max I - 3 \ge d-4$. Combining,
+$1 + 4(k-1) > d-4$, i.e.\ $k > (d-1)/4$, so $k \ge \lfloor (d-1)/4 \rfloor + 1$.
+
+The set $B' := \{v_{i_1},\dots,v_{i_k}\}$ has pairwise index gaps $\ge 3$, hence pairwise
+distances $\ge 3$ (equalities hold along a shortest path), and $B' \cap A = \emptyset$ by
+construction. Apply Lemma~\ref{lem:starforest}.
+\end{proof}
+
+\begin{corollary}\label{cor:B2}
+\Selem
+\eqref{eq:C61} holds for every connected $G$ with
+$\diam(G) \in \{1,2,3,5,6,9\}$.
+\end{corollary}
+
+\begin{proof}
+By Corollary~\ref{cor:B1} and Fact~\ref{fact:fms} it suffices that
+$\lfloor (d-1)/4 \rfloor + 1 \ge \lceil d/3 \rceil$. For $d \ge 10$ this fails, since
+$\lfloor (d-1)/4 \rfloor + 1 \le (d+3)/4 < d/3 \le \lceil d/3 \rceil$, the middle
+inequality being $3d + 9 < 4d$. A finite check of $d = 1,\dots,9$ leaves exactly
+$d \in \{1,2,3,5,6,9\}$.
+\end{proof}
+
+The constant $1/4$ here, rather than the $1/3$ the conjecture asks for, is exactly the
+quantitative gap; see Obstacle~O2 in Section~\ref{sec:obstacles}.
+
+\subsection{The matching certificate}
+
+\begin{theorem}\label{thm:matching}
+\Selem
+If $\mu(G) \ge \nabla(G) + \lceil d/3 \rceil$ then \eqref{eq:C61} holds.
+\end{theorem}
+
+\begin{proof}
+A maximum matching has $\mu$ pairwise disjoint edges and an independent set contains at
+most one endpoint of each, so $\alpha + \mu \le n$. Hence by Fact~\ref{fact:fms},
+$\res(G) \le \alpha \le n - \mu \le n - \nabla - \lceil d/3 \rceil
+= f(G) - \lceil d/3 \rceil$.
+\end{proof}
+
+\begin{corollary}\label{cor:C1}
+\Selem
+\eqref{eq:C61} holds whenever $\nabla(G) \le \lceil d/2 \rceil - \lceil d/3 \rceil$; in
+particular for every forest, and for every graph of decycling number $0$.
+\end{corollary}
+
+\begin{proof}
+A shortest path with $d$ edges contains a matching of size $\lceil d/2 \rceil$, so
+$\mu(G) \ge \lceil d/2 \rceil$; apply Theorem~\ref{thm:matching}. For a forest,
+$\nabla = 0 \le \lceil d/2 \rceil - \lceil d/3 \rceil$, the right-hand side being
+non-negative for every $d$.
+\end{proof}
+
+\subsection{An equivalent form}
+
+\begin{theorem}\label{thm:equivform}
+\Selem
+\eqref{eq:C61} is equivalent to
+\[
+s(G) \;\ge\; \nabla(G) + \left\lceil \frac{\diam(G)}{3} \right\rceil,
+\]
+that is: \emph{the Havel--Hakimi process must run for at least $\lceil d/3 \rceil$ steps
+more than the decycling number}.
+\end{theorem}
+
+\begin{proof}
+Immediate from $\res = n - s$ (Lemma~\ref{lem:hh}) and $f = n - \nabla$.
+\end{proof}
+
+The classically known part of this is $s \ge \nabla + 1$, which is Fact~\ref{fact:fms}
+combined with Lemma~\ref{lem:f-alpha}. So the conjecture asks for a gain of
+$\lceil d/3 \rceil - 1$ over the classical bound, and \emph{only} that.
+
+\subsection{Falsification, and where the residual difficulty sits}
+\label{sec:falsify}
+
+\begin{remark}[falsification stage]\label{rem:falsify}
+\Scomp{$150\,905$ graph evaluations in stages A--D, $0$ violations; stage E re-checks
+$30\,995$ of them against three further invariants, also $0$ violations;
+\texttt{wowii61\_verify.py all}, runtime $\approx 100$\,s on one core}
+No counterexample to \eqref{eq:C61} was found. The stages are: (A) every connected graph on
+$2 \le n \le 7$ vertices, $995$ graphs, from the graph atlas; (B) a complete cover of all
+$11\,117$ connected graphs on $8$ vertices, obtained by enumerating all
+$853 \times 127 = 108\,331$ pairs (connected $H$ on $7$ vertices, non-empty
+$N(v) \subseteq V(H)$) --- every connected graph has a non-cut vertex, so every connected
+$8$-vertex graph is such an $H + v$, and no isomorphism rejection is needed since duplicates
+only cost time; (C) $1\,209$ structured graphs with $n \le 26$ (paths, cycles, path and
+cycle powers $P_n^k, C_n^k$ for $k \le 4$, lexicographic blow-ups $P_m[K_r]$, $C_m[K_r]$,
+$P_m[E_r]$, $C_m[E_r]$, chains of cliques sharing cut vertices, theta graphs, caterpillars,
+random trees); (D1) $7\,994$ uniform random connected graphs on $n = 9,10$; (D2) $32\,376$
+graphs on $n = 9,\dots,13$ produced by simulated annealing that minimises the slack
+$f - \res - \lceil d/3 \rceil$. Stage E additionally \emph{asserts} $\res \le \alpha$,
+$f \ge \alpha+1$, $f \ge \alpha + \lfloor (d-1)/4 \rfloor + 1$ and \eqref{eq:C61} itself on
+every graph it touches, so a counterexample to any of them aborts the run.
+\end{remark}
+
+The minimum of the slack $f - \res - \lceil d/3 \rceil$ over all connected graphs with
+$n \le 8$, by diameter, is
+\[
+\begin{array}{c|ccccccc}
+d & 1 & 2 & 3 & 4 & 5 & 6 & 7\\ \hline
+\min \text{slack} & 0 & 0 & 0 & \mathbf{0} & 1 & 2 & 2\\
+\min (f-\alpha) & 1 & 1 & 1 & \mathbf{1} & 2 & 2 & 4
+\end{array}
+\]
+so in that range the inequality is tight exactly up to $d = 4$ and becomes loose beyond.
+
+\begin{remark}[measured coverage]\label{rem:coverage}
+\Scomp{all $995$ connected graphs with $n \le 7$ and a $30\,000$-graph prefix of the $n=8$
+enumeration}
+Evaluating the three proved certificates P1 $=$ Theorem~\ref{thm:diam3},
+P2 $=$ Theorem~\ref{thm:matching}, P3 $=$ Theorem~\ref{thm:packing} gives coverage
+$89.7 / 74.1 / 96.1\%$ and $98.8\%$ jointly for $n \le 7$, and
+$78.4 / 98.0 / 93.3\%$ and $99.2\%$ jointly at $n = 8$. Of the $267$ graphs in that range
+covered by none of the three, \emph{every one has diameter exactly $4$}; among them
+$f - \alpha = 1$ for $223$ and $= 2$ for $44$, $\alpha - \res \in \{1,2\}$, the slack is $0$
+for $112$ and $1$ for $155$, and $\nabla \in \{1,2,3\}$.
+\end{remark}
+
+We stress the scope of Remark~\ref{rem:coverage}: it is a statement about $n \le 8$. The
+diameters left open in general by Corollary~\ref{cor:B2} are $4$, $7$, $8$ and every
+$d \ge 10$; what the measurement says is that in the exhaustively checked range the
+residual instances all sit at $d = 4$, not that $d = 4$ is the only residual diameter for
+all $n$. Section~\ref{sec:limits} returns to this.
+
+\subsection{The diameter-four dichotomy}\label{sec:dichotomy}
+
+At $d = 4$ we have $\lceil d/3 \rceil = 2$, while Corollary~\ref{cor:B1} yields only
+$f \ge \alpha + 1$ and Fact~\ref{fact:fms} yields only $\res + 2 \le \alpha + 2$. The
+shortfall is exactly one unit, which is the following statement.
+
+\begin{proposition}[the $d=4$ dichotomy]\label{prop:dichotomy}
+\Selem
+Suppose that for every connected $G$ with $\diam(G) = 4$,
+\begin{equation}\label{eq:D4}
+f(G) \ge \alpha(G) + 2 \quad\text{or}\quad \res(G) \le \alpha(G) - 1.
+\tag{D4}
+\end{equation}
+Then \eqref{eq:C61} holds for every connected $G$ with $\diam(G) = 4$, and hence, with
+Corollary~\ref{cor:B2}, for every connected $G$ with
+$\diam(G) \in \{1,2,3,4,5,6,9\}$.
+\end{proposition}
+
+\begin{proof}
+Let $\diam(G) = 4$, so $\lceil d/3 \rceil = 2$. In the first case
+$\res + 2 \le \alpha + 2 \le f$ by Fact~\ref{fact:fms}. In the second,
+$\res + 2 \le \alpha + 1 \le f$ by Lemma~\ref{lem:f-alpha}.
+\end{proof}
+
+Everything from Section~\ref{sec:toolkit} onwards is directed at \eqref{eq:D4}. Negating it
+gives the object the campaign calls the hard core, in two tiers which must be kept apart ---
+several statements below hold in the weaker one, and conflating them was itself a defect
+found in review.
+
+\begin{definition}[frame and hard core]\label{def:frame}
+The \emph{hard-core frame} is: $G$ connected, not a forest, $\diam(G) = 4$, and
+$f(G) = \alpha(G) + 1$. The \emph{hard core} is the frame together with the reductio
+hypothesis $\res(G) = \alpha(G)$ --- and, after Theorem~\ref{thm:T3}, together with
+$\tau \ge 4$.
+\end{definition}
+
+\eqref{eq:D4} is exactly the assertion that the hard core is empty. A third tier is needed
+too, and is used for most of Section~\ref{sec:toolkit}: \emph{reductio only}, meaning the
+hypothesis $\res = \alpha$ with no structural assumption whatever. That tier is not vacuous
+even where the hard core is: $C_5$ has degree sequence $[2,2,2,2,2]$, $\alpha = 2$,
+$\tau = 3$ and $\res = 2$, so it satisfies the reductio while $\diam = 2$ and
+$f = 4 \ne \alpha+1$, i.e.\ it lies outside the frame entirely.
+
+\subsection{Named obstacles}\label{sec:obstacles}
+
+Four obstacles were isolated, each with an explicit witness. They explain why the
+elementary package stops where it does, and they constrain what a proof can look like. All
+witnesses below are re-verified by \texttt{wowii61\_verify.py w}.
+
+\begin{description}
+\item[O1: the two slacks do not separate.] Put $X := \alpha - \res \ge 0$ and
+$Y := f - \alpha \ge 1$; then \eqref{eq:C61} says exactly $X + Y \ge \lceil d/3 \rceil$.
+The tree $W_2$ on $8$ vertices with edges
+$\{01,12,23,24,25,26,73\}$ has $d = 4$, $\alpha = 5$, $\res = 5$, $f = 8$, so $X = 0$ at
+$d = 4$; the graph $W_1$ on $8$ vertices with edges
+$\{01,12,13,14,25,56,71,75\}$ has $d = 4$, $\alpha = 6$, $f = 7$, $\res = 5$, so $Y = 1$ at
+$d = 4$ (and $W_1$ is simultaneously a tight instance of \eqref{eq:C61}: $7 = 5+2$). Hence
+no proof bounding one of $X$, $Y$ alone by $\lceil d/3 \rceil - O(1)$ can work: the
+diameter information must enter the Havel--Hakimi process and the forest construction
+simultaneously. In particular the two obvious strengthenings
+``$\alpha + 1 \ge \res + \lceil d/3 \rceil$'' and ``$f \ge \alpha + \lceil d/3 \rceil$''
+are both false, witnessed by $W_2$ and $W_1$ respectively.
+
+\item[O2: the $1/4$ versus $1/3$ gap.] Corollary~\ref{cor:B1}'s bound
+$\rho^{*} \ge \lfloor (d-1)/4 \rfloor + 1$ is best possible \emph{for that argument}: the
+extremal configuration has $A \cap V(P) = \{v_0,v_2,v_4,\dots\}$, so the path vertices
+available off $A$ are the odd-indexed ones and a 2-packing among them must skip every
+second one. Getting $d/3$ requires admitting pairs $v_i, v_{i+2}$ into $B'$, which is
+legitimate exactly when $v_i$ and $v_{i+2}$ have at most one common neighbour in $A$ ---
+i.e.\ one must control $4$-cycles between consecutive odd-indexed path vertices and $A$.
+The smallest graph where that control genuinely fails is $W_4$ on $6$ vertices with edges
+$\{02,13,24,25,34,35\}$: $d = 4$, $\alpha = 4$, $f = 5$, $\res = 3$, slack $0$, and
+$\rho^{*} = 1 < 2 = \lceil d/3 \rceil$.
+
+\item[O3: $\res$ admits no usable vertex-deletion recursion.] Both natural recursions fail.
+For $v$ of minimum degree, $\res(G) \le 1 + \res(G - N[v])$ is false: on $W_5$, $n=6$, edges
+$\{02,05,13,14,23,34,35\}$, degrees $[2,2,2,4,2,2]$, $v = 0$, one has $\res(G) = 3$ but
+$\res(G - N[0]) = 1$. For $v_0$ a diametral endpoint, $\res(G) \le \res(G - N[v_0])$ fails
+--- for \emph{every} diametral endpoint --- in $36.4\%$ of the $7\,228$ connected graphs
+with $n \le 8$ and $d \ge 4$. The structural reason is common to both: deleting $N[v]$
+lowers $n$, which lowers $\res$, and lowers the degrees of the survivors, which raises it,
+and the two effects are not comparable.
+
+\item[O4: degree-sequence-only bounds are exactly one short at $d = 4$.] For $W_1$
+($n=8$, $m=8$, $\Delta=5$, degrees $[5,3,2,2,1,1,1,1]$) every bound derivable from sequence
+data alone gives $\res \le 6$: $\res \le \alpha = 6$; $\res \le n - \mu = 6$; and, from
+Lemma~\ref{lem:hh}(2) with $D_i \le \Delta$, $\res \le n - \lceil m/\Delta \rceil = 6$. The
+truth is $\res = 5$, and \eqref{eq:C61} needs exactly $\res \le f - 2 = 5$. So the residual
+family demands a residue bound one better than every first-order degree-sequence estimate.
+\end{description}
+
+Two further routes were closed by proof rather than by witness. The ball-peeling
+certificate $\Phi(G) := \max_{B'} (|B'| + \alpha(G - N[B']))$ over 2-packings $B'$ satisfies
+$\Phi(G) \le \alpha(G)$ --- for a 2-packing $B'$ and an independent set $I$ of $G - N[B']$,
+the set $B' \cup I$ is independent in $G$ --- so it can never beat Fact~\ref{fact:fms} and
+dies exactly where O1 does; measured, it fails for $46.3\%$ of the connected graphs with
+$n \le 8$, the identical count to $\alpha < \res + \lceil d/3 \rceil$. And replacing
+$\alpha$ by $f$ in that recursion is vacuous, since
+$\max_{B'}(|B'| + f(G - N[B'])) = f(G)$ attained at $B' = \emptyset$; so the layering idea
+has to be grafted onto a maximum independent set, which is what
+Theorem~\ref{thm:packing} does.
+
+\section{The Havel--Hakimi toolkit}\label{sec:toolkit}
+
+Everything in this section is proved under the reductio hypothesis alone, or with no
+hypothesis at all, and all of it is certified. The registry rows are R-1 to R-5 (and R-6,
+R-7 for the two corollaries mentioned in Remark~\ref{sec:upstream-selfref}); the evidence chain is a
+Qwen3.8-Max round, an independent Claude Opus 5 round, and a third, differently-briefed
+Opus session that confirmed the repairs of the second, with the campaign's own
+reproduction of every joint (Appendix~\ref{app:ledger}).
+
+Recall the vocabulary of Section~\ref{sec:basic}: heads, survivors, blocks; and say an
+entry is \emph{excess at step $j$} if its current value exceeds $s - j + 1$.
+
+\begin{lemma}[survivor degree bound]\label{lem:S}
+\Scert{row R-12}
+Under the reductio hypothesis, every survivor has degree $\le \tau$; equivalently, every
+vertex of degree $\ge \tau+1$ is a head, so $\#\{v : \dg(v) \ge \tau+1\} \le \tau$.
+\end{lemma}
+
+\begin{proof}
+A survivor is decremented at most once per step and must reach $0$ after $\tau$ steps.
+\end{proof}
+
+\begin{lemma}[survivor decay, general $s$]\label{lem:F3prime}
+\Scert{row R-5}
+Let $s$ be the number of Havel--Hakimi steps. At the start of step $j$, $1 \le j \le s$,
+every survivor has value $\le s - j + 1$. \textup{(}No reductio hypothesis.\textup{)}
+\end{lemma}
+
+\begin{proof}
+After step $s$ every remaining entry is $0$ by Lemma~\ref{lem:hh}(1). A survivor is
+decremented at most once per step and only the $s - j + 1$ steps $j, j+1, \dots, s$ remain.
+\end{proof}
+
+This lemma exists in the form stated because of a defect found in review. Its predecessor
+was stated for $s = \tau$ only, yet was cited inside the proofs of
+Lemmas~\ref{lem:Zplus} and~\ref{lem:DICH}, which are asserted for general $s$. The
+statement of those two lemmas was true in the claimed generality all along; only the
+citation reached outside the cited lemma's scope. Over $19\,324$ trajectories --- the
+exhaustive connected atlas $n \le 7$ plus $4\,500$ random graphs $n = 8,\dots,12$, canonical
+sort plus three adversarial tie-breaks --- of which $14\,784$ have $s \ne \tau$, i.e.\ lie
+in exactly the regime where the old citation was invalid, Lemma~\ref{lem:F3prime} fails $0$
+times and Lemma~\ref{lem:Zplus} fails $0$ times.
+
+\begin{lemma}[terminal shape]\label{lem:T}
+\Scert{rows R-11, R-12}
+$s = \tau$ if and only if the list at the start of step $\tau$ is exactly
+$[D_\tau, 1^{D_\tau}, 0^{\dots}]$. Moreover, for an arbitrary graph
+\textup{(}no reductio\textup{)}: if two entries are $\ge 2$ at the start of step $\tau$,
+then $s \ne \tau$, whence by Fact~\ref{fact:fms} $s \ge \tau+1$ and so
+$\res \le \alpha - 1$.
+\end{lemma}
+
+\begin{proof}
+The last step deletes the head and decrements the next $D_\tau$ entries; all entries must
+then be $0$, which is the displayed shape. For the second sentence, the displayed shape has
+exactly one entry $\ge 2$ when $D_\tau \ge 2$ and none when $D_\tau = 1$; two entries $\ge
+2$ therefore contradicts it, so $s \ne \tau$, and $s \ge \tau$ always by
+Fact~\ref{fact:fms}.
+\end{proof}
+
+The second sentence is stated \emph{outside} the reductio deliberately. Read inside the
+standing hypothesis $s = \tau$ its antecedent contradicts the first sentence and it is
+vacuously true; the version above is the one every call site actually consumes. This
+distinction was itself the subject of a review finding.
+
+\begin{lemma}[block occupancy]\label{lem:Zplus}
+\Scert{row R-1}
+At the start of step $j$, every later head whose current value exceeds $s - j + 1$ lies in
+$\mathrm{block}_j$, and is therefore decremented at step $j$.
+\end{lemma}
+
+\begin{proof}
+Let $x$ be deleted at step $i > j$ with current value $v > s-j+1$, and suppose
+$x \notin \mathrm{block}_j$. The block is a prefix of the remaining entries in
+non-increasing order after deletion of the step-$j$ head, so $v \le \min(\mathrm{block}_j)$.
+If some block entry is a survivor then $\min(\mathrm{block}_j) \le s-j+1$ by
+Lemma~\ref{lem:F3prime}, contradicting $v > s-j+1$. Otherwise all $D_j$ block entries are
+later heads; together with $x$ that is $D_j + 1$ later heads, while only $s - j$ heads
+remain, so $D_j \le s-j-1$. But every block entry is at most the head value $D_j$, so
+$v \le \min(\mathrm{block}_j) \le D_j \le s-j-1 < s-j+1$, a contradiction.
+\end{proof}
+
+\begin{lemma}[head dichotomy]\label{lem:DICH}
+\Scert{row R-2}
+Let a head be deleted at step $i$, of original degree $g$, and let $h_i$ be the number of
+earlier steps at which it was decremented. Then:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item \emph{persistence}: if it is excess at step $j < i$ then by Lemma~\ref{lem:Zplus} it
+is decremented at step $j$, hence it is excess at step $j+1$ as well;
+\item if $g \ge s+1$ then it is excess at step $1$, hence at every step $1,\dots,i-1$, hence
+in every earlier block, so $h_i = i-1$ and $D_i = g - (i-1)$ \emph{exactly};
+\item if $g \le s$ then $D_i \le s - i + 2$, unconditionally.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) and (b) are immediate from Lemma~\ref{lem:Zplus} and the definition of excess. For (c):
+if the entry is never excess before deletion, its value at step $i-1$ is at most
+$s - (i-1) + 1 = s-i+2$ and values never increase (for $i = 1$, $D_1 = g \le s$).
+Otherwise let $j_0 \ge 2$ be the first excess step; its value at step $j_0-1$ is at most
+$s - j_0 + 2$, and by (a) it is decremented at each of the $i - j_0$ steps
+$j_0, \dots, i-1$, so $D_i \le (s-j_0+2) - (i-j_0) = s-i+2$.
+\end{proof}
+
+Lemma~\ref{lem:DICH} is the engine of everything downstream. Clause (b) is an
+\emph{equality}, and it is what makes the position sums of Section~\ref{sec:budget}
+collapse; clause (c) is an unconditional inequality for low heads. The pair replaces an
+earlier, hypothesis-laden head-decay lemma of the campaign, and is tie-safe, which the
+earlier one was not obviously.
+
+\begin{theorem}[the $K = B$ corner is a clique]\label{thm:K}
+\Scert{row R-3}
+Assume the reductio hypothesis $\res(G) = \alpha(G)$ and that every $b \in B$ has
+$\dg(b) \ge \tau+1$. Then $K = B$ and $e_B = \binom{\tau}{2}$: $B$ is a clique.
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:S} and the hypothesis, every $b \in B$ is a head; since
+$|K| = s = \tau = |B|$ we get $K = B$, and hence the total number of decrements absorbed by
+heads before their deletion equals $e_B$. Every head now has original degree
+$\ge \tau+1 = s+1$, so Lemma~\ref{lem:DICH}(b) applies to each, giving $h_i = i-1$.
+Summing, $e_B = \sum_{i=1}^{\tau}(i-1) = \binom{\tau}{2}$.
+\end{proof}
+
+\begin{corollary}\label{cor:K1}
+\Scert{row R-4}
+Let $G$ be connected with $\diam(G) = 4$. If some maximum independent set $A$ has
+$\min_{b \in B} \dg(b) \ge \tau+1$, then $\res(G) \le \alpha(G) - 1$.
+\end{corollary}
+
+\begin{proof}
+Otherwise $\res = \alpha$, and Theorem~\ref{thm:K} makes $B$ a clique, contradicting
+Observation~\ref{obs:R1} below.
+\end{proof}
+
+\begin{remark}[independent numerical check]\label{rem:thmK}
+\Scomp{exhaustive $n \le 7$, the exhaustive $n = 8$ cover, and $6\,000$ denser random
+graphs $n = 9,\dots,12$: $114\,914$ connected graphs, of which $1\,464$ have
+$\res = \alpha$ with all $B$-degrees $\ge \tau+1$}
+In none of those $1\,464$ instances is $B$ a non-clique. The check was written by the owner
+agent and reuses no code from the agent that proposed Theorem~\ref{thm:K}.
+\end{remark}
+
+\begin{remark}[a statement of the campaign refuted by its own review]
+\label{sec:upstream-selfref}
+An earlier statement of this line asserted, unconditionally, that if every $b \in B$ has
+$\dg(b) \ge \tau+1$ and $e_B = 0$ then $m \le \Delta(G) + \tau(\tau+1)/2 - 1$. A reviewing
+session produced $K_{2,3}$ as a counterexample: taking $B$ to be the $2$-element part,
+$\alpha = 3$, $\tau = 2$, $e_B = 0$, both $B$-degrees are $3 = \tau+1$, $\Delta = 3$ and
+$m = 6$, while $\Delta + \tau(\tau+1)/2 - 1 = 5 < 6$. The owner agent reproduced the
+witness and upheld the objection: the statement is true only under the reductio hypothesis
+--- and indeed $K_{2,3}$ has heads $(3,2,1)$, so $s = 3 \ne \tau = 2$ and the reductio fails
+there, which is precisely why the hypothesis has to be written into the statement. The
+patched statement carries registry row R-7. Nothing downstream used the unconditional
+version. We report this because the honest measure of a review gate is what it catches, and
+because it is the smaller of the two refutations in this paper; the larger one is in
+Section~\ref{sec:gfannu}.
+\end{remark}
+
+\section{Frame lemmas at diameter four}\label{sec:frame}
+
+The four statements of this section hold in the hard-core frame
+(Definition~\ref{def:frame}) --- no reductio hypothesis --- and are the only structural
+input the later sections take from the geometry of $G$. All are certified as part of the
+root-reduction block of the closeout registry.
+
+\begin{lemma}[pairing obstacle]\label{lem:pair}
+\Scert{root-reduction block}
+Let $A$ be a maximum independent set, $B = V \setminus A$, and suppose $f = \alpha + 1$.
+Then for distinct $u,v \in B$:
+\[
+uv \in E \implies N_A(u) \cap N_A(v) \ne \emptyset, \qquad
+uv \notin E \implies |N_A(u) \cap N_A(v)| \ge 2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Consider $G[A \cup \{u,v\}]$, which has $\alpha + 2$ vertices. If $f = \alpha+1$ it must
+contain a cycle. Since $A$ is independent, every edge of that subgraph meets $\{u,v\}$, so a
+cycle is either the triangle $u - v - a$ with $a \in N_A(u) \cap N_A(v)$, or the $4$-cycle
+$u - a - v - b$ with distinct $a,b \in N_A(u) \cap N_A(v)$. The first requires $uv \in E$.
+\end{proof}
+
+\begin{observation}\label{obs:R1}
+\Scert{root-reduction block}
+If $\diam(G) = 4$ then $B$ is not a clique; equivalently $\nu \ge 1$.
+\end{observation}
+
+\begin{proof}
+$A$ is a maximal independent set, so every $a \in A$ has a neighbour in $B$. If $B$ were a
+clique then for $a, a' \in A$ we would have $a - b - b' - a'$ for suitable $b,b' \in B$, so
+$\dist(a,a') \le 3$; for $a \in A$, $b \in B$ we would have $\dist(a,b) \le 2$; and within
+$B$, $\dist \le 1$. Hence $\diam \le 3$.
+\end{proof}
+
+\begin{fact}[the diameter witness]\label{fact:Fb}
+\Scert{root-reduction block}
+Call $T \subseteq B$ an \emph{occurring type} if $T = N(a)$ for some $a \in A$. In the
+hard-core frame there exist occurring types $T_1, T_2$ that are disjoint and have no
+$G[B]$-edge between them. In particular a singleton type occurs.
+\end{fact}
+
+\begin{proof}
+By Lemma~\ref{lem:pair}, any two vertices of $B$ have a common $A$-neighbour or are
+adjacent, so $\dist(b,b') \le 2$ and hence $\dist(a,b) \le 3$ for all $a \in A$,
+$b \in B$. So $\diam = 4$ can only be realised by a pair $a, a' \in A$, and
+$\dist(a,a') = 4$ holds if and only if $N(a) \cap N(a') = \emptyset$ and there is no
+$G[B]$-edge between them.
+\end{proof}
+
+\begin{lemma}[$\tau$-uniform degree bound on the witness types]\label{lem:Cstar}
+\Scert{root-reduction block}
+In the hard-core frame, let $T_1, T_2$ realise Fact~\ref{fact:Fb}. Then every
+$b \in T_1 \cup T_2$ has $\degA(b) \ge 3$, hence $\dg(b) \ge 3 + \degB(b)$.
+\end{lemma}
+
+\begin{proof}
+Let $b \in T_1$ and pick any $b' \in T_2$. There is no $G[B]$-edge between $T_1$ and $T_2$,
+so $bb' \notin E$, and Lemma~\ref{lem:pair} gives $|N_A(b) \cap N_A(b')| \ge 2$. The witness
+$a_1$ of type $T_1$ is adjacent to $b$ and, since $b' \notin T_1$, not adjacent to $b'$; so
+$a_1$ is none of those two common neighbours. Hence $\degA(b) \ge 2 + 1 = 3$. Symmetrically
+for $b \in T_2$.
+\end{proof}
+
+\begin{remark}[the measured obstacle]\label{rem:obstacle-tau}
+\Scomp{exhaustive $n \le 7$ plus the $n = 8$ cover, restricted to the hard-core frame:
+$340$ graphs, $399$ pairs realising Fact~\ref{fact:Fb}, $0$ failures of
+Lemma~\ref{lem:Cstar}}
+The frame instances split by $\tau$ as $\{2 : 14,\ 3 : 200,\ 4 : 118\}$, and the hypothesis
+of Corollary~\ref{cor:K1} --- all $B$-degrees $\ge \tau+1$ --- holds in $14$ of $14$, $91$
+of $200$ and only $5$ of $118$ of them respectively. Lemma~\ref{lem:Cstar} explains the
+collapse: Fact~\ref{fact:Fb} together with Lemma~\ref{lem:pair} forces $\degA(b) \ge 3$
+only for the $O(1)$ vertices of $T_1 \cup T_2$, and $\degA(b) \ge 2$ for any $b$ with a
+non-neighbour in $B$ --- bounds that do not grow with $\tau$, while the hypothesis of
+Corollary~\ref{cor:K1} demands $\tau+1$. This is why the $K = B$ corner is a shrinking
+corner and why the rest of the paper is about $K \ne B$.
+\end{remark}
+
+\section{Small covers: \texorpdfstring{$\tau \le 3$}{tau <= 3}}\label{sec:smalltau}
+
+\begin{theorem}[$\tau \le 2$]\label{thm:tau2}
+\Scert{closeout block ``$\tau \le 2$ / $\tau = 3$''}
+If $\diam(G) = 4$ and $\tau(G) = n - \alpha(G) \le 2$, then \eqref{eq:D4} holds for $G$.
+\end{theorem}
+
+\begin{proof}
+We may assume $f = \alpha + 1$, since otherwise $f \ge \alpha+2$ and there is nothing to
+prove; so we are in the hard-core frame and Lemma~\ref{lem:pair} is available.
+
+If $\tau = 1$ then $B$ is a single vertex covering all edges, so $G$ is a star and
+$\diam \le 2$. Let $\tau = 2$, $B = \{x,y\}$. Every $a \in A$ has $N(a) \subseteq \{x,y\}$
+non-empty, so $A$ partitions into $A_x$ (type $\{x\}$), $A_y$ (type $\{y\}$) and $A_c$
+(type $\{x,y\}$); write $a = |A_x|$, $b = |A_y|$, $c = |A_c|$. By Fact~\ref{fact:Fb} there
+are two disjoint occurring types with no $G[B]$-edge between them, which forces
+$xy \notin E$ and $A_x, A_y \ne \emptyset$; and then Lemma~\ref{lem:pair} applied to the
+non-adjacent pair $x,y$ gives $|A_c| = c \ge 2$. Thus
+\[
+\dg(x) = a + c, \qquad \dg(y) = b + c, \qquad m = a + b + 2c ,
+\]
+and the degrees of the $A$-vertices are $1$ (on $A_x \cup A_y$) or $2$ (on $A_c$).
+
+Suppose $\res = \alpha$, i.e.\ $s = \tau = 2$, so $D_1 + D_2 = m$ by
+Lemma~\ref{lem:hh}(2). Assume without loss of generality $a \ge b$, so
+$D_1 = \Delta = a+c$. After the first step the entry $y$ has value $\dg(y) - 1$ or
+$\dg(y)$ according to whether $y \in \mathrm{block}_1$; but $\dg(y) = b + c \ge c \ge 2$ is
+the largest of the remaining entries, so $y$ heads the sorted order and lies in
+$\mathrm{block}_1$ as soon as $D_1 \ge 1$, which holds. Hence
+$D_2 \le (b+c) - 1$ and
+\[
+D_1 + D_2 \;\le\; (a+c) + (b+c) - 1 \;=\; m - 1 \;<\; m,
+\]
+a contradiction. Therefore $s \ge 3$ and $\res = n - s \le n - 3 = \alpha - 1$.
+\end{proof}
+
+\begin{theorem}[$\tau = 3$]\label{thm:T3}
+\Scert{row R-13, with repairs R1, R3, J1, J2, K1, K2, K3 landed}
+If $G$ is connected, $\diam(G) = 4$ and $\tau(G) = 3$, then \eqref{eq:D4} holds for $G$.
+Combined with Theorem~\ref{thm:tau2}, \eqref{eq:D4} holds whenever $\tau \le 3$; so the
+hard core has $\tau \ge 4$.
+\end{theorem}
+
+The proof is a finite case analysis on
+$k := \#\{b \in B : \dg(b) \ge 4\}$; since every $A$-vertex has degree $\le \tau = 3$, only
+$B$-vertices can have degree $\ge 4$. It is long, and we give its skeleton together with
+the tools it uses, rather than reproducing every branch; the complete branch-by-branch text,
+with the seven landed repairs listed in the marker, is in the campaign's source report, and
+it is that text --- not this summary --- that the two review rounds certified. We flag this
+explicitly in Section~\ref{sec:limits} as the one place in the paper where a certified
+argument is summarised rather than reproduced.
+
+\begin{proof}[Proof skeleton]
+Assume $f = \alpha+1$ and $\res = \alpha$, so $s = 3$, $\sum_{i \le 3} D_i = m$, and by
+Lemma~\ref{lem:T} the list after step $2$ is exactly $[D_3, 1^{D_3}, 0^{\dots}]$. Write
+$B = \{x,y,z\}$ with $B$-degrees $X \ge Y \ge Z$, and for non-empty $T \subseteq B$ let
+$\mathrm{mu}[T] = \#\{a \in A : N(a) = T\}$; put $p = \mathrm{mu}[B]$,
+$q = \sum_{|T| = 2}\mathrm{mu}[T]$, $r = \sum_{|T|=1}\mathrm{mu}[T]$, so
+$\alpha = p+q+r$, $n = \alpha+3$, and the $A$-degree spectrum is $3^p 2^q 1^r$. Since $A$
+is independent, $G$ is determined up to isomorphism by these seven multiplicities together
+with the isomorphism type of $G[B]$, of which there are four; and $e_B \le 2$ by
+Observation~\ref{obs:R1}. Three structural bounds follow from Lemma~\ref{lem:pair} and
+Fact~\ref{fact:Fb}:
+\begin{itemize}
+\item if $e_B = 0$ then every $b \in B$ has $\dg(b) \ge 2$;
+\item if $e_B = 1$, say $E(G[B]) = \{uv\}$ with third vertex $w$, then
+$\dg(u),\dg(v),\dg(w) \ge 3$ and $k \ge 1$;
+\item if $e_B = 2$, so $G[B]$ is a path with centre $c$ and ends $e_1,e_2$, then
+$\dg(e_1),\dg(e_2) \ge 4$ --- hence $k \ge 2$ --- and $\dg(c) \ge 3$.
+\end{itemize}
+Consequently $k = 0 \Rightarrow e_B = 0$ and $k = 1 \Rightarrow e_B \le 1$. One further
+tool is used: if the degree list with one copy of $\Delta$ removed has all entries $\le 3$
+\emph{and} $\Delta$ is at least the number of its entries equal to $3$, then after step $1$
+all entries are $\le 2$, so $D_2, D_3 \le 2$ and $\sum_{i \le 3} D_i \le \Delta + 4$; hence
+$m > \Delta + 4$ forces $s \ge 4$. Both hypotheses of this tool must be checked at each
+call site --- the second is not automatic, and the campaign's own control instance
+$[3,3,3,3,3,2,1]$ (with $\Delta = 3$ and $m = 9 > 7$) is exactly where a blanket appeal to
+it would give a false bound. That over-general appeal was a defect found in review and
+removed; the tool is now invoked only at sites where its second hypothesis is verified in
+line.
+
+The four branches then run as follows. For $k = 3$ one gets $D_1 = X$, $D_2 = Y - 1$ and
+$D_3 = Z + 1 - e_B$, and comparing with the maximum possible value after step $2$ forces
+$e_B = 2$ and $D_3 = Z-1$ with $Z = 4$; counting the entries of value $\ge 2$ after step $2$
+then gives at least $Y \ge 4$ of them, contradicting Lemma~\ref{lem:T}. For $k = 2$ the
+three values of $e_B$ are treated separately: $e_B = 0$ forces $Z \le 2$ and an undecremented
+$3$ at step $1$, whence $p \ge X \ge 4$ and so $Z \ge p \ge 4$, a contradiction;
+$e_B = 1$ forces $\degA(z) = p = 3$ and $\mathrm{mu}[\{x,z\}] = \mathrm{mu}[\{y,z\}] =
+\mathrm{mu}[\{z\}] = 0$, which kills every pair admissible for Fact~\ref{fact:Fb};
+$e_B = 2$ pins the degree sequence to
+$[a_0+c_0+2,\, b_0+c_0+2,\, 3,\, 3,\, 2^{c_0},\, 1^{a_0+b_0}]$ with $a_0, b_0, c_0 \ge 1$,
+and the explicit trajectory gives $\sum_{i\le3} D_i = m - 1 < m$. For $k = 1$ the two
+possible values of $e_B$ each reduce to $p \le 2 \le X - 2$, where the tool above applies
+and contradicts the exact value of $m$; in the sub-branch $e_B = 0$, $p = 3$ every occurring
+type contains one fixed vertex $x$, so every $A$-vertex is adjacent to $x$, every two
+$A$-vertices are at distance $2$ through $x$, $\dist(a,b) \le 3$ and $\dist(b,b') = 2$,
+whence $\diam \le 3$ unconditionally --- contradicting $\diam = 4$. Finally $k = 0$ forces
+$e_B = 0$, then $p = 2$ and $q = 1$, and Fact~\ref{fact:Fb} pins the graph up to isomorphism
+to the single instance $A = \{u_1,u_2 \text{ universal},\, w \sim \{y,z\},\, \ell \sim
+\{x\}\}$, $\dg = [3,3,3,3,3,2,1]$, $n = 7$, $m = 9$; running the process directly gives
+$D = (3,3,2)$, $\sum D_i = 8 = m-1 < m$, so $s = 4$ and $\res = 3 = \alpha - 1$. These
+four cases are exhaustive, so $\res = \alpha$ is impossible.
+\end{proof}
+
+\begin{remark}[$\tau = 3$: numerical backing, and non-vacuity]\label{rem:T3num}
+\Scomp{$591\,710$ hard-core-frame instances at $\tau = 3$ inside a multiplicity box of size
+$5$, and $147\,348$ instances inside a box of size $4$ with the structural skeleton checked
+separately}
+The parameterisation above makes the $\tau = 3$ frame an exhaustive scan rather than a
+search: every tuple in the box is covered, no isomorphism rejection is needed, and no SAT
+solver is involved. In the size-$5$ box there are $0$ instances with $\res \ge \alpha$; the
+distribution by $e_B$ is $\{0 : 224\,035,\ 1 : 196\,075,\ 2 : 171\,600\}$ with $e_B = 3$
+never occurring, which is a numerical confirmation of Observation~\ref{obs:R1}; and the
+minimum of $m - (D_1+D_2+D_3)$ is exactly $1$, attained at $B$ independent,
+$A = \{u_1, u_2$ universal, $w \sim \{x,y\}$, $e \sim \{z\}\}$, $n = 7$, $m = 9$,
+$\dg = [3,3,3,3,3,2,1]$. In the size-$4$ box the $(e_B,k)$ cells $(1,0)$, $(2,0)$ and
+$(2,1)$ are always empty, confirming the two implications $e_B = 1 \Rightarrow k \ge 1$ and
+$e_B = 2 \Rightarrow k \ge 2$ used above.
+Independently, the round-B judge enumerated every $\tau = 3$ graph on $n \le 37$
+($89.8$M parameter tuples), a further $77.9$M-tuple box up to $n = 73$, $7.7$M
+huge-multiplicity instances with $n$ up to about $10^6$, and a $2^{21}$ brute force at
+$n = 7$ reproducing exactly the five hard-core degree sequences its own parameterisation
+predicts, with no counterexample anywhere --- and, decisively for the question of vacuity,
+$24\,013$ near-misses: configurations satisfying every hard-core condition except
+$f = \alpha+1$. Theorem~\ref{thm:T3} is therefore excluding a class that is approached from
+every direction but one, not quantifying over an empty set.
+\end{remark}
+
+\begin{remark}[a negative result worth recording]\label{rem:decreasing}
+\Scomp{the tight instance of Remark~\ref{rem:T3num}}
+The natural entry-wise bound $D_i \le d_i - (i-1)$ --- which, if true, would close the
+whole problem by a one-line summation --- already fails \emph{inside} the hard core: for
+$\dg = (3,3,3,3,3,2,1)$ one has $D = (3,3,2)$, so $d_2 - D_2 = 0$. Moreover the sum that a
+proof of this shape would need is tight in that same instance. Any argument resting only on
+entry-wise decrement estimates is therefore dead, which is why Lemma~\ref{lem:DICH}
+proceeds instead by bounding head values through survivor decay.
+\end{remark}
+
+\section{A \texorpdfstring{$\tau$}{tau}-uniform budget}\label{sec:budget}
+
+From here on the parameter that organises everything is $L = |\Blo|$, the number of
+vertices of $B$ of degree at most $\tau$. Theorem~\ref{thm:K} says the hard core has
+$L \ne 0$; this section proves $L \ge 2$ and Section~\ref{sec:fan} raises it to $L \ge 3$.
+The results of this section carry registry rows R-16, R-17 and R-18. Note that the
+high/low split is by \emph{degree}, not by head status; Lemma~\ref{lem:HI} makes the two
+agree on $\Bhi$ only, and it is exactly that asymmetry which lets Theorem~\ref{thm:LOW}
+say something when $K \ne B$.
+
+\subsection{The bound}
+
+\begin{lemma}\label{lem:HI}
+\Scert{row R-16, tier ``reductio only''}
+Under the reductio hypothesis, $\Bhi$ is exactly the set of heads of original degree
+$\ge \tau+1$; in particular there are $p$ such heads and $L$ heads of original degree
+$\le \tau$. Write $I_{\mathrm{hi}}$, $I_{\mathrm{lo}}$ for the corresponding sets of head
+\emph{positions}, so $|I_{\mathrm{hi}}| = p$ and $|I_{\mathrm{lo}}| = L$.
+\end{lemma}
+
+\begin{proof}
+Every $a \in A$ has $N(a) \subseteq B$, so $\dg(a) \le |B| = \tau$; hence every vertex of
+degree $\ge \tau+1$ lies in $B$, and by Lemma~\ref{lem:S} every such vertex is a head.
+\end{proof}
+
+\begin{theorem}[the budget inequality]\label{thm:LOW}
+\Scert{row R-16, tier ``reductio only''}
+Under the reductio hypothesis $\res(G) = \alpha(G)$, with no hypothesis on $K$:
+\begin{align}
+\sum_{b \in \Blo} \dg(b) \;+\; \nu &\;\le\; L(\tau+1); \label{eq:LOW1}\\
+\sum_{b \in \Blo} \degA(b) \;+\; e(\Blo) \;+\; \mbar &\;\le\; \tfrac{1}{2}L(L+3);
+\label{eq:LOW2}\\
+\sum_{b \in \Blo} \degA(b) \;+\; \mbar &\;\le\; 2L + \nu(\Blo). \label{eq:LOW3}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:hh}(2), $\sum_{i=1}^{\tau} D_i = m$. Split the head positions by
+Lemma~\ref{lem:HI}. For $i \in I_{\mathrm{hi}}$, Lemma~\ref{lem:DICH}(b) gives
+$D_i = g_i - (i-1)$ exactly, where $g_i$ is the original degree; for
+$i \in I_{\mathrm{lo}}$, Lemma~\ref{lem:DICH}(c) gives $D_i \le \tau - i + 2$. Hence
+\[
+m \;\le\; \sum_{b \in \Bhi} \dg(b) \;-\; \sum_{i \in I_{\mathrm{hi}}}(i-1)
+\;+\; \sum_{i \in I_{\mathrm{lo}}}(\tau - i + 2).
+\]
+On the other hand $m = \sum_{b \in B}\dg(b) - e_B$. Subtracting,
+\[
+\sum_{b \in \Blo}\dg(b) - e_B \;\le\;
+- \sum_{i \in I_{\mathrm{hi}}}(i-1) + \sum_{i \in I_{\mathrm{lo}}}(\tau-i+2).
+\]
+The right-hand side is independent of which positions the low heads occupy: adding and
+subtracting $\sum_{i \in I_{\mathrm{lo}}}(i-1)$,
+\[
+- \sum_{i \in I_{\mathrm{hi}}}(i-1) + \sum_{i \in I_{\mathrm{lo}}}(\tau-i+2)
+= - \sum_{i=1}^{\tau}(i-1) + \sum_{i \in I_{\mathrm{lo}}}\bigl[(i-1)+(\tau-i+2)\bigr]
+= - \binom{\tau}{2} + L(\tau+1),
+\]
+because the bracket collapses to the constant $\tau+1$. With $e_B = \binom{\tau}{2} - \nu$
+this is \eqref{eq:LOW1}. For \eqref{eq:LOW2} write
+$\sum_{\Blo}\dg(b) = \sum_{\Blo}\degA(b) + 2e(\Blo) + e(\Blo,\Bhi)$ and
+$\nu = \nu(\Blo) + \nu(\Blo,\Bhi) + \mbar$ with
+$\nu(\Blo) = \binom{L}{2} - e(\Blo)$ and $\nu(\Blo,\Bhi) = Lp - e(\Blo,\Bhi)$; the crossing
+terms cancel and $L(\tau+1) - \binom{L}{2} - Lp = \tfrac12 L(L+3)$. Finally \eqref{eq:LOW3}
+is \eqref{eq:LOW2} with $e(\Blo) = \binom{L}{2} - \nu(\Blo)$.
+\end{proof}
+
+Theorem~\ref{thm:K} is the case $L = 0$: then \eqref{eq:LOW1} reads $\nu \le 0$, i.e.\ $B$
+is a clique. So Theorem~\ref{thm:LOW} subsumes it, and it never mentions $K$ at all.
+
+\begin{theorem}[slack positivity]\label{thm:SL}
+\Scert{row R-16, tier ``reductio only''}
+Assume the reductio hypothesis and $\tau \ge 2$. If $L \ge 1$ then
+\[
+\mathrm{slack} \;:=\; L(\tau+1) - \Bigl( \sum_{b \in \Blo}\dg(b) + \nu \Bigr) \;\ge\; 1,
+\]
+i.e.\ \eqref{eq:LOW1} holds with one unit to spare; equivalently
+$\sum_{b\in\Blo}\degA(b) + e(\Blo) + \mbar \le \tfrac12 L(L+3) - 1$.
+\end{theorem}
+
+\begin{proof}
+From the proof of Theorem~\ref{thm:LOW},
+$\mathrm{slack} = \sum_{i \in I_{\mathrm{lo}}}(\tau - i + 2 - D_i)$, each summand being
+$\ge 0$ by Lemma~\ref{lem:DICH}(c). Suppose $\mathrm{slack} = 0$; then
+\begin{equation}\label{eq:star}
+\text{every low head satisfies } D_i = \tau - i + 2 \text{ exactly.}
+\tag{$*$}
+\end{equation}
+Let $i_0 := \max I_{\mathrm{lo}}$ and let $x$ be the head deleted at step $i_0$, of original
+degree $g = \dg(x) \le \tau$. Write $v_k$ for $x$'s value at the start of step $k$.
+
+\emph{Step 1: $i_0 \ge 2$.} If $i_0 = 1$ then $I_{\mathrm{lo}} = \{1\}$, so every head at a
+position $2,\dots,\tau$ is high, of original degree $\ge \tau+1$; but
+$D_1 = \Delta = g \le \tau$ by Lemma~\ref{lem:hh}(2), contradicting that $\Delta$ is the
+maximum degree. (If $L = \tau$ there are no high heads and $i_0 = \tau \ge 2$ directly.)
+
+\emph{Step 2: an escape step exists, and it sits exactly at the decay threshold.} Let
+$\mathcal{E} := \{k < i_0 : x \notin \mathrm{block}_k\}$. Since
+$v_{i_0} = g - (i_0 - 1 - |\mathcal{E}|)$ and $v_{i_0} = D_{i_0} = \tau - i_0 + 2$ by
+\eqref{eq:star}, we get $|\mathcal{E}| = \tau + 1 - g \ge 1$. Put $j := \max \mathcal{E}$.
+From step $j+1$ to step $i_0-1$ the entry $x$ is decremented every time, so
+$v_{i_0} = v_j - (i_0-1-j)$, whence $v_j = \tau - j + 1$.
+
+\emph{Step 3: what $\mathrm{block}_j$ can contain.} $\mathrm{block}_j$ is the prefix of the
+$D_j$ largest non-head entries in non-increasing order, and $x$ is an entry of step $j$
+lying outside it; hence every entry of $\mathrm{block}_j$ has value $\ge v_j = \tau-j+1$. By
+Lemma~\ref{lem:F3prime} every survivor has value $\le \tau-j+1$ at the start of step $j$.
+Therefore each survivor in $\mathrm{block}_j$ has value exactly $\tau-j+1$ and so --- needing
+$\tau-j+1$ further decrements in the $\tau-j+1$ remaining steps --- lies in
+$\mathrm{block}_k$ for every $k \in [j,\tau]$. Write $s_j$ for the number of survivors in
+$\mathrm{block}_j$.
+
+\emph{Step 4: the head part of $\mathrm{block}_j$.} Every entry of $\mathrm{block}_j$ is
+either a survivor or a head deleted later. Let $\ell_j := \#\{i \in I_{\mathrm{lo}} : i > j\}$
+and note $x$ is one of these and $x \notin \mathrm{block}_j$, so the low later heads
+contribute $\lambda_j \le \ell_j - 1$. Every high later head lies in every earlier block by
+Lemma~\ref{lem:DICH}(b), and there are $(\tau-j)-\ell_j$ of them. Hence
+$D_j = |\mathrm{block}_j| = (\tau-j-\ell_j) + \lambda_j + s_j$.
+
+\emph{Step 5: $s_j \le 2$.} All heads after position $i_0$ are high, so by
+Lemma~\ref{lem:DICH}(b) all $\tau - i_0$ of them lie in $\mathrm{block}_{i_0}$; by Step 3
+the $s_j$ survivors lie in $\mathrm{block}_{i_0}$ too, and these sets are disjoint. Hence
+$D_{i_0} \ge s_j + (\tau-i_0)$, and $D_{i_0} = \tau-i_0+2$ gives $s_j \le 2$.
+
+\emph{Step 6: contradiction.} Steps 4 and 5 give
+$D_j \le (\tau-j-\ell_j) + (\ell_j-1) + 2 = \tau-j+1$. But position $j < i_0$ is a head
+position, and either it is high, so $D_j = g_j - (j-1) \ge (\tau+1)-(j-1) = \tau-j+2$ by
+Lemma~\ref{lem:DICH}(b), or it is low, so $D_j = \tau-j+2$ by \eqref{eq:star}. Either way
+$D_j \ge \tau-j+2 > \tau-j+1 \ge D_j$.
+\end{proof}
+
+\begin{remark}[sharpness]\label{rem:SLsharp}
+\Scomp{$2\,740$ trajectories on the exhaustive atlas $n \le 7$ and $19\,710$ on $9\,000$
+random graphs $n = 8,\dots,13$ plus $4\,000$ near-split graphs, five trajectories each}
+Theorem~\ref{thm:SL} is \emph{not} the statement ``the last low head satisfies
+$D_{i_0} \le \tau - i_0 + 1$'': that stronger claim is false, with $1\,925$ counterexamples
+in the corpus. What Step 6 extracts is that the escape step $j$ must itself be a low head
+position carrying strict inequality, so equality cannot hold at all low heads
+simultaneously --- which is $\mathrm{slack} \ge 1$ and no more. Every intermediate
+assertion of the proof was checked separately, not just the conclusion, with $0$ failures,
+and the histogram of $s_j$ at equality heads is $\{2 : 2300\}$: Step 5's bound is attained
+every time it is used. In a separate corpus of $6\,403$ graphs and $34\,040$ reductio
+trajectory checks, the minimum slack of \eqref{eq:LOW1} per $L$ is
+$\{0:0,\,1:1,\,2:1,\,3:2,\,4:2,\,5:3,\dots\}$: tight exactly at $L = 0$, which is forced by
+Theorem~\ref{thm:K}, and never $0$ for $L \ge 1$.
+\end{remark}
+
+\begin{corollary}[the hard core has $L \ge 2$]\label{cor:SLHC}
+\Scert{row R-18}
+In the hard core, at least two vertices of $B$ have degree $\le \tau$.
+\end{corollary}
+
+\begin{proof}
+$L = 0$ is impossible: Theorem~\ref{thm:K} would make $B$ a clique, contradicting
+Observation~\ref{obs:R1}. $L = 1$ is impossible by Corollary~\ref{cor:L1short} below (or,
+by the longer route of Proposition~\ref{prop:L1} and Corollary~\ref{cor:L1prime}, because
+the slack would be exactly $0$, contradicting Theorem~\ref{thm:SL}). The numerical
+hypothesis $\tau \ge 2$ of Theorem~\ref{thm:SL} is supplied by $\diam = 4$ alone: a
+connected graph with $\tau \le 1$ has a vertex cover of size $\le 1$, hence is edgeless or a
+star, hence has $\diam \le 2$.
+\end{proof}
+
+The last sentence of that proof is worth a word. In three successive states of this text the
+parenthetical there cited $\tau \ge 3$, then $\tau \ge 4$, then Theorem~\ref{thm:T3} --- each
+time a true statement that the proof does not consume, and each time making a self-contained
+corollary depend on the heaviest theorem in the line, hence unreviewable by any judge not
+handed that theorem. A review round objected, and the elementary local replacement above is
+the repair. The species --- \emph{a true import nobody needs} --- recurred six times in the
+campaign's source report and is the single most common defect its review gate caught.
+
+\subsection{The master budget}
+
+\begin{theorem}[master budget]\label{thm:MB}
+\Scert{row R-17}
+In the hard core, for $L \ge 1$,
+\[
+|\Bloplus| + c + \mbar \;\le\; L + \nu(\Blo) - 1,
+\qquad\text{where } c := |\Blo \cap (T_1 \cup T_2)| .
+\]
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:pair} gives $\degA(b) \ge 2$ for every $b \in \Bloplus$, and
+$\degA(b) \ge 1$ for every $b \in \Blo$ since $A$ is a maximum independent set.
+Lemma~\ref{lem:Cstar} gives $\degA(b) \ge 3$ for $b \in T_1 \cup T_2$, and every such $b$
+\emph{that is low} lies in $\Bloplus$ --- it has the whole of the other type among its
+non-neighbours --- so $\Blo \cap (T_1 \cup T_2) \subseteq \Bloplus$ and $c \le |\Bloplus|$.
+Hence
+\[
+\sum_{b \in \Blo}\degA(b) \;\ge\; (L - |\Bloplus|)\cdot 1 + (|\Bloplus| - c)\cdot 2
++ c \cdot 3 \;=\; L + |\Bloplus| + c .
+\]
+Substituting into the \eqref{eq:LOW3} form of Theorem~\ref{thm:SL},
+$\sum_{b\in\Blo}\degA(b) + \mbar \le 2L + \nu(\Blo) - 1$, gives the claim.
+\end{proof}
+
+The restriction ``that is low'' in the third sentence is not decoration: the corresponding
+sentence without it is false for a \emph{high} $b \in T_1 \cup T_2$, since
+$\Bloplus \subseteq \Blo$, and Proposition~\ref{prop:L2}(d) below is its own witness. That
+was a review finding; the count is unaffected, since it quantifies only over $b \in \Blo$.
+
+\begin{corollary}\label{cor:L1short}
+\Scert{row R-17}
+The hard core has no instance with $L = 1$.
+\end{corollary}
+
+\begin{proof}
+$L = 1$ gives $\nu(\Blo) = 0$, so Theorem~\ref{thm:MB} reads $|\Bloplus| + c + \mbar \le 0$:
+the unique low vertex $b_0$ is $B$-universal, $c = 0$ and $\mbar = 0$. $B$-universality of
+$b_0$ means no non-edge of $B$ meets $b_0$, so $\nu = \mbar = 0$ and $B$ is a clique,
+contradicting Observation~\ref{obs:R1}.
+\end{proof}
+
+\begin{corollary}[a floor on $L$]\label{cor:MB1}
+\Scert{row R-17}
+In the hard core, if every low vertex is $B$-universal then $\nu = \mbar \le L - 1$, so
+$L \ge \nu + 1 \ge 2$.
+\end{corollary}
+
+\begin{proof}
+$B$-universality of all of $\Blo$ gives $\nu(\Blo) = \nu(\Blo,\Bhi) = 0$, hence
+$\nu = \mbar$, and $c = 0$ since a $B$-universal vertex has no non-neighbour and so cannot
+lie in $T_1 \cup T_2$. Theorem~\ref{thm:MB} then reads $\mbar \le L-1$, and $\nu \ge 1$ by
+Observation~\ref{obs:R1}.
+\end{proof}
+
+\subsection{The two rigid low configurations}
+
+The following two statements were the campaign's original route to $L \ge 2$; they are
+superseded in part by Corollary~\ref{cor:L1short} and Theorem~\ref{thm:RIG} but are
+certified in their own right, and Proposition~\ref{prop:L2} is what identifies the
+configuration that Section~\ref{sec:fan} then eliminates.
+
+\begin{proposition}[$L = 1$ is rigid]\label{prop:L1}
+\Scert{row R-17}
+In the hard core with $L = 1$, write $\Blo = \{b_0\}$. Then $b_0$ is adjacent to every
+other vertex of $B$, $\degA(b_0) = 1$, $\dg(b_0) = \tau$ and $\nu = \mbar = 1$; the unique
+non-adjacent pair of $B$ is a pair $u,v \in \Bhi$ with $T_1 = \{u\}$, $T_2 = \{v\}$ and
+$\degA(u), \degA(v) \ge 3$; and the unique $A$-neighbour $a_0$ of $b_0$ is adjacent to all
+of $B$.
+\end{proposition}
+
+\begin{proof}
+$L = 1$ gives $\nu(\Blo) = 0$, so \eqref{eq:LOW3} of Theorem~\ref{thm:SL} reads
+$\degA(b_0) + \mbar \le 2$. If $b_0 \in T_1 \cup T_2$ then Lemma~\ref{lem:Cstar} gives
+$\degA(b_0) \ge 3$, impossible; so $T_1, T_2 \subseteq \Bhi$. If $b_0$ had a non-neighbour
+in $B$, Lemma~\ref{lem:pair} would give $\degA(b_0) \ge 2$, hence $\mbar = 0$, i.e.\ $\Bhi$
+is a clique; but $T_1, T_2$ are disjoint non-empty subsets of $\Bhi$, so some $u \in T_1$
+and $v \in T_2$ are adjacent, contradicting Fact~\ref{fact:Fb}. So $b_0$ is adjacent to all
+of $B \setminus \{b_0\}$, whence $\nu = \mbar$; by Observation~\ref{obs:R1} $\nu \ge 1$, so
+$\degA(b_0) + \mbar \le 2$ forces $\degA(b_0) = 1$ and $\nu = \mbar = 1$, and then
+$\dg(b_0) = (\tau-1)+1 = \tau$. Since the only non-adjacent pair of $B$ is that single pair
+$uv \subseteq \Bhi$, and all cross pairs of $T_1 \times T_2$ must be non-adjacent,
+$|T_1| = |T_2| = 1$ and $\{T_1,T_2\} = \{\{u\},\{v\}\}$; Lemma~\ref{lem:Cstar} gives
+$\degA(u),\degA(v) \ge 3$. Finally, for each $w \in B \setminus \{b_0\}$ the pair
+$(b_0,w)$ is adjacent, so Lemma~\ref{lem:pair} gives a common $A$-neighbour, which must be
+$a_0$.
+\end{proof}
+
+\begin{corollary}\label{cor:L1prime}
+\Scert{row R-17}
+In the hard core with $L = 1$ the slack of \eqref{eq:LOW1} is exactly $0$:
+$\sum_{b \in \Blo}\dg(b) + \nu = \tau + 1 = L(\tau+1)$.
+\end{corollary}
+
+\begin{proof}
+Immediate from Proposition~\ref{prop:L1}: $\dg(b_0) = \tau$ and $\nu = 1$.
+\end{proof}
+
+\begin{proposition}[$L = 2$ is rigid]\label{prop:L2}
+\Scert{row R-17}
+Suppose the hard core has an instance with $L = 2$, $\Blo = \{b_1,b_2\}$. Then:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $b_1 \sim b_2$;
+\item both are $B$-universal;
+\item $\degA(b_1) = \degA(b_2) = 1$ and their unique $A$-neighbours coincide in a single
+vertex $a_0$ adjacent to all of $B$;
+\item $\nu = \mbar = 1$, i.e.\ $G[B] = K_\tau$ minus exactly one edge $uv$ with
+$u,v \in \Bhi$, and $T_1 = \{u\}$, $T_2 = \{v\}$, $\degA(u),\degA(v) \ge 3$;
+\item the slack of \eqref{eq:LOW1} is exactly $1$, so Theorem~\ref{thm:SL} is tight here.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Theorem~\ref{thm:MB} reads $|\Bloplus| + c + \mbar \le 1 + \nu(\Blo)$.
+
+(a) If $b_1 \not\sim b_2$ then $\nu(\Blo) = 1$ and both lie in $\Bloplus$, so
+$2 + c + \mbar \le 2$, giving $c = \mbar = 0$. Then $\Bhi$ is a clique and
+$T_1, T_2 \subseteq \Bhi$ are disjoint and non-empty, so some $u \in T_1$ is adjacent to
+some $v \in T_2$, contradicting Fact~\ref{fact:Fb}. Hence $b_1 \sim b_2$ and
+$\nu(\Blo) = 0$, so $|\Bloplus| + c + \mbar \le 1$.
+
+(b) If some $b_i \in \Bloplus$ then $c = \mbar = 0$ and the same contradiction recurs.
+Hence $\Bloplus = \emptyset$ and $c = 0$, leaving $\mbar \le 1$.
+
+(d) Both $b_i$ being $B$-universal, every non-edge of $B$ lies inside $\Bhi$, so
+$\nu = \mbar \le 1$; Observation~\ref{obs:R1} gives $\nu \ge 1$, so $\nu = \mbar = 1$. The
+unique non-adjacent pair of $B$ is $uv \subseteq \Bhi$; since all cross pairs of
+$T_1 \times T_2$ are non-adjacent, $T_1 = \{u\}$ and $T_2 = \{v\}$, and
+Lemma~\ref{lem:Cstar} gives $\degA(u),\degA(v) \ge 3$.
+
+(c) At $L = 2$, $|\Bloplus| = c = 0$, $\mbar = 1$, $\nu(\Blo) = 0$, both bounds combined in
+the proof of Theorem~\ref{thm:MB} are simultaneously tight: the degree count gives the lower
+bound $\sum_{b\in\Blo}\degA(b) \ge L + |\Bloplus| + c = 2$, while \eqref{eq:LOW3} of
+Theorem~\ref{thm:SL} gives the upper bound
+$\sum_{b\in\Blo}\degA(b) \le 2L + \nu(\Blo) - 1 - \mbar = 2$. The two meet, so
+$\degA(b_1) = \degA(b_2) = 1$. Since $b_1 \sim b_2$, Lemma~\ref{lem:pair} supplies a common
+$A$-neighbour, necessarily the unique $A$-neighbour of each; call it $a_0$. For every
+$w \in B \setminus \{b_1\}$ the pair $(b_1,w)$ is adjacent, so Lemma~\ref{lem:pair} gives a
+common $A$-neighbour, necessarily $a_0$; hence $a_0$ is adjacent to all of $B$.
+
+(e) $\dg(b_i) = (\tau-1)+1 = \tau$, so
+$\mathrm{slack} = 2(\tau+1) - (2\tau + \nu) = 1$.
+\end{proof}
+
+Writing the two bounds of (c) out as a squeeze, rather than saying only ``re-run the degree
+count'', was a review repair: a tightness argument needs the inequality chain to be tight at
+every link, and naming one of the two links is not enough.
+
+\section{The fan family}\label{sec:fan}
+
+Proposition~\ref{prop:L2} says that the $L = 2$ layer of the hard core, if non-empty, is a
+single rigid configuration, on which Theorem~\ref{thm:SL} is tight and therefore cannot
+help. This section eliminates that configuration --- and its whole family --- by a
+Havel--Hakimi argument.
+
+\begin{definition}[the fan configurations]\label{def:fan}
+For $\tau \ge 2$, $L \ge 1$ and $\nu \ge 1$, say that $G$ carries the configuration
+$\GFan(\tau,L,\nu)$ if: $|B| = \tau$; the $L$ vertices of $\Blo$ are all $B$-universal, each
+with $\degA = 1$, and their common $A$-neighbour is a single vertex $a_0$ adjacent to all
+of $B$; all $\nu$ non-edges of $B$ lie inside $\Bhi$; and every $a \in A' := A \setminus
+\{a_0\}$ has $N(a) \subseteq \Bhi$. Write $\Fan(\tau,L) := \GFan(\tau,L,1)$, so that
+$\Fan(\tau,L)$ is the configuration of Proposition~\ref{prop:L2} at general $L$:
+$G[B] = K_\tau$ minus one edge $uv$ with $u,v \in \Bhi$.
+Throughout put $C := \Blo \cup \{a_0\}$ and $p := \tau - L = |\Bhi|$.
+\end{definition}
+
+In $\Fan(\tau,L)$ every $c \in C$ has $\dg(c) = \tau$ exactly ($\tau-1$ inside $B$ plus
+$a_0$ for $c \in \Blo$; and $a_0$ has exactly its $\tau$ neighbours in $B$); every
+$w \in \Bhi$ has $\dg(w) \ge \tau+1$; and every $a \in A'$ has $\dg(a) \le p$. Note
+$u,v \in \Bhi$ forces $p \ge 2$, i.e.\ $L \le \tau-2$.
+
+We call steps $1,\dots,p$ the \emph{high phase}, and say a vertex \emph{escapes}
+$\mathrm{block}_t$ if it is not decremented at step $t$; $E$ denotes the total number of
+$(\text{vertex},\text{step})$ escapes of $C$-vertices during the high phase.
+
+\begin{lemma}[high phase first]\label{lem:FAN1}
+\Scert{row R-9}
+In $\Fan(\tau,L)$ under the reductio hypothesis, the first $p$ heads may be taken to be
+exactly the $p$ vertices of $\Bhi$.
+\end{lemma}
+
+\begin{proof}
+Swapping the roles of two entries of equal current value --- one taken as head, the other as
+a block member --- leaves the value multiset trajectory unchanged, hence leaves $s$
+unchanged; so the reductio hypothesis is tie-break invariant and we may fix the tie-break.
+Induct on $j \le p$: if all heads before $j$ are high, then $p - (j-1) \ge 1$ high vertices
+remain, each in every earlier block by Lemma~\ref{lem:DICH}(b), hence of value
+$\dg - (j-1) \ge \tau-j+2$, so $D_j \ge \tau-j+2$. A low head at $j$ has
+$D_j \le \tau-j+2$ by Lemma~\ref{lem:DICH}(c); equality is a tie with a remaining high
+vertex, and the fixed tie-break takes the high vertex.
+\end{proof}
+
+\begin{lemma}[the endgame is unconditional]\label{lem:FAN3}
+\Scert{row R-9}
+If at the start of some step the remaining multiset is $[L]^{L+1},1,1$ with $L \ge 2$, then
+the process needs exactly $L+1$ further steps.
+\end{lemma}
+
+\begin{proof}
+Head values are non-increasing. At the first of these steps the maximum is $L$ and the $L$
+other $L$-entries are the top $L$ non-head entries, so the block is exactly those, they
+become $L-1$, and the two $1$s survive untouched: the list becomes $[L-1]^{L},1,1$.
+Inductively after $j$ steps the list is $[L-j]^{L+1-j},1,1$, so after $L-1$ steps it is
+$[1]^{2},1,1 = [1,1,1,1]$: the head is $1$, $D = 1$, one entry is zeroed and $[0,1,1]$
+remains. One further step clears it. That is $L+1$ steps in total.
+\end{proof}
+
+\begin{lemma}[the residue mass]\label{lem:FAN4}
+\Scert{row R-9}
+In $\Fan(\tau,L)$ under the reductio hypothesis, assume $E = 0$. Then the $A'$ entries at
+the start of step $p+1$ sum to exactly $2$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:FAN1} the heads of steps $1,\dots,p$ are $\Bhi$, so by
+Lemma~\ref{lem:DICH}(b),
+$\sum_{j \le p} D_j = \sum_{x \in \Bhi}\dg(x) - \binom{p}{2}$. Now
+$\sum_{x \in \Bhi}\degB(x) = 2(\tau-2) + (p-2)(\tau-1) = p\tau - p - 2$, since $u,v$ miss
+the edge $uv$ and the other $p-2$ vertices of $\Bhi$ do not, and
+$\sum_{x \in \Bhi}\degA(x) = p + R$ where $R := \sum_{a \in A'}\dg(a)$ and the $p$ counts
+$a_0$'s edges to $\Bhi$; so $\sum_{\Bhi}\dg = p\tau - 2 + R$. Counting the same decrements
+by recipient: a high head deleted at position $i \le p$ receives $i-1$ of them, total
+$\binom{p}{2}$; each of the $L+1$ vertices of $C$ receives $p$ by hypothesis, total
+$p(L+1)$; the rest go to $A'$. Hence
+$\mathrm{dec}_{A'} = (p\tau - 2 + R - \binom{p}{2}) - \binom{p}{2} - p(L+1) = R - 2$, and
+$A'$ starts at total $R$, leaving total $2$.
+\end{proof}
+
+So the residual $A'$ partition is either $1+1$ or a single $2$, and nothing else is
+arithmetically possible. Which of the two occurs decides the whole family:
+
+\begin{observation}\label{obs:FAN5}
+\Scert{row R-14}
+For every $L \ge 2$, the multiset $[L]^{L+1},1,1$ clears in $L+1$ Havel--Hakimi steps, while
+$[L]^{L+1},2$ clears in exactly $L$.
+\end{observation}
+
+\begin{proof}
+The first half is Lemma~\ref{lem:FAN3}. The second is Lemma~\ref{lem:TAIL} below at
+$\lambda = [2]$: there $\lambda_1 = 2$ and $s_0(\lambda) = \mathrm{steps}([2]^3 \cup [2]) =
+2 = \lambda_1$, so the total is $(L-2) + 2 = L$ for every $L \ge 2$.
+\end{proof}
+
+Since the reductio hypothesis requires exactly $L$ further steps after step $p$, an instance
+whose $A'$ residue were a single $2$ would be a genuine survivor. That is the single
+load-bearing point of the whole elimination, at every $L \ge 2$ --- not a technicality of
+$L = 2$, as an earlier reading had it.
+
+\begin{lemma}[escape budget]\label{lem:FAN7}
+\Scert{row R-9}
+In $\Fan(\tau,L)$ under the reductio hypothesis, $E \le 1$.
+\end{lemma}
+
+\begin{proof}
+Repeating the count of Lemma~\ref{lem:FAN4} with $p(L+1) - E$ decrements delivered to $C$
+gives $\mathrm{dec}_{A'} = R - 2 + E$, so the $A'$ residue is $2 - E \ge 0$, whence
+$E \le 2$. If $E = 2$ the $A'$ residue is $0$ and the $C$-part at the start of step $p+1$ is
+$[L+2, L^L]$ or $[L+1,L+1,L^{L-1}]$; in both, the head exceeds the number of positive
+remaining entries ($L+2 > L$, resp.\ $L+1 > L$), so the next step would drive a zero entry
+negative, which is impossible for the degree sequence of a graph.
+\end{proof}
+
+\begin{lemma}[no escape at all]\label{lem:FAN8}
+\Scert{row R-9}
+In $\Fan(\tau,L)$ with $L \ge 2$, under the reductio hypothesis, $E = 0$.
+\end{lemma}
+
+\begin{proof}
+Suppose $E \ge 1$ and let $t \le p$ be a step at which $e_t \ge 1$ vertices of $C$ escape;
+let $c$ be one of them. By Lemma~\ref{lem:FAN1} the head of step $t$ is a $\Bhi$ vertex, so
+$D_t = g_t - (t-1) \ge \tau-t+2$; by Lemma~\ref{lem:DICH}(b) the $p-t$ remaining $\Bhi$
+vertices lie in $\mathrm{block}_t$, and so does each of the $(L+1)-e_t$ non-escaping
+$C$-vertices. Hence
+$|\mathrm{block}_t \cap A'| = D_t - (p-t) - (L+1) + e_t \ge (\tau-t+2) - (p-t) - (L+1) + 1
+= 2$, so $\mathrm{block}_t$ contains some $x \in A'$. Because $\mathrm{block}_t$ is a prefix
+of the sorted list and $c \notin \mathrm{block}_t$, we get
+$v_t(x) \ge v_t(c) \ge \tau-t+1$. By the count in Lemma~\ref{lem:FAN7} the $A'$ entries sum
+to $2 - E \le 1$ at the start of step $p+1$, so $v_{p+1}(x) \le 1$; and $x$ is not deleted
+in steps $t,\dots,p$ (all those heads are $\Bhi$), so it loses at most one per step and
+$v_{p+1}(x) \ge v_t(x) - (p-t+1)$. Therefore $\tau-t+1 \le 1 + (p-t+1)$, i.e.\
+$\tau \le p+1 = \tau-L+1$, i.e.\ $L \le 1$.
+\end{proof}
+
+\begin{lemma}[backward induction]\label{lem:FAN6}
+\Scert{row R-9}
+In $\Fan(\tau,L)$ under the reductio hypothesis, assume $E = 0$. Then the $A'$ residue at
+the start of step $p+1$ is $1+1$, not a single $2$.
+\end{lemma}
+
+\begin{proof}
+Write $M_j$ for the $A'$ value multiset at the start of step $j$. Since all of $\Bhi$
+(Lemma~\ref{lem:DICH}(b)) and all of $C$ (hypothesis) lie in $\mathrm{block}_j$, the number
+of $A'$ entries in $\mathrm{block}_j$ is $a_j = D_j - (p-j) - (L+1) = g_j - \tau \ge 1$, and
+--- the block being a prefix of the sorted list --- they are the $a_j$ largest entries of
+$M_j$. In particular a maximum entry of $M_j$ is decremented at every step. By
+Lemma~\ref{lem:FAN4} the total of $M_{p+1}$ is $2$, so it is $1+1$ or a single $2$; suppose
+it is a single $2$. Say $M_{j+1}$ has a unique maximum $v$ and does not contain the value
+$v-1$. At step $j$ let $M_j$ have maximum $w$ of multiplicity $\mu$. If $a_j < \mu$ the
+maximum does not drop, $w = v$, and the $a_j \ge 1$ decremented copies land at $v-1$, which
+$M_{j+1}$ does not contain --- a contradiction. So $a_j \ge \mu$: all maxima drop,
+$w = v+1$, and $M_{j+1}$ contains $\mu$ copies of $v$, forcing $\mu = 1$. Every other entry
+of $M_j$ is either in the block (its $M_{j+1}$ value plus $1$) or out of it (unchanged), so
+all are at most $\max(\text{other entries of } M_{j+1}) + 1$. Hence the hypothesis
+propagates backwards: $M_{p+1} = [2]$ has unique maximum $2$ and no $1$, so $M_p = [3,1^b]$,
+$M_{p-1}$ has unique maximum $4$ with the others $\le 2$, and inductively $M_{p-t}$ has
+maximum $3+t$ with all other entries $\le t+1$ --- in particular $v-1$ is never present, so
+the induction never stops. At $t = p-1$ this gives $\max(M_1) = p+2$. But $M_1$ is the
+multiset of $A'$ \emph{degrees}, and every $a \in A'$ has $N(a) \subseteq \Bhi$, so
+$\max(M_1) \le p$.
+\end{proof}
+
+The induction does not apply to $1+1$: its maximum is not unique --- the value $1$ with
+multiplicity $2$ --- and the first step needs a unique maximum. That is exactly why the
+lemma kills only the single-$2$ case, and it is not a gap. (An earlier text gave a different
+and false reason, namely that the value $v-1 = 0$ is present among the zero entries; that
+fails whenever $|A'| = 2$, which is realisable at every $L \ge 2$.)
+
+\begin{theorem}[the fan family is eliminated]\label{thm:FAN}
+\Scert{row R-10}
+For every $\tau$ and every $L \ge 2$ there is no graph carrying the configuration
+$\Fan(\tau,L)$ and satisfying $\res(G) = \alpha(G)$. Consequently, by
+Fact~\ref{fact:fms}, every $\Fan(\tau,L\ge2)$ graph has $\res \le \alpha - 1$.
+\end{theorem}
+
+\begin{proof}
+Assume $\res = \alpha$, i.e.\ $s = \tau$. By Lemma~\ref{lem:FAN1} the heads of steps
+$1,\dots,p$ are exactly $\Bhi$. By Lemma~\ref{lem:FAN8}, $E = 0$, so by
+Lemma~\ref{lem:FAN4} the $A'$ entries sum to exactly $2$ at the start of step $p+1$, and by
+Lemma~\ref{lem:FAN6} they are $1+1$; the $C$-entries are then all at $\tau - p = L$. So the
+list at the start of step $p+1$ is $[L]^{L+1},1,1$ (plus zeros), and
+Lemma~\ref{lem:FAN3} says $L+1$ further steps are needed, giving $s = \tau+1$ --- a
+contradiction.
+\end{proof}
+
+The conclusion is stated as $\res \le \alpha-1$ and not as $s = \tau+1$. The stronger reading
+is available only \emph{inside} the refuted hypothesis and may not be carried out of it;
+an earlier version of this theorem carried it out, which a review round caught. What is
+true, and measured, is stated separately:
+
+\begin{observation}\label{obs:FANE}
+\Scomp{$1\,098\,141$ strict and $1\,700\,094$ superset $\Fan(\tau,L\ge2)$ degree sequences
+in a box $\tau \le 10$, $R \le 20$, $|A'| \le 14$}
+In every one of those instances $\res = \alpha - 1$ and $s = \tau+1$. This is a
+\emph{lead}, not a theorem: at $s = \tau+1$ the reductio-only toolkit
+(Lemmas~\ref{lem:S} and~\ref{lem:DICH}(b)) is unavailable --- witness $\Fan(4,2)$ with
+$A' = [2,1,1]$, $\dg = [5,5,4,4,4,2,1,1]$, where every $\Bhi$ degree is
+$\tau+1 = 5 = s$. Separately, over $508\,239$ labelled high-phase runs under adversarial
+tie-breaks, $E = 0$ and the residue partition is $(1,1)$ in all $508\,239$; and over
+$450\,303$ superset sequences the multiset at the start of step $p+1$ is exactly
+$[L]^{L+1}$ with $A'$ residue $(1,1)$ every time, the partition $(2)$ never occurring.
+These runs are mechanism checks off the reductio hypothesis in the sense of
+Section~\ref{sec:conventions}; the lemmas rest on their proofs alone.
+\end{observation}
+
+\begin{corollary}[the hard core has $L \ge 3$]\label{cor:FANHC}
+\Scert{row R-19}
+In the hard core the number of $B$-vertices of degree $\le \tau$ satisfies $L \ge 3$;
+together with Theorem~\ref{thm:T3}, the residual hard core has $\tau \ge 4$ and $L \ge 3$.
+\end{corollary}
+
+\begin{proof}
+$L = 0$ is Theorem~\ref{thm:K} with Observation~\ref{obs:R1}; $L = 1$ is
+Corollary~\ref{cor:L1short}. For $L = 2$: by Proposition~\ref{prop:L2} every hard-core
+instance with $L = 2$ is rigidly $\Fan(\tau,2)$ --- clauses (a)--(d) supply every clause of
+Definition~\ref{def:fan}, the clause on $A'$ coming from $\degA(b_i) = 1$ --- and
+Theorem~\ref{thm:FAN} says no such graph satisfies $\res = \alpha$.
+\end{proof}
+
+The asymmetry here is deliberate. Theorem~\ref{thm:FAN} kills the whole family
+$\Fan(\tau,L)$ for every $L \ge 2$, but it removes only the $L = 2$ layer of the hard core,
+because rigidity is available at $L = 2$ only. For $L \ge 3$ a hard-core instance need not
+be a fan; Section~\ref{sec:rig} supplies the rigidity that is available.
+
+\subsection{A tail lemma}
+
+\begin{lemma}[tail]\label{lem:TAIL}
+\Scert{row R-15}
+Let the multiset at the start of some step be $[L]^{L+1} \cup \lambda$ with $\lambda$ a
+non-empty partition, $\lambda_1 := \max \lambda$. If $L \ge \lambda_1$ then the number of
+further Havel--Hakimi steps is $(L - \lambda_1) + s_0(\lambda)$, where
+$s_0(\lambda) := \mathrm{steps}([\lambda_1]^{\lambda_1+1} \cup \lambda)$. Consequently,
+still under $L \ge \lambda_1$, ``clears in exactly $L$ steps'' is equivalent to
+$s_0(\lambda) = \lambda_1$, a condition on $\lambda$ alone.
+\end{lemma}
+
+\begin{proof}
+If $L = \lambda_1$ the list already is $[\lambda_1]^{\lambda_1+1} \cup \lambda$ and the
+count reads $0 + s_0(\lambda)$; so assume $L > \lambda_1$. Suppose at some stage the list is
+$[t]^{t+1} \cup \lambda$ with $t > \lambda_1$, which holds at $t = L$. The head is $t$; the
+remaining entries of value $t$ are exactly the other $t$ copies, and every $\lambda$-entry
+is $< t$; so the block --- the top $t$ non-head entries --- is exactly those $t$ copies,
+they become $t-1$, and $\lambda$ is untouched. Hence
+$[t]^{t+1} \cup \lambda \to [t-1]^{t} \cup \lambda$ in one step. Iterating from $t = L$
+down to $t = \lambda_1$ uses $L - \lambda_1$ steps and leaves
+$[\lambda_1]^{\lambda_1+1} \cup \lambda$.
+\end{proof}
+
+Three hypotheses in that statement are there because review rounds put them there:
+$\lambda \ne \emptyset$, because $\lambda_1$ is undefined otherwise; the case $L = \lambda_1$
+treated separately, because the induction's premise $t > \lambda_1$ is false at $t = L$
+there; and the standing range $L \ge \lambda_1$ attached to the ``$L$-free'' consequence,
+which is false without it --- $\lambda = [2]$, $L = 0$ has $s_0 = 2 = \lambda_1$ yet takes
+one step, and $\lambda = [3]$, $L = 1$ clears in $L = 1$ step although
+$s_0([3]) = 4 \ne 3$. Every use of the lemma in this paper is in range.
+
+\begin{remark}\label{rem:TAILnum}
+\Scomp{$1\,817$ pairs $(\lambda,L)$ with $\lambda \vdash 2\nu$, $\nu \le 6$, and
+$\lambda_1 \le L \le 15$}
+The predicted count $(L-\lambda_1)+s_0(\lambda)$ was compared against direct simulation on
+all of them, with $0$ mismatches. Observation~\ref{obs:FAN5}'s second half was
+independently confirmed for $L = 2,\dots,9$ by direct simulation, and a reviewing session
+supplied a second, independent proof of it.
+\end{remark}
+
+\section{Rigidity of the \texorpdfstring{$B$}{B}-universal layer}\label{sec:rig}
+
+Corollary~\ref{cor:FANHC} leaves $L \ge 3$, where no analogue of
+Proposition~\ref{prop:L2} was available. This section supplies one. It rests on a
+one-line degree cap, and it is the point at which the residual configuration space acquires
+a name.
+
+\begin{lemma}[degree cap on low vertices]\label{lem:CAP}
+\Scert{row R-20}
+Let $A$ be a maximum independent set, $B = V \setminus A$, $\tau = |B|$, and let
+$b \in \Blo$ have $n_b$ non-neighbours in $B$. Then $1 \le \degA(b) \le n_b + 1$.
+\end{lemma}
+
+\begin{proof}
+$\degA(b) \ge 1$: otherwise $N(b) \subseteq B$, so $A \cup \{b\}$ is independent,
+contradicting maximality of $A$. For the upper bound, $\degB(b) = (\tau-1) - n_b$, and
+$b \in \Blo$ means $\dg(b) \le \tau$, so
+$\degA(b) = \dg(b) - \degB(b) \le \tau - (\tau-1-n_b) = n_b+1$.
+\end{proof}
+
+The hypotheses used are worth separating, and this is the one place in the campaign's
+report that advertises minimality of hypotheses, so a review round tested it there. The
+\emph{lower} bound uses only that $A$ is \emph{maximal} --- cardinality is never invoked ---
+and the \emph{upper} bound uses neither maximality nor maximum cardinality, only the
+definitions of $\Blo$, $\tau$ and $n_b$. So Lemma~\ref{lem:CAP} holds verbatim for any
+maximal independent set. We state it with ``maximum'' because every consumer supplies one
+anyway and because $\alpha = |A|$ is used in the same breath.
+
+\begin{corollary}\label{cor:CAP1}
+\Scert{row R-20}
+A $B$-universal low vertex has $\degA(b) = 1$ exactly.
+\end{corollary}
+
+\begin{proof}
+$n_b = 0$ in Lemma~\ref{lem:CAP}.
+\end{proof}
+
+\begin{theorem}[rigidity]\label{thm:RIG}
+\Scert{row R-21}
+Work in the hard-core frame and suppose $\Blo \ne \emptyset$ and every low vertex is
+$B$-universal, i.e.\ $\Bloplus = \emptyset$. Then:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\degA(b) = 1$ for every $b \in \Blo$;
+\item the unique $A$-neighbours of the low vertices all coincide in one vertex $a_0$;
+\item $a_0$ is adjacent to all of $B$;
+\item every non-edge of $B$ lies inside $\Bhi$, i.e.\ $\nu = \mbar$, and $\nu \ge 1$;
+\item every $a \in A \setminus \{a_0\}$ has $N(a) \cap \Blo = \emptyset$.
+\end{enumerate}
+Consequently $G$ carries \emph{exactly} the configuration $\GFan(\tau,L,\nu)$ of
+Definition~\ref{def:fan}, with $\nu = \mbar \ge 1$. In the hard core --- that is, adding the
+reductio hypothesis --- one has in addition $\nu \le L-1$.
+\end{theorem}
+
+\begin{proof}
+(a) is Corollary~\ref{cor:CAP1}. For (b), any two low vertices are adjacent by
+$B$-universality, so Lemma~\ref{lem:pair} gives them a common $A$-neighbour, which by (a)
+must be the unique $A$-neighbour of each; hence all coincide, in a vertex $a_0$. (For
+$L = 1$ take $a_0$ to be the unique $A$-neighbour of the unique low vertex.) For (c), fix
+$b \in \Blo$; for every $w \in B \setminus \{b\}$ we have $b \sim w$, so
+Lemma~\ref{lem:pair} gives a common $A$-neighbour of $b$ and $w$, which by (a) is $a_0$;
+hence $a_0 \sim w$ for all $w \in B \setminus \{b\}$, and $a_0 \sim b$ by definition. For
+(d), a non-edge of $B$ incident to a low vertex would exhibit a non-neighbour of that vertex
+in $B$, contradicting $B$-universality; so every non-edge lies inside $\Bhi$ and
+$\nu = \mbar$, and $\nu \ge 1$ is Observation~\ref{obs:R1}. For (e), if $a \ne a_0$ had a
+neighbour $b \in \Blo$ then $\degA(b) \ge 2$, contradicting (a).
+
+The clauses of Definition~\ref{def:fan} are exactly (a)+(b)+(c), (d), (e), together with
+``$\Bhi$ is high'', which is the definition of $\Bhi$. Conversely, $\GFan(\tau,L,\nu)$
+\emph{is} the conjunction of exactly those clauses and asserts nothing else, so the match is
+an equality and not merely an implication --- which is what ``exactly'' claims. The final
+bound $\nu \le L-1$ is Corollary~\ref{cor:MB1} applied to this hypothesis, and that
+corollary rests on Theorem~\ref{thm:MB} and hence Theorem~\ref{thm:SL}, which live in the
+hard core.
+\end{proof}
+
+\begin{remark}[scope, stated exactly]\label{rem:RIGscope}
+Clauses (a)--(c) and (e) need only that $A$ is a maximum independent set, plus
+Lemma~\ref{lem:pair}; clause (d) needs additionally $\diam = 4$, through
+Observation~\ref{obs:R1}. So (a)--(e) hold in the hard-core frame, with no reductio
+hypothesis. Only the bound $\nu \le L-1$ needs the hard core, and that is not a formality:
+see Remark~\ref{rem:RIGnum}. An earlier version of this paragraph glossed
+Lemma~\ref{lem:pair} as though its only hypothesis were $f = \alpha+1$, and thereby claimed
+that (a)--(c),(e) survive outside the frame. \emph{That gloss is not licensed.}
+Lemma~\ref{lem:pair} as certified is a statement in the frame, and nothing in the campaign's
+work establishes a version of it assuming $f = \alpha+1$ alone. The gloss was an affirmative
+hypothesis-weakening claim about an import, which is exactly the class of claim the
+campaign's scope discipline exists to police; a review round found it, and it is withdrawn
+here. Theorem~\ref{thm:RIG}'s own statement and proof are unaffected.
+\end{remark}
+
+\begin{corollary}[the $B$-universal layer collapses to $\nu \ge 2$]\label{cor:RIG2}
+\Scert{row R-21}
+In the hard core with $L \ge 2$ and every low vertex $B$-universal,
+Theorem~\ref{thm:RIG} gives $\GFan(\tau,L,\nu)$ with $1 \le \nu \le L-1$; the case
+$\nu = 1$ is exactly $\Fan(\tau,L)$, which Theorem~\ref{thm:FAN} eliminates. Hence that
+layer reduces to $\GFan(\tau,L,\nu)$ with $2 \le \nu \le L-1$ --- in particular it is empty
+for $L = 2$, and at $L = 3$ it reduces to the single configuration $\GFan(\tau,3,2)$.
+\end{corollary}
+
+\begin{remark}\label{rem:RIGnum}
+\Scomp{$2\,931$ pairs (graph, maximum independent set) over the exhaustive atlas
+$n \le 7$, $4\,382$ over $1\,200$ random connected graphs $n = 8,\dots,10$, $1\,737$ over
+$400$ random connected $n = 11,12$, and $622$ targeted hard-core-frame instances}
+Lemma~\ref{lem:CAP} and Corollary~\ref{cor:CAP1} were tested on $1\,926$ $B$-universal low
+vertices with $\degA = 1$ in every one and $0$ failures. Uniform random graphs almost never
+land in the frame --- $12$ frame instances across the $2\,195$ exhaustive and random graphs
+--- so a targeted generator was written: build $B$ with a chosen non-edge set, attach
+$A$-vertices with random non-empty types, and keep only instances passing connected,
+$\diam = 4$, non-forest, $f = \alpha+1$ and ``$A$ is a maximum independent set''. That
+yields $622$ frame instances, of which $31$ satisfy $\Bloplus = \emptyset$; all five
+conclusions of Theorem~\ref{thm:RIG} hold in $31$ of $31$. The scope demarcation of
+Remark~\ref{rem:RIGscope} is measured, not assumed: on the hypothesis set the $(L,\nu)$
+histogram is $\{(1,1):22,\ (1,3):2,\ (2,1):3,\ (3,1):4\}$, and the two instances with
+$(L,\nu) = (1,3)$ have $\nu = 3 > L-1 = 0$ --- so the bound $\nu \le L-1$ is \emph{false} in
+the frame and genuinely needs the reductio hypothesis, exactly as the proof says. None of
+the $622$ frame instances satisfies $\res = \alpha$.
+\end{remark}
+
+\section{Statements at one adversarial review round}\label{sec:oneround}
+
+Everything in this section is proved, and everything in it has passed exactly \emph{one}
+review round --- a Qwen3.8-Max session ---
+returning no mathematics defect against these statements. The second round, which the
+campaign's protocol requires from a different model family before a statement is certified,
+was dispatched and did not deliver: the brief cited four imports by name without stating
+them, so the reviewing session verified every downstream calculation \emph{conditionally on
+the quoted properties} and correctly refused to certify the imports it could not see. A
+review round obstructed by a defect in its own brief is not a round. These statements are
+therefore reported here in a separate tier, and the reader should treat them accordingly.
+
+The setting is $\GFan(\tau,L,\nu)$ of Definition~\ref{def:fan} under the reductio
+hypothesis; $C = \Blo \cup \{a_0\}$, $p = \tau - L = |\Bhi|$, $R = \sum_{a \in A'}\dg(a)$,
+and $E$ is the escape count of the high phase as in Section~\ref{sec:fan}. The set-up
+carries over verbatim from there: every $c \in C$ has $\dg(c) = \tau$ exactly, every
+$w \in \Bhi$ has $\dg(w) \ge \tau+1$, every $a \in A'$ has $\dg(a) \le p < \tau$, and so
+Lemma~\ref{lem:FAN1} applies word for word --- its proof uses only that the $\Bhi$ vertices
+are the vertices of degree $\ge \tau+1$, and Lemma~\ref{lem:DICH}(c) for the rest.
+
+\begin{lemma}[residue mass, general $\nu$]\label{lem:FAN4p}
+\Sone{Qwen3.8-Max}
+In $\GFan(\tau,L,\nu)$ under the reductio hypothesis, at the start of step $p+1$ the $A'$
+entries sum to exactly $2\nu - E$, and the $C$-entries are $L + e_c$ for $c \in C$, where
+$\sum_c e_c = E$.
+\end{lemma}
+
+\begin{proof}
+Exactly the count of Lemma~\ref{lem:FAN4} with $\nu$ in place of $1$. By
+Lemma~\ref{lem:FAN1} and Lemma~\ref{lem:DICH}(b),
+$\sum_{j\le p} D_j = \sum_{\Bhi}\dg - \binom{p}{2}$. Here
+$\sum_{x \in \Bhi}\degB(x) = p(\tau-1) - 2\nu$, since each of the $\nu$ non-edges lies
+inside $\Bhi$ and is missed by both endpoints, and $\sum_{x\in\Bhi}\degA(x) = p + R$; so
+$\sum_{\Bhi}\dg = p\tau - 2\nu + R$. Splitting the decrements by recipient ---
+$\binom{p}{2}$ to later high heads, $p(L+1) - E$ to $C$, the rest to $A'$ --- and using
+$p(L+1) = p\tau - p^2 + p$ and $2\binom{p}{2} = p^2 - p$ gives
+$\mathrm{dec}_{A'} = R - 2\nu + E$, so the $A'$ total is $R - \mathrm{dec}_{A'} = 2\nu - E$.
+Each $c \in C$ starts at $\tau$ and is decremented $p - e_c$ times, ending at $L + e_c$.
+\end{proof}
+
+\begin{lemma}[escape bound, general $\nu$]\label{lem:FAN8p}
+\Sone{Qwen3.8-Max}
+In $\GFan(\tau,L,\nu)$ under the reductio hypothesis, if $E \ge 1$ then $L \le 2\nu - E$.
+\end{lemma}
+
+\begin{proof}
+Exactly the argument of Lemma~\ref{lem:FAN8}. At an escape step $t$ with $e_t \ge 1$
+escapes, the head is high, so $D_t \ge \tau-t+2$; the $p-t$ remaining high vertices lie in
+$\mathrm{block}_t$, and so do the $(L+1)-e_t$ non-escaping $C$-vertices; hence
+$|\mathrm{block}_t \cap A'| \ge (\tau-t+2)-(p-t)-(L+1)+e_t = 1 + e_t \ge 2$, using
+$\tau - p - L = 0$. Pick $x \in \mathrm{block}_t \cap A'$; as $\mathrm{block}_t$ is a prefix
+and the escaping $c \notin \mathrm{block}_t$, $v_t(x) \ge v_t(c) \ge \tau-t+1$. By
+Lemma~\ref{lem:FAN4p} the $A'$ mass at step $p+1$ is $2\nu-E$, so $v_{p+1}(x) \le 2\nu-E$;
+and $x$ is not deleted in steps $t,\dots,p$, so $v_{p+1}(x) \ge v_t(x)-(p-t+1)$. Therefore
+$\tau-t+1 \le (2\nu-E)+(p-t+1)$, i.e.\ $L = \tau-p \le 2\nu-E$.
+\end{proof}
+
+\begin{lemma}[backward induction, general form]\label{lem:FAN6p}
+\Sone{Qwen3.8-Max}
+In $\GFan(\tau,L,\nu)$ under the reductio hypothesis, the $A'$ multiset at the start of step
+$p+1$ cannot have a unique maximum $w \ge 1$ whose second-largest entry is $\le w-2$.
+\end{lemma}
+
+\begin{proof}
+As in Lemma~\ref{lem:FAN6}, with the block count
+$a_j = D_j - (p-j) - (L+1) + e_j \ge 1 + e_j \ge 1$, so that a maximum entry of $M_j$ is
+decremented at every step. Suppose $M_{j+1}$ has a unique maximum $v$ and no entry of value
+$v-1$; the multiplicity argument of Lemma~\ref{lem:FAN6} shows $\mu = 1$ and that every
+other entry of $M_j$ is at most $\max(\text{other entries of } M_{j+1})+1$. Hence, writing
+$\sigma_j$ for the second-largest entry of $M_j$, the pair (unique maximum $v_j$,
+$\sigma_j \le v_j - 2$) propagates backwards: from $(w,\sigma \le w-2)$ at $p+1$ one gets
+$v_{p+1-t} = w+t$ and $\sigma_{p+1-t} \le \sigma + t \le v_{p+1-t}-2$ for every $t$, so the
+induction never stops. At $t = p$ it gives $\max(M_1) = w+p$, while $M_1$ is the multiset of
+$A'$ degrees and every $a \in A'$ has $N(a) \subseteq \Bhi$, so $\max(M_1) \le p$.
+\end{proof}
+
+Two conventions attach to Lemma~\ref{lem:FAN6p} and both were fixed by review findings.
+First, for the purpose of the phrase ``second-largest entry'', a residue with a single
+positive part is read as having second-largest $0$, whether or not a real zero entry is
+present; the lemma's operative content is ``there is no entry equal to $w-1$'', and for a
+single-part residue $[w]$ with $w \ge 2$ that is true under either reading, while $[1]$ is
+excluded under either. Second, the residues the lemma kills are exactly those with a gap of
+at least $2$ below a unique top: $[w]$ for every $w \ge 2$, $[3,1]$, $[4,1]$, $[4,2]$, and
+so on; it does \emph{not} apply to $[1]$, $[1,1]$, $[2,1]$, $[2,2]$, $[2,1,1]$,
+$[1,1,1,1]$. An earlier text wrote ``$[w]$ for every $w \ge 1$'', which is false at
+$w = 1$ under the stated convention and undefined without it. No user is lost: every residue
+this paper feeds to the lemma is $[2\nu]$ with $2\nu \ge 2$, or one of the survivors
+tabulated in Appendix~\ref{app:enum}, all of which have $w \ge 3$.
+
+\begin{theorem}[the $\nu = 2$ layer]\label{thm:GFAN2}
+\Sone{Qwen3.8-Max}
+For every $\tau$ and every $L \ge 3$ there is no graph carrying $\GFan(\tau,L,2)$ and
+satisfying $\res(G) = \alpha(G)$.
+\end{theorem}
+
+\begin{proof}
+Assume $\res = \alpha$. By Lemma~\ref{lem:FAN1} the heads of steps $1,\dots,p$ are $\Bhi$,
+so exactly $L$ steps remain after step $p$; the multiset at the start of step $p+1$ is
+$\{L+e_c : c \in C\}$ together with an $A'$ residue of total $2\nu - E = 4 - E$
+(Lemma~\ref{lem:FAN4p}), and it must clear in exactly $L$ further steps.
+
+\emph{Step 1: the escape budget.} By Lemma~\ref{lem:FAN8p}, $E \ge 1$ forces $L \le 4-E$.
+So $L \ge 4$ gives $E = 0$, and $L = 3$ gives $E \le 1$.
+
+\emph{Step 2: $L \ge 4$.} Here $E = 0$, the $C$-part is $[L]^{L+1}$ and the $A'$ residue is
+a partition of $4$. The partitions $[4]$ and $[3,1]$ have a unique maximum with the next
+entry at least $2$ below it, so Lemma~\ref{lem:FAN6p} kills both. For the remaining three,
+run the process: while the common $C$-value is $t \ge 3$ the head is a $C$-entry, the other
+$C$-entries are the only entries of value $\ge 3$, so the block is exactly those and the
+$A'$ entries (all $\le 2$) are untouched; hence after $L-2$ steps the list is $[2]^3$
+together with the untouched residue. Then
+$[2,2]$: $[2]^5 \to [2,2,1,1] \to [1,1,0] \to 0$, three further steps, total $L+1$;
+$[2,1,1]$: $[2,2,2,2,1,1] \to [2,1,1,1,1] \to [1,1,0,0] \to 0$, three further, total $L+1$;
+$[1,1,1,1]$: $[2,2,2,1,1,1,1] \to [1]^6 \to \cdots$, four further, total $L+2$.
+All exceed $L$, so none can occur.
+
+\emph{Step 3: $L = 3$.} The complete list of admissible shapes is eight rows
+($E \in \{0,1\}$; $E \ge 2$ is excluded by Step 1):
+\begin{center}
+\begin{tabular}{@{}cccl@{}}
+\toprule
+$E$ & $C$-part & $A'$ residue & steps to clear \\
+\midrule
+$0$ & $[3,3,3,3]$ & $[4]$ & $\mathbf{3}$, killed by Lemma~\ref{lem:FAN6p} \\
+$0$ & $[3,3,3,3]$ & $[3,1]$ & $4 \ne 3$, and also killed \\
+$0$ & $[3,3,3,3]$ & $[2,2]$ & $4 \ne 3$ \\
+$0$ & $[3,3,3,3]$ & $[2,1,1]$ & $4 \ne 3$ \\
+$0$ & $[3,3,3,3]$ & $[1,1,1,1]$ & $5 \ne 3$ \\
+$1$ & $[4,3,3,3]$ & $[3]$ & $\mathbf{3}$, killed by Lemma~\ref{lem:FAN6p} \\
+$1$ & $[4,3,3,3]$ & $[2,1]$ & $4 \ne 3$ \\
+$1$ & $[4,3,3,3]$ & $[1,1,1]$ & $4 \ne 3$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Only the two single-part residues clear in exactly $L = 3$ steps, and
+Lemma~\ref{lem:FAN6p} kills both. Hence no case survives.
+\end{proof}
+
+\begin{corollary}\label{cor:RIG1}
+\Sone{Qwen3.8-Max}
+In the hard core with $L = 2$, Proposition~\ref{prop:L2}(a),(b) force
+$\Bloplus = \emptyset$; Theorem~\ref{thm:RIG} then gives Proposition~\ref{prop:L2}(c),(d)
+directly, and $\nu \le L-1 = 1$ with $\nu \ge 1$ gives $\nu = \mbar = 1$, i.e.\
+$\Fan(\tau,2)$.
+\end{corollary}
+
+This removes the tightness re-run from Proposition~\ref{prop:L2}(c): $\degA(b) = 1$ follows
+from the degree cap alone. The campaign had pre-registered ``tightness arguments need the
+inequality chain to be tight at every link, which is not spelled out'' as a likely failure
+mode of Proposition~\ref{prop:L2} before the review round that examined it; the corollary is
+what makes the concern moot.
+
+\begin{corollary}\label{cor:GFAN2HC}
+\Sone{Qwen3.8-Max}
+In the hard core, if every low vertex is $B$-universal then $L \ge 4$ and $\nu \ge 3$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:RIG} makes the instance $\GFan(\tau,L,\nu)$ with $1 \le \nu \le L-1$;
+$\nu = 1$ is $\Fan(\tau,L)$, killed for $L \ge 2$ by Theorem~\ref{thm:FAN}, and $\nu = 2$ is
+killed for $L \ge 3$ by Theorem~\ref{thm:GFAN2}. $L = 1$ cannot occur, since
+$1 \le \nu \le L-1$ already forces $L \ge 2$; and $L = 2$ forces $\nu = 1$. So $\nu \ge 3$,
+whence $L \ge \nu+1 \ge 4$.
+\end{proof}
+
+\begin{corollary}\label{cor:GFAN2L3}
+\Sone{Qwen3.8-Max}
+In the hard core with $L = 3$, some low vertex is not $B$-universal
+($\Bloplus \ne \emptyset$).
+\end{corollary}
+
+\begin{remark}[the other layer is not excluded at $L \ge 3$]\label{rem:otherlayer}
+At $L = 2$, Proposition~\ref{prop:L2}(a),(b) forced $\Bloplus = \emptyset$ via
+Theorem~\ref{thm:MB} and Fact~\ref{fact:Fb}. That argument does not survive $L = 3$, and we
+record why so that no successor re-derives it as a theorem. With $k := |\Bloplus| = 1$ and
+$\nu(\Blo) = 0$, Theorem~\ref{thm:MB} reads $1 + c + \mbar \le L - 1 = 2$, which is
+satisfiable in two ways: $c = 0$, $\mbar = 1$, where $T_1,T_2 \subseteq \Bhi$ are singletons
+spanning the unique $\Bhi$ non-edge and no contradiction with Fact~\ref{fact:Fb} arises
+because $\mbar \ne 0$; and $c = 1$, $\mbar = 0$, where the non-universal low vertex is
+itself in $T_1$ and $T_2$ sits inside its $\Bhi$ non-neighbourhood, so
+Lemma~\ref{lem:Cstar} gives $\degA \ge 3$ there and Lemma~\ref{lem:CAP} forces $n_b \ge 2$
+for that vertex. Both are budget-consistent. The contradiction that closed $L = 2$ used
+$\mbar = 0$ \emph{and} $c = 0$ simultaneously, and at $L \ge 3$ the budget no longer forces
+both. So the residual hard core splits as
+\[
+L \ge 3 \;=\; \bigl[\text{$B$-universal layer: } \GFan(\tau,L,\nu),\ 2 \le \nu \le L-1
+\bigr] \;\cup\; \bigl[\Bloplus \ne \emptyset\bigr].
+\]
+Lemma~\ref{lem:CAP} is the handle on the second layer: $\degA(b) \le n_b+1$ converts every
+$A$-degree lower bound into a non-edge lower bound. Concretely, Lemma~\ref{lem:Cstar} now
+reads: every low vertex in $T_1 \cup T_2$ has at least two non-neighbours in $B$; and
+Lemma~\ref{lem:pair}'s contribution to Theorem~\ref{thm:MB} is recovered by
+Lemma~\ref{lem:CAP} for free.
+\end{remark}
+
+\section{A computer-assisted elimination, and a false quantifier}\label{sec:gfannu}
+
+This section reports one theorem at the weakest tier used in this paper, and it reports it
+together with the reason it sits there: the previous statement at this position was
+\emph{false}, a review round produced a counterexample family, and the repaired statement
+has not yet been reviewed. We consider the episode worth reporting in full rather than
+silently repairing, because a pipeline that publishes only its successes gives no evidence
+about its failure modes, and because the defect is of a species --- a quantifier admitting a
+degenerate instance nobody constructed --- that no amount of numerical checking of the
+non-degenerate range would have found.
+
+\subsection{The statement, and the case list}
+
+\begin{theorem}\label{thm:GFANnu}
+\Szero{the statement below is the repaired one; the text that was reviewed was false, and
+the repaired text is unreviewed}
+For every $\tau$, every $\nu$ with $1 \le \nu \le 6$, and every $L \ge \nu+1$, there is no
+graph carrying the configuration $\GFan(\tau,L,\nu)$ and satisfying $\res(G) = \alpha(G)$.
+\end{theorem}
+
+\begin{proof}
+Four proved bounds make the case list finite for each $\nu$: Lemma~\ref{lem:FAN4p} (the
+$A'$ residue totals $2\nu-E$ and the $C$-part is $\{L+e_c\}$ with $\sum e_c = E$);
+Lemma~\ref{lem:FAN8p} ($E \ge 1 \Rightarrow L \le 2\nu-E$, so $E \ge 1$ occurs only for the
+finitely many pairs $\nu+1 \le L \le 2\nu-E$, and $E \le \nu-1$); Corollary~\ref{cor:MB1}
+($L \ge \nu+1$); and Lemma~\ref{lem:TAIL} (for $E = 0$ and $L \ge \lambda_1$, survival
+depends on $\lambda$ alone, and the finitely many boundary rows
+$\nu+1 \le L < \lambda_1 \le 2\nu$ are checked directly). Every shape in the resulting
+finite list either fails to clear in exactly $L$ steps or is killed by
+Lemma~\ref{lem:FAN6p}. The enumeration is reproduced in full in
+Appendix~\ref{app:enum}; the counts are
+\begin{center}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$\nu$ & $E = 0$ rows Lemma~\ref{lem:FAN6p} misses & $E \ge 1$ shapes tested &
+$E \ge 1$ rows it misses \\
+\midrule
+$1$ & none & $0$ & none \\
+$2$ & none & $3$ & none \\
+$3$ & none & $24$ & none \\
+$4$ & none & $110$ & none \\
+$5$ & none & $397$ & none \\
+$6$ & none & $1\,211$ & none \\
+\bottomrule
+\end{tabular}
+\end{center}
+At $E = 0$ \emph{and} $L \ge \lambda_1$ --- inside Lemma~\ref{lem:TAIL}'s range, where
+``clears in exactly $L$ steps'' is the $L$-free criterion $s_0(\lambda) = \lambda_1$ --- the
+only residue clearing in exactly $L$ steps is the single part $[2\nu]$, for every
+$1 \le \nu \le 6$, and $[2\nu]$ is killed by Lemma~\ref{lem:FAN6p}. Outside that range the
+finitely many boundary rows $\nu+1 \le L < \lambda_1$ have their own survivors, tabulated in
+Appendix~\ref{app:enum}, each with its own certificate.
+\end{proof}
+
+\begin{remark}[the demarcation, stated exactly]\label{rem:demarcation}
+This is a computer-assisted proof and it is stated as such. The case list is finite
+\emph{because} of Lemmas~\ref{lem:FAN4p}, \ref{lem:FAN8p}, \ref{lem:TAIL} and
+Corollary~\ref{cor:MB1}, all hand-proved. Within that finite list, Appendix~\ref{app:enum}
+prints the $E = 0$ criterion for all $159$ partitions of $2\nu$, $\nu \le 6$; all $51$
+$E = 0$ boundary rows; the closed form
+$S(\nu) = \sum_{E=1}^{\nu-1}(\nu-E)\,p(E)\,p(2\nu-E)$ reproducing the ``shapes tested''
+column; and the complete roster of the $72$ surviving $E \ge 1$ rows with their
+certificates. Every step except the \emph{completeness of the $E \ge 1$ survivor roster} is
+therefore checkable by hand from the text alone; that one step is a seconds-scale machine
+check over an explicitly specified, closed-form-counted finite set. $\nu = 1$ is
+Theorem~\ref{thm:FAN} and $\nu = 2$ is Theorem~\ref{thm:GFAN2}, both with complete hand
+proofs; $\nu = 3,\dots,6$ rest on the enumeration.
+\end{remark}
+
+An earlier version of the summary sentence in the proof read ``at $E = 0$ the only residue
+clearing in exactly $L$ steps is the single part $[2\nu]$'', with no range qualifier, and
+read literally that is contradicted by the paper's own data: $(L,\lambda) = (5,[7,1])$ at
+$\nu = 4$, $(7,[9,1])$ at $\nu = 5$ and $(7,[10,1,1])$ at $\nu = 6$ are all $E = 0$, all
+clear in exactly $L$ steps, and none is $[2\nu]$. They are boundary rows outside
+Lemma~\ref{lem:TAIL}'s range, handled separately, and all are killed by
+Lemma~\ref{lem:FAN6p}; the conclusion is unaffected, but the sentence as written was false,
+and it was the punchline sentence. A review round found it, and the qualifier above is the
+repair.
+
+\begin{corollary}\label{cor:GFANnuHC}
+\Szero{inherits Theorem~\ref{thm:GFANnu}'s state}
+In the hard core, if every low vertex is $B$-universal then $\nu \ge 7$ and $L \ge 8$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:RIG} gives $\GFan(\tau,L,\nu)$ with $1 \le \nu \le L-1$ --- the lower bound
+is clause (d), i.e.\ Observation~\ref{obs:R1} --- so $L \ge \nu+1$;
+Theorem~\ref{thm:GFANnu} eliminates every $\nu$ with $1 \le \nu \le 6$, which by that lower
+bound is every $\nu \le 6$ available here.
+\end{proof}
+
+\subsection{The refutation}\label{sec:refutation}
+
+Theorem~\ref{thm:GFANnu}'s predecessor read ``for every $\nu \le 6$''. A review round
+carried out by an OpenAI GPT-5.6 session through the \texttt{codex} interface returned the
+verdict \textsc{refuted}, with the following observation: $\nu$ counts non-edges of $G[B]$,
+so $\nu = 0$ is an admissible value, and the statement is false there.
+
+\begin{proposition}[the counterexample family]\label{prop:K5}
+\Scomp{$K_3, K_4, \dots, K_8$ all verified, every clause of Definition~\ref{def:fan}
+checked individually, by two independent implementations}
+Every complete graph $K_n$ with $n \ge 3$ carries the configuration
+$\GFan(n-1,\,n-1,\,0)$ and satisfies $\res = \alpha$. Explicitly for $K_5$: it is connected
+and not a forest, $\alpha = 1$ with $A = \{a_0\}$ a single vertex, $f = 2 = \alpha+1$, the
+degree sequence is $[4,4,4,4,4]$ and $\res = 1 = \alpha$; $\tau = 4$, $\Blo = B$, $L = 4$,
+$\Bhi = \emptyset$, $\nu = 0$, and $L \ge \nu+1$.
+\end{proposition}
+
+The proof of Theorem~\ref{thm:GFANnu} could never have covered $\nu = 0$, and inspecting why
+is instructive. At $\nu = 0$, Lemma~\ref{lem:FAN4p} forces $E = 0$ and makes $\lambda$ the
+\emph{empty} partition of $0$; Lemma~\ref{lem:TAIL} is stated for $\lambda$ non-empty; the
+boundary branch needs $\lambda_1 \le 2\nu = 0$; and the $E \ge 1$ branch needs
+$E \le \nu-1 = -1$. All three branches of the case split are vacuous at $\nu = 0$, which is
+exactly why the enumeration in Appendix~\ref{app:enum} starts at $\nu = 1$ --- the printed
+data already showed the gap, and nobody read it that way. The defect is a genuine gap
+between statement and proof, not a rider; the repair is the missing quantifier
+$1 \le \nu$, and nothing downstream changes, because every consumer reaches the theorem
+through Theorem~\ref{thm:RIG}(d), where Observation~\ref{obs:R1} supplies $\nu \ge 1$.
+Corollary~\ref{cor:GFANnuHC} is untouched for the same reason.
+
+Three further things about the episode are worth stating, because they are the data a reader
+should use to calibrate how much this pipeline's markers are worth.
+
+\emph{First, the round was suspected of being shallow before it was read, and the suspicion
+was wrong.} It ran faster and returned a smaller report than the preceding round, on a brief
+carrying more named joints; the campaign recorded that as a prior for shallowness. Measured
+against brief size the ranking inverts: the brief was $43$\,KB against the preceding round's
+$84$\,KB and an earlier round's $138$\,KB, runtime tracked brief size almost linearly, and
+per byte of brief this round produced more report than its predecessor. The lesson recorded
+in the campaign's ledger is that predicting a reviewer's depth from a surface statistic
+instead of from its work had by then failed three times.
+
+\emph{Second, the round did substantially more than referee.} It built its own graph rather
+than assuming the conclusion of Theorem~\ref{thm:RIG}: an eight-vertex frame instance with
+$\alpha = 4$, $\diam = 4$, $f = 5 = \alpha+1$, connected, not a forest,
+$\Blo = \{b_0,b_3\}$ both $B$-universal, $\Bhi = \{b_1,b_2\}$, unique $B$ non-edge
+$b_1b_2$ so $\nu = 1$, all five conclusions of Theorem~\ref{thm:RIG} true, and
+$\res = 3 \ne 4 = \alpha$. Every claim about it was reproduced independently. That last line
+is what makes it a control rather than a witness: the frame holds and the reductio
+hypothesis fails, so Lemmas~\ref{lem:FAN4p}, \ref{lem:FAN8p} and~\ref{lem:FAN6p} are
+unavailable on it, and the report says so and does not use it as evidence for them.
+It also declined to launder vacuity, stating in its own words that the positive-$\nu$
+computation enumerates \emph{shapes}, not realized graphs, so that the absence of an
+unkilled shape is not empirical evidence that no such graph exists.
+
+\emph{Third, the campaign's own gate arithmetic went against the campaign.} Reading the
+report's own joint-level verdicts, one could argue that the repaired statement
+$1 \le \nu \le 6$ was reviewed in substance, since the specification, data and kill joints
+all came back clean and one of them says ``clean for $1 \le \nu \le 6$''. That reading was
+put to the orchestrator and \emph{rejected}, on the pre-registered rule that a clean round
+counts only for the text as reviewed, and that a round which refutes a statement is not that
+statement's clean round. Theorem~\ref{thm:GFANnu} is therefore recorded at zero rounds, not
+at one, and Section~\ref{sec:open} names the single round that would close it.
+
+\begin{remark}[the data were reproduced a third time]\label{rem:thirdtime}
+\Scomp{$282$ printed values re-derived from the specification alone and diffed against this
+text as parsed from the file; $0$ mismatches}
+Because a refuting round raises the question of what \emph{else} is wrong, the whole of
+Appendix~\ref{app:enum} was recomputed by an implementation written from scratch --- its own
+Havel--Hakimi and residue primitives, its own independence-number and forest-number routines
+by exhaustive subset enumeration, its own partition generator, its own clause checker for
+Definition~\ref{def:fan} --- which reuses nothing from the reviewing session or its checker,
+and which parses this paper's own data blocks and diffs against its recomputation, so that a
+transcription slip here would surface rather than be laundered. Agreement was exact on: the
+$159$ values of $s_0(\lambda)$ and the fact that the printed partition set is exactly the
+set of all $p(2\nu)$ partitions at each $\nu$; the $E = 0$ tail survivors
+$[2],[4],[6],[8],[10],[12]$; the boundary pair counts $0,1,3,7,14,26$; the boundary
+survivors and their certificates; $S(\nu) = 0,3,24,110,397,1211$ both by enumeration and by
+closed form; the $E \ge 1$ survivor counts $0,1,4,9,20,38$, every row and every certificate,
+with no row printed here that the recomputation lacks and none the other way; $0$ misses of
+Lemma~\ref{lem:FAN6p} over all $9+72+6$ surviving rows; the $1\,817$ tail-formula pairs; and
+the zero-padding inertness control, extended to $18\,963$ (list, padding) pairs with $0$
+padding-dependent step counts.
+\end{remark}
+
+\section{What remains}\label{sec:open}
+
+\subsection{The residual configuration space}
+
+Collecting Theorems~\ref{thm:tau2}, \ref{thm:T3}, \ref{thm:FAN} and~\ref{thm:RIG} with
+Corollaries~\ref{cor:FANHC} and~\ref{cor:RIG2}, a counterexample to the diameter-four
+dichotomy \eqref{eq:D4} --- equivalently, a graph in the hard core of
+Definition~\ref{def:frame} --- must satisfy
+\[
+\tau \ge 4, \qquad L \ge 3,
+\]
+and must lie in one of the two layers of Remark~\ref{rem:otherlayer}: either every low
+vertex is $B$-universal, in which case Theorem~\ref{thm:RIG} pins the graph to
+$\GFan(\tau,L,\nu)$ with $2 \le \nu \le L-1$ (and, granting Theorem~\ref{thm:GFANnu} at its
+current tier, with $\nu \ge 7$ and $L \ge 8$); or some low vertex is not $B$-universal, in
+which case no rigidity statement is available and Lemma~\ref{lem:CAP} is the only handle
+so far --- it converts every $A$-degree lower bound into a lower bound on the number of
+non-neighbours in $B$, which is what a hypothetical $L$-uniform argument would consume.
+
+Nothing here bounds $\tau$ or $L$ from above, and there is a measured reason to expect no
+such bound: the family with $B$ independent, $c$ universal $A$-vertices and two private
+leaves per $B$-vertex lands genuinely inside the hard-core frame for every $\tau \ge 3$ and
+$c \ge \tau$, so a case analysis proceeding one $\tau$ at a time can never terminate. That
+observation is why every statement in Sections~\ref{sec:toolkit}--\ref{sec:rig} is
+$\tau$-uniform.
+
+\subsection{Two combinatorial conjectures that would close the $B$-universal layer}
+
+The table underlying Theorem~\ref{thm:GFANnu} is uniform in $\nu$ as far as it was computed:
+at $E = 0$ only $\lambda = [2\nu]$ survives, and every $E \ge 1$ survivor has a unique
+maximum with a gap of at least $2$ below it. If that persists for all $\nu$, the entire
+$B$-universal layer of the hard core is empty at every $L$, and by
+Remark~\ref{rem:otherlayer} the whole hard core reduces to the layer
+$\Bloplus \ne \emptyset$. Precisely:
+
+\begin{conjecture}\label{conj:C1}
+\Sconj{verified for every $\nu \le 10$; proved for $\lambda = [2\nu]$ and for every
+$\lambda$ with at most two parts}
+For every $\nu$ and every partition $\lambda$ of $2\nu$ other than $[2\nu]$,
+$s_0(\lambda) \ne \lambda_1$.
+\end{conjecture}
+
+\begin{conjecture}\label{conj:C2}
+\Sconj{verified for every $\nu \le 10$}
+Every $(L,E)$ survivor with $E \ge 1$ has an $A'$ residue $\lambda$ with a unique maximum
+whose second-largest entry is at most $\lambda_1 - 2$.
+\end{conjecture}
+
+\begin{remark}[partial progress on Conjecture~\ref{conj:C1}]\label{rem:C1progress}
+\Szero{hand proofs; never queued for review}
+Four statements were proved by hand and are recorded here at the weakest tier, having never
+been submitted to any review round. (i) $s_0([2\nu]) = 2\nu$ for every $\nu$, by a two-step
+parity induction with no computation --- so the $[2\nu]$ row of the enumeration is
+hand-proved at every $\nu$, not only for $\nu \le 6$. (ii) Conjecture~\ref{conj:C1} is not a
+step-count statement but a residue statement: writing $k$ for the number of parts of
+$\lambda$, one has $s_0(\lambda) = \lambda_1$ if and only if
+$\res\bigl([\lambda_1]^{\lambda_1+1} \cup \lambda\bigr) = k+1$. (iii) Consequently, by
+Fact~\ref{fact:fms}, Conjecture~\ref{conj:C1} holds for a given $\lambda$ as soon as
+$[\lambda_1]^{\lambda_1+1} \cup \lambda$ admits a realization with independence number at
+most $k$ --- so the general case acquires a sufficient condition. That condition is
+not known to be satisfiable in general: for $\lambda = (w,1)$ with $w \ge 3$ odd, no
+realization with independence number at most $k$ exists, although $C1$ holds there.
+It is therefore a sufficient condition and not a reduction. (iv) For $k \le 2$
+the construction succeeds: $s_0\bigl((w,c)\bigr) = w+1$ exactly, whenever $w+c$ is even,
+which it always is here since $\lambda \vdash 2\nu$; hence Conjecture~\ref{conj:C1} holds
+for every partition with at most two parts. The step counts were verified over all $10\,268$
+terminating cases with $n \le 28$, and the enumeration of Appendix~\ref{app:enum} was
+separately extended to $\nu \le 10$ with the same outcome. That extension is deliberately
+\emph{not} folded into Theorem~\ref{thm:GFANnu}'s statement: it was produced while review
+rounds on the $\nu \le 6$ text were in flight, and desynchronising a theorem from the text a
+reviewer is holding invalidates the round. When it is folded in it must be folded as
+$1 \le \nu \le 10$, or the hole of Section~\ref{sec:refutation} re-opens.
+\end{remark}
+
+\subsection{The one review round that would close the certification surface}
+\label{sec:resume}
+
+The mathematics of this line is, in the campaign's judgement, complete as far as it goes;
+what is not complete is its certification. Exactly ten statements sit at one round
+(Section~\ref{sec:oneround}) and two at zero (Section~\ref{sec:gfannu}), and a single
+correctly-briefed round by a non-Qwen family on the current repaired text would give the ten
+their second family and the two their first. The obstruction to the round that was attempted
+is documented above and is entirely on the dispatching side: the brief must \emph{paste}, in
+full statement form, the four imports whose absence obstructed it --- Lemma~\ref{lem:FAN1},
+which was not even in the assumable list; Lemma~\ref{lem:DICH} clause (b) explicitly, rather
+than the lemma's name; Proposition~\ref{prop:L2} clauses (a) and (b) verbatim; and
+Corollary~\ref{cor:L1short}, or better, drop its citation entirely, since
+Corollary~\ref{cor:GFAN2HC} no longer uses it. That round was specified but not dispatched,
+the campaign having entered a wind-down.
+
+\section{Limitations}\label{sec:limits}
+
+We state the limitations of this paper plainly.
+
+\begin{enumerate}
+\item \emph{The conjecture is not resolved, and the gap is not small.} What is proved is a
+reduction and a narrowing: the diameter-four dichotomy \eqref{eq:D4} implies the conjecture
+at diameter four, and the configurations that could violate \eqref{eq:D4} have been narrowed
+to $\tau \ge 4$, $L \ge 3$ and two layers, one of which is pinned to an explicit family and
+one of which is not pinned at all. Nothing here bounds $\tau$ or $L$, and
+Section~\ref{sec:open} explains why no argument proceeding one $\tau$ at a time can.
+
+\item \emph{Nothing is formalized.} The companion papers of this pipeline
+\cite{batch1,fernandespaper} end in Lean~4 files whose compilation is the arbiter of every
+claim. This one does not, and the strongest marker used here is a statement about a review
+process. Two independent reviewing sessions from different model families returning no
+mathematics defect is materially weaker evidence than a kernel-checked proof, and the reader
+should treat it as such. The one thing the tiering does guarantee is that the paper
+distinguishes the levels rather than averaging them.
+
+\item \emph{The residual is at diameter four only in a measured range.}
+Corollary~\ref{cor:B2} settles $d \in \{1,2,3,5,6,9\}$ unconditionally; $d = 4$, $d = 7$,
+$d = 8$ and every $d \ge 10$ are not settled by the elementary package. What
+Remark~\ref{rem:coverage} establishes is that in the exhaustively checked range $n \le 8$
+every graph missed by the three certificates has $d = 4$. Proposition~\ref{prop:dichotomy}
+is therefore a statement about the diameter-four case and not about ``the residual case''
+in general, and the campaign's own internal summary of it as the latter is an overstatement
+that we correct here.
+
+\item \emph{One certified proof is summarised, not reproduced.}
+Theorem~\ref{thm:T3}'s complete case analysis --- four branches, several sub-branches, and
+seven landed repairs from three review rounds --- runs to several pages of dense case work
+in the source report, and Section~\ref{sec:smalltau} gives its skeleton and its tools rather
+than every branch. The two review rounds certified the full text, not this summary. A reader
+who wants the branch-level detail must go to the source report; a reader who wants to check
+Theorem~\ref{thm:T3} independently is better served by the parameterisation in
+Remark~\ref{rem:T3num}, which reduces the $\tau = 3$ frame to an exhaustive scan over a
+box of multiplicities.
+
+\item \emph{Fact~\ref{fact:fms} is used as a black box and its bibliographic data comes from
+an automated pass.} The inequality $\res \le \alpha$ carries every argument in this paper.
+It is not reproved here, and the attribution should be re-checked against the literature
+before any formalization. It is asserted by the verification script on the whole exhaustive
+range and never fails there, which is evidence about the statement and none at all about the
+attribution.
+
+\item \emph{Numerical scopes are exactly what the markers say.} Every
+\Scomp{\dots} marker names a finite range, and a failed bounded search inside it is not a
+proof of impossibility. In particular the hard core is empty on everything reachable at the
+sizes searched --- which is what the conjecture predicts, and which therefore supplies no
+discriminating evidence about the unproved statements at all. The mechanism checks reported
+in Observation~\ref{obs:FANE} and elsewhere run \emph{off} the reductio hypothesis for
+exactly this reason, and they corroborate the shape of an argument rather than its
+conclusion.
+
+\item \emph{Two of the campaign's own statements were false.} Remark~\ref{sec:upstream-selfref}
+and Section~\ref{sec:refutation} report them, with their counterexamples. Both were caught
+by the review gate, not by the solver. The honest reading of that is not that the gate
+works, but that the solver's first-pass output should not be trusted without it; the
+success rate of the first gate, not of the pipeline, is the measure of a solver.
+
+\item \emph{Literature search was automated.} We checked for prior work on
+Conjecture~\ref{conj:main} by automated search and found none beyond the collection and the
+formal corpus, but automated searches miss things. No priority is claimed for anything here,
+and readers should assume that some of the elementary material in
+Section~\ref{sec:elementary} is known.
+
+\item \emph{Ten statements are one round short and two are two rounds short.} They are
+segregated into Sections~\ref{sec:oneround} and~\ref{sec:gfannu} and marked accordingly.
+Corollary~\ref{cor:GFANnuHC} in particular should not be quoted as established; the
+strongest unconditional consequence of the certified material is
+Corollary~\ref{cor:FANHC}'s $L \ge 3$.
+\end{enumerate}
+
+\subsection*{Acknowledgement of process}
+
+No human contributed a mathematical step to this paper. The pipeline --- problem selection,
+attack design, solving, adjudication, adversarial review, computation and drafting --- was
+run autonomously. Responsibility for the correctness of what is claimed nevertheless rests
+where it always does: with the reader who checks it, and, for the statements below the top
+tier, with the reader who does not yet.
+
+\appendix
+
+\section{Certification ledger}\label{app:ledger}
+
+Table~\ref{tab:ledger} reproduces, for each statement of this paper carrying a
+\textsf{certified} or \textsf{one round} marker, the campaign's registry row and the review
+artifacts behind it. ``Family'' records the model family of each round; the protocol
+requires the two rounds of a certified statement to come from different families, and
+requires at least one of them to have read the final repaired text. The adjudication column
+names the campaign's own reproduction script, which re-derives every claim of the report
+from scratch before it is upheld; those scripts are listed in
+Appendix~\ref{app:scripts}.
+
+\begin{center}
+\small
+\begin{longtable}{@{}p{0.055\textwidth}p{0.30\textwidth}p{0.30\textwidth}p{0.25\textwidth}@{}}
+\toprule
+row & statements & review rounds (family) & adjudication \\
+\midrule
+\endfirsthead
+\toprule
+row & statements & review rounds (family) & adjudication \\
+\midrule
+\endhead
+R-1 & Lemma~\ref{lem:Zplus} & round A2 (Qwen3.8-Max) + round B (Claude Opus 5) +
+confirmation pass (Claude Opus 5, separate session) &
+\texttt{w61\_r4\_a2check.py}, \texttt{w61\_thmK\_check.py} \\
+R-2 & Lemma~\ref{lem:DICH} & same chain & same \\
+R-3 & Theorem~\ref{thm:K} & same chain & same \\
+R-4 & Corollary~\ref{cor:K1} & same chain & same \\
+R-5 & Lemma~\ref{lem:F3prime} & same chain & \texttt{w61\_adjudicate\_r4.py} \\
+R-6, R-7 & the two superseded counting statements of Remark~\ref{sec:upstream-selfref} &
+round B (Claude Opus 5) + confirmation pass & \texttt{w61\_adjudicate.py} \\
+R-9 & Lemmas~\ref{lem:FAN1}, \ref{lem:FAN3}, \ref{lem:FAN4}, \ref{lem:FAN6},
+\ref{lem:FAN7}, \ref{lem:FAN8} &
+rounds A, A2, B (Claude Opus 5, three separate sessions) + cross-family round
+(Qwen3.8-Max) + verification pass (Qwen3.8-Max) &
+\texttt{w61\_r5\_a2check.py}, \texttt{w61\_r6\_q14check.py} \\
+R-10 & Theorem~\ref{thm:FAN} & same chain & same \\
+R-11, R-12 & Lemmas~\ref{lem:S}, \ref{lem:T} and the general-$s$ closure &
+verification pass (Qwen3.8-Max), joint V-M1 & \texttt{w61\_r5\_generalS.py} \\
+R-13 & Theorem~\ref{thm:T3} with repairs R1, R3, J1, J2, K1, K2, K3 &
+round A (Claude Opus 5) + Part 2 of the verification pass (Qwen3.8-Max), both
+math joints re-derived independently &
+\texttt{w61\_r5\_jcheck.py}, \texttt{w61\_tau3\_struct.py} \\
+R-14 & Observation~\ref{obs:FAN5} & released by R-15; own content certified with R-9 &
+\texttt{w61\_r5\_bcheck.py} \\
+R-15 & Lemma~\ref{lem:TAIL} with repairs Y1--Y3 &
+round 1 (Qwen3.8-Max, no mathematics defect) + round 2 (\texttt{codex} \texttt{spark},
+clean on the repaired text) & \texttt{w61\_r11\_adjudicate.py},
+\texttt{w61\_S3\_TAIL\_spark\_check.py} \\
+R-16 & Theorem~\ref{thm:LOW}, Theorem~\ref{thm:SL}, Lemma~\ref{lem:HI} &
+round 1 (Qwen3.8-Max, no mathematics defect, repairs X1--X4) + round 2
+(\texttt{codex} \texttt{sol}, on the repaired text, Steps 1--6 of
+Theorem~\ref{thm:SL} re-derived independently) & \texttt{w61\_r10\_adjudicate.py},
+\texttt{w61\_r12\_adjudicate.py} \\
+R-17 & Theorem~\ref{thm:MB}, Corollaries~\ref{cor:L1short}, \ref{cor:MB1},
+\ref{cor:L1prime}, Propositions~\ref{prop:L1}, \ref{prop:L2} & same two-family chain;
+all joints clean in round 2 with independent re-derivation, including the two-sided
+squeeze of Proposition~\ref{prop:L2}(c) & same \\
+R-18 & Corollary~\ref{cor:SLHC} with repair AA1 & same chain; AA1's replacement argument
+certified directly by the orchestrator & \texttt{w61\_r12\_adjudicate.py} \\
+R-19 & Corollary~\ref{cor:FANHC} & released by R-16--R-18; own content certified with
+R-9/R-10 & --- \\
+R-20 & Lemma~\ref{lem:CAP}, Corollary~\ref{cor:CAP1} with repair AB3 &
+round 1 (Qwen3.8-Max) + round 2 (\texttt{codex} \texttt{sol}; both bounds re-derived
+independently) & \texttt{w61\_r13\_adjudicate.py} \\
+R-21 & Theorem~\ref{thm:RIG}, Corollary~\ref{cor:RIG2} with repair AB2 &
+same two families; round 2 supplied an independently constructed frame witness
+(Section~\ref{sec:refutation}) & \texttt{w61\_r13\_adjudicate.py} \\
+\midrule
+--- & Lemmas~\ref{lem:FAN4p}--\ref{lem:FAN6p}, Theorem~\ref{thm:GFAN2},
+Corollaries~\ref{cor:RIG1}, \ref{cor:GFAN2HC}, \ref{cor:GFAN2L3} &
+\textbf{one round only}: Qwen3.8-Max, joints clean, repairs Z1--Z4 landed. The second
+family's round was obstructed by a briefing defect (Section~\ref{sec:oneround}) &
+\texttt{w61\_r12\_adjudicate.py} \\
+--- & Theorem~\ref{thm:GFANnu}, Corollary~\ref{cor:GFANnuHC} &
+\textbf{no completed round}: the text reviewed was false
+(Section~\ref{sec:refutation}); the repaired text is unreviewed &
+\texttt{w61\_r13\_adjudicate.py} \\
+\bottomrule
+\caption{Certification ledger. Registry rows are the campaign's own identifiers.}
+\label{tab:ledger}
+\end{longtable}
+\end{center}
+
+Two structural facts about this table are worth stating. First, the model families are
+genuinely separated: no reviewing session read another's report, the campaign's dispatch
+records, or the pre-declared failure modes, and each brief carried an explicit isolation
+rule. Second, five rows were held back at points where accepting a clean verdict wholesale
+would have promoted something unearned --- Observation~\ref{obs:FAN5} was held until
+Lemma~\ref{lem:TAIL} cleared its own two-family bar, Corollary~\ref{cor:FANHC} was held
+until the whole of Section~\ref{sec:budget} cleared, and the entire
+Section~\ref{sec:oneround} block was held and remains held. Those holds are the part of the
+ledger that carries information.
+
+\section{Verification-artifact inventory}\label{app:scripts}
+
+Every script below is a stand-alone Python program in the campaign repository; none
+requires a solver, and the longest single run is about $100$ seconds. Each begins by
+recomputing the two calibration values $\res(K_2) = 1$ and
+$\res(C_n) = \lceil n/3 \rceil$ for $n = 3,\dots,9$ from its own implementation, so that a
+mistranscription of the residue definition aborts the run before any reported number is
+produced. Paths are relative to the repository root.
+
+\subsection*{B.1 The falsification and certificate stages}
+
+\begin{description}[leftmargin=1.5em,style=nextline]
+\item[\texttt{notes/proofs/wowii61\_verify.py}]
+The primary verifier. Mode \texttt{all} runs stages A--E of Remark~\ref{rem:falsify} and
+\emph{asserts} $\res \le \alpha$ (Fact~\ref{fact:fms}), $f \ge \alpha+1$
+(Lemma~\ref{lem:f-alpha}), $f \ge \alpha + \lfloor (d-1)/4 \rfloor + 1$
+(Corollary~\ref{cor:B1}) and \eqref{eq:C61} itself on every graph it touches, so a
+counterexample to any of them aborts the run. Mode \texttt{w} emits the witnesses
+$W_1,\dots,W_7$ of Section~\ref{sec:obstacles} with all their invariants. Mode \texttt{f}
+evaluates the two sub-conjectures of the campaign's first round and the two dead routes of
+Section~\ref{sec:obstacles} over $46\,995$ graphs. It also produces the coverage table of
+Remark~\ref{rem:coverage}. \texttt{networkx} is used only for the atlas of graphs on at most
+seven vertices; everything else is bit manipulation.
+\end{description}
+
+\subsection*{B.2 Toolkit and small-$\tau$}
+
+\begin{description}[leftmargin=1.5em,style=nextline]
+\item[\texttt{problems/wowii/w61\_lemH.py}]
+Certifies Lemmas~\ref{lem:S} and~\ref{lem:F3prime} and the head-decay bound they replaced,
+over $116\,873$ connected graphs ($n \le 7$ exhaustive, the $n = 8$ cover, $12\,000$ random
+$n = 9,\dots,12$, structured families), of which $36\,612$ satisfy the reductio hypothesis;
+canonical sort plus three randomised adversarial tie-breaks per graph.
+\item[\texttt{problems/wowii/w61\_blockocc.py}]
+Certifies Lemma~\ref{lem:Zplus} and the block-occupancy mechanism over $116\,189$ connected
+graphs, $36\,664$ of them under the reductio hypothesis, with the six labelled claims
+reported separately.
+\item[\texttt{problems/wowii/w61\_thmK\_check.py}]
+Independent check of Theorem~\ref{thm:K} (Remark~\ref{rem:thmK}), written by the owner
+agent and reusing no code from the agent that proposed the theorem: $114\,914$ connected
+graphs, $1\,464$ hypothesis hits, $0$ non-cliques.
+\item[\texttt{problems/wowii/w61\_cstar.py}]
+Certifies Lemma~\ref{lem:Cstar} on the hard-core \emph{frame} --- no reductio hypothesis
+imposed --- over the exhaustive $n \le 7$ atlas plus the $n = 8$ cover: $340$ frame graphs,
+$399$ pairs realising Fact~\ref{fact:Fb}, $0$ failures, plus the $\tau$-histogram of
+Remark~\ref{rem:obstacle-tau}.
+\item[\texttt{problems/wowii/w61\_famgen.py}]
+Generates the two unbounded hard-core-frame families used in Section~\ref{sec:open} and
+confirms membership instance by instance for $\tau = 3,\dots,7$ and $c = 2,\dots,10$.
+\item[\texttt{problems/wowii/w61\_tau3.py}]
+Exhaustive scan of the $\tau = 3$ frame by the parameterisation of
+Remark~\ref{rem:T3num}: $1\,119\,744$ parameter tuples in a multiplicity box of size $5$,
+of which $591\,710$ lie in the frame; reports the $e_B$ distribution and the minimum of
+$m - \sum_{i \le 3} D_i$.
+\item[\texttt{problems/wowii/w61\_tau3\_struct.py}]
+Certifies the structural skeleton of Theorem~\ref{thm:T3} --- the three $B$-degree bounds
+and the two implications $e_B = 1 \Rightarrow k \ge 1$, $e_B = 2 \Rightarrow k \ge 2$ ---
+on $147\,348$ instances, and runs the four explicit families of the proof at parameters up
+to $X = 59$.
+\item[\texttt{problems/wowii/w61\_r5\_t3check.py}]
+Corroborating box for Theorem~\ref{thm:T3}: $12\,288$ graphs with $\tau = 3$ over all $e_B$
+and all type multiplicities $\le 2$, with $A$ verified maximum; $0$ hard-core instances.
+\item[\texttt{problems/wowii/w61\_r3\_repair.py}, \texttt{w61\_r5\_jcheck.py}]
+Numerical backing for the repairs to Theorem~\ref{thm:T3}, including the direct
+Havel--Hakimi computation on the unique $k = 0$ graph and the refutation of the enumeration
+claim that repair K2 replaced by a closed-form diameter argument.
+\end{description}
+
+\subsection*{B.3 The budget chain}
+
+\begin{description}[leftmargin=1.5em,style=nextline]
+\item[\texttt{problems/wowii/w61\_r4\_low.py}]
+Certifies \eqref{eq:LOW1}--\eqref{eq:LOW3}, the position-independence identity in the proof
+of Theorem~\ref{thm:LOW}, both clauses of Lemma~\ref{lem:DICH}, Lemma~\ref{lem:HI}, and
+Theorem~\ref{thm:K} as the case $L = 0$: $6\,403$ connected graphs, $34\,040$ reductio
+trajectory checks, every maximum independent set tested rather than one, canonical sort plus
+three adversarial tie-breaks. Emits the per-$L$ slack minima quoted in
+Remark~\ref{rem:SLsharp} and the hard-core-frame $L$ histogram.
+\item[\texttt{problems/wowii/w61\_r4\_slack.py}]
+The corpus deliberately enriched with near-split graphs ($B$ a clique minus a few random
+edges), which is the regime Proposition~\ref{prop:L1} lives in: $5\,913$ graphs,
+$26\,514$ checks, $1\,240$ instances with $L = 1$, in all of which
+$(\degA(b_0),\mbar) = (1,0)$.
+\item[\texttt{problems/wowii/w61\_r4\_thmSL.py}]
+Certifies \emph{every intermediate assertion} of the proof of Theorem~\ref{thm:SL}
+separately, not only its conclusion: the eleven labelled steps, over $22\,450$ trajectories
+with five tie-breaks each. Produces the $s_j$ histogram of Remark~\ref{rem:SLsharp} and the
+$1\,925$ counterexamples to the stronger statement the theorem is \emph{not}.
+\item[\texttt{problems/wowii/w61\_r4\_mb.py}]
+Numerical backing for Theorem~\ref{thm:MB} and Propositions~\ref{prop:L1},
+\ref{prop:L2}.
+\item[\texttt{problems/wowii/w61\_r5\_generalS.py}]
+Closes the general-$s$ species: checks each toolkit lemma off the reductio hypothesis, in
+the regime where a reductio-only statement would be invalid.
+\end{description}
+
+\subsection*{B.4 The fan family and the rigidity chain}
+
+\begin{description}[leftmargin=1.5em,style=nextline]
+\item[\texttt{problems/wowii/w61\_r4\_fanL.py}]
+Enumerates $\Fan(\tau,L\ge2)$ degree sequences over a parameter box and reports
+$\alpha - \res$ for each: $63\,239$ strict and $99\,619$ superset sequences, $0$ with
+$\res = \alpha$, and the control $L = 1$ with $106\,811$ sequences and $0$ survivors.
+An enlarged box (\texttt{w61\_r4\_fanL\_big}) reaches $1\,098\,141$ strict and
+$1\,700\,094$ superset sequences; this is the source of Observation~\ref{obs:FANE}.
+\item[\texttt{problems/wowii/w61\_r4\_fanmech.py}]
+The mechanism check of Section~\ref{sec:conventions}'s firewall: $64\,911$ labelled
+Havel--Hakimi runs under canonical and randomised tie-breaks, testing which entries occupy
+which blocks. Includes a counterfactual-availability control --- the same test applied to
+shapes breaking exactly one hypothesis of Definition~\ref{def:fan} returns
+$\res = \alpha$ in $36\,650$ of $46\,138$ $B$-clique cases, so the test discriminates and is
+not vacuously negative.
+\item[\texttt{problems/wowii/w61\_r4\_fanres.py}, \texttt{w61\_r4\_fanE.py},
+\texttt{w61\_r4\_fan.py}]
+Certify the residue-mass count of Lemma~\ref{lem:FAN4}, the five structural hypotheses of
+Lemma~\ref{lem:FAN6} ($508\,239$ high-phase runs, three tie-breaks each) and the escape
+budget of Lemma~\ref{lem:FAN7}; report the residue partition in $450\,303$ superset
+sequences.
+\item[\texttt{problems/wowii/w61\_r5\_bcheck.py}]
+Independent confirmation of Observation~\ref{obs:FAN5}'s second half for
+$L = 2,\dots,9$ against direct simulation.
+\item[\texttt{problems/wowii/w61\_r5\_rig.py}]
+Certifies Lemma~\ref{lem:CAP}, Corollary~\ref{cor:CAP1} and all five conclusions of
+Theorem~\ref{thm:RIG}, with its own labelled residue implementation, its own graph code and
+its own corpora, importing no earlier script. Contains the targeted frame generator of
+Remark~\ref{rem:RIGnum} and the $(L,\nu)$ histogram that measures the scope demarcation of
+Remark~\ref{rem:RIGscope}.
+\item[\texttt{problems/wowii/w61\_r5\_gfan2.py}]
+Certifies Theorem~\ref{thm:GFAN2}'s three trajectories and its eight-row $L = 3$ table, and
+runs the $\nu \le 6$ enumeration through the three functions
+\texttt{tail\_check} / \texttt{escape\_check} / \texttt{complete\_check}.
+\item[\texttt{problems/wowii/w61\_r12\_gfannu\_embed.py}]
+The instrumented re-run that produced Appendix~\ref{app:enum}: the same check as the
+previous entry, re-instrumented so that every intermediate column is printed rather than
+summarised, together with the zero-padding inertness control and the closed-form evaluation
+of $S(\nu)$ independent of the enumeration loop.
+\item[\texttt{problems/wowii/w61\_r13\_padding\_ext.py}]
+Extends the padding-inertness control to full scope: $964$ rows with $E = 0$ and all
+$1\,745$ enumerated $E \ge 1$ shapes for $\nu \le 6$, times seven paddings, giving
+$18\,963$ (list, padding) pairs with $0$ padding-dependent step counts.
+\item[\texttt{problems/wowii/w61\_r12\_gfannu\_ext.py}]
+The $\nu \le 10$ extension of Remark~\ref{rem:C1progress}, to the same specification.
+\item[\texttt{problems/wowii/w61\_r12\_c1\_probe.py}, \texttt{w61\_r12\_c1k2.py}]
+Probe and certificate for Conjecture~\ref{conj:C1}: the first evaluates $s_0(\lambda)$ over
+every partition of every relevant weight in range; the second certifies the two-part case
+over all $10\,268$ terminating instances with $n \le 28$.
+\end{description}
+
+\subsection*{B.5 Adjudication scripts}
+
+Each review round is reproduced from scratch before any of its findings is upheld. These
+scripts are written to be maximally hostile to the paper: where this text prints data they
+parse the source file and diff it against their own recomputation, so that a transcription
+slip surfaces rather than being laundered.
+
+\begin{description}[leftmargin=1.5em,style=nextline]
+\item[\texttt{problems/wowii/w61\_adjudicate.py}, \texttt{w61\_adjudicate\_r4.py},
+\texttt{w61\_r4\_a2check.py}, \texttt{w61\_r5\_a2check.py},
+\texttt{w61\_r6\_q14check.py}]
+Reproductions of the rounds behind rows R-1--R-13, each with an independent labelled
+Havel--Hakimi implementation.
+\item[\texttt{problems/wowii/w61\_r10\_adjudicate.py},
+\texttt{w61\_r11\_adjudicate.py}, \texttt{w61\_r12\_adjudicate.py},
+\texttt{w61\_r13\_adjudicate.py}]
+Reproductions of the four later rounds: respectively the budget chain, Lemma~\ref{lem:TAIL},
+the second-family pass on Sections~\ref{sec:budget}--\ref{sec:fan}, and the refuting round
+of Section~\ref{sec:refutation}. The last is the one described in
+Remark~\ref{rem:thirdtime}; it reports \texttt{FAILURE\_COUNT = 0}.
+\item[\texttt{problems/wowii/w61\_S3\_76\_sol\_check.py},
+\texttt{w61\_S3\_GFAN\_sol\_check.py}, \texttt{w61\_S3\_TAIL\_spark\_check.py},
+\texttt{w61\_S3B\_K\_hh.py}, \texttt{w61\_S3B\_K\_exh.py},
+\texttt{w61\_S3B\_K\_avail.py}, \texttt{w61\_S3B\_K\_probe.py},
+\texttt{w61\_S3B\_T3\_probe.py}]
+The reviewing sessions' \emph{own} checkers, archived as they were received. They were
+re-run independently during adjudication; one of them --- the round-B judge's exhaustive
+enumerator --- performed $5\,842\,009$ trajectories under exhaustive tie-break enumeration
+over $28\,163$ graphs.
+\item[\texttt{problems/wowii/w61\_r10\_build\_spark\_brief.py},
+\texttt{w61\_r10\_build\_sol\_brief.py},
+\texttt{w61\_r12\_build\_gfannu\_brief.py},
+\texttt{w61\_r12\_build\_sol\_gfan\_brief.py}]
+The brief builders. Each performs a leak check before emitting, verifying that the brief
+contains no expected answer, no pre-declared failure mode and no other reviewer's report.
+The defect described in Section~\ref{sec:oneround} is an omission in the last of these ---
+four statements cited by name and not pasted --- and repairing it is a change to that
+script's appendix block.
+\end{description}
+
+\section{The \texorpdfstring{$\nu \le 6$}{nu <= 6} enumeration, in full}\label{app:enum}
+
+This appendix is what makes Theorem~\ref{thm:GFANnu} reproducible from this text rather
+than from an archived file. Its predecessor cited the enumeration by filename, and a
+reviewing session correctly refused to certify a column it could not recompute; everything
+below is the repair.
+
+\subsection*{C.1 The object being enumerated, specified exactly}
+
+At the start of step $p+1$ of a $\GFan(\tau,L,\nu)$ run under the reductio hypothesis, the
+Havel--Hakimi value list is, by Lemma~\ref{lem:FAN4p}, exactly: a $C$-part of $L+1$ entries,
+the $c$-th equal to $L + e_c$ with $e_c \ge 0$ and $\sum_c e_c = E$; an $A'$-part which is a
+partition $\lambda$ of $2\nu - E$; and zero entries. Five conventions fix the enumeration.
+
+\begin{enumerate}
+\item \emph{Unlabelled.} The step count of a Havel--Hakimi list depends only on the value
+multiset, so the $C$-part is enumerated as a multiset $\{L+e_c\}$ --- i.e.\ $e$ is a
+partition of $E$ into at most $L+1$ non-negative parts --- and the $A'$-part as a partition
+of $2\nu-E$. Distinct labellings of the same multiset are the same row.
+
+\item \emph{Zero entries are inert}, verified rather than assumed. The block at each step is
+the $D$ largest non-head entries, so a zero enters the block only when fewer than $D$
+positive entries remain, and in that case the run aborts either way; the zero padding in the
+scripts is therefore a convenience and $|A'|$ never has to be pinned down. As a control, all
+$964$ rows with $E = 0$ and all $1\,745$ enumerated $E \ge 1$ shapes for $\nu \le 6$ were
+padded with $0,1,2,3,4,8,13$ extra zeros --- $18\,963$ (list, padding) pairs --- with $0$
+padding-dependent step counts.
+
+\item \emph{No graphicality filter is applied, and none is needed.} The enumeration is a
+superset argument: it ranges over every multiset the reductio hypothesis \emph{could}
+produce and shows that none of them clears in exactly $L$ steps except rows that
+Lemma~\ref{lem:FAN6p} independently forbids. Adding a graphicality or feasibility filter can
+only remove rows, so the conclusion is monotone in the right direction.
+
+\item \emph{``Clears in exactly $L$ steps''} means: iterating
+\emph{head-deletes-the-$D$-largest} from the list above reaches all-zeros in exactly $L$
+deletions. A run that would drive a zero entry negative, or whose head exceeds the number of
+remaining entries, returns ``not a step sequence'' and is not a survivor.
+
+\item \emph{Parameter ranges.} $L \ge \nu+1$ by Corollary~\ref{cor:MB1};
+$E \ge 1 \Rightarrow L \le 2\nu-E$ by Lemma~\ref{lem:FAN8p}, which together force
+$E \le \nu-1$; and the $E = 0$ rows split at $\lambda_1$ into the range $L \ge \lambda_1$
+where Lemma~\ref{lem:TAIL} applies and the finitely many boundary rows
+$\nu+1 \le L < \lambda_1 \le 2\nu$.
+\end{enumerate}
+
+\subsection*{C.2 The \texorpdfstring{$E = 0$}{E = 0} column, printed in full}
+
+By Lemma~\ref{lem:TAIL}, for $L \ge \lambda_1$ a row clears in exactly $L$ steps if and only
+if $s_0(\lambda) = \lambda_1$, where
+$s_0(\lambda) = \mathrm{steps}([\lambda_1]^{\lambda_1+1} \cup \lambda)$ --- a quantity of
+$\lambda$ alone, computable by hand with one Havel--Hakimi run. Below, every partition of
+$2\nu$ is listed as $\lambda : s_0(\lambda)$, survivors ($s_0 = \lambda_1$) in bold. The
+counts are $p(2\nu)$, so the lists are complete by inspection.
+
+{\small\sloppy\noindent
+$\boldsymbol{\nu = 1}$ --- $p(2) = 2$:\quad
+\textbf{2:2} $\cdot$ 1+1:2
+
+\noindent
+$\boldsymbol{\nu = 2}$ --- $p(4) = 5$:\quad
+\textbf{4:4} $\cdot$ 3+1:4 $\cdot$ 2+2:3 $\cdot$ 2+1+1:3 $\cdot$ 1+1+1+1:3
+
+\noindent
+$\boldsymbol{\nu = 3}$ --- $p(6) = 11$:\quad
+\textbf{6:6} $\cdot$ 5+1:6 $\cdot$ 4+2:5 $\cdot$ 4+1+1:5 $\cdot$ 3+3:4 $\cdot$ 3+2+1:4
+$\cdot$ 3+1+1+1:5 $\cdot$ 2+2+2:4 $\cdot$ 2+2+1+1:4 $\cdot$ 2+1+1+1+1:4 $\cdot$
+1+1+1+1+1+1:4
+
+\noindent
+$\boldsymbol{\nu = 4}$ --- $p(8) = 22$:\quad
+\textbf{8:8} $\cdot$ 7+1:8 $\cdot$ 6+2:7 $\cdot$ 6+1+1:7 $\cdot$ 5+3:6 $\cdot$ 5+2+1:6
+$\cdot$ 5+1+1+1:7 $\cdot$ 4+4:5 $\cdot$ 4+3+1:5 $\cdot$ 4+2+2:6 $\cdot$ 4+2+1+1:6 $\cdot$
+4+1+1+1+1:6 $\cdot$ 3+3+2:5 $\cdot$ 3+3+1+1:5 $\cdot$ 3+2+2+1:5 $\cdot$ 3+2+1+1+1:5 $\cdot$
+3+1+1+1+1+1:6 $\cdot$ 2+2+2+2:4 $\cdot$ 2+2+2+1+1:5 $\cdot$ 2+2+1+1+1+1:5 $\cdot$
+2+1+1+1+1+1+1:5 $\cdot$ 1+1+1+1+1+1+1+1:5
+
+\noindent
+$\boldsymbol{\nu = 5}$ --- $p(10) = 42$:\quad
+\textbf{10:10} $\cdot$ 9+1:10 $\cdot$ 8+2:9 $\cdot$ 8+1+1:9 $\cdot$ 7+3:8 $\cdot$ 7+2+1:8
+$\cdot$ 7+1+1+1:9 $\cdot$ 6+4:7 $\cdot$ 6+3+1:7 $\cdot$ 6+2+2:8 $\cdot$ 6+2+1+1:8 $\cdot$
+6+1+1+1+1:8 $\cdot$ 5+5:6 $\cdot$ 5+4+1:6 $\cdot$ 5+3+2:7 $\cdot$ 5+3+1+1:7 $\cdot$
+5+2+2+1:7 $\cdot$ 5+2+1+1+1:7 $\cdot$ 5+1+1+1+1+1:8 $\cdot$ 4+4+2:6 $\cdot$ 4+4+1+1:6
+$\cdot$ 4+3+3:6 $\cdot$ 4+3+2+1:6 $\cdot$ 4+3+1+1+1:6 $\cdot$ 4+2+2+2:6 $\cdot$
+4+2+2+1+1:7 $\cdot$ 4+2+1+1+1+1:7 $\cdot$ 4+1+1+1+1+1+1:7 $\cdot$ 3+3+3+1:5 $\cdot$
+3+3+2+2:5 $\cdot$ 3+3+2+1+1:6 $\cdot$ 3+3+1+1+1+1:6 $\cdot$ 3+2+2+2+1:6 $\cdot$
+3+2+2+1+1+1:6 $\cdot$ 3+2+1+1+1+1+1:6 $\cdot$ 3+1+1+1+1+1+1+1:7 $\cdot$ 2+2+2+2+2:5 $\cdot$
+2+2+2+2+1+1:5 $\cdot$ 2+2+2+1+1+1+1:6 $\cdot$ 2+2+1+1+1+1+1+1:6 $\cdot$
+2+1+1+1+1+1+1+1+1:6 $\cdot$ 1+1+1+1+1+1+1+1+1+1:6
+
+\noindent
+$\boldsymbol{\nu = 6}$ --- $p(12) = 77$:\quad
+\textbf{12:12} $\cdot$ 11+1:12 $\cdot$ 10+2:11 $\cdot$ 10+1+1:11 $\cdot$ 9+3:10 $\cdot$
+9+2+1:10 $\cdot$ 9+1+1+1:11 $\cdot$ 8+4:9 $\cdot$ 8+3+1:9 $\cdot$ 8+2+2:10 $\cdot$
+8+2+1+1:10 $\cdot$ 8+1+1+1+1:10 $\cdot$ 7+5:8 $\cdot$ 7+4+1:8 $\cdot$ 7+3+2:9 $\cdot$
+7+3+1+1:9 $\cdot$ 7+2+2+1:9 $\cdot$ 7+2+1+1+1:9 $\cdot$ 7+1+1+1+1+1:10 $\cdot$ 6+6:7
+$\cdot$ 6+5+1:7 $\cdot$ 6+4+2:8 $\cdot$ 6+4+1+1:8 $\cdot$ 6+3+3:8 $\cdot$ 6+3+2+1:8 $\cdot$
+6+3+1+1+1:8 $\cdot$ 6+2+2+2:8 $\cdot$ 6+2+2+1+1:9 $\cdot$ 6+2+1+1+1+1:9 $\cdot$
+6+1+1+1+1+1+1:9 $\cdot$ 5+5+2:7 $\cdot$ 5+5+1+1:7 $\cdot$ 5+4+3:7 $\cdot$ 5+4+2+1:7 $\cdot$
+5+4+1+1+1:7 $\cdot$ 5+3+3+1:7 $\cdot$ 5+3+2+2:7 $\cdot$ 5+3+2+1+1:8 $\cdot$
+5+3+1+1+1+1:8 $\cdot$ 5+2+2+2+1:8 $\cdot$ 5+2+2+1+1+1:8 $\cdot$ 5+2+1+1+1+1+1:8 $\cdot$
+5+1+1+1+1+1+1+1:9 $\cdot$ 4+4+4:6 $\cdot$ 4+4+3+1:6 $\cdot$ 4+4+2+2:6 $\cdot$
+4+4+2+1+1:7 $\cdot$ 4+4+1+1+1+1:7 $\cdot$ 4+3+3+2:6 $\cdot$ 4+3+3+1+1:7 $\cdot$
+4+3+2+2+1:7 $\cdot$ 4+3+2+1+1+1:7 $\cdot$ 4+3+1+1+1+1+1:7 $\cdot$ 4+2+2+2+2:7 $\cdot$
+4+2+2+2+1+1:7 $\cdot$ 4+2+2+1+1+1+1:8 $\cdot$ 4+2+1+1+1+1+1+1:8 $\cdot$
+4+1+1+1+1+1+1+1+1:8 $\cdot$ 3+3+3+3:6 $\cdot$ 3+3+3+2+1:6 $\cdot$ 3+3+3+1+1+1:6 $\cdot$
+3+3+2+2+2:6 $\cdot$ 3+3+2+2+1+1:6 $\cdot$ 3+3+2+1+1+1+1:7 $\cdot$ 3+3+1+1+1+1+1+1:7
+$\cdot$ 3+2+2+2+2+1:6 $\cdot$ 3+2+2+2+1+1+1:7 $\cdot$ 3+2+2+1+1+1+1+1:7 $\cdot$
+3+2+1+1+1+1+1+1+1:7 $\cdot$ 3+1+1+1+1+1+1+1+1+1:8 $\cdot$ 2+2+2+2+2+2:6 $\cdot$
+2+2+2+2+2+1+1:6 $\cdot$ 2+2+2+2+1+1+1+1:6 $\cdot$ 2+2+2+1+1+1+1+1+1:7 $\cdot$
+2+2+1+1+1+1+1+1+1+1:7 $\cdot$ 2+1+1+1+1+1+1+1+1+1+1:7 $\cdot$
+1+1+1+1+1+1+1+1+1+1+1+1:7
+\par}
+
+\medskip
+\noindent
+\textbf{Reading.} For every $\nu \le 6$ the only partition of $2\nu$ with
+$s_0(\lambda) = \lambda_1$ is the single part $[2\nu]$. And $[2\nu]$ has unique maximum
+$2\nu \ge 2$ with second-largest entry $0 \le 2\nu-2$, so Lemma~\ref{lem:FAN6p} kills it.
+Hence the rows with $E = 0$ and $L \ge \lambda_1$ contribute nothing, for every $\nu \le 6$.
+
+\subsection*{C.3 The \texorpdfstring{$E = 0$}{E = 0} boundary rows, printed in full}
+
+Outside Lemma~\ref{lem:TAIL}'s range the rows $\nu+1 \le L < \lambda_1$ are checked
+directly. They are few, and every survivor is listed with its Lemma~\ref{lem:FAN6p}
+certificate, written as the pair (unique maximum $w$, second-largest entry).
+
+\begin{center}
+\begin{tabular}{@{}cccl@{}}
+\toprule
+$\nu$ & pairs $(L,\lambda)$ checked & survivors & certificates $(w,\text{2nd})$ \\
+\midrule
+$1$ & $0$ & none & --- \\
+$2$ & $1$ & $(3,[4])$ & $(4,0)$ \\
+$3$ & $3$ & $(5,[6])$ & $(6,0)$ \\
+$4$ & $7$ & $(5,[7,1])$, $(7,[8])$ & $(7,1)$, $(8,0)$ \\
+$5$ & $14$ & $(7,[9,1])$, $(9,[10])$ & $(9,1)$, $(10,0)$ \\
+$6$ & $26$ & $(7,[10,1,1])$, $(9,[11,1])$, $(11,[12])$ & $(10,1)$, $(11,1)$, $(12,0)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Every certificate has a unique maximum $w$ with second-largest entry $\le w-2$, so
+Lemma~\ref{lem:FAN6p} kills every boundary survivor.
+
+\subsection*{C.4 The \texorpdfstring{$E \ge 1$}{E >= 1} rows: a closed-form count, and every survivor}
+
+First the count, so that the ``shapes tested'' column of Theorem~\ref{thm:GFANnu} stops
+being an opaque number. For $E \ge 1$, $L$ ranges over $\nu+1 \le L \le 2\nu-E$ --- that is
+$\nu-E$ values, so $E \le \nu-1$; the escape multiset $e$ is a partition of $E$ into at most
+$L+1$ parts, and $L+1 \ge \nu+2 > E$, so all $p(E)$ partitions of $E$ occur; and $\lambda$
+is any partition of $2\nu-E$. Hence
+\[
+S(\nu) \;=\; \sum_{E=1}^{\nu-1} (\nu-E)\, p(E)\, p(2\nu-E).
+\]
+For $\nu = 6$ this is
+$5\cdot1\cdot p(11) + 4\cdot2\cdot p(10) + 3\cdot3\cdot p(9) + 2\cdot5\cdot p(8) +
+1\cdot7\cdot p(7) = 280+336+270+220+105 = 1\,211$, with per-$E$ split
+$\{1:280,\,2:336,\,3:270,\,4:220,\,5:105\}$ reproduced term for term by the instrumented
+run; the same formula gives $0,3,24,110,397,1\,211$ for $\nu = 1,\dots,6$. A reviewing
+session derived this identity independently and evaluated it from its own partition table.
+
+Of those $S(\nu)$ shapes, the ones clearing in exactly $L$ steps number
+$0,1,4,9,20,38$ for $\nu = 1,\dots,6$. Here they are, each with its Lemma~\ref{lem:FAN6p}
+certificate $(w,\text{2nd})$; $e$ lists the positive escape parts only.
+
+{\small\sloppy\noindent
+$\boldsymbol{\nu = 2}$ (1):\quad
+$L3\ E1\ e{=}1\ \lambda{=}3$ (3,0)
+
+\noindent
+$\boldsymbol{\nu = 3}$ (4):\quad
+$L4\ E1\ e{=}1\ \lambda{=}5$ (5,0) $\cdot$
+$L5\ E1\ e{=}1\ \lambda{=}5$ (5,0) $\cdot$
+$L4\ E2\ e{=}1{+}1\ \lambda{=}4$ (4,0) $\cdot$
+$L4\ E2\ e{=}2\ \lambda{=}3{+}1$ (3,1)
+
+\noindent
+$\boldsymbol{\nu = 4}$ (9):\quad
+$L6\ E1\ e{=}1\ \lambda{=}7$ (7,0) $\cdot$
+$L7\ E1\ e{=}1\ \lambda{=}7$ (7,0) $\cdot$
+$L5\ E2\ e{=}1{+}1\ \lambda{=}6$ (6,0) $\cdot$
+$L5\ E2\ e{=}2\ \lambda{=}5{+}1$ (5,1) $\cdot$
+$L6\ E2\ e{=}1{+}1\ \lambda{=}6$ (6,0) $\cdot$
+$L6\ E2\ e{=}2\ \lambda{=}5{+}1$ (5,1) $\cdot$
+$L5\ E3\ e{=}1{+}1{+}1\ \lambda{=}5$ (5,0) $\cdot$
+$L5\ E3\ e{=}2{+}1\ \lambda{=}4{+}1$ (4,1) $\cdot$
+$L5\ E3\ e{=}3\ \lambda{=}3{+}1{+}1$ (3,1)
+
+\noindent
+$\boldsymbol{\nu = 5}$ (20):\quad
+$L6\ E1\ e{=}1\ \lambda{=}8{+}1$ (8,1) $\cdot$
+$L8\ E1\ e{=}1\ \lambda{=}9$ (9,0) $\cdot$
+$L9\ E1\ e{=}1\ \lambda{=}9$ (9,0) $\cdot$
+$L6\ E2\ e{=}2\ \lambda{=}7{+}1$ (7,1) $\cdot$
+$L7\ E2\ e{=}1{+}1\ \lambda{=}8$ (8,0) $\cdot$
+$L7\ E2\ e{=}2\ \lambda{=}7{+}1$ (7,1) $\cdot$
+$L8\ E2\ e{=}1{+}1\ \lambda{=}8$ (8,0) $\cdot$
+$L8\ E2\ e{=}2\ \lambda{=}7{+}1$ (7,1) $\cdot$
+$L6\ E3\ e{=}1{+}1{+}1\ \lambda{=}7$ (7,0) $\cdot$
+$L6\ E3\ e{=}2{+}1\ \lambda{=}6{+}1$ (6,1) $\cdot$
+$L6\ E3\ e{=}3\ \lambda{=}5{+}1{+}1$ (5,1) $\cdot$
+$L7\ E3\ e{=}1{+}1{+}1\ \lambda{=}7$ (7,0) $\cdot$
+$L7\ E3\ e{=}2{+}1\ \lambda{=}6{+}1$ (6,1) $\cdot$
+$L7\ E3\ e{=}3\ \lambda{=}5{+}1{+}1$ (5,1) $\cdot$
+$L6\ E4\ e{=}1{+}1{+}1{+}1\ \lambda{=}6$ (6,0) $\cdot$
+$L6\ E4\ e{=}2{+}1{+}1\ \lambda{=}5{+}1$ (5,1) $\cdot$
+$L6\ E4\ e{=}2{+}2\ \lambda{=}4{+}2$ (4,2) $\cdot$
+$L6\ E4\ e{=}2{+}2\ \lambda{=}4{+}1{+}1$ (4,1) $\cdot$
+$L6\ E4\ e{=}3{+}1\ \lambda{=}4{+}1{+}1$ (4,1) $\cdot$
+$L6\ E4\ e{=}4\ \lambda{=}3{+}1{+}1{+}1$ (3,1)
+
+\noindent
+$\boldsymbol{\nu = 6}$ (38):\quad
+$L8\ E1\ e{=}1\ \lambda{=}10{+}1$ (10,1) $\cdot$
+$L10\ E1\ e{=}1\ \lambda{=}11$ (11,0) $\cdot$
+$L11\ E1\ e{=}1\ \lambda{=}11$ (11,0) $\cdot$
+$L7\ E2\ e{=}1{+}1\ \lambda{=}9{+}1$ (9,1) $\cdot$
+$L8\ E2\ e{=}2\ \lambda{=}9{+}1$ (9,1) $\cdot$
+$L9\ E2\ e{=}1{+}1\ \lambda{=}10$ (10,0) $\cdot$
+$L9\ E2\ e{=}2\ \lambda{=}9{+}1$ (9,1) $\cdot$
+$L10\ E2\ e{=}1{+}1\ \lambda{=}10$ (10,0) $\cdot$
+$L10\ E2\ e{=}2\ \lambda{=}9{+}1$ (9,1) $\cdot$
+$L7\ E3\ e{=}2{+}1\ \lambda{=}8{+}1$ (8,1) $\cdot$
+$L7\ E3\ e{=}3\ \lambda{=}7{+}1{+}1$ (7,1) $\cdot$
+$L8\ E3\ e{=}1{+}1{+}1\ \lambda{=}9$ (9,0) $\cdot$
+$L8\ E3\ e{=}2{+}1\ \lambda{=}8{+}1$ (8,1) $\cdot$
+$L8\ E3\ e{=}3\ \lambda{=}7{+}1{+}1$ (7,1) $\cdot$
+$L9\ E3\ e{=}1{+}1{+}1\ \lambda{=}9$ (9,0) $\cdot$
+$L9\ E3\ e{=}2{+}1\ \lambda{=}8{+}1$ (8,1) $\cdot$
+$L9\ E3\ e{=}3\ \lambda{=}7{+}1{+}1$ (7,1) $\cdot$
+$L7\ E4\ e{=}1{+}1{+}1{+}1\ \lambda{=}8$ (8,0) $\cdot$
+$L7\ E4\ e{=}2{+}1{+}1\ \lambda{=}7{+}1$ (7,1) $\cdot$
+$L7\ E4\ e{=}2{+}2\ \lambda{=}6{+}2$ (6,2) $\cdot$
+$L7\ E4\ e{=}2{+}2\ \lambda{=}6{+}1{+}1$ (6,1) $\cdot$
+$L7\ E4\ e{=}3{+}1\ \lambda{=}6{+}1{+}1$ (6,1) $\cdot$
+$L7\ E4\ e{=}4\ \lambda{=}5{+}1{+}1{+}1$ (5,1) $\cdot$
+$L8\ E4\ e{=}1{+}1{+}1{+}1\ \lambda{=}8$ (8,0) $\cdot$
+$L8\ E4\ e{=}2{+}1{+}1\ \lambda{=}7{+}1$ (7,1) $\cdot$
+$L8\ E4\ e{=}2{+}2\ \lambda{=}6{+}2$ (6,2) $\cdot$
+$L8\ E4\ e{=}2{+}2\ \lambda{=}6{+}1{+}1$ (6,1) $\cdot$
+$L8\ E4\ e{=}3{+}1\ \lambda{=}6{+}1{+}1$ (6,1) $\cdot$
+$L8\ E4\ e{=}4\ \lambda{=}5{+}1{+}1{+}1$ (5,1) $\cdot$
+$L7\ E5\ e{=}1{+}1{+}1{+}1{+}1\ \lambda{=}7$ (7,0) $\cdot$
+$L7\ E5\ e{=}2{+}1{+}1{+}1\ \lambda{=}6{+}1$ (6,1) $\cdot$
+$L7\ E5\ e{=}2{+}2{+}1\ \lambda{=}5{+}2$ (5,2) $\cdot$
+$L7\ E5\ e{=}2{+}2{+}1\ \lambda{=}5{+}1{+}1$ (5,1) $\cdot$
+$L7\ E5\ e{=}3{+}1{+}1\ \lambda{=}5{+}1{+}1$ (5,1) $\cdot$
+$L7\ E5\ e{=}3{+}2\ \lambda{=}4{+}2{+}1$ (4,2) $\cdot$
+$L7\ E5\ e{=}3{+}2\ \lambda{=}4{+}1{+}1{+}1$ (4,1) $\cdot$
+$L7\ E5\ e{=}4{+}1\ \lambda{=}4{+}1{+}1{+}1$ (4,1) $\cdot$
+$L7\ E5\ e{=}5\ \lambda{=}3{+}1{+}1{+}1{+}1$ (3,1)
+\par}
+
+\medskip
+\noindent
+\textbf{Reading.} In every one of these $72$ rows the residue $\lambda$ has a unique maximum
+$w \ge 3$ whose second-largest entry is $\le w-2$: the pairs are $(w,0)$, or $(w,1)$ with
+$w \ge 3$, or $(w,2)$ with $w \ge 4$. So Lemma~\ref{lem:FAN6p} kills every $E \ge 1$
+survivor, for every $\nu \le 6$. That is the ``misses = none'' column of
+Theorem~\ref{thm:GFANnu}, printed as data rather than asserted as an output.
+
+\subsection*{C.5 What a re-reader has to do}
+
+To reproduce Theorem~\ref{thm:GFANnu} from this text it suffices to (i) recompute
+$s_0(\lambda)$ for the $159$ partitions of C.2 --- one Havel--Hakimi run each, all by hand
+--- and confirm that the bolded survivor is the only one at each $\nu$; (ii) check the $51$
+boundary pairs of C.3; (iii) evaluate $S(\nu)$ from the closed form of C.4 and confirm that
+the $72$ printed survivors are the complete survivor set for those $1\,745$ shapes; and
+(iv) apply the Lemma~\ref{lem:FAN6p} certificate to each of the $9 + 72 + 6$ surviving rows.
+Only step (iii)'s completeness claim still asks the reader to trust a machine run, and it is
+a claim about an explicitly specified, closed-form-counted finite set rather than about an
+absent file. That is the exact location of the demarcation line of
+Remark~\ref{rem:demarcation}.
+
+\begin{thebibliography}{99}
+
+\bibitem{formalconjectures}
+Google DeepMind and contributors,
+\emph{formal-conjectures}: a corpus of open conjectures stated in Lean~4,
+\url{https://github.com/google-deepmind/formal-conjectures}.
+The statement treated here is
+\texttt{FormalConjectures/WrittenOnTheWallII/GraphConjecture61.lean}, with supporting
+definitions in
+\texttt{FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Residue.lean} and
+\texttt{.../Induced.lean}. The corpus attributes the conjecture to the
+\emph{Written on the Wall II} collection generated by the \texttt{Graffiti.pc} program; we
+consumed the formal file and did not consult the original collection.
+
+\bibitem{havel}
+V.~Havel,
+\emph{A remark on the existence of finite graphs},
+\v{C}asopis P\v{e}st. Mat. \textbf{80} (1955), 477--480.
+Bibliographic details as supplied by our automated literature pass.
+
+\bibitem{hakimi}
+S.~L.~Hakimi,
+\emph{On realizability of a set of integers as degrees of the vertices of a linear graph},
+J. Soc. Indust. Appl. Math. \textbf{10} (1962), 496--506.
+Bibliographic details as supplied by our automated literature pass.
+
+\bibitem{fms}
+O.~Favaron, M.~Mah\'eo and J.-F.~Sacl\'e,
+\emph{On the residue of a graph},
+J. Graph Theory \textbf{15} (1991), 39--64.
+The source of Fact~\ref{fact:fms}. Bibliographic details as supplied by our automated
+literature pass; the inequality itself is verified computationally on the whole exhaustive
+range but is not reproved here (Section~\ref{sec:limits}).
+
+\bibitem{gk}
+J.~R.~Griggs and D.~J.~Kleitman,
+\emph{Independence and the Havel--Hakimi residue},
+Discrete Math. \textbf{127} (1994), 209--212.
+A short proof of Fact~\ref{fact:fms}. Bibliographic details as supplied by our automated
+literature pass.
+
+\bibitem{mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+Proc. 9th ACM SIGPLAN Int. Conf. on Certified Programs and Proofs (CPP 2020), 367--381.
+\url{https://github.com/leanprover-community/mathlib4}.
+The source of the \texttt{SimpleGraph.diam} and degree-sequence definitions against which
+the residue transcription of Section~\ref{sec:statement} was checked.
+
+\bibitem{batch1}
+H.~Chen,
+\emph{Machine-Verified Resolutions of Four OEIS Conjectures}, 2026.
+The companion report of the same pipeline on four resolved conjectures, each formalized in
+Lean~4; it describes the review protocol summarised in Section~\ref{sec:conventions}.
+
+\bibitem{fernandespaper}
+H.~Chen,
+\emph{The parity subgroup of $\mathrm{S}_m \times \mathrm{S}_n$ is $2$-generated: a proof of
+Fernandes' conjecture}, 2026.
+
+\bibitem{etp677}
+H.~Chen,
+\emph{Structure Theory of Finite 677 Magmas: a working paper}, 2026.
+The companion working paper on an unfinished campaign, from which the per-assertion
+verification-marker discipline of Section~\ref{sec:conventions} is taken.
+
+\bibitem{funsearch}
+B.~Romera-Paredes, M.~Barekatain, A.~Novikov, M.~Balog, M.~P.~Kumar, E.~Dupont,
+F.~J.~R.~Ruiz, J.~S.~Ellenberg, P.~Wang, O.~Fawzi, P.~Kohli and A.~Fawzi,
+\emph{Mathematical discoveries from program search with large language models},
+Nature \textbf{625} (2024), 468--475.
+
+\bibitem{erdosproblems}
+T.~F.~Bloom (site), T.~Tao (community database) and contributors,
+\emph{Erd\H{o}s Problems} and the associated AI-contributions wiki.
+\url{https://www.erdosproblems.com}, \url{https://github.com/teorth/erdosproblems}.
+Cited for its apparatus of caveats about selection bias and about the difference between an
+argument and a verified proof, which the tiering of Section~\ref{sec:conventions} is
+intended to respect.
+
+\end{thebibliography}
+```
+
+# PAPER TEXT ENDS
+
+This is the complete published source. Begin your verification pass now, per the four
+tasks above, and write your note to `problems/wowii/w61_crossfamily_r1_note.md`.

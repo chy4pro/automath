@@ -1,0 +1,81 @@
+base   : $HOME/workspace/claudecode/automath/prompts/w61_S3_GFAN_r24.md  108368 chars  md5 45b79f35f9cd42dd29ddecb31dfacdde
+  patched [K-STATED/BK1-ROOT]
+  patched [COVERAGE-CHECKED]
+  patched [AZ-BRACKET-FOUR]
+
+patches : 3
+
+======================================================================
+GUARD A  (BK1: status-predicate CLASS x import context)
+======================================================================
+population: 2 line(s) matched the class; ALLOW-listed anti-leak: 2
+  [ALLOW] L394: what an import is. You are not told which imports have been reviewed elsewhere. A mismatched import IS in scope and IS a MATHEMATICS defect. Give a ve
+  [ALLOW] L395: | **J-SCOPE** *(TARGET)* | For **Corollary GFANnu-HC**: what hypotheses does its own proof consume, versus what it is filed under? Report both under- 
+
+  LIVENESS: same class on the r24 BASE -> 1 leak(s) (must be > 0):
+    L580: Favaron-Maheo-Sacle (`residue <= alpha`).** The certified toolkit. Theorem FAN says
+
+======================================================================
+GUARD B  (coverage: a NAME is not a STATEMENT)
+======================================================================
+  [OK ] Lemma FAN-1              > **Lemma FAN-1 (high phase first).** Under the reductio, the first `p` heads of a
+  [OK ] Lemma DICH               > **Lemma DICH (head dichotomy).** For the head deleted at step i, of original
+  [OK ] Proposition L2           > **Proposition L2 (the `L = 2` case is rigid).** Suppose the hard core has an
+  [OK ] Corollary L1-short       > **Corollary L1-short.** The hard
+  [OK ] Corollary MB1            > **Corollary MB1 (a floor on L).** In the hard core, if every low vertex is
+  [OK ] Lemma TAIL               > **Lemma TAIL.** Let `E = 0`, so the multiset at the start of step `p+1` is
+  [OK ] Lemma 4                  **Lemma 4.** In the hard-core frame, any two adjacent vertices of `B` have a common
+  [OK ] Observation R1           **Observation R1.** In the frame, `diam(G) = 4` implies `B` is not a clique, hence
+  [OK ] Lemma C*                 **Lemma C\*, (F-b).** The frame facts about occurring types: `T_1` and `T_2` are
+  [OK ] (F-b)                    **Lemma C\*, (F-b).** The frame facts about occurring types: `T_1` and `T_2` are
+  [OK ] Lemma S                  > **Lemma S (survivor degree bound).** Under the reductio `residue(G) = alpha(G)`
+  [OK ] Lemma Z+                 > **Lemma Z+ (block occupancy).** At the start of step `j`, every later head whose
+  [OK ] Lemma F3'                > **Lemma F3' (survivor decay, general `s` — no reductio).** Let `s` be the number of
+  [OK ] Theorem K                > **Theorem K.** Assume `residue(G) = alpha(G)` (so `s = tau`) **and that every**
+  [OK ] Theorem MB               > **Theorem MB (master budget).** **In the hard core**, for `L >= 1`:
+  [OK ] Theorem SL               > **Theorem SL (slack positivity).** Assume `residue(G) = alpha(G)` (so `s = tau`)
+  [OK ] Theorem FAN              > **Theorem FAN.** For every `tau` and every `L >= 2` there is **no** graph carrying the
+  [OK ] Favaron-Maheo-Sacle      > **Favaron-Maheo-Sacle.** `residue(G) <= alpha(G)`, for every graph `G`.
+
+  LIVENESS: same test on the r24 BASE:
+    [MISS on base] Lemma S
+    [MISS on base] Lemma Z+
+    [MISS on base] Lemma F3'
+    [MISS on base] Theorem K
+    [MISS on base] Theorem MB
+    [MISS on base] Theorem SL
+    [MISS on base] Favaron-Maheo-Sacle
+
+======================================================================
+GUARD C  (AZ bracket: committed import count vs cited)
+======================================================================
+  bracket commits to : 4
+  proof body cites   : 4  ['Observation R1', 'Theorem GFANν', 'Theorem K', 'Theorem RIG']
+  LIVENESS on r24 base: commits 3 vs cites 4 ['Observation R1', 'Theorem GFANν', 'Theorem K', 'Theorem RIG']
+
+======================================================================
+GUARD D  (BK7: a required control must be satisfiable by "none")
+======================================================================
+  population: 0 bounty-shaped control(s)
+  LIVENESS: the shape the audit found in Q25's brief, run through this guard:
+    probe matches = True  (must be True)
+
+======================================================================
+PRODUCT ASSERTS
+======================================================================
+  [OK ] GUARD A: no status-predicate leak on an import line: 0 (want 0)
+  [OK ] GUARD A liveness: the class fires on the r24 base: 1 (want 1)
+  [OK ] GUARD B: every covered name has a statement block: 0 (want 0)
+  [OK ] GUARD B liveness: base is missing at least one: 1 (want 1)
+  [OK ] GUARD C: bracket count == cited imports: 1 (want 1)
+  [OK ] GUARD C liveness: base count != base cited: 1 (want 1)
+  [OK ] GUARD D: zero bounty-shaped controls: 0 (want 0)
+  [OK ] GUARD D liveness: the Q25 shape is caught: 1 (want 1)
+  [OK ] Theorem K statement present: 1 (want 1)
+  [OK ] no r24 stamp survives: 0 (want 0)
+  [OK ] r26 stamp present: 4 (want 4)
+  [OK ] AZ bracket says FOUR: 1 (want 1)
+  [OK ] no 'certified toolkit' anywhere: 0 (want 0)
+
+wrote $HOME/workspace/claudecode/automath/prompts/w61_S3_GFAN_r26.md  112550 chars  md5 c6937b1c657df2ff6de1c64ffa7ca5dd
+delta vs r24: +4182 chars

@@ -1,0 +1,2 @@
+VERDICT: FLAWED
+The flaw is the final step claiming an abelian group of order p^2 must have exponent p^2. The argument that G is abelian is correct, but the inference that the maximal order/exponent must be p^2 is false; e.g., G = C_p × C_p (Klein four when p=2) is abelian of order p^2, has exponent p and every non-identity element has order p, so it has no element of order p^2 and is not cyclic, refuting the theorem.

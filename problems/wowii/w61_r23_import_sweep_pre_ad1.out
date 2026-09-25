@@ -1,0 +1,162 @@
+  [--pre-ad1] reversed 3 AD1 replaces in memory; draft file untouched
+==============================================================================================
+w61_r23_import_sweep -- RULING AQ: the MIRROR species (an import that is needed and
+                       was never made).  draft md5 = abb8a6172c46c0fb03c2e4451817272e  [PRE-AD1]
+==============================================================================================
+
+OBSERVED POPULATION  (RULING AS: printed BEFORE any verdict)
+----------------------------------------------------------------------------------------------
+  draft lines total .................................. 8234
+  live maths range   436-3320  .................... SS7 .. SS7.13  -- the whole live chain (root reduction, T3, K, LOW/SL/MB, FAN, RIG, GFAN)
+  live maths range  3321-3556  .................... SS7.14 addendum -- Lemma S', Lemma T', Lemma H' (registry rows R-11/R-12)
+  live maths range  4955-5115  .................... SS7.25 own attack -- Lemma C1-A, C1-A', Proposition C1-B, Corollary C1-C, Theorem C1-2
+  statement blocks matched, whole document .......... 82
+    of which OUTSIDE the live ranges (round logs) ... 4  [excluded]
+    of which re-quotes inside live ranges ........... 9  [excluded, listed below]
+  LIVE STATEMENTS SWEPT ............................. 69
+    with a numeric/non-emptiness GUARD in their own
+    statement text (importable guard) ............... 24
+  import edges seen by the RAW pattern (markup kept) 57   [under-collected]
+  IMPORT EDGES (consumer proof -> named statement) .. 84
+    of which the imported statement IS GUARDED ...... 29   <-- the swept population
+
+  re-quotes excluded (line: name):
+     1945: Observation FAN-5
+     2378: Theorem FAN
+     2385: Observation FAN-E
+     2425: Corollary L1′
+     2469: Observation FAN-5
+     2476: Theorem GFAN2
+     2809: Theorem FAN
+     3188: Lemma TAIL
+     3371: Observation FAN-E
+
+  every live statement, its guards, and its out-degree:
+     line  statement                guards                       imports
+      521  Lemma S                  -                            0
+      525  Lemma T                  -                            0
+      535  Lemma F3                 -                            0
+      538  Lemma H                  -                            0
+      549  Theorem N                -                            0
+      558  Corollary N1             tau>=2                       0
+      560  Corollary N2             tau>=2                       0
+      591  Lemma P                  tau>=3                       0
+      632  Theorem T3               tau>=4                       0
+      656  Lemma C1                 -                            0
+      659  Lemma C2                 -                            0
+      670  Lemma C3                 -                            0
+      680  Lemma U                  -                            0
+      898  Lemma BO                 -                            0
+      905  Lemma Z                  -                            1
+      921  Lemma DEC                -                            2
+      941  Corollary CNT            tau>=5                       0
+      952  Theorem N′               -                            3
+      979  Lemma C\*                -                            0
+     1068  Lemma Z⁺                 -                            2
+     1082  Lemma DICH               -                            0
+     1100  Theorem K                -                            2
+     1108  Corollary K1             -                            1
+     1163  Lemma HI                 -                            1
+     1169  Theorem LOW              -                            2
+     1215  Proposition L1           L>=1                         2
+     1237  Corollary L1′            L>=1                         1
+     1253  Lemma SL1                -                            0
+     1328  Lemma ID                 L>=1                         2
+     1382  Theorem SL               L>=1,tau>=2                  3
+     1445  Corollary SL-HC          -                            4
+     1508  Theorem MB               L>=1                         3
+     1526  Corollary L1-short       L>=1                         1
+     1538  Corollary MB1            -                            1
+     1545  Proposition L2           L>=2                         4
+     1637  Lemma F3′                -                            0
+     1777  Lemma FAN-1              -                            1
+     1789  Lemma FAN-2              -                            0
+     1798  Lemma FAN-3              L>=2                         0
+     1903  Lemma FAN-4              -                            2
+     1924  Observation FAN-5        L>=2                         0
+     1976  Lemma FAN-6              -                            2
+     2011  Lemma FAN-7              -                            1
+     2078  Lemma FAN-8              L>=2                         3
+     2096  Theorem FAN              L>=2                         5
+     2111  Observation FAN-E        L>=2                         0
+     2118  Corollary FAN-HC         L>=3,tau>=4                  5
+     2679  Lemma CAP                -                            0
+     2703  Corollary CAP1           -                            0
+     2710  Theorem RIG              L>=1                         4
+     2783  Corollary RIG-1          L>=2                         0
+     2806  Corollary RIG-2          L>=2,nu>=1                   0
+     2909  Lemma FAN-4′             -                            3
+     2925  Lemma FAN-8′             -                            4
+     2939  Lemma FAN-6′             -                            1
+     3012  Theorem GFAN2            L>=3                         4
+     3055  Corollary GFAN2-HC       -                            3
+     3076  Corollary GFAN2-L3       L>=1,L>=3                    0
+     3121  Lemma TAIL               -                            0
+     3150  Theorem GFANν            nu>=1                        2
+     3262  Corollary GFANν-HC       -                            2
+     3448  Lemma S′                 -                            1
+     3503  Lemma T′                 -                            1
+     3531  Lemma H′                 -                            3
+     4970  Lemma C1-A               -                            0
+     5001  Proposition C1-B         -                            0
+     5010  Corollary C1-C           -                            1
+     5065  Lemma C1-A′              -                            0
+     5079  Theorem C1-2             -                            1
+
+VERDICT
+----------------------------------------------------------------------------------------------
+  guarded import edges checked ...................... 29
+  edges where the guard IS supplied by the consumer . 14
+  SUSPECT edges (guard needed, not supplied) ........ 15
+
+  SUSPECT  Theorem N′  (line 952)
+           imports Corollary CNT (line 941), which requires tau>=5
+           consumer's own guards: NONE
+  SUSPECT  Theorem N′  (line 952)
+           imports Corollary N1 (line 558), which requires tau>=2
+           consumer's own guards: NONE
+  SUSPECT  Corollary SL-HC  (line 1445)
+           imports Proposition L1 (line 1215), which requires L>=1
+           consumer's own guards: NONE
+  SUSPECT  Corollary SL-HC  (line 1445)
+           imports Corollary L1′ (line 1237), which requires L>=1
+           consumer's own guards: NONE
+  SUSPECT  Corollary SL-HC  (line 1445)
+           imports Theorem SL (line 1382), which requires L>=1
+           consumer's own guards: NONE
+  SUSPECT  Corollary SL-HC  (line 1445)
+           imports Theorem SL (line 1382), which requires tau>=2
+           consumer's own guards: NONE
+  SUSPECT  Theorem MB  (line 1508)
+           imports Theorem SL (line 1382), which requires tau>=2
+           consumer's own guards: [('L>=', 1)]
+  SUSPECT  Corollary MB1  (line 1538)
+           imports Theorem MB (line 1508), which requires L>=1
+           consumer's own guards: NONE
+  SUSPECT  Proposition L2  (line 1545)
+           imports Theorem SL (line 1382), which requires tau>=2
+           consumer's own guards: [('L>=', 2)]
+  SUSPECT  Theorem RIG  (line 2710)
+           imports Theorem SL (line 1382), which requires tau>=2
+           consumer's own guards: [('L>=', 1)]
+  SUSPECT  Lemma FAN-8′  (line 2925)
+           imports Lemma FAN-8 (line 2078), which requires L>=2
+           consumer's own guards: NONE
+  SUSPECT  Corollary GFAN2-HC  (line 3055)
+           imports Theorem RIG (line 2710), which requires L>=1
+           consumer's own guards: NONE
+  SUSPECT  Corollary GFAN2-HC  (line 3055)
+           imports Theorem FAN (line 2096), which requires L>=2
+           consumer's own guards: NONE
+  SUSPECT  Corollary GFAN2-HC  (line 3055)
+           imports Theorem GFAN2 (line 3012), which requires L>=3
+           consumer's own guards: NONE
+  SUSPECT  Corollary GFANν-HC  (line 3262)
+           imports Theorem RIG (line 2710), which requires L>=1
+           consumer's own guards: NONE
+
+LIVENESS (RULING AR -- demonstrated on a defect that actually happened)
+----------------------------------------------------------------------------------------------
+  Repair AD1's three real sites: ['Corollary GFAN2-HC', 'Corollary GFANν-HC', 'Corollary MB1']
+  re-detected by this sweep on the PRE-AD1 text: ['Corollary GFAN2-HC', 'Corollary GFANν-HC', 'Corollary MB1']
+  RESULT: PASS -- all three re-detected

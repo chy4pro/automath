@@ -1,0 +1,335 @@
+% =============================================================================
+%  Partial Results on the WOWII-61 Graffiti Conjecture
+%
+%  v1  2026-08-22  Closeout draft assembled from notes/proofs/wowii61_draft.md,
+%                  registry closeout at §7.28(b), and the rolling gate ledger
+%                  orchestration/tasks/w61_r6.md.
+%
+%  Status discipline: every numbered assertion carries a verification marker.
+%  Sections 4--9 carry only statements at PROVED-S3 in the §7.28(b) closeout with a
+%  ledger row recording two distinct model families, plus short elementary arguments
+%  reproduced in full; Section 10 collects the one-round family, Section 11 the
+%  zero-round GFANnu statement together with the refutation that produced it.
+% =============================================================================
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,parsep=2pt,topsep=3pt}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator{\res}{residue}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\deficiency}{def}
+\newcommand{\Blo}{B_{\mathrm{lo}}}
+\newcommand{\Bhi}{B_{\mathrm{hi}}}
+\newcommand{\Bloplus}{B_{\mathrm{lo}}^{+}}
+\newcommand{\dg}{\mathrm{deg}}
+\newcommand{\degA}{\mathrm{deg}_A}
+\newcommand{\degB}{\mathrm{deg}_B}
+\newcommand{\Fan}{\mathrm{Fan}}
+\newcommand{\GFan}{\mathrm{GFan}}
+\newcommand{\mbar}{\bar{m}}
+
+% ---- verification-status markers --------------------------------------------
+% Long verbatim paths inside status markers must be breakable, or they overfull.
+\emergencystretch=4em
+\hbadness=10000
+\newcommand{\statusbox}[1]{{\small\sloppy\textsf{[#1]}}}
+\newcommand{\Scert}[1]{\statusbox{\textbf{certified}: two review rounds, distinct
+  model families, zero mathematics defects; #1}}
+\newcommand{\Sone}[1]{\statusbox{\textbf{one round}: #1; second family pending}}
+\newcommand{\Szero}[1]{\statusbox{\textbf{no completed round}: #1}}
+\newcommand{\Selem}{\statusbox{elementary; proof reproduced in full}}
+\newcommand{\Scomp}[1]{\statusbox{computational: #1}}
+\newcommand{\Sconj}[1]{\statusbox{conjecture; #1}}
+% -----------------------------------------------------------------------------
+
+\title{Partial Results on the WOWII-61 Graffiti Conjecture}
+
+\author{Haoyu Chen\thanks{%
+\textbf{Disclosure of the production pipeline.}
+This paper reports the partial results of an autonomous attack on a conjecture that it
+does \emph{not} resolve. Every mathematical statement below was produced by automated
+systems: an orchestrating agent and a per-problem owner agent (Claude Fable 5 and Claude
+Opus 5) that designed the lines of attack, adjudicated the returning reports and drafted
+this document; adversarial reviewing sessions run by models from deliberately different
+families (Claude Opus 5; Qwen3.8-Max through its web interface; and OpenAI GPT-5.6 and
+GPT-5.3 through the \texttt{codex} command-line interface, in the configurations named
+\texttt{sol} and \texttt{spark} respectively); and machine checkers, which are
+purpose-written Python enumerators together with independent from-scratch
+re-implementations used only for adjudication. No human supplied a definition, a lemma, a
+proof idea, or a correction. Problem selection, task routing, review scheduling and the
+drafting of this paper were likewise automated.
+Every numbered \emph{assertion} carries an explicit verification marker in the sense of
+Section~\ref{sec:conventions}; definitions and open problems assert nothing and carry
+none. Two of the campaign's own statements were refuted by its own later review rounds,
+and both refutations are reported here rather than quietly repaired
+(Remark~\ref{sec:upstream-selfref} and Section~\ref{sec:refutation}).
+Responsibility for what follows rests with the reader who checks it.}}
+
+\date{22 August 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Conjecture~61 of the \emph{Written on the Wall II} collection of computer-generated graph
+conjectures asserts that
+$\res(G) + \lceil \diam(G)/3 \rceil \le f(G)$
+for every connected graph $G$ on at least two vertices, where $\res(G)$ is the number of
+entries left standing when the Havel--Hakimi reduction is run to completion on the degree
+sequence of $G$, and $f(G)$ is the order of a largest induced forest. \emph{The conjecture
+is not resolved here.} This paper records what an automated campaign proved about it,
+with the epistemic status of each statement stated explicitly and separately.
+
+The inequality survives $150\,905$ graph evaluations, among them every connected graph on
+at most eight vertices, with no violation. It holds unconditionally when
+$\diam(G) \in \{1,2,3,5,6,9\}$, and whenever the decycling number of $G$ is small against
+its matching number; two conditional certificates cover $98.8\%$ of connected graphs on at
+most seven vertices and $99.2\%$ of a sample on eight, and every graph they miss in that
+range has diameter exactly~$4$. At diameter~$4$ the conjecture is equivalent to a
+dichotomy: $f(G) \ge \alpha(G)+2$ or $\res(G) \le \alpha(G)-1$. Most of the paper proves
+cases of that dichotomy. Writing $\tau = n - \alpha$ for the size of a minimum vertex
+cover and $B$ for its complement in $V$, we settle $\tau \le 3$ --- the $\tau = 3$ case by
+a long case analysis of which this paper gives the skeleton and not every branch; and, under
+the
+standing hypothesis $\res(G) = \alpha(G)$ that a counterexample would have to satisfy, we
+prove a $\tau$-uniform budget inequality and a one-unit strengthening of it, a master
+budget inequality for the low-degree vertices of $B$, a rigidity theorem which pins the
+$B$-universal layer of the residual configuration space to an explicitly described family
+$\GFan(\tau,L,\nu)$, and the elimination of the sub-family $\Fan(\tau,L) = \GFan(\tau,L,1)$
+for every $L \ge 2$. Together these force any surviving configuration to have $\tau \ge 4$
+and at least three vertices of $B$ of degree at most $\tau$.
+
+Statements are reported in separated tiers according to how far they have passed the
+campaign's adversarial-review protocol. Sections~\ref{sec:toolkit}--\ref{sec:rig} contain
+only statements that either survived two review rounds by judges from distinct model
+families with no mathematics defect, or are short elementary arguments given here in full
+and carrying no review claim at all; Section~\ref{sec:oneround} collects a family that has
+passed one such round; and Section~\ref{sec:gfannu} reports a computer-assisted elimination whose current
+statement has passed none --- together with the false quantifier that a review round found
+in its predecessor, and the counterexample family that refuted it.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The conjecture}\label{sec:statement}
+
+For a finite simple graph $G$ on vertex set $V$, $|V| = n$, write $d_1 \ge d_2 \ge \cdots
+\ge d_n$ for the degree sequence in non-increasing order. The \emph{Havel--Hakimi
+reduction} deletes the first entry $d_1$ and subtracts $1$ from each of the next $d_1$
+entries, re-sorts, and repeats; it halts when the largest remaining entry is $0$. The
+number of entries standing at that moment is the \emph{residue} $\res(G)$. Let $f(G)$
+denote the order of a largest induced forest of $G$, $\alpha(G)$ its independence number,
+$\mu(G)$ its maximum matching size, $\nabla(G) := n - f(G)$ its decycling (feedback vertex)
+number, $\Delta(G)$ its maximum degree, $m$ its number of edges, and $\diam(G)$ its
+diameter.
+
+\begin{conjecture}[WOWII-61]\label{conj:main}
+For every connected graph $G$ on $n \ge 2$ vertices,
+\begin{equation}\label{eq:C61}
+\res(G) + \left\lceil \frac{\diam(G)}{3} \right\rceil \;\le\; f(G).
+\tag{C61}
+\end{equation}
+\end{conjecture}
+
+We take the conjecture in the form in which it is recorded in the
+\texttt{formal-conjectures} corpus \cite{formalconjectures}, in the file
+\texttt{FormalConjectures/WrittenOnTheWallII/GraphConjecture61.lean}, whose statement is
+\begin{verbatim}
+theorem conjecture61 (G : SimpleGraph a) [DecidableRel G.Adj] (h : G.Connected) :
+    (residue G : R) + ceil ((G.diam : R) / 3) <= (G.largestInducedForestSize : R)
+\end{verbatim}
+with \texttt{[Fintype a] [DecidableEq a] [Nontrivial a]}. That file attributes the
+statement to the \emph{Written on the Wall II} collection of conjectures generated by the
+\texttt{Graffiti.pc} program; we cite the formal file rather than the original collection
+because the formal file is the object our campaign actually consumed, and because we did
+not consult the original source (Section~\ref{sec:limits}). Since \texttt{G.diam} is a
+natural number and both sides of the Lean statement are casts of naturals, the goal is
+equivalent to the integer inequality \eqref{eq:C61} with $\lceil d/3 \rceil$ the ordinary
+integer ceiling.
+
+Three definitional points matter and are worth stating, because a formalized conjecture can
+be proved in a sense its author did not intend. First, \texttt{residue} in the corpus is
+\texttt{residueAux} applied to the descending degree sequence, where
+$\texttt{residueAux}\,[] = 0$, $\texttt{residueAux}\,(0 :: s) = 1 + |s|$, and otherwise the
+function recurses on one Havel--Hakimi step; the Python transcription used throughout the
+campaign reproduces this literally, including \texttt{List.splitAt} truncation and
+$\N$-truncated subtraction. Second, $f(G)$ is
+$\max\{|S| : G[S] \text{ acyclic}\}$. Third, since $G$ is connected and the vertex type
+finite, \texttt{G.diam} is the ordinary diameter. As a sanity check on the transcription,
+$\res(K_2) = 1$, matching the \texttt{example} in the Lean file, and
+$\res(C_n) = \lceil n/3 \rceil$ for $n = 3,\dots,9$; both are recomputed by every
+verification script cited in Appendix~\ref{app:scripts} as its first action.
+
+\subsection{What this paper contains}\label{sec:contains}
+
+Nothing here resolves Conjecture~\ref{conj:main}. What the campaign produced is
+(i) a falsification stage that found no counterexample, (ii) an elementary package that
+settles six of the possible diameters unconditionally and reduces the measured residual
+difficulty to diameter~$4$, (iii) a reformulation of the diameter-$4$ residue as a
+dichotomy, and (iv) a long chain of structural results narrowing the configurations in
+which a counterexample to that dichotomy could live. Table~\ref{tab:summary} lists the
+statements that this paper reports and the tier each occupies.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}p{0.46\textwidth}p{0.20\textwidth}p{0.26\textwidth}@{}}
+\toprule
+statements & section & tier \\
+\midrule
+Lemma~\ref{lem:hh}, Fact~\ref{fact:fms}, Lemma~\ref{lem:f-alpha},
+Theorem~\ref{thm:diam3}, Lemma~\ref{lem:starforest},
+Theorem~\ref{thm:packing}, Corollaries~\ref{cor:B1}--\ref{cor:B2},
+Theorem~\ref{thm:matching}, Corollary~\ref{cor:C1}, Theorem~\ref{thm:equivform}
+ & \ref{sec:elementary} & elementary; full proofs given \\
+\addlinespace
+Lemma~\ref{lem:F3prime}, Lemma~\ref{lem:Zplus}, Lemma~\ref{lem:DICH},
+Theorem~\ref{thm:K}, Corollary~\ref{cor:K1}
+ & \ref{sec:toolkit} & certified (rows R-1\,--\,R-5) \\
+Lemma~\ref{lem:S}, Lemma~\ref{lem:T}
+ & \ref{sec:toolkit} & elementary; full proofs given \\
+Lemma~\ref{lem:pair}, Observation~\ref{obs:R1}, Fact~\ref{fact:Fb},
+Lemma~\ref{lem:Cstar}
+ & \ref{sec:frame} & elementary; full proofs given \\
+Theorem~\ref{thm:T3}
+ & \ref{sec:smalltau} & certified (row R-13) \\
+Theorem~\ref{thm:tau2}
+ & \ref{sec:smalltau} & elementary; full proof given \\
+Lemma~\ref{lem:HI}, Theorem~\ref{thm:LOW}, Theorem~\ref{thm:SL},
+Corollary~\ref{cor:SLHC}, Theorem~\ref{thm:MB},
+Corollaries~\ref{cor:L1short}--\ref{cor:MB1},
+Propositions~\ref{prop:L1}--\ref{prop:L2}, Corollary~\ref{cor:L1prime}
+ & \ref{sec:budget} & certified (rows R-16\,--\,R-18) \\
+the six fan lemmas, Lemma~\ref{lem:TAIL},
+Observation~\ref{obs:FAN5}, Theorem~\ref{thm:FAN}, Corollary~\ref{cor:FANHC}
+ & \ref{sec:fan} & certified (rows R-9, R-10, R-14, R-15, R-19) \\
+Lemma~\ref{lem:CAP}, Corollary~\ref{cor:CAP1}, Theorem~\ref{thm:RIG},
+Corollary~\ref{cor:RIG2}
+ & \ref{sec:rig} & certified (rows R-20, R-21) \\
+\addlinespace
+Lemmas~\ref{lem:FAN4p}--\ref{lem:FAN6p}, Theorem~\ref{thm:GFAN2},
+Corollary~\ref{cor:RIG1}, Corollaries~\ref{cor:GFAN2HC}--\ref{cor:GFAN2L3}
+ & \ref{sec:oneround} & one round only \\
+\addlinespace
+Theorem~\ref{thm:GFANnu}, Corollary~\ref{cor:GFANnuHC}
+ & \ref{sec:gfannu} & no completed round \\
+\addlinespace
+Conjectures~\ref{conj:C1} and~\ref{conj:C2}
+ & \ref{sec:open} & conjecture \\
+\bottomrule
+\end{tabular}
+\caption{The statements reported here and their verification tiers. Registry row
+identifiers are the campaign's own; the evidence chain for each is reproduced in
+Appendix~\ref{app:ledger}.}
+\label{tab:summary}
+\end{table}
+
+\subsection{Verification conventions}\label{sec:conventions}
+
+Because this is an automated campaign's output, the epistemic status of each statement is
+recorded explicitly, and it is not uniform. The campaign's protocol has a stage devoted to
+adversarial review, internally called S3, which works as follows. A completed argument is
+submitted --- in a fresh session, without the solver's reasoning trace, and under a read
+restriction forbidding the reviewer to open any other artifact of the campaign --- to a
+model from a family different from the one that produced it, with named \emph{joints}
+assigned by the dispatcher, a pre-written attack plan per joint that names the mechanism to
+test but never the expected answer, a mandatory block of control cases that the accepted
+machinery must \emph{not} also prove, and instructions to classify every objection as a
+mathematics defect or a bookkeeping defect and to return a verdict. Each returning report is
+then adjudicated by the owner agent, which reproduces every claim in it from scratch with an
+independent implementation before upholding or rejecting it. A round counts as clean for a
+statement only if it returns no mathematics defect against that statement, and --- a rule
+enforced strictly, and enforced against this campaign's own reading in one case reported in
+Section~\ref{sec:gfannu} --- only for the text \emph{as reviewed}, so that a round on text
+that was subsequently repaired does not transfer to the repaired text.
+
+Five markers are used.
+
+\begin{itemize}
+\item \Scert{registry rows} --- the statement has a complete proof, reproduced here or
+summarised with an explicit pointer, and it has passed \emph{two} review rounds by judges
+from distinct model families with zero mathematics defects against it, at least one of the
+two on the final repaired text. The registry rows named in the marker are the campaign's own
+ledger entries; Appendix~\ref{app:ledger} names the rounds, their model families and the
+campaign's own reproduction script for each.
+This is the strongest marker used in this paper, and it is a statement about a review
+process, not about a machine-checked proof: nothing here is formalized.
+\item \Sone{round} --- a complete proof, one clean round, and a second family still owed.
+The named round is identified in Appendix~\ref{app:ledger}.
+\item \Szero{reason} --- a complete proof in the campaign's judgement, and no completed
+review round on the current text. Section~\ref{sec:gfannu} is the only place this marker
+appears in a headline statement, and the reason it appears there is that the previous
+statement at that position was refuted.
+\item \Selem\ --- an elementary argument, reproduced here in full, so that the reader can
+discharge it directly without reference to any review process.
+\item \Scomp{scope} --- a completed finite computation of exactly the stated scope. A
+computation is evidence of the stated scope and of nothing beyond it; in particular a
+\emph{failed} bounded search is never a proof of impossibility, and where such a search is
+reported the text says so.
+\end{itemize}
+
+A sixth marker, \Sconj{evidence}, marks statements believed but not proved.
+
+Two conventions about numerics are enforced throughout and are worth stating once. First,
+\emph{numbers before statements}: every numerical block cited below was run before the
+statement it accompanies was written, and the text says so where it matters. Second, and
+more important, the \emph{reductio firewall}: almost every statement in
+Sections~\ref{sec:toolkit}--\ref{sec:gfannu} is proved under the standing hypothesis
+$\res(G) = \alpha(G)$, and the campaign's own results say that hypothesis is unsatisfiable in
+the configurations concerned. Numerical runs on such configurations are therefore
+\emph{not} instances of those statements; they are mechanism checks on the same
+combinatorial machinery off the hypothesis, and they corroborate the shape of an argument
+rather than its conclusion. Where a numerical block is quoted below, it is quoted with that
+distinction attached.
+
+\subsection{Relation to the campaign's other output}\label{sec:relwork}
+
+The pipeline that produced this paper is the one described in the reports on four OEIS
+conjectures \cite{batch1} and on a conjecture of Fernandes \cite{fernandespaper}; those
+papers report resolved problems formalized in Lean~4, and this one reports an unresolved
+problem with no formalization at all. The difference is deliberate and is the point of the
+tiering above: an automated campaign that only publishes what it finished would be
+reporting a biased sample of its own behaviour. A companion working paper on the last open
+finite implication of the Equational Theories Project \cite{etp677} takes the same view and
+uses the same marker discipline, which we have followed here.
+
+We make no claim of priority for any statement below, and no claim that any of them is new.
+Automated literature search found no prior treatment of Conjecture~\ref{conj:main} beyond
+its appearance in the collection and in the formal corpus, but automated searches miss
+things (Section~\ref{sec:limits}).
+
+\input{body}
+
+\end{document}

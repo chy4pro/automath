@@ -1,0 +1,77 @@
+====================================================================================================
+w61 r49 ITEM B -- (PIVOT-MAJ) and (RH) as COROLLARIES of the proved (DOM-MAJ)
+====================================================================================================
+interpreter: .venv/bin/python3 (pure Python, no sympy, no networkx)
+
+[0] TWO INDEPENDENT GRAPHICNESS ORACLES, AGREEMENT FIRST (sec 105).
+    partitions of N<=18 tested : 1596 ; agreements 1596 ; DISAGREEMENTS 0
+    of which graphic           : 360
+   [ok ] CONTROL: the population contains NON-graphic partitions too                  hits=1236
+
+[1] THE CONJUGATION STEP OF COROLLARY RH, CHECKED AS A STANDALONE FACT:
+    for partitions a,b of one integer,  a >= b  ==>  a* <= b*  ==>  #parts(a) <= #parts(b).
+    dominance pairs tested        : 17976 ; a* <= b* holds 17976, FAILS 0
+    #parts(a) <= #parts(b)        : holds 17976, FAILS 0
+    fewer-or-equal parts WITHOUT dominance (N<=12) : 1458
+   [ok ] CORRUPT CONTROL: fewer parts does NOT imply dominance -- the step is real work hits=1458
+   [ok ] KNOWN VALUE fewer-or-equal parts without dominance (r43's 1458)      got=1458 want=1458
+
+[2] (PIVOT-MAJ) AND (RH) ON r43's TWO POPULATIONS, RECOMPUTED HERE.
+    P3: every partition pi of N in [2,16] that is graphic, every pi' = pi - e_i + e_j
+        with pi_i >= pi_j + 2 that is graphic.   P4: the DISJOINT range N in [17,20].
+    P3  N in [2,16]
+       pairs in population (i,j slots)          : 1324   distinct (pi,pi') : 284
+       (RH)        s(pi) <= s(pi')              : holds 1324, FAILS 0
+       (PIVOT-MAJ) p(pi) >= p(pi')              : holds 1324, FAILS 0
+       EVERY pair meets the (DOM-MAJ) hypothesis: yes 1324, no 0
+       CORRUPT reversed (RH)  s(pi') < s(pi)    : fails 873
+       CORRUPT reversed maj   p(pi') >= p(pi)   : fails 1072
+   [ok ] KNOWN VALUE P3 population size (r43's 1324)                          got=1324 want=1324
+   [ok ] KNOWN VALUE P3 reversed (RH) failures (r43's 873)                    got=873 want=873
+   [ok ] KNOWN VALUE P3 reversed majorization failures (r43's 1072)           got=1072 want=1072
+   [ok ] CORRUPT CONTROL: the reversed (RH) really fails on P3                        hits=873
+   [ok ] CORRUPT CONTROL: the reversed majorization really fails on P3                hits=1072
+   [ok ] CONTROL: P3 is non-empty                                                     hits=1324
+    P4  N in [17,20]
+       pairs in population (i,j slots)          : 5006   distinct (pi,pi') : 943
+       (RH)        s(pi) <= s(pi')              : holds 5006, FAILS 0
+       (PIVOT-MAJ) p(pi) >= p(pi')              : holds 5006, FAILS 0
+       EVERY pair meets the (DOM-MAJ) hypothesis: yes 5006, no 0
+       CORRUPT reversed (RH)  s(pi') < s(pi)    : fails 2921
+       CORRUPT reversed maj   p(pi') >= p(pi)   : fails 3750
+   [ok ] KNOWN VALUE P4 population size (r43's 5006)                          got=5006 want=5006
+   [ok ] CONTROL: P4 (disjoint range) is non-empty                                    hits=5006
+    P5-HELDOUT  N in [21,23]
+       pairs in population (i,j slots)          : 6392   distinct (pi,pi') : 1144
+       (RH)        s(pi) <= s(pi')              : holds 6392, FAILS 0
+       (PIVOT-MAJ) p(pi) >= p(pi')              : holds 6392, FAILS 0
+       EVERY pair meets the (DOM-MAJ) hypothesis: yes 6392, no 0
+       CORRUPT reversed (RH)  s(pi') < s(pi)    : fails 3555
+       CORRUPT reversed maj   p(pi') >= p(pi)   : fails 4600
+   [ok ] CONTROL: P5, a THIRD disjoint range never used by r43, is non-empty (sec 111) hits=6392
+   [ok ] CORRUPT CONTROL: the reversed majorization fails on P5 too                   hits=4600
+
+[3] IS r43's HYPOTHESIS 'pi ALSO TERMINATES' REDUNDANT?  DOWN-SET (= Ruch-Gutman
+    1979, CITED not claimed) says yes.  Counted here rather than assumed:
+    pi graphic + unit transfer down : pi' graphic 1324 times, NON-graphic 0 times
+   [ok ] CORRUPT CONTROL: run the SAME move UPWARD and it DOES leave the graphic set  hits=209
+
+[4] WHAT THIS DOES AND DOES NOT GIVE (MON) (item (b)).  (MON) is
+    f(T) - f(T+e_i) in {0,1} with f(T) = residue(L(T)).  For sum(T) EVEN the pair
+    (L(T), L(T+e_i)) is claimed by r38 [5] to be a unit transfer DOWN.  Item (a):
+    checked, not assumed -- how many even-sum instances ACTUALLY satisfy it?
+    even-sum (MON) instances, coverage by (RH): {'a genuine transfer DOWN -- (RH) applies': 821, 'identical lists': 219, 'not same length/sum': 467}
+    (MON) LOWER half  f(T) - f(U) >= 0 : holds 1507, fails 0   <-- this is what (RH) gives
+    (MON) UPPER half  f(T) - f(U) <= 1 : holds 1507, fails 0   <-- NOT given by (RH)
+   [ok ] CONTROL: even-sum (MON) instances that (RH) does NOT cover exist             hits=467
+
+[5] WHAT IS NOT CLOSED.
+    (DOM-MAJ) is NOT novelty-cleared; nothing here is claimed NEW or goes outward.
+    (MON)'s UPPER half, (MON)'s ODD half, (S2), C1-W, (PERSIST-NARROW), (GAP1-OK),
+    (BAND-EQ), (F2-FREE) are all untouched by this file.  The conjecture is NOT closed.
+
+====================================================================================================
+CONTROLS 10, all fired: True
+DEFECTS  0
+PARTIAL=False  elapsed 0.47s  (internal limit 300s)
+====================================================================================================

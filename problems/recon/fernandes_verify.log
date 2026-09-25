@@ -1,0 +1,74 @@
+==============================================================================
+PART A.  cycle form, parity and order of a_r, b_r, d_r  (2 <= r <= 12)
+==============================================================================
+r= 2 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=2 (claimed 2) | d = [(1, 2)] | closed form OK: n/a
+r= 3 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=2 (claimed 2) | d = [(2, 3)] | closed form OK: True
+r= 4 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=4 (claimed 4) | d = [(1, 2, 4, 3)] | closed form OK: True
+r= 5 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=4 (claimed 4) | d = [(2, 3, 4, 5)] | closed form OK: True
+r= 6 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=6 (claimed 6) | d = [(1, 2, 3, 4, 6, 5)] | closed form OK: True
+r= 7 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=6 (claimed 6) | d = [(2, 3, 4, 5, 6, 7)] | closed form OK: True
+r= 8 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=8 (claimed 8) | d = [(1, 2, 3, 4, 5, 6, 8, 7)] | closed form OK: True
+r= 9 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=8 (claimed 8) | d = [(2, 3, 4, 5, 6, 7, 8, 9)] | closed form OK: True
+r=10 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=10 (claimed 10) | d = [(1, 2, 3, 4, 5, 6, 7, 8, 10, 9)] | closed form OK: True
+r=11 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=10 (claimed 10) | d = [(2, 3, 4, 5, 6, 7, 8, 9, 10, 11)] | closed form OK: True
+r=12 | sgn a=+1 sgn b=-1 sgn d=-1 | |b|=2 |d|=12 (claimed 12) | d = [(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 11)] | closed form OK: True
+PART A: all assertions hold: True
+
+==============================================================================
+PART B.  <a_r, b_r> = S_r  and  <a_r, d_r> = S_r  (2 <= r <= 8)
+==============================================================================
+  r= 2  |<a,b>|=2  |<a,d>|=2   = 2! = 2  OK
+  r= 3  |<a,b>|=6  |<a,d>|=6   = 3! = 6  OK
+  r= 4  |<a,b>|=24  |<a,d>|=24   = 4! = 24  OK
+  r= 5  |<a,b>|=120  |<a,d>|=120   = 5! = 120  OK
+  r= 6  |<a,b>|=720  |<a,d>|=720   = 6! = 720  OK
+  r= 7  |<a,b>|=5040  |<a,d>|=5040   = 7! = 5040  OK
+  r= 8  |<a,b>|=40320  |<a,d>|=40320   = 8! = 40320  OK
+
+==============================================================================
+PART C.  closure of the paper's generating pairs (14 cases)
+==============================================================================
+  (3,2)  unequal recipe  |<S>| =          6   |Gamma| =          6   EQUAL   [0.0s]
+  (4,2)  unequal recipe  |<S>| =         24   |Gamma| =         24   EQUAL   [0.0s]
+  (5,2)  unequal recipe  |<S>| =        120   |Gamma| =        120   EQUAL   [0.0s]
+  (5,3)  unequal recipe  |<S>| =        360   |Gamma| =        360   EQUAL   [0.0s]
+  (5,4)  unequal recipe  |<S>| =      1,440   |Gamma| =      1,440   EQUAL   [0.0s]
+  (6,2)  unequal recipe  |<S>| =        720   |Gamma| =        720   EQUAL   [0.0s]
+  (6,3)  unequal recipe  |<S>| =      2,160   |Gamma| =      2,160   EQUAL   [0.0s]
+  (6,4)  unequal recipe  |<S>| =      8,640   |Gamma| =      8,640   EQUAL   [0.0s]
+  (6,5)  unequal recipe  |<S>| =     43,200   |Gamma| =     43,200   EQUAL   [0.0s]
+  (7,3)  unequal recipe  |<S>| =     15,120   |Gamma| =     15,120   EQUAL   [0.0s]
+  (7,6)  unequal recipe  |<S>| =  1,814,400   |Gamma| =  1,814,400   EQUAL   [0.5s]
+  (5,5)  equal   recipe  |<S>| =      7,200   |Gamma| =      7,200   EQUAL   [0.0s]
+  (6,6)  equal   recipe  |<S>| =    259,200   |Gamma| =    259,200   EQUAL   [0.1s]
+  (7,7)  equal   recipe  |<S>| = 12,700,800   |Gamma| = 12,700,800   EQUAL   [3.7s]
+PART C: all 14 closures equal Gamma: True
+
+==============================================================================
+PART D.  the recipes provably FAIL on the excluded pairs
+==============================================================================
+  (4,3)  unequal recipe  |<S>| =     24  |Gamma| =     72  index 3   PROPER (fails, as expected)
+  (3,3)  equal   recipe  |<S>| =      6  |Gamma| =     18  index 3   PROPER (fails, as expected)
+  (4,4)  equal   recipe  |<S>| =     96  |Gamma| =    288  index 3   PROPER (fails, as expected)
+
+==============================================================================
+PART E.  exact ranks of the four exceptional groups (exhaustive sweep)
+==============================================================================
+  Gamma_{2,2}: order    2  ->  cyclic, rank 1
+  Gamma_{3,3}: order   18  cyclic: False  2-generated: False  ->  rank >= 3  (matches the literature value 3)   [0.0s]
+  Gamma_{4,3}: order   72  cyclic: False  2-generated: False  ->  rank >= 3  (matches the literature value 3)   [0.0s]
+  Gamma_{4,4}: order  288  cyclic: False  2-generated: False  ->  rank >= 3  (matches the literature value 3)   [0.2s]
+
+==============================================================================
+PART F.  structural checks used in the write-up
+==============================================================================
+  |Gamma_{3,2}| = 6; first projection injective: True  =>  Gamma_{3,2} = S_3 (nonabelian)
+  S_4 conjugacy-class sizes by cycle type: {'id': 1, (2,): 6, (2, 2): 3, (3,): 8, (4,): 6}
+  S_4 -> Sym(3 pair-partitions): image order 6, kernel order 4 = [[], [(1, 2), (3, 4)], [(1, 3), (2, 4)], [(1, 4), (2, 3)]]
+  image is nonabelian: True
+  centralizer of A_3 in S_3: order 3   [[], [(1, 2, 3)], [(1, 3, 2)]]
+  centralizer of A_4 in S_4: order 1   [[]]
+  centralizer of A_5 in S_5: order 1   [[]]
+  centralizer of A_6 in S_6: order 1   [[]]
+
+ALL PARTS DONE.

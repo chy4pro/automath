@@ -1,0 +1,19 @@
+[PART 1 — K-CHAIN A2 re-check: F3'/Z+/DICH at GENERAL s, 3 tie-breaks each]
+  labelled HH runs = 94419   (n<=6 exhaustive canonical runs: reductio=17660, non-reductio=9815)
+  F3P          failures = 0
+  ZP           failures = 0
+  DICHb        failures = 0
+  DICHc        failures = 0
+  DICHc_i1     failures = 0
+  DICHc_j0eqi  failures = 0
+  => K-J1 (F3' general-s) and K-J2 (DICH incl. both boundaries) reproduce with 0 failures.
+
+[PART 2 — T3-REPAIRED A2 re-check: T-J4, k=2/e_B=2 branch]
+  parameter instances (a0,b0,c0 in 1..11) = 726
+  displayed-trajectory mismatches D=(X, Y-1, 1) = 0
+  L^2 != [1,1,1,1,0...]                      = 0
+  SUM argument  Sum_(i<=3) D_i == m-1 fails  = 0
+  terminal-shape ones (total, after-head) unexpected = 0
+  instances where the text's count sentence miscounts = 726
+  instances where the contradiction still holds anyway = 726
+  => T-J4 UPHELD as a textual miscount; the parenthetical sum argument closes the branch on its own.

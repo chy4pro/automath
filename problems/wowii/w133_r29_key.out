@@ -1,0 +1,118 @@
+============================================================================================
+PART 0 -- POSITIVE CONTROLS.  Every predicate is fired where it MUST return True, and
+          RULING CZ is applied: the C4 control injects the HARDEST form of the species,
+          namely THE REAL HISTORICAL INSTANCE that broke r26's V3.
+============================================================================================
+  [OK] Petersen is C4-free (has_C4 says NO)                             got=False want=False
+  [OK] Petersen longest induced path = 5 vertices                       got=5 want=5
+  [OK] Petersen a(v) == 3 for every v                                   got=[3] want=[3]
+  [OK] C4 detector fires on a bare C4 (EASY form -- YES)                got=True want=True
+  [OK] all_C4_vertex_sets on a bare C4 returns exactly one set          got=[(0, 1, 2, 3)] want=[(0, 1, 2, 3)]
+  [OK] HARD form: complete K4 has exactly ONE 4-vertex set (sets, not cycles) got=[(0, 1, 2, 3)] want=[(0, 1, 2, 3)]
+  [OK] bare P7 -> longest induced path = 7 vertices (positive control)  got=7 want=7
+  [OK] bare P7 -> longest induced path = 6 EDGES (the alternative reading) got=6 want=6
+  [OK] bare induced C6 -> longest induced path = 5                      got=5 want=5
+  [OK] K_{1,4}: a(centre) = 4 - 0 = 4                                   got=4 want=4
+  [OK] triangle: a(v) = 2 - 1 = 1                                       got=1 want=1
+  [OK] induced_cycle6 accepts the bare hexagon                          got=True want=True
+  [OK] induced_cycle6 rejects a chorded hexagon                         got=False want=False
+  [OK] Sample refuses statistics on a rejected sample                   got=RuntimeError want=RuntimeError
+
+============================================================================================
+PART 1 -- HOSTS.  K1,K2,K3 are the r26 hosts, byte-frozen and re-admitted here.
+          K4 is DROPPED: it existed only to carry V3 and V6, both of which are struck.
+============================================================================================
+  K1: n=11  m=14  admitted=True path=6  census={'W1': 5, 'W_cons': 0, 'W_anti': 0, 'W0': 0}
+  [OK] K1 is ADMITTED (in-hypothesis)                                   got=True want=True
+  K2: n=12  m=16  admitted=True path=6  census={'W1': 3, 'W_cons': 1, 'W_anti': 1, 'W0': 1}
+  [OK] K2 is ADMITTED (in-hypothesis)                                   got=True want=True
+  K3: n=10  m=13  admitted=True path=6  census={'W1': 3, 'W_cons': 1, 'W_anti': 0, 'W0': 0}
+  [OK] K3 is ADMITTED (in-hypothesis)                                   got=True want=True
+
+============================================================================================
+PART 2 -- THE ROWS.  Each carries (i) its ANSWER, (ii) a UNIQUENESS assertion, and
+          (iii) its HARDEST shortcut, which it must NOT equal (RULING CZ).
+============================================================================================
+  V1   [H|FUNCTIONAL ] K1: number of edges
+        answer   = 14
+        UNIQUE   : |space|=60     correct answers=1  -> [14]
+        shortcut : hexagon + one edge per off-Z vertex, no off-Z edges (6+5)  = 11 != answer
+        shortcut : 3-regular heuristic, m = ceil(3n/2) with n=11              = 17 != answer
+  [OK] V1: answer is UNIQUE in its own answer space (RULING CX)         got=True want=True
+  [OK] V1: DISCRIMINATES against every hardest shortcut (RULING CZ)     got=True want=True
+  V5   [H|FUNCTIONAL ] K1: a(7) = d - t at that vertex
+        answer   = 2
+        UNIQUE   : |space|=8      correct answers=1  -> [2]
+        shortcut : a = d, i.e. t(v) = 0 (the standard misread of a)           = 3 != answer
+        shortcut : a(v) = 3, the modal value the whole brief is about         = 3 != answer
+  [OK] V5: answer is UNIQUE in its own answer space (RULING CX)         got=True want=True
+  [OK] V5: DISCRIMINATES against every hardest shortcut (RULING CZ)     got=True want=True
+  V7   [C|FUNCTIONAL ] K1: T_Z = sum_{z in Z} t(z), and sum_{z in Z}(a(z)-3)
+        answer   = (2, -3)
+        UNIQUE   : |space|=247    correct answers=1  -> [(2, -3)]
+        shortcut : Z is INDUCED so it has no chords, hence T_Z = 0, and a(z)=3 throughout = (0, 0) != answer
+        shortcut : T_Z = 0 and a(z) = 2 throughout (only the two hexagon neighbours) = (0, -6) != answer
+  [OK] V7: answer is UNIQUE in its own answer space (RULING CX)         got=True want=True
+  [OK] V7: DISCRIMINATES against every hardest shortcut (RULING CZ)     got=True want=True
+  V9   [C|FUNCTIONAL ] K3: T_Z, and sum_{v in V}(a(v)-3)
+        answer   = (3, -10)
+        UNIQUE   : |space|=351    correct answers=1  -> [(3, -10)]
+        shortcut : T_Z = 0, and the bound sum(a-3) <= 0 is TIGHT so the sum is 0 = (0, 0) != answer
+        shortcut : T_Z = 0, and sum(a-3) = -6 as at the n=10 attainment region = (0, -6) != answer
+  [OK] V9: answer is UNIQUE in its own answer space (RULING CX)         got=True want=True
+  [OK] V9: DISCRIMINATES against every hardest shortcut (RULING CZ)     got=True want=True
+  V10  [H|EXISTENTIAL] K1: the maximum degree, and the vertex attaining it (the answer is unique)
+        answer   = (5, 4)
+        UNIQUE   : |space|=132    correct answers=1  -> [(5, 4)]
+        shortcut : max degree 3 (the modal/3-regular reading)                 = (3, 4) != answer
+        shortcut : the maximum is attained OFF the hexagon, at the busiest off-Z vertex = (5, 7) != answer
+  [OK] V10: answer is UNIQUE in its own answer space (RULING CX)        got=True want=True
+  [OK] V10: DISCRIMINATES against every hardest shortcut (RULING CZ)    got=True want=True
+  [OK] V10: the maximum degree is attained by exactly ONE vertex (uniqueness of the WITNESS) got=1 want=1
+  V11  [H|FUNCTIONAL ] K2: the trace census (|W_1|, |W_cons|, |W_anti|, |W_0|)
+        answer   = (3, 1, 1, 1)
+        UNIQUE   : |space|=84     correct answers=1  -> [(3, 1, 1, 1)]
+        shortcut : every off-Z vertex attaches to exactly one hexagon vertex  = (6, 0, 0, 0) != answer
+        shortcut : the r26 K1 census, carried across as the modal shape       = (5, 0, 0, 0) != answer
+  [OK] V11: answer is UNIQUE in its own answer space (RULING CX)        got=True want=True
+  [OK] V11: DISCRIMINATES against every hardest shortcut (RULING CZ)    got=True want=True
+  V12  [C|FUNCTIONAL ] K2: T_Z, and sum_{z in Z}(a(z)-3)
+        answer   = (2, -1)
+        UNIQUE   : |space|=247    correct answers=1  -> [(2, -1)]
+        shortcut : Z induced, so T_Z = 0, and a(z) = 3 throughout             = (0, 0) != answer
+        shortcut : T_Z = 0 and a(z) = 2 throughout                            = (0, -6) != answer
+  [OK] V12: answer is UNIQUE in its own answer space (RULING CX)        got=True want=True
+  [OK] V12: DISCRIMINATES against every hardest shortcut (RULING CZ)    got=True want=True
+
+============================================================================================
+PART 3 -- STRUCK ROWS.  A struck row is only credible if its shortcut is COMPUTED.
+============================================================================================
+  V3  (r26, Tier H) 'which of K1..K4 has a 4-cycle, and its 4 vertices'
+      4-vertex sets of K4 carrying a 4-cycle: [(0, 1, 2, 3), (0, 3, 4, 5)]
+  [OK] V3 is NON-UNIQUE -- it had 2 correct answers (RULING CX: not gradeable) got=True want=True
+      also DETERMINED: shortcut 'the 4-cycle lies on Z's first four vertices' = (0,1,2,3)
+  [OK] V3 is ALSO determined by its hardest shortcut                    got=True want=True
+  V2  (r26, Tier H) 'K1: degree of vertex 7' = 3
+      HARDEST shortcut: 'the modal degree in this class is 3' = 3
+  [OK] V2 is DETERMINED under the HARDEST shortcut -- r28's audit used a canonical one and PASSED it (RULING CZ finding against this line's own previous round) got=True want=True
+  V4  (r26) K1 trace census              = (5, 0, 0, 0) determined by: every off-Z vertex is in W_1
+  V6  (r26) K4 longest induced path      = 6            determined by: no induced P7 => the maximum is 6
+  V8  (r26) K2 (sum(a-3), n_3)           = (-7, 0)      determined by: n_3 = 0, the modal value
+  [OK] struck set is exactly {V2,V3,V4,V6,V8}                           got=True want=True
+
+============================================================================================
+PART 4 -- the G55-summed identity and (Z1)/(Z6), re-verified on every kept host
+============================================================================================
+  [OK] K1: G55-summed identity holds (lhs=-3)                           got=-3 want=-3
+  [OK] K1: (Z1) sum_v(a-3) <= n_3 + 2m - 6                              got=True want=True
+  [OK] K1: (Z6) n_3 + 2m <= 6                                           got=True want=True
+  [OK] K2: G55-summed identity holds (lhs=-1)                           got=-1 want=-1
+  [OK] K2: (Z1) sum_v(a-3) <= n_3 + 2m - 6                              got=True want=True
+  [OK] K2: (Z6) n_3 + 2m <= 6                                           got=True want=True
+  [OK] K3: G55-summed identity holds (lhs=-4)                           got=-4 want=-4
+  [OK] K3: (Z1) sum_v(a-3) <= n_3 + 2m - 6                              got=True want=True
+  [OK] K3: (Z6) n_3 + 2m <= 6                                           got=True want=True
+
+KEY WRITTEN: problems/wowii/w133_r29_key.key.txt   rows=7
+
+checks: 45, failures: 0

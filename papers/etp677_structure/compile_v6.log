@@ -1,0 +1,28 @@
+note: Running TeX ...
+warning: main.tex:1339: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1333--1339
+warning: main.tex:1349: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1341--1349
+warning: main.tex:1632: Overfull \hbox (11.70905pt too wide) detected at line 1632
+warning: main.tex:1759: Overfull \hbox (17.6817pt too wide) detected at line 1759
+warning: main.tex:3677: Overfull \hbox (8.30586pt too wide) in paragraph at lines 3669--3677
+warning: main.tex:3861: Overfull \hbox (2.73108pt too wide) in paragraph at lines 3858--3861
+warning: main.tex:4108: Overfull \hbox (3.82489pt too wide) in paragraph at lines 4104--4108
+note: Rerunning TeX because "main.toc" changed ...
+warning: main.tex:1339: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1333--1339
+warning: main.tex:1349: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1341--1349
+warning: main.tex:1632: Overfull \hbox (11.70905pt too wide) detected at line 1632
+warning: main.tex:1759: Overfull \hbox (17.6817pt too wide) detected at line 1759
+warning: main.tex:3677: Overfull \hbox (8.30586pt too wide) in paragraph at lines 3669--3677
+warning: main.tex:3861: Overfull \hbox (2.73108pt too wide) in paragraph at lines 3858--3861
+warning: main.tex:4108: Overfull \hbox (3.82489pt too wide) in paragraph at lines 4104--4108
+note: Rerunning TeX because "main.toc" changed ...
+warning: main.tex:1339: Overfull \hbox (41.86017pt too wide) in paragraph at lines 1333--1339
+warning: main.tex:1349: Overfull \hbox (69.30627pt too wide) in paragraph at lines 1341--1349
+warning: main.tex:1632: Overfull \hbox (11.70905pt too wide) detected at line 1632
+warning: main.tex:1759: Overfull \hbox (17.6817pt too wide) detected at line 1759
+warning: main.tex:3677: Overfull \hbox (8.30586pt too wide) in paragraph at lines 3669--3677
+warning: main.tex:3861: Overfull \hbox (2.73108pt too wide) in paragraph at lines 3858--3861
+warning: main.tex:4108: Overfull \hbox (3.82489pt too wide) in paragraph at lines 4104--4108
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `main.pdf` (587.2841796875 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)

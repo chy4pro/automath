@@ -1,0 +1,59 @@
+==============================================================================
+[A] the two certified controls re-verified from their edge lists
+==============================================================================
+  PASS  CE-1 C4-free   [0 violating pairs]
+  PASS  CE-1 connected
+  PASS  CE-1 n = 10   [got 10]
+  PASS  CE-1 Sum a = 19   [got 19, a = [2, 1, 3, 1, 2, 4, 2, 1, 1, 2]]
+  PASS  CE-1 path = 6   [got 6, witness [0, 9, 4, 6, 2, 8]]
+  PASS  CE-2 C4-free   [0 violating pairs]
+  PASS  CE-2 connected
+  PASS  CE-2 n = 10   [got 10]
+  PASS  CE-2 Sum a = 25   [got 25, a = [3, 2, 3, 4, 3, 2, 2, 2, 2, 2]]
+  PASS  CE-2 path = 6   [got 6, witness [0, 8, 9, 3, 2, 6]]
+  PASS  CE-1 frame (2,6,4,9;x=5) Case-2-forced   [far set [0]]
+  PASS  CE-2 frame (2,1,0,8;x=3) Case-2-forced   [far set [9]]
+
+==============================================================================
+[B] KEY — graph R (Theorem G50, 9 vertices)
+==============================================================================
+  PASS  R C4-free   [0 violating pairs]
+  PASS  R connected
+  a-vector(R) = [3, 2, 2, 2, 4, 2, 1, 1, 1]   Sum a = 18   n = 9
+  dist_R(0,3) = 3   geodesic 0-1-2-3 = True
+  x = 4 usable side-neighbour of 0 = True   usable far set at u3=3 : [5]   Case-2-forced = True
+  path(R) = 6   witness [1, 2, 3, 5, 4, 6]
+  induced C6 in R = True   witness (0, 1, 2, 3, 4, 5)
+  PASS  R matches G50's recorded a-profile [3,2,2,2,4,2,1,1,1]   [got [3, 2, 2, 2, 4, 2, 1, 1, 1]]
+  PASS  R Sum a = 18, l = 2   [Sum a = 18]
+  PASS  R path = 6 (NOT 7 — the D3_C report's error)   [got 6]
+  PASS  R has an induced C6 (G46 predicts one)   [(0, 1, 2, 3, 4, 5)]
+
+==============================================================================
+[C] KEY — graph F3 = CE-2 + 3 pendant triangles at vertex 2 (G49 at k=3)
+==============================================================================
+  PASS  F3 C4-free   [0 violating pairs]
+  PASS  F3 connected
+  n(F3) = 16   a-vector = [3, 2, 6, 4, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1]   Sum a = 34   l = 34/16
+  path(F3) = 6   witness [0, 8, 9, 3, 2, 6]
+  PASS  F3 n = 16 = 10 + 2*3   [got 16]
+  PASS  F3 Sum a = 34 = 25 + 3*3 (G49 identity)   [got 34]
+  PASS  F3 l - 3/2 = 10/16 (G49 identity)   [l = 34/16 = 17/8, l-3/2 = 5/8]
+  PASS  F3 path = 6 (path >= 6 TRUE and path >= 7 FALSE, checked as two facts)   [got 6]
+  PASS  F3 keeps CE-2's frame (2,1,0,8;x=3) Case-2-forced   [far [9]]
+
+==============================================================================
+[D] the PART 6 held-out key, as it will be graded
+==============================================================================
+  T1  tier H   R is C4-free?                                = YES
+  T2  tier H   a_R(0)                                       = 3
+  T3  tier H   a_R(4)                                       = 4
+  T4  tier H   dist_R(0,3)                                  = 3
+  T5  tier H   frame (0,1,2,3), x=4 Case-2-forced?          = YES
+  T6  tier C   path(R)                                      = 6
+  T7  tier C   R contains an induced C6?                    = YES
+  T8  tier C   Sum_v a(v) over F3                           = 34
+  T9  tier C   path(F3)                                     = 6
+
+FAILURES: 0
+elapsed 0.0s

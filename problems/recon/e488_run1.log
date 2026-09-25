@@ -1,0 +1,12 @@
+RESULT: no counterexample in 6333 sets, elapsed=1.1s
+closest ratios (f(m) / 2f(n), 1.0 would violate):
+  ratio=0.9800 A=(25,) n=49 m=50
+  ratio=0.9792 A=(24,) n=47 m=48
+  ratio=0.9783 A=(23,) n=45 m=46
+  ratio=0.9773 A=(22,) n=43 m=44
+  ratio=0.9762 A=(21,) n=41 m=42
+  ratio=0.9750 A=(20,) n=39 m=40
+  ratio=0.9737 A=(19,) n=37 m=38
+  ratio=0.9722 A=(18,) n=35 m=36
+  ratio=0.9706 A=(17,) n=33 m=34
+  ratio=0.9688 A=(16,) n=31 m=32

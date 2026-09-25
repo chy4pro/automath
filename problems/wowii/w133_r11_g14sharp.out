@@ -1,0 +1,15 @@
+=== G14 free-generality test: does a(u0) >= 3 do any work at d >= 5? ===
+    Every frame below has a(u0) = 2 EXACTLY, i.e. G14's stated hypothesis FAILS,
+    yet the proof's own construction is run and certified induced on d+4 vertices.
+
+  chain(k=2,L=5): n=129    certified a(u0)=2 frames with d>=5: 40
+  chain(k=2,L=10): n=134    certified a(u0)=2 frames with d>=5: 40
+  chain(k=3,L=10): n=206    certified a(u0)=2 frames with d>=5: 40
+
+  TOTAL certified frames with a(u0) = 2 and d >= 5: 120
+  => on every one of them the G14 construction closes, as the audit predicts:
+     Lemma G14 holds with a(u0) >= 2; the hypothesis a(u0) >= 3 is REDUNDANT at
+     d >= 5.  (It is NOT redundant at d = 3, 4: G36/G37 use z in N(u0) outside
+     BOTH u1's and x's components, which needs a(u0) >= 3.)
+
+FAILURES: 0

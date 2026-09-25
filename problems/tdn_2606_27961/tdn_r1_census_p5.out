@@ -1,0 +1,77 @@
+==============================================================================
+CONTROLS (each could fail; population stated beside each)
+  C-A p=3  f==0 : |T-T| direct=25  fibre-sum=25  (2p-1)^2=25  MATCH=True   [population: 1 function]
+  C-A p=5  f==0 : |T-T| direct=81  fibre-sum=81  (2p-1)^2=81  MATCH=True   [population: 1 function]
+  C-B p=3  cycle identity  sum_i d_u f(x+iu) == -u : violations=0  [population: 300 random f x 8 directions x 9 basepoints = 21600 checks]
+  C-C p=3  |A_u| invariant under f -> f+lam[x1]+mu[x2] : violations=0  [population: 60 (f,lam,mu) x 8 directions = 480 checks]
+  CONTROLS ALL PASS = True
+==============================================================================
+PATH 1 -- BRUTE, p=3, the ENTIRE function space
+  population (all f with f(0)=0) = 43046721 = 3^(2*3^2-2)
+  row alphabet = 729 rows; triples enumerated/pruned = 43046721
+  R2(3) [ |A_e1| <= 3 AND |A_e2| <= 3 ] = 18225
+    min |A_w| over the WHOLE stratum, w=(1, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(1, 2) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 2) : 4
+  t=0.9s
+==============================================================================
+PATH 2 -- STRUCTURED, p=3 (same question, disjoint counting logic)
+  A-classes (translation orbits of image sets, |A| in {2,3}) = 16 ; completed = 16 ; complete=True
+  normal-form f found = 297 ; de-normalised R2(3) = 18225
+    min |A_w| over the WHOLE stratum, w=(1, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(1, 2) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 1) : 4
+    min |A_w| over the WHOLE stratum, w=(2, 2) : 4
+  counterexamples (|A_w| <= 3) recorded: 0
+  t=0.9s
+==============================================================================
+CROSS-CHECK p=3
+  PATH1 R2(3)=18225   PATH2 R2(3)=18225   AGREE=True
+  min|A_w| tables agree across the two paths: True
+  VERDICT p=3: min over ALL mixed w and ALL stratum members = 4  (rigidity |A_w| >= 4 holds: True)
+==============================================================================
+PATH 2 -- STRUCTURED, p=5.  Partial coverage is reported as partial: each A-class is a COMPLETE sub-population, so a prefix of the class list is a rigorous statement about that prefix and about nothing else.
+    ... A-class 3/104  cum normal-form f = 10925  cum full = 6828125  t=5s
+    ... A-class 8/104  cum normal-form f = 59625  cum full = 37265625  t=10s
+    ... A-class 15/104  cum normal-form f = 59625  cum full = 37265625  t=11s
+    ... A-class 16/104  cum normal-form f = 59625  cum full = 37265625  t=11s
+    ... A-class 20/104  cum normal-form f = 59625  cum full = 37265625  t=15s
+    ... A-class 21/104  cum normal-form f = 59625  cum full = 37265625  t=18s
+    ... A-class 22/104  cum normal-form f = 197075  cum full = 123171875  t=53s
+    ... A-class 24/104  cum normal-form f = 334525  cum full = 209078125  t=88s
+    ... A-class 25/104  cum normal-form f = 334525  cum full = 209078125  t=92s
+    ... A-class 26/104  cum normal-form f = 334525  cum full = 209078125  t=96s
+    ... A-class 28/104  cum normal-form f = 406325  cum full = 253953125  t=108s
+    ... A-class 30/104  cum normal-form f = 406325  cum full = 253953125  t=109s
+    ... A-class 31/104  cum normal-form f = 406325  cum full = 253953125  t=109s
+    ... A-class 32/104  cum normal-form f = 508625  cum full = 317890625  t=122s
+    ... A-class 33/104  cum normal-form f = 888025  cum full = 555015625  t=163s
+    ... A-class 34/104  cum normal-form f = 990325  cum full = 618953125  t=175s
+    ... A-class 35/104  cum normal-form f = 990325  cum full = 618953125  t=176s
+    ... A-class 37/104  cum normal-form f = 990325  cum full = 618953125  t=176s
+    ... A-class 40/104  cum normal-form f = 990325  cum full = 618953125  t=180s
+    ... A-class 42/104  cum normal-form f = 990325  cum full = 618953125  t=184s
+    ... A-class 43/104  cum normal-form f = 1100125  cum full = 687578125  t=219s
+    ... A-class 44/104  cum normal-form f = 1209925  cum full = 756203125  t=254s
+    ... A-class 45/104  cum normal-form f = 1209925  cum full = 756203125  t=258s
+    ... A-class 46/104  cum normal-form f = 1267325  cum full = 792078125  t=270s
+    ... A-class 47/104  cum normal-form f = 1267325  cum full = 792078125  t=274s
+    ... A-class 50/104  cum normal-form f = 1267325  cum full = 792078125  t=274s
+    ... A-class 51/104  cum normal-form f = 1484025  cum full = 927515625  t=312s
+    ... A-class 52/104  cum normal-form f = 1484025  cum full = 927515625  t=313s
+    ... A-class 53/104  cum normal-form f = 1556825  cum full = 973015625  t=325s
+    ... A-class 54/104  cum normal-form f = 1629625  cum full = 1018515625  t=337s
+    ... A-class 55/104  cum normal-form f = 2050006  cum full = 1281253750  t=1000s
+  A-classes total = 104 ; COMPLETED = 55 ; complete=False
+  normal-form f found in the completed classes = 2050006
+  de-normalised stratum count over completed classes = 1281253750
+  min |A_w| over completed classes, all 16 mixed w = 3
+  counterexamples (|A_w| <= 3) recorded: 5
+    CE  A=(0, 5)  w=(1, 3)  |A_w|=3
+    CE  A=(0, 5)  w=(4, 2)  |A_w|=3
+    CE  A=(0, 5)  w=(2, 3)  |A_w|=3
+    CE  A=(0, 5)  w=(3, 2)  |A_w|=3
+    CE  A=(0, 5)  w=(1, 2)  |A_w|=3
+==============================================================================
+elapsed_s = 1000.0  ; controls_ok = True

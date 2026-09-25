@@ -1,0 +1,8 @@
+STANDALONE re-check of round 46 -- shares no code with w133_r46_hug.py
+  Petersen   n=10  rad=2 diam=2 mu(true alpha)=3  F=120    N=0   min k3=2
+  C7         n=7   rad=3 diam=3 mu(true alpha)=2  F=14     N=0   min k3=1
+  C8         n=8   rad=4 diam=4 mu(true alpha)=2  F=16     N=0   min k3=1
+  W44a  n=421 rad=5 diam=6  (offset diam-rad = +1)
+  W44a non-firing certificates re-checked: 11
+  distinct step-3 vertices among them: [420] (degree [2])
+CHECKS 131   FAILS 0

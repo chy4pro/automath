@@ -1,0 +1,5 @@
+new best: min|B|=2 A=[8, 17, 21, 48] x=5688
+new best: min|B|=3 A=[8, 17, 21, 48] x=3922
+new best: min|B|=4 A=[12, 14, 20, 21] x=410
+new best: min|B|=5 A=[10, 12, 15, 20] x=50
+n=4: tried 373560 instances in 600s; best = (5, [10, 12, 15, 20], 50)

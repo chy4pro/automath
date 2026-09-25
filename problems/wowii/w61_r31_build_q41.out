@@ -1,0 +1,19 @@
+key rows loaded : ['A1', 'A2', 'A3', 'B1', 'B2', 'B3']
+
+==============================================================================
+WRITE-TIME GATES  (each shown firing on a corrupted copy before being trusted)
+==============================================================================
+   brief population : 16116 chars, 295 lines, 6 statement blocks
+   G1 AH1 'reduced to'          brief: 0 hit(s) OK     | positive control: 1 hit(s) OK (gate is live)
+   G2 AH3 closure claim         brief: 0 hit(s) OK     | positive control: 1 hit(s) OK (gate is live)
+   G3 held-out answer leak      brief: 0 hit(s) OK     | positive control: 2 hit(s) OK (gate is live)
+   G4 identity/status leak      brief: 0 hit(s) OK     | positive control: 4 hit(s) OK (gate is live)
+   G5 schema completeness       brief: 0 hit(s) OK     | positive control: 1 hit(s) OK (gate is live)
+
+==============================================================================
+WROTE $HOME/workspace/claudecode/automath/prompts/w61_S3_C125_r31.md
+   chars (code points) : 16116
+   bytes               : 16200
+   sha256              : f8c159fccec1fba66263de66d2329b5a7981268c5b39f99159fa2dfcc8cd63ca
+   tail (last 2 lines) : 'Part 1.'
+==============================================================================

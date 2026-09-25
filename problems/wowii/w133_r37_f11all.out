@@ -1,0 +1,168 @@
+WOWII-133 round 37 -- (F11-ALL)
+interpreter: 3.9.6 (system python3; pure stdlib)
+hard internal deadline (s): 420.0
+
+==============================================================================
+PART 0 -- THE GUARD.  CLASS DECLARED, TESTED AGAINST MEMBERS IT HAS NOT SEEN
+==============================================================================
+CLASS CLAIMED: any ANCHORED DEPTH-CAPPED search that mis-reports the verdict
+  'endpath(G,w) >= K' -- by reporting a witness that is not an induced path, is
+  not anchored at w, or is short; or by blocking the wrong set at ANY depth.
+GUARD = (i) an independent checker re-verifies EVERY returned witness
+  (distinctness, anchoring, exact order, inducedness from a freshly built
+  adjacency matrix), and (ii) on n <= 13 an independent SUBSET-ENUMERATION
+  oracle recomputes the anchored value and must agree with the verdict.
+UNSEEN MEMBERS USED AS THE TEST: 'offbyone' (accepts at K-1 vertices) and
+  'anchordrift' (searches from the wrong root).  r34's guard was written for
+  the ZERO-step defect, r35's real defect was the ONE-step defect, r36's unseen
+  member was LATE-BLOCKING -- none of them is a length or an anchor defect.
+
+host               n   OFFBY1   ANCHOR zerostep  lateblk  falseAL oracle= oracle!=
+C6@K=5             6        6        6        0        0        0       6        0
+C6@K=7             6        0        0        0        0        0       6        0
+Theta(3,3,3)@K=5   8        8        8        0        0        0       8        0
+Theta(3,3,3)@K=7   8        6        0        6        6        0       8        0
+Petersen@K=5      10       10       10        5        5        0      10        0
+Petersen@K=7      10        0        0       10       10        0      10        0
+P5@K=5             5        4        2        0        0        0       5        0
+P5@K=7             5        0        0        0        0        0       5        0
+C9@K=5             9        9        9        0        0        0       9        0
+C9@K=7             9        9        9        0        0        0       9        0
+TOTAL              -       52       44       21       21        0      76        0
+
+(host, cap) rows: 10 = 5 hosts x 2 caps (5, 7)
+rows on which the guard caught the unseen OFF-BY-ONE member: 7 of 10
+rows on which the guard caught the unseen ANCHOR-DRIFT member: 6 of 10
+rows on which the guard caught the known ZERO-STEP member:     3 of 10
+rows on which the guard caught the known LATE-BLOCK member:    3 of 10
+   ... at the LOW cap (5):  1 of 5 rows
+   ... at the HIGH cap (7): 2 of 5 rows
+   THE SPLIT IS THE FINDING: a guard test run at a threshold the host ALREADY
+   MEETS cannot see an over-permissive defect, because the defective search
+   returns a genuine witness first.  The threshold is part of the guard.
+
+HALF THREE OF THE GUARD -- oracle VALUE disagreement, cap raised to n so the
+search computes the TRUE anchored value instead of answering a threshold:
+   offbyone     value-disagreements with the oracle: 2 of 38 (host,w) pairs
+   anchordrift  value-disagreements with the oracle: 6 of 38 (host,w) pairs
+   zerostep     value-disagreements with the oracle: 33 of 38 (host,w) pairs
+   lateblock    value-disagreements with the oracle: 33 of 38 (host,w) pairs
+   CORRECT      value-disagreements with the oracle: 0 of 38 (host,w) pairs
+
+HALF TWO OF THE GUARD -- oracle VERDICT disagreement, per defect
+(the witness checker can only see OVER-reporting with a bad witness; the
+ oracle sees a wrong VERDICT in either direction):
+   offbyone     verdict-disagreements with the oracle: 8
+   anchordrift  verdict-disagreements with the oracle: 2
+   zerostep     verdict-disagreements with the oracle: 16
+   lateblock    verdict-disagreements with the oracle: 16
+   ratio of value-half to verdict-half detections for the late-block member:
+   33 value-disagreements vs 16 verdict-disagreements over the same 38 pairs
+double-source: a_val vs a_val_brute over all these hosts' vertices:
+   pairs double-sourced: 38
+c4_free vs c4_free_slow on the same hosts:
+   hosts double-sourced: 5
+
+FAMILY (round 33's, rebuilt here): generated 420, CERTIFIED 420
+  skipped: disconnected 0, not C4-free 0, min a(v) < 2 0
+  EXCLUSIONS: designed families plus a seeded C4-free process; NOT exhaustive,
+  no random trawl beyond the recorded seeds, order capped by the generators.
+
+==============================================================================
+PART 1 -- (TAIL-2') AND (TAIL-3'), CERTIFIED BY *BUILDING* THE PATH
+          plus the FREE exclusions F1..F4 the proofs lean on
+==============================================================================
+hosts entered (n <= 130):                        417
+hosts skipped as too big:                        3
+frames examined (geodesic, y) pairs:             77724
+F1 free-exclusion frames asserted:               77724
+F2 free-exclusion frames asserted:               77724
+F3 free-exclusion frames asserted:               68885
+F4 free-exclusion frames asserted:               68885
+
+(TAIL-2') counted condition FIRES:               68885
+   ... and the ecc+3 path was BUILT and checked: 68885
+   section 42.3's blanket a(y)>=4 would fire:    42119
+   frames the SHARP form wins that the blanket loses: 26766
+(TAIL-3') counted condition FIRES:               52807
+   ... and the ecc+4 path was BUILT and checked: 52807
+   section 42.3's blanket a(z)>=6 would fire:    8821
+   frames the SHARP form wins that the blanket loses: 43986
+
+==============================================================================
+PART 2 -- (F11-STRAT): THE ECCENTRICITY STRATIFICATION, MEASURED
+          stratum 2+ is FREE from (TAIL-1); only strata 0 and 1 can need work
+==============================================================================
+POPULATION: 420 hosts; 86 with l > 4; 25 with l > 4 AND rad >= 5
+self-centred hosts: 176 of 420   (of the l>4 hosts: 38)
+
+stratum (ecc - rad)                      ALL       l>4  l>4&r>=5      %ALL
+0  needs +4 at w  (TAIL-2'+3')          6903      2011       102     41.5%
+1  needs +3 at w  (TAIL-2')             3256       728       336     19.6%
+2+ FREE from (TAIL-1)                   6487      2714      1785     39.0%
+TOTAL vertices                         16646      5453      2223
+
+AGAINST THIS ROUND'S INTEREST -- share of the l>4 vertices that (TAIL-1)
+already settles: 49.8% ; share still needing an extension: 50.2%
+
+==============================================================================
+PART 3 -- (F11-ALL) WITNESS CENSUS: is there an anchored induced path on
+          rad+4 vertices at EVERY vertex?  witness / proved-below / undecided
+==============================================================================
+hosts entered (n <= 130):           417
+hosts skipped as too big:           3
+  of the hosts ENTERED, with l > 4:              83
+  of the hosts ENTERED, with l > 4 AND rad >= 5: 22   (1824 vertices)
+  ^^ THIS is the population the 'no counterexample' line below is about.
+(host,w) with a rad+4 WITNESS:      16246
+(host,w) PROVED BELOW rad+4:        1   (complete depth-capped search)
+(host,w) UNDECIDED (truncated):     0
+
+of the PROVED-BELOW instances, how many satisfy F11's own hypotheses?
+   with l > 4:                      0
+   with l > 4 AND rad >= 5:         0
+   largest l among them:            2.500
+   largest rad among them:          2
+
+   a sample of the failing configurations:
+   host                        n    w  rad       l  endpath    ecc
+   dense(s=5,n0=14)           12    7    2   2.500        5      3
+
+==============================================================================
+PART 4 -- (F11-DEG): min_v a(v) >= 6  =>  endpath(G,w) >= ecc(w)+4 for EVERY w
+          hosts satisfying the hypothesis, and the conclusion BUILT at every w
+==============================================================================
+pool: the certified family PLUS PG(2,5), PG(2,7), PG(2,11)
+min a(v) histogram over the pool (n <= 280): a=2:395, a=3:23, a=4:1, a=6:2, a=8:1, a=12:1
+hosts with min a(v) >= 6:            4
+hosts outside the hypothesis:        419
+vertices tested inside it:           504
+ecc(w)+4 anchored path BUILT:        504
+NOT built (would refute (F11-DEG)):  0
+host names inside the hypothesis: PG(2,5), PG(2,5), PG(2,7), PG(2,11)
+
+CONTROL -- hosts JUST OUTSIDE the hypothesis (4 <= min a(v) <= 5, n <= 70):
+   hosts 1, vertices 26, ecc(w)+4 still BUILT at 26 of them
+   (F11-DEG) is therefore SUFFICIENT and visibly NOT necessary.
+
+==============================================================================
+PART 5 -- LIVENESS: (F11-ALL) IS FALSIFIABLE ON THIS MACHINERY
+          (a census that cannot fail measures nothing -- r33's pass-by-emptiness)
+==============================================================================
+host              n  rad       l   min end     rad+4 F11-ALL?
+C6                6    3   2.000         5         7       NO
+C9                9    4   2.000         8         8      yes
+Theta(3,3,3)      8    3   2.250         5         7       NO
+Petersen         10    2   3.000         5         6       NO
+C12              12    6   2.000        10        10      yes
+
+hosts on which (F11-ALL) FAILS: 3 of 5  -- the predicate is LIVE
+all of them carry l <= 4 and are OUTSIDE F11's hypotheses, so no counterexample
+to F11 or to (F11-ALL)-under-hypotheses is claimed here.
+
+==============================================================================
+PARTS RUN: PART0,PART1,PART2,PART3,PART4,PART5
+CHECKS: 16301  FAILURES: 0
+elapsed (s): 3.1
+EXIT=0
+==============================================================================

@@ -1,0 +1,4 @@
+[TheoremK n<=7] tested=995 hits(all-B-high & residue=alpha)=66 NOT-clique=0
+[TheoremK +n=8]  tested=109326 hits=1453 NOT-clique=0
+[TheoremK +rnd]  tested=114914 hits=1464 NOT-clique=0
+WITNESS None

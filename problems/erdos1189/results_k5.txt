@@ -1,0 +1,2 @@
+[2, 3, 4, 6, 12] sum=1.333333 lcm=12
+# k=5 done=True I(k)=1 candidates_checked=588 elapsed=0.6s

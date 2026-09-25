@@ -1,0 +1,163 @@
+====================================================================================================
+w61 r48c -- the certificate R, its closure case by case, and (DOM-MAJ).
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+[N<=16]  graphic partitions of N <= 16 (no cap on parts) : 209
+    [1] transfer edges of graphic partitions : 649 ; NOT in R : 0
+    [ok] [N<=16] CONTROL: there are transfer edges to cover                                 hits=649
+    [2] pairs in R : 1552 ; of them with sum A > sum B : 0
+    [ok] [N<=16] CONTROL: R is a non-empty relation                                         hits=1552
+    [3] CLOSURE of R, by case (each is a place the theorem could fail):
+        EQ             instances     209   closure violations 0   
+        T-flat         instances     332   closure violations 0   
+        T-head         instances     317   closure violations 0   
+        U-inv          instances     228   closure violations 0   
+        U-flat         instances     464   closure violations 0   
+        UNCLASSIFIED   instances       0   closure violations 0   
+        TOTAL closure violations : 0
+    [ok] [N<=16] CONTROL: closure case EQ is non-empty                                      hits=209
+    [ok] [N<=16] CONTROL: closure case T-flat is non-empty                                  hits=332
+    [ok] [N<=16] CONTROL: closure case T-head is non-empty                                  hits=317
+    [ok] [N<=16] CONTROL: closure case U-inv is non-empty                                   hits=228
+    [ok] [N<=16] CONTROL: closure case U-flat is non-empty                                  hits=464
+    [3s] the sub-claims the case proofs rest on:
+        T-flat: successor is (T) or (EQ) with hh A >= hh B             tested    332  failures 0
+        T-head: #{hh A >= A_d-1} >= d'+2   (MIS-SCOPED, no proviso)    tested    317  failures 98
+        T-head: #{hh A >= A_d-1} >= d'+2   given A_d >= 2 (CORRECTED)  tested     61  failures 0
+        T-head: A_1 <= d-1                                             tested    317  failures 0
+        T-head: EVERY mis-scoped failure has A_d = 1                   tested     98  failures 0
+        T-head: d' <= d-1                                              tested    317  failures 0
+        T-head: successor is (U)                                       tested    317  failures 0
+        T-head: v1' <= A_d - 1                                         tested    317  failures 0
+        U-flat: #{hh A >= v1'} >= d'+2                                 tested    464  failures 0
+        U-flat: MARK LAW predicts the new marks                        tested    464  failures 0
+        U-flat: d' = d only when A_{d+1} = d                           tested    464  failures 0
+        U-flat: rho_{v1}(A) >= d+1                                     tested    464  failures 0
+        U-flat: successor is (U)                                       tested    464  failures 0
+        U-flat: v1 >= 1 implies A has a part of size exactly v1        tested    464  failures 0
+        U-inv: successor is (T) or (EQ) with hh A >= hh B              tested    228  failures 0
+    [4] CORRUPT CONTROLS: drop one conjunct of R and re-test closure.
+        drop  v1 <= A_{d+1}    : pairs   1668  closure violations    67   e.g. ((2, 2, 2, 1, 1), (3, 3, 2, 1, 1))
+    [ok] [N<=16] CORRUPT CONTROL: drop  v1 <= A_{d+1} BREAKS closure                        hits=67
+        drop  v2 <= max A      : pairs   1565  closure violations    15   e.g. ((1, 1, 1, 1), (3, 1, 1, 1))
+    [ok] [N<=16] CORRUPT CONTROL: drop  v2 <= max A BREAKS closure                          hits=15
+        drop  A >= B on (T)    : pairs   1550  closure violations     0   e.g. None
+    [ok] [N<=16] CONTROL: reinstating my first draft's `A >= B` on (T) changes nothing -- it is redundant hits=0
+    [4t] (T)-shaped pairs : 649 ; of them NOT satisfying A >= B : 0
+    [ok] [N<=16] CONTROL: there are (T)-shaped pairs to test the redundancy on              hits=649
+    [5] (A,B) BOTH GRAPHIC with B = A + e_0 + e_j : 283 ; of them with A_j > A_{d+1} (so NOT in R) : 55
+        e.g. ((2, 2, 2, 1, 1), (3, 3, 2, 1, 1), 1, 2, 1)
+    [ok] [N<=16] CONTROL: graphicness ALONE does not give the (U) hypothesis -- R is strictly smaller hits=55
+    [6] equal-sum dominance pairs of graphic partitions : 4317 ; (DOM-MAJ) FAILURES 0   e.g. None
+        joint states on transfer walks : 2786 ; states OUTSIDE R : 0
+    [ok] [N<=16] CONTROL: (DOM-MAJ) was tested on a non-empty population                    hits=4317
+
+----------------------------------------------------------------------------------------------------
+[N<=20]  graphic partitions of N <= 20 (no cap on parts) : 604
+    [1] transfer edges of graphic partitions : 2497 ; NOT in R : 0
+    [ok] [N<=20] CONTROL: there are transfer edges to cover                                 hits=2497
+    [2] pairs in R : 5554 ; of them with sum A > sum B : 0
+    [ok] [N<=20] CONTROL: R is a non-empty relation                                         hits=5554
+    [3] CLOSURE of R, by case (each is a place the theorem could fail):
+        EQ             instances     604   closure violations 0   
+        T-flat         instances    1381   closure violations 0   
+        T-head         instances    1116   closure violations 0   
+        U-inv          instances     729   closure violations 0   
+        U-flat         instances    1722   closure violations 0   
+        UNCLASSIFIED   instances       0   closure violations 0   
+        TOTAL closure violations : 0
+    [ok] [N<=20] CONTROL: closure case EQ is non-empty                                      hits=604
+    [ok] [N<=20] CONTROL: closure case T-flat is non-empty                                  hits=1381
+    [ok] [N<=20] CONTROL: closure case T-head is non-empty                                  hits=1116
+    [ok] [N<=20] CONTROL: closure case U-inv is non-empty                                   hits=729
+    [ok] [N<=20] CONTROL: closure case U-flat is non-empty                                  hits=1722
+    [3s] the sub-claims the case proofs rest on:
+        T-flat: successor is (T) or (EQ) with hh A >= hh B             tested   1381  failures 0
+        T-head: #{hh A >= A_d-1} >= d'+2   (MIS-SCOPED, no proviso)    tested   1116  failures 209
+        T-head: #{hh A >= A_d-1} >= d'+2   given A_d >= 2 (CORRECTED)  tested    286  failures 0
+        T-head: A_1 <= d-1                                             tested   1116  failures 0
+        T-head: EVERY mis-scoped failure has A_d = 1                   tested    209  failures 0
+        T-head: d' <= d-1                                              tested   1116  failures 0
+        T-head: successor is (U)                                       tested   1116  failures 0
+        T-head: v1' <= A_d - 1                                         tested   1116  failures 0
+        U-flat: #{hh A >= v1'} >= d'+2                                 tested   1722  failures 0
+        U-flat: MARK LAW predicts the new marks                        tested   1722  failures 0
+        U-flat: d' = d only when A_{d+1} = d                           tested   1722  failures 0
+        U-flat: rho_{v1}(A) >= d+1                                     tested   1722  failures 0
+        U-flat: successor is (U)                                       tested   1722  failures 0
+        U-flat: v1 >= 1 implies A has a part of size exactly v1        tested   1722  failures 0
+        U-inv: successor is (T) or (EQ) with hh A >= hh B              tested    729  failures 0
+    [4] CORRUPT CONTROLS: drop one conjunct of R and re-test closure.
+        drop  v1 <= A_{d+1}    : pairs   6129  closure violations   322   e.g. ((2, 2, 2, 1, 1), (3, 3, 2, 1, 1))
+    [ok] [N<=20] CORRUPT CONTROL: drop  v1 <= A_{d+1} BREAKS closure                        hits=322
+        drop  v2 <= max A      : pairs   5584  closure violations    32   e.g. ((1, 1, 1, 1), (3, 1, 1, 1))
+    [ok] [N<=20] CORRUPT CONTROL: drop  v2 <= max A BREAKS closure                          hits=32
+        drop  A >= B on (T)    : pairs   5552  closure violations     0   e.g. None
+    [ok] [N<=20] CONTROL: reinstating my first draft's `A >= B` on (T) changes nothing -- it is redundant hits=0
+    [4t] (T)-shaped pairs : 2497 ; of them NOT satisfying A >= B : 0
+    [ok] [N<=20] CONTROL: there are (T)-shaped pairs to test the redundancy on              hits=2497
+    [5] (A,B) BOTH GRAPHIC with B = A + e_0 + e_j : 984 ; of them with A_j > A_{d+1} (so NOT in R) : 255
+        e.g. ((2, 2, 2, 1, 1), (3, 3, 2, 1, 1), 1, 2, 1)
+    [ok] [N<=20] CONTROL: graphicness ALONE does not give the (U) hypothesis -- R is strictly smaller hits=255
+    [6] equal-sum dominance pairs of graphic partitions : 30405 ; (DOM-MAJ) FAILURES 0   e.g. None
+        joint states on transfer walks : 12242 ; states OUTSIDE R : 0
+    [ok] [N<=20] CONTROL: (DOM-MAJ) was tested on a non-empty population                    hits=30405
+
+----------------------------------------------------------------------------------------------------
+[N<=22]  graphic partitions of N <= 22 (no cap on parts) : 991
+    [1] transfer edges of graphic partitions : 4621 ; NOT in R : 0
+    [ok] [N<=22] CONTROL: there are transfer edges to cover                                 hits=4621
+    [2] pairs in R : 10003 ; of them with sum A > sum B : 0
+    [ok] [N<=22] CONTROL: R is a non-empty relation                                         hits=10003
+    [3] CLOSURE of R, by case (each is a place the theorem could fail):
+        EQ             instances     991   closure violations 0   
+        T-flat         instances    2631   closure violations 0   
+        T-head         instances    1990   closure violations 0   
+        U-inv          instances    1249   closure violations 0   
+        U-flat         instances    3140   closure violations 0   
+        UNCLASSIFIED   instances       0   closure violations 0   
+        TOTAL closure violations : 0
+    [ok] [N<=22] CONTROL: closure case EQ is non-empty                                      hits=991
+    [ok] [N<=22] CONTROL: closure case T-flat is non-empty                                  hits=2631
+    [ok] [N<=22] CONTROL: closure case T-head is non-empty                                  hits=1990
+    [ok] [N<=22] CONTROL: closure case U-inv is non-empty                                   hits=1249
+    [ok] [N<=22] CONTROL: closure case U-flat is non-empty                                  hits=3140
+    [3s] the sub-claims the case proofs rest on:
+        T-flat: successor is (T) or (EQ) with hh A >= hh B             tested   2631  failures 0
+        T-head: #{hh A >= A_d-1} >= d'+2   (MIS-SCOPED, no proviso)    tested   1990  failures 293
+        T-head: #{hh A >= A_d-1} >= d'+2   given A_d >= 2 (CORRECTED)  tested    562  failures 0
+        T-head: A_1 <= d-1                                             tested   1990  failures 0
+        T-head: EVERY mis-scoped failure has A_d = 1                   tested    293  failures 0
+        T-head: d' <= d-1                                              tested   1990  failures 0
+        T-head: successor is (U)                                       tested   1990  failures 0
+        T-head: v1' <= A_d - 1                                         tested   1990  failures 0
+        U-flat: #{hh A >= v1'} >= d'+2                                 tested   3140  failures 0
+        U-flat: MARK LAW predicts the new marks                        tested   3140  failures 0
+        U-flat: d' = d only when A_{d+1} = d                           tested   3140  failures 0
+        U-flat: rho_{v1}(A) >= d+1                                     tested   3140  failures 0
+        U-flat: successor is (U)                                       tested   3140  failures 0
+        U-flat: v1 >= 1 implies A has a part of size exactly v1        tested   3140  failures 0
+        U-inv: successor is (T) or (EQ) with hh A >= hh B              tested   1249  failures 0
+    [4] CORRUPT CONTROLS: drop one conjunct of R and re-test closure.
+        drop  v1 <= A_{d+1}    : pairs  11166  closure violations   640   e.g. ((2, 2, 2, 1, 1), (3, 3, 2, 1, 1))
+    [ok] [N<=22] CORRUPT CONTROL: drop  v1 <= A_{d+1} BREAKS closure                        hits=640
+        drop  v2 <= max A      : pairs  10046  closure violations    45   e.g. ((1, 1, 1, 1), (3, 1, 1, 1))
+    [ok] [N<=22] CORRUPT CONTROL: drop  v2 <= max A BREAKS closure                          hits=45
+        drop  A >= B on (T)    : pairs  10001  closure violations     0   e.g. None
+    [ok] [N<=22] CONTROL: reinstating my first draft's `A >= B` on (T) changes nothing -- it is redundant hits=0
+    [4t] (T)-shaped pairs : 4621 ; of them NOT satisfying A >= B : 0
+    [ok] [N<=22] CONTROL: there are (T)-shaped pairs to test the redundancy on              hits=4621
+    [5] (A,B) BOTH GRAPHIC with B = A + e_0 + e_j : 1753 ; of them with A_j > A_{d+1} (so NOT in R) : 504
+        e.g. ((2, 2, 2, 1, 1), (3, 3, 2, 1, 1), 1, 2, 1)
+    [ok] [N<=22] CONTROL: graphicness ALONE does not give the (U) hypothesis -- R is strictly smaller hits=504
+    [6] equal-sum dominance pairs of graphic partitions : 75735 ; (DOM-MAJ) FAILURES 0   e.g. None
+        joint states on transfer walks : 24009 ; states OUTSIDE R : 0
+    [ok] [N<=22] CONTROL: (DOM-MAJ) was tested on a non-empty population                    hits=75735
+
+====================================================================================================
+sec 111: THREE sizes.  |R| = 1552 / 5554 / 10003 ; closure violations 0 / 0 / 0 ; dominance pairs 4317 / 30405 / 75735
+stepA vs stepC (conjugate coordinates) diffed calls : 21419 , 0 disagreements
+ELAPSED 7.37 s / 600 s internal limit ; PARTIAL=False
+CONTROLS 39/39 firing ; DEFECTS 0
+====================================================================================================

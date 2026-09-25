@@ -1,0 +1,18 @@
+'K1695.l1_matrix_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l1_mul_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l1_unit_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l1_matrix_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.rank_mul_transposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.smul_vecMulVec' depends on axioms: [propext, Quot.sound]
+'K1695.l2_rank_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.matrix_rank_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l3_rank_one_update_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l4_t0' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l5_t3_corrected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.exists_ker_dotProduct_ne_zero_of_not_mem_range_transpose' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'K1695.l6a_rank_one_update_eq_add_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l6prime_t2_corrected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.one_mu_coefficients_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'K1695.l7_quadratic_descent_with_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]

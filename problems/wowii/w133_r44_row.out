@@ -1,0 +1,247 @@
+WOWII-133 round 44 -- THE ROW'S ANCHOR IS FREE IN TWO LANES OF THREE, AND OUR OWN
+                      CASE A WITNESSES DO NOT EXHIBIT THE OPEN CASE
+interpreter: system python3 3.9.6 (pure stdlib)
+
+==============================================================================
+PART 0 -- primitives against hand computation, and THIS round's guard
+==============================================================================
+  7 hosts, rad/diam/l against hand values, and brute alpha vs the matching
+  identity at every vertex of each: agreed.
+
+  THE IDENTITY THE ROUND RESTS ON.  G := H + one pendant p at w.  p has degree 1, so an
+  induced path of G either misses p, or has p as an ENDPOINT and its rest is an induced path
+  of H ending at w.  Hence
+
+        path(G) = max( path(H) , 1 + endpath(H,w) )                                    (IDENT)
+
+  and in particular path(G) <= 1 + path(H) ALWAYS.  Draft 41 refuted `(A2-PATH)`
+  (`path(G) >= path(H) + h`); this round's new lane uses only `path(G) >= path(H)`, the h = 0
+  half.  The guard is the defect that would confuse the two.
+
+  GUARD -- (D10) HAIR-ON-ANY-PATH: evaluating the row with `1 + path(H)` in place of (IDENT),
+  i.e. crediting the pendant to an induced path that does not END at w.  It is ONE-SIDED BY
+  THE PROOF ABOVE (it can only over-claim), so its MISSES must be 0 and any EXTRA is real.
+
+  (IDENT) verified by COMPLETE search on 97 (host, w) pairs over 12 hosts: 97/97.
+  (D10) HAIR-ON-ANY-PATH: EXTRA 29 of 97, MISSES 0.
+  worst over-claim: P5 w=1, true path(G) = 5, (D10) says 6.
+
+  building and measuring the host population (quiet pass) ...
+  ... 661 specs, 661 built, 0 discarded, 661 hosts measured, 7.3s
+  population for the census: 664 hosts (including round 43's three witnesses).
+  residual-row instances in it: 601.
+
+==============================================================================
+PART 1 -- (ROW-3): the residual row stratifies, and two of its three lanes need
+          no anchor at all
+==============================================================================
+
+  SETTING (draft 42.5's residual row, in round 39/42/43's coordinates).  H connected, C4-free,
+  mu(H) >= 2, r := rad(H); w with (2) ecc_H(w) = r+1 and (3) d(c,w) = r for EVERY centre c.
+  By (RAD-1P), (3) is exactly `rad(G) = r+1` for G := H + one pendant at w, and the target is
+  path(G) >= rad(G) + floor(l(G)) = (r+1) + k.
+
+  Draft 42.5 discharges the row through (B2) `path(G) >= 1 + endpath(H,w)` -- at the
+  PRESCRIBED w, which is the whole difficulty.  But (B1) `path(G) >= path(H)` carries NO
+  anchor, and path(H) >= endpath(H,v) for EVERY v.  Feeding (TAIL-1)/(TAIL-2)/(TAIL-3) in at a
+  DIAMETRAL vertex instead of at w gives
+
+    (ROW-3).  With D := diam(H) and the target (r+1)+k:
+      * D + 1 >= (r+1)+k  ->  a geodesic of H alone closes it.        [draft 12's (R1) shape]
+      * D + 2 >= (r+1)+k  ->  (TAIL-1) at a DIAMETRAL vertex closes it, UNCONDITIONALLY:
+                              no anchor, no F11, no l > 4, no rad >= 5.
+      * D + 3 >= (r+1)+k  ->  (TAIL-2) at ANY ONE diametral vertex closes it -- an existential
+                              over the whole diametral set, not a statement at a named vertex.
+      * otherwise         ->  the prescribed anchor is needed: (TAIL-2) at w, plus the hair.
+    At k = 4 this reads: offset D-r >= +3 is CLOSED UNCONDITIONALLY; offset = +2 needs
+    (TAIL-2) somewhere on the diametral set; offset = +1 -- exactly (SPLIT)'s CASE A -- is the
+    only lane that still needs the prescribed anchor.
+
+  PROOF.  Immediate from (IDENT) of PART 0 (path(G) >= path(H)), path(H) >= endpath(H,v), and
+  (TAIL-1)/(TAIL-2) at v with ecc(v) = D.  The INGREDIENT IS OLD -- it is the shape of draft
+  12's reductions (R1)/(R2) and of Lemma G10, one level up.  WHAT IS NEW IS ONLY THIS: the row
+  had never used the fact that its own (B1) leg is anchor-free.
+
+  Lanes taken, over 601 row instances (each certificate BUILT and re-checked):
+    L0-GEODESIC         12
+       e.g. NLsc(7,s3) n=146 rad=6 diam=10 (off +4) mu=3 l(H)=4.3425 w=115 k=floor(l(G))=4 need=11 built=11
+    L1-TAIL1-DIAM      122
+       e.g. NLjc(3^7,s2) n=182 rad=6 diam=9 (off +3) mu=4 l(H)=4.5824 w=15 k=floor(l(G))=4 need=11 built=11
+    L2-TAIL2-DIAM      306
+       e.g. NLsd(5,s2) n=106 rad=4 diam=6 (off +2) mu=4 l(H)=4.7358 w=37 k=floor(l(G))=4 need=9 built=9
+    L3-TAIL2-AT-w      131
+       e.g. W43a n=420 rad=5 diam=6 (off +1) mu=4 l(H)=4.9952 w=10 k=floor(l(G))=4 need=10 built=9
+    OPEN-k4              0
+    BEYOND-k5           30
+       e.g. ODD1(6,s2) n=205 rad=5 diam=7 (off +2) mu=2 l(H)=5.3659 w=23 k=floor(l(G))=5 need=11 built=0
+  571 certificates re-checked from scratch: 0 not induced, 0 too short.
+
+==============================================================================
+PART 2 -- (ROW-MU4), and round 43's own CASE A witnesses re-read as route A2
+          instances.  The result is AGAINST this line's interest.
+==============================================================================
+
+    (ROW-MU4).  If mu(H) >= 4 then endpath(H,w) >= ecc(w) + 3 for EVERY w.
+    PROOF.  a(u_d) >= 4 >= 2 gives (TAIL-1)'s y; a(y) >= 4 is (TAIL-2)'s BLANKET hypothesis
+    (draft 42.3) at that same y; so (TAIL-2) fires at the first frame tried. ///
+
+  It is a one-line corollary of a theorem this line proved in round 32.  What it costs us is
+  the following, and the round prints it before anything else:
+
+  ROUND 43's THREE CASE A WITNESSES ALL HAVE mu >= 4.  So round 43 slice 2's `129 of 129`
+  built paths were never evidence about the OPEN case -- (TAIL-2) could not have failed on
+  them.  W43a/W43b/W43c populate draft 42.4's residual row, which is what round 43 claimed and
+  which stands; they do NOT test the one question that can still break WOWII-133 on it.
+
+  W43a  n=420 |E|=1049 mu=4 l(H)=4.995238 rad=5 diam=6 |Ctr|=1 condition-4=128
+  W43b  n=420 |E|=1049 mu=4 l(H)=4.995238 rad=5 diam=6 |Ctr|=8 condition-4=1
+  W43c  n=420 |E|=1050 mu=5 l(H)=5.000000 rad=5 diam=6 |Ctr|=6 condition-4=2
+
+  THE ROUTE A2 INSTANCE EACH ONE ACTUALLY IS  (G := H + one pendant at w):
+    W43a: rad(G)=6  l(G)=4.988124  floor(l(G))=4  target path(G) >= 10
+    W43b: rad(G)=6  l(G)=4.988124  floor(l(G))=4  target path(G) >= 10
+    W43c: rad(G)=6  l(G)=4.992874  floor(l(G))=4  target path(G) >= 10
+
+  condition-4 vertices tested: 131;  ecc(w)+3 anchored induced path BUILT: 131;
+  of those, the frame's own y has a(y) >= 4 -- i.e. (ROW-MU4) applies: 131;
+  frames using a y with a(y) < 4: 0;  NOT BUILT: 0.
+
+  ENTITLED READING: mu >= 4 on all three hosts, so (ROW-MU4) closes every one of
+  these instances BEFORE any search.  THE OPEN CASE IS NOT EXHIBITED BY THEM.
+  LIVENESS: on C6 (mu = 2) the same detector DECLINES (endpath = ecc+2 exactly,
+  draft 42.2's tightness example), so 'it fired' is information, not a tautology.
+
+==============================================================================
+PART 3 -- (ROW-HARD): what an instance that is STILL open has to look like, and
+          the census of how far every instance we hold is from looking like it
+==============================================================================
+
+    (ROW-HARD).  Let (H,w) be a residual-row instance at offset +1 (CASE A) with k = 4.  If it
+    is not closed, then for EVERY far end x of w, EVERY w-x geodesic u_0..u_d, and EVERY
+    y in N(u_d) admissible for (TAIL-1),
+                     max( a(y), deg(y) - 1 )  <=  1 + k2(y)  <=  3,
+    where k2(y) = #{ j in {d-2,d-3} : N(y) meets N(u_j) }.  In particular a(y) <= 3 and
+    deg(y) <= 4 at EVERY such y; and since mu(H) >= 2 forces a(y) >= 2, every such frame must
+    also have k2(y) >= 1.
+    PROOF.  Contrapositive of (TAIL-2'') (draft 46.1): one frame with
+    max(a(y),deg(y)-1) >= 2+k2 gives endpath(H,w) >= ecc(w)+3, and then the hair gives
+    path(G) >= 1 + (r+1) + 3 = (r+1)+4. ///
+
+  So the obstruction is not `n`, and not `|Ctr|`: it is a LOW-a COLLAR around EVERY far end of
+  w.  The measurement below is the slack of that inequality, maximised over the frames -- the
+  amount by which each instance we hold FAILS to be hard:
+
+        SLACK(H,w) := max over admissible frames of [ max(a(y),deg(y)-1) - (2 + k2(y)) ].
+
+  SLACK < 0 at an offset-+1 instance is exactly the open case.  SLACK >= 0 closes it.
+
+  DIRECTION OF ERROR, FIXED BEFORE THE NUMBERS.  The frames are SAMPLED (<= 6 far ends,
+  <= 2 geodesics each), so the SLACK printed below is a LOWER bound on the true maximum.
+  A printed `SLACK >= 0` is therefore SOUND -- widening the sampling cannot take it back.
+  A printed `SLACK < 0` would be INCONCLUSIVE and could NOT be called an open instance: it
+  would first have to survive an exhaustive frame enumeration at that one vertex.
+
+  Row instances by offset diam(H)-rad(H):
+    +1 :   131
+    +2 :   336
+    +3 :   122
+    +4 :    12
+  SLACK histogram over every row instance (SLACK < 0 would be the open case):
+    SLACK  +0 :     1
+    SLACK  +2 :     6
+    SLACK  +3 :   245
+    SLACK  +4 :   345
+    SLACK  +5 :     2
+    SLACK  +6 :     2
+  minimum SLACK anywhere: +0, at SUB3(3^9,s1) (n=273 rad=8 diam=10 mu=2 l=4.5714 w=173,
+  10 frames examined).
+
+  LANES, counted (PART 1's classification):
+    L0-GEODESIC         12
+    L1-TAIL1-DIAM      122
+    L2-TAIL2-DIAM      306
+    L3-TAIL2-AT-w      131
+    OPEN-k4              0
+    BEYOND-k5           30
+  CLOSED UNCONDITIONALLY (L0 + L1: no anchor, no F11, no l > 4, no rad >= 5): 134.
+  Every BEYOND-k row is a row instance whose own floor(l(G)) is 5 or more: that is
+  the NEXT pocket, not route A2's, and none of the four lanes reaches it.  It is
+  reported here rather than folded into 'open'.
+
+
+  OWN ERROR IN THIS PART, REPAIRED BY RUNNING (81), NOT BY DELETING.  The first version of the
+  histogram below read its frame count off `tail2_at`, which RETURNS AT THE FIRST FRAME THAT
+  FIRES.  It therefore printed `1 frame` for all 601 instances -- a distribution that cannot
+  occur -- and the SLACK column it accompanied was the slack at the first firing frame, not the
+  maximum.  Repaired by writing `frame_scan`, which enumerates every sampled frame with no
+  early return; the SLACK histogram above is its output, and it MOVED (the old one peaked at
+  +2, this one at +4).  The old numbers are not quoted anywhere.
+
+  Admissible-frame count per instance (capped at 10 for the histogram):
+     6 frames :     2
+     8 frames :     4
+    >=10 frames :   595
+  Far-end sphere / collar N(S_ecc(w)(w)) / n, smallest and largest collar:
+    smallest: |S| = 1, |collar| = 4, n = 160
+    largest : |S| = 39, |collar| = 90, n = 205
+    median collar as a fraction of n: 0.192
+  (ROW-HARD) asks for a(y) <= 3 AND deg(y) <= 4 on EVERY vertex of that collar
+  while l(H) > 4 asks the AVERAGE of a over ALL n vertices to exceed 4.
+
+  IN-CLASS (l(H) > 4 AND rad(H) >= 5) row instances: 574.
+  OF THOSE, instances at offset +1 with SLACK < 0 -- i.e. instances that actually
+  exhibit the open case: 0.
+  AND, INDEPENDENTLY OF THE SLACK: in-class row instances at floor(l(G)) = 4 that
+  NO lane of (ROW-3) closes: 0.
+  THAT IS THE ONLY CASE A NUMBER THIS ROUND IS ENTITLED TO REPORT.
+
+==============================================================================
+PART 4 -- THE SEARCH, RE-AIMED.  Round 43 owed 'make n smaller'; PART 2 says the
+          binding coordinate is mu, not n.
+==============================================================================
+
+  PREDICTIONS, REGISTERED BEFORE ANY NUMBER BELOW:
+    (P1) subdividing ONE triangle-free edge of W43a yields, for at least one edge, a host that
+         is still C4-free with l > 4 and rad >= 5 and diam = rad+1 and a condition-4 vertex --
+         i.e. a CASE A instance with mu = 2, the first this line would hold.
+    (P2) NO instance produced anywhere in this round will have SLACK < 0.  If (P2) is WRONG we
+         have the first instance that exhibits the open case and it must be re-verified by a
+         standalone script (rule 105) before anything is claimed about it.
+  A SUBDIVIDED VERTEX HAS a = 2 BY CONSTRUCTION, so (P1) does not need luck for mu; what it
+  needs is that rad, roundness and condition 4 all survive the surgery.
+
+  POSITIVE CONTROL: screen(W43a) -> rad=5 diam=6 mu=4 l=4.995238 condition-4=128
+  (without this line every 0 below would be a statement about the instrument.)
+
+  PROBE A -- single-edge subdivision of W43a.  1049 of 1049 edges lie in no triangle.
+    41 subdivisions tried, 41 still C4-free, 27 still round (diam = rad+1),
+    27 are in-class CASE A carriers.
+    shapes seen (rad, diam, mu, carries condition 4) -> count:
+      (rad=5, diam=6, mu=2, cond4=True) : 27
+      (rad=5, diam=7, mu=2, cond4=True) : 10
+      (rad=6, diam=6, mu=2, cond4=False) : 4
+
+  PROBE B -- degree-capped random C4-free hosts at cap 6 (l <= mean degree, so
+  cap >= 5 is forced; cap 6 is the next value and gives mu room to sit below 4).
+    HIT  SP5(480,s2) rad=5 diam=6 mu=5 l=5.000000 cond4=171
+    in-class CASE A carriers from probe B: 1.
+
+  THE SLACK OF EVERY CASE A INSTANCE FOUND IN THIS PART:
+    minimum SLACK over everything found: +2  (SD(W43a,0-163), mu=2, w=16)
+    instances with SLACK < 0 -- i.e. exhibiting the OPEN case: 0.
+
+  VERDICT ON THE REGISTERED PREDICTIONS:
+    (P1) HELD -- 27 in-class CASE A carriers with mu <= 3 were built.
+    (P2) HELD -- 0 instances with SLACK < 0.
+
+==============================================================================
+PART 5 -- ANY NEW INSTANCE, WRITTEN OUT FOR INDEPENDENT RE-VERIFICATION (105)
+==============================================================================
+  HOST SD(W43a,0-163)  n=421 |E|=1050 mu=2 l=4.988124 rad=5 diam=6 cond4=129
+  condition-4 vertices (first 20): [0, 10, 13, 14, 15, 16, 21, 23, 30, 33, 46, 49, 51, 53, 60, 69, 74, 78, 79, 80]
+  edge list written to problems/wowii/w133_r44_W44a.txt
+
+==============================================================================
+PARTS RUN: PART0,PART1,PART2,PART3,PART4
+CHECKS 262   FAILS 0   elapsed 20.1s
+==============================================================================

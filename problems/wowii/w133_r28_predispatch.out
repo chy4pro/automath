@@ -1,0 +1,157 @@
+====================================================================================================
+PART 0. POSITIVE CONTROLS -- every primitive fired where the answer MUST be YES/known
+====================================================================================================
+  [OK ] all_c4 finds the 4-cycle in C4 (MUST be non-empty)                   got=[(0, 1, 2, 3)] want=[(0, 1, 2, 3)]
+  [OK ] all_c4 finds THREE 4-vertex sets carrying a 4-cycle in K_{2,3}       got=3 want=3
+  [OK ] all_c4 finds ONE 4-vertex set in complete K4 (sets, not cycles)      got=1 want=1
+  [OK ] all_c4 is empty on C6 (discrimination)                               got=[] want=[]
+  [OK ] longest_induced_path(P7) = 7 (a long YES, not a silent NO)           got=7 want=7
+  [OK ] longest_induced_path(P9) = 9                                         got=9 want=9
+  [OK ] longest_induced_path(C6) = 5                                         got=5 want=5
+  [OK ] longest_induced_path(K_{1,4}) = 3                                    got=3 want=3
+  [OK ] longest_induced_path(Petersen) = 5                                   got=5 want=5
+  [OK ] a(v) == 3 for every Petersen vertex                                  got={3} want={3}
+  [OK ] a(v) == 1 on a triangle                                              got={1} want={1}
+  [OK ] a(centre) == 4 on K_{1,4}                                            got=4 want=4
+
+====================================================================================================
+PART 1. THE HELD-OUT KEY, RE-DERIVED from the printed edge lists by this audit's own code
+====================================================================================================
+   test graphs: ['K1', 'K2', 'K3', 'K4'] ; rows: ['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9']
+  [OK ] four test graphs present                                             got=['K1', 'K2', 'K3', 'K4'] want=['K1', 'K2', 'K3', 'K4']
+  [OK ] nine rows present and CONTIGUOUS V1..V9                              got=True want=True
+  [OK ] re-derived V1 agrees with the r26 key                                got=14 want=14
+  [OK ] re-derived V2 agrees with the r26 key                                got=3 want=3
+  [OK ] re-derived V4 agrees with the r26 key                                got=(5, 0, 0, 0) want=(5, 0, 0, 0)
+  [OK ] re-derived V5 agrees with the r26 key                                got=2 want=2
+  [OK ] re-derived V6 agrees with the r26 key                                got=6 want=6
+  [OK ] re-derived V7 agrees with the r26 key                                got=(2, -3) want=(2, -3)
+  [OK ] re-derived V8 agrees with the r26 key                                got=(-7, 0) want=(-7, 0)
+  [OK ] re-derived V9 agrees with the r26 key                                got=(3, -10) want=(3, -10)
+
+   V3 asks: which of K1..K4 contains a 4-cycle, AND ITS 4 VERTICES.
+      K1: 0 four-cycle(s): []
+      K2: 0 four-cycle(s): []
+      K3: 0 four-cycle(s): []
+      K4: 2 four-cycle(s): [(0, 1, 2, 3), (0, 3, 4, 5)]
+  [OK ] exactly ONE of the four graphs contains a 4-cycle                    got=['K4'] want=['K4']
+  [OK ] the key names that graph                                             got=K4 want=K4
+   key's 4-vertex answer: ((0, 1, 2, 3),) ; TRUE set of 4-cycles in K4: [(0, 1, 2, 3), (0, 3, 4, 5)]
+   *** K4 carries 2 distinct 4-vertex sets with a 4-cycle. The key records ONE.
+   *** A reviewer answering (0, 3, 4, 5) is CORRECT and the r26 key marks them WRONG.
+   *** V3 is Tier H: a wrong Tier-H value VOIDS THE WHOLE REVIEW. This row is a
+   *** FALSE-VOID GENERATOR and it has been READY for dispatch since r26.
+  [OK ] MEASURED: number of 4-vertex sets carrying a 4-cycle in K4           got=2 want=2
+  [OK ] V3's 4-vertex half does NOT have a unique correct answer (the defect) got=False want=False
+
+====================================================================================================
+PART 2. ROW-DETERMINATION AUDIT -- every row's SHORTCUT named, COMPUTED, and compared
+        A row whose truth equals the value a reviewer reaches WITHOUT doing the work
+        grades nothing and is STRUCK BEFORE DISPATCH.
+====================================================================================================
+   V1   KEPT      no shortcut identified -- no shortcut: the row IS the transcription check -- a count of a printed list, 
+   V2   KEPT      no shortcut identified -- no shortcut: a local degree with no value the brief suggests
+   V3   **STRUCK** shortcut=(0, 1, 2, 3)   truth=(0, 1, 2, 3)   SHORTCUT HITS THE TRUTH
+        shortcut reasoning: 'the 4-cycle lies inside Z, on the first four cycle vertices' -- Z is the one distinguished 6-set in the brief and (0,1,2,3) is its most guessable 4-subset
+   V4   **STRUCK** shortcut=(5, 0, 0, 0)   truth=(5, 0, 0, 0)   SHORTCUT HITS THE TRUTH
+        shortcut reasoning: 'every off-Z vertex is in W_1, the other three buckets are empty' -- the degenerate census, guessable from the count of off-Z vertices alone
+   V5   KEPT      shortcut=3              truth=2              shortcut misses
+        shortcut reasoning: 'a = d' i.e. t(7) = 0, the generic value when no triangle is noticed
+   V6   **STRUCK** shortcut=6              truth=6              SHORTCUT HITS THE TRUTH
+        shortcut reasoning: 'the class forbids an induced P7, so the longest induced path is 6' -- the maximum consistent with the hypothesis the brief spends its length on
+   V7   KEPT      no shortcut identified -- 'sum over Z of (a-3) equals -T_Z' -- a plausible-looking identity
+   V8   **STRUCK** shortcut=0              truth=0              SHORTCUT HITS THE TRUTH
+        shortcut reasoning: 'n_3 = 0' -- the modal value, and G60's own bound makes small n_3 the expected case
+   V9   KEPT      no shortcut identified -- no shortcut named
+   (V5 detail: d(7)=3, t(7)=1, so a(7)=2)
+   V3   ALSO STRUCK on a SECOND, independent ground: its answer is NOT UNIQUE
+
+   STRUCK BEFORE DISPATCH: ['V3', 'V4', 'V6', 'V8']
+   KEPT:                   ['V1', 'V2', 'V5', 'V7', 'V9']
+  [OK ] the audit ran on all nine rows                                       got=9 want=9
+  [OK ] every KEPT row's shortcut MISSES its truth (executed, not eyeballed) got=True want=True
+  [OK ] LIVENESS: the audit STRIKES a row whose shortcut equals its truth    got=True want=True
+
+====================================================================================================
+PART 3. GATES ON THE BRIEF TEXT -- run on the r26 brief that is currently READY
+====================================================================================================
+  [OK ] G1 no held-out answer in the brief                                   got=[] want=[]
+  [FAIL] G2 no status leak / no private address                               got=['promot', 'planner', 'round 2', 'S1 candidate'] want=[]
+  [OK ] G3 row ids in the READY r26 brief, enumerated                        got=['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9'] want=['V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9']
+  [FAIL] G4 CANNOT COMPUTE offered at least TWICE (w61 r31 standard)          got=False want=True
+  [FAIL] G5 brief carries r27's §36 (S3) clarification                        got=False want=True
+
+   FIRING each gate on a corrupted copy, in this same run:
+      G1 <- an answer pasted in, assignment shape -> FIRED
+  [OK ] gate FIRES: G1 <- an answer pasted in, assignment shape              got=True want=True
+      G1 <- an answer pasted in, tuple literal -> FIRED
+  [OK ] gate FIRES: G1 <- an answer pasted in, tuple literal                 got=True want=True
+      G2 <- a status leak pasted in          -> FIRED
+  [OK ] gate FIRES: G2 <- a status leak pasted in                            got=True want=True
+      G2 <- the private address pasted in    -> FIRED
+  [OK ] gate FIRES: G2 <- the private address pasted in                      got=True want=True
+      G3 <- a row silently dropped           -> FIRED
+  [OK ] gate FIRES: G3 <- a row silently dropped                             got=True want=True
+      G4 <- the hatch removed                -> FIRED
+  [OK ] gate FIRES: G4 <- the hatch removed                                  got=True want=True
+      G5 <- stale §36 text                   -> FIRED
+  [OK ] gate FIRES: G5 <- stale §36 text                                     got=True want=True
+
+====================================================================================================
+PART 4. IS THE READY BRIEF CURRENT?  Measured against the draft, by ANCHOR (RULING CV)
+====================================================================================================
+   LINK 1 / §35  anchored at draft lines 4592..4717 (126 lines, 8700 chars)
+  [OK ] LINK 1 / §35 anchor resolved                                         got=True want=True
+   LINK 2 / §36  anchored at draft lines 4793..4905 (113 lines, 7572 chars)
+  [OK ] LINK 2 / §36 anchor resolved                                         got=True want=True
+   LINK 3 / §37  anchored at draft lines 5013..5101 (89 lines, 5831 chars)
+  [OK ] LINK 3 / §37 anchor resolved                                         got=True want=True
+
+   The r26 builder cuts by LINE NUMBER.  Same constants, today's draft:
+      LINK 1 / §35  line-cut 4592..4717 == anchor-cut
+      LINK 2 / §36  line-cut 4793..4897 !=  anchor-cut
+         line-cut starts: '## 36.1 The statement — **UNREGISTERED, carrying its proof; no number '
+         anchor  starts: '## 36.1 The statement — **UNREGISTERED, carrying its proof; no number '
+      LINK 3 / §37  line-cut 5005..5093 !=  anchor-cut
+         line-cut starts: ''
+         anchor  starts: '## 37.1 The statement — **UNREGISTERED, carrying its proof; `G60` left'
+  [OK ] §35's line-cut still coincides with its anchor-cut                   got=True want=True
+  [OK ] §36's line-cut has DRIFTED off its anchor-cut (RULING CV, measured)  got=False want=False
+  [OK ] §37's line-cut has DRIFTED off its anchor-cut (RULING CV, measured)  got=False want=False
+
+   STALENESS of the READY brief, link by link (is the CURRENT draft text in it?):
+      LINK 1 / §35  0/98 substantive lines of the CURRENT text are absent from the brief
+      LINK 2 / §36  7/82 substantive lines of the CURRENT text are absent from the brief
+         MISSING: *(Round 27 clarification, entered here at the site rather than downstream — RULING BU. T
+         MISSING: number **5** is a count over the full **256-frame** population, **not** a census of dist
+         MISSING: shapes: the independent re-implementation finds that **4 of the 5 survivors have `w` car
+         MISSING: ANTIPODAL trace**, so in those `y` sits at distance **2**, not 3. Restricted to `w` of *
+      LINK 3 / §37  0/66 substantive lines of the CURRENT text are absent from the brief
+  [OK ] the READY r26 brief is STALE against the current draft (must be True, or item 3 is moot) got=True want=True
+
+====================================================================================================
+DISPATCH VERDICT ON THE READY r26 BRIEF
+====================================================================================================
+   [BLOCKER] D1  V3 is a FALSE-VOID GENERATOR
+        K4 carries TWO 4-vertex sets with a 4-cycle; the key records one. V3 is Tier H and a wrong Tier-H value VOIDS THE WHOLE REVIEW, so a reviewer who answers (0,3,4,5) -- correctly -- is voided. SEVERITY: highest. This would have destroyed the return.
+   [BLOCKER] D2  four rows are DETERMINED
+        V3/V4/V6/V8 each have a named shortcut whose value EQUALS the truth. They grade nothing and inflate an apparent pass. STRUCK: ['V3', 'V4', 'V6', 'V8'] ; KEPT: ['V1', 'V2', 'V5', 'V7', 'V9']
+   [BLOCKER] D3  the brief is STALE
+        the §36 extract predates r27's (S3) clarification. A reviewer reading '256 frames, 5 survive' as a census of distance-3 SHAPES reports a gap the author has already closed -- a manufactured false positive, from OUR side.
+   [BLOCKER] D4  status leaks
+        the verbatim extracts disclose ['promot', 'planner', 'round 2', 'S1 candidate'] -- an adjudicating 'planner', the proposed tier, and the author's own confidence. A reviewer told the author does not rate it S1 is not reviewing blind.
+   [BLOCKER] D5  the refusal hatch is stated ONCE
+        'CANNOT COMPUTE' appears 1 time(s) in a 35 KB brief. w61 r31's standard is twice, in bold. A hatch a reviewer cannot recall is a hatch that pushes them to guess -- and a guess on a Tier-H row voids the review.
+
+   Q41 IS **NOT DISPATCHABLE** AS IT STANDS: 5 blockers.
+   This is the round's finding, not a run failure: the non-zero exit below is the
+   audit WORKING.  The lease deferral cost nothing; dispatching would have cost the
+   return.
+
+====================================================================================================
+checks: 48, failures: 3  (the 3 failures ARE the blockers above)
+   FAIL G2 no status leak / no private address got=['promot', 'planner', 'round 2', 'S1 candidate'] want=[]
+   FAIL G4 CANNOT COMPUTE offered at least TWICE (w61 r31 standard) got=False want=True
+   FAIL G5 brief carries r27's §36 (S3) clarification got=False want=True
+STRUCK ROWS (named here, as RULING CP requires, BEFORE dispatch): ['V3', 'V4', 'V6', 'V8']
+KEPT ROWS: ['V1', 'V2', 'V5', 'V7', 'V9']

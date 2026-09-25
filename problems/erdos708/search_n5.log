@@ -1,0 +1,4 @@
+new best: min|B|=2 A=[18, 24, 41, 49, 52] x=1880398
+new best: min|B|=4 A=[18, 24, 41, 49, 52] x=4342
+new best: min|B|=5 A=[19, 34, 37, 52, 57] x=4119
+n=5: tried 130115 instances in 500s; best = (5, [19, 34, 37, 52, 57], 4119)

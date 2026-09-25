@@ -1,0 +1,124 @@
+A_7 built by BFS: |G| = 2520, all elements even = True
+class reps as words in <a,b>: 1a:len0, 2a:len9, 3a:len1, 3b:len9, 4a:len10, 5a:len9, 6a:len10, 7a:len1
+p=2: 6 p-regular classes -> 6 absolutely irreducible Brauer characters; 6 irreducible F_2-modules
+p=3: 6 p-regular classes -> 6 absolutely irreducible Brauer characters; 5 irreducible F_3-modules
+p=5: 8 p-regular classes -> 8 absolutely irreducible Brauer characters; 7 irreducible F_5-modules
+p=7: 7 p-regular classes -> 7 absolutely irreducible Brauer characters; 7 irreducible F_7-modules
+========================================================================
+p = 2
+   chopping perm 7 points  (dim 7) over F_2
+      composition factor dimensions: [1, 6]
+      new irreducible F_2-module of dimension 1  (total 1/6)
+      new irreducible F_2-module of dimension 6  (total 2/6)
+   chopping perm 21 pairs  (dim 21) over F_2
+      composition factor dimensions: [1, 6, 14]
+      new irreducible F_2-module of dimension 14  (total 3/6)
+   chopping perm 35 triples  (dim 35) over F_2
+      composition factor dimensions: [1, 4, 4, 6, 6, 14]
+      new irreducible F_2-module of dimension 4  (total 4/6)
+      new irreducible F_2-module of dimension 4  (total 5/6)
+   chopping (1-dim) (x) nat7  (dim 7) over F_2
+      composition factor dimensions: [1, 6]
+   chopping (4-dim) (x) nat7  (dim 28) over F_2
+      composition factor dimensions: [4, 4, 20]
+      new irreducible F_2-module of dimension 20  (total 6/6)
+   F_2-irreducible dim 1    k=dim End=1  ->  absolutely irreducible Brauer character of degree 1    1a=1   3a=1   3b=1   5a=1  
+   F_2-irreducible dim 6    k=dim End=1  ->  absolutely irreducible Brauer character of degree 6    1a=6   3a=3   3b=0   5a=1  
+   F_2-irreducible dim 14   k=dim End=1  ->  absolutely irreducible Brauer character of degree 14   1a=14  3a=2   3b=-1  5a=-1 
+   F_2-irreducible dim 4    k=dim End=1  ->  absolutely irreducible Brauer character of degree 4    1a=4   3a=-2  3b=1   5a=-1 
+   F_2-irreducible dim 4    k=dim End=1  ->  absolutely irreducible Brauer character of degree 4    1a=4   3a=-2  3b=1   5a=-1 
+   F_2-irreducible dim 20   k=dim End=1  ->  absolutely irreducible Brauer character of degree 20   1a=20  3a=-4  3b=-1  5a=0  
+   COMPLETENESS: 6 irreducible F_2-modules (Berman target 6); sum of dim End = 6 = #p-regular classes 6  [OK]
+========================================================================
+p = 3
+   chopping perm 7 points  (dim 7) over F_3
+      composition factor dimensions: [1, 6]
+      new irreducible F_3-module of dimension 1  (total 1/5)
+      new irreducible F_3-module of dimension 6  (total 2/5)
+   chopping perm 21 pairs  (dim 21) over F_3
+      composition factor dimensions: [1, 1, 6, 13]
+      new irreducible F_3-module of dimension 13  (total 3/5)
+   chopping perm 35 triples  (dim 35) over F_3
+      composition factor dimensions: [1, 1, 1, 6, 13, 13]
+   chopping (1-dim) (x) nat7  (dim 7) over F_3
+      composition factor dimensions: [1, 6]
+   chopping (6-dim) (x) nat7  (dim 42) over F_3
+      composition factor dimensions: [1, 1, 6, 6, 13, 15]
+      new irreducible F_3-module of dimension 15  (total 4/5)
+   chopping (13-dim) (x) nat7  (dim 91) over F_3
+      composition factor dimensions: [1, 1, 1, 1, 13, 13, 13, 13, 15, 20]
+      new irreducible F_3-module of dimension 20  (total 5/5)
+   F_3-irreducible dim 1    k=dim End=1  ->  absolutely irreducible Brauer character of degree 1    1a=1   2a=1   4a=1   5a=1  
+   F_3-irreducible dim 6    k=dim End=1  ->  absolutely irreducible Brauer character of degree 6    1a=6   2a=2   4a=0   5a=1  
+   F_3-irreducible dim 13   k=dim End=1  ->  absolutely irreducible Brauer character of degree 13   1a=13  2a=1   4a=-1  5a=-2 
+   F_3-irreducible dim 15   k=dim End=1  ->  absolutely irreducible Brauer character of degree 15   1a=15  2a=-1  4a=-1  5a=0  
+   F_3-irreducible dim 20   k=dim End=2  ->  absolutely irreducible Brauer character of degree 10   1a=10  2a=-2  4a=0   5a=0  
+   COMPLETENESS: 5 irreducible F_3-modules (Berman target 5); sum of dim End = 6 = #p-regular classes 6  [OK]
+========================================================================
+p = 5
+   chopping perm 7 points  (dim 7) over F_5
+      composition factor dimensions: [1, 6]
+      new irreducible F_5-module of dimension 6  (total 1/7)
+      new irreducible F_5-module of dimension 1  (total 2/7)
+   chopping perm 21 pairs  (dim 21) over F_5
+      composition factor dimensions: [1, 6, 6, 8]
+      new irreducible F_5-module of dimension 8  (total 3/7)
+   chopping perm 35 triples  (dim 35) over F_5
+      composition factor dimensions: [1, 1, 6, 6, 8, 13]
+      new irreducible F_5-module of dimension 13  (total 4/7)
+   chopping (1-dim) (x) nat7  (dim 7) over F_5
+      composition factor dimensions: [1, 6]
+   chopping (6-dim) (x) nat7  (dim 42) over F_5
+      composition factor dimensions: [1, 6, 6, 6, 8, 15]
+      new irreducible F_5-module of dimension 15  (total 5/7)
+   chopping (8-dim) (x) nat7  (dim 56) over F_5
+      composition factor dimensions: [8, 13, 35]
+      new irreducible F_5-module of dimension 35  (total 6/7)
+   chopping (13-dim) (x) nat7  (dim 91) over F_5
+      composition factor dimensions: [1, 8, 8, 13, 13, 13, 35]
+   chopping (15-dim) (x) nat7  (dim 105) over F_5
+      composition factor dimensions: [6, 6, 8, 15, 15, 20, 35]
+      new irreducible F_5-module of dimension 20  (total 7/7)
+   F_5-irreducible dim 6    k=dim End=1  ->  absolutely irreducible Brauer character of degree 6    1a=6   2a=2   3a=3   3b=0   4a=0   6a=-1 
+   F_5-irreducible dim 1    k=dim End=1  ->  absolutely irreducible Brauer character of degree 1    1a=1   2a=1   3a=1   3b=1   4a=1   6a=1  
+   F_5-irreducible dim 8    k=dim End=1  ->  absolutely irreducible Brauer character of degree 8    1a=8   2a=0   3a=-1  3b=-1  4a=0   6a=3  
+   F_5-irreducible dim 13   k=dim End=1  ->  absolutely irreducible Brauer character of degree 13   1a=13  2a=1   3a=-2  3b=1   4a=-1  6a=-2 
+   F_5-irreducible dim 15   k=dim End=1  ->  absolutely irreducible Brauer character of degree 15   1a=15  2a=-1  3a=3   3b=0   4a=-1  6a=-1 
+   F_5-irreducible dim 35   k=dim End=1  ->  absolutely irreducible Brauer character of degree 35   1a=35  2a=-1  3a=-1  3b=-1  4a=1   6a=-1 
+   F_5-irreducible dim 20   k=dim End=2  ->  absolutely irreducible Brauer character of degree 10   1a=10  2a=-2  3a=1   3b=1   4a=0   6a=1  
+   COMPLETENESS: 7 irreducible F_5-modules (Berman target 7); sum of dim End = 8 = #p-regular classes 8  [OK]
+========================================================================
+p = 7
+   chopping perm 7 points  (dim 7) over F_7
+      composition factor dimensions: [1, 1, 5]
+      new irreducible F_7-module of dimension 1  (total 1/7)
+      new irreducible F_7-module of dimension 5  (total 2/7)
+   chopping perm 21 pairs  (dim 21) over F_7
+      composition factor dimensions: [1, 1, 5, 14]
+      new irreducible F_7-module of dimension 14  (total 3/7)
+   chopping perm 35 triples  (dim 35) over F_7
+      composition factor dimensions: [1, 1, 5, 14, 14]
+      new irreducible F_7-module of dimension 14  (total 4/7)
+   chopping (1-dim) (x) nat7  (dim 7) over F_7
+      composition factor dimensions: [1, 1, 5]
+   chopping (5-dim) (x) nat7  (dim 35) over F_7
+      composition factor dimensions: [1, 5, 5, 10, 14]
+      new irreducible F_7-module of dimension 10  (total 5/7)
+   chopping (10-dim) (x) nat7  (dim 70) over F_7
+      composition factor dimensions: [5, 10, 10, 10, 35]
+      new irreducible F_7-module of dimension 35  (total 6/7)
+   chopping (14-dim) (x) nat7  (dim 98) over F_7
+      composition factor dimensions: [1, 5, 5, 10, 14, 14, 14, 35]
+   chopping (14-dim) (x) nat7  (dim 98) over F_7
+      composition factor dimensions: [14, 14, 14, 21, 35]
+      new irreducible F_7-module of dimension 21  (total 7/7)
+   F_7-irreducible dim 1    k=dim End=1  ->  absolutely irreducible Brauer character of degree 1    1a=1   2a=1   3a=1   3b=1   4a=1   5a=1   6a=1  
+   F_7-irreducible dim 5    k=dim End=1  ->  absolutely irreducible Brauer character of degree 5    1a=5   2a=1   3a=2   3b=-1  4a=-1  5a=0   6a=-2 
+   F_7-irreducible dim 14   k=dim End=1  ->  absolutely irreducible Brauer character of degree 14   1a=14  2a=2   3a=2   3b=-1  4a=0   5a=-1  6a=2  
+   F_7-irreducible dim 14   k=dim End=1  ->  absolutely irreducible Brauer character of degree 14   1a=14  2a=2   3a=-1  3b=2   4a=0   5a=-1  6a=-1 
+   F_7-irreducible dim 10   k=dim End=1  ->  absolutely irreducible Brauer character of degree 10   1a=10  2a=-2  3a=1   3b=1   4a=0   5a=0   6a=1  
+   F_7-irreducible dim 35   k=dim End=1  ->  absolutely irreducible Brauer character of degree 35   1a=35  2a=-1  3a=-1  3b=-1  4a=1   5a=0   6a=-1 
+   F_7-irreducible dim 21   k=dim End=1  ->  absolutely irreducible Brauer character of degree 21   1a=21  2a=1   3a=-3  3b=0   4a=-1  5a=1   6a=1  
+   COMPLETENESS: 7 irreducible F_7-modules (Berman target 7); sum of dim End = 7 = #p-regular classes 7  [OK]
+
+wrote brauer_tables.json

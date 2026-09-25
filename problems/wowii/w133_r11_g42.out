@@ -1,0 +1,10 @@
+=== end-to-end certification of G42 (cap-break + mu>=2 + G41) ===
+    each 'run' = a real geodesic of length >= max(rad,5) with a usable
+    side-neighbour of a >= 4 at one end, and the G41 path built and certified
+
+  W1 = 2xPG(2,5)+path(5)       n=129   l=252/43    rad=6   mu=2  certified G42 runs: 25 (longest built: 14 vertices >= rad+4 = 10)
+  W2 = Cay(PSL(2,11))          n=660   l=6         rad=5   mu=6  certified G42 runs: 25 (longest built: 9 vertices >= rad+4 = 9)
+
+  TOTAL certified end-to-end runs: 50
+
+FAILURES: 0

@@ -1,0 +1,50 @@
+====================================================================================================
+w61 r50 HELD-OUT -- (MON)'s four-case decomposition on the r29 walk (sec 105/146)
+====================================================================================================
+interpreter: .venv/bin/python3 ; walk lifted BY SOURCE TEXT from w61_r29_c1audit.py
+
+[0] KNOWN VALUES FIRST (sec 148).
+   [ok ] KNOWN VALUE r38 Lem C1-U f(1^m)=ceil(m/2)+2, failures            got=0 want=0
+   [ok ] KNOWN VALUE r38 [3] (MON) population, sum(T)<=22                 got=31766 want=31766
+   [ok ] KNOWN VALUE r38 [3] (MON) delta 0                                got=28288 want=28288
+   [ok ] KNOWN VALUE r38 [3] (MON) delta 1                                got=3478 want=3478
+   [ok ] CORRUPT: delta in {0} is violated                                        hits=3478
+
+[1] THE FOUR CASE IDENTITIES, checked as MULTISET statements -- no c_m profile,
+    no shape() function, no in_R().  Every claim of r50's proof, re-derived here.
+    sum(T) <= 22 : cases {'1a': 14518, '1b': 10826, '2a': 3625, '2b': 2797}
+                   STRUCTURAL FAILURES NONE
+                   delta histogram {0: 28288, 1: 3478}
+   [ok ] KNOWN VALUE r50 case (1a) at sum(T)<=22                          got=14518 want=14518
+   [ok ] KNOWN VALUE r50 case (1b) at sum(T)<=22                          got=10826 want=10826
+   [ok ] KNOWN VALUE r50 case (2a) at sum(T)<=22                          got=3625 want=3625
+   [ok ] KNOWN VALUE r50 case (2b) at sum(T)<=22                          got=2797 want=2797
+
+[2] HELD-OUT RANGE sum(T) in [23,28] -- wider than r38's census and wider than
+    r50's own held-out block.
+    cases {'1a': 58940, '1b': 46047, '2a': 10301, '2b': 8304}
+    STRUCTURAL FAILURES NONE
+    delta histogram {0: 111040, 1: 12552} ; instances 123592
+
+[3] CORRUPT CONTROLS -- each identity must FAIL when its hypothesis is removed.
+   [ok ] CORRUPT: case (2a) with the WRONG head block -- hh != L                  hits=467
+   [ok ] CORRUPT: case (2b) does NOT satisfy hh(L') = L                           hits=331
+   [ok ] the c+3-entries-of-height-c-1 bound FAILS on bare partitions (no head block) hits=833
+
+[4] THE CHAIN r38 BUILT, END TO END AND THROUGH M(lam) ITSELF -- not through the
+    closed form.  C1-S says residue(M(lam)) = f(lam[2:]); (MON) + C1-U then give
+    C1-M: residue(M(lam)) <= ceil(k/2)+1.  BOTH re-measured here, on the r29 walk.
+    C1-S  residue(M(lam)) == f(lam[2:]) : 4102 instances, failures 0
+    C1-M  residue(M(lam)) <= ceil(k/2)+1 : 4102 instances, failures 0
+    C1-M's bound ATTAINED at k = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+   [ok ] CORRUPT: the TIGHTENED bound ceil(k/2) is violated (C1-M is tight)       hits=710
+   [ok ] CONTROL: C1-M's own bound is ATTAINED, at this many distinct k           hits=23
+
+====================================================================================================
+SELF-AUDIT
+  diffed runA/runB calls : 438362  (any disagreement would have exited 2)
+  controls               : 6 declared, 6 firing
+  defects                : 0
+  PARTIAL                : False
+  elapsed                : 20.9s
+====================================================================================================

@@ -1,0 +1,108 @@
+w133 r34 — PLANTED-PRESENCE TWO-ARM CONTROL (PP2A): BUILD + VALIDITY
+started 2026-08-23 06:32:00   deadline 240s
+==============================================================================
+PART 0 — FRESH HOSTS, MINTED AND CERTIFIED DISTINCT FROM EVERY SHIPPED HOST
+==============================================================================
+r29 residual (i) is SPENT: K1/K2/K3 are r26's hosts, burned across two families.
+A third family needs FRESH hosts and a FRESH key.  Minted here, in one pass with
+the instrument that consumes them.
+
+  burned hosts read from key files on disk: 7  (population of the distinctness comparison below)
+  seeds tried: 3 ; hosts accepted: 3
+  H1: n=13 m=19  connected=True  C4-free=True  mu=2  l=2.9231  rad=2  diam=3
+     edges: [(0, 1), (0, 12), (0, 5), (1, 4), (1, 6), (1, 7), (1, 8), (2, 8), (2, 10), (2, 12), (3, 11), (3, 5), (3, 6), (4, 11), (5, 10), (7, 10), (8, 9), (9, 11), (11, 12)]
+  H2: n=12 m=17  connected=True  C4-free=True  mu=2  l=2.8333  rad=2  diam=3
+     edges: [(0, 9), (0, 2), (0, 3), (0, 4), (1, 8), (1, 10), (1, 3), (2, 7), (3, 11), (3, 6), (4, 10), (5, 8), (5, 9), (5, 6), (5, 7), (7, 11), (7, 10)]
+  H3: n=13 m=19  connected=True  C4-free=True  mu=2  l=2.9231  rad=3  diam=3
+     edges: [(0, 8), (0, 9), (0, 12), (1, 2), (1, 11), (1, 4), (2, 3), (2, 12), (2, 6), (3, 5), (4, 9), (5, 11), (5, 10), (6, 8), (6, 10), (7, 9), (7, 11), (8, 11), (9, 10)]
+
+  DISTINCTNESS vs every burned host (population = 3 fresh x 7 burned = 21 comparisons):
+    fingerprint clashes: 0
+    EXCLUSION LIST FOR THAT COUNT: the fingerprint is (n, m, degree sequence, a-vector, triangle count, distance multiset).
+    A DIFFERENCE PROVES non-isomorphism; equality would NOT prove isomorphism, so a
+    0 here is a proof of distinctness and a non-0 would have been only a warning.
+    LIVENESS of the comparator: it reports SAME on 7/7 self-comparisons (a comparator that can only say DIFFERENT measures nothing)
+
+==============================================================================
+PART 1 — THE FRESH KEY (HELD OUT, NEVER SHIPPED)
+==============================================================================
+  rows built: 6 ; rows whose answer failed its own uniqueness precondition: 0
+  a-values double-sourced (a_val vs brute-force alpha): 38/38 vertices agree
+  key written: w133_r34_pp2a.key.txt   sha256[:16] = f479edbd77f114d1
+  ANSWERS ARE NOT PRINTED IN THIS .out — the key file is the only place they live.
+  row ids and tiers: [('W1', 'H'), ('W2', 'H'), ('W3', 'H'), ('W4', 'C'), ('W5', 'C'), ('W6', 'C')]
+
+==============================================================================
+PART 2 — THE THREE ARMS, BUILT FROM ONE TEMPLATE
+==============================================================================
+  facts quoted in PART 3 of every arm are COMPUTED here, not typed: mu(H2)=2 rad(H3)=3
+  ARM A: 91 lines, 4779 bytes, sha256[:16] = cc91972b0883ecb6  -> arms_r34/w133_r34_armA.md
+  ARM B: 91 lines, 4763 bytes, sha256[:16] = fcd73a79526a1863  -> arms_r34/w133_r34_armB.md
+  ARM D: 91 lines, 4775 bytes, sha256[:16] = 43d6ca684262ceaf  -> arms_r34/w133_r34_armD.md
+
+==============================================================================
+PART 3 — VALIDITY OF THE INSTRUMENT (every check below can return non-zero)
+==============================================================================
+  (a) priming block sha256[:16] per arm: {'A': '53c7b37376cc60b2', 'B': '53c7b37376cc60b2', 'D': '53c7b37376cc60b2'}
+  (b) A vs B: 1 differing lines out of 91 (A) / 91 (B) — declared site: Proposition P hypothesis line (the import's hypothesis list)
+        line 59
+          A: > **Proposition P.** Assume in addition that `l(G') > 4`, `rad(G') >= 5` and `mu(G') >= 2`. Then in the case `h = 1`, `e = r`, the target `path(G) >= rad(G)+4`
+          B: > **Proposition P.** Assume in addition that `l(G') > 4` and `mu(G') >= 2`. Then in the case `h = 1`, `e = r`, the target `path(G) >= rad(G)+4`
+  (b) A vs D: 1 differing lines out of 91 (A) / 91 (D) — declared site: PART 3 bullet 4 (the certification tag on the rad(H3) claim)
+        line 73
+          A: * `H3` has radius `3` [C].
+          D: * `H3` has radius `3`.
+
+  (c) IS THE ARM-B PLANT A REAL DEFECT?  Two facts, both computed here:
+      (c1) the omitted hypothesis is NOT implied by the ones arm B keeps:
+           PG(2,5): n=62 connected=True C4-free=True l=6.0000 mu=6 rad=3
+           -> l > 4 and mu >= 2 hold while rad < 5.  So arm B's Proposition P
+              invokes Result T2 on a class where T2's hypothesis can FAIL.
+      (c2) the CONCLUSION is not free either: C5 + one pendant has rad=2 and path=5 (witness [2, 3, 4, 0, 5], induced=True, truncated=False) against rad+4=6
+      => the arm-B step is UNJUSTIFIED AS WRITTEN, not merely terse.  ARM A's
+         Proposition P carries the hypothesis and is clean.
+  (d) arm A: PART 3 carries 4 `[C]` tags on 4 numeric claims
+  (d) arm B: PART 3 carries 4 `[C]` tags on 4 numeric claims
+  (d) arm D: PART 3 carries 3 `[C]` tags on 4 numeric claims
+      the priming says every PART 3 numeric claim is tagged — TRUE in A and B,
+      FALSE in D.  A primed reviewer expects presence; D is where it is absent.
+
+  (e) LEAK SCAN.  population = 6 rows x 3 arms = 18 (row, arm) pairs
+      blocking leaks: 0
+      EXCLUSION LIST FOR THAT 0: the test is line-oriented and asks whether an
+      answer's value stands on a line that names its host AND contains '='.  It
+      does NOT claim the answers are unguessable — see the advisory count below.
+      ADVISORY residual guessability, arm A: 4 of 6 answers occur somewhere in the text as a standalone number
+      ADVISORY residual guessability, arm B: 4 of 6 answers occur somewhere in the text as a standalone number
+      ADVISORY residual guessability, arm D: 4 of 6 answers occur somewhere in the text as a standalone number
+
+  (f) DE SCAN (cert_w133_r31 §6: location AND method of the expected defect may
+      not be handed over; MEANS OF VERIFICATION may).  phrases scanned: 16 ; population = 3 arms
+      DE hits: 0
+      EXCLUSION LIST FOR THAT 0: whitespace-normalised substring test over a
+      hand-written phrase list (r20: a hard-wrapped phrase is invisible to a
+      line-oriented test).  It cannot see a paraphrase not on the list.
+
+  (g) POSITIVE CONTROLS — faults planted in SCRATCH copies, never in the arm
+      files.  A gate that has never returned non-zero measures nothing.
+      (g1) key answer inserted as 'H1 = 19' -> leak scan fires 1 time(s)
+      (g2) DE-violating hint appended -> DE scan fires on 2 phrase(s)
+      (g3) an EXTRA edit added to arm B -> 'differs at one site' check sees 2 differing lines (must exceed 1)
+      (g4) the missing tag restored in a scratch copy of D -> [C] count 4 (must be 4)
+      positive controls passed: 4 of 4
+
+==============================================================================
+PART 4 — PRE-REGISTRATION, WRITTEN BEFORE ANY DISPATCH
+==============================================================================
+  written: w133_r34_prereg.md   sha256[:16] = 1068133b7c358dc7
+  NULL: x_B = x_A and y_D = y_A.  STATISTIC: the difference, never a rate alone.
+  POWER: with n judges per arm, differences below 1/n are indistinguishable from
+         the null and must be reported as such.
+  NOT DISPATCHED THIS ROUND: no Chrome lease taken, no quota consumed.  The
+  instrument is BUILT and BLIND; dispatch is a separate act.
+
+==============================================================================
+PARTS DECLARED: ['PART0', 'PART1', 'PART2', 'PART3', 'PART4']
+PARTS RUN     : ['PART0', 'PART1', 'PART2', 'PART3', 'PART4']
+elapsed 0.0s   CHECKS=41   FAILURES=0
+EXIT=0

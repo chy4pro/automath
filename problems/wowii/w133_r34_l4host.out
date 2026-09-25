@@ -1,0 +1,77 @@
+w133 r34 ITEM 2 — CAN THE RESIDUAL CONFIGURATION CARRY l > 4?
+started 2026-08-23 06:36:43   deadline 150s
+==============================================================================
+PART 0 — CONTROLS (a predicate that cannot say NO is ABSENT, not PASS)
+==============================================================================
+  C9+C9 glued: n=17 rad=4 centres=[0]  #maximally-far-at-rad=4
+  NEG PG(2,3): rad=3 self-centred=True residual=0 (must be 0)
+  NEG PG(2,5): rad=3 self-centred=True residual=0 (must be 0)
+  NEG C9: rad=4 self-centred=True residual=0 (must be 0)
+  POS rand(s=7,n0=18): n=18 rad=4 l=2.333 residual w's=[11] (r32 draft §42.6: w=11, l=2.333)
+  POS rand(s=30,n0=22): n=22 rad=4 l=2.455 residual w's=[13] (r32 draft §42.6: w=13, l=2.455)
+  STRETCH C5+P6+C5: n=15 rad=5 residual vertices=0 — a stretched host has NONE, and that is PART 2's mechanism in miniature
+  a_val vs brute-force alpha on the positive control: agree=True
+
+==============================================================================
+PART 1 — THE MEAN BUDGET, COMPUTED RATHER THAN ASSERTED
+==============================================================================
+  core PG(2,5): N=62  sum_v a(v)=372  l=6.0000
+  a sparse appendage contributes a=2 per vertex, so l > 4 survives while
+  S + 2M + delta > 4(N + M), i.e. roughly M < (S - 4N)/2 = 62 added vertices.
+  r33's family used P_L with L <= 6 and C_k with k <= 25 on this core.
+  => THE REGIME `M` in (25, 62] WAS NEVER ENTERED.  That is what PART 2 enters.
+
+==============================================================================
+PART 2 — THE DESIGNED SWEEP INTO THE UNENTERED REGIME
+==============================================================================
+  family size declared: 282 ; hosts certified (connected, C4-free, mu>=2): 282 ; skipped for deadline: 0
+  hosts with l > 4: 275
+  residual instances over the whole certified family: 0
+  ** RESIDUAL INSTANCES WITH l > 4: 0 **
+  POPULATION OF THAT COUNT: the 282 certified hosts above; the count is a count of (host, w) pairs.
+  EXCLUSION LIST: designed one-parameter sweeps on a PG(2,5) core only —
+  P_L+C_k tails, long glued cycles, and 2xPG(2,5)+P_L chains. NOT exhaustive,
+  no random search, no enumeration. A 0 here is a statement about THIS family.
+
+==============================================================================
+PART 5 — THE REGIME PART 2 NAMES: A DENSE CORE PERTURBED WITHOUT STRETCHING
+==============================================================================
+  PART 2 shows stretching kills the residual; r33 shows a self-centred dense core
+  has none by definition.  What is left is LOCAL SURGERY: break self-centredness
+  by one, without adding length.  Designed census, printed population.
+  family declared: 248 ; certified (connected, C4-free, mu>=2): 248 ; skipped for deadline: 0
+  certified hosts that are NOT self-centred: 248
+  certified hosts with l > 4: 248
+  residual instances over the certified family: 0
+  ** RESIDUAL INSTANCES WITH l > 4 (population 248 hosts): 0 **
+  DECOMPOSITION OF THAT 0 — which conjunct fails, over the same population:
+    vertices with ecc = rad+1 (first conjunct):                    2232
+    of those, ALSO maximally far from EVERY centre (second):       0
+    number of centres per host: min 50, max 55, mean 51.25
+    => the first conjunct is ABUNDANT here and the SECOND is what fails.  The
+       obstruction is NOT self-centredness (every one of these hosts is
+       non-self-centred); it is that a dense core has MANY centres, and no vertex
+       can sit at distance exactly rad from all of them.
+  EXCLUSION LIST FOR THAT 0: single-edge and single-vertex deletions from ONE
+  core, PG(2,5).  NOT exhaustive: no multi-edge surgery, no other core, no
+  search.  A 0 here is a statement about THIS family.
+
+==============================================================================
+PART 3 — THE WITNESS, CERTIFIED FIELD BY FIELD
+==============================================================================
+  NO WITNESS FOUND IN PART 2'S FAMILY. Nothing is claimed either way: this is
+  a wider measurement, not a proof of incompatibility.
+
+==============================================================================
+PART 4 — WHAT THIS SETTLES AND WHAT IT DOES NOT
+==============================================================================
+  The incompatibility is NOT proved and NOT refuted here. PART 1 shows the
+  NAMED MECHANISM ('l > 4 forces near-self-centredness') is FALSE as an
+  argument — the mean budget permits an appendage nearly as long as the core —
+  so a proof of the incompatibility cannot run through it.
+
+==============================================================================
+PARTS DECLARED: ['PART0', 'PART1', 'PART2', 'PART5', 'PART3', 'PART4']
+PARTS RUN     : ['PART0', 'PART1', 'PART2', 'PART5', 'PART3', 'PART4']
+elapsed 1.3s   CHECKS=12   FAILURES=0
+EXIT=0

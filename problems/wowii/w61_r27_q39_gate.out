@@ -1,0 +1,56 @@
+  problems/wowii/w61_S3_GFAN_r26.md              md5=1cdd169955f8bc182887c60ab46fa8fd  bytes=19432
+  problems/wowii/w61_S3_GFAN_r26_check.py        md5=074f9d556f969bc039d408303d92ddf3  bytes=16733
+  problems/wowii/w61_r17_heldout_key.txt         md5=2c524fd41a225864e63bfdb6e526a628  bytes=3701
+
+=== TRANSCRIPTION GUARD: every key value re-read out of the key FILE ===
+   H1   OK    s0([12+6+4]) = 14
+   H1   OK    s0([9+7+3+3]) = 12
+   H1   OK    s0([14+5+2+1]) = 16
+   H1   OK    s0([8+8+6]) = 10
+   H2   OK    S(11) = sum_{E=1}^{10} (11-E) p(E) p(22-E) = 98384
+   H3   OK    E>=1 survivors at nu = 11 : 791
+   H3S  OK    per-E split               : {1: 6, 2: 14, 3: 21, 4: 35, 5: 47, 6: 85, 7: 110, 8: 155, 9: 170, 10: 148}
+   H4   OK    #{lambda |- 22 : s0(lambda) = 13} = 131
+   H5   OK    clears in exactly L = 13 steps?  NO   (actual step count 16)
+   transcription guard: 9/9 clean
+
+=== POPULATION: the report's Section 0, verbatim, BEFORE grading ===
+   | HELD-OUT CHECKS
+   | 
+   | Calibration was printed before every Section 0 value:
+   | 
+   | ```text
+   | K2: 1/1 PASS
+   | C3..C9: 1/1, 2/2, 2/2, 2/2, 3/3, 3/3, 3/3 — all PASS
+   | CALIBRATION_STATUS=PASS
+   | ```
+   | 
+   | | row | result | derivation (at most two lines) |
+   | |---|---|---|
+   | | H1 | `[12,6,4]:14`; `[9,7,3,3]:12`; `[14,5,2,1]:16`; `[8,8,6]:10`. All are valid step sequences. | Direct HH head lists have respectively 14, 12, 16, 10 entries; the complete lists are in the raw stdout. |
+   | | H2 | `S(11)=98,384` | Terms for `E=1..10`: `7920+11286+11760+13475+12474+12705+10560+8910+6060+3234`. |
+   | | H3 | `791`; per-`E`: `{1:6,2:14,3:21,4:35,5:47,6:85,7:110,8:155,9:170,10:148}` | Exhaustively ran all `98,384` C.1 shapes. Every one of the 791 survivors also has a FAN-6′ certificate. |
+   | | H4 | `131` | Generated all `p(22)=1002` partitions and directly counted those for which `steps([λ₁]^(λ₁+1)+λ)=13`. |
+   | | H5 | **NO; actual step count `16`.** | Built list `[15,14,13^12,5,4,4,3,3]`; heads were `15,13,11,10,9,8,7,6,5,4,4,3,2,2,2,1`. |
+
+=== VOID GATE (exact match; a stated wrong value voids, CANNOT COMPUTE does not) ===
+   H1        HAND      key=[14, 12, 16, 10]                                           got=[14, 12, 16, 10]                                           EXACT
+   H2        HAND      key=[98384]                                                    got=[98384]                                                    EXACT
+   H2-terms  HAND      key=[7920, 11286, 11760, 13475, 12474, 12705, 10560, 8910, 6060, 3234] got=[7920, 11286, 11760, 13475, 12474, 12705, 10560, 8910, 6060, 3234] EXACT
+   H3        NON-HAND  key=791                                                        got=791                                                        EXACT
+   H3-split  NON-HAND  key={1: 6, 2: 14, 3: 21, 4: 35, 5: 47, 6: 85, 7: 110, 8: 155, 9: 170, 10: 148} got={1: 6, 2: 14, 3: 21, 4: 35, 5: 47, 6: 85, 7: 110, 8: 155, 9: 170, 10: 148} EXACT
+   H4        NON-HAND  key=131                                                        got=131                                                        EXACT
+   H5        HAND      key=('NO', 16)                                                 got=('NO', 16)                                                 EXACT
+   7/7 EXACT;  wrong HAND rows = 0
+   CANNOT COMPUTE used: 0 time(s)
+   VOID GATE: PASS -- the report is admissible
+
+=== RULING CD: re-running the judge's OWN script here (a printed Output: block is not evidence) ===
+   declared: EXECUTION ENVIRONMENT: I ran code. Python 3.9 with NetworkX 3.2.1.
+   exit=0  stdout bytes=5257
+   claimed .out lines re-derived here: 68 / 68
+   SCRIPT_STATUS in OUR run: SCRIPT_STATUS=PASS
+   EXECUTION CLAIM: STANDS -- re-run here reproduces it
+
+=== LEDGER (written before the dispatch, unchanged by the above) ===
+   Q39 BUYS ZERO toward the two-family bar.  Corollary GFANnu-HC stays at 1 family.

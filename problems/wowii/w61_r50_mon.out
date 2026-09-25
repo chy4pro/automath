@@ -1,0 +1,102 @@
+====================================================================================================
+w61 r50 -- (MON) IN FULL as a corollary of r48's R-CLOSED:  THEOREM STEP-GAP-1
+           plus a FOUR-CASE decomposition that covers the 467 r49 could not reach
+====================================================================================================
+interpreter: .venv/bin/python3 (pure Python, no sympy, no networkx)
+
+[0] CONTROLS AND KNOWN VALUES, BEFORE ANY RESULT (sec 148).
+    two graphicness oracles on partitions of N<=18 : 1596 tested, 1596 agree, 0 DISAGREE
+   [ok ] KNOWN VALUE r49 [0] oracle population                              got=1596 want=1596
+   [ok ] KNOWN VALUE r49 [0] graphic among them                             got=360 want=360
+   [ok ] CONTROL: the population contains NON-graphic partitions too                hits=1236
+   [ok ] KNOWN VALUE r38 Lem C1-U  f(1^m) = ceil(m/2)+2 for m=0..30, failures got=0 want=0
+    P7  L(T) built for 4507 partitions T (sum<=22); NON-graphic L(T): 0
+   [ok ] KNOWN VALUE r38 [3] (MON) population, sum(T)<=22                   got=31766 want=31766
+   [ok ] KNOWN VALUE r38 [3] (MON) delta histogram {0}                      got=28288 want=28288
+   [ok ] KNOWN VALUE r38 [3] (MON) delta histogram {1}                      got=3478 want=3478
+    (MON) delta histogram, full: {0: 28288, 1: 3478} ; delta<0 : 0
+   [ok ] CORRUPT: 'f(T) - f(T+e_i) in {0}' is violated                              hits=3478
+   [ok ] KNOWN VALUE r38 [5] (RH)  distinct ok                              got=284 want=284
+   [ok ] KNOWN VALUE r38 [5] (RH)  distinct VIOLATIONS                      got=0 want=0
+   [ok ] KNOWN VALUE r38 [5] (UP2) distinct ok                              got=635 want=635
+   [ok ] KNOWN VALUE r38 [5] (UP2) distinct VIOLATIONS                      got=97 want=97
+   [ok ] (UP2) general form is REFUTED (r38)                                        hits=97
+    diffed HH calls so far: 79088, disagreements 0 (any would have exited 2)
+
+[1] THEOREM STEP-GAP-1 :  (A,B) in R, both graphic  ==>  s(B) - s(A) in {0,1}.
+    The BASE of the induction, checked first: which B can stand opposite A = () in R?
+    P5  {B : ((),B) in R} over all partitions of N<=12 : [(), (1, 1)]
+   [ok ] CONTROL: partitions of N<=12 that are NOT admissible opposite ()           hits=270
+    [1a] ALL-PAIRS sweep: every (A,B) of graphic partitions with sum B - sum A in
+         {0,2}, classified by shape, then STEP-GAP-1 checked on the R members.
+         population 33240 ordered pairs; shape histogram {'EQ': 210, 'OTHER': 30652, 'T': 649, 'U': 1729}
+         in R: 2184 ; s(B)-s(A) histogram {0: 1200, 1: 984} ; OUTSIDE {0,1}: 0
+   [ok ] CONTROL: pairs NOT in R with s-gap outside {0,1} exist (the theorem has content) hits=19688
+         (for reference, the OUTSIDE-R s-gap histogram is {-7: 2, -6: 33, -5: 175, -4: 590, -3: 1618, -2: 3511, -1: 5792, 0: 5926, 1: 5442, 2: 4318, 3: 2271, 4: 945, 5: 327, 6: 90, 7: 15, 8: 1})
+    [1b] CORRUPT CONTROLS on R itself (P6).
+   [ok ] CORRUPT R (drop v1 <= A_{d+1}): STEP-GAP-1 then FAILS                      hits=127
+         smallest witness A=(2, 2, 2, 1, 1) B=(3, 3, 2, 1, 1) gap=-1
+   [ok ] CORRUPT R (drop v2 <= max A): STEP-GAP-1 then FAILS                        hits=11
+         smallest witness A=(1, 1, 1, 1) B=(3, 1, 1, 1) gap=-1
+    [1c] R-CLOSURE re-verified on THIS implementation (r48's THEOREM R-CLOSED).
+         N<=14 : 1119 R-states stepped, closure violations 0
+         N<=18 : 4112 R-states stepped, closure violations 0
+    [1d] 'R ==> sum A <= sum B' and STEP-GAP-1 on a CONSTRUCTIVELY generated
+         population (B built from A by the three shapes, not enumerated).
+         constructive R-pairs with both graphic: 13251 ; s-gap histogram {0: 7277, 1: 5974}
+         'R ==> sum B - sum A in {0,2}' failures: 0
+   [ok ] CONTROL: the constructive population is larger than the all-pairs one      hits=11067
+
+[2] THE FOUR-CASE DECOMPOSITION.  Every (T,i) is classified BEFORE its delta is
+    read, and the structural claim of its case is checked on it.
+    case histogram over sum(T)<=22 : {'1a': 14518, '1b': 10826, '2a': 3625, '2b': 2797}
+    STRUCTURAL FAILURES (every one is a defect in the proof above): NONE
+    case 1a : delta histogram {0: 13264, 1: 1254} ; shapes {'EQ': 1555, 'T': 12963}
+    case 1b : delta histogram {0: 8966, 1: 1860} ; shapes {'U': 10826}
+    case 2a : delta histogram {0: 3625} ; shapes -
+    case 2b : delta histogram {0: 2433, 1: 364} ; shapes {'U': 2797}
+    P1  case (2a) delta is identically 0 : True
+    P2  case (2b) takes both values      : True
+    P4  case (1a) shapes                 : {'EQ': 1555, 'T': 12963}
+   [ok ] CONTROL: case (1a) really does contain both EQ and T                       hits=1555
+   [ok ] CONTROL: the max-raising cases (2a)+(2b) are non-empty                     hits=6422
+   [ok ] KNOWN VALUE r49 [4] 'a genuine transfer DOWN' == case (1a), shape (T) got=821 want=821
+   [ok ] KNOWN VALUE r49 [4] 'identical lists'         == case (1a), shape (EQ) got=219 want=219
+   [ok ] KNOWN VALUE r49 [4] 'not same length/sum'     == case (2a)         got=467 want=467
+   [ok ] KNOWN VALUE r49 [4] even-sum (MON) population                      got=1507 want=1507
+    CORRUPT CONTROLS on the case-(2) identities.
+   [ok ] CORRUPT: case (2a) with W+(c+1) instead of W-(c+1) -- hh(L') != L          hits=467
+   [ok ] CORRUPT: case (2b) does NOT satisfy hh(L') = L (it needs STEP-GAP-1)       hits=331
+
+[3] P3 -- r38's 97 general (UP2) counterexamples, against R.
+    of the 97 (UP2) counterexamples: in R = 0 ; shape not (U) = 0
+    failing conjunct: v1 <= A_{d+1} only = 97 ; v2 <= d only = 0 ; both = 0
+   [ok ] P3: the failing conjunct is v1 <= A_{d+1}                                  hits=97
+   [ok ] the head block W-(c) restores L_{d+1} >= c-1 on those same lists           hits=97
+
+[4] WHAT (MON) NOW BUYS.  r38's THEOREM C1-V is  C1-S + (MON) ==> C1-M, and it
+    uses only the LOWER half:  T >= 1^m componentwise, so f(T) <= f(1^m) =
+    ceil(m/2)+2 by Lemma C1-U.  The ladder and the consequence, re-run here:
+    ladder 1^m -> T stays sorted: 2713 partitions, failures 0
+    f(T) <= f(1^m) = ceil(m/2)+2 : failures 0
+   [ok ] CONTROL: f(T) < f(1^m) STRICTLY somewhere (the bound is not an identity)   hits=436
+
+[5] HELD OUT -- the four-case decomposition on sum(T) in [23,26], a range r38's
+    (MON) census never used.
+    held-out cases {'1a': 29302, '1b': 22735, '2a': 5394, '2b': 4322} ; structural failures NONE ; delta histogram {0: 55370, 1: 6383}
+
+[6] WHAT IS NOT CLOSED.
+    (DOM-MAJ) is NOT novelty-cleared, so neither is STEP-GAP-1 nor (MON).
+    C1-S, C1-U, C1-V are r38's, owner-claimed and UNCERTIFIED; this file re-runs
+    C1-V's consequence but does not re-prove C1-S.
+    (BAND-EQ), (S2), C1-W, (PERSIST-NARROW), (GAP1-OK), (F2-FREE) UNTOUCHED here.
+    THE CONJECTURE (WOWII, line 61) IS NOT CLOSED.
+
+====================================================================================================
+SELF-AUDIT
+  diffed HH calls : 360436  (any disagreement would have exited 2)
+  controls        : 15 declared, 15 firing
+  defects         : 0
+  PARTIAL         : False
+  elapsed         : 14.9s
+====================================================================================================

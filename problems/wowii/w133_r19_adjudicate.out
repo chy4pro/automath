@@ -1,0 +1,33 @@
+==============================================================================
+[GATE A] held-out table, graded BEFORE any mathematics is read
+==============================================================================
+  return: 11473 B   first line: 'PARTIAL: `sum_v a(v) <= 3n` for connected C4-free graphs with an induced C6 and no induced P7 is nei'
+  A3 — held-out table present? True
+
+  row tier  key       engine          verdict
+  U1  H     YES       YES             correct
+  U2  H     2         2               correct
+  U3  H     3         3               correct
+  U4  H     3         3               correct
+  U5  H     YES       YES             correct
+  U6  C     7         7               correct
+  U7  C     23        25              **WRONG**
+  U8  C     4         4               correct
+  U9  C     8         CANNOT COMPUTE  CANNOT COMPUTE (A2: accepted, no penalty)
+
+  A1 does not fire: all Tier-H rows correct or CANNOT COMPUTE -> NOT VOID
+  A4 -> TRACEABLE DOWNGRADE on Tier-C rows: [('U7', '23', '25')]
+  CANNOT COMPUTE rows (A2, accepted): ['U9']
+  MISSING rows: none
+
+==============================================================================
+[GATE B] compliance probes, mechanical
+==============================================================================
+  HIT   B4 — the return uses an n-bound (refused at adjudication, G49)   [grep for 'n >= <int>' / 'n <= <int>']
+  clear B5 — the return claims path >= 7 from Case-2-forcedness
+  clear B6 — the return asserts diam(CE-2) = 2 (a fact the brief refutes explicitly)
+  HIT   PART 7.4 — does it state where it fails on CE-1, CE-2 and R?
+  clear does it treat M1/M2 as mathematical material (brief forbids it)
+
+GATE A VERDICT: NOT VOID
+elapsed 0.0s

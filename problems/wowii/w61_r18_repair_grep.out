@@ -1,0 +1,72 @@
+=== owner-w61 ROUND 18 CLOSING GREP — run AFTER §7.33 was appended (RW61-4 as amended) ===
+Sat Aug 22 21:00:57 CDT 2026
+
+draft: notes/proofs/wowii61_draft.md     480308 bytes /   453356 chars /     6834 lines
+brief: prompts/w61_S3_GFAN_r18.md         95062 bytes /    90267 chars   md5=3a2c17cb1a3a45cd741ae63cad35de3f
+
+--- [1] AC4: '480' over the WHOLE DRAFT (must be diagnosis/ledger/unrelated only) ---
+4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+4453:   not hypothetical damage — §7.29 (2) records a judge taking `480` from the sentence
+4456:   longer printed anywhere in the reviewed text; the two former `480` sites are
+4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+4771:8. **Scale.** 1 480 graphs, 4 627 `(G,A)` instances, 849 reductio graphs, 20 682
+4862:agreeing — `1 480 / 1 159 / 4 627 / 849 / 3 447 / 20 682`, frame `8`/`9`,
+5138:   1 817 TAIL pairs, 480 padding lists, two constructed graph witnesses.
+5565:**(2) A control whose own arithmetic does not close.** It wrote "`480` `E = 0` lists +
+5566:`1745` `E ≥ 1` shapes × `7` paddings = `18 963` pairs". `(480 + 1745) × 7 = 15 575`.
+5567:The true scope is `(964 + 1745) × 7 = 18 963`. Repair AB7 *replaced* the 480 with the
+5622:ruling — the multiplication `(480+1745)×7 = 15 575 ≠ 18 963 = (964+1745)×7`, and a hand
+6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+6287:hypothetical damage — **§7.29 (2) records muse-spark, last round, taking `480` from one
+6487:`480` lists × `6` paddings while the bracket beside it said `964` × `7`. §7.29 (2)
+6488:records a judge taking `480` from the sentence and `18 963` from the bracket and
+6504:| **AC4** | `480` over the whole draft | `4452/4453/4456/4651` — inside the AB7/AC4 **diagnosis brackets**, which quote the superseded figure as history; `4771/4862` — the unrelated number `1 480`; `5138/5565–5567/5622/6282/6287` — **historical ledger** lines recording what a past run covered or what a judge wrote | **CLEAN** — no live reviewed-text site states `480` as the control's scope |
+6506:| **AC4** | `480` over the **r15 brief** | `781`, `949` — **still present, and correctly so**: that text is frozen for family 1 | **AS INTENDED** |
+6523:The `5138` line (*"1 817 TAIL pairs, 480 padding lists"*, §7.26) is left standing
+6525:`480` lists. Rewriting it would falsify the record — the same reasoning that left
+6742:| **AC4** | `(C-1)(2)` and `(C-7)(iii)` **rewritten**, not annotated. `480 × 6` is gone from the brief; the sentences now state `(964 + 1 745) × 7 = 18 963` themselves |
+
+--- [2] AC4: '6 paddings' over the WHOLE DRAFT ---
+4452:   `480` lists × `6` paddings while the bracket beside it said `964` × `7`. That is
+4651:this line previously reported the superseded `480` lists × `6` paddings, which is the
+6282:| **AB7** | the padding control's scope, `480` → `964` | **draft 4420 and brief 781 still read `480`** (the sentence AB7 repairs; AB7 landed as a *bracket after it* rather than as an edit *to* it), and **draft 4624 / brief 949 read `480 lists × 6 paddings`** | **NOT CLEAN — see below** |
+6487:`480` lists × `6` paddings while the bracket beside it said `964` × `7`. §7.29 (2)
+6505:| **AC4** | `6 paddings` over the whole draft | `4452`, `4651`, `6282` — all three inside diagnosis/ledger text | **CLEAN** |
+
+--- [3] AC4: '480' over the NEW BRIEF r18 (must be ZERO — the brief is not frozen text) ---
+(no hits — AC4 CLEAN in the dispatched brief)
+
+--- [4] AC4: '480' over the FROZEN r15 brief (must STILL be present — family 1 rests on it) ---
+2
+
+--- [5] AC1b: 'MB1' in the dispatched brief (expect 3: A.1 statement + 2 hard-core citations) ---
+134:Corollary MB1, Lemma TAIL, Lemma 4, Observation R1, Lemma C*, (F-b), Theorem MB,
+445:> **Corollary MB1 (a floor on L).** In the hard core, if every low vertex is
+517:> claims. The final bound `ν ≤ L−1` is **Corollary MB1** applied
+
+--- [6] carve-out: 'NOT IN SCOPE' in the dispatched brief (must be ZERO) ---
+(no hits — carve-out WITHDRAWN, confirmed on the artifact)
+
+--- [7] fold: unfolded quantifier '1 <= nu <= 6' / '1 ≤ ν ≤ 6' in the dispatched brief (must be ZERO) ---
+(no hits — fold complete)
+
+--- [8] fold: superseded corollary range 'ν ≥ 7'/'nu >= 7' with 'L ≥ 8'/'L >= 8' in the brief (must be ZERO) ---
+(no hits)
+
+--- [9] HELD-OUT LEAK PROBE on the dispatched brief: every H-row answer ---
+  98384    : 0 hit(s)
+  98 384   : 0 hit(s)
+  791      : 0 hit(s)
+  131      : 0 hit(s)
+  1002     : 0 hit(s)
+  1 002    : 0 hit(s)
+  (H1 values 14/12/16/10 and H5's '16 steps' are not greppable as bare integers; the
+   builder's structural probe asserted every 'nu = 11' mention lies inside Section 0.)
+
+--- [10] the count this grep could itself falsify: occurrences of 'C-8' in the brief ---
+8
+
+--- [11] §7.33 present and last section of the draft ---
+6103:## §7.31 owner-w61 round 16: **Q35 HARVESTED — held-out gate PASSED 5/5, zero mathematics defects, Corollary GFANν-HC takes family 1; Theorem GFANν takes family 1 on the scored subset only, and its one open obligation is the one the harness could not probe. `ν ≤ 10` folded. Two ledger corrections to §7.30** (2026-08-22, 20:2x–20:5x CDT)
+6364:## §7.32 owner-w61 round 17: **the roster-completeness obligation is DISCHARGED BY INDEPENDENT RECOMPUTATION, not by a judge — `72`-in-`1 745` and `910`-in-`77 373`, diffed both directions against sol's roster and against the printed text, `0` differences. Repair AC4 landed under OPS-5. The `ν = 7…10` rosters and a `ν = 11` held-out key now exist** (2026-08-22, 20:3x–20:4x CDT)
+6691:## §7.33 owner-w61 round 18: **Q36 DISPATCHED — family 2 on the rebuilt `ν ≤ 10` brief, judge chosen on reading quality under the superseded §7.31 (d). OPS-6 read back `90 267` code points against `90 267` `wc -m`, tail verbatim; OPS-7 model verified twice. A new UI hazard found at send time: an unannounced two-response A/B with no per-response model label** (2026-08-22, 20:5x CDT)

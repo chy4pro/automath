@@ -1,0 +1,40 @@
+w133 r47 STANDALONE verifier -- shares no code with the builder.  system python3
+started 2026-08-23 23:09:09
+WOWII-133 round 47 -- STANDALONE re-verification (doctrine 105).
+
+Shares NO code with w133_r47_spec.py.  Everything here is written from scratch and
+deliberately differently:
+  * adjacency as BITMASKS (ints), not sets of ints;
+  * distances by bitmask frontier expansion from every vertex, not by deque BFS;
+  * geodesics enumerated FORWARD from w (push u_{i+1} with d(w,u)=i+1 and d(u,x)=d-i-1),
+    not by backward parent-walk from x;
+  * inducedness by a bitmask sweep, not by a double loop over index pairs;
+  * k2/k3 by popcount on bitmask intersections;
+  * the two sidestep shapes re-derived from the STATEMENTS in the draft, not copied.
+
+It reads only the four host edge lists and problems/wowii/w133_r47_resid.txt, and re-decides,
+for every condition-4 vertex of every CASE A host, whether (TAIL-2S) and (TAIL-2S') close it
+-- EXHAUSTIVELY over every far end and every geodesic -- then compares the residual set with
+the one the builder dumped.  It also re-checks, independently, the two statements this round
+puts weight on: the (SHELL) identity deg(y) = 1 + k2(y) + |Z(y)|, and (BUDGET-SUB)
+(no frame closed by the budget test without a firing z).
+
+system python3, pure stdlib.  No SAT.
+
+  W43a  n=420 rad=5 diam=6  condition-4 vertices 128 ;  (TAIL-2S) 126 ;  (TAIL-2S') 121 ;  NEITHER   1
+  W43b  n=420 rad=5 diam=6  condition-4 vertices   1 ;  (TAIL-2S)   1 ;  (TAIL-2S')   1 ;  NEITHER   0
+  W43c  n=420 rad=5 diam=6  condition-4 vertices   2 ;  (TAIL-2S)   2 ;  (TAIL-2S')   2 ;  NEITHER   0
+  W44a  n=421 rad=5 diam=6  condition-4 vertices 129 ;  (TAIL-2S) 127 ;  (TAIL-2S') 122 ;  NEITHER   1
+  TOTAL condition-4 vertices 260 ; (TAIL-2S) 256 ; (TAIL-2S') 246 ; NEITHER 2
+  builder's residual set: [('W43a', 253), ('W44a', 253)]
+  this verifier's residual set: [('W43a', 253), ('W44a', 253)]
+
+  ---- independent re-check of (SHELL) and (BUDGET-SUB) on W44a ----
+  W44a frames re-enumerated independently: 124759
+  admissible mismatches 0 ; identity violations 0 ; budget bound violations 0 ; BUDGET-only frames 0
+
+  ---- W47a: the round's CONSTRUCTED CASE A instance, re-verified STANDALONE ----
+  W47a n=428 rad=5 diam=6 offset=+1 l=4.971963 (TRUE alpha) centre=1 cond4=126
+  W47a step-3 frames F=531759 ; (TAIL-3'') fires N=531598 ; FIRE-GAP=161 (0.0303%)
+
+CHECKS 24   FAILS 0   elapsed 30.1s

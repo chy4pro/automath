@@ -1,0 +1,21 @@
+[exhaustive connected n<=7 (atlas)] graphs=995 (graph,A) pairs=2931
+  RIG-a: tested 1090 B-universal low vertices, failures = 0
+  hard-core FRAME instances: 9 (of which L>=1: 5); hypothesis B_lo^+ = empty holds in 2
+  RIG-b package failures = 0
+  of those, reductio residue=alpha (true hard core): 0; RIG-c (nu <= L-1) failures = 0
+  (L,nu) histogram on the hypothesis set: {(1, 1): 2}
+[random connected n=8..10] graphs=1200 (graph,A) pairs=4382
+  RIG-a: tested 718 B-universal low vertices, failures = 0
+  hard-core FRAME instances: 3 (of which L>=1: 3); hypothesis B_lo^+ = empty holds in 0
+  RIG-b package failures = 0
+  of those, reductio residue=alpha (true hard core): 0; RIG-c (nu <= L-1) failures = 0
+  (L,nu) histogram on the hypothesis set: {}
+[random connected n=11..12] graphs=400 (graph,A) pairs=1737
+  RIG-a: tested 70 B-universal low vertices, failures = 0
+[TARGETED hard-core-FRAME construction] graphs=600 (graph,A) pairs=622
+  RIG-a: tested 48 B-universal low vertices, failures = 0
+  hard-core FRAME instances: 622 (of which L>=1: 325); hypothesis B_lo^+ = empty holds in 31
+  RIG-b package failures = 0
+  of those, reductio residue=alpha (true hard core): 0; RIG-c (nu <= L-1) failures = 0
+  (L,nu) histogram on the hypothesis set: {(1, 1): 22, (1, 3): 2, (2, 1): 3, (3, 1): 4}
+done

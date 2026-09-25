@@ -1,0 +1,63 @@
+w133 r35 -- multi-hair reproduced in my own hand + the CENTRE-SPHERE bound
+started 2026-08-23 10:14:15
+interpreter: 3.9.6 (system python3 expected)
+
+[PART 0] guards and controls
+  a_val double-sourced on 53 vertices over 5 hosts
+  ZERO-STEP GUARD: planted broken search returns 1 and the guard FIRES; the corrected search returns 5
+  longest_induced_path double-sourced on Theta(3,3,3): 9 == 9
+
+[PART 1] multi-hair eccentricity formulas, re-derived and BFS-certified
+  hair configurations tested: 252 over 6 bases
+  core-eccentricity formula verified at 2436 (graph,vertex) pairs
+  hair-eccentricity formula verified at 780 (graph,vertex) pairs
+  [E11 rebuild] K2 core, hairs of length 100 and 1: n=103
+    ecc(w1)=100  ecc(w2)=101  min over the core=100
+    rad(G)=51  |centre|=1  centre inside the long hair: True
+    CONFIRMED IN MY OWN HAND: rad(G)=51 is attained strictly inside a hair, while min ecc over V(G') = 100.
+    E11's prose reports ecc(w2) = 102; the BFS value is 101. The slip is real and does not touch the headline.
+
+[PART 2] the a-value / l(G) bookkeeping for hairs
+  hair of length 3 on C6: a-values along the hair = [2, 2, 1]
+  E12 Lemma A(ii) claims 1 at every hair vertex. Interior hair vertices measure 2, because x^{t-1} and x^{t+1} are NOT adjacent. REFUTED.
+  hair configurations tested: 252
+  l(G) = (n'l' + 2H)/(n'+H)  [MINE]  matches BFS/alpha count on 252 of 252
+  l(G) = (n'l' + 2k)/(n'+H)  [E12 Lemma B] matches on 108 of 252
+  floor(l(G)) <= floor(l(G')) [Lemma C, corrected proof] holds on 252 of 252
+  POPULATION for both counts: the 252 configurations above; EXCLUSIONS: designed families only, roots drawn from the first four vertices of each base, k <= 3, h_i <= 3, no random trawl, no enumeration.
+
+[PART 3] E12's radius identity and its endpath route
+  K2 core with hairs (100,1): rad(G) measured by BFS = 51
+    E12's identity would give [100, 101] over the centres of G'
+    REFUTED, and by an example from E12's OWN BATCH (E11 Part 3). E12's (R2) and its Case-II reduction rest on this identity.
+  single-hair instances tested: 18
+    path(G) >= h + ecc_{G'}(w) + 2   [(TAIL-1) route, MINE]: 18 of 18
+    path(G) >= h + ecc_{G'}(w) + 3   [E12 Tool TE]:          12 of 18
+    COUNTEREXAMPLE to E12's TE: base C6, root 0, h=1 -> path(G)=6 but E12's bound asserts 7.
+  EXCLUSIONS for these counts: three bases, roots among the first three vertices, h in {1,2}, hosts capped at 16 vertices for the exact path.
+
+[PART 4] CASE I of the multi-hair reduction: rad(G) = rad(G')
+  multi-hair instances (k >= 2) certified C4-free and computed: 112 (skipped 38: over 16 vertices, not C4-free, or past the deadline)
+  path(G) >= path(G') held on 112 of 112
+  CASE I  (rad(G) = rad(G')): 88 instances, conjecture holds on 88
+  CASE II (rad(G) > rad(G')): 24 instances, conjecture holds on 24
+  POPULATION: the 112 instances above.  EXCLUSIONS: five bases, roots among the first four vertices, k in {2,3}, h_i <= 3, hosts capped at 16 vertices for the exact induced path.  Not exhaustive.
+
+[PART 5] the CENTRE-SPHERE bound
+  positive controls: 6 (host,w) pairs across 8 hosts actually CARRY the configuration; the bound |C| <= n - |B_{r-1}(w)| holds on 6 of 6
+  of those, 4 also satisfy (CS-3)'s hypotheses (C4-free, delta >= 2, r >= 3); (CS-3) permits the configuration on 4 of 4 -- it over-claims on none
+  C4-free ball bound |B_2(w)| >= 1 + deg(w)*(delta-1): 70 of 70 vertices
+  core PG(2,5): n=62, C4-free=True, connected=True
+  hosts certified connected, C4-free, delta >= 2: 248
+  radius distribution over those hosts: [(3, 248)]
+  of those, non-self-centred: 248 ; with l(G) > 4: 248
+  out of the corollary's scope (r < 3, where |B_2| is not a bound on |B_{r-1}|): 0
+    representative host: PG(2,5)-e  n=62  r=3  delta=5  |C|=50  n-(1+delta(delta-1)+(r-3))=41  -> |C| exceeds the bound: True
+  hosts where the CENTRE-SPHERE bound PROVES no vertex can be maximally far from every centre: 248 of 248
+  hosts where BFS MEASURES that set empty: 248 of 248
+  hosts the bound leaves undecided: 0
+  EXCLUSION LIST for this block: single-edge and single-vertex deletions from ONE core, PG(2,5); no multi-edge surgery, no second core, no search.
+
+PARTS RUN: [0, 1, 2, 3, 4, 5]
+CHECKS: 4220  FAILURES: 0
+elapsed 0.3 s

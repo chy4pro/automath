@@ -1,0 +1,204 @@
+\documentclass{article}%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}%
+\setcounter{MaxMatrixCols}{30}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+%TCIDATA{Created=Monday, February 22, 2016 09:55:26}
+%TCIDATA{LastRevised=Tuesday, June 07, 2016 13:59:36}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{Language=American English}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\begin{document}
+
+\title{Recognizing cyclic matrices and a conjecture of J.G. Thompson}
+\author{John D. Dixon\\School of Mathematics and Statistics, Carleton University, \\Ottawa, Ontario, Canada K1S 5B6\\email: jdixon@math.carleton.ca}
+\maketitle
+
+\begin{abstract}
+In 2006 J.G. Thompson conjectured: If $F$ is a field and $A$ is in $GL(n,F)$,
+then there is a permutation matrix $P$ such that $AP$ is cyclic, that is, the
+minimal polynomial of $AP$ is also its characteristic polynomial\ (open
+problem 16.95 in the Kourovka Notebook). The present note provides a simple
+criterion for a matrix to be cyclic and uses this to prove Thompson's conjecture.
+
+\end{abstract}
+
+
+
+Let $A$ be an $n\times n$ matrix over a field $F$. Then $A$ is called cyclic
+if there exists a vector $v\in F^{n}$ such that $F[A]v=F^{n}$; in other words,
+if we define the action of the polynomial ring $F[X]$ on $F^{n}$ by $Xu:=Au$,
+then the $F[X]$-module $F^{n}$ is cyclic. An equivalent condition is that the
+minimal polynomial for $A$ is of degree $n$ and hence equal to the
+characteristic polynomial (such matrices were classically called
+nonderogatory). It is easily proved that $A$ is cyclic if and only if in the
+Jordan form for $A$ there is exactly one Jordan block with eigenvalue $\alpha$
+for each of the distinct eigenvalues $\alpha$ of $A$; in particular, if $A$
+has no multiple eigenvalue then $A$ is cyclic. Clearly if $A$ is cyclic then
+so is any matrix similar to $A$.
+
+The difficulty with these characterisations of cyclic matrices is that all
+seem to depend on properties of powers of $A$ or knowledge of the
+characteristic polynomial of $A$. The following characterisation is sometimes
+easier to use. We shall illustrate this by proving a conjecture of J. G.Thompson.
+
+We first recall some definitions. We shall use the notation $A[i_{1}%
+:i_{2},j_{1}:j_{2}]$ to denote the submatrix of $A$ consisting of the entries
+in rows $i$ with $i_{1}\leq i\leq i_{2}$ and columns $j$ with $j_{1}\leq j\leq
+j_{2}$. We shall call an $n\times n$ matrix $A$ strongly invertible if each of
+the submatrices $A[1:k,1:k]$ ($k=1,...,n$) is invertible. An $n\times n$
+matrix $H=[\theta_{ij}]$ is called Hessenberg if $\theta_{ij}=0$ whenever
+$i\geq j+2$; we shall call $\theta_{21},\theta_{32},...,\theta_{n,n-1}$ the
+subdiagonal of $H$.
+
+\begin{proposition}
+Let $A$ be an invertible $n\times n$ matrix over a field $F$. Then the
+following are equivalent:
+
+\begin{description}
+\item[(i)] $A$ is cyclic;
+
+\item[(ii)] $A$ is similar to a Hessenberg matrix whose subdiagonal entries
+are all nonzero;
+
+\item[(iii)] $A$ is similar to a Hessenberg matrix whose subdiagonal entries
+are all equal to $1$;
+
+\item[(iv)] $A$ is similar to a matrix $B$ such that $B[2:n,1:n-1]$ is
+strongly invertible.
+\end{description}
+\end{proposition}
+
+\begin{proof}
+((i) $\implies$ (iii)): If $A$ is cyclic then there exists $v\in F^{n}$ such
+that $v_{k+1}:=A^{k}v$ $(k=0,1,...,n-1)$ is a basis of $F^{n}$. Then
+$V:=[v_{1},v_{2},...,v_{n}]$ is an invertible matrix. Since $Av_{k}=v_{k+1}$
+for $k=1,...,n-1$ we see that $AV=VH$ where $H$ is Hessenberg of the form
+\[
+\left[
+\begin{array}
+[c]{ccccc}%
+0 & 0 & \cdots & 0 & \ast\\
+1 & 0 & \cdots & 0 & \ast\\
+\cdots & \cdots & \cdots & \cdots & \cdots\\
+0 & 0 & \cdots & 0 & \ast\\
+0 & 0 & \cdots & 1 & \ast
+\end{array}
+\right]  .
+\]
+
+
+((iii) $\implies$ (i)): If $H$ is Hessenberg with each subdiagonal entry $1$
+and $e_{1}:=\left[  1,0,...,0\right]  ^{T}$ then it is easily verified that
+the $k$th entry of $H^{k}e_{1}$ is $1$ and each of the following entries in
+$H^{k}e_{1}$ is $0$ (for $k=0,1,...,n-1$). Hence $H^{k}e_{1}$ ($k=0,1,...,n-1$%
+) is a basis for $F^{n}$ and so $H$ (and hence $A$) is cyclic.
+
+((ii) $\iff$ (iii)): One way is trivial. On the other hand if $H$ is any
+Hessenberg matrix whose subdiagonal entries are nonzero then it is easily
+verified that there is a diagonal matrix $D$ such that $D^{-1}HD$ is
+Hessenberg with all subdiagonal entries $1$.
+
+((ii) $\iff$ (iv)): On way is obvious. On the other hand let $\mathcal{B}$
+denote the set of all $n\times n$ matrices $B$ for which $B[2:n,1:n-1]$ is
+strongly invertible. We must show that each $B\in\mathcal{B}$ is similar to a
+Hessenberg matrix whose subdiagonal entries are all nonzero. Using induction
+it is enough to prove the following for $k=1,2,...n-1$: if $B=[\beta_{ij}%
+]\in\mathcal{B}$ and the entries $\beta_{ij}\ $equal $0$ whenever $j\leq
+i-2<k$ then there exists a matrix $B^{\prime}=[\beta_{ij}^{\prime}]$ similar
+to $B$ such that $B^{\prime}\in\mathcal{B}$ and the entries $\beta
+_{ij}^{\prime}$ equal $0$ whenever $j\leq i-2<k+1$. Note that since $B$ and
+$B^{\prime}$ lie in $\mathcal{B}$ we have $\beta_{j+1},_{j}\neq0$ for all
+$j<k$ and $\beta_{j+1}^{\prime},_{j}\neq0$ for all $j<k+1$.
+
+Thus suppose that $k\geq1$ and $B=[\beta_{ij}]\in\mathcal{B}$ and the entries
+$\beta_{ij}\ $equal $0$ whenever $j\leq i-2<k$. Since $B[2:n,1:n-1]$ is
+strongly invertible, $B[2:k+1,1:k]$ is both upper triangular and invertible.
+Therefore $\beta_{i+1,i}\neq0$ for $i=1,...,k$ and the $(k+1)$st row of $B$
+has the form $(0,...,0,\beta_{k+1,k},\ast...\ast)$. A series of elementary row
+operations which consist of subtracting suitable multiples of this row from
+the lower rows of $B$ will reduce all entries in the $(i,k)$-positions
+($i=k+2,...,n$) to $0$ (these operations do not change the zeros in the
+$(i,j)$-positions for $j\leq i-2<k$). If these are followed by the
+corresponding elementary column operations we obtain a matrix $B^{\prime
+}=[\beta_{ij}^{\prime}]$ similar to $B$. The column operations do not affect
+any entry in the first $k+1$ columns of the matrix and so the entries
+$\beta_{ij}^{\prime}$ equal $0$ whenever $j\leq i-2<k+1$. Neither do these
+particular row and column operations change the determinants of the
+submatrices $B[2:m+1;1:m]$ ($m=1,...,n-1$) so $B^{\prime}[2:n,1:n-1]$ is
+strongly invertible. Hence $B^{\prime}\in\mathcal{B}$ and the induction step
+is proved. This completes the proof of the proposition.
+\end{proof}
+
+The following appears as open problem 16.95 in [1]. It was first published in
+edition No. 16 of the Kourovka Notebook (2006) and appears to have remained
+open until now.
+
+\begin{corollary}
+[Conjecture of J.G. Thompson]Given any invertible $n\times n$ matrix $A$ over
+a field $F$ there exists a permutation matrix $P$ such that $AP$ is cyclic.
+\end{corollary}
+
+\begin{proof}
+We shall prove that there exists a permutation matrix $P$ (permuting the
+columns of $A$) such that $AP\in\mathcal{B}$. Since $A\ $is not singular there
+is some permutation matrix $Q$ such that the $(2,1)$th entry $AQ$ is nonzero
+and this is the basis for an induction proof.
+
+We now prove for $k=1,...,n-2$ that: if $B$ is an $n\times n$ invertible
+matrix such that $B[2:k+1,1:k]$ is strongly invertible, then there exists a
+permutation matrix $R_{k}$ such that $(BR_{k})[2:k+2,1:k+1]$ is strongly
+invertible. Indeed since $B$ is invertible, the submatrix $B[2:k+2,1:n]$ has
+rank $k+1$. Since $B[2:k+2,1:k]$ is invertible, the first $k$ columns of
+$B[2:k+2,1:n]$ are linearly independent, and there must be a further column,
+say the $\ell$th, which is linearly independent of these first $k$ columns.
+Choose any permutation matrix $R_{k}$ which leaves the first $k$ columns of
+$B$ fixed and moves the $\ell$th column into the $(k+1)$st position. Then
+$BR_{k}$ has the required property. In particular, if $k=n-2$ then
+$BR_{n-2}\in\mathcal{B}$.
+
+To complete the proof take $P:=QR_{1}...R_{n-2}$ and apply the theorem.
+\end{proof}
+
+\bigskip
+
+{\large Reference}
+
+[1] V. D. Mazurov and E. I. Khukhro (eds.). Unsolved Problems in Group Theory:
+the Kourovka Notebook (No. 18). Novosibirsk, 2014.
+
+\qquad\qquad(available at: arXiv: 1401.0300v6 [mathGR])
+
+
+\end{document}

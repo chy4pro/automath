@@ -1,0 +1,222 @@
+========================================================================
+SECTION 0 — CALIBRATION (printed before any review number)
+========================================================================
+  [ok ] residue(K2) [degrees 1,1]: got 1
+  [ok ] residue(C3) [degrees 2^3]: got 1
+  [ok ] residue(C4) [degrees 2^4]: got 2
+  [ok ] residue(C5) [degrees 2^5]: got 2
+  [ok ] residue(C6) [degrees 2^6]: got 2
+  [ok ] residue(C7) [degrees 2^7]: got 3
+  [ok ] residue(C8) [degrees 2^8]: got 3
+  [ok ] residue(C9) [degrees 2^9]: got 3
+  [ok ] steps([2,2,2,2]): got 2
+  [ok ] steps([1,1,1,1]): got 2
+  [ok ] abort: head exceeds remaining: got None
+  [ok ] abort: would drive a zero negative: got None
+
+========================================================================
+SECTION 1 — (C-2) the E = 0 column: s0(lambda), every partition of 2nu
+========================================================================
+  [ok ] nu=1: partition count = p(2): got 2
+    nu=1: 2 partitions, survivors (s0 = lam1) = [[2]]
+  [ok ] nu=1: the ONLY E=0/TAIL-range survivor is [2nu]: got [(2,)]
+  [ok ] nu=2: partition count = p(4): got 5
+    nu=2: 5 partitions, survivors (s0 = lam1) = [[4]]
+  [ok ] nu=2: the ONLY E=0/TAIL-range survivor is [2nu]: got [(4,)]
+  [ok ] nu=3: partition count = p(6): got 11
+    nu=3: 11 partitions, survivors (s0 = lam1) = [[6]]
+  [ok ] nu=3: the ONLY E=0/TAIL-range survivor is [2nu]: got [(6,)]
+  [ok ] nu=4: partition count = p(8): got 22
+    nu=4: 22 partitions, survivors (s0 = lam1) = [[8]]
+  [ok ] nu=4: the ONLY E=0/TAIL-range survivor is [2nu]: got [(8,)]
+  [ok ] nu=5: partition count = p(10): got 42
+    nu=5: 42 partitions, survivors (s0 = lam1) = [[10]]
+  [ok ] nu=5: the ONLY E=0/TAIL-range survivor is [2nu]: got [(10,)]
+  [ok ] nu=6: partition count = p(12): got 77
+    nu=6: 77 partitions, survivors (s0 = lam1) = [[12]]
+  [ok ] nu=6: the ONLY E=0/TAIL-range survivor is [2nu]: got [(12,)]
+
+  -- diffing section 1 against the DRAFT's printed (c-2) column --
+  [ok ] draft nu=1: printed p(2nu) header: got 2
+  [ok ] draft nu=1: printed partition SET equals p(2nu): got [(1, 1), (2,)]
+  [ok ] draft nu=1: printed s0 values vs mine (2 values): got {}
+  [ok ] draft nu=2: printed p(2nu) header: got 5
+  [ok ] draft nu=2: printed partition SET equals p(2nu): got [(1, 1, 1, 1), (2, 1, 1), (2, 2), (3, 1), (4,)]
+  [ok ] draft nu=2: printed s0 values vs mine (5 values): got {}
+  [ok ] draft nu=3: printed p(2nu) header: got 11
+  [ok ] draft nu=3: printed partition SET equals p(2nu): got [(1, 1, 1, 1, 1, 1), (2, 1, 1, 1, 1), (2, 2, 1, 1), (2, 2, 2), (3, 1, 1, 1), (3, 2, 1), (3, 3), (4, 1, 1), (4, 2), (5, 1), (6,)]
+  [ok ] draft nu=3: printed s0 values vs mine (11 values): got {}
+  [ok ] draft nu=4: printed p(2nu) header: got 22
+  [ok ] draft nu=4: printed partition SET equals p(2nu): got [(1, 1, 1, 1, 1, 1, 1, 1), (2, 1, 1, 1, 1, 1, 1), (2, 2, 1, 1, 1, 1), (2, 2, 2, 1, 1), (2, 2, 2, 2), (3, 1, 1, 1, 1, 1), (3, 2, 1, 1, 1), (3, 2, 2, 1), (3, 3, 1, 1), (3, 3, 2), (4, 1, 1, 1, 1), (4, 2, 1, 1), (4, 2, 2), (4, 3, 1), (4, 4), (5, 1, 1, 1), (5, 2, 1), (5, 3), (6, 1, 1), (6, 2), (7, 1), (8,)]
+  [ok ] draft nu=4: printed s0 values vs mine (22 values): got {}
+  [ok ] draft nu=5: printed p(2nu) header: got 42
+  [ok ] draft nu=5: printed partition SET equals p(2nu): got [(1, 1, 1, 1, 1, 1, 1, 1, 1, 1), (2, 1, 1, 1, 1, 1, 1, 1, 1), (2, 2, 1, 1, 1, 1, 1, 1), (2, 2, 2, 1, 1, 1, 1), (2, 2, 2, 2, 1, 1), (2, 2, 2, 2, 2), (3, 1, 1, 1, 1, 1, 1, 1), (3, 2, 1, 1, 1, 1, 1), (3, 2, 2, 1, 1, 1), (3, 2, 2, 2, 1), (3, 3, 1, 1, 1, 1), (3, 3, 2, 1, 1), (3, 3, 2, 2), (3, 3, 3, 1), (4, 1, 1, 1, 1, 1, 1), (4, 2, 1, 1, 1, 1), (4, 2, 2, 1, 1), (4, 2, 2, 2), (4, 3, 1, 1, 1), (4, 3, 2, 1), (4, 3, 3), (4, 4, 1, 1), (4, 4, 2), (5, 1, 1, 1, 1, 1), (5, 2, 1, 1, 1), (5, 2, 2, 1), (5, 3, 1, 1), (5, 3, 2), (5, 4, 1), (5, 5), (6, 1, 1, 1, 1), (6, 2, 1, 1), (6, 2, 2), (6, 3, 1), (6, 4), (7, 1, 1, 1), (7, 2, 1), (7, 3), (8, 1, 1), (8, 2), (9, 1), (10,)]
+  [ok ] draft nu=5: printed s0 values vs mine (42 values): got {}
+  [ok ] draft nu=6: printed p(2nu) header: got 77
+  [ok ] draft nu=6: printed partition SET equals p(2nu): got [(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), (2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), (2, 2, 1, 1, 1, 1, 1, 1, 1, 1), (2, 2, 2, 1, 1, 1, 1, 1, 1), (2, 2, 2, 2, 1, 1, 1, 1), (2, 2, 2, 2, 2, 1, 1), (2, 2, 2, 2, 2, 2), (3, 1, 1, 1, 1, 1, 1, 1, 1, 1), (3, 2, 1, 1, 1, 1, 1, 1, 1), (3, 2, 2, 1, 1, 1, 1, 1), (3, 2, 2, 2, 1, 1, 1), (3, 2, 2, 2, 2, 1), (3, 3, 1, 1, 1, 1, 1, 1), (3, 3, 2, 1, 1, 1, 1), (3, 3, 2, 2, 1, 1), (3, 3, 2, 2, 2), (3, 3, 3, 1, 1, 1), (3, 3, 3, 2, 1), (3, 3, 3, 3), (4, 1, 1, 1, 1, 1, 1, 1, 1), (4, 2, 1, 1, 1, 1, 1, 1), (4, 2, 2, 1, 1, 1, 1), (4, 2, 2, 2, 1, 1), (4, 2, 2, 2, 2), (4, 3, 1, 1, 1, 1, 1), (4, 3, 2, 1, 1, 1), (4, 3, 2, 2, 1), (4, 3, 3, 1, 1), (4, 3, 3, 2), (4, 4, 1, 1, 1, 1), (4, 4, 2, 1, 1), (4, 4, 2, 2), (4, 4, 3, 1), (4, 4, 4), (5, 1, 1, 1, 1, 1, 1, 1), (5, 2, 1, 1, 1, 1, 1), (5, 2, 2, 1, 1, 1), (5, 2, 2, 2, 1), (5, 3, 1, 1, 1, 1), (5, 3, 2, 1, 1), (5, 3, 2, 2), (5, 3, 3, 1), (5, 4, 1, 1, 1), (5, 4, 2, 1), (5, 4, 3), (5, 5, 1, 1), (5, 5, 2), (6, 1, 1, 1, 1, 1, 1), (6, 2, 1, 1, 1, 1), (6, 2, 2, 1, 1), (6, 2, 2, 2), (6, 3, 1, 1, 1), (6, 3, 2, 1), (6, 3, 3), (6, 4, 1, 1), (6, 4, 2), (6, 5, 1), (6, 6), (7, 1, 1, 1, 1, 1), (7, 2, 1, 1, 1), (7, 2, 2, 1), (7, 3, 1, 1), (7, 3, 2), (7, 4, 1), (7, 5), (8, 1, 1, 1, 1), (8, 2, 1, 1), (8, 2, 2), (8, 3, 1), (8, 4), (9, 1, 1, 1), (9, 2, 1), (9, 3), (10, 1, 1), (10, 2), (11, 1), (12,)]
+  [ok ] draft nu=6: printed s0 values vs mine (77 values): got {}
+
+========================================================================
+SECTION 2 — (C-3) boundary rows  nu+1 <= L < lambda_1 <= 2nu
+========================================================================
+    nu=1: 0 boundary pairs, 0 survivors [], FAN-6' certificates [], FAN-6' MISSES []
+    nu=2: 1 boundary pairs, 1 survivors [(3, [4])], FAN-6' certificates [(4, 0)], FAN-6' MISSES []
+    nu=3: 3 boundary pairs, 1 survivors [(5, [6])], FAN-6' certificates [(6, 0)], FAN-6' MISSES []
+    nu=4: 7 boundary pairs, 2 survivors [(7, [8]), (5, [7, 1])], FAN-6' certificates [(8, 0), (7, 1)], FAN-6' MISSES []
+    nu=5: 14 boundary pairs, 2 survivors [(9, [10]), (7, [9, 1])], FAN-6' certificates [(10, 0), (9, 1)], FAN-6' MISSES []
+    nu=6: 26 boundary pairs, 3 survivors [(11, [12]), (9, [11, 1]), (7, [10, 1, 1])], FAN-6' certificates [(12, 0), (11, 1), (10, 1)], FAN-6' MISSES []
+  [ok ] boundary pair counts nu=1..6: got [0, 1, 3, 7, 14, 26]
+  [ok ] boundary survivor counts nu=1..6: got [0, 1, 1, 2, 2, 3]
+  [ok ] closed form max(0, lam1-nu-1) reproduces the pair counts: got [0, 1, 3, 7, 14, 26]
+
+========================================================================
+SECTION 3 — (C-4) the E >= 1 enumeration
+========================================================================
+    nu=1: 0 shapes, 0 survivors, FAN-6' misses = 0
+    nu=2: 3 shapes, 1 survivors, FAN-6' misses = 0
+        E=1 L=3 e=[1] lam=[3] FAN-6'KILLS cert=(3, 0)
+    nu=3: 24 shapes, 4 survivors, FAN-6' misses = 0
+        E=1 L=4 e=[1] lam=[5] FAN-6'KILLS cert=(5, 0)
+        E=1 L=5 e=[1] lam=[5] FAN-6'KILLS cert=(5, 0)
+        E=2 L=4 e=[2] lam=[3, 1] FAN-6'KILLS cert=(3, 1)
+        E=2 L=4 e=[1, 1] lam=[4] FAN-6'KILLS cert=(4, 0)
+    nu=4: 110 shapes, 9 survivors, FAN-6' misses = 0
+        E=1 L=6 e=[1] lam=[7] FAN-6'KILLS cert=(7, 0)
+        E=1 L=7 e=[1] lam=[7] FAN-6'KILLS cert=(7, 0)
+        E=2 L=5 e=[2] lam=[5, 1] FAN-6'KILLS cert=(5, 1)
+        E=2 L=5 e=[1, 1] lam=[6] FAN-6'KILLS cert=(6, 0)
+        E=2 L=6 e=[2] lam=[5, 1] FAN-6'KILLS cert=(5, 1)
+        E=2 L=6 e=[1, 1] lam=[6] FAN-6'KILLS cert=(6, 0)
+        E=3 L=5 e=[3] lam=[3, 1, 1] FAN-6'KILLS cert=(3, 1)
+        E=3 L=5 e=[2, 1] lam=[4, 1] FAN-6'KILLS cert=(4, 1)
+        E=3 L=5 e=[1, 1, 1] lam=[5] FAN-6'KILLS cert=(5, 0)
+    nu=5: 397 shapes, 20 survivors, FAN-6' misses = 0
+        E=1 L=6 e=[1] lam=[8, 1] FAN-6'KILLS cert=(8, 1)
+        E=1 L=8 e=[1] lam=[9] FAN-6'KILLS cert=(9, 0)
+        E=1 L=9 e=[1] lam=[9] FAN-6'KILLS cert=(9, 0)
+        E=2 L=6 e=[2] lam=[7, 1] FAN-6'KILLS cert=(7, 1)
+        E=2 L=7 e=[2] lam=[7, 1] FAN-6'KILLS cert=(7, 1)
+        E=2 L=7 e=[1, 1] lam=[8] FAN-6'KILLS cert=(8, 0)
+        E=2 L=8 e=[2] lam=[7, 1] FAN-6'KILLS cert=(7, 1)
+        E=2 L=8 e=[1, 1] lam=[8] FAN-6'KILLS cert=(8, 0)
+        E=3 L=6 e=[3] lam=[5, 1, 1] FAN-6'KILLS cert=(5, 1)
+        E=3 L=6 e=[2, 1] lam=[6, 1] FAN-6'KILLS cert=(6, 1)
+        E=3 L=6 e=[1, 1, 1] lam=[7] FAN-6'KILLS cert=(7, 0)
+        E=3 L=7 e=[3] lam=[5, 1, 1] FAN-6'KILLS cert=(5, 1)
+        E=3 L=7 e=[2, 1] lam=[6, 1] FAN-6'KILLS cert=(6, 1)
+        E=3 L=7 e=[1, 1, 1] lam=[7] FAN-6'KILLS cert=(7, 0)
+        E=4 L=6 e=[4] lam=[3, 1, 1, 1] FAN-6'KILLS cert=(3, 1)
+        E=4 L=6 e=[3, 1] lam=[4, 1, 1] FAN-6'KILLS cert=(4, 1)
+        E=4 L=6 e=[2, 2] lam=[4, 2] FAN-6'KILLS cert=(4, 2)
+        E=4 L=6 e=[2, 2] lam=[4, 1, 1] FAN-6'KILLS cert=(4, 1)
+        E=4 L=6 e=[2, 1, 1] lam=[5, 1] FAN-6'KILLS cert=(5, 1)
+        E=4 L=6 e=[1, 1, 1, 1] lam=[6] FAN-6'KILLS cert=(6, 0)
+    nu=6: 1211 shapes, 38 survivors, FAN-6' misses = 0
+        E=1 L=8 e=[1] lam=[10, 1] FAN-6'KILLS cert=(10, 1)
+        E=1 L=10 e=[1] lam=[11] FAN-6'KILLS cert=(11, 0)
+        E=1 L=11 e=[1] lam=[11] FAN-6'KILLS cert=(11, 0)
+        E=2 L=7 e=[1, 1] lam=[9, 1] FAN-6'KILLS cert=(9, 1)
+        E=2 L=8 e=[2] lam=[9, 1] FAN-6'KILLS cert=(9, 1)
+        E=2 L=9 e=[2] lam=[9, 1] FAN-6'KILLS cert=(9, 1)
+        E=2 L=9 e=[1, 1] lam=[10] FAN-6'KILLS cert=(10, 0)
+        E=2 L=10 e=[2] lam=[9, 1] FAN-6'KILLS cert=(9, 1)
+        E=2 L=10 e=[1, 1] lam=[10] FAN-6'KILLS cert=(10, 0)
+        E=3 L=7 e=[3] lam=[7, 1, 1] FAN-6'KILLS cert=(7, 1)
+        E=3 L=7 e=[2, 1] lam=[8, 1] FAN-6'KILLS cert=(8, 1)
+        E=3 L=8 e=[3] lam=[7, 1, 1] FAN-6'KILLS cert=(7, 1)
+        E=3 L=8 e=[2, 1] lam=[8, 1] FAN-6'KILLS cert=(8, 1)
+        E=3 L=8 e=[1, 1, 1] lam=[9] FAN-6'KILLS cert=(9, 0)
+        E=3 L=9 e=[3] lam=[7, 1, 1] FAN-6'KILLS cert=(7, 1)
+        E=3 L=9 e=[2, 1] lam=[8, 1] FAN-6'KILLS cert=(8, 1)
+        E=3 L=9 e=[1, 1, 1] lam=[9] FAN-6'KILLS cert=(9, 0)
+        E=4 L=7 e=[4] lam=[5, 1, 1, 1] FAN-6'KILLS cert=(5, 1)
+        E=4 L=7 e=[3, 1] lam=[6, 1, 1] FAN-6'KILLS cert=(6, 1)
+        E=4 L=7 e=[2, 2] lam=[6, 2] FAN-6'KILLS cert=(6, 2)
+        E=4 L=7 e=[2, 2] lam=[6, 1, 1] FAN-6'KILLS cert=(6, 1)
+        E=4 L=7 e=[2, 1, 1] lam=[7, 1] FAN-6'KILLS cert=(7, 1)
+        E=4 L=7 e=[1, 1, 1, 1] lam=[8] FAN-6'KILLS cert=(8, 0)
+        E=4 L=8 e=[4] lam=[5, 1, 1, 1] FAN-6'KILLS cert=(5, 1)
+        E=4 L=8 e=[3, 1] lam=[6, 1, 1] FAN-6'KILLS cert=(6, 1)
+        E=4 L=8 e=[2, 2] lam=[6, 2] FAN-6'KILLS cert=(6, 2)
+        E=4 L=8 e=[2, 2] lam=[6, 1, 1] FAN-6'KILLS cert=(6, 1)
+        E=4 L=8 e=[2, 1, 1] lam=[7, 1] FAN-6'KILLS cert=(7, 1)
+        E=4 L=8 e=[1, 1, 1, 1] lam=[8] FAN-6'KILLS cert=(8, 0)
+        E=5 L=7 e=[5] lam=[3, 1, 1, 1, 1] FAN-6'KILLS cert=(3, 1)
+        E=5 L=7 e=[4, 1] lam=[4, 1, 1, 1] FAN-6'KILLS cert=(4, 1)
+        E=5 L=7 e=[3, 2] lam=[4, 2, 1] FAN-6'KILLS cert=(4, 2)
+        E=5 L=7 e=[3, 2] lam=[4, 1, 1, 1] FAN-6'KILLS cert=(4, 1)
+        E=5 L=7 e=[3, 1, 1] lam=[5, 1, 1] FAN-6'KILLS cert=(5, 1)
+        E=5 L=7 e=[2, 2, 1] lam=[5, 2] FAN-6'KILLS cert=(5, 2)
+        E=5 L=7 e=[2, 2, 1] lam=[5, 1, 1] FAN-6'KILLS cert=(5, 1)
+        E=5 L=7 e=[2, 1, 1, 1] lam=[6, 1] FAN-6'KILLS cert=(6, 1)
+        E=5 L=7 e=[1, 1, 1, 1, 1] lam=[7] FAN-6'KILLS cert=(7, 0)
+  [ok ] S(nu) by enumeration: got [0, 3, 24, 110, 397, 1211]
+  [ok ] S(nu) by closed form: got [0, 3, 24, 110, 397, 1211]
+  [ok ] total E>=1 shapes for nu<=6: got 1745
+  [ok ] E>=1 survivor counts nu=1..6: got [0, 1, 4, 9, 20, 38]
+  [ok ] total E>=1 survivors: got 72
+  [ok ] FAN-6' misses over ALL surviving rows (E=0 boundary + E>=1 + the six [2nu]): got 0
+
+========================================================================
+SECTION 4 — Lemma TAIL: predicted (L - lam1) + s0(lam) vs direct simulation
+========================================================================
+  [ok ] Lemma TAIL (lam,L) pairs tested: got 1817
+  [ok ] Lemma TAIL mismatches: got 0
+
+========================================================================
+SECTION 5 — zero-padding inertness at FULL scope (the repaired control)
+========================================================================
+    E=0 lists: 1580 | E>=1 shapes: 1745 | paddings: 7 | (list,padding) pairs: 23275
+  [ok ] E>=1 shape count matches section 3: got 1745
+  [ok ] padding-dependent step counts: got 0
+
+========================================================================
+SECTION 6 — graph-level witness checker, and the K_n standing control
+========================================================================
+    K3: n=3 connected=True degseq=[2, 2, 2] diam=1 alpha=1 (witness [0]) f=2 non-forest=True residue=1 residue==alpha=True f==alpha+1=True
+  [ok ] K3: residue == alpha: got True
+  [ok ] K3: f == alpha + 1: got True
+  [ok ] K3: alpha == 1: got 1
+    K4: n=4 connected=True degseq=[3, 3, 3, 3] diam=1 alpha=1 (witness [0]) f=2 non-forest=True residue=1 residue==alpha=True f==alpha+1=True
+  [ok ] K4: residue == alpha: got True
+  [ok ] K4: f == alpha + 1: got True
+  [ok ] K4: alpha == 1: got 1
+    K5: n=5 connected=True degseq=[4, 4, 4, 4, 4] diam=1 alpha=1 (witness [0]) f=2 non-forest=True residue=1 residue==alpha=True f==alpha+1=True
+  [ok ] K5: residue == alpha: got True
+  [ok ] K5: f == alpha + 1: got True
+  [ok ] K5: alpha == 1: got 1
+    K6: n=6 connected=True degseq=[5, 5, 5, 5, 5, 5] diam=1 alpha=1 (witness [0]) f=2 non-forest=True residue=1 residue==alpha=True f==alpha+1=True
+  [ok ] K6: residue == alpha: got True
+  [ok ] K6: f == alpha + 1: got True
+  [ok ] K6: alpha == 1: got 1
+    K7: n=7 connected=True degseq=[6, 6, 6, 6, 6, 6, 6] diam=1 alpha=1 (witness [0]) f=2 non-forest=True residue=1 residue==alpha=True f==alpha+1=True
+  [ok ] K7: residue == alpha: got True
+  [ok ] K7: f == alpha + 1: got True
+  [ok ] K7: alpha == 1: got 1
+    K8: n=8 connected=True degseq=[7, 7, 7, 7, 7, 7, 7, 7] diam=1 alpha=1 (witness [0]) f=2 non-forest=True residue=1 residue==alpha=True f==alpha+1=True
+  [ok ] K8: residue == alpha: got True
+  [ok ] K8: f == alpha + 1: got True
+  [ok ] K8: alpha == 1: got 1
+
+========================================================================
+SECTION 7 — FAN-4' and FAN-8': the algebra Q33 could only check conditionally
+========================================================================
+  FAN-4': dec_A' = [sum_{j<=p} D_j] - C(p,2) - [p(L+1) - E], with
+          sum_{j<=p} D_j = sum_{B_hi} deg - C(p,2) = (p*tau - 2nu + R) - C(p,2)
+          claim: dec_A' = R - 2nu + E, hence A'-total = R - dec_A' = 2nu - E
+  [ok ] FAN-4' mass identity over the parameter grid: got 0
+  [ok ] FAN-8' block-occupancy identity |block_t ∩ A'| >= 1 + e_t: got 0
+    grid points: 55296
+  FAN-8' value chain, symbolic:
+     v_t(c) >= tau-(t-1) = tau-t+1   [c escapes at t, decremented <= t-1 times]
+     v_t(x) >= v_t(c)                [block is a prefix, c not in it, x in it]
+     v_{p+1}(x) >= v_t(x) - (p-t+1)  [x survives steps t..p, <=1 decrement each]
+     v_{p+1}(x) <= 2nu - E           [FAN-4' A'-mass]
+     => tau-t+1 <= (2nu-E) + (p-t+1) => tau-p = L <= 2nu-E   QED
+     spot tau=9 p=5 L=4 nu=3 E=1 t=2: 8 <= 9 is True; L<=2nu-E is True; consistent=True
+     spot tau=12 p=7 L=5 nu=4 E=2 t=5: 8 <= 9 is True; L<=2nu-E is True; consistent=True
+     spot tau=6 p=2 L=4 nu=3 E=1 t=1: 6 <= 7 is True; L<=2nu-E is True; consistent=True
+
+========================================================================
+FAILURE_COUNT = 0
+========================================================================

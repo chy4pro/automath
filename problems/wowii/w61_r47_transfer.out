@@ -1,0 +1,132 @@
+========================================================================================================
+w61 r47 -- the 591-state residue taken apart: the factor two, the impossibility ladder,
+           and the single-transfer reduction.  Interpreter .venv/bin/python3.
+========================================================================================================
+population: 869 partitions of N <= 16 with <= 10 parts ; 181 TERMINATE
+sec 105 THIRD IMPLEMENTATION stepC (conjugate coordinates only): 1685 steps diffed against stepA, 0 disagreements (any disagreement exits 2)
+RULING CO': 181 completed trajectories diffed runA vs runB, 0 disagreements
+
+[0] REPRODUCTION of the r46 numbers this round rests on (a claim that could fail).
+    equal-sum dominance pairs of terminating partitions : 2683   (r46: 2683)
+    joint states visited (A non-terminal)               : 7787   (r46: 7787)
+    <| violations along the trajectories                : 0   (r46: 0)
+    residue states  max(A) < max(B)                     : 591   (r46: 591)
+    pairs covered end-to-end by CAP-STEP-MONO           : 2111   (r46: 2111)
+    pairs left open                                     : 572   (r46 banked the same, and it is CHECKED below, not narrated)
+    [ok] CONTROL: the residue is non-empty, so the open half is a real population                 hits=591
+    DISTINCT reachable joint states                     : 2900
+
+[1] (HALF-GAP) PROVED:  A <| B and delta := max B - max A > 0  ==>  sum B - sum A >= delta.
+    The census below could fail at every instance with delta > 0; it does not.
+    <| pairs of terminating partitions        : 11599
+    of them with max B > max A (delta > 0)    : 5263      <-- where the claim can fail
+    VIOLATIONS of (HALF-GAP)                  : 0
+    pairs where the bound is ATTAINED, g = delta : 465   smallest ((1, 1, 1, 1), (3, 1, 1, 1))
+    [ok] CONTROL: (HALF-GAP) was tested where it could fail (delta > 0)                           hits=5263
+    [ok] CORRUPT CONTROL: the DOUBLED bound g >= 2 delta -- the one closure actually demands -- FAILS on <| pairs hits=819
+    smallest g < 2 delta witness              : ((1, 1, 1, 1), (3, 1, 1, 1))
+    ==> the state supplies delta and closure demands 2 delta.  THE DEFICIT IS delta.
+
+[2] (STEP-GAP) PROVED:  sum(hh X) = sum X - 2 max X, hence g' = g - 2(max B - max A).
+    And the level-infinity closure failures of <| are EXACTLY the pairs with g < 2 delta.
+    joint steps where both moves are legal    : 11418
+    VIOLATIONS of the gap identity            : 0
+    predicted-set identity  {level-inf closure survives} == {g >= 2 delta} : 0 mismatches of 11418
+    [ok] CONTROL: the gap identity was tested on a non-empty set of joint steps                   hits=11418
+
+[3] THEOREM NO-GAP-CERT.  A CERTIFICATE must contain every REACHABLE joint state and no
+    BAD pair (one whose own joint walk ever has sum A^(k) > sum B^(k)).  A collision of
+    features between a reachable state and a bad pair kills every certificate factoring
+    through that feature map.
+    <| pairs                     : 11599
+    BAD <| pairs                 : 1279
+    REACHABLE joint states       : 2900 distinct
+    [ok] CONTROL: the BAD population is non-empty, so a collision is possible in principle        hits=1279
+
+    the ladder  F_k(A,B) = ( gap profile ; max A, max B ; c_0(A) .. c_k(A) )
+    k    collision?                                                 smallest witness  (reachable p ; bad q)
+    gap profile ONLY COLLIDES (4 bad pairs collide)                             p=(2, 1, 1, 1, 1) <| (3, 2, 1, 1, 1)   q=(1, 1, 1, 1) <| (3, 1, 1, 1)
+    k=0  NO collision                                               --
+    k=1  NO collision                                               --
+    k=2  NO collision                                               --
+    k=3  NO collision                                               --
+    k=4  NO collision                                               --
+    k=5  NO collision                                               --
+    k=6  NO collision                                               --
+    k=7  NO collision                                               --
+    k=8  NO collision                                               --
+    k=9  NO collision                                               --
+    k=10 NO collision                                               --
+    k=11 NO collision                                               --
+    k=12 NO collision                                               --
+    k=13 NO collision                                               --
+    k=14 NO collision                                               --
+    k=15 NO collision                                               --
+    k=16 NO collision                                               --
+
+    ==> THEOREM NO-GAP-CERT: no certificate factoring through F_-1 exists.
+        Witness  REACHABLE p = (2, 1, 1, 1, 1) <| (3, 2, 1, 1, 1)
+                 BAD        q = (1, 1, 1, 1) <| (3, 1, 1, 1)
+        gap profiles equal : True
+        maxima  p (2,3)  q (1,3)
+        q's own walk, (k, sum A^(k), sum B^(k)) : [(0, 4, 6), (1, 2, 0), (2, 0, 0)]
+        q FAILS the conclusion first at k = 1
+        sec 105 re-verification by stepC (conjugate coordinates, shares no line with stepA): trajectories agree = True
+    [ok] CONTROL: the ladder's top rung F_16 (= the pair itself) finds NO collision, so the ladder is not degenerate hits=1
+    lowest rung with NO collision : k = 0
+
+[4] (MU) PROVED: mu(X) = (max X^(0), max X^(1), ...) is a PARTITION of sum(X)/2.
+    terminating partitions tested 181 ; NOT sorted 0 ; sum mu != sum X / 2 : 0
+    [ok] CONTROL: (MU) tested on a non-empty population                                           hits=181
+
+    (DOM-MAJ) for a pair  <==>  mu(A) >= mu(B) in dominance.  Checked both directions.
+    dominance pairs 2683 ; equivalence mismatches 0
+
+    TRANSFER EDGES: A is B with ONE unit moved up, both terminating, same sum.
+    transfer edges inside the terminating set : 567  (of 2683 dominance pairs)
+
+    CONNECTIVITY re-censused: is every dominance pair joined by a chain of transfer
+    edges that never leaves the terminating set?  r45 measured the same fact on its OWN,
+    different population (wowii61_draft sec 7.60 (g)); the number below is MINE, and no
+    number from that other population is restated here.
+    dominance pairs 2683 ; NOT joined inside the terminating set : 0   e.g. None
+    [ok] CONTROL: connectivity was tested on a non-empty set of dominance pairs                   hits=2683
+
+    THE REDUCTION.  (DOM-MAJ) on this population follows from (DOM-MAJ) on the transfer
+    edges alone, by transitivity of dominance on the mu's.  So the OPEN part of
+    (DOM-MAJ) is only the transfer edges CAP-STEP-MONO does not already cover.
+    transfer edges covered end-to-end by CAP-STEP-MONO : 479
+    transfer edges left OPEN                           : 88
+    ==> the residue drops from 572 open dominance pairs to 88 open TRANSFER EDGES.
+    [ok] CONTROL: the reduction does not empty the problem -- open transfer edges remain          hits=88
+    [ok] CORRUPT CONTROL: the reduction is not vacuous the other way either -- some transfer edges ARE already covered hits=479
+
+[5] THE OPEN TRANSFER EDGES, MEASURED.  At every inversion state along their joint walks
+    record delta = max B - max A, the gap g, and the slack g - 2 delta that closure needs.
+    inversion states on open transfer edges : 88
+    delta histogram   : {1: 88}
+    gap histogram     : {2: 88}
+    slack g - 2 delta : {0: 88}   MINIMUM 0
+    tightest witness  : pair (3, 2, 2, 1) <| (2, 2, 2, 2) at k=1 -> (1, 1) vs (2, 1, 1)
+    max L1 distance between A^(k) and B^(k) along OPEN transfer walks : 2
+    [ok] CONTROL: the open transfer edges do carry inversion states                               hits=88
+
+[5b] The same three histograms on ALL 591 residue states (not just the transfer edges),
+     so the transfer reduction can be compared with the population it replaces.
+     delta histogram : {1: 568, 2: 23}
+     slack histogram : {0: 204, 2: 221, 4: 123, 6: 37, 8: 6}   MINIMUM 0
+    [ok] CONTROL: the residue histogram is non-empty                                              hits=591
+
+[6] A LAST MEASUREMENT, REPORTED WHATEVER IT SAYS.  Define the LOOKAHEAD relation
+    L(A,B) := A <| B and (g >= 2 delta) and the SAME holds one joint step later.
+    If L were closed it would be a certificate; it is a memoryless predicate with one
+    step of foresight, so this measures how far foresight alone gets.
+    L-pairs 10267 ; CLOSURE VIOLATIONS 0   e.g. None
+    [ok] CONTROL: the lookahead relation is non-empty                                             hits=10267
+    L SURVIVED one-step closure on this population -- reported as a LEAD, not a
+    theorem: closure of a lookahead relation on a finite population is not a proof.
+
+========================================================================================================
+ELAPSED 0.19 s / 300 s internal limit ; PARTIAL=False ; runA/runB diffed 181 ; stepA/stepC diffed 1685
+CONTROLS 13/13 firing ; DEFECTS 0
+EXIT=0   (this is the script's own FLAG line, not the process exit code, which is 0)

@@ -1,0 +1,32 @@
+====================================================================================================
+w61 r48d -- HELD-OUT re-test of the round's theorems on independent code, N <= 26.
+====================================================================================================
+
+[0] population: 11731 partitions of N <= 26 ; GRAPHIC (Erdos-Gallai) : 2531
+    [ok] CONTROL: the population contains non-graphic partitions                          hits=9200
+    graphic partitions whose HH walk does NOT complete : 0   (must be 0)
+    NON-graphic partitions whose HH walk DOES complete  : 0   (must be 0)
+    [ok] CONTROL: mu was computed for a non-empty set                                     hits=2531
+
+[1] THEOREM DOWN-SET, re-tested: lam graphic, one unit moved DOWN => graphic.
+    instances 59368 ; NOT graphic 0
+    [ok] CONTROL: the down-set census is non-vacuous                                      hits=59368
+
+[2] (CHAIN) and (DOM-MAJ), re-tested on every equal-sum dominance pair of graphic
+    partitions.  The chain is rebuilt from scratch by the i*/j** rule.
+    equal-sum dominance pairs of graphic partitions : 429766
+    (DOM-MAJ)  mu(A) >= mu(B) FAILURES              : 0   e.g. None
+    (CHAIN)    chain elements built 2301243 , longest chain 20 edges, elements OUTSIDE the graphic set or chains that do not reach B : 0   e.g. None
+    [ok] CONTROL: (DOM-MAJ) was tested on a non-empty population                          hits=429766
+    [ok] CONTROL: chains longer than one edge occur                                       hits=1
+    [2c] INCOMPARABLE equal-sum pairs of graphic partitions : 621358 ; of them whose mu's are also incomparable : 141670
+    [ok] CORRUPT CONTROL: mu-dominance is a real conclusion -- incomparable inputs give incomparable mu's, so [2] is not measuring a tautology hits=141670
+
+[3] THEOREM R-CLOSED, re-tested.  R is rebuilt here from the c_m profile alone.
+    pairs in R : 30014 ; CLOSURE VIOLATIONS : 0   e.g. None
+    [ok] CONTROL: R is non-empty on the held-out population                               hits=30014
+
+====================================================================================================
+ELAPSED 177.89 s / 540 s internal limit ; PARTIAL=False
+CONTROLS 7/7 firing ; DEFECTS 0
+====================================================================================================

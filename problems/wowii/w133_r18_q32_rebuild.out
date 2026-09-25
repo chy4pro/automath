@@ -1,0 +1,44 @@
+  PASS  D = {0,1,6,8,18} is a planar difference set mod 21 (every nonzero residue exactly once)   [20 distinct differences, multiplicities [1]]
+  PASS  k = 5, so the plane has order 4   [k=5, v=21]
+  PASS  core has 42 vertices   [got 42]
+  PASS  core is 5-regular   [degree multiset [5]]
+  PASS  plane axioms: any 2 points on exactly 1 line, any 2 lines meet in exactly 1 point   [0 violations]
+  PASS  the three chosen points are NON-COLLINEAR (they form a triangle)   [points 0,1,2]
+  PASS  the three joining lines are distinct and NON-CONCURRENT   [lines [1, 15, 0]]
+  PASS  incidence pattern of the attachment 6-set is exactly `point_i on line_j iff i != j` (this is what makes it round 13's configuration)   [[[False, True, True], [True, False, True], [True, True, False]]]
+  PASS  n = 54   [got 54]
+  PASS  12 hair vertices were attached   [got 12]
+  PASS  C4-free (strong form: no two vertices with >= 2 common neighbours)   [0 violating pairs, scan over 1431 pairs]
+  PASS  connected   [reach sizes [54]]
+  PASS  edge count 117   [got 117]
+  PASS  triangle-free (scan over all neighbourhood pairs)   [total triangle incidences 0]
+  PASS  F1 identity a(v) = d(v) - t(v) holds vertexwise, computed by two different routes
+  PASS  Sum a(v) = 234   [got 234]
+  PASS  l(G) = 13/3   [l = 13/3]
+  PASS  a-profile {6:6, 5:36, 2:6, 1:6}   [{6: 6, 5: 36, 2: 6, 1: 6}]
+  PASS  rad = 5   [got 5]
+  PASS  diam = 7   [got 7]
+  PASS  ecc computed at ALL 54 vertices   [ecc multiset [(5, 42), (6, 6), (7, 6)]]
+  PASS  NO geodesic of length >= rad satisfies (FAR-2)   [0 hits]
+  PASS  the cap-break configuration is NON-VACUOUS (the (FAR-2) verdict is over a NON-EMPTY scan)   [480 cap-break (u0,u1,ud) frames]
+  PASS  cap-break frame count = 480   [got 480]
+  PASS  every cap-break geodesic has length EXACTLY rad   [lengths [5]]
+  PASS  every cap-break geodesic has an a=1 vertex at its far end   [far-end a-values [1]]
+  PASS  peeling removed exactly the 12 hair vertices, and nothing else   [peeled 12]
+  PASS  the peeled graph is exactly the 42-vertex PG(2,4) incidence graph
+  PASS  peeled radius = 3 (route A1 is REFUTED: rad drops 5 -> 3)   [rad' = 3, diam' = 3]
+  PASS  peeled graph still has l > 4   [l' = 5]
+  PASS  peeled l = 5 exactly   [l' = 210/42]
+  longest induced path found (DFS capped at 12 vertices, 90 s budget): 12
+  PASS  path(G) >= rad + 4 = 9, so Problem A is NOT refuted by this graph   [found 12]
+  PASS  the exhibited path is certified INDUCED from scratch (consecutive adjacent, zero chords)   [len 12, 0 chords]
+
+--- V7 probes: each injects a fault and REQUIRES the certifier above to trip ---
+  PASS  P1  C4-free scan is LIVE (adding a second common line to two points trips it)   [10 violating pairs after injection]
+  PASS  P2  induced-path chord certifier is LIVE (planting one chord trips it)   [1 chords after injection]
+  PASS  P3  the (FAR-2) verdict is refutable, not vacuous: the same scan with the a(ud) >= 2 test relaxed to a(ud) >= 1 returns a NON-EMPTY hit set   [480 hits under the relaxed test (vs 0 under the real one)]
+  PASS  P4  the difference-set certifier is LIVE (a non-difference-set is rejected)   [multiplicities [1, 2]]
+
+n = 54, edges = 117, Sum a = 234, l = 13/3, rad = 5, diam = 7, rad(peeled) = 3, induced path >= 12
+FAILURES: 0
+elapsed 3.4s

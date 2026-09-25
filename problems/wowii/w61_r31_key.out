@@ -1,0 +1,77 @@
+impl source : $HOME/workspace/claudecode/automath/problems/wowii/w61_r29_c1audit.py  md5 768975c3987de60fbebe1080d0dd530d
+extracted   : 1972 chars of implementation source, 3 defs
+
+==============================================================================
+PART 0  --  positive AND negative controls, before any key value is computed
+==============================================================================
+   is_step_seq([2,2,2,2]) [POSITIVE ctrl]         got True           want True            OK
+   is_step_seq(M([2,2]))  [POSITIVE ctrl]         got True           want True            OK
+   is_step_seq([1,1,1])   [negative]              got False          want False           OK
+   is_step_seq(M([3,2]))  [negative, odd]         got False          want False           OK
+   T(4)=steps([4]^6)      [Lemma C1-A]            got 4              want 4               OK
+   T(6)=steps([6]^8)      [Lemma C1-A]            got 6              want 6               OK
+   V(1)=steps([1]^4)      [Lemma C1-A']           got 2              want 2               OK
+   V(5)=steps([5]^8)      [Lemma C1-A']           got 6              want 6               OK
+   s0((2,1,1))            [SS7.25 (d)]            got 3              want 3               OK
+   s0((5,3)) = w+1        [Thm C1-2]              got 6              want 6               OK
+   C1-B identity on (5,3)                         got True           want True            OK
+   alpha(K_5)             [POSITIVE ctrl, must be 1] got 1              want 1               OK
+   alpha(C_5)             [POSITIVE ctrl, must be 2] got 2              want 2               OK
+   alpha(C_6)                                        got 3              want 3               OK
+   alpha(empty on 4)      [POSITIVE ctrl, must be 4] got 4              want 4               OK
+   min_alpha([3,3,3,3])   [POSITIVE ctrl, K_4 -> 1] got 1              want 1               OK
+   min_alpha([0,0,0])     [POSITIVE ctrl, -> 3]   got 3              want 3               OK
+   min_alpha([2,2,2])     [C_3 -> 1]              got 1              want 1               OK
+   min_alpha([3,1,1,1]) = star K_{1,3} -> 3       got 3              want 3               OK
+   min_alpha([1,1,1]) non-graphical -> None       got None           want None            OK
+   min_alpha(M((3,1))) = 3  [Obs C1-E, 180 realizations] got 3              want 3               OK
+   realization count for M((3,1)) = 180           got 180            want 180             OK
+
+   controls run : 22 ; passed : 22
+
+==============================================================================
+PART 1  --  two-implementation diff on a declared population
+==============================================================================
+   population : 966 lists (every M(lambda) for n<=16, plus both proof shapes w<=25)
+   A/B calls diffed so far : 978 ; disagreements : 0 (any would have exited 2)
+
+==============================================================================
+PART 2  --  held-out key rows
+==============================================================================
+   ROW-DETERMINATION AUDIT (RULING CP) -- struck rows are named, not hidden:
+      STRUCK  s0((7,4,1))          : = 8 = w+1, which is exactly what Theorem
+              C1-2's k=2 value and the (2,1,1) worked example both suggest.
+              A judge guessing 'w+1' scores it correct. Grades nothing. STRUCK.
+      STRUCK  min_alpha(M((6,2)))  : Observation C1-G pins it to >= 3 outright
+              (w+2=8 > 3c=6). The brief DETERMINES the interesting half. STRUCK.
+      STRUCK  T(w), V(c), any k<=2 s0 : pinned by Lemma C1-A / C1-A' / Thm C1-2.
+      KEPT    the six rows below, each with its shortcut value printed beside it.
+
+   A1 population : the single list M((6,4,2)) = [6]^7 + [6,4,2], 10 entries
+      A1  s0((6,4,2)) = 8   shortcut 'w+1' = 7 -> differs, row discriminates
+   A2 population : the single list M((5,4,3)) = [5]^6 + [5,4,3], 9 entries
+      A2  residue(M((5,4,3))) = 2   shortcuts 'k' = 3 and 'k+1' = 4 -> differs from both, row discriminates
+   A3 population : the single explicit list [4, 4, 3, 3, 2, 2] (not of the M(lambda) shape, so no statement in the brief speaks to it)
+      A3  steps([4,4,3,3,2,2]) = 4   (residue 2)
+   B1 population : ALL labelled graphs on 7 vertices (2^21 masks), filtered to realizations of M((2,2,1,1)) = [2, 2, 2, 2, 2, 1, 1]
+      B1  min_alpha = 3 over 3507 realizations ; shortcut 'k' = 4 -> differs, row discriminates
+          (k = 4 here, so this row also refutes the reading that C1-C's hypothesis is tight; nothing in the brief states this value)
+   B2 population : 626 partitions of 20 with k>=2 and a terminating process
+      B2  #{residue = k} = 19
+   B3 population : 1001 partitions of 22 with k>=2 and a terminating process
+      B3  #{s0 = lambda_1 + 2} = 90
+
+   A/B calls diffed in total : 2609 ; disagreements : 0
+
+==============================================================================
+PART 3  --  key written
+==============================================================================
+   wrote $HOME/workspace/claudecode/automath/problems/wowii/w61_r31_heldout_key.txt
+      A1 = 8
+      A2 = 2
+      A3 = 4
+      B1 = 3
+      B2 = 19
+      B3 = 90
+
+elapsed 6.5s

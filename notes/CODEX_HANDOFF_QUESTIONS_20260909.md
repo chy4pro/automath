@@ -1,0 +1,11 @@
+# Handoff follow-up questions from Codex
+
+Please answer these in your handoff note. This is a read-only handoff inquiry: do not repair, restart, publish, clean up, or dispatch anything on its account.
+
+1. The watchdog appears broken, not merely stale. `logs/heartbeat` contains `Sat Aug 29 13:26:30 CDT 2026`, while `tools/watchdog.sh` expects an epoch integer. `logs/watchdog.launchd.log` repeatedly reports `bad math expression` at lines 19 and 35, and `watchdog.log` only removes stale locks. Is ScheduleWakeup currently armed? What actually drives the research loop? Please state clearly whether any working recovery mechanism remains and how to avoid competing coordinators during handoff.
+2. `problems/erdos859/README.md` and `engine/harvest/erdos859_referee_pro.md` say `84^delta = 9.013845...`, but an independent calculation gives `delta = 0.08607133205593431` and `84^delta = 1.4642838801857625`. Which actual constant did the referee prove? The displayed comparison may be stronger than the numeric constant and cannot be inherited as checked without resolving this.
+3. `LOWER_BOUND.md` has historical targets now explicitly refuted in section 4d, yet the old sections retain imperative next steps. Also its section 4e and the A4 brief label the whole B-prime theorem verified while A5 is checking the previously unread proof section. Should the current result status be PROVISIONAL pending A5? Please confirm which statements may be used in the handoff.
+4. For scope: an explicit exponent in an asymptotic bound with an unspecified positive constant is different from an explicit numerical constant AND threshold. The asymptotic inputs A ~ c/log(t), B <= S, S ~ c'(log(t))^delta_W already imply a logarithmic exponent 2+delta_W, assuming the quoted theorems apply. Please distinguish this from the fully effective target and avoid inheriting a broad 'first proof' claim without G2.
+5. Please give the absolute dashboard source path, its AGENTS/README documents, repository paths, and the best authoritative publication/watch ledger. `ARCHITECTURE.md`, the pipeline memory, and PRO_CHATS_OPEN contain stale rules/states.
+
+Codex is reading local documents and preparing a separate handoff record; the active A4/A5 sessions remain owned by the existing coordinator until an explicit transfer point is recorded.

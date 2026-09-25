@@ -1,0 +1,230 @@
+==============================================================================
+r4_2local.py  --  ROUND 4, zc1a7.   Z_2 A_7, |u| = 4.
+==============================================================================
+ordinary character table of A_7 loaded (built in r1 by Murnaghan-Nakayama,
+re-derived in r1 by Dixon mod 421; degrees [1, 6, 10, 10, 14, 14, 15, 21, 35])
+chi(2a), chi(4a):
+   chi1  deg 1    chi(2a)=1   chi(4a)=1     blind (chi(2a)=chi(4a))
+   chi2  deg 6    chi(2a)=2   chi(4a)=0     DISTINGUISHES
+   chi3  deg 10   chi(2a)=-2  chi(4a)=0     DISTINGUISHES
+   chi4  deg 10   chi(2a)=-2  chi(4a)=0     DISTINGUISHES
+   chi5  deg 14   chi(2a)=2   chi(4a)=0     DISTINGUISHES
+   chi6  deg 14   chi(2a)=2   chi(4a)=0     DISTINGUISHES
+   chi7  deg 15   chi(2a)=-1  chi(4a)=-1    blind (chi(2a)=chi(4a))
+   chi8  deg 21   chi(2a)=1   chi(4a)=-1    DISTINGUISHES
+   chi9  deg 35   chi(2a)=-1  chi(4a)=1     DISTINGUISHES
+
+##############################################################################
+# PART A -- the 2-LOCALLY admissible system for |u| = 4
+##############################################################################
+
+Hypotheses used (stated, not hidden):
+  H1  supp(eps) subset {2a,4a}, eps_2a + eps_4a = 1.  [Berman-Higman + Hertweck
+      Thm 2.3, both cited for Z G; the round-4 question SPECIFIES this support,
+      so H1 is part of the question, not an extra assumption.]
+  H2  u^2 has order 2 and 2a is the only class of involutions => eps_2a(u^2)=1.
+  H3  Luthar-Passi multiplicities for ORDINARY characters are valid for
+      u in V(Z_2 G): D(u) has finite order so it is diagonalisable over Qbar_2
+      with 4th-root-of-unity eigenvalues and non-negative INTEGER multiplicities.
+  H4  Hertweck's congruence Prop 2.7(iii) AT THE PRIME 2 is valid for
+      u in V(Z_2 G): its proof is the Frobenius congruence
+      (sum a_g g)^{2^j} = sum a_g^{2^j} g^{2^j} mod 2, and a^2 = a mod 2 holds
+      for a in Z_2.  At an ODD prime it is NOT available (Z_2 has no map to F_p).
+  NOT available 2-locally: p-Brauer characters for p in {3,5,7}.  Those need the
+      reduction Z_p G -> F_p G, i.e. u in Z_p G.
+
+Boundedness (so that the enumeration below is provably complete, not a search):
+   chi_2 (deg 6) has chi(2a)=2, chi(4a)=0 => chi(u) = 2*t
+   mu_0 = t + 2 >= 0 and mu_2 = 2 - t >= 0  =>  -2 <= t <= 2.
+
+2-LOCAL system (ordinary characters only) survivors over t in [-6,6]: [-2, -1, 0, 1, 2]
+   + Hertweck congruence at p=2                          survivors: [-2, 0, 2]
+   (box [-6,6] is wider than the proved bound [-2,2]; nothing outside [-2,2]
+    survives, so the enumeration is complete.)
+
+brauer_tables.json keys: ['2', '3', '5', '7']
+
+t   | ordinary-only | +cong(p=2) | odd-p Brauer killers
+----+---------------+------------+---------------------
+ -4 |   killed(3)   |   -        | -
+ -3 |   killed(3)   |   -        | -
+ -2 |   SURVIVES    |   SURVIVES | 7-mod deg 5 (mu_0 = -1)
+ -1 |   SURVIVES    |   killed   | none
+  0 |   SURVIVES    |   SURVIVES | none
+  1 |   SURVIVES    |   killed   | none
+  2 |   SURVIVES    |   SURVIVES | none
+  3 |   killed(3)   |   -        | -
+  4 |   killed(3)   |   -        | -
+
+==> 2-LOCAL admissible set for |u|=4 in V(Z_2 A_7):  t = eps_2a in [-2, 0, 2]
+    i.e. (eps_2a, eps_4a) in [(-2, 3), (0, 1), (2, -1)]
+==> GLOBAL admissible set (round 2, reproduced here): t in [0, 2]
+
+CENSUS (the number I am entitled to, sec.90/104):
+   discriminating constraints, ordinary characters      : 14
+   discriminating constraints, odd-p Brauer characters   : 26
+   GLOBAL total (round 2 reported 40)                    : 40
+   surviving 2-localisation                              : 14  (65% lost)
+   -- and the ONE constraint that killed t=-2 globally is among the lost ones:
+      ['7-mod deg 5 (mu_0 = -1)']
+
+CONTROLS for part A
+  POSITIVE: the trivial vector t=0 is realised by an actual g in 4a; its
+            multiplicities must be the true eigenvalue multiplicities.
+            chi_2(deg 6) at t=0 -> mu = ['2', '1', '2', '1']
+            (the standard 6-dim'l module: (1234)(56) has eigenvalues
+             1,1,-1,-1,i,-i  ->  (2,1,2,1))
+            MATCH.
+  REJECTION: t must be rejectable.
+            t=  3 rejected by 3 ordinary inequalities, e.g. [('chi2', 2, -1)]
+            t=  4 rejected by 3 ordinary inequalities, e.g. [('chi2', 2, -2)]
+            t= -3 rejected by 3 ordinary inequalities, e.g. [('chi2', 0, -1)]
+            t= -4 rejected by 3 ordinary inequalities, e.g. [('chi2', 0, -2)]
+  REJECTION: t = +-1 must be rejected by the congruence and NOT by ordinary chars.
+            t=  1 ordinary-admissible, killed by the p=2 congruence. OK
+            t= -1 ordinary-admissible, killed by the p=2 congruence. OK
+
+##############################################################################
+# PART B -- the 2-blocks of A_7, computed
+##############################################################################
+2-adic sqrt(-7) to precision 2^40 : s = 427829018805,  s^2 + 7 = 0 mod 2^40
+  (2 splits in Q(sqrt(-7)) because -7 = 1 mod 8; the two primes above 2 are the
+   two 2-adic square roots +-s, and the block partition is the same for both --
+   asserted below.)
+
+2-BLOCKS of A_7 (central characters mod a prime above 2):
+   block 0 : ['chi1', 'chi6', 'chi7', 'chi8', 'chi9'] degrees [1, 14, 15, 21, 35]       k(B)=5  defect=3
+   block 1 : ['chi2', 'chi3', 'chi4', 'chi5'] degrees [6, 10, 10, 14]           k(B)=4  defect=2
+
+CONTROLS for part B
+  (i) the principal block must contain the trivial character: block containing
+      chi1 = block 0.  OK
+  (ii) sum of k(B) over blocks = 9 = 9
+  (iii) INDEPENDENT cross-check: characters in the same block must be connected
+      in the 2-modular decomposition graph (Brauer).  Using round 2's p=2 table
+      on the RATIONAL 2-regular classes 1a,3a,3b,5a:
+      p=2 IBr degrees [1, 6, 14, 4, 4, 20] on ['1a', '3a', '3b', '5a']
+      chi1  deg 1   -> 1 non-negative integer decomposition(s): [(1, 0, 0, 0, 0, 0)]
+      chi2  deg 6   -> 1 non-negative integer decomposition(s): [(0, 1, 0, 0, 0, 0)]
+      chi3  deg 10  -> 2 non-negative integer decomposition(s): [(0, 1, 0, 0, 1, 0), (0, 1, 0, 1, 0, 0)]
+      chi4  deg 10  -> 2 non-negative integer decomposition(s): [(0, 1, 0, 0, 1, 0), (0, 1, 0, 1, 0, 0)]
+      chi5  deg 14  -> 3 non-negative integer decomposition(s): [(0, 1, 0, 0, 2, 0), (0, 1, 0, 1, 1, 0), (0, 1, 0, 2, 0, 0)]
+      chi6  deg 14  -> 1 non-negative integer decomposition(s): [(0, 0, 1, 0, 0, 0)]
+      chi7  deg 15  -> 1 non-negative integer decomposition(s): [(1, 0, 1, 0, 0, 0)]
+      chi8  deg 21  -> 1 non-negative integer decomposition(s): [(1, 0, 0, 0, 0, 1)]
+      chi9  deg 35  -> 1 non-negative integer decomposition(s): [(1, 0, 1, 0, 0, 1)]
+      NOTE the two 4-dimensional 2-modular simples agree on every RATIONAL class
+      (r3 limitation), so a decomposition can only be unique up to swapping them.
+      decomposition-graph components: [['chi1', 'chi6', 'chi7', 'chi8', 'chi9'], ['chi2', 'chi3', 'chi4', 'chi5']]
+      central-character blocks      : [['chi1', 'chi6', 'chi7', 'chi8', 'chi9'], ['chi2', 'chi3', 'chi4', 'chi5']]
+      AGREE: True
+
+##############################################################################
+# PART C -- the block reduction of the 2-LOCAL existence question
+##############################################################################
+
+LEMMA (elementary, proof in one line, and it is the point of part B).
+  Z_2 A_7 = (+)_B B  with B = e_B Z_2 A_7 two-sided ideals, e_B orthogonal
+  idempotents summing to 1.  Then
+      { u in (Z_2 A_7)^x : u^4 = 1 }  =  prod_B { u_B in B^x : u_B^4 = e_B }
+  and chi(u) = chi(u_B) for chi in Irr(B).  The choices are INDEPENDENT.
+COROLLARY.  If every chi in Irr(B) has chi(2a) = chi(4a), then u_B := e_B*g for
+  g in 4a already realises the prescribed values on that block.  Such a block can
+  never obstruct.
+
+   block 0 ['chi1', 'chi6', 'chi7', 'chi8', 'chi9'] : distinguishing characters ['chi6', 'chi8', 'chi9'] -> CAN obstruct
+   block 1 ['chi2', 'chi3', 'chi4', 'chi5'] : distinguishing characters ['chi2', 'chi3', 'chi4', 'chi5'] -> CAN obstruct
+
+CENSUS: of 2 two-blocks of A_7, 2 can obstruct and 0 cannot.
+        Of the 9 ordinary characters, 7 distinguish (2,-1) from (0,1).
+
+LIMITATION printed beside the result: the block reduction says the question
+is a CONJUNCTION of independent per-block questions.  It removes the blocks
+listed above as 'cannot obstruct'.  It does NOT decide the remaining blocks;
+each of those still has full defect (Sylow_2(A_7) = D_8) and is not of any
+type for which the unit group of the order is classified.
+
+##############################################################################
+# PART D -- the DEFECT GROUPS, and what the two blocks actually are
+##############################################################################
+2-modular irreducible degrees: [1, 6, 14, 4, 4, 20]
+IBr -> block: {1: 0, 6: 1, 14: 0, 4: 1, 20: 0}
+
+BLOCK 0 : Irr = ['chi1', 'chi6', 'chi7', 'chi8', 'chi9'] (degrees [1, 14, 15, 21, 35]),  IBr degrees [1, 14, 20]
+   k(B) = 5,  l(B) = 3,  defect d = nu_2(|G|) - min nu_2(chi(1)) = 3 - 0 = 3
+   decomposition matrices consistent with (Brauer values, every IBr present,
+   largest elementary divisor of the Cartan matrix = p^d = 8): 1
+   ... which is 1 up to relabelling the simple modules.
+   D = [[1, 0, 0], [0, 1, 0], [1, 1, 0], [1, 0, 1], [1, 1, 1]]
+   Cartan C = D^T D = [[4, 2, 2], [2, 3, 1], [2, 1, 2]],  elementary divisors [1, 1, 8], det = 8
+   ==> the decomposition matrix of this block is UNIQUE up to relabelling.
+
+BLOCK 1 : Irr = ['chi2', 'chi3', 'chi4', 'chi5'] (degrees [6, 10, 10, 14]),  IBr degrees [6, 4, 4]
+   k(B) = 4,  l(B) = 3,  defect d = nu_2(|G|) - min nu_2(chi(1)) = 3 - 1 = 2
+   decomposition matrices consistent with (Brauer values, every IBr present,
+   largest elementary divisor of the Cartan matrix = p^d = 4): 2
+   ... which is 1 up to relabelling the simple modules.
+   D = [[1, 0, 0], [1, 0, 1], [1, 1, 0], [1, 1, 1]]
+   Cartan C = D^T D = [[4, 2, 2], [2, 2, 1], [2, 1, 2]],  elementary divisors [1, 1, 4], det = 4
+   ==> the decomposition matrix of this block is UNIQUE up to relabelling.
+
+READING OFF THE DEFECT GROUPS.
+  Block 0: defect 3 = nu_2(|A_7|), so its defect group is a full Sylow
+           2-subgroup of A_7, i.e. D_8.  k(B)=5, l(B)=3: exactly the shape of
+           a block with dihedral defect group of order 8.
+  Block 1: defect 2, so |D| = 4, i.e. D is C_4 or C_2 x C_2.
+           A block with CYCLIC defect group C_{p^n} has l(B) = e | p-1; for
+           p = 2 that forces l(B) = 1 (Dade's theory of cyclic blocks).
+           Block 1 has l(B) = 3.  ==> D is NOT cyclic  ==>
+
+     *****  BLOCK 1 OF Z_2 A_7 HAS KLEIN FOUR DEFECT GROUP  *****
+
+  and its Cartan matrix is [[4,2,2],[2,2,1],[2,1,2]].  The two Morita classes of
+  Klein-four blocks with l(B)=3 are distinguished by their Cartan matrices:
+     R A_4                       : [[2,1,1],[1,2,1],[1,1,2]]
+     principal block of R A_5    : [[4,2,2],[2,2,1],[2,1,2]]
+  so block 1 is of A_5 TYPE.  By the classification of blocks with Klein four
+  defect groups (Craven-Eaton-Kessar-Linckelmann, Math. Z. 268 (2011), which uses
+  CFSG) every such block is Morita equivalent to R V_4, R A_4 or B_0(R A_5);
+  ==> BLOCK 1 IS MORITA EQUIVALENT TO THE PRINCIPAL 2-BLOCK OF R A_5.
+  Its basic algebra has R-rank sum(C) = 4+2+2+2+2+1+2+1+2 = 18.
+
+CONTROL for part D -- GREEN'S THEOREM ON ZEROS OF CHARACTERS.
+  If B has defect group D and the 2-part of g is not G-conjugate into D, then
+  chi(g) = 0 for every chi in Irr(B).  A Klein four group has exponent 2, so
+  EVERY character of block 1 must vanish on 4a.  Check:
+    block 0 on 4a: [('chi1', 1), ('chi6', 0), ('chi7', -1), ('chi8', -1), ('chi9', 1)]
+    block 1 on 4a: [('chi2', 0), ('chi3', 0), ('chi4', 0), ('chi5', 0)]
+    block 1: ALL FOUR VANISH on 4a.  Green's theorem is satisfied -- an
+    INDEPENDENT confirmation of the Klein four defect group.
+    block 0: NOT all vanish on 4a (as it must be: its defect group D_8 has
+    elements of order 4).  The control discriminates.
+
+CONSEQUENCE FOR ROUND 3'S STATED LIMITATION (r3 sec.10, first bullet).
+  r3 recorded: 'the 2-modular decomposition matrix merges the two 4-dimensional
+  simples; separating them needs the 7a/7b Brauer values, which were not
+  computed.'  Part D separates them WITHOUT any 7a/7b value: both 4-dimensional
+  simples lie in block 1, and inside that block the decomposition matrix is
+  forced up to relabelling them.  Relabelling is exactly the ambiguity that does
+  not matter.  ==> the limitation is REMOVED, by block theory rather than by
+  computing the irrational classes.
+
+WHAT PART D DOES NOT DO (sec. (b) of the dispatch).
+  It does NOT decide either block.  It says WHERE the question lives and that
+  one of the two places is an algebra whose Morita class is known.  The prescribed
+  eigenvalue multiplicities per block, for the record:
+    block 0  chi1  deg 1    open (2,-1): mu = [1, 0, 0, 0]       trivial (0,1): mu = [1, 0, 0, 0]
+    block 0  chi6  deg 14   open (2,-1): mu = [6, 3, 2, 3]       trivial (0,1): mu = [4, 3, 4, 3]
+    block 0  chi7  deg 15   open (2,-1): mu = [3, 4, 4, 4]       trivial (0,1): mu = [3, 4, 4, 4]
+    block 0  chi8  deg 21   open (2,-1): mu = [7, 5, 4, 5]       trivial (0,1): mu = [5, 5, 6, 5]
+    block 0  chi9  deg 35   open (2,-1): mu = [7, 9, 10, 9]      trivial (0,1): mu = [9, 9, 8, 9]
+    block 1  chi2  deg 6    open (2,-1): mu = [4, 1, 0, 1]       trivial (0,1): mu = [2, 1, 2, 1]
+    block 1  chi3  deg 10   open (2,-1): mu = [0, 3, 4, 3]       trivial (0,1): mu = [2, 3, 2, 3]
+    block 1  chi4  deg 10   open (2,-1): mu = [0, 3, 4, 3]       trivial (0,1): mu = [2, 3, 2, 3]
+    block 1  chi5  deg 14   open (2,-1): mu = [6, 3, 2, 3]       trivial (0,1): mu = [4, 3, 4, 3]
+
+done.
+APPENDED CHECK (r4): basic-algebra rank  sum(C_ij) = 18
+APPENDED CHECK (r4): dim B_1 = sum n_i n_j c_ij   = 432
+APPENDED CHECK (r4): sum over Irr(B_1) of chi(1)^2 = 432
+both statements verified.

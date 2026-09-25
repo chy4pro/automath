@@ -1,0 +1,94 @@
+==============================================================================
+PART 0 -- two implementations, diffed BEFORE any verdict, and the
+         hand result of Observation C1-E reproduced as a POSITIVE control.
+==============================================================================
+  rows diffed: 12   disagreements: 0
+  [C1-E POSITIVE CONTROL] lam=(3,1): realizations=180, min omega(Gbar)=3 (= min alpha(G)), k=2 -> alpha<=k available: False  (hand proof says False)
+  [FALSE-POSITIVE PROBE] lam=(2,2): alpha<=k available: True  (want True -- a detector that never says YES is silent)
+  PART 0 PASS
+
+==============================================================================
+PART 1 -- the two halves measured apart, over every lambda with |M| <= 9
+  ALPHA  = M has a realization with alpha <= k        (what C1-C needs)
+  COVER  = M has a realization with a k-clique cover  (what C1-C builds)
+  GRAPH  = lambda is itself graphical                 (sec7.44 (e)3: => both)
+==============================================================================
+lambda            k   w  |M|   GRAPH  ALPHA  COVER   note
+(2,)              1   2    4   False  False  False   C1-C UNAVAILABLE
+(1, 1)            2   1    4    True   True   True   
+(4,)              1   4    6   False  False  False   C1-C UNAVAILABLE
+(3, 1)            2   3    6   False  False  False   C1-C UNAVAILABLE
+(2, 2)            2   2    5   False   True  False   alpha yes, cover no -- (B) strictly stronger
+(2, 1, 1)         3   2    6    True   True   True   
+(1, 1, 1, 1)      4   1    6    True   True   True   
+(6,)              1   6    8   False  False  False   C1-C UNAVAILABLE
+(5, 1)            2   5    8   False  False  False   C1-C UNAVAILABLE
+(4, 2)            2   4    7   False   True   True   
+(4, 1, 1)         3   4    8   False   True   True   
+(3, 3)            2   3    6   False   True   True   
+(3, 2, 1)         3   3    7   False   True   True   
+(3, 1, 1, 1)      4   3    8    True   True   True   
+(2, 2, 2)         3   2    6    True   True   True   
+(2, 2, 1, 1)      4   2    7    True   True   True   
+(2, 1, 1, 1, 1)   5   2    8    True   True   True   
+(1, 1, 1, 1, 1, 1)  6   1    8    True   True   True   
+(6, 2)            2   6    9   False  False  False   C1-C UNAVAILABLE
+(5, 3)            2   5    8   False   True  False   alpha yes, cover no -- (B) strictly stronger
+(5, 2, 1)         3   5    9   False   True   True   
+(4, 4)            2   4    7   False   True  False   alpha yes, cover no -- (B) strictly stronger
+(4, 3, 1)         3   4    8   False   True   True   
+(4, 2, 2)         3   4    8   False   True   True   
+(4, 2, 1, 1)      4   4    9   False   True   True   
+(3, 3, 2)         3   3    7   False   True   True   
+(3, 3, 1, 1)      4   3    8   False   True   True   
+(3, 2, 2, 1)      4   3    8    True   True   True   
+(3, 2, 1, 1, 1)   5   3    9    True   True   True   
+(2, 2, 2, 2)      4   2    7    True   True   True   
+(2, 2, 2, 1, 1)   5   2    8    True   True   True   
+(2, 2, 1, 1, 1, 1)  6   2    9    True   True   True   
+(6, 4)            2   6    9   False   True   True   
+(5, 5)            2   5    8   False   True   True   
+(5, 4, 1)         3   5    9   False   True   True   
+(5, 3, 2)         3   5    9   False   True   True   
+(4, 4, 2)         3   4    8   False   True   True   
+(4, 4, 1, 1)      4   4    9   False   True   True   
+(4, 3, 3)         3   4    8   False   True   True   
+(4, 3, 2, 1)      4   4    9   False   True   True   
+(4, 2, 2, 2)      4   4    9   False   True   True   
+(3, 3, 3, 1)      4   3    8   False   True   True   
+(3, 3, 2, 2)      4   3    8    True   True   True   
+(3, 3, 2, 1, 1)   5   3    9    True   True   True   
+(3, 2, 2, 2, 1)   5   3    9    True   True   True   
+(2, 2, 2, 2, 2)   5   2    8    True   True   True   
+(2, 2, 2, 2, 1, 1)  6   2    9    True   True   True   
+(6, 6)            2   6    9   False   True  False   alpha yes, cover no -- (B) strictly stronger
+(5, 5, 2)         3   5    9   False   True   True   
+(5, 4, 3)         3   5    9   False   True   True   
+(4, 4, 4)         3   4    8   False   True   True   
+(4, 4, 3, 1)      4   4    9   False   True   True   
+(4, 4, 2, 2)      4   4    9   False   True   True   
+(4, 3, 3, 2)      4   4    9   False   True   True   
+(3, 3, 3, 3)      4   3    8    True   True   True   
+(3, 3, 3, 2, 1)   5   3    9    True   True   True   
+(3, 3, 2, 2, 2)   5   3    9    True   True   True   
+(2, 2, 2, 2, 2, 2)  6   2    9    True   True   True   
+(5, 5, 4)         3   5    9   False   True   True   
+(4, 4, 4, 2)      4   4    9   False   True   True   
+(4, 4, 3, 3)      4   4    9   False   True   True   
+(3, 3, 3, 3, 2)   5   3    9    True   True   True   
+
+rows: 62   ALPHA available: 56   COVER available: 52   ALPHA-but-not-COVER: 4
+
+PART 2 -- where C1-C is UNAVAILABLE (the population Observation C1-E opened)
+   lambda=(2,)  k=1  w=2   smallest part=2   sum-w=0   graphical=False
+   lambda=(4,)  k=1  w=4   smallest part=4   sum-w=0   graphical=False
+   lambda=(3, 1)  k=2  w=3   smallest part=1   sum-w=1   graphical=False
+   lambda=(6,)  k=1  w=6   smallest part=6   sum-w=0   graphical=False
+   lambda=(5, 1)  k=2  w=5   smallest part=1   sum-w=1   graphical=False
+   lambda=(6, 2)  k=2  w=6   smallest part=2   sum-w=2   graphical=False
+
+PART 3 -- candidate criterion, tested on the population above, NOT proved
+   criterion MISS at lambda=(6, 2): available=False predicted=True
+   criterion "sum(lambda) - lambda_1 >= 2  OR  lambda graphical"  agrees on every row: False
+   THIS IS A MEASUREMENT OVER |M| <= 9.  More cases is not a proof and is
+   not offered as one.

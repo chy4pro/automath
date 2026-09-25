@@ -1,0 +1,58 @@
+==============================================================================
+F-NAMESPACE COLLISION AUDIT — is 'F<n>' a stable ADDRESS across this project?
+==============================================================================
+
+F1  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : (mass).
+    w133_r18_D3C6.md             : 
+    w133_r19_D3C6.md             : 
+
+F2  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : (Bonferroni bound).
+    w133_r12_P7G32.md            : (C4-freeness alone).
+
+F3  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : .
+    w133_r12_P7G32.md            : (the P6 version — the lemma this brief asks you to u
+
+F4  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : .
+    w133_r12_P7G32.md            : (Theorem G+).
+
+F5  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : (centre identity).
+    w133_r12_P7G32.md            : (peeling).
+
+F6  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : (P5-endpoint degree bound).
+    w133_r18_D3C6.md             : / Lemma G46 (unconditional, no hypothesis on any a-v
+    w133_r19_D3C6.md             : / Lemma G46 (unconditional, no hypothesis on any a-v
+    w133_r12_P7G32.md            : (a reduction you may use).
+
+F7
+    w133_r6_TRIEND_qwen.md       : (ball structure at a degree-2 endpoint).
+
+F8  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : (consequences of F7 inside 𝒜).
+    w133_r19_D3C6.md             : (off-cycle attachment classification).
+
+F9  <-- COLLISION
+    w133_r6_TRIEND_qwen.md       : (the key trigger; you may use it, and it is the mode
+    w133_r19_D3C6.md             : (on-cycle charge identity).
+
+DISTINCT F-NUMBERS SEEN: 9   COLLIDING: 8  -> ['1', '2', '3', '4', '5', '6', '8', '9']
+
+VERDICT: 'F<n>' is BRIEF-LOCAL, not a project address. A global F-tier number would
+collide with fact sheets already shipped.  The G-namespace (G0..G53) is monotone and
+has never collided, so the F TIER is recorded as an ANNOTATION on a G ADDRESS.
+
+==============================================================================
+V7 NEGATIVE CONTROL — the collision counter must be able to return ZERO
+==============================================================================
+  probe 1: single fact sheet alone -> 0 collisions over 9 F-numbers
+  PASS  a file cannot collide with itself; the counter returns 0
+  probe 2: r6 fact sheet + r19 brief -> 4 collisions ['1', '6', '8', '9']
+  PASS  the counter returns NON-ZERO on a known-colliding pair
+
+  So the 8/9 figure is a measurement, not an artefact: the same counter returns 0
+  on a single file and non-zero on a pair known to disagree.

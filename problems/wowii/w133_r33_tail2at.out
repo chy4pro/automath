@@ -1,0 +1,670 @@
+==============================================================================
+PART 0 — PRIMITIVE SELF-CHECKS AND REGRESSION CONTROLS AGAINST r31/r32 RECORDS
+==============================================================================
+  c4_free vs c4_free_slow, a_val vs a_val_brute: agree on 4 hosts.
+  C9+C9 glued: n=17 rad=4 centres=[0] |maximally-far|=4  (r31 table: r=4, unique centre = the glue, FOUR attachments at distance 4)
+  rand(s=7,n0=18): n=18 rad=4 l=2.333 residual w's=[11]   (r32 draft §42.6: w=11, l=2.333)
+  rand(s=30,n0=22): n=22 rad=4 l=2.455 residual w's=[13]   (r32 draft §42.6: w=13, l=2.455)
+  NEG PG(2,3): rad=3 self-centred=True residual=0 (must be 0)
+  NEG PG(2,5): rad=3 self-centred=True residual=0 (must be 0)
+  NEG C9: rad=4 self-centred=True residual=0 (must be 0)
+  LIVENESS: tail2_fires on C9 at v0 -> fires=False best a(y)=2 (must be False/2)
+
+==============================================================================
+PART 1 — ITEM 3: CAN THE RESIDUAL CONFIGURATION CARRY l > 4 AT ALL?
+         conjunct populations, printed BEFORE any verdict (r32 §2g discipline)
+==============================================================================
+host                           n      l   rad ecc=r+1  maxfar    BOTH    l>4?
+PG(2,3)                       26  4.000     3       0       0       0      no
+PG(2,5)                       62  6.000     3       0       0       0     YES
+PG(2,5)+C5 glued              66  5.788     3      32       0       0     YES
+PG(2,3)+C5 glued              30  3.800     3      14       0       0      no
+PG(2,5)+C7 glued              68  5.676     3       8      27       0     YES
+PG(2,3)+C7 glued              32  3.688     3       6      11       0      no
+PG(2,5)+C9 glued              70  5.571     4       8       0       0     YES
+PG(2,3)+C9 glued              34  3.588     4       6       0       0      no
+PG(2,5)+C11 glued             72  5.472     5       8       0       0     YES
+PG(2,3)+C11 glued             36  3.500     5       6       0       0      no
+PG(2,5)+C13 glued             74  5.378     6       8       0       0     YES
+PG(2,3)+C13 glued             38  3.421     6       6       0       0      no
+PG(2,5)+C15 glued             76  5.289     7       8       0       0     YES
+PG(2,3)+C15 glued             40  3.350     7       6       0       0      no
+PG(2,5)+C17 glued             78  5.205     8       8       0       0     YES
+PG(2,3)+C17 glued             42  3.286     8       6       0       0      no
+PG(2,5)+C19 glued             80  5.125     9       8       0       0     YES
+PG(2,3)+C19 glued             44  3.227     9       6       0       0      no
+PG(2,5)+C21 glued             82  5.049    10       8       0       0     YES
+PG(2,3)+C21 glued             46  3.174    10       6       0       0      no
+PG(2,5)+C25 glued             86  4.907    12       8       0       0     YES
+PG(2,3)+C25 glued             50  3.080    12       6       0       0      no
+PG(2,5)+P1+C5                 67  5.731     3       7      27       0     YES
+PG(2,5)+P2+C5                 68  5.676     4       7       0       0     YES
+PG(2,5)+P3+C5                 69  5.623     4       2      27       0     YES
+PG(2,5)+P4+C5                 70  5.571     5       2       0       0     YES
+PG(2,5)+P2+C7                 70  5.571     4       2      27       0     YES
+PG(2,5)+P3+C7                 71  5.521     5       2       0       0     YES
+PG(2,5)+P4+C9                 74  5.378     6       2       0       0     YES
+PG(2,5)+P5+C9                 75  5.333     6       2      27       0     YES
+PG(2,5)+P6+C11                78  5.205     7       2      27       0     YES
+PG(2,5)+C7@0+C7@1             74  5.405     4      31       4       0     YES
+PG(2,5)+C7@0+C7@5             74  5.405     4      31       4       0     YES
+PG(2,5)+C9@0+C9@1             78  5.231     5      31       4       0     YES
+PG(2,5)+C9@0+C9@5             78  5.231     5      31       4       0     YES
+PG(2,5)+C11@0+C11@1           82  5.073     6      31       4       0     YES
+PG(2,5)+C11@0+C11@5           82  5.073     6      31       4       0     YES
+PG(2,5)+C13@0+C13@1           86  4.930     7      31       4       0     YES
+PG(2,5)+C13@0+C13@5           86  4.930     7      31       4       0     YES
+PG(2,5)+C9@0+C11@1            80  5.150     6      37       0       0     YES
+PG(2,5)+C9@0+C11@5            80  5.150     6      37       0       0     YES
+2xPG(2,5)+P3                 127  5.921     5       2      50       0     YES
+2xPG(2,3)+P3                  55  3.927     5       2      18       0      no
+2xPG(2,5)+P5                 129  5.860     6       2      50       0     YES
+2xPG(2,3)+P5                  57  3.860     6       2      18       0      no
+2xPG(2,5)+P7                 131  5.802     7       2      50       0     YES
+2xPG(2,3)+P7                  59  3.797     7       2      18       0      no
+2xPG(2,5)+P9                 133  5.744     8       2      50       0     YES
+2xPG(2,3)+P9                  61  3.738     8       2      18       0      no
+2xPG(2,5)+P11                135  5.689     9       2      50       0     YES
+2xPG(2,3)+P11                 63  3.683     9       2      18       0      no
+dense(s=1,n0=14)              12  2.667     2      11       7       7      no
+dense(s=4,n0=14)              12  2.250     2       9       2       2      no
+dense(s=5,n0=14)              12  2.500     2      10       1       1      no
+dense(s=6,n0=14)              13  2.692     2      10       2       2      no
+dense(s=8,n0=14)              13  2.538     2      11       5       5      no
+dense(s=10,n0=14)             14  2.429     2      13       7       7      no
+dense(s=11,n0=14)             12  2.667     2       8       1       1      no
+dense(s=12,n0=14)             14  2.357     2      12       4       4      no
+dense(s=14,n0=14)             13  2.231     2      10       1       1      no
+dense(s=15,n0=14)             11  2.545     2       9       4       4      no
+dense(s=16,n0=14)             13  2.385     2      10       3       3      no
+dense(s=20,n0=14)             14  2.357     2      12       6       6      no
+dense(s=21,n0=14)             13  2.385     2      10       4       4      no
+dense(s=22,n0=14)             14  2.357     2      13       8       8      no
+dense(s=23,n0=14)             14  2.429     2      10       2       2      no
+dense(s=24,n0=14)             11  2.273     2      10       5       5      no
+dense(s=2,n0=18)              17  2.882     2      16      12      12      no
+dense(s=3,n0=18)              18  2.722     2      16       8       8      no
+dense(s=4,n0=18)              18  2.667     2      17      12      12      no
+dense(s=5,n0=18)              18  2.722     2      14       4       4      no
+dense(s=9,n0=18)              18  3.000     2      17      12      12      no
+dense(s=10,n0=18)             18  2.556     2      17      10      10      no
+dense(s=11,n0=18)             18  2.722     2      16       8       8      no
+dense(s=13,n0=18)             18  2.833     2      16       9       9      no
+dense(s=14,n0=18)             15  2.400     2      13       6       6      no
+dense(s=16,n0=18)             17  3.000     2      16       9       9      no
+dense(s=18,n0=18)             15  2.667     2      11       1       1      no
+dense(s=20,n0=18)             17  2.647     2      15       8       8      no
+dense(s=21,n0=18)             16  2.750     2      13       3       3      no
+dense(s=23,n0=18)             15  2.400     2      13       6       6      no
+dense(s=24,n0=18)             18  2.889     2      17      11      11      no
+dense(s=25,n0=18)             14  2.929     2      11       2       2      no
+dense(s=7,n0=22)              21  2.857     2      20      13      13      no
+dense(s=15,n0=22)             19  2.842     2      18      11      11      no
+dense(s=16,n0=22)             21  2.857     2      20      14      14      no
+dense(s=22,n0=22)             21  2.714     2      20      13      13      no
+dense(s=25,n0=22)             22  2.909     2      21      14      14      no
+dense(s=13,n0=26)             26  3.192     2      25      17      17      no
+dense(s=15,n0=26)             26  3.346     2      25      18      18      no
+dense(s=17,n0=26)             26  3.269     2      25      18      18      no
+dense(s=21,n0=26)             26  3.038     2      25      17      17      no
+dense(s=24,n0=26)             26  3.192     2      25      17      17      no
+dense(s=9,n0=34)              33  3.455     2      32      24      24      no
+dense(s=6,n0=38)              38  3.658     2      37      28      28      no
+dense(s=9,n0=38)              38  3.658     2      37      27      27      no
+
+  hosts certified (connected, C4-free, mu>=2): 420   (dense-process hosts are printed only when they carry a residual instance)
+  hosts with l > 4: 86 ; hosts with l > 4 AND rad >= 5: 25
+  conjunct totals over the whole family: ecc=r+1 at 3256 vertices, maximally-far at 1447, BOTH at 414
+  RESIDUAL INSTANCES FOUND: 414   of which with l > 4: 0   of which also rad >= 5: 0
+  EXCLUSION LIST for that count: hosts are exactly the 420 listed above; the family
+  is DESIGNED (PG(2,q) cores + glued cycles / pendant-path+cycle / blob chains),
+  NOT exhaustive; no random search, no graph enumeration.  A 0 here is a statement
+  about THIS family only.
+
+==============================================================================
+PART 2 — ITEM 1: (TAIL-2) AT THE PRESCRIBED w ON EVERY RESIDUAL INSTANCE
+==============================================================================
+host                          w   ecc      l  rad bestA   TAIL-2 +3 built
+dense(s=1,n0=14)              0     3  2.667    2     4    FIRES      yes
+dense(s=1,n0=14)              2     3  2.667    2     4    FIRES      yes
+dense(s=1,n0=14)              4     3  2.667    2     4    FIRES      yes
+dense(s=1,n0=14)              6     3  2.667    2     4    FIRES      yes
+dense(s=1,n0=14)              8     3  2.667    2     4    FIRES      yes
+dense(s=1,n0=14)             10     3  2.667    2     4    FIRES      yes
+dense(s=1,n0=14)             11     3  2.667    2     4    FIRES      yes
+dense(s=4,n0=14)              6     3  2.250    2     3    FAILS      yes
+dense(s=4,n0=14)              7     3  2.250    2     3    FAILS      yes
+dense(s=5,n0=14)              6     3  2.500    2     4    FIRES      yes
+dense(s=6,n0=14)              0     3  2.692    2     4    FIRES      yes
+dense(s=6,n0=14)              3     3  2.692    2     3    FAILS       NO
+dense(s=8,n0=14)              2     3  2.538    2     3    FAILS      yes
+dense(s=8,n0=14)              3     3  2.538    2     3    FAILS      yes
+dense(s=8,n0=14)              9     3  2.538    2     3    FAILS      yes
+dense(s=8,n0=14)             10     3  2.538    2     3    FAILS      yes
+dense(s=8,n0=14)             12     3  2.538    2     3    FAILS      yes
+dense(s=10,n0=14)             0     3  2.429    2     4    FIRES       NO
+dense(s=10,n0=14)             4     3  2.429    2     4    FIRES      yes
+dense(s=10,n0=14)             6     3  2.429    2     4    FIRES      yes
+dense(s=10,n0=14)             7     3  2.429    2     4    FIRES      yes
+dense(s=10,n0=14)             8     3  2.429    2     4    FIRES      yes
+dense(s=10,n0=14)            10     3  2.429    2     4    FIRES      yes
+dense(s=10,n0=14)            13     3  2.429    2     4    FIRES      yes
+dense(s=11,n0=14)             8     3  2.667    2     4    FIRES      yes
+dense(s=14,n0=14)             1     3  2.231    2     3    FAILS      yes
+dense(s=15,n0=14)             0     3  2.545    2     3    FAILS      yes
+dense(s=15,n0=14)             1     3  2.545    2     3    FAILS      yes
+dense(s=15,n0=14)             3     3  2.545    2     3    FAILS      yes
+dense(s=15,n0=14)             8     3  2.545    2     3    FAILS      yes
+dense(s=16,n0=14)             1     3  2.385    2     3    FAILS      yes
+dense(s=16,n0=14)             6     3  2.385    2     3    FAILS      yes
+dense(s=16,n0=14)             8     3  2.385    2     3    FAILS      yes
+dense(s=20,n0=14)            13     3  2.357    2     3    FAILS      yes
+dense(s=21,n0=14)             0     3  2.385    2     3    FAILS      yes
+dense(s=21,n0=14)             6     3  2.385    2     3    FAILS      yes
+dense(s=21,n0=14)            10     3  2.385    2     3    FAILS      yes
+dense(s=21,n0=14)            11     3  2.385    2     3    FAILS      yes
+dense(s=22,n0=14)            12     3  2.357    2     3    FAILS      yes
+dense(s=23,n0=14)             4     3  2.429    2     3    FAILS      yes
+dense(s=23,n0=14)             7     3  2.429    2     3    FAILS      yes
+dense(s=24,n0=14)             2     3  2.273    2     3    FAILS       NO
+dense(s=24,n0=14)             5     3  2.273    2     3    FAILS      yes
+dense(s=24,n0=14)             6     3  2.273    2     2    FAILS      yes
+dense(s=24,n0=14)             8     3  2.273    2     3    FAILS      yes
+dense(s=24,n0=14)            10     3  2.273    2     3    FAILS      yes
+dense(s=2,n0=18)             15     3  2.882    2     3    FAILS      yes
+dense(s=3,n0=18)              2     3  2.722    2     3    FAILS      yes
+dense(s=3,n0=18)             16     3  2.722    2     3    FAILS      yes
+dense(s=4,n0=18)             10     3  2.667    2     3    FAILS      yes
+dense(s=5,n0=18)              3     3  2.722    2     3    FAILS      yes
+dense(s=5,n0=18)              7     3  2.722    2     3    FAILS      yes
+dense(s=5,n0=18)             14     3  2.722    2     3    FAILS      yes
+dense(s=5,n0=18)             17     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)             3     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)             4     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)             8     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)            10     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)            11     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)            13     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)            15     3  2.722    2     3    FAILS      yes
+dense(s=11,n0=18)            16     3  2.722    2     3    FAILS      yes
+dense(s=13,n0=18)             0     3  2.833    2     3    FAILS      yes
+dense(s=13,n0=18)             5     3  2.833    2     3    FAILS      yes
+dense(s=13,n0=18)            17     3  2.833    2     3    FAILS      yes
+dense(s=14,n0=18)             2     3  2.400    2     3    FAILS      yes
+dense(s=14,n0=18)             6     3  2.400    2     3    FAILS      yes
+dense(s=14,n0=18)             9     3  2.400    2     2    FAILS      yes
+dense(s=14,n0=18)            10     3  2.400    2     3    FAILS      yes
+dense(s=14,n0=18)            12     3  2.400    2     3    FAILS      yes
+dense(s=14,n0=18)            14     3  2.400    2     3    FAILS      yes
+dense(s=20,n0=18)             3     3  2.647    2     3    FAILS      yes
+dense(s=23,n0=18)             1     3  2.400    2     3    FAILS      yes
+dense(s=23,n0=18)             4     3  2.400    2     3    FAILS      yes
+dense(s=23,n0=18)             6     3  2.400    2     2    FAILS      yes
+dense(s=23,n0=18)            10     3  2.400    2     3    FAILS      yes
+dense(s=23,n0=18)            11     3  2.400    2     3    FAILS      yes
+dense(s=23,n0=18)            13     3  2.400    2     3    FAILS      yes
+dense(s=7,n0=22)              2     3  2.857    2     3    FAILS      yes
+dense(s=15,n0=22)            10     3  2.842    2     3    FAILS      yes
+  evaluated 414 residual instances; (TAIL-2) FAILS on 63, +3 NOT built on 3
+  restricted to l > 4: 0 instances, (TAIL-2) FAILS on 0, +3 NOT built on 0
+
+==============================================================================
+PART 3 — WITNESS CERTIFICATES, and what the underlying REQUIREMENT does
+==============================================================================
+  WITNESS 1: host dense(s=4,n0=14), w=6
+    n=12  C4-free=True  mu=2  l=2.2500  rad=2  ecc(w)=3  (residual: ecc=rad+1)
+    (TAIL-2) at w: FAILS  (best a(y) over EVERY furthest u_d / geodesic pred / component = 3)
+    constructive +3 by the TAIL route: yes
+    endpath(G,w) >= 6 (cap 6, truncated=False)  vs the requirement ecc(w)+3 = 6 -> requirement HOLDS
+
+  WITNESS 2: host dense(s=4,n0=14), w=7
+    n=12  C4-free=True  mu=2  l=2.2500  rad=2  ecc(w)=3  (residual: ecc=rad+1)
+    (TAIL-2) at w: FAILS  (best a(y) over EVERY furthest u_d / geodesic pred / component = 3)
+    constructive +3 by the TAIL route: yes
+    endpath(G,w) >= 6 (cap 6, truncated=False)  vs the requirement ecc(w)+3 = 6 -> requirement HOLDS
+
+  WITNESS 3: host dense(s=6,n0=14), w=3
+    n=13  C4-free=True  mu=2  l=2.6923  rad=2  ecc(w)=3  (residual: ecc=rad+1)
+    (TAIL-2) at w: FAILS  (best a(y) over EVERY furthest u_d / geodesic pred / component = 3)
+    constructive +3 by the TAIL route: NO
+    endpath(G,w) >= 6 (cap 6, truncated=False)  vs the requirement ecc(w)+3 = 6 -> requirement HOLDS
+
+  WITNESS 4: host dense(s=8,n0=14), w=2
+    n=13  C4-free=True  mu=2  l=2.5385  rad=2  ecc(w)=3  (residual: ecc=rad+1)
+    (TAIL-2) at w: FAILS  (best a(y) over EVERY furthest u_d / geodesic pred / component = 3)
+    constructive +3 by the TAIL route: yes
+    endpath(G,w) >= 6 (cap 6, truncated=False)  vs the requirement ecc(w)+3 = 6 -> requirement HOLDS
+
+  (TAIL-2') sharpened dodge count vs the blanket a(y) >= 4:
+    dense(s=1,n0=14)         w=0   frame(u_d=1,pred=8,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=1,n0=14)         w=2   frame(u_d=1,pred=8,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=1,n0=14)         w=4   frame(u_d=5,pred=2,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=1,n0=14)         w=6   frame(u_d=5,pred=2,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=1,n0=14)         w=8   frame(u_d=3,pred=0,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=1,n0=14)         w=10  frame(u_d=3,pred=0,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=1,n0=14)         w=11  frame(u_d=3,pred=0,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=4,n0=14)         w=6   frame(u_d=0,pred=9,y=4) a(y)=3  sharpened need a(y)>=3
+    dense(s=4,n0=14)         w=7   frame(u_d=9,pred=0,y=11) a(y)=3  sharpened need a(y)>=4
+    dense(s=5,n0=14)         w=6   frame(u_d=7,pred=1,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=6,n0=14)         w=0   frame(u_d=6,pred=10,y=9) a(y)=4  sharpened need a(y)>=3
+    dense(s=6,n0=14)         w=3   frame(u_d=2,pred=8,y=11) a(y)=3  sharpened need a(y)>=4
+    dense(s=8,n0=14)         w=2   frame(u_d=7,pred=3,y=5) a(y)=3  sharpened need a(y)>=4
+    dense(s=8,n0=14)         w=3   frame(u_d=8,pred=2,y=5) a(y)=3  sharpened need a(y)>=4
+    dense(s=8,n0=14)         w=9   frame(u_d=3,pred=0,y=12) a(y)=3  sharpened need a(y)>=2
+    dense(s=8,n0=14)         w=10  frame(u_d=3,pred=0,y=12) a(y)=3  sharpened need a(y)>=3
+    dense(s=8,n0=14)         w=12  frame(u_d=2,pred=0,y=8) a(y)=3  sharpened need a(y)>=3
+    dense(s=10,n0=14)        w=0   frame(u_d=9,pred=10,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=14)        w=4   frame(u_d=3,pred=6,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=14)        w=6   frame(u_d=1,pred=4,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=14)        w=7   frame(u_d=2,pred=0,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=14)        w=8   frame(u_d=1,pred=4,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=14)        w=10  frame(u_d=2,pred=0,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=14)        w=13  frame(u_d=5,pred=8,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=11,n0=14)        w=8   frame(u_d=1,pred=5,y=0) a(y)=4  sharpened need a(y)>=3
+    dense(s=12,n0=14)        w=3   frame(u_d=10,pred=5,y=7) a(y)=4  sharpened need a(y)>=4
+    dense(s=12,n0=14)        w=6   frame(u_d=0,pred=8,y=7) a(y)=4  sharpened need a(y)>=3
+    dense(s=12,n0=14)        w=11  frame(u_d=0,pred=8,y=7) a(y)=4  sharpened need a(y)>=3
+    dense(s=12,n0=14)        w=13  frame(u_d=0,pred=8,y=7) a(y)=4  sharpened need a(y)>=3
+    dense(s=14,n0=14)        w=1   frame(u_d=7,pred=12,y=0) a(y)=3  sharpened need a(y)>=4
+    dense(s=15,n0=14)        w=0   frame(u_d=6,pred=3,y=2) a(y)=3  sharpened need a(y)>=3
+    dense(s=15,n0=14)        w=1   frame(u_d=3,pred=8,y=4) a(y)=3  sharpened need a(y)>=3
+    dense(s=15,n0=14)        w=3   frame(u_d=1,pred=0,y=5) a(y)=3  sharpened need a(y)>=4
+    dense(s=15,n0=14)        w=8   frame(u_d=0,pred=1,y=4) a(y)=3  sharpened need a(y)>=4
+    dense(s=16,n0=14)        w=1   frame(u_d=8,pred=2,y=12) a(y)=3  sharpened need a(y)>=3
+    dense(s=16,n0=14)        w=6   frame(u_d=2,pred=8,y=5) a(y)=3  sharpened need a(y)>=4
+    dense(s=16,n0=14)        w=8   frame(u_d=0,pred=9,y=7) a(y)=3  sharpened need a(y)>=3
+    dense(s=20,n0=14)        w=6   frame(u_d=0,pred=13,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=20,n0=14)        w=7   frame(u_d=4,pred=12,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=14)        w=8   frame(u_d=4,pred=11,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=20,n0=14)        w=11  frame(u_d=3,pred=6,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=14)        w=12  frame(u_d=3,pred=7,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=14)        w=13  frame(u_d=5,pred=6,y=1) a(y)=3  sharpened need a(y)>=3
+    dense(s=21,n0=14)        w=0   frame(u_d=2,pred=6,y=8) a(y)=3  sharpened need a(y)>=4
+    dense(s=21,n0=14)        w=6   frame(u_d=5,pred=0,y=8) a(y)=3  sharpened need a(y)>=4
+    dense(s=21,n0=14)        w=10  frame(u_d=1,pred=3,y=12) a(y)=3  sharpened need a(y)>=4
+    dense(s=21,n0=14)        w=11  frame(u_d=0,pred=10,y=12) a(y)=3  sharpened need a(y)>=3
+    dense(s=22,n0=14)        w=0   frame(u_d=7,pred=13,y=1) a(y)=4  sharpened need a(y)>=4
+    dense(s=22,n0=14)        w=3   frame(u_d=2,pred=4,y=1) a(y)=4  sharpened need a(y)>=4
+    dense(s=22,n0=14)        w=4   frame(u_d=7,pred=13,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=22,n0=14)        w=5   frame(u_d=6,pred=0,y=1) a(y)=4  sharpened need a(y)>=4
+    dense(s=22,n0=14)        w=8   frame(u_d=6,pred=3,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=22,n0=14)        w=11  frame(u_d=2,pred=5,y=1) a(y)=4  sharpened need a(y)>=4
+    dense(s=22,n0=14)        w=12  frame(u_d=7,pred=1,y=13) a(y)=3  sharpened need a(y)>=3
+    dense(s=22,n0=14)        w=13  frame(u_d=9,pred=11,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=23,n0=14)        w=4   frame(u_d=0,pred=2,y=13) a(y)=3  sharpened need a(y)>=4
+    dense(s=23,n0=14)        w=7   frame(u_d=0,pred=2,y=13) a(y)=3  sharpened need a(y)>=4
+    dense(s=24,n0=14)        w=2   frame(u_d=9,pred=10,y=0) a(y)=3  sharpened need a(y)>=3
+    dense(s=24,n0=14)        w=5   frame(u_d=7,pred=0,y=8) a(y)=3  sharpened need a(y)>=3
+    dense(s=24,n0=14)        w=6   frame(u_d=9,pred=0,y=10) a(y)=2  sharpened need a(y)>=2
+    dense(s=24,n0=14)        w=8   frame(u_d=3,pred=5,y=0) a(y)=3  sharpened need a(y)>=4
+    dense(s=24,n0=14)        w=10  frame(u_d=1,pred=0,y=2) a(y)=3  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=0   frame(u_d=1,pred=9,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=1   frame(u_d=0,pred=16,y=15) a(y)=4  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=3   frame(u_d=14,pred=8,y=15) a(y)=4  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=5   frame(u_d=7,pred=0,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=2,n0=18)         w=8   frame(u_d=0,pred=11,y=15) a(y)=4  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=9   frame(u_d=15,pred=0,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=2,n0=18)         w=10  frame(u_d=7,pred=0,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=2,n0=18)         w=11  frame(u_d=1,pred=8,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=13  frame(u_d=1,pred=9,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=14  frame(u_d=4,pred=13,y=6) a(y)=4  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=15  frame(u_d=5,pred=16,y=1) a(y)=3  sharpened need a(y)>=3
+    dense(s=2,n0=18)         w=16  frame(u_d=2,pred=1,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=3,n0=18)         w=2   frame(u_d=3,pred=0,y=1) a(y)=3  sharpened need a(y)>=3
+    dense(s=3,n0=18)         w=3   frame(u_d=16,pred=12,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=3,n0=18)         w=4   frame(u_d=10,pred=17,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=3,n0=18)         w=5   frame(u_d=0,pred=3,y=17) a(y)=4  sharpened need a(y)>=4
+    dense(s=3,n0=18)         w=7   frame(u_d=0,pred=3,y=17) a(y)=4  sharpened need a(y)>=4
+    dense(s=3,n0=18)         w=8   frame(u_d=10,pred=0,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=3,n0=18)         w=11  frame(u_d=6,pred=8,y=2) a(y)=4  sharpened need a(y)>=2
+    dense(s=3,n0=18)         w=16  frame(u_d=0,pred=17,y=3) a(y)=3  sharpened need a(y)>=2
+    dense(s=4,n0=18)         w=2   frame(u_d=1,pred=12,y=6) a(y)=4  sharpened need a(y)>=3
+    dense(s=4,n0=18)         w=3   frame(u_d=13,pred=5,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=4,n0=18)         w=4   frame(u_d=1,pred=12,y=6) a(y)=4  sharpened need a(y)>=3
+    dense(s=4,n0=18)         w=5   frame(u_d=1,pred=12,y=6) a(y)=4  sharpened need a(y)>=3
+    dense(s=4,n0=18)         w=7   frame(u_d=17,pred=8,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=4,n0=18)         w=8   frame(u_d=1,pred=12,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=4,n0=18)         w=9   frame(u_d=11,pred=16,y=6) a(y)=4  sharpened need a(y)>=3
+    dense(s=4,n0=18)         w=10  frame(u_d=8,pred=9,y=3) a(y)=3  sharpened need a(y)>=3
+    dense(s=4,n0=18)         w=12  frame(u_d=0,pred=2,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=4,n0=18)         w=14  frame(u_d=1,pred=12,y=6) a(y)=4  sharpened need a(y)>=3
+    dense(s=4,n0=18)         w=15  frame(u_d=13,pred=5,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=4,n0=18)         w=16  frame(u_d=13,pred=7,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=5,n0=18)         w=3   frame(u_d=10,pred=2,y=14) a(y)=3  sharpened need a(y)>=3
+    dense(s=5,n0=18)         w=7   frame(u_d=4,pred=3,y=12) a(y)=3  sharpened need a(y)>=4
+    dense(s=5,n0=18)         w=14  frame(u_d=3,pred=5,y=6) a(y)=3  sharpened need a(y)>=3
+    dense(s=5,n0=18)         w=17  frame(u_d=1,pred=9,y=5) a(y)=3  sharpened need a(y)>=4
+    dense(s=9,n0=18)         w=3   frame(u_d=8,pred=11,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=9,n0=18)         w=4   frame(u_d=9,pred=10,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=9,n0=18)         w=5   frame(u_d=7,pred=0,y=3) a(y)=4  sharpened need a(y)>=4
+    dense(s=9,n0=18)         w=6   frame(u_d=7,pred=0,y=3) a(y)=4  sharpened need a(y)>=4
+    dense(s=9,n0=18)         w=8   frame(u_d=3,pred=12,y=4) a(y)=4  sharpened need a(y)>=3
+    dense(s=9,n0=18)         w=9   frame(u_d=2,pred=0,y=4) a(y)=4  sharpened need a(y)>=3
+    dense(s=9,n0=18)         w=10  frame(u_d=1,pred=14,y=0) a(y)=4  sharpened need a(y)>=3
+    dense(s=9,n0=18)         w=12  frame(u_d=2,pred=0,y=4) a(y)=4  sharpened need a(y)>=4
+    dense(s=9,n0=18)         w=13  frame(u_d=1,pred=17,y=0) a(y)=4  sharpened need a(y)>=3
+    dense(s=9,n0=18)         w=14  frame(u_d=5,pred=8,y=4) a(y)=4  sharpened need a(y)>=4
+    dense(s=9,n0=18)         w=16  frame(u_d=5,pred=8,y=4) a(y)=4  sharpened need a(y)>=3
+    dense(s=9,n0=18)         w=17  frame(u_d=7,pred=0,y=3) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=0   frame(u_d=5,pred=11,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=3   frame(u_d=15,pred=17,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=4   frame(u_d=7,pred=12,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=6   frame(u_d=5,pred=11,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=9   frame(u_d=8,pred=14,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=11  frame(u_d=7,pred=12,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=12  frame(u_d=5,pred=11,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=14  frame(u_d=1,pred=6,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=16  frame(u_d=7,pred=12,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=10,n0=18)        w=17  frame(u_d=8,pred=14,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=11,n0=18)        w=3   frame(u_d=5,pred=0,y=15) a(y)=3  sharpened need a(y)>=4
+    dense(s=11,n0=18)        w=4   frame(u_d=10,pred=8,y=9) a(y)=3  sharpened need a(y)>=4
+    dense(s=11,n0=18)        w=8   frame(u_d=3,pred=16,y=1) a(y)=3  sharpened need a(y)>=4
+    dense(s=11,n0=18)        w=10  frame(u_d=1,pred=0,y=3) a(y)=3  sharpened need a(y)>=4
+    dense(s=11,n0=18)        w=11  frame(u_d=7,pred=0,y=8) a(y)=3  sharpened need a(y)>=4
+    dense(s=11,n0=18)        w=13  frame(u_d=5,pred=0,y=15) a(y)=3  sharpened need a(y)>=3
+    dense(s=11,n0=18)        w=15  frame(u_d=2,pred=17,y=16) a(y)=3  sharpened need a(y)>=3
+    dense(s=11,n0=18)        w=16  frame(u_d=7,pred=0,y=8) a(y)=3  sharpened need a(y)>=4
+    dense(s=13,n0=18)        w=0   frame(u_d=14,pred=3,y=6) a(y)=3  sharpened need a(y)>=4
+    dense(s=13,n0=18)        w=1   frame(u_d=17,pred=12,y=0) a(y)=4  sharpened need a(y)>=3
+    dense(s=13,n0=18)        w=5   frame(u_d=6,pred=2,y=12) a(y)=3  sharpened need a(y)>=4
+    dense(s=13,n0=18)        w=7   frame(u_d=3,pred=8,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=13,n0=18)        w=9   frame(u_d=11,pred=8,y=0) a(y)=4  sharpened need a(y)>=3
+    dense(s=13,n0=18)        w=12  frame(u_d=3,pred=8,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=13,n0=18)        w=13  frame(u_d=3,pred=8,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=13,n0=18)        w=14  frame(u_d=5,pred=1,y=0) a(y)=4  sharpened need a(y)>=3
+    dense(s=13,n0=18)        w=17  frame(u_d=1,pred=9,y=3) a(y)=3  sharpened need a(y)>=4
+    dense(s=14,n0=18)        w=2   frame(u_d=5,pred=0,y=12) a(y)=3  sharpened need a(y)>=4
+    dense(s=14,n0=18)        w=6   frame(u_d=2,pred=4,y=3) a(y)=3  sharpened need a(y)>=2
+    dense(s=14,n0=18)        w=9   frame(u_d=6,pred=8,y=1) a(y)=2  sharpened need a(y)>=4
+    dense(s=14,n0=18)        w=10  frame(u_d=2,pred=3,y=4) a(y)=3  sharpened need a(y)>=3
+    dense(s=14,n0=18)        w=12  frame(u_d=1,pred=6,y=0) a(y)=3  sharpened need a(y)>=4
+    dense(s=14,n0=18)        w=14  frame(u_d=2,pred=4,y=3) a(y)=3  sharpened need a(y)>=3
+    dense(s=16,n0=18)        w=1   frame(u_d=5,pred=6,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=16,n0=18)        w=3   frame(u_d=5,pred=6,y=0) a(y)=5  sharpened need a(y)>=4
+    dense(s=16,n0=18)        w=4   frame(u_d=6,pred=14,y=13) a(y)=5  sharpened need a(y)>=3
+    dense(s=16,n0=18)        w=6   frame(u_d=9,pred=3,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=16,n0=18)        w=8   frame(u_d=1,pred=2,y=13) a(y)=5  sharpened need a(y)>=4
+    dense(s=16,n0=18)        w=12  frame(u_d=2,pred=1,y=0) a(y)=5  sharpened need a(y)>=4
+    dense(s=16,n0=18)        w=13  frame(u_d=10,pred=8,y=0) a(y)=5  sharpened need a(y)>=4
+    dense(s=16,n0=18)        w=14  frame(u_d=7,pred=0,y=13) a(y)=5  sharpened need a(y)>=4
+    dense(s=16,n0=18)        w=16  frame(u_d=2,pred=1,y=0) a(y)=5  sharpened need a(y)>=4
+    dense(s=18,n0=18)        w=13  frame(u_d=0,pred=4,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=20,n0=18)        w=3   frame(u_d=14,pred=8,y=12) a(y)=3  sharpened need a(y)>=4
+    dense(s=20,n0=18)        w=6   frame(u_d=2,pred=16,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=18)        w=7   frame(u_d=13,pred=9,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=18)        w=9   frame(u_d=2,pred=7,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=18)        w=10  frame(u_d=2,pred=7,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=18)        w=14  frame(u_d=2,pred=16,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=18)        w=15  frame(u_d=5,pred=3,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=20,n0=18)        w=16  frame(u_d=5,pred=3,y=11) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=18)        w=11  frame(u_d=3,pred=9,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=18)        w=12  frame(u_d=8,pred=15,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=18)        w=14  frame(u_d=8,pred=15,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=23,n0=18)        w=1   frame(u_d=4,pred=14,y=12) a(y)=3  sharpened need a(y)>=2
+    dense(s=23,n0=18)        w=4   frame(u_d=5,pred=0,y=6) a(y)=3  sharpened need a(y)>=4
+    dense(s=23,n0=18)        w=6   frame(u_d=1,pred=8,y=2) a(y)=2  sharpened need a(y)>=4
+    dense(s=23,n0=18)        w=10  frame(u_d=2,pred=1,y=9) a(y)=3  sharpened need a(y)>=4
+    dense(s=23,n0=18)        w=11  frame(u_d=3,pred=13,y=0) a(y)=3  sharpened need a(y)>=4
+    dense(s=23,n0=18)        w=13  frame(u_d=4,pred=12,y=14) a(y)=3  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=1   frame(u_d=8,pred=4,y=5) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=2   frame(u_d=7,pred=16,y=5) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=18)        w=4   frame(u_d=3,pred=1,y=5) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=5   frame(u_d=0,pred=2,y=12) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=7   frame(u_d=6,pred=8,y=12) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=8   frame(u_d=1,pred=3,y=10) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=18)        w=9   frame(u_d=6,pred=8,y=12) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=10  frame(u_d=0,pred=2,y=12) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=11  frame(u_d=7,pred=10,y=5) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=18)        w=14  frame(u_d=0,pred=2,y=12) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=18)        w=17  frame(u_d=7,pred=10,y=5) a(y)=4  sharpened need a(y)>=3
+    dense(s=25,n0=18)        w=5   frame(u_d=3,pred=6,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=25,n0=18)        w=6   frame(u_d=1,pred=5,y=2) a(y)=4  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=0   frame(u_d=15,pred=11,y=2) a(y)=5  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=1   frame(u_d=12,pred=16,y=4) a(y)=4  sharpened need a(y)>=4
+    dense(s=7,n0=22)         w=2   frame(u_d=7,pred=0,y=5) a(y)=3  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=3   frame(u_d=6,pred=18,y=2) a(y)=5  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=5   frame(u_d=1,pred=0,y=2) a(y)=5  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=7   frame(u_d=8,pred=9,y=2) a(y)=5  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=8   frame(u_d=11,pred=15,y=4) a(y)=4  sharpened need a(y)>=4
+    dense(s=7,n0=22)         w=9   frame(u_d=6,pred=4,y=2) a(y)=5  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=10  frame(u_d=13,pred=0,y=4) a(y)=4  sharpened need a(y)>=4
+    dense(s=7,n0=22)         w=15  frame(u_d=3,pred=16,y=8) a(y)=4  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=16  frame(u_d=19,pred=20,y=2) a(y)=5  sharpened need a(y)>=4
+    dense(s=7,n0=22)         w=18  frame(u_d=8,pred=3,y=2) a(y)=5  sharpened need a(y)>=3
+    dense(s=7,n0=22)         w=19  frame(u_d=11,pred=15,y=4) a(y)=4  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=2   frame(u_d=1,pred=9,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=4   frame(u_d=12,pred=18,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=6   frame(u_d=3,pred=2,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=7   frame(u_d=15,pred=13,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=9   frame(u_d=3,pred=2,y=0) a(y)=6  sharpened need a(y)>=4
+    dense(s=15,n0=22)        w=10  frame(u_d=7,pred=2,y=6) a(y)=3  sharpened need a(y)>=4
+    dense(s=15,n0=22)        w=11  frame(u_d=3,pred=2,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=13  frame(u_d=1,pred=9,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=16  frame(u_d=1,pred=9,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=17  frame(u_d=8,pred=10,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=15,n0=22)        w=18  frame(u_d=1,pred=9,y=0) a(y)=6  sharpened need a(y)>=3
+    dense(s=16,n0=22)        w=1   frame(u_d=14,pred=18,y=19) a(y)=4  sharpened need a(y)>=4
+    dense(s=16,n0=22)        w=4   frame(u_d=8,pred=0,y=20) a(y)=4  sharpened need a(y)>=4
+    dense(s=16,n0=22)        w=5   frame(u_d=4,pred=1,y=19) a(y)=4  sharpened need a(y)>=3
+    dense(s=16,n0=22)        w=6   frame(u_d=2,pred=0,y=19) a(y)=4  sharpened need a(y)>=4
+    dense(s=16,n0=22)        w=7   frame(u_d=10,pred=1,y=0) a(y)=4  sharpened need a(y)>=4
+    dense(s=16,n0=22)        w=9   frame(u_d=2,pred=0,y=19) a(y)=4  sharpened need a(y)>=4
+    dense(s=16,n0=22)        w=11  frame(u_d=4,pred=1,y=19) a(y)=4  sharpened need a(y)>=3
+    dense(s=16,n0=22)        w=13  frame(u_d=7,pred=14,y=20) a(y)=4  sharpened need a(y)>=3
+    dense(s=16,n0=22)        w=14  frame(u_d=1,pred=4,y=20) a(y)=4  sharpened need a(y)>=3
+    dense(s=16,n0=22)        w=15  frame(u_d=1,pred=4,y=20) a(y)=4  sharpened need a(y)>=2
+    dense(s=16,n0=22)        w=17  frame(u_d=8,pred=0,y=20) a(y)=4  sharpened need a(y)>=4
+    dense(s=16,n0=22)        w=18  frame(u_d=4,pred=1,y=19) a(y)=4  sharpened need a(y)>=4
+    dense(s=16,n0=22)        w=19  frame(u_d=8,pred=0,y=20) a(y)=4  sharpened need a(y)>=3
+    dense(s=16,n0=22)        w=20  frame(u_d=15,pred=3,y=19) a(y)=4  sharpened need a(y)>=3
+    dense(s=22,n0=22)        w=0   frame(u_d=10,pred=11,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=22,n0=22)        w=2   frame(u_d=10,pred=11,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=3   frame(u_d=4,pred=5,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=5   frame(u_d=6,pred=17,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=22,n0=22)        w=7   frame(u_d=10,pred=11,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=8   frame(u_d=4,pred=0,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=9   frame(u_d=4,pred=0,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=11  frame(u_d=4,pred=0,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=12  frame(u_d=10,pred=11,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=22,n0=22)        w=16  frame(u_d=4,pred=5,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=17  frame(u_d=4,pred=0,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=18  frame(u_d=4,pred=0,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=22,n0=22)        w=20  frame(u_d=6,pred=17,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=25,n0=22)        w=0   frame(u_d=18,pred=15,y=14) a(y)=5  sharpened need a(y)>=3
+    dense(s=25,n0=22)        w=1   frame(u_d=3,pred=8,y=14) a(y)=5  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=4   frame(u_d=7,pred=1,y=8) a(y)=4  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=9   frame(u_d=18,pred=2,y=14) a(y)=5  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=10  frame(u_d=2,pred=18,y=8) a(y)=4  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=11  frame(u_d=4,pred=13,y=14) a(y)=5  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=12  frame(u_d=18,pred=2,y=14) a(y)=5  sharpened need a(y)>=2
+    dense(s=25,n0=22)        w=14  frame(u_d=16,pred=19,y=8) a(y)=4  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=15  frame(u_d=3,pred=0,y=14) a(y)=5  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=17  frame(u_d=2,pred=18,y=8) a(y)=4  sharpened need a(y)>=3
+    dense(s=25,n0=22)        w=18  frame(u_d=5,pred=8,y=10) a(y)=4  sharpened need a(y)>=3
+    dense(s=25,n0=22)        w=19  frame(u_d=3,pred=0,y=14) a(y)=5  sharpened need a(y)>=3
+    dense(s=25,n0=22)        w=20  frame(u_d=2,pred=18,y=8) a(y)=4  sharpened need a(y)>=4
+    dense(s=25,n0=22)        w=21  frame(u_d=3,pred=0,y=14) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=0   frame(u_d=8,pred=7,y=19) a(y)=5  sharpened need a(y)>=3
+    dense(s=13,n0=26)        w=2   frame(u_d=18,pred=8,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=3   frame(u_d=2,pred=12,y=19) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=4   frame(u_d=1,pred=0,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=5   frame(u_d=16,pred=3,y=19) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=7   frame(u_d=10,pred=16,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=8   frame(u_d=1,pred=3,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=9   frame(u_d=8,pred=7,y=19) a(y)=5  sharpened need a(y)>=3
+    dense(s=13,n0=26)        w=11  frame(u_d=10,pred=15,y=6) a(y)=5  sharpened need a(y)>=3
+    dense(s=13,n0=26)        w=14  frame(u_d=8,pred=7,y=19) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=15  frame(u_d=2,pred=14,y=19) a(y)=5  sharpened need a(y)>=3
+    dense(s=13,n0=26)        w=16  frame(u_d=12,pred=2,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=17  frame(u_d=1,pred=9,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=19  frame(u_d=1,pred=3,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=21  frame(u_d=1,pred=0,y=6) a(y)=5  sharpened need a(y)>=4
+    dense(s=13,n0=26)        w=23  frame(u_d=10,pred=16,y=6) a(y)=5  sharpened need a(y)>=3
+    dense(s=13,n0=26)        w=24  frame(u_d=8,pred=7,y=19) a(y)=5  sharpened need a(y)>=4
+    dense(s=15,n0=26)        w=1   frame(u_d=17,pred=9,y=4) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=2   frame(u_d=9,pred=8,y=0) a(y)=5  sharpened need a(y)>=4
+    dense(s=15,n0=26)        w=3   frame(u_d=13,pred=25,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=4   frame(u_d=13,pred=25,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=5   frame(u_d=9,pred=8,y=0) a(y)=5  sharpened need a(y)>=4
+    dense(s=15,n0=26)        w=6   frame(u_d=5,pred=1,y=4) a(y)=5  sharpened need a(y)>=4
+    dense(s=15,n0=26)        w=8   frame(u_d=21,pred=0,y=4) a(y)=5  sharpened need a(y)>=4
+    dense(s=15,n0=26)        w=9   frame(u_d=5,pred=1,y=4) a(y)=5  sharpened need a(y)>=4
+    dense(s=15,n0=26)        w=12  frame(u_d=13,pred=25,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=13  frame(u_d=17,pred=9,y=4) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=15  frame(u_d=9,pred=8,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=17  frame(u_d=1,pred=5,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=19  frame(u_d=15,pred=20,y=4) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=20  frame(u_d=9,pred=8,y=0) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=21  frame(u_d=3,pred=5,y=8) a(y)=4  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=23  frame(u_d=17,pred=9,y=4) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=24  frame(u_d=17,pred=9,y=4) a(y)=5  sharpened need a(y)>=3
+    dense(s=15,n0=26)        w=25  frame(u_d=5,pred=1,y=4) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=0   frame(u_d=18,pred=6,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=1   frame(u_d=21,pred=0,y=12) a(y)=4  sharpened need a(y)>=4
+    dense(s=17,n0=26)        w=3   frame(u_d=5,pred=8,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=4   frame(u_d=5,pred=8,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=5   frame(u_d=3,pred=0,y=13) a(y)=4  sharpened need a(y)>=4
+    dense(s=17,n0=26)        w=7   frame(u_d=15,pred=0,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=8   frame(u_d=7,pred=18,y=12) a(y)=4  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=9   frame(u_d=15,pred=10,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=12  frame(u_d=5,pred=8,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=13  frame(u_d=7,pred=18,y=12) a(y)=4  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=15  frame(u_d=7,pred=18,y=12) a(y)=4  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=17  frame(u_d=11,pred=0,y=2) a(y)=4  sharpened need a(y)>=4
+    dense(s=17,n0=26)        w=18  frame(u_d=0,pred=11,y=3) a(y)=4  sharpened need a(y)>=2
+    dense(s=17,n0=26)        w=19  frame(u_d=5,pred=11,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=20  frame(u_d=13,pred=9,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=21  frame(u_d=13,pred=3,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=23  frame(u_d=15,pred=20,y=1) a(y)=5  sharpened need a(y)>=3
+    dense(s=17,n0=26)        w=25  frame(u_d=15,pred=0,y=1) a(y)=5  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=0   frame(u_d=2,pred=6,y=18) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=26)        w=1   frame(u_d=3,pred=12,y=4) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=3   frame(u_d=0,pred=17,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=26)        w=4   frame(u_d=0,pred=1,y=17) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=26)        w=5   frame(u_d=2,pred=6,y=18) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=26)        w=7   frame(u_d=0,pred=1,y=17) a(y)=4  sharpened need a(y)>=2
+    dense(s=21,n0=26)        w=9   frame(u_d=3,pred=12,y=4) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=26)        w=10  frame(u_d=13,pred=1,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=11  frame(u_d=3,pred=8,y=4) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=26)        w=12  frame(u_d=0,pred=1,y=17) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=15  frame(u_d=0,pred=1,y=17) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=17  frame(u_d=7,pred=2,y=4) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=18  frame(u_d=20,pred=0,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=19  frame(u_d=8,pred=3,y=6) a(y)=4  sharpened need a(y)>=4
+    dense(s=21,n0=26)        w=21  frame(u_d=2,pred=6,y=18) a(y)=4  sharpened need a(y)>=2
+    dense(s=21,n0=26)        w=23  frame(u_d=2,pred=6,y=18) a(y)=4  sharpened need a(y)>=3
+    dense(s=21,n0=26)        w=25  frame(u_d=2,pred=6,y=18) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=26)        w=0   frame(u_d=2,pred=11,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=3   frame(u_d=0,pred=10,y=23) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=4   frame(u_d=2,pred=11,y=1) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=26)        w=8   frame(u_d=4,pred=24,y=16) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=10  frame(u_d=7,pred=9,y=23) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=11  frame(u_d=6,pred=0,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=26)        w=12  frame(u_d=5,pred=8,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=26)        w=13  frame(u_d=3,pred=22,y=15) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=14  frame(u_d=3,pred=17,y=15) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=15  frame(u_d=5,pred=8,y=9) a(y)=4  sharpened need a(y)>=4
+    dense(s=24,n0=26)        w=16  frame(u_d=2,pred=17,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=17  frame(u_d=4,pred=18,y=16) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=20  frame(u_d=1,pred=2,y=15) a(y)=4  sharpened need a(y)>=2
+    dense(s=24,n0=26)        w=21  frame(u_d=3,pred=17,y=15) a(y)=4  sharpened need a(y)>=2
+    dense(s=24,n0=26)        w=22  frame(u_d=0,pred=10,y=23) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=23  frame(u_d=2,pred=11,y=1) a(y)=4  sharpened need a(y)>=3
+    dense(s=24,n0=26)        w=24  frame(u_d=0,pred=8,y=10) a(y)=4  sharpened need a(y)>=2
+    dense(s=9,n0=34)         w=0   frame(u_d=8,pred=10,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=2   frame(u_d=14,pred=22,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=3   frame(u_d=8,pred=21,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=5   frame(u_d=17,pred=26,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=6   frame(u_d=14,pred=22,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=7   frame(u_d=4,pred=2,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=9   frame(u_d=4,pred=3,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=10  frame(u_d=11,pred=24,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=12  frame(u_d=14,pred=20,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=13  frame(u_d=8,pred=10,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=15  frame(u_d=4,pred=3,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=16  frame(u_d=8,pred=10,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=18  frame(u_d=8,pred=10,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=20  frame(u_d=8,pred=10,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=21  frame(u_d=14,pred=20,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=22  frame(u_d=11,pred=24,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=23  frame(u_d=14,pred=20,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=24  frame(u_d=17,pred=26,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=25  frame(u_d=11,pred=24,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=26  frame(u_d=11,pred=24,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=27  frame(u_d=11,pred=32,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=28  frame(u_d=11,pred=24,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=34)         w=31  frame(u_d=14,pred=22,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=34)         w=32  frame(u_d=8,pred=21,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=0   frame(u_d=3,pred=19,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=1   frame(u_d=3,pred=19,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=2   frame(u_d=20,pred=1,y=34) a(y)=5  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=4   frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=7   frame(u_d=11,pred=8,y=2) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=9   frame(u_d=6,pred=33,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=10  frame(u_d=3,pred=19,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=11  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=13  frame(u_d=8,pred=34,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=14  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=15  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=16  frame(u_d=3,pred=19,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=19  frame(u_d=12,pred=31,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=20  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=21  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=22  frame(u_d=9,pred=3,y=2) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=23  frame(u_d=6,pred=33,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=24  frame(u_d=6,pred=33,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=25  frame(u_d=6,pred=37,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=27  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=28  frame(u_d=3,pred=19,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=31  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=32  frame(u_d=6,pred=33,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=33  frame(u_d=17,pred=32,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=6,n0=38)         w=34  frame(u_d=23,pred=18,y=2) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=35  frame(u_d=6,pred=37,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=36  frame(u_d=8,pred=34,y=5) a(y)=6  sharpened need a(y)>=4
+    dense(s=6,n0=38)         w=37  frame(u_d=3,pred=9,y=5) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=38)         w=0   frame(u_d=15,pred=9,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=2   frame(u_d=5,pred=34,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=4   frame(u_d=5,pred=34,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=6   frame(u_d=5,pred=34,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=7   frame(u_d=15,pred=2,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=38)         w=8   frame(u_d=3,pred=0,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=9   frame(u_d=3,pred=0,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=10  frame(u_d=15,pred=2,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=12  frame(u_d=5,pred=34,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=38)         w=13  frame(u_d=11,pred=4,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=14  frame(u_d=11,pred=22,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=16  frame(u_d=11,pred=4,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=38)         w=18  frame(u_d=17,pred=19,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=19  frame(u_d=11,pred=4,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=22  frame(u_d=20,pred=27,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=23  frame(u_d=11,pred=4,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=24  frame(u_d=11,pred=22,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=25  frame(u_d=11,pred=36,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=38)         w=26  frame(u_d=5,pred=34,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=27  frame(u_d=21,pred=13,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=28  frame(u_d=5,pred=24,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=30  frame(u_d=5,pred=24,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=31  frame(u_d=3,pred=0,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=33  frame(u_d=3,pred=10,y=1) a(y)=6  sharpened need a(y)>=3
+    dense(s=9,n0=38)         w=34  frame(u_d=11,pred=4,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=35  frame(u_d=15,pred=2,y=1) a(y)=6  sharpened need a(y)>=4
+    dense(s=9,n0=38)         w=36  frame(u_d=5,pred=35,y=1) a(y)=6  sharpened need a(y)>=4
+    frames examined: 414 ; sharpened requirement STRICTLY below 4 on: 194
+
+  (TAIL-2') AS A RESCUE, measured ONLY where the blanket (TAIL-2) FAILS:
+    (TAIL-2) fails at 63 prescribed w's; of those, (TAIL-2') FIRES at 44
+    ... and of the 19 where BOTH decline, the +3 path exists anyway at 17
+    every (TAIL-2') YES above was CERTIFIED BY BUILDING the induced path on ecc(w)+3 vertices; every frame where the sharpened condition held was put on trial (a missing z would have raised a FAILURE).
+
+==============================================================================
+PART 4 — SUMMARY
+==============================================================================
+  residual instances found: 414 ; with l > 4: 0
+  (TAIL-2) FAILS at the prescribed w on: 63 of 414 evaluated
+  constructive +3 NOT built on: 3 of 414 evaluated
+  elapsed 0.5s of a 200s internal deadline
+
+==============================================================================
+CHECKS=9492  FAILURES=0  PARTS_RUN=['PART0', 'PART1', 'PART2', 'PART3', 'PART4']  elapsed=0.5s
+==============================================================================

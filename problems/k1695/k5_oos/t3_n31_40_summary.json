@@ -1,0 +1,1222 @@
+{
+  "aggregate": {
+    "q=3:all_distinct": {
+      "FOUND": 10,
+      "NONE": 0
+    },
+    "q=3:one_changed": {
+      "FOUND": 345,
+      "NONE": 0
+    },
+    "q=3:ones": {
+      "FOUND": 333,
+      "NONE": 12
+    },
+    "q=4:all_distinct": {
+      "FOUND": 20,
+      "NONE": 0
+    },
+    "q=4:one_changed": {
+      "FOUND": 345,
+      "NONE": 0
+    },
+    "q=4:ones": {
+      "FOUND": 336,
+      "NONE": 9
+    },
+    "q=5:all_distinct": {
+      "FOUND": 30,
+      "NONE": 0
+    },
+    "q=5:one_changed": {
+      "FOUND": 345,
+      "NONE": 0
+    },
+    "q=5:ones": {
+      "FOUND": 333,
+      "NONE": 12
+    },
+    "q=7:all_distinct": {
+      "FOUND": 50,
+      "NONE": 0
+    },
+    "q=7:one_changed": {
+      "FOUND": 345,
+      "NONE": 0
+    },
+    "q=7:ones": {
+      "FOUND": 333,
+      "NONE": 12
+    },
+    "q=8:all_distinct": {
+      "FOUND": 60,
+      "NONE": 0
+    },
+    "q=8:one_changed": {
+      "FOUND": 345,
+      "NONE": 0
+    },
+    "q=8:ones": {
+      "FOUND": 336,
+      "NONE": 9
+    },
+    "q=9:all_distinct": {
+      "FOUND": 70,
+      "NONE": 0
+    },
+    "q=9:one_changed": {
+      "FOUND": 345,
+      "NONE": 0
+    },
+    "q=9:ones": {
+      "FOUND": 333,
+      "NONE": 12
+    }
+  },
+  "found": 4314,
+  "input": "k5_gfq_table_n40.csv",
+  "literal_claim_breaks": [
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 9
+    }
+  ],
+  "literal_claim_confirmations": [
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 11,
+      "n": 33,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 4,
+      "n": 36,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 13,
+      "n": 39,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 40,
+      "n": 40,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 17,
+      "n": 34,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 9,
+      "n": 36,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 19,
+      "n": 38,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 5,
+      "n": 40,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 7,
+      "n": 35,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 36,
+      "n": 36,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 8,
+      "n": 40,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 5,
+      "n": 35,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 36,
+      "n": 36,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 40,
+      "n": 40,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 17,
+      "n": 34,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 9,
+      "n": 36,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 19,
+      "n": 38,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 5,
+      "n": 40,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 11,
+      "n": 33,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 4,
+      "n": 36,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 13,
+      "n": 39,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 40,
+      "n": 40,
+      "population": 1,
+      "q": 9
+    }
+  ],
+  "literal_claim_expected_but_found": [],
+  "n_range": [
+    31,
+    40
+  ],
+  "none": 66,
+  "none_cells": [
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 11,
+      "n": 33,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 4,
+      "n": 36,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 13,
+      "n": 39,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 40,
+      "n": 40,
+      "population": 1,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 17,
+      "n": 34,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 9,
+      "n": 36,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 19,
+      "n": 38,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 5,
+      "n": 40,
+      "population": 1,
+      "q": 4
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 7,
+      "n": 35,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 36,
+      "n": 36,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 8,
+      "n": 40,
+      "population": 1,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 5,
+      "n": 35,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 36,
+      "n": 36,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 40,
+      "n": 40,
+      "population": 1,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 33,
+      "n": 33,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 17,
+      "n": 34,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 9,
+      "n": 36,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 19,
+      "n": 38,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 39,
+      "n": 39,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 5,
+      "n": 40,
+      "population": 1,
+      "q": 8
+    },
+    {
+      "family": "ones",
+      "k": 31,
+      "m": 31,
+      "n": 31,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 32,
+      "m": 32,
+      "n": 32,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 33,
+      "m": 11,
+      "n": 33,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 34,
+      "m": 34,
+      "n": 34,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 35,
+      "m": 35,
+      "n": 35,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 36,
+      "m": 4,
+      "n": 36,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 37,
+      "m": 37,
+      "n": 37,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 38,
+      "m": 38,
+      "n": 38,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 39,
+      "m": 13,
+      "n": 39,
+      "population": 1,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 40,
+      "m": 40,
+      "n": 40,
+      "population": 1,
+      "q": 9
+    }
+  ],
+  "output": "k5_gfq_oos_n31_40.csv",
+  "power_of_two_extension_none_cells": [
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 3
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 5
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 7
+    },
+    {
+      "family": "ones",
+      "k": 2,
+      "m": 32,
+      "n": 32,
+      "population": 31,
+      "q": 9
+    },
+    {
+      "family": "ones",
+      "k": 30,
+      "m": 32,
+      "n": 32,
+      "population": 465,
+      "q": 9
+    }
+  ],
+  "q_values": [
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ],
+  "rows": 4380
+}

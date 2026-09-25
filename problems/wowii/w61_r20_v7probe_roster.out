@@ -1,0 +1,48 @@
+=== owner-w61 ROUND 20 -- RULING L SELF-SATISFIED-INVARIANT SWEEP ===
+target: problems/wowii/w61_r17_roster_recompute.py
+Sat Aug 22 22:03:16 CDT 2026
+
+BASELINE (unmodified): rc=0  FAILURE_COUNT=0  DIFF-relevant counts intact=True
+
+[F1] steps_list: drop the negative-value guard so implementation #2 diverges from #1
+     expected of a LIVE guard: the two-implementation cross-check should DIE with IMPLEMENTATION DISAGREEMENT
+     rc=0  FAILURE_COUNT=0  nu-blocks with positive FAN-6' misses=0
+     VERDICT: DOES NOT TRIP -- recorded, not dropped
+
+[F1b] steps_list: perturb the DELETION COUNTER so implementation #2 genuinely
+      diverges from #1 (F1 turned out to perturb UNREACHABLE code -- see the note)
+     expected of a LIVE guard: the two-implementation cross-check should DIE with IMPLEMENTATION DISAGREEMENT
+     rc=1  FAILURE_COUNT=None  nu-blocks with positive FAN-6' misses=0
+     died with: IMPLEMENTATION DISAGREEMENT on [2, 2, 2, 2]: 2 vs 4
+     VERDICT: LIVE -- the guard trips
+
+[F2] p_euler: off-by-one, so the partition generator no longer matches p(n)
+     expected of a LIVE guard: the partition-count guard should DIE
+     rc=1  FAILURE_COUNT=None  nu-blocks with positive FAN-6' misses=0
+     died with: partition generator disagrees with p(2)
+     VERDICT: LIVE -- the guard trips
+
+[F3a] fan6_kills: always FALSE -- nothing is killed
+     expected of a LIVE guard: FAN-6' miss counts should go POSITIVE and FAILURE_COUNT with them
+     rc=0  FAILURE_COUNT=1017  nu-blocks with positive FAN-6' misses=10
+     VERDICT: LIVE -- the guard trips
+
+[F3b] fan6_kills: always TRUE -- everything is killed.  THIS IS THE SELF-SATISFIED
+      DIRECTION: a kill test that never rejects cannot report a miss
+     expected of a LIVE guard: if FAILURE_COUNT stays 0, 'FAN-6' misses = 0' carries NO information about the
+      kill test being right -- that is exactly the invariant the bulletin names
+     rc=0  FAILURE_COUNT=0  nu-blocks with positive FAN-6' misses=0
+     VERDICT: DOES NOT TRIP -- recorded, not dropped
+
+[F4] tail_control: corrupt the Lemma TAIL formula by +1
+     expected of a LIVE guard: TAIL-formula mismatches should go POSITIVE and FAILURE_COUNT with them
+     rc=0  FAILURE_COUNT=17959  nu-blocks with positive FAN-6' misses=0
+     VERDICT: LIVE -- the guard trips
+
+[F5] the E>=1 closed form: perturb it so it disagrees with the enumeration loop
+     expected of a LIVE guard: the closed-form-vs-loop guard should raise FAILURE_COUNT
+     rc=0  FAILURE_COUNT=10  nu-blocks with positive FAN-6' misses=0
+     VERDICT: LIVE -- the guard trips
+
+SWEEP RESULT: 5/7 injected faults trip a guard; 2 do not.
+elapsed 14.5s (budget 300s)

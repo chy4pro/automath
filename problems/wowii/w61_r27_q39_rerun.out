@@ -1,0 +1,90 @@
+CALIBRATION (printed before every Section 0 value)
+  K2: residue=1, expected=1, PASS
+  C3: residue=1, expected=1, PASS
+  C4: residue=2, expected=2, PASS
+  C5: residue=2, expected=2, PASS
+  C6: residue=2, expected=2, PASS
+  C7: residue=3, expected=3, PASS
+  C8: residue=3, expected=3, PASS
+  C9: residue=3, expected=3, PASS
+CALIBRATION_STATUS=PASS
+SECTION 0 HELD-OUT CHECKS
+H1
+  lambda=[12, 6, 4] valid=True s0=14 heads=[12, 12, 10, 10, 8, 8, 6, 6, 5, 4, 3, 2, 2, 1]
+  lambda=[9, 7, 3, 3] valid=True s0=12 heads=[9, 9, 7, 7, 6, 5, 4, 3, 2, 2, 1, 1]
+  lambda=[14, 5, 2, 1] valid=True s0=16 heads=[14, 14, 12, 12, 10, 10, 8, 8, 6, 6, 5, 4, 3, 2, 1, 1]
+  lambda=[8, 8, 6] valid=True s0=10 heads=[8, 8, 7, 6, 5, 4, 3, 3, 2, 1]
+H2
+  E=1: (10)*p(1)=1*p(21)=792 -> 7920
+  E=2: (9)*p(2)=2*p(20)=627 -> 11286
+  E=3: (8)*p(3)=3*p(19)=490 -> 11760
+  E=4: (7)*p(4)=5*p(18)=385 -> 13475
+  E=5: (6)*p(5)=7*p(17)=297 -> 12474
+  E=6: (5)*p(6)=11*p(16)=231 -> 12705
+  E=7: (4)*p(7)=15*p(15)=176 -> 10560
+  E=8: (3)*p(8)=22*p(14)=135 -> 8910
+  E=9: (2)*p(9)=30*p(13)=101 -> 6060
+  E=10: (1)*p(10)=42*p(12)=77 -> 3234
+  S(11)=98384
+H3
+  tested=98384 tested_split={1:7920, 2:11286, 3:11760, 4:13475, 5:12474, 6:12705, 7:10560, 8:8910, 9:6060, 10:3234}
+  survivors=791 survivor_split={1:6, 2:14, 3:21, 4:35, 5:47, 6:85, 7:110, 8:155, 9:170, 10:148}
+  FAN6_misses=0
+H4
+  partitions_of_22=1002 count_s0_eq_13=131
+H5
+  list=[15, 14, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 5, 4, 4, 3, 3]
+  valid=True clears_in_13=False actual_steps=16
+  heads=[15, 13, 11, 10, 9, 8, 7, 6, 5, 4, 4, 3, 2, 2, 2, 1]
+THEOREM_GFANNU_REGENERATION
+  nu=1: partitions=2 tail_survivors=[(2,)] boundary=0/0 Epos=0/0 formula=0 split={} FAN6_misses=0
+  nu=2: partitions=5 tail_survivors=[(4,)] boundary=1/1 Epos=3/1 formula=3 split={1:1} FAN6_misses=0
+  nu=3: partitions=11 tail_survivors=[(6,)] boundary=3/1 Epos=24/4 formula=24 split={1:2, 2:2} FAN6_misses=0
+  nu=4: partitions=22 tail_survivors=[(8,)] boundary=7/2 Epos=110/9 formula=110 split={1:2, 2:4, 3:3} FAN6_misses=0
+  nu=5: partitions=42 tail_survivors=[(10,)] boundary=14/2 Epos=397/20 formula=397 split={1:3, 2:5, 3:6, 4:6} FAN6_misses=0
+  nu=6: partitions=77 tail_survivors=[(12,)] boundary=26/3 Epos=1211/38 formula=1211 split={1:3, 2:6, 3:8, 4:12, 5:9} FAN6_misses=0
+  nu=7: partitions=135 tail_survivors=[(14,)] boundary=45/3 Epos=3340/75 formula=3340 split={1:4, 2:8, 3:10, 4:17, 5:18, 6:18} FAN6_misses=0
+  nu=8: partitions=231 tail_survivors=[(16,)] boundary=75/4 Epos=8457/137 formula=8457 split={1:4, 2:9, 3:12, 4:22, 5:26, 6:36, 7:28} FAN6_misses=0
+  nu=9: partitions=385 tail_survivors=[(18,)] boundary=120/4 Epos=20126/251 formula=20126 split={1:5, 2:11, 3:15, 4:25, 5:34, 6:53, 7:56, 8:52} FAN6_misses=0
+  nu=10: partitions=627 tail_survivors=[(20,)] boundary=187/5 Epos=45450/447 formula=45450 split={1:5, 2:12, 3:17, 4:31, 5:40, 6:70, 7:83, 8:104, 9:85} FAN6_misses=0
+GFAN2_L3_EIGHT_ROWS
+  E=0 e=() lambda=(4,) steps=3 FAN6=True cert=(4, 0)
+  E=0 e=() lambda=(3, 1) steps=4 FAN6=True cert=(3, 1)
+  E=0 e=() lambda=(2, 2) steps=4 FAN6=False cert=(2, 2)
+  E=0 e=() lambda=(2, 1, 1) steps=4 FAN6=False cert=(2, 1)
+  E=0 e=() lambda=(1, 1, 1, 1) steps=5 FAN6=False cert=(1, 1)
+  E=1 e=(1,) lambda=(3,) steps=3 FAN6=True cert=(3, 0)
+  E=1 e=(1,) lambda=(2, 1) steps=4 FAN6=False cert=(2, 1)
+  E=1 e=(1,) lambda=(1, 1, 1) steps=4 FAN6=False cert=(1, 1)
+GFAN2_L_GE_4_TRAJECTORIES
+  L=4 lambda=(2, 2) steps=5
+  L=4 lambda=(2, 1, 1) steps=5
+  L=4 lambda=(1, 1, 1, 1) steps=6
+  L=7 lambda=(2, 2) steps=8
+  L=7 lambda=(2, 1, 1) steps=8
+  L=7 lambda=(1, 1, 1, 1) steps=9
+NAMED_ROSTER_SPOT_CHECKS
+  nu=5 L=6 E=4 e=(2, 2) lambda=(4, 2): steps=6 cert=(4, 2) FAN6=True list=(8, 8, 6, 6, 6, 6, 6, 4, 2)
+  nu=6 L=7 E=5 e=(3, 2) lambda=(4, 2, 1): steps=7 cert=(4, 2) FAN6=True list=(10, 9, 7, 7, 7, 7, 7, 7, 4, 2, 1)
+  nu=7 L=8 E=6 e=(3, 3) lambda=(4, 2, 2): steps=8 cert=(4, 2) FAN6=True list=(11, 11, 8, 8, 8, 8, 8, 8, 8, 4, 2, 2)
+  nu=8 L=9 E=8 e=(4, 4) lambda=(4, 2, 2, 2): steps=9 cert=(4, 2) FAN6=True list=(13, 13, 9, 9, 9, 9, 9, 9, 9, 9, 4, 2, 2, 2)
+  nu=10 L=11 E=9 e=(5, 4) lambda=(4, 2, 2, 2, 1): steps=11 cert=(4, 2) FAN6=True list=(16, 15, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 4, 2, 2, 2, 1)
+PRINTED_DATA_COMPARISON_AFTER_REGENERATION
+  C2_s0 printed=159 computed=159 mismatches=0
+  Epos printed=982 generated=982 generated_minus_printed=0 printed_minus_generated=0
+  boundary printed=25 generated=25 generated_minus_printed=0 printed_minus_generated=0
+INDEPENDENT_CONTROLS
+  TAIL pairs=31210 mismatches=0
+  padding pairs=80655 mismatches=0
+COUNTERFACTUAL_AVAILABILITY
+  nominal=(nu=2,L=3,E=0), list=(3, 3, 3, 3, 1), A'_mass=1 required=4, steps=None
+  FAN-4'/FAN-8'/GFAN2 finite-list conclusions unavailable: residue-mass hypothesis fails.
+N4_CONSTRUCTION_SEARCH
+  scope=all unlabeled graphs in NetworkX graph_atlas_g (orders <= 7), tau in {2,3}
+  frame_plus_reductio=0 universal_low=0 nu_gt_L_minus_1=0
+  full-hypothesis search box is empty; this is not positive evidence for N4
+NU_ZERO_WITNESS_K3
+  connected=True A={0}_maximum=True alpha=1 exhaustive_max_sets=[(0,), (1,), (2,)]
+  diam=1 f=2=alpha+1 nonforest=True residue=1=alpha
+  GFan(tau=2,L=2,nu=0)=True; thus GFANnu's lower bound nu>=1 is necessary
+SCRIPT_STATUS=PASS

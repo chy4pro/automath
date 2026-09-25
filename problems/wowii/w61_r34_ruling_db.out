@@ -1,0 +1,133 @@
+============================================================================================
+w61 r34 ITEM 3 -- RULING DB BUILD-TIME GATE: no two held-out rows share a latent
+============================================================================================
+impl source : w61_r29_c1audit.py  md5 768975c3987de60fbebe1080d0dd530d
+             (w61_r31_key.py / w61_r33_null.py recorded md5 768975c3...)
+
+--------------------------------------------------------------------------------------------
+RULING DB GATE on: ROUND 31's ACTUAL A ROWS (the set that was dispatched)   (3 rows)
+--------------------------------------------------------------------------------------------
+  row  list                         |L|      answer  residue  |L| shown in question?
+  A1   [6, 6, 6, 6, 6, 6, 6, 6, 4,  10       <hidden> 2        yes
+  A2   [5, 5, 5, 5, 5, 5, 5, 4, 3]  9        <hidden> 2        yes
+  A3   [4, 4, 3, 3, 2, 2]           6        <hidden> 2        yes
+
+  pairwise:
+    A1  x A2   same residue latent = True    both recoverable = True    *** SHARED LATENT -- REJECT ***
+         A1 : steps = |L| - residue, and |L| is displayed (Prop C1-B, Statement 3)
+         A2 : the answer IS the residue
+    A1  x A3   same residue latent = True    both recoverable = True    *** SHARED LATENT -- REJECT ***
+         A1 : steps = |L| - residue, and |L| is displayed (Prop C1-B, Statement 3)
+         A3 : steps = |L| - residue, and |L| is displayed (Prop C1-B, Statement 3)
+    A2  x A3   same residue latent = True    both recoverable = True    *** SHARED LATENT -- REJECT ***
+         A2 : the answer IS the residue
+         A3 : steps = |L| - residue, and |L| is displayed (Prop C1-B, Statement 3)
+
+  VERDICT: REJECT. 3 pair(s) share a latent.
+  Rows A1, A2, A3 collapse to ONE row for the conjunction.
+  A build using these rows must replace all but one, or cite them as one row.
+
+  candidate pool for a REPAIRED row set (residue printed, answers withheld):
+     lambda=(6, 4, 2)        |M|=10  residue=2
+     lambda=(5, 4, 3)        |M|=9   residue=2
+     lambda=(8, 6, 4, 2)     |M|=13  residue=2
+     lambda=(7, 5, 3, 1)     |M|=12  residue=3
+     lambda=(6, 5, 4, 3, 2)  |M|=12  residue=3
+     lambda=(4, 4, 4)        |M|=8   residue=2
+     lambda=(9, 7)           |M|=12  residue=2
+     lambda=(8, 4)           |M|=11  residue=2
+     lambda=(10, 6, 2)       |M|=14  residue=2
+     lambda=(7, 6, 5)        |M|=11  residue=2
+
+--------------------------------------------------------------------------------------------
+RULING DB GATE on: A REPAIRED ROW SET (distinct residue latents)   (2 rows)
+--------------------------------------------------------------------------------------------
+  row  list                         |L|      answer  residue  |L| shown in question?
+  R1   [6, 6, 6, 6, 6, 6, 6, 6, 4,  10       <hidden> 2        yes
+  R2   [7, 7, 7, 7, 7, 7, 7, 7, 7,  12       <hidden> 3        yes
+
+  pairwise:
+    R1  x R2   same residue latent = False   both recoverable = True    independent
+
+  VERDICT: ACCEPT. No pair shares a latent; the rows may be multiplied
+  (subject to every OTHER standing condition -- DB is necessary, not sufficient).
+
+  --- condition-(2) control: same residue, but one row's |L| is NOT displayed ---
+
+--------------------------------------------------------------------------------------------
+RULING DB GATE on: COINCIDENCE PAIR (shared value, one not recoverable)   (2 rows)
+--------------------------------------------------------------------------------------------
+  row  list                         |L|      answer  residue  |L| shown in question?
+  A1   [6, 6, 6, 6, 6, 6, 6, 6, 4,  10       <hidden> 2        yes
+  H1   [5, 5, 5, 5, 5, 5, 5, 4, 3]  9        <hidden> 2        no
+
+  pairwise:
+    A1  x H1   same residue latent = True    both recoverable = False   independent
+
+  VERDICT: ACCEPT. No pair shares a latent; the rows may be multiplied
+  (subject to every OTHER standing condition -- DB is necessary, not sufficient).
+
+============================================================================================
+GATE SELF-CONTROL
+============================================================================================
+  must REJECT round 31's rows                 : REJECTED (3 bad pairs)
+  must ACCEPT a distinct-latent row set       : ACCEPTED
+  must ACCEPT a shared-VALUE non-recoverable  : ACCEPTED
+  implementations diffed (runA vs runB)       : 16 calls, 0 disagreements
+
+  ROUND 31's THREE A ROWS FAIL THIS GATE ON ALL THREE PAIRS. Had it existed, the
+  build would have refused before dispatch, and the 1/36 that cert_w61_r32 SS8 was
+  written around would never have been available to write around.
+
+  SCOPE, because overstating a new gate is how the last four got written:
+   * DB is NECESSARY, NOT SUFFICIENT. It tests one shared-latent family -- the
+     residue, because that is the identity the brief prints. A brief printing a
+     DIFFERENT identity creates a different latent, and this gate will not see it.
+   * The latent list must be REBUILT PER BRIEF from the identities that brief
+     prints. Hard-coding 'residue' into the line's build scripts would reproduce
+     RULING CZ exactly: a check measuring the dimension its fault set came from.
+   * It says nothing about GUESSABILITY. Three rows with distinct latents can each
+     still have a 3-element plausible set. DB and the null are separate conditions
+     and BOTH must be computed before any conjunction is cited.
+  elapsed 0.0s
+
+============================================================================================
+RIDER -- IS RULING DB EVEN SATISFIABLE ON THIS FAMILY?  (bounded census)
+============================================================================================
+  population: every partition of 4..34 with >=2 parts whose M terminates
+  terminating lists: 36513
+  residue histogram: {2: 1741, 3: 7587, 4: 8632, 5: 6647, 6: 4505, 7: 2902, 8: 1824, 9: 1125, 10: 678, 11: 398, 12: 227, 13: 125, 14: 66, 15: 33, 16: 15, 17: 6, 18: 2}
+  MODAL RESIDUE 4 covers 8632/36513 = 23.6% of the whole population.
+  distinct residue values available at all: 17
+
+  SECOND CUT -- restricted to HAND-COMPUTABLE rows, which is what round 31
+  actually required (A rows are 'derivable by hand from section 1 alone'):
+    |M| <= 10  :   130 rows,  4 distinct residues, MODAL residue 3 =  50.8%
+    |M| <= 12  :   521 rows,  5 distinct residues, MODAL residue 3 =  52.8%
+    |M| <= 14  :  2017 rows,  6 distinct residues, MODAL residue 3 =  52.4%
+    |M| <= 18  : 12509 rows,  8 distinct residues, MODAL residue 3 =  35.8%
+
+  THE FINDING, AND IT IS THE OPPOSITE OF WHAT I EXPECTED WHEN I WROTE THIS RIDER.
+  I predicted the residue latent would be near-constant across the family, which
+  would have made RULING DB unsatisfiable here. THE CENSUS REFUTES THAT: over the
+  full population the residue takes 17 distinct values and the mode holds only
+  23.6%. The prediction was wrong and the table above is the authority.
+
+  What the two cuts together actually show is sharper and worse:
+   * DB IS SATISFIABLE on this family. Independent rows exist in quantity.
+   * The collinearity was manufactured by the HAND-COMPUTABILITY CONSTRAINT.
+     Round 31 required its A rows to be derivable by hand, which forces short
+     lists, and short lists CONCENTRATE: 4 residue values at |M|<=10 against 17
+     over the family, with the top one at 50.8%. Said exactly, because the table
+     above is the authority: that modal value is 3, NOT the 2 round 31 drew. So
+     the collinearity is BOTH the structural concentration AND an unlucky draw
+     inside it -- round 31 landed three rows on a SUB-modal value. Either alone
+     would have been survivable; the brief's own hand-derivability rule plus one
+     unexamined draw is what collapsed three rows onto one latent.
+   * SO THE REPAIR IS NOT 'PICK BETTER SMALL ROWS'. It is that a row set cannot
+     be simultaneously hand-derivable AND latent-independent AND numerous on
+     this family. Any two of the three. A future brief must choose which to
+     drop and say which, before dispatch, in writing.
+   * RULING DB must therefore run AFTER the hand-computability filter, never
+     before it -- otherwise it certifies a pool the brief will never draw from.
+  elapsed 1.7s

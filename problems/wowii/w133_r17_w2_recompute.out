@@ -1,0 +1,58 @@
+=== W2 = Cay(PSL(2,11), S), INDEPENDENT permutation-model recomputation ===
+    (matrix model NOT used; group realised on P^1(GF(11)), 12 points)
+
+[1] the three named generator matrices lie in SL(2,11)
+  PASS  det[5 0; 2 9] = 1 mod 11   [det=1]
+  PASS  det[1 5; 0 1] = 1 mod 11   [det=1]
+  PASS  det[1 6; 10 6] = 1 mod 11   [det=1]
+
+[2] the generators act non-trivially and -I acts trivially
+  PASS  phi[5 0; 2 9] != id
+  PASS  phi[1 5; 0 1] != id
+  PASS  phi[1 6; 10 6] != id
+  PASS  phi(-I) = id  (so the image is PSL, not SL)
+
+[3] the generated group
+  PASS  |<S>| = 660 = |PSL(2,11)|   [got 660]
+  PASS  DERIVED from the line above: image is NOT SL(2,11) (order 1320)   [not independent evidence; kept as a reading aid]
+  PASS  |S| = 6 (three generators and their inverses, all distinct)   [got 6]
+  PASS  identity is not in the connection set
+  PASS  SELF-SATISFIED: S closed under inversion -- it was BUILT as {g, g^-1}   [carries no information; recorded as such per V7]
+
+[4] W2 as a graph
+  PASS  6-regular   [deg range [6,6]]
+  PASS  DERIVED from 6-regularity and n=660: 1980 edges   [got 1980]
+  PASS  triangle-free (0 edges inside any neighbourhood)   [triangle-incidences=0]
+  PASS  C4-free (strong form: no pair with 2 common neighbours)   [violating ordered pairs=0, max common neighbours over pairs at distance 2 = 1]
+  PASS  sum of a(v) = 3960, so l(W2) = 6 exactly   [sum_a=3960, l=6.0]
+  PASS  mu(W2) = min a = 6 >= 2 (Theorem G42's hypothesis holds)   [mu=6]
+  PASS  l > 4 (the band hypothesis), computed not asserted   [l=6.0]
+
+[5] distances -- eccentricity computed for ALL 660 vertices, not sampled
+  PASS  connected (BFS reached all 660 from every vertex)   [660 BFS runs]
+  PASS  rad = diam = 5   [rad=5 diam=5]
+  PASS  every vertex has eccentricity 5 (vertex-transitivity corroborated)   [distinct eccentricities: [5]]
+  PASS  DERIVED from rad = diam = 5: diam <= rad + 2, the hard window is inhabited   [5 <= 7]
+
+[6] Theorem G42's construction executed on W2: the CONSTRUCTED path
+  PASS  a geodesic of length d = rad = 5 exists from vertex 0   [142 vertices at distance 5]
+  PASS  G41/G42's recipe (w, x, u_0..u_d, y) executes on W2
+  PASS  the CONSTRUCTED path has exactly 9 vertices = d + 4 = rad + 4   [len=9, d=5, rad=5]
+
+[7] the GRAPH's own longest induced path -- a LOWER BOUND, independently certified
+  PASS  the built vertex sequence has no repeats   [L=192]
+  PASS  consecutive vertices are adjacent
+  PASS  no chords: the sequence is an INDUCED path   [chords=0]
+  PASS  path(W2) >= 168 -- reproduces the single-sourced round-11 number   [certified induced path on 192 vertices, from 4000 restarts]
+  PASS  the graph's path strictly exceeds the constructed one   [graph >= 192 vs constructed = 9]
+  PASS  DERIVED from L and rad: path(W2) >= rad + 4 = 9, the conjecture holds on W2   [192 >= 9]
+
+=== PRODUCT: W2 independently recomputed, permutation model ===
+  n = 660   edges = 1980   6-regular   triangle-free   C4-free
+  l = sum_a/n = 3960/660 = 6   mu = 6
+  rad = diam = 5   (eccentricity 5 at every one of the 660 vertices)
+  CONSTRUCTED path (G42's mechanism)  = 9 vertices = rad + 4
+  GRAPH's own induced path            >= 192 vertices (certified chord-free)
+  two numbers, never one tightness claim.
+
+checks failed: 0

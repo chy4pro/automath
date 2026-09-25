@@ -1,0 +1,9 @@
+A. single-part evaluation  s0([w]) = steps([w]^{w+2}) : predicted w for even w, None for odd
+   w=0..30 checked, mismatches=0
+
+B. reformulation:  s0(lam) = |M| - residue(M),  |M| = w+1+k   =>   s0=w  <=>  residue(M)=k+1
+   testing:  residue(M) <= k  for every lam with k>=2 parts, and = k+1 iff k=1
+   n=1..28: 10268 step-sequences tested, violations=0, tight (residue==k)=196, min slack k-residue=0
+
+C. strengthened form:  is  s0(lam) >= lam_1  always, with equality iff k==1 ?
+   10268 tested, violations=0

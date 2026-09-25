@@ -1,0 +1,11 @@
+name = "etp677_ext"
+version = "0.1.0"
+defaultTargets = ["Ext677"]
+
+[[require]]
+name = "mathlib"
+path = "../proofenv/.lake/packages/mathlib"
+
+[[lean_lib]]
+name = "Ext677"
+roots = ["Ext677", "Ext677Quot", "Ext677Collision", "Ext677Glue", "Ext677Occ", "Ext677Small", "Ext677Pattern", "Ext677PatternPairs", "Ext677X6", "Ext677Core7", "Ext677Window", "Ext677Switch", "Ext677Objects", "Ext677Amplify", "Ext677EprimeRed", "Ext677Fibre2", "Ext677Core7Free", "Ext677Core7Hand", "Ext677Minimal", "Ext677Fibre4"]

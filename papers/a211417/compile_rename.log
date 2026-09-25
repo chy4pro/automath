@@ -1,0 +1,27 @@
+note: Running TeX ...
+warning: main.tex:85: Overfull \hbox (8.0547pt too wide) in paragraph at lines 78--85
+warning: main.tex:136: Overfull \hbox (2.30052pt too wide) detected at line 136
+warning: main.tex:350: Underfull \hbox (badness 1803) in paragraph at lines 350--350
+warning: main.tex:476: Overfull \hbox (4.55254pt too wide) in paragraph at lines 470--476
+warning: main.tex:1270: Overfull \hbox (6.26836pt too wide) in paragraph at lines 1266--1270
+warning: main.tex:1308: Overfull \hbox (54.99889pt too wide) in paragraph at lines 1294--1308
+warning: main.tex:1332: Overfull \hbox (3.00293pt too wide) in paragraph at lines 1332--1332
+warning: main.tex:1367: Overfull \hbox (55.51135pt too wide) in paragraph at lines 1360--1367
+warning: main.tex:1392: Overfull \hbox (65.3715pt too wide) in paragraph at lines 1390--1392
+warning: main.tex:1400: Overfull \hbox (3.69873pt too wide) in paragraph at lines 1393--1400
+warning: main.tex:1431: Overfull \hbox (6.03212pt too wide) in paragraph at lines 1430--1431
+warning: main.tex:1441: Overfull \hbox (7.89328pt too wide) in paragraph at lines 1437--1441
+warning: main.tex:1458: Overfull \hbox (5.47656pt too wide) in paragraph at lines 1455--1458
+warning: main.tex:1458: Overfull \hbox (5.53226pt too wide) in paragraph at lines 1455--1458
+warning: main.tex:1482: Overfull \hbox (19.44862pt too wide) in paragraph at lines 1479--1482
+warning: main.tex:1487: Overfull \hbox (11.52206pt too wide) in paragraph at lines 1483--1487
+warning: main.tex:1498: Overfull \hbox (26.76218pt too wide) in paragraph at lines 1488--1498
+warning: main.tex:1498: Overfull \hbox (8.05544pt too wide) in paragraph at lines 1488--1498
+warning: main.tex:1506: Overfull \hbox (8.00438pt too wide) in paragraph at lines 1504--1506
+warning: main.tex:1523: Overfull \hbox (69.91798pt too wide) in paragraph at lines 1517--1523
+warning: main.tex:1765: Overfull \hbox (69.52112pt too wide) in paragraph at lines 1762--1765
+warning: main.tex:1846: Underfull \hbox (badness 3417) in paragraph at lines 1841--1846
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `main.pdf` (249.904296875 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)

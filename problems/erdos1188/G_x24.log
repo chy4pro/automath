@@ -1,0 +1,29 @@
+INCOMPLETE (time cap): 1500s, XMAX=24
+x=2: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=3: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=4: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=5: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=6: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=7: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=8: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=9: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=10: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=11: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 0
+x=12: sets with max modulus exactly x: 1; G(x) (all moduli <= x): 1
+x=13: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=14: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=15: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=16: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=17: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=18: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=19: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=20: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=21: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=22: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=23: sets with max modulus exactly x: 0; G(x) (all moduli <= x): 1
+x=24: sets with max modulus exactly x: 4; G(x) (all moduli <= x): 5
+   (2, 3, 4, 6, 12)
+   (2, 3, 4, 6, 8, 24)
+   (2, 3, 4, 8, 12, 24)
+   (2, 3, 6, 8, 12, 24)
+   (2, 4, 6, 8, 12, 24)

@@ -1,0 +1,44 @@
+==============================================================================
+[A] `N1` — fresh (n=11)
+==============================================================================
+  N1 edges: 0-1, 1-2, 2-3, 3-4, 4-5, 5-0, 0-6, 3-6, 1-7, 4-7, 2-8, 5-8, 6-9, 7-9, 8-10, 9-10, 6-10
+  PASS  N1 connected and C4-free
+  PASS  N1 contains the induced C6 {0,1,2,3,4,5}
+  a-vector(N1) = (3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2)   SUM = 31   path(N1) = 7  witness [1, 7, 4, 3, 6, 10, 8]
+  induced C6 count in N1 = 10   dist(6,8) = 2
+  attachment traces onto Z: {6: (0, 3), 7: (1, 4), 8: (2, 5), 9: (), 10: ()}
+
+==============================================================================
+[B] `N2` — fresh (n=12)
+==============================================================================
+  N2 edges: 0-1, 1-2, 2-3, 3-4, 4-5, 5-0, 0-6, 1-7, 4-8, 5-9, 2-9, 6-10, 7-10, 8-11, 9-11, 10-11
+  PASS  N2 connected and C4-free
+  a-vector(N2) = (3, 3, 3, 2, 3, 3, 2, 2, 2, 3, 3, 3)   SUM = 32   path(N2) = 9  witness [6, 10, 7, 1, 2, 9, 5, 4, 8]
+  induced C6 count in N2 = 4
+
+==============================================================================
+[C] REBUILT P7G32 HELD-OUT KEY
+==============================================================================
+  V1  [H]  N1: Is N1 C4-free?                               = YES
+  V2  [H]  N1: a(6)                                         = 3
+  V3  [H]  N1: Does {0,1,2,3,4,5} induce a 6-cycle?         = YES
+  V4  [H]  N1: dist(6,8)                                    = 2
+  V5  [H]  N1: |N(9) cap {0,1,2,3,4,5}|                     = 0
+  V6  [C]  N1: path(N1)                                     = 7
+  V7  [C]  N1: sum_v a(v) over all 11 vertices              = 31
+  V8  [C]  N2: path(N2)                                     = 9
+  V9  [C]  N2: number of induced 6-cycles in N2             = 4
+  PASS  5 Tier-H / 4 Tier-C
+  PASS  the Tier-H answers take at least 3 distinct values (not guessable)   [['YES', 3, 'YES', 2, 0]]
+  PASS  neither N1 nor N2 is CE-2 or Petersen — the two BURNED graphs of the voided round
+  key -> $HOME/workspace/claudecode/automath/problems/wowii/w133_r19_p7g32_key.key.txt
+
+==============================================================================
+[D] V7 probes
+==============================================================================
+  PASS  V7-1 c4free() trips on a planted second common neighbour   [planting 9-1: common nbrs of 9 and 1 = [7]]
+  PASS  V7-2 the C6 detector trips when a chord is planted
+  PASS  V7-3 the path witness is genuinely induced   [[1, 7, 4, 3, 6, 10, 8]]
+
+FAILURES: 0
+elapsed 0.0s

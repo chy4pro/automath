@@ -1,0 +1,51 @@
+Research problem. Work from first principles; do NOT search the web; show complete
+reasoning. You may take the KNOWN FACTS below as proved (they have been machine-verified
+or carefully checked) and build directly on them.
+
+Setup. For a set S of n distinct points in convex position in the plane and a vertex v,
+let f(v) = number of distinct distances from v to the other n-1 points.
+
+Statement (S): every such set has a vertex v with f(v) >= floor(n/2).
+The regular n-gon attains equality at every vertex. Known: some vertex always has
+f(v) >= (13/36 + 1/22701) n - O(1). Your task: settle more of the gap between that and n/2.
+
+KNOWN FACTS (proved; use freely):
+K1. If no distance class at v has size >= 3 then f(v) >= floor(n/2). Hence in any
+    counterexample EVERY vertex is the centre of a circle through >= 3 other vertices.
+K2. Cocircular sets satisfy (S) (two circles meet in <= 2 points).
+K3. A minimal counterexample has even cardinality n = 2m, and every vertex has
+    f(v) <= m-1, forcing >= m+1 isosceles triangles apexed at every vertex.
+K4. OBTUSE PROPAGATION: if a distance class C_v(r) has size >= 3, every angularly
+    non-extreme point b of that class has strictly obtuse interior polygon angle
+    (inscribed angle: the angle at b is pi - sigma/2 > pi/2 where sigma < pi is the
+    angular span at v). So every vertex of a counterexample forces obtuse angles at
+    OTHER vertices, with multiplicity.
+K5. There is a verified non-cocircular convex hexagon (equilateral triangle side 1 with
+    the three Reuleaux-arc midpoints) with distance counts (2,3,2,3,2,3): three vertices
+    sit STRICTLY BELOW floor(6/2)=3 while the other three sit at it. So "half the
+    vertices below the bound" is achievable; a counterexample needs ALL below.
+K6. In the infinitesimal alternating-radius perturbation of the regular 2m-gon, the even
+    and odd vertex classes need OPPOSITE perturbation signs (lambda = +1/4 vs -1/4) to
+    gain their extra distance collision, so both classes cannot drop below m together.
+
+Goal, in order of value:
+ 1. PROVE (S) for centrally symmetric convex 2m-gons. (Suggested lever: central symmetry
+    pairs the vertices; combine K3's isosceles count with K4's obtuse propagation — a
+    convex polygon has at most a bounded number of non-acute angles available to pay
+    K4's cost? Make that precise: count obtuse-angle demand vs supply.)
+ 2. Or prove (S) whenever the point set has at most c*n distinct directions of edges, or
+    any other clean subclass strictly containing regular polygons.
+ 3. Or CONSTRUCT a counterexample: an even n, all vertices with f(v) < n/2, exact
+    algebraic coordinates and the full per-vertex distance table for mechanical checking.
+    K5 and K6 tell you where naive attempts die; a counterexample must beat the
+    obtuse-angle budget globally.
+ 4. Failing all three: prove the sharpest new unconditional lower bound you can on
+    max_v f(v) beyond 0.3611n, with the argument fully written.
+
+An angle-budget observation to test (prove or refute — either is valuable): the interior
+angles of a convex polygon sum to (n-2)pi, so at most a bounded number can be "very"
+obtuse; but K4 forces, at EVERY vertex of a counterexample, at least one obtuse angle
+elsewhere per size->=3 class. Can the demand be made to exceed the supply?
+
+End with PROVED (full proofs) vs CONJECTURED (labelled), and any explicit coordinates in
+copy-pasteable exact form.

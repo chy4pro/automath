@@ -1,0 +1,145 @@
+==========================================================================
+w133 round 7 -- triangular-endpoint branch: adjudication + closure
+==========================================================================
+
+=== POOL (identical to round 6: exhaustive n<=7 table + big carriers) ===
+  connected C4-free graphs on n <= 7: 111843
+  extra explicit/greedy carriers: 37
+
+=== (B) Lemma G25 (NEW, unconditional) on every triangular-endpoint carrier ===
+  triangular-endpoint carriers (a(u)=1, d(u)=2, ecc(u)=3): 79852
+  G25(a) no-B_p-B_q-edge instances : 79852
+  G25(b) a(h) <= 1+|N(h)&D|        : 190895
+  G25(c) |B_q| <= |N(b)&D|         : 72654
+  G25(d) induced-P5 instances      : 20623
+
+=== (A) ADJUDICATION of the three Q12 harvests ===
+
+  A-1  Entry A, flagged strengthening 'any edge B_p-B_q gives a 4-cycle':
+       CONFIRMED (p,h,c,q is a 4-cycle: p~h, h~c, c~q, q~p).
+       explicit: p-h-c-q-p on 4 vertices, C4-free=False
+       => adopted as owner's Lemma G25(a) with the owner's own proof;
+          it strengthens the brief's own F7(c) (which said 'at most one').
+
+  A-2  Entry A, Case I step 'every D-vertex has one parent on each side and
+       injects into B_p x B_q, so |D| <= 9':  REFUTED as stated.
+       witness small n=5: u=2, B_p=[0], B_q=[], y=4 in D has ONE parent
+       (injectivity is available only on the two-parent set D2 = G24(d);
+        the summary's |D| <= 9 and 'hub excess <= |D|-1' do not follow from
+        the facts supplied.  Conclusion right, delivered proof NOT adopted.)
+
+  A-3  Entry B is built on the F9 / G24(e') trigger (a hub of degree >= 6
+       inside B_p u B_q).  That trigger is VACUOUS: by G25(a) N(h) & B_q = 0,
+       so by G25(d)+G22 every D-child of such an h has no B_q-parent, and
+       then G25(c) forces |B_q| = 0, killed by G24(b).  Entry B is therefore
+       superseded, not adopted (its case analysis is unverifiable anyway:
+       the artifact is a summary, not a transcript).
+
+  A-4  Entry C's accounting device ('every addition leaves S = sum(a-3)
+       unchanged or decreases it') is REFUTED as a general C4-free principle:
+       HS     n=50   C4-free=True l=7.000 S=sum(a-3)=+200  (induced P6 present=True)
+       ER_5   n=31   C4-free=True l=3.871 S=sum(a-3)=+27  (induced P6 present=True)
+       ER_7   n=57   C4-free=True l=4.912 S=sum(a-3)=+109  (induced P6 present=True)
+       A single hub with a(h)=5 contributes +2 to S; the claim can only hold
+       through branch-specific structure, which the artifact does not exhibit
+       (it also never treats the three unbounded-degree slots the brief named,
+        and its 'maximum' witness Z u {v3,v4} has 8 vertices, below n >= 14).
+       => Claim Q6.1 STAYS UNVERIFIED.  Entry C not adopted.
+
+  A-5  Shared-hidden-assumption sweep (methodology multi-tab clause).
+       Common inputs of the three tabs = PART 1-2 of prompts/w133_r6_TRIEND_qwen.md
+       (F1-F9), all owner-proved.  Re-checked here: F1/F2 arithmetic, F3, F7(a)-(e),
+       F8(a)-(d) (= G24(a),(c),(d)) and F6/G22 were re-verified in round 6 and above.
+       ONE shared slack found: F7(c)/F8/F9 are stated with '<= 1 neighbour in B_q',
+       while the truth is ZERO (G25(a)).  It is a weakening, not an error, so no
+       tab's conclusion is invalidated by it -- but it is exactly the assumption
+       whose correction collapses the whole branch.  Entry A caught it; B and C
+       inherited the slack.  No other shared assumption is load-bearing.
+
+=== (C) The owner's closure of the branch: the integer endgame ===
+  Chain (all steps proved in draft 18.1): G25(a),(b) + F1 mass + injectivity
+  give  (eta_p-1)(eta_q-1) >= 7 + e_p + e_q  with eta_x = |H & B_x|,
+  e_x = #edges inside B_x.  G25(c)+(d)+G22 give hub degree <= 5 in B_p u B_q,
+  hence beta_q <= delta_b <= 4 and beta_p <= 4, so eta_p, eta_q <= 4.
+  exhaustive integer sweep over 0<=eta_p,eta_q<=4, 0<=e_p,e_q<=4: 6 solution(s): [(4, 4, 0, 0), (4, 4, 0, 1), (4, 4, 0, 2), (4, 4, 1, 0), (4, 4, 1, 1), (4, 4, 2, 0)]
+  => eta_p = eta_q = 4 in EVERY solution (e_p+e_q <= 2 still free here;
+     it is pinned to 0 by the separate degree step below).
+  => beta_p = eta_p = 4, beta_q = eta_q = 4: every B-vertex is a hub,
+     d(p) = d(q) = 6, a(p) = a(q) = 5.
+  degree step: for a hub b in B_p, G25(c) gives delta_b >= beta_q = 4 and
+     G25(c)+(d)+G22 give d(b) <= 5, while d(b) = 1 + eps_b + delta_b:
+     integer sweep over (eps_b, delta_b): [(0, 4)]
+     => eps_b = 0, delta_b = 4, d(b) = 5 for every b in B_p u B_q, hence
+        e_p = e_q = 0 (all of B_p, B_q are hubs since beta = eta).
+     |D| = sum_b delta_b = 16, n = 3+4+4+16 = 27
+     p,q are hubs => ecc = 2 => every y in D has BOTH parents; injectivity
+     then makes y -> (b,c) a BIJECTION D -> B_p x B_q.
+  Final step: fix y in D with B_p-parent b1.  Each of the other 3 hubs
+  b2 in B_p has ecc(b2)=2, and (G25(a) + e_p=0) its only possible common
+  neighbour with y lies in N(y) & D, with a UNIQUE B_p-parent b2 -- so y
+  needs >= 3 distinct D-neighbours:
+     d(y) >= 2 + 3 = 5  =>  a(y) >= ceil(5/2) = 3 >= 3
+     so y is a HUB at distance 3 from u, contradicting H <= ball_2(u) (R3b).
+  => THE TRIANGULAR-ENDPOINT BRANCH IS EMPTY.  D6a and D6b both closed.
+  Note: the chain never uses the branch hypothesis (TRI) itself, only the
+  existence of ONE vertex u with a(u)=1, d(u)=2, ecc(u)=3.  Hence the
+  stronger statement: in RES(b) ^ (C6) NO vertex of eccentricity 3 has a=1,
+  i.e. EVERY distance-3 pair has both a-values equal to 2.
+
+=== (D) Control-case audit (the new chain must not 'prove' these impossible) ===
+  Petersen  n=10  diam=2 rad=2 l=3.000 triangular-endpoint carriers=0
+  HS        n=50  diam=2 rad=2 l=7.000 triangular-endpoint carriers=0
+  HS+leaf   n=51  diam=3 rad=2 l=6.902 triangular-endpoint carriers=0
+  Petersen/HS: diam 2, so no distance-3 pair exists -- the chain never starts
+  (first failing step = the setup, exactly as required).  HS+leaf has diam 3
+  and l>3 but its ecc-3 vertex is a LEAF (a=1, d=1), excluded by G19/F4, and
+  it violates (R3b) anyway (it is the round-5 RES(a)-witness).
+  HS+leaf a=1 ecc-3 vertices: [50], degrees [1] => all leaves, G19 applies.
+
+=== (E) Claim Q6.1 (the LAST pocket-1 item): the round-7 narrowing ===
+  Frame: induced C6 Z = (u,u1,u2,z,y,x) at positions 0..5 (G13), slots of G21:
+  u1',u2' (partners), A=(u1,u2), B=(y,x), P=(u1,y), Q=(u2,x), h0=(no Z-nbr).
+  E1  Z is an induced, C4-free 6-cycle.
+  E2  G27: (h0,u1',u,x,y) is an induced P5 with endpoint h0  =>  d(h0) <= 5 by G22.
+      (G21(iv) forces h0 ~ u1'; u1' has no other Z-neighbour by G15(b).)
+      => 9 of G21's 11 slots are now degree-bounded (was 8, Cor G22.1).
+  E3  G29: (P,u1,u,x,B), (P,u1,u,x,Q) and (P,y,z,u2,A) are induced P5's with
+      endpoint P, so d(P) >= 6 forces P ~ A, P ~ B and P ~ Q (whichever exist).
+  E4  C4-freeness then gives: P~A and P~Q are incompatible (apex u2), P~B and
+      P~Q are incompatible (apex x), and P,Q are never adjacent to u1' or u2'.
+      => d(P) >= 6 AND Q present  ==>  slots A and B are EMPTY, and then
+         N(x) = {u,y,Q}, N(y) = {z,x,P}, so a(x) = a(y) = 3 (not 4).
+  E5  leaf identity ecc(leaf) = 1 + ecc(neighbour): 7656 instances, 0 failures
+      With G26 (a=1 => ecc <= 2) and rad = 2 this forces: RES(b) ^ (C6) has NO
+      LEAF at all -- min degree >= 2 -- and every a=1 vertex w has ecc(w) = 2,
+      so G20 at w gives the rigid identity n = d(P) + d(w') - 1 for its triangle.
+  E6  G30: (w,P,u1,u,x) is an induced P5 for every off-Z neighbour w of P, and a
+      neighbour of w outside N(P) u N(u1) u N(u) u N(x) extends it to an induced
+      P6 -- forbidden by (C6).  Hence N(w) is confined to {P,u1',A,B,Q} u W, at
+      most one w per apex (C4 through P), and N(P) induces a matching, so every
+      remaining w has d(w) = 2 with N(w) = {P,w'} a clique: a(w) = 1.  By G26
+      ecc(w) = 2, so w needs a neighbour in N(u) = {u1,u1',x}; but w' is off-Z
+      and u1' is not.  Contradiction => |W| <= 3, and |W| <= 2 when Q exists.
+  => **d(P), d(Q) <= 7, and <= 5 whenever both slots are occupied**: ALL ELEVEN
+     G21 SLOTS ARE NOW DEGREE-BOUNDED.  The mass budget sum_H (a-2) is therefore
+     bounded, and Claim Q6.1 collapses to a FINITE WINDOW:
+  E7  G31 (slot-wise a-caps, from the forced triangles inside each slot's
+      neighbourhood): d(u1) = 2+[u1']+[A]+[P] while t(u1) >= [u1']+[A], so
+      a(u1) <= 2 + [P]; symmetrically a(u2) <= 2+[Q], a(x) <= 2+[Q],
+      a(y) <= 2+[P]; and u1',u2',A,B each carry a forced triangle (u~u1, z~u2,
+      u1~u2, y~x respectively) so their a <= d-1 <= 4.
+     both P,Q present  : sum_H(a-2) <= 21  => n <= 20
+     P only            : sum_H(a-2) <= 18  => n <= 17
+     Q only            : sum_H(a-2) <= 18  => n <= 17
+     neither           : sum_H(a-2) <= 11  => n <= 10
+     'neither' also gives H <= {u1',u2',A,B,h0}, i.e. |H| <= 5, contradicting
+     |H| >= 6 (G18.1) -- so AT LEAST ONE opposite slot is occupied, and with
+     n >= 14 (no C4-free graph with l > 3 on n <= 13):
+     **14 <= n <= 20** (both) / **14 <= n <= 17** (exactly one).
+  E8  G20 at x (if x is a hub, ecc(x) = 2): n = 1 + d(u)+d(y)+d(B)+d(Q) - 2t(x);
+      with B absent this is n <= 1+3+3+5 = 12 < 14, so x hub => B present;
+      symmetrically y hub => B present.
+  => Claim Q6.1 is no longer an open class: it is a bounded, explicitly listed
+     configuration problem with 14 <= n <= 20.  Round-8 target (NOT closed).
+
+TOTAL ASSERT FAILURES: 0

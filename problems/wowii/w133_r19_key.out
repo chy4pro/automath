@@ -1,0 +1,69 @@
+==============================================================================
+[A] `R` — round-18 control, statistics now DISCLOSED in round 19
+==============================================================================
+  PASS  R is C4-free and connected
+  a-vector(R) = (3, 2, 2, 2, 4, 2, 1, 1, 1)   sum a = 18   l = 18/9
+  path(R) = 6  witness [1, 2, 3, 5, 4, 6]   induced C6s: 1 -> [(0, 1, 2, 3, 4, 5)]
+  diam(R) = 4  rad(R) = 3  ecc(R,0) = 3
+  PASS  path(R) = 6, NOT 7 — the value round 18 withheld and got a confident wrong 7 for   [path=6]
+  PASS  R does contain an induced C6
+
+==============================================================================
+[B] `CE-2` — the diameter round 18's return got wrong
+==============================================================================
+  PASS  diam(CE-2) = 3, NOT 2   [diam=3  ecc-vector=[2, 3, 3, 2, 2, 3, 3, 3, 3, 3]]
+  PASS  ecc(CE-2, 0) = 2 — the true one-vertex statement that was over-generalised
+  PASS  dist_CE2(2,8) = 3, witnessed by the geodesic 2-1-0-8 the round-18 brief printed
+
+==============================================================================
+[C] `M1` — FRESH graph #1 (n=10), never shipped to any engine
+==============================================================================
+  M1 edge list (16 edges): 0-1, 1-2, 2-3, 3-4, 4-5, 5-0, 0-6, 1-6, 2-7, 5-7, 3-8, 4-8, 6-9, 7-9, 8-9, 6-8
+  PASS  M1 is connected
+  PASS  M1 is C4-free (enforced at construction, re-verified here)
+  PASS  M1's 6-set {0,1,2,3,4,5} induces a C6
+  a-vector(M1) = (2, 2, 3, 2, 2, 3, 2, 3, 2, 2)   SUM a(M1) = 23
+  path(M1) = 7  witness [0, 1, 2, 7, 9, 8, 4]
+  dist_M1(6,4) = 2   diam(M1) = 3  triangles at 0: 1
+  induced C6 count in M1: 1
+
+==============================================================================
+[D] `M2` — FRESH graph #2 (n=13), never shipped to any engine
+==============================================================================
+  M2 edge list (20 edges): 0-1, 1-2, 2-3, 3-4, 4-5, 5-0, 0-6, 2-7, 4-8, 1-9, 3-10, 5-11, 6-7, 7-8, 8-6, 9-10, 10-11, 11-9, 6-12, 9-12
+  PASS  M2 is connected
+  PASS  M2 is C4-free (enforced at construction, re-verified here)
+  a-vector(M2) = (3, 3, 3, 3, 3, 3, 3, 2, 2, 3, 2, 2, 2)   SUM a(M2) = 34
+  path(M2) = 8  witness [0, 1, 9, 10, 3, 4, 8, 7]
+  diam(M2) = 4  rad(M2) = 3   induced C6s in M2: 3
+  a(M2,6) = 3  a(M2,10) = 2  dist_M2(7,9) = 3
+
+==============================================================================
+[E] THE ROUND-19 HELD-OUT KEY (this block is the answer key)
+==============================================================================
+  U1  [H]  M1: Is M1 C4-free?                                   = YES
+  U2  [H]  M1: a(0)                                             = 2
+  U3  [H]  M1: a(7)                                             = 3
+  U4  [H]  M1: dist(1,4)                                        = 3
+  U5  [H]  M1: Does {0,1,2,3,4,5} induce a 6-cycle?             = YES
+  U6  [C]  M1: path(M1)                                         = 7
+  U7  [C]  M1: sum_v a(v) over all 10 vertices                  = 23
+  U8  [C]  M2: diam(M2)                                         = 4
+  U9  [C]  M2: path(M2)                                         = 8
+  PASS  the five Tier-H answers are not all the same value (an all-2 table would be guessable)   [['YES', 2, 3, 3, 'YES']]
+  PASS  exactly 5 Tier-H and 4 Tier-C rows
+  PASS  no two rows share the same (graph, question)
+  PASS  neither M1 nor M2 is R, CE-1, CE-2, F3 or Petersen (all burned or disclosed)
+  key written to $HOME/workspace/claudecode/automath/problems/wowii/w133_r19_key.key.txt
+
+==============================================================================
+[F] V7 — every certifier used above must be shown REFUTABLE
+==============================================================================
+  PASS  V7-1 c4free() trips on a planted C4   [planting 6-2 gives common nbrs of 6 and 2: [1]]
+  PASS  V7-2 induced_c6s() trips: planting the chord 0-2 destroys the C6 {0..5}
+  PASS  V7-3 ipath() is sensitive: adding a pendant vertex at 9 changes path from 7 to 8   [7 -> 8]
+  PASS  V7-4 alpha() trips: alpha of a 3-set with one edge is 2, of an independent 3-set is 3
+  PASS  V7-5 the path search is not vacuous: it returns a witness whose every non-consecutive pair is a non-edge   [witness [0, 1, 2, 7, 9, 8, 4]]
+
+FAILURES: 0
+elapsed 0.0s

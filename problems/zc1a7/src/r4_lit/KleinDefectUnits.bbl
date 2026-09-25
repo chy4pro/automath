@@ -1,0 +1,185 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{CEKL11}
+
+\bibitem[BCM01]{BugeaudCaoMignotte}
+Y.~Bugeaud, Z.~Cao, and M.~Mignotte, \emph{On simple {$K_4$}-groups}, J.
+  Algebra \textbf{241} (2001), no.~2, 658--668.
+
+\bibitem[BHK95]{BleherHissKimmerle95}
+F.~M. Bleher, G.~Hiss, and W.~Kimmerle, \emph{Autoequivalences of blocks and a
+  conjecture of {Z}assenhaus}, J. Pure Appl. Algebra \textbf{103} (1995),
+  no.~1, 23--43.
+
+\bibitem[Ble95]{Bleher95}
+F.~M. Bleher, \emph{Tensor products and a conjecture of {Z}assenhaus}, Arch.
+  Math. (Basel) \textbf{64} (1995), no.~4, 289--298.
+
+\bibitem[BM15]{BaechleMargolisPSL2p3}
+A.~B{\"{a}}chle and L.~Margolis, \emph{Torsion subgroups in the units of the
+  integral group ring of {PSL}(2,$p^3$)}, Arch. Math. (Basel) \textbf{105}
+  (2015), no.~1, 1--11.
+
+\bibitem[BM17a]{BachleMargolis4primaryI}
+\bysame, \emph{On the prime graph question for integral group rings of
+  4-primary groups {I}}, Internat. J. Algebra Comput. \textbf{27} (2017),
+  no.~6, 731--767.
+
+\bibitem[BM17b]{BachleMargolisLattice}
+\bysame, \emph{Rational conjugacy of torsion units in integral group rings of
+  non-solvable groups}, Proc. Edinb. Math. Soc. (2) \textbf{60} (2017), no.~4,
+  813--830.
+
+\bibitem[BM19a]{BaechleMargolisAn}
+\bysame, \emph{An application of blocks to torsion units in group rings}, Proc.
+  Amer. Math. Soc. \textbf{147} (2019), no.~10, 4221--4231.
+
+\bibitem[BM19b]{BachleMargolis4primaryII}
+\bysame, \emph{On the {P}rime {G}raph {Q}uestion for {I}ntegral {G}roup {R}ings
+  of 4-{P}rimary {G}roups {II}}, Algebr. Represent. Theory \textbf{22} (2019),
+  no.~2, 437--457.
+
+\bibitem[BM23]{BovdiMaroti}
+V.~Bovdi and A.~Mar\'{o}ti, \emph{On partial augmentations of elements in
+  integral group rings}, J. Algebra Appl. \textbf{22} (2023), no.~8, Paper No.
+  2350172, 7.
+
+\bibitem[Bra74]{BrauerDihedralDefect}
+R.~Brauer, \emph{{On 2-blocks with dihedral defect groups}}, Symposia Math.
+  \textbf{13} (1974), {366--394}.
+
+\bibitem[Bur76]{Burkhardt}
+R.~Burkhardt, \emph{Die {Z}erlegungsmatrizen der {G}ruppen {${\rm
+  PSL}(2,p^{f})$}}, J. Algebra \textbf{40} (1976), no.~1, 75--96.
+
+\bibitem[CEKL11]{CravenEtAl}
+D.~A. Craven, C.~W. Eaton, R.~Kessar, and M.~Linckelmann, \emph{The structure
+  of blocks with a {K}lein four defect group}, Math. Z. \textbf{268} (2011),
+  no.~1-2, 441--476. \MR{2805443}
+
+\bibitem[CL65]{CohnLivingstone}
+J.~A. Cohn and D.~Livingstone, \emph{On the structure of group algebras. {I}},
+  Canad. J. Math. \textbf{17} (1965), 583--593.
+
+\bibitem[CM21]{CaicedoMargolis}
+M.~Caicedo and L.~Margolis, \emph{Orders of units in integral group rings and
+  blocks of defect 1}, J. Lond. Math. Soc. (2) \textbf{103} (2021), no.~4,
+  1515--1546.
+
+\bibitem[CR90]{CurtisReinerI}
+C.W. Curtis and I.~Reiner, \emph{Methods of representation theory. {V}ol. {I}},
+  Wiley Classics Library, John Wiley \& Sons, Inc., New York, 1990, With
+  applications to finite groups and orders, Reprint of the 1981 original, A
+  Wiley-Interscience Publication.
+
+\bibitem[Eis12]{EiseleDerEq}
+F.~Eisele, \emph{{$p$}-adic lifting problems and derived equivalences}, J.
+  Algebra \textbf{356} (2012), 90--114.
+
+\bibitem[EM18]{EiseleMargolisZassenhaus}
+F.~Eisele and L.~Margolis, \emph{A counterexample to the first {Z}assenhaus
+  conjecture}, Adv. Math. \textbf{339} (2018), 599--641.
+
+\bibitem[EM24]{EiseleMargolisDefect1}
+\bysame, \emph{Units in blocks of defect 1 and the {Z}assenhaus conjecture},
+  Rev. Mat. Complut. (2024), to appear.
+
+\bibitem[Fei82]{Feit}
+W.~Feit, \emph{The representation theory of finite groups}, North-Holland
+  Mathematical Library, vol.~25, North-Holland Publishing Co., Amsterdam-New
+  York, 1982.
+
+\bibitem[Gil13]{Gildea13}
+J.~Gildea, \emph{Zassenhaus conjecture for integral group ring of simple linear
+  groups}, J. Algebra Appl. \textbf{12} (2013), no.~6, 1350016, 10.
+
+\bibitem[Gud67]{Gudivok}
+P.~M. Gudivok, \emph{Representations of finite groups over number rings}, Izv.
+  Akad. Nauk SSSR Ser. Mat. \textbf{31} (1967), 799--834. \MR{218468}
+
+\bibitem[Her07]{HertweckBrauer}
+M.~Hertweck, \emph{Partial augmentations and {B}rauer character values of
+  torsion units in group rings}, arXiv:0612429v2 [math.RA], 2004 - 2007.
+
+\bibitem[Her08]{HertweckA6}
+\bysame, \emph{Zassenhaus conjecture for {$A_6$}}, Proc. Indian Acad. Sci.
+  Math. Sci. \textbf{118} (2008), no.~2, 189--195.
+
+\bibitem[HHK09]{HertweckHoefertKimmerle}
+M.~Hertweck, C.~H\"{o}fert, and W.~Kimmerle, \emph{Finite groups of units and
+  their composition factors in the integral group rings of the group {${\rm
+  PSL}(2,q)$}}, J. Group Theory \textbf{12} (2009), no.~6, 873--882.
+
+\bibitem[Hup67]{HuppertI}
+B.~Huppert, \emph{Endliche {G}ruppen. {I}}, Die Grundlehren der Mathematischen
+  Wissenschaften, Band 134, Springer-Verlag, Berlin-New York, 1967.
+
+\bibitem[JR16]{GRG1}
+E.~Jespers and {\'A}.~del R{\'{\i}}o, \emph{{Group ring groups. Volume 1:
+  Orders and generic constructions of units}}, Berlin: De Gruyter, 2016.
+
+\bibitem[KK17]{KimmerleKonovalov}
+W.~Kimmerle and A.~Konovalov, \emph{On the {G}ruenberg-{K}egel graph of
+  integral group rings of finite groups}, Internat. J. Algebra Comput.
+  \textbf{27} (2017), no.~6, 619--631.
+
+\bibitem[Lin18]{LinckelmannVol2}
+M.~Linckelmann, \emph{The block theory of finite group algebras. {V}ol. {I}},
+  London Mathematical Society Student Texts, vol.~91, Cambridge University
+  Press, Cambridge, 2018.
+
+\bibitem[LP89]{LutharPassi}
+I.~S. Luthar and I.~B.~S. Passi, \emph{Zassenhaus conjecture for {$A_5$}},
+  Proc. Indian Acad. Sci. Math. Sci. \textbf{99} (1989), no.~1, 1--5.
+
+\bibitem[Mar16]{MargolisPSL}
+L.~Margolis, \emph{A {S}ylow theorem for the integral group ring of {${\rm
+  PSL}(2,q)$}}, J. Algebra \textbf{445} (2016), 295--306.
+
+\bibitem[MdR19]{MargolisDelRioSurvey}
+L.~Margolis and \'{A}. del R\'{\i}o, \emph{Finite subgroups of group rings: a
+  survey}, Adv. Group Theory Appl. \textbf{8} (2019), 1--37.
+
+\bibitem[MRS19]{MargolisdelRioSerrano}
+L.~Margolis, {\'A}.~del R{\'i}o, and M.~Serrano, \emph{Zassenhaus conjecture on
+  torsion units holds for {${\rm PSL}(2,p)$} with {$p$} a {F}ermat or
+  {M}ersenne prime}, J. Algebra \textbf{531} (2019), 320--335.
+
+\bibitem[Nav98]{Navarro}
+G.~Navarro, \emph{Characters and blocks of finite groups}, London Mathematical
+  Society Lecture Note Series, vol. 250, Cambridge University Press, Cambridge,
+  1998.
+
+\bibitem[Ple83]{Plesken}
+W.~Plesken, \emph{{Group Rings of Finite Groups Over p-Adic Integers}}, Lecture
+  Notes in Mathematics, no. 1026, Springer, 1983.
+
+\bibitem[RS17]{delRioSerrano17}
+{\'A}.~del R{\'i}o and M.~Serrano, \emph{On the torsion units of the integral
+  group ring of finite projective special linear groups}, Comm. Algebra
+  \textbf{45} (2017), no.~12, 5073--5087.
+
+\bibitem[Seh93]{Sehgal93}
+S.~K. Sehgal, \emph{Units in integral group rings}, Pitman Monographs and
+  Surveys in Pure and Applied Mathematics, vol.~69, Longman Scientific \&
+  Technical, Harlow; copublished in the United States with John Wiley \& Sons,
+  Inc., New York, 1993, With an appendix by Al Weiss.
+
+\bibitem[Wag95]{WagnerDiplom}
+R.~Wagner, \emph{Zassenhausvermutung \"{u}ber die {G}ruppen
+  {$\operatorname{PSL}(2,p)$}}, Diplomarbeit, Universität Stuttgart, Mai 1995.
+
+\bibitem[Whi13]{White}
+D.~White, \emph{Character degrees of extensions of {${\rm PSL}_2(q)$} and
+  {${\rm SL}_2(q)$}}, J. Group Theory \textbf{16} (2013), no.~1, 1--33.
+
+\bibitem[Wil09]{Wilson}
+R.~Wilson, \emph{The finite simple groups}, Graduate Texts in Mathematics, vol.
+  251, Springer-Verlag London, Ltd., London, 2009.
+
+\end{thebibliography}

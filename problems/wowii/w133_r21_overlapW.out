@@ -1,0 +1,124 @@
+==============================================================================
+SECTION 0 -- tooling positive control on CONTROL 1 graph Q (n=10)
+  observed population: 1 graph, n=10, m=14
+  [PASS] Q connected
+  [PASS] Q C4-free  -- None
+  [PASS] path(Q) == 6  -- longest induced path [0, 8, 9, 3, 2, 6]
+  [PASS] Q has an induced C6  -- 4 induced C6 up to rotation/reflection dupes
+  [PASS] a-vector of Q == (3,2,3,4,3,2,2,2,2,2)  -- (3, 2, 3, 4, 3, 2, 2, 2, 2, 2)
+  [PASS] sum a(Q) == 25 (l = 5/2)  -- sum=25
+  [PASS] SPECIFICITY probe: longest induced path of K_{1,4} is 3, not 5  -- [1, 0, 2]
+  [PASS] SPECIFICITY probe: C6 itself has NO induced P7 but HAS an induced P6
+  [PASS] Q carries a W-vertex on some induced C6  -- Z=[0, 1, 2, 3, 7, 4] -> W={8: 5}
+==============================================================================
+SECTION 1 -- THEOREM: no valid OVERLAPPING-W instance exists
+  frame vertices: z0..z5 = 0..5, w = 6 (slot 0 = {z0,z1}), wp = 7 (slot 1 = {z1,z2})
+  all adjacencies among the 8 frame vertices are FORCED by the hypotheses except the
+  single bit w~wp, so the frame population is exactly 2.
+  observed population: 2 frames (the 2 values of the free bit)
+    frame w !~ wp  : C4 witness = None | induced P7 = [6, 0, 5, 4, 3, 2, 7]
+    frame w ~ wp   : C4 witness = (0, 7, 1, 6) | induced P7 = None
+  [PASS] case w !~ wp dies by an induced P7  -- P7 = [6, 0, 5, 4, 3, 2, 7]
+  [PASS] case w !~ wp is otherwise C4-free (so P7 is the ONLY obstruction there)
+  [PASS] case w ~ wp dies by a C4  -- pair+two common nbrs = (0, 7, 1, 6)
+  all C4 witnesses in the adjacent frame (population 4): [(0, 7, [1, 6]), (1, 6, [0, 7]), (1, 7, [2, 6]), (2, 6, [1, 7])]
+  [PASS] hand-derived C4 (w=6, z2=2 | common {z1=1, wp=7}) IS among the witnesses  -- [(0, 7, [1, 6]), (1, 6, [0, 7]), (1, 7, [2, 6]), (2, 6, [1, 7])]
+  [PASS] a second, independent C4 (z0=0, wp=7 | common {z1=1, w=6}) is also present  -- [(0, 7, [1, 6]), (1, 6, [0, 7]), (1, 7, [2, 6]), (2, 6, [1, 7])]
+  [PASS] SHARPNESS: drop 'no induced P7' and the non-adjacent overlapping frame SURVIVES (it is C4-free)
+  [PASS] SHARPNESS: drop 'C4-free' and the adjacent overlapping frame SURVIVES (it is P7-free)
+  [PASS] => the two hypotheses are used in DIFFERENT branches; neither alone kills overlap
+  [PASS] BOTH frames die => no valid overlapping-W instance
+==============================================================================
+SECTION 2 -- LIFT test: the frame obstruction survives arbitrary extension
+  A C4 is a subgraph condition, so it lifts for free.  The induced P7 lifts because all
+  21 pairs among {w,z0,z5,z4,z3,z2,wp} are FORCED by the hypotheses.  Tested anyway.
+  observed population: 2512 host graphs containing the overlapping frame
+  [PASS] every host containing the overlapping frame has a C4 or an induced P7  -- 0 survivors, first = None
+==============================================================================
+SECTION 3 -- COMPLETE CLASSIFICATION of two-W-vertex configurations (the refusal is
+  DIRECTIONAL: it names the slot distance refused AND the nearest form that survives)
+  observed population: 8 frames = slot distance {0,1,2,3} x {w~wp, w!~wp}
+  configuration          | C4 witness (pair | commons)  | induced P7               | verdict
+  dist 0 w!~wp            | (0, 1, [6, 7])               | -                        | DEAD
+  dist 0 w~wp             | (0, 1, [6, 7])               | -                        | DEAD
+  dist 1 w!~wp            | -                            | [6, 0, 5, 4, 3, 2, 7]    | DEAD
+  dist 1 w~wp             | (0, 7, [1, 6])               | -                        | DEAD
+  dist 2 w!~wp            | -                            | -                        | SURVIVES
+  dist 2 w~wp             | (1, 7, [2, 6])               | -                        | DEAD
+  dist 3 w!~wp            | -                            | -                        | SURVIVES
+  dist 3 w~wp             | -                            | -                        | SURVIVES
+  [PASS] dist 0 (SAME slot): both adjacency cases die  [re-verifies round 20's (P1)]
+  [PASS] dist 1 (OVERLAPPING): both adjacency cases die  [THE ROUND'S RESULT]
+  [PASS] dist 2 (disjoint, non-antipodal): survives, and ONLY in the NON-adjacent case  -- [(2, False), (3, False), (3, True)]
+  [PASS] dist 3 (ANTIPODAL slots): survives in BOTH adjacency cases  -- [(2, False), (3, False), (3, True)]
+  [PASS] exactly 3 of the 8 configurations survive  -- [(2, False), (3, False), (3, True)]
+==============================================================================
+SECTION 4 -- full validation of the exhibited surviving instances
+  --- INSTANCE-A (slot distance 2, w !~ wp) ---
+  edge list: [(0, 1), (0, 5), (0, 6), (1, 2), (1, 6), (2, 3), (2, 7), (3, 4), (3, 7), (4, 5)]
+  observed population: 1 graph, n=8, m=10
+  [PASS] INSTANCE-A (slot distance 2, w !~ wp): simple
+  [PASS] INSTANCE-A (slot distance 2, w !~ wp): connected
+  [PASS] INSTANCE-A (slot distance 2, w !~ wp): C4-FREE (checked FIRST)  -- None
+  [PASS] INSTANCE-A (slot distance 2, w !~ wp): contains an induced C6  -- 1 found, e.g. (0, 1, 2, 3, 4, 5)
+  [PASS] INSTANCE-A (slot distance 2, w !~ wp): no induced P7 (path <= 6)  -- longest induced path = [1, 0, 5, 4, 3, 7] (6 vtcs)
+  [PASS] INSTANCE-A (slot distance 2, w !~ wp): carries two W-vertices at slot distance in {2}  -- Z=[0, 1, 2, 3, 4, 5] W={6: 0, 7: 2} slot distances=[2]
+  a-vector = (2, 2, 2, 2, 2, 2, 1, 1) ; sum a = 14 ; n = 8 ; l = 14/8 <= 3
+  --- INSTANCE-B (slot distance 3, w !~ wp) ---
+  edge list: [(0, 1), (0, 5), (0, 6), (1, 2), (1, 6), (2, 3), (3, 4), (3, 7), (4, 5), (4, 7)]
+  observed population: 1 graph, n=8, m=10
+  [PASS] INSTANCE-B (slot distance 3, w !~ wp): simple
+  [PASS] INSTANCE-B (slot distance 3, w !~ wp): connected
+  [PASS] INSTANCE-B (slot distance 3, w !~ wp): C4-FREE (checked FIRST)  -- None
+  [PASS] INSTANCE-B (slot distance 3, w !~ wp): contains an induced C6  -- 1 found, e.g. (0, 1, 2, 3, 4, 5)
+  [PASS] INSTANCE-B (slot distance 3, w !~ wp): no induced P7 (path <= 6)  -- longest induced path = [2, 1, 0, 5, 4, 7] (6 vtcs)
+  [PASS] INSTANCE-B (slot distance 3, w !~ wp): carries two W-vertices at slot distance in {3}  -- Z=[0, 1, 2, 3, 4, 5] W={6: 0, 7: 3} slot distances=[3]
+  a-vector = (2, 2, 2, 2, 2, 2, 1, 1) ; sum a = 14 ; n = 8 ; l = 14/8 <= 3
+  --- INSTANCE-C (slot distance 3, w ~ wp) ---
+  edge list: [(0, 1), (0, 5), (0, 6), (1, 2), (1, 6), (2, 3), (3, 4), (3, 7), (4, 5), (4, 7), (6, 7)]
+  observed population: 1 graph, n=8, m=11
+  [PASS] INSTANCE-C (slot distance 3, w ~ wp): simple
+  [PASS] INSTANCE-C (slot distance 3, w ~ wp): connected
+  [PASS] INSTANCE-C (slot distance 3, w ~ wp): C4-FREE (checked FIRST)  -- None
+  [PASS] INSTANCE-C (slot distance 3, w ~ wp): contains an induced C6  -- 1 found, e.g. (0, 1, 2, 3, 4, 5)
+  [PASS] INSTANCE-C (slot distance 3, w ~ wp): no induced P7 (path <= 6)  -- longest induced path = [2, 1, 0, 5, 4, 7] (6 vtcs)
+  [PASS] INSTANCE-C (slot distance 3, w ~ wp): carries two W-vertices at slot distance in {3}  -- Z=[0, 1, 2, 3, 4, 5] W={6: 0, 7: 3} slot distances=[3]
+  a-vector = (2, 2, 2, 2, 2, 2, 2, 2) ; sum a = 16 ; n = 8 ; l = 16/8 <= 3
+==============================================================================
+SECTION 5 -- COROLLARY: occupied consecutive-slots form an independent set in the slot C6
+  (P1, round 20, folklore tier): two W-vertices on the SAME slot share z_i and z_{i+1}
+  -> a C4, so each slot carries at most one W-vertex.  Section 1: no two OVERLAPPING
+  slots are both occupied.  Hence occupied slots are an independent set in C6 -> <= 3.
+  observed population: 1 frame (two W-vertices on the SAME slot 0)
+  [PASS] same-slot frame dies by a C4 (re-verifies P1)  -- (0, 1, 6, 7)
+  observed population: all 64 subsets of the 6 slots
+  [PASS] max independent set in the slot C6 is 3  -- e.g. (0, 2, 4)
+  [PASS] => |W| <= 3 on any induced C6 (was |W| <= 6 by injectivity alone)
+==============================================================================
+SECTION 6 -- TIGHTNESS of |W| <= 3: is the independent slot-triple {0,2,4} realisable?
+  Up to rotation {0,2,4} and {1,3,5} are the ONLY independent slot-triples, so this one
+  frame family decides tightness.  Free bits = the 3 adjacencies among w0, w2, w4.
+  observed population: 8 frames (all adjacency patterns on {w0,w2,w4})
+    ww-edges mask 0 []             : C4 = -                      | P7 = -                        | SURVIVES
+    ww-edges mask 1 [(6, 7)]       : C4 = (1, 7, [2, 6])         | P7 = -                        | DEAD
+    ww-edges mask 2 [(6, 8)]       : C4 = (0, 8, [5, 6])         | P7 = -                        | DEAD
+    ww-edges mask 3 [(6, 7), (6, 8)] : C4 = (0, 8, [5, 6])         | P7 = -                        | DEAD
+    ww-edges mask 4 [(7, 8)]       : C4 = (3, 8, [4, 7])         | P7 = -                        | DEAD
+    ww-edges mask 5 [(6, 7), (7, 8)] : C4 = (1, 7, [2, 6])         | P7 = -                        | DEAD
+    ww-edges mask 6 [(6, 8), (7, 8)] : C4 = (0, 8, [5, 6])         | P7 = -                        | DEAD
+    ww-edges mask 7 [(6, 7), (6, 8), (7, 8)] : C4 = (0, 8, [5, 6])         | P7 = -                        | DEAD
+  [PASS] the all-non-adjacent slot-triple {0,2,4} SURVIVES => |W| = 3 is attained, bound TIGHT  -- surviving masks: [0]
+  [PASS] every pattern with a ww-edge dies (pairwise non-adjacency is FORCED at slot distance 2)  -- surviving masks: [0]
+  --- INSTANCE-D (|W| = 3, slots {0,2,4}, pairwise non-adjacent) ---
+  edge list: [(0, 1), (0, 5), (0, 6), (1, 2), (1, 6), (2, 3), (2, 7), (3, 4), (3, 7), (4, 5), (4, 8), (5, 8)]
+  observed population: 1 graph, n=9, m=12
+  [PASS] INSTANCE-D (|W| = 3, slots {0,2,4}, pairwise non-adjacent): simple
+  [PASS] INSTANCE-D (|W| = 3, slots {0,2,4}, pairwise non-adjacent): connected
+  [PASS] INSTANCE-D (|W| = 3, slots {0,2,4}, pairwise non-adjacent): C4-FREE (checked FIRST)  -- None
+  [PASS] INSTANCE-D (|W| = 3, slots {0,2,4}, pairwise non-adjacent): contains an induced C6  -- 1 found, e.g. (0, 1, 2, 3, 4, 5)
+  [PASS] INSTANCE-D (|W| = 3, slots {0,2,4}, pairwise non-adjacent): no induced P7 (path <= 6)  -- longest induced path = [0, 1, 2, 3, 4, 8] (6 vtcs)
+  [PASS] INSTANCE-D (|W| = 3, slots {0,2,4}, pairwise non-adjacent): carries two W-vertices at slot distance in {2}  -- Z=[0, 1, 2, 3, 4, 5] W={6: 0, 7: 2, 8: 4} slot distances=[2]
+  a-vector = (2, 2, 2, 2, 2, 2, 1, 1, 1) ; sum a = 15 ; n = 9 ; l = 15/9 <= 3
+==============================================================================
+TOTAL CHECKS RUN: see PASS/FAIL lines above.  FAILURES: 0 []
+elapsed 0.02 s

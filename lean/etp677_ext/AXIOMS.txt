@@ -1,0 +1,433 @@
+Command: ~/.elan/bin/lake env lean Ext677.lean
+
+'Ext677.L1_left_bij' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L2_quotient_fibres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L3_eq4_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L4_defect_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L5_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L6_idempotent_level' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All listed axioms are explicitly permitted by the ticket. There is no `sorryAx`.
+
+Command: ~/.elan/bin/lake build
+
+'Ext677.L7a_E677_of_surjective_hom' does not depend on any axioms
+'Ext677.L7_coordinatization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.E677_transportOpEquiv' depends on axioms: [Quot.sound]
+'Ext677.E255_transportOpEquiv_iff' depends on axioms: [propext, Quot.sound]
+'Ext677.quotientOp_mk' depends on axioms: [Quot.sound]
+'Ext677.quotientMap_surjective_hom' depends on axioms: [Quot.sound]
+'Ext677.L8_minimal_counterexample_dichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All new L7/L8 theorem axioms are explicitly permitted by the ticket. There is no `sorryAx`.
+
+Command: ~/.elan/bin/lake build
+
+'Ext677.rho_refl' does not depend on any axioms
+'Ext677.rho_symm' does not depend on any axioms
+'Ext677.rhoStar_refl' does not depend on any axioms
+'Ext677.rhoStar_symm' does not depend on any axioms
+'Ext677.collisionSet_card_eq_collisionCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C2_generator_transport_criterion' does not depend on any axioms
+'Ext677.rhoStar_mem_of_closed' does not depend on any axioms
+'Ext677.C3_connected_iff' does not depend on any axioms
+'Ext677.C3_disconnected_iff_closed_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C1_collision_second_moment_ordered' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C1_collision_second_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rho_iff_collisionCount_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.offDiagonal_collision_excess' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C1_universal_rho_bound_and_eq_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.ldiv_op' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.Xi_ldiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C4_key_certificate_bijection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C4_common_certificate_double_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C4_second_moments_eq_of_N' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.C5_N_eq_fixedPoint_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All collision-structure theorem axioms are explicitly permitted by the ticket. There is no `sorryAx`.
+
+Command: ~/.elan/bin/lake build
+
+'Ext677.L9_nonsimple_minimal_counterexample_glue' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The L9 theorem axioms are explicitly permitted by the ticket. There is no `sorryAx`.
+
+Command: ~/.elan/bin/lake build
+
+'Ext677.L10_P1_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L10_P3_bijective' depends on axioms: [Quot.sound]
+'Ext677.L10_P4_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L10_P2_bijective_iff_right_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L10_fourfold_collapse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.canonicalLeftUnit_mul' does not depend on any axioms
+'Ext677.canonicalLeftUnit_ne_of_not_idempotent' does not depend on any axioms
+'Ext677.L10_first_third_collision' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.canonicalLeftUnit_not_reverse' does not depend on any axioms
+'Ext677.L10_occurrence_trichotomy_of_P2_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+'Ext677.no_E677_Fin2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.no_E677_Fin3' depends on axioms: [propext, Classical.choice, Quot.sound, no_E677_Fin3._native.native_decide.ax_1_1]
+'Ext677.L11_base_idempotent_free_of_fibre_card_two_or_three' depends on axioms: [propext, Classical.choice, Quot.sound, no_E677_Fin3._native.native_decide.ax_1_1]
+'Ext677.L11_quotient_idempotent_free_of_class_card_two_or_three' depends on axioms: [propext, Classical.choice, Quot.sound, no_E677_Fin3._native.native_decide.ax_1_1]
+
+The `Fin 3` exhaustive check uses the ticket-authorized `native_decide` fallback; its generated
+`no_E677_Fin3._native.native_decide.ax_1_1` axiom is explicitly labelled here. All other
+reported axioms are permitted by the ticket. There is no `sorryAx`.
+
+Command: ~/.elan/bin/lake build
+
+'Ext677.e677_master_division' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12_square_eq_div_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12F_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12_F_H' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12_H_F' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12_no_exact_cycle_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12_no_exact_cycle_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12_no_exact_cycle_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L13_u_mul_a' does not depend on any axioms
+'Ext677.L13_v_mul_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L13_p_mul_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L13_a_mul_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L13_b_mul_c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L13_d_mul_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All new L12/L13 theorem axioms are explicitly permitted by the ticket. There is no `sorryAx`.
+
+Command: ~/.elan/bin/lake build
+
+'Ext677.L15_pair_p_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L15_pair_v_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L15_pair_c_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L15_pair_a_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L15_pair_b_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L15_pair_b_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L15_pair_b_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L12_no_exact_cycle_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_Lpow_ne_of_pos_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_LinvPow_ne_of_pos_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_LinvPow_pair_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_first_window_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_second_window_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_a_ne_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_a_ne_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_a_ne_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_a_ne_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_a_ne_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_w_ne_u' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_w_ne_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_w_ne_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_w_ne_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_u_ne_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_u_ne_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_u_ne_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_p_ne_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_p_ne_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_b_ne_d' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_b_ne_c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_b_ne_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_c_ne_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_d_ne_c' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_d_ne_v' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_v_ne_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_v_ne_p' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.L14_X6_implies_pairwise' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All new L14/L15 theorem axioms are explicitly permitted by the ticket. There is no `sorryAx`.
+
+Command: ~/.elan/bin/lake build
+
+'Ext677.X1_U_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X1_W_right_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X1_W_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X1_P_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X1_F_iterate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X2_F_fixed_iff_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_b_eq_F' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_v_eq_U_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_c_eq_W_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_u_eq_U' does not depend on any axioms
+'Ext677.X3_w_eq_W' does not depend on any axioms
+'Ext677.X3_p_eq_P' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_d_eq_b_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_v_ne_w_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_v_ne_u_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_c_ne_a_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_c_ne_w_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_c_ne_u_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X3_c_ne_p_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X4_UF_ne_U_of_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X4_WF_ne_W_of_commute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X5_identity_J' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X5_c_eq_a_implies_b_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X5_W_F_eq_implies_F_idempotent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X5_c_ne_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.X5_X6_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All new X6-reduction theorem axioms are explicitly permitted by the ticket. There is no `sorryAx`.
+
+Core-7 shape-only obstruction (`Ext677Core7.lean`):
+
+'Ext677.core7_collision_forces' depends on axioms: [Quot.sound]
+'Ext677.core7AllFin_eq_true' depends on axioms: [propext, Quot.sound]
+'Ext677.core7AnyFin_eq_true' depends on axioms: [propext, Quot.sound]
+'Ext677.core7Decode_apply' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_apply._native.native_decide.ax_1_1]
+'Ext677.core7Decode_injective' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_injective._native.native_decide.ax_1_1]
+'Ext677.core7Op_card' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Op_card._native.native_decide.ax_1_1]
+'Ext677.core7Decode_bijective' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_injective._native.native_decide.ax_1_1,
+ core7Op_card._native.native_decide.ax_1_1]
+'Ext677.core7Decode_encode' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_injective._native.native_decide.ax_1_1,
+ core7Op_card._native.native_decide.ax_1_1]
+'Ext677.core7_bridge_check' depends on axioms: [propext, Quot.sound,
+ core7_bridge_check._native.native_decide.ax_1_1]
+'Ext677.core7_bridge_decoded' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_apply._native.native_decide.ax_1_1,
+ core7_bridge_check._native.native_decide.ax_1_1]
+'Ext677.core7_bridge_finite' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_apply._native.native_decide.ax_1_1,
+ core7Decode_injective._native.native_decide.ax_1_1,
+ core7Op_card._native.native_decide.ax_1_1,
+ core7_bridge_check._native.native_decide.ax_1_1]
+'Ext677.core7_endgame' depends on axioms: [propext, Quot.sound]
+'Ext677.core7_perm_rows' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_apply._native.native_decide.ax_1_1,
+ core7Decode_injective._native.native_decide.ax_1_1,
+ core7Op_card._native.native_decide.ax_1_1,
+ core7_bridge_check._native.native_decide.ax_1_1]
+'Ext677.core7OpOf_apply' depends on axioms: [Classical.choice, Quot.sound]
+'Ext677.core7' depends on axioms: [propext, Classical.choice, Quot.sound,
+ core7Decode_apply._native.native_decide.ax_1_1,
+ core7Decode_injective._native.native_decide.ax_1_1,
+ core7Op_card._native.native_decide.ax_1_1,
+ core7_bridge_check._native.native_decide.ax_1_1]
+
+The four generated `native_decide` axioms above are the explicitly labelled fallback used for
+the finite table/decoder certificates. All other listed axioms are standard Lean/Mathlib axioms.
+There is no `sorryAx`.
+
+Command: lake build
+
+R46 window lemmas (`Ext677Window.lean`):
+
+'Ext677.window_left_unit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_U_mul' does not depend on any axioms
+'Ext677.window_fixed_iff_U' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_mul_U' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_W_mul_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_right_unit_mul_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_c_eq_p_iff_p_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_map_ldiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_map_WUPF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_map_pattern' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_lift_X6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.window_entries20' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Switching constructions (`Ext677Switch.lean`):
+
+'Ext677.switch_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rotating_switch_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.switch_base_idempotent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rotating_switch_base_idempotent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.switch_base_E677_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.switch_base_E255_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rotating_switch_base_E677_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rotating_switch_base_E255_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.switch_E677' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.switch_E255' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.switch_idempotent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rotating_switch_E677' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rotating_switch_E255' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.rotating_switch_idempotent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The eight finite base certificates now use kernel `decide`, so they and all six derived
+switching theorems are clean-tier. There is no native generated axiom and no `sorryAx`.
+
+Commands: lake env lean Ext677Switch.lean; lake build Ext677Switch
+
+Order-217 objects (`Ext677Objects.lean`):
+
+'Ext677.M217ε_E677' uses the generated axiom
+`M217ε_E677._native.native_decide.ax_1_1`.
+'Ext677.R217_E677' uses the generated axiom
+`R217_E677._native.native_decide.ax_1_1`.
+'Ext677.R217_U_bijective' uses the generated axiom
+`R217_U_bijective._native.native_decide.ax_1_1`.
+
+These are the only three new native certificates: two exhaustive E677 checks on
+`ZMod 7 × ZMod 31`, and the exhaustive bijectivity check for `U` on `R217`.
+E255, idempotent-freeness, all explicit point coordinates, the window/collision
+facts, pairwise distinctness, and the six X_6 disequalities are kernel-checked
+(the point theorems inherit the already listed E677 certificate through `ldiv`).
+The remaining reported axioms are standard Lean/Mathlib axioms. There is no
+`sorryAx`.
+
+Commands: lake env lean Ext677Objects.lean; lake build
+
+R46 amplification (`Ext677Amplify.lean`):
+
+'Ext677.amplify_product_E255At' depends on axioms: [propext]
+'Ext677.amplify_product_E677' does not depend on any axioms
+'Ext677.amplify_product_E255' depends on axioms: [propext]
+'Ext677.amplify_density_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.amplify_power_E255At' depends on axioms: [Quot.sound]
+'Ext677.amplify_power_E677' depends on axioms: [Quot.sound]
+'Ext677.amplify_power_E255' depends on axioms: [Quot.sound]
+'Ext677.amplify_density_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.amplify_density_lt_one_of_not_E255At' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.amplify_arbitrarily_sparse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.amplify_uniform_lower_bound_forces_E255' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All listed axioms are standard Lean/Mathlib axioms. No native computation certificate is
+used in this module, and there is no `sorryAx`.
+
+Commands: lake env lean Ext677Amplify.lean; lake build Ext677Amplify; lake build
+
+E-prime submagma and quotient reductions (`Ext677EprimeRed.lean`):
+
+'Ext677.eprime_iff_exists_inUImage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.submagma_E677' does not depend on any axioms
+'Ext677.submagma_E255' does not depend on any axioms
+'Ext677.submagma_idempotent_free' does not depend on any axioms
+'Ext677.submagma_val_ldiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.submagma_val_SUWPF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.submagma_val_pattern' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.submagma_lift_X6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.submagma_lift_inUImage' does not depend on any axioms
+'Ext677.submagma_lift_Eprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.generatedBy_closed' does not depend on any axioms
+'Ext677.generated_submagma_monogenic' does not depend on any axioms
+'Ext677.eprime_monogenic_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.quotient_lift_Eprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.submagma_or_quotient_lift_Eprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.eprime_counterexample_no_submagma_or_quotient' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All listed dependencies are standard Lean/Mathlib axioms. There is no native generated axiom
+and no `sorryAx`.
+
+Commands: lake env lean Ext677EprimeRed.lean; lake build Ext677Switch Ext677EprimeRed; lake build
+
+R46 Step 48 fibre-two exclusion (`Ext677Fibre2.lean`):
+
+'Ext677.fibreLeftEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre_card_mul_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre_cards_WUPFS_eq_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_function_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_injective_eq_add_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_row_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_extract_s' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_extract_t' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_coefficients' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_factor_eq_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_diagonal_slope_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_affine_exclusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_pair_indexed_exclusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_exclusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre2_quotient_class_ne_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+All listed dependencies are standard Lean/Mathlib axioms. The finite `ZMod 2` helper facts use
+kernel `decide`; this module introduces no native generated axiom and no `sorryAx`.
+
+Commands: lake env lean Ext677Fibre2.lean; lake build Ext677Fibre2; lake build
+
+R46 Step 49 gauge-free Core-7 / fibre-three exclusion (`Ext677Core7Free.lean`):
+
+'Ext677.core7_free_three_unsat' depends on axioms: [propext, Classical.choice,
+Quot.sound, core7_free_three_unsat._native.bv_decide.ax_1_15]
+'Ext677.core7_free_three_no_semantic' depends on axioms: [propext, Classical.choice,
+Quot.sound, core7_free_three_unsat._native.bv_decide.ax_1_15]
+'Ext677.core7_pattern_chains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre3_exclusion' depends on axioms: [propext, Classical.choice, Quot.sound,
+core7_free_three_unsat._native.bv_decide.ax_1_15]
+'Ext677.fibre_two_or_three_exclusion' depends on axioms: [propext, Classical.choice,
+Quot.sound, core7_free_three_unsat._native.bv_decide.ax_1_15]
+
+The named generated axiom is Lean's `bv_decide` LRAT-reflection certificate (the ticket's
+acceptable `Lean.ofReduceBool` route). The SAT formula uses the encoder's 378 primary
+permutation-matrix bits and inlines the chain auxiliaries as static multiplexers. All semantic,
+pattern, coordinatization, fibre transport, and corollary steps are ordinary kernel-checked Lean.
+There is no `sorryAx`.
+
+Commands: lake env lean Ext677Core7Free.lean; lake build Ext677Core7Free; lake build
+
+Headline minimal-counterexample corollary (`Ext677Minimal.lean`):
+
+'Ext677.minimal_of_min_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.equal_fibres' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.minimal_counterexample_no_class_two_or_three' depends on axioms: [propext,
+Classical.choice, Quot.sound, core7_free_three_unsat._native.bv_decide.ax_1_15]
+'Ext677.minimal_counterexample_card_ge_four_mul' depends on axioms: [propext,
+Classical.choice, Quot.sound, core7_free_three_unsat._native.bv_decide.ax_1_15]
+'Ext677.minimal_counterexample_congruence_class_ge_four' depends on axioms: [propext,
+Classical.choice, Quot.sound, core7_free_three_unsat._native.bv_decide.ax_1_15]
+'Ext677.minimal_counterexample_congruence_card_ge_four_mul' depends on axioms: [propext,
+Classical.choice, Quot.sound, core7_free_three_unsat._native.bv_decide.ax_1_15]
+
+The generated `bv_decide`/`Lean.ofReduceBool` certificate axiom is inherited solely through
+the fibre-three exclusion. The remaining dependencies are standard Lean/Mathlib axioms.
+There is no `sorryAx`.
+
+Commands: lake env lean Ext677Minimal.lean; lake build Ext677Minimal; lake build
+
+R46 Step 58 clean hand-proof Core-7 / fibre-three exclusion (`Ext677Core7Hand.lean`):
+
+'Ext677.core7_chains_no_solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre3_exclusion_clean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ext677.fibre_two_or_three_exclusion_clean' depends on axioms: [propext, Classical.choice,
+Quot.sound]
+
+The finite bridge first normalizes the collision by the coordinate gauge. Its five explicit
+representative lemmas each check only the 216 possible three-row `J` tables, using transparent
+Nat-level permutation tables and kernel `rfl`. There is no whole `(X,Y)` enumeration, generated
+certificate axiom, `bv_decide`, `native_decide`, or `sorryAx` in this module.
+
+Commands: lake env lean Ext677Core7Hand.lean; lake build Ext677Core7Hand; lake build
+
+Clean headline minimal-counterexample corollaries (`Ext677Minimal.lean`):
+
+'Ext677.minimal_counterexample_no_class_two_or_three_clean' depends on axioms: [propext,
+Classical.choice, Quot.sound]
+'Ext677.minimal_counterexample_card_ge_four_mul_clean' depends on axioms: [propext,
+Classical.choice, Quot.sound]
+'Ext677.minimal_counterexample_congruence_class_ge_four_clean' depends on axioms: [propext,
+Classical.choice, Quot.sound]
+'Ext677.minimal_counterexample_congruence_card_ge_four_mul_clean' depends on axioms: [propext,
+Classical.choice, Quot.sound]
+
+HEADLINE STATUS: The standard-axiom clean-tier chain is `fibre2_exclusion`,
+`fibre3_exclusion_clean`, `fibre_two_or_three_exclusion_clean`,
+`minimal_counterexample_no_class_two_or_three_clean`,
+`minimal_counterexample_card_ge_four_mul_clean`,
+`minimal_counterexample_congruence_class_ge_four_clean`, and
+`minimal_counterexample_congruence_card_ge_four_mul_clean`. The `bv_decide` certificate axiom
+remains only on the legacy Core7Free exclusion route (`core7_free_three_unsat`,
+`core7_free_three_no_semantic`, `fibre3_exclusion`, and `fibre_two_or_three_exclusion`) and is
+therefore inherited by the four legacy unsuffixed minimal-counterexample corollaries. None of the
+clean-tier theorems carries it.
+
+Commands: lake build Ext677Minimal; lake build
+
+R46 Steps 63/64 fibre-four defect exclusion (`Ext677Fibre4.lean`):
+
+'Ext677.fibre4_symbolic_nh' depends on axioms: [propext, Quot.sound]
+'Ext677.core7nh4_unsat' depends on axioms: [propext, Classical.choice, Quot.sound,
+core7nh4_unsat._native.bv_decide.ax_1_15]
+'Ext677.core7nh4_no_semantic' depends on axioms: [propext, Classical.choice, Quot.sound,
+core7nh4_unsat._native.bv_decide.ax_1_15]
+'Ext677.fibre4_defect_exclusion' depends on axioms: [propext, Classical.choice, Quot.sound,
+core7nh4_unsat._native.bv_decide.ax_1_15]
+'Ext677.minimal_counterexample_congruence_class_ge_five' depends on axioms: [propext,
+Classical.choice, Quot.sound, core7nh4_unsat._native.bv_decide.ax_1_15]
+'Ext677.minimal_counterexample_no_class_le_four' depends on axioms: [propext,
+Classical.choice, Quot.sound, core7nh4_unsat._native.bv_decide.ax_1_15]
+
+The one named generated axiom is the permitted `bv_decide` certificate for
+`core7nh4_unsat`. The 896-bit formula consists of the fourteen order-four permutation tables,
+the seven Core-7 chains, and the four NH clauses. The symbolic NH amplification, semantic
+encoding, coordinate transport, defect argument, and congruence corollaries introduce no other
+generated axiom. There is no `sorryAx`.
+
+Commands: lake env lean Ext677Fibre4.lean; lake build Ext677Fibre4; lake build

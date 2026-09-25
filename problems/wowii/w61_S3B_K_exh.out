@@ -1,0 +1,23 @@
+==============================================================================
+(I) EXHAUSTIVE TIE-BREAK ENUMERATION (every legal HH execution)
+  graphs=1036   distinct legal executions enumerated=997517
+  graphs where s varies with the tie-break      : 0
+  graphs where the head vector D varies         : 0
+  graphs where the head SET K varies            : 963  (K is NOT tie-invariant)
+  violations = ALL ZERO
+
+==============================================================================
+(II) EXHAUSTIVE SEARCH INSIDE THEOREM K'S REGIME
+   for each tau, each graph G[B] on B, each A-B bipartite adjacency:
+   keep those with G connected, A a MAXIMUM independent set,
+   min_B deg >= tau+1.  Report residue vs alpha and B clique or not.
+  tau=2, |A|<=7 : candidates scanned=43688  admissible=5803
+     admissible with B a NON-clique             : 2645
+     admissible with residue=alpha              : 3158
+       ... of those, B a clique                 : 3158
+       ... of those, B a NON-clique (ThmK FAILS): 0
+  tau=3, |A|<=5 : candidates scanned=299584  admissible=33966
+     admissible with B a NON-clique             : 21272
+     admissible with residue=alpha              : 12694
+       ... of those, B a clique                 : 12694
+       ... of those, B a NON-clique (ThmK FAILS): 0

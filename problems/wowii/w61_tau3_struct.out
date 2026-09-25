@@ -1,0 +1,10 @@
+[struct] MAXMULT=4  tau=3 hard-core instances checked = 147348
+[struct] failures: {'C0': 0, 'C1': 0, 'C2': 0, 'C3a': 0, 'C3b': 0, 'C4': 0}
+[struct] (e_B,k) cells occupied: {(0, 0): 3, (0, 1): 45, (0, 2): 1521, (0, 3): 55203, (1, 1): 8, (1, 2): 396, (1, 3): 48332, (2, 2): 64, (2, 3): 41776}
+
+[families] explicit HH traces (s must be >= 4 in every row)
+  F1 (k=1,e_B=1): X=4..59 tested, violations=0
+  F2 (k=1,e_B=0,p=1): n_x=1..59 tested, violations=0
+  F2b (k=1,e_B=0,p=2): X=4..59 tested, violations=0
+  F0 (k=0, unique seq [3,3,3,3,3,2,1]): s=4 m=9 D1+D2+D3=8 OK
+  F3 (k=2,e_B=2,centre): 1331 parameter triples, violations=0

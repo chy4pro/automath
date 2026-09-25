@@ -1,0 +1,184 @@
+WOWII-133 round 41 -- (RXM-PERI) and the two engine harvests
+interpreter: 3.9.6
+
+==============================================================================
+PART 0 -- primitive self-tests and the guard on THIS round's predicate
+==============================================================================
+  a(.) brute-vs-formula cross-check at 52 vertices (C4-free hosts only)
+  (D6) PERI-AS-NONCENTRAL: fires 48, of which 32 WRONG -- distinguishable
+
+==============================================================================
+PART 1 -- E45 harvest: the (RXM-PERI) refutation witness, rebuilt from its edge list
+==============================================================================
+  rebuilt from the EDGE LIST:
+    u : N = ['a']   ecc = 3
+    a : N = ['b', 'c', 'u', 'w']   ecc = 2
+    b : N = ['a', 'c', 'v', 'x']   ecc = 2
+    v : N = ['b']   ecc = 3
+    c : N = ['a', 'b']   ecc = 2
+    w : N = ['a']   ecc = 3
+    x : N = ['b']   ecc = 3
+    rad = 2   diam = 3   centre = ['a', 'b', 'c']
+    d(c,w) for c in centre: {'a': 1, 'b': 2, 'c': 2}
+  VERDICT on the certificate: ecc(u) = 3 (E45 said 4); centre = ['a', 'b', 'c'] (E45 said {c});
+           w is maximally far from every centre? False (E45's argument needed YES)
+  its narrated adjacency table is ASYMMETRIC -- rows listing a vertex that does not
+  list them back: [('c', 'b')] (so the table describes no graph at all)
+  even on the TABLE graph: rad = 2  diam = 3  centre = ['a', 'b']  d(centre,w) = [1, 2]
+  >> E45's WITNESS IS INVALID under both readings of its own answer.
+
+==============================================================================
+PART 2 -- E43 harvest: the k3 = 4 construction, rebuilt against every frame condition
+==============================================================================
+  n = 16  connected = True  C4-free = True  mu = min a(v) = 2
+  N(u_d) = [4, 6]   (a matching; y = 6 sits off u_{d-1} = 4)
+  witnesses N(z) cap N(u_j): {4: 8, 3: 8, 2: 9, 1: 9}   =>  k3 = 4
+  brief E43 sec.2 asserted the derived fact  d(w,z) >= d-1 = 4.
+  MEASURED on this frame: d(w,z) = 3 = d-2.
+  >> E43's CONSTRUCTION HOLDS; brief E43's derived fact d(w,z) >= d-1 is FALSE.
+  a(z) = 3, 2 + k3 = 6, so (TAIL-3'')'s hypothesis a(z) >= 2+k3 FAILS here.
+
+==============================================================================
+PART 3 -- the two FORCED-PASS lemmas, and how much of round 40's census they eat
+==============================================================================
+  (PER-A)  If diam = rad+1 and w is not a centre, then ecc(w) = diam.
+           Proof: ecc(w) >= rad+1 = diam, and ecc(w) <= diam always.  QED
+  (PER-B)  If ecc(w) = 2*rad, then ecc(w) = diam.
+           Proof: for any centre c and any x,y: d(x,y) <= d(x,c)+d(c,y) <= 2*rad, so
+           diam <= 2*rad; and ecc(w) <= diam.  Hence 2*rad <= diam <= 2*rad.  QED
+  (PER-C)  So (RXM-PERI) can only FAIL at an instance with diam >= rad+2 AND ecc(w) < 2*rad.
+           Call such an instance OPEN; every other instance is a FORCED PASS and is evidence
+           for nothing.
+  PREDICTION REGISTERED BEFORE THE RUN: all 1297 census instances are FORCED PASSES,
+  i.e. the count of OPEN instances is 0 and round 40's 1297/1297 tested nothing.
+  hosts rebuilt: 417 (skipped 3 as too big)
+  hosts with diam >= rad+2 at all: 190
+  condition-3 instances: 1297
+    FORCED by (PER-A) diam = rad+1 : 414
+    FORCED by (PER-B) ecc(w) = 2rad: 883
+    forced by BOTH                 : 0
+    OPEN (the only ones that test the conjecture): 0
+    violations among the OPEN ones: 0
+  >> PREDICTION HELD.  Round 40's 1297/1297 is a union of two one-line lemmas;
+     it contains ZERO instances of the only regime in which (RXM-PERI) has content.
+
+==============================================================================
+PART 4 -- (RXM-PERI) in GENERAL graphs: this file's own witness, and a liveness run
+==============================================================================
+    c  : N = ['a1', 'a2', 'a3', 'a4'] ecc = 2
+    a1 : N = ['a3', 'c', 's']       ecc = 3
+    a2 : N = ['a3', 'c', 't']       ecc = 3
+    a3 : N = ['a1', 'a2', 'c', 'w'] ecc = 3
+    a4 : N = ['c', 'q', 'w']        ecc = 3
+    s  : N = ['a1']                 ecc = 4
+    t  : N = ['a2']                 ecc = 4
+    w  : N = ['a3', 'a4']           ecc = 3
+    q  : N = ['a4']                 ecc = 4
+    rad = 2  diam = 4  centre = ['c']
+    d(c,w) for every centre c: {'c': 2}
+  >> (RXM-PERI) REFUTED in general graphs by this 9-vertex witness (rad+1 form too).
+     class check on THIS LINE's hypotheses: C4-free = False, mu = 1
+     the C4 it uses: pairs with two common neighbours = [('c', 'a3'), ('c', 'w'), ('a1', 'a2'), ('a3', 'a4')]
+  seeded-random GENERAL graphs (NOT exhaustive): 2935 connected hosts sampled
+    condition-3 vertices 3649 ; in the OPEN regime 464 ; VIOLATIONS of (RXM-PERI) 461
+    hosts carrying at least one violation: 229
+
+==============================================================================
+PART 5 -- the question that SURVIVES: (RXM-PERI) restricted to C4-free, mu >= 2
+==============================================================================
+  Attack: seeded-random C4-free mu>=2 hosts at capped edge budgets so that
+  diam >= rad+2 is reachable.  NOT exhaustive; a sample.
+  C4-free mu>=2 hosts sampled: 4825 ; of them with diam >= rad+2: 987
+  condition-3 vertices: 6779 ; in the OPEN regime: 1422 ; VIOLATIONS: 961
+  DISTINCT violating hosts (by edge set): 317
+  AGAINST THIS ROUND'S INTEREST -- where the violations actually sit:
+    rad of the violating instances: {2: 502, 3: 456, 4: 3}
+    floor(l) of the violating instances: {2: 871, 3: 90}
+    violations with l > 4 : 0 ;  violations with rad >= 5 : 0
+  eccentricity-offset profile of the condition-3 vertices on THIS sample: {1: 5397, 2: 1203, 3: 168, 4: 7, 5: 4}
+  (round 39 measured offset +2 at 0 of 1297 and could not explain it; this sample
+   says how much of that was the family)
+    RESTRICTED VIOLATION: w=4 rad=2 diam=4 ecc(w)=3 edges=[(0, 9), (0, 6), (0, 1), (1, 9), (1, 2), (1, 5), (2, 3), (3, 8), (4, 5), (4, 6), (4, 7), (5, 7), (7, 8), (8, 9)]
+    RESTRICTED VIOLATION: w=7 rad=2 diam=4 ecc(w)=3 edges=[(0, 9), (0, 6), (0, 1), (1, 9), (1, 2), (1, 5), (2, 3), (3, 8), (4, 5), (4, 6), (4, 7), (5, 7), (7, 8), (8, 9)]
+  >> (RXM-PERI) IS REFUTED ON THIS LINE's OWN CLASS TOO -- C4-free, mu >= 2.
+
+==============================================================================
+PART 6 -- the NAMED in-class witness, re-verified from scratch, and the COVERAGE
+          question on the population round 39's family did not contain
+==============================================================================
+  W41: n = 10, 14 edges
+     0 : N = [1, 6, 9]        ecc = 3  a(v) = 2
+     1 : N = [0, 2, 5, 9]     ecc = 2  a(v) = 3
+     2 : N = [1, 3]           ecc = 3  a(v) = 2
+     3 : N = [2, 8]           ecc = 4  a(v) = 2
+     4 : N = [5, 6, 7]        ecc = 3  a(v) = 2
+     5 : N = [1, 4, 7]        ecc = 3  a(v) = 2
+     6 : N = [0, 4]           ecc = 4  a(v) = 2
+     7 : N = [4, 5, 8]        ecc = 3  a(v) = 2
+     8 : N = [3, 7, 9]        ecc = 3  a(v) = 3
+     9 : N = [0, 1, 8]        ecc = 3  a(v) = 2
+    rad = 2  diam = 4  centre = [1]
+    condition-3 vertices: [3, 4, 6, 7, 8] ; their ecc: [4, 3, 4, 3, 3]
+    of those, NOT peripheral (violations of (RXM-PERI)): [4, 7, 8]
+    and the ones at offset +2 (round 39 saw this 0 times in 1297): [3, 6]
+  COVERAGE of the residual row on this NEW population (diam = rad+2, offset +1):
+  direction of error fixed before the numbers: COVERED is a LOWER bound (a path was
+  BUILT and passed by the independent checker); CHAIN-SHORT is an UPPER bound.
+    w=4  ecc=3  need=6 vertices  longest anchored induced found=6  checker=True
+    w=7  ecc=3  need=6 vertices  longest anchored induced found=6  checker=True
+    w=8  ecc=3  need=6 vertices  longest anchored induced found=6  checker=True
+    COVERED (path BUILT + checker-verified): 3 of 3 ; chain-short: 0
+  same coverage test over 317 distinct violating in-class hosts, 961 witnesses:
+    COVERED (path BUILT + checker-verified): 955
+    SHORT of ecc(w)+3: 6, of which 0 had a TRUNCATED search (upper bound unknown)
+    A shortfall with an UNtruncated search is a real endpath deficit and must be
+    printed in full -- it is the one thing here that could hurt the route:
+      w=5 rad=2 diam=4 ecc(w)=3 need=6 longest=5 truncated=False
+        edges=[(0, 1), (0, 3), (0, 8), (1, 2), (1, 5), (2, 6), (3, 4), (3, 6), (4, 5), (4, 7), (7, 8)]
+      w=5 rad=2 diam=4 ecc(w)=3 need=6 longest=5 truncated=False
+        edges=[(0, 3), (0, 5), (0, 8), (1, 2), (1, 5), (1, 6), (2, 3), (2, 4), (3, 7), (4, 8), (6, 7)]
+      w=7 rad=2 diam=4 ecc(w)=3 need=6 longest=5 truncated=False
+        edges=[(0, 5), (0, 6), (1, 2), (1, 4), (1, 5), (2, 6), (2, 8), (3, 4), (3, 8), (4, 7), (6, 7)]
+      w=5 rad=2 diam=4 ecc(w)=3 need=6 longest=5 truncated=False
+        edges=[(0, 3), (0, 7), (1, 6), (1, 8), (2, 3), (2, 4), (2, 5), (4, 7), (4, 8), (5, 6), (6, 7)]
+      w=8 rad=2 diam=4 ecc(w)=3 need=6 longest=5 truncated=False
+        edges=[(0, 2), (0, 4), (0, 7), (1, 3), (1, 4), (2, 3), (2, 6), (3, 8), (5, 6), (5, 7), (7, 8)]
+      w=2 rad=2 diam=4 ecc(w)=3 need=6 longest=5 truncated=False
+        edges=[(0, 4), (0, 5), (0, 7), (1, 2), (1, 3), (1, 4), (2, 7), (3, 5), (4, 6), (6, 8), (7, 8)]
+
+==============================================================================
+PART 7 -- THE SIX SHORTFALLS, RE-VERIFIED BY AN INDEPENDENT SUBSET ORACLE
+==============================================================================
+  These are the only objects this round found that could HURT the route: in-class
+  instances of draft 42.4's residual row at which  endpath(G',w) >= ecc(w)+3  FAILS.
+  oracle-vs-DFS cross-check at 35 anchors, all agree
+
+  n= 9 m=11  l=2.444  rad=2 diam=4 centre=[0, 3]  w=5 ecc(w)=3
+      endpath(G',w) = 5  (target ecc+3 = 6)  SHORT BY 1
+      path(G') = 7   (B1)'s target r+4 = 6  -> (B1) HOLDS here
+  n= 9 m=11  l=2.444  rad=2 diam=4 centre=[2, 3]  w=5 ecc(w)=3
+      endpath(G',w) = 5  (target ecc+3 = 6)  SHORT BY 1
+      path(G') = 7   (B1)'s target r+4 = 6  -> (B1) HOLDS here
+  n= 9 m=11  l=2.444  rad=2 diam=4 centre=[1, 2]  w=7 ecc(w)=3
+      endpath(G',w) = 5  (target ecc+3 = 6)  SHORT BY 1
+      path(G') = 7   (B1)'s target r+4 = 6  -> (B1) HOLDS here
+  n= 9 m=11  l=2.444  rad=2 diam=4 centre=[4, 7]  w=5 ecc(w)=3
+      endpath(G',w) = 5  (target ecc+3 = 6)  SHORT BY 1
+      path(G') = 7   (B1)'s target r+4 = 6  -> (B1) HOLDS here
+  n= 9 m=11  l=2.444  rad=2 diam=4 centre=[0, 2]  w=8 ecc(w)=3
+      endpath(G',w) = 5  (target ecc+3 = 6)  SHORT BY 1
+      path(G') = 7   (B1)'s target r+4 = 6  -> (B1) HOLDS here
+  n= 9 m=11  l=2.444  rad=2 diam=4 centre=[0, 4]  w=2 ecc(w)=3
+      endpath(G',w) = 5  (target ecc+3 = 6)  SHORT BY 1
+      path(G') = 7   (B1)'s target r+4 = 6  -> (B1) HOLDS here
+
+  6 shortfalls re-verified independently.
+  BOUNDING THIS AGAINST ITS OWN INTEREST: every one sits at rad = 2 with l ~ 2.2,
+  i.e. OUTSIDE route A2's class (l > 4 and rad >= 5), exactly like round 39's 414.
+  What it does establish: (B2)/(TAIL-2) alone does NOT close draft 42.4's residual
+  row on the C4-free mu>=2 class -- the row's remaining hypotheses are load-bearing.
+
+==============================================================================
+PARTS RUN: PART0,PART1,PART2,PART3,PART4,PART5,PART6,PART7
+CHECKS = 1474   FAILS = 0   elapsed = 1.2 s
+==============================================================================

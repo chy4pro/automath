@@ -1,0 +1,29 @@
+==============================================================================
+VALIDATION -- p=3: transfer-DP total over ALL (A,B) must equal the
+brute stratum count R2(3) printed by probe_t1.py.
+  p=3  sum of N_exact over all (A,B) pairs = 18225   (|A|,|B| sets each: 120)
+  ANCHOR  R2(3) = 18225   [population: ALL f with f(0)=0 on F_3^2, i.e. 3^(2*3^2-2) = 43046721 functions; exact, no sampling]
+  NOTE  R2(5) is NOT produced by this method: it needs N_exact over all (A,B) with |A|,|B|<=3 in F_5^2, i.e. (C(25,2)+C(25,3))^2 = 6760000 pairs against 14400 at p=3 -- ~469x more, and each N_subset is itself far costlier at p=5.  p=5 exact is left PENDING, not asserted.
+------------------------------------------------------------------------------
+  p=3  normalised (A,B) population = 36 x 36 = 1296 pairs
+       sampled pairs = 400 ; nonzero = 12 ; max single-pair N_exact = 72
+       RIGOROUS LOWER BOUND on the normalised stratum (sum over the sampled pairs, disjoint): 459  (~4.590e+02)
+       unbiased ESTIMATE of normalised stratum = mean*pairs = 1.4872e+03  (mean=1.1475e+00, se=3.7998e-01)
+       => R2(p) >= sampled_sum * p^4/9 = 4.1310e+03
+       full space p^(2p^2-2) = 4.3047e+07 ; elapsed for this p = 0.1s
+------------------------------------------------------------------------------
+  p=5  normalised (A,B) population = 300 x 300 = 90000 pairs
+       sampled pairs = 300 ; nonzero = 12 ; max single-pair N_exact = 62300
+       RIGOROUS LOWER BOUND on the normalised stratum (sum over the sampled pairs, disjoint): 103900  (~1.039e+05)
+       unbiased ESTIMATE of normalised stratum = mean*pairs = 3.1170e+07  (mean=3.4633e+02, se=2.2720e+02)
+       => R2(p) >= sampled_sum * p^4/9 = 7.2153e+06
+       full space p^(2p^2-2) = 3.5527e+33 ; elapsed for this p = 6.8s
+------------------------------------------------------------------------------
+  p=7  normalised (A,B) population = 1176 x 1176 = 1382976 pairs
+       sampled pairs = 120 ; nonzero = 12 ; max single-pair N_exact = 1651545
+       RIGOROUS LOWER BOUND on the normalised stratum (sum over the sampled pairs, disjoint): 2898350  (~2.898e+06)
+       unbiased ESTIMATE of normalised stratum = mean*pairs = 3.3403e+10  (mean=2.4153e+04, se=1.4874e+04)
+       => R2(p) >= sampled_sum * p^4/9 = 7.7322e+08
+       full space p^(2p^2-2) = 1.3471e+81 ; elapsed for this p = 145.2s
+==============================================================================
+elapsed_s = 153.9

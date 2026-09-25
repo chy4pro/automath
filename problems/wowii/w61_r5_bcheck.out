@@ -1,0 +1,31 @@
+=== D5 (MATHEMATICS): Lemma T' states an IFF; is the 'only if' direction true?
+   witness [4, 1, 1, 0, 0, 0]: terminates in 1 step(s)
+   list at the start of step 1: [4, 1, 1, 0, 0, 0], head D_k = 4
+   T' would require it to be [D_k, 1^D_k, 0...] = [4, 1, 1, 1, 1] + zeros
+   => 'only if' FAILS on this input. Is it graphical? sum=6 even, but a degree-4 vertex needs 4 positive partners and only 2 exist => NOT graphical.
+   So T' is true for GRAPHICAL sequences (where Lemma 1(2) applies) and false as
+   an unrestricted iff about the truncating process. UPHELD.
+   on graphical sequences (atlas): T' holds 1245, fails 0
+
+=== D2: are Theorem LOW / Theorem SL really 'hard core' statements?  C5 witness
+   C5: deg=[2, 2, 2, 2, 2] n=5 alpha=2 tau=3 residue=2 s=3 diam=2 f=4
+   reductio residue=alpha? True.  In the hard-core FRAME? diam=4? False; f=alpha+1? False
+   => if the reductio holds here while the frame does not, then any statement whose
+      PROOF needs only the reductio is mis-filed under 'hard core'. UPHELD if so.
+
+=== D3: are the §7.8 numerical blocks measured where the reductio is FALSE?
+   Fan(4,2) A'=[2,2]: deg=[5, 5, 4, 4, 4, 2, 2] alpha=3 tau=4 s=5 residue=2
+   reductio s = tau? False  (tau=4)
+   => the Fan runs the M1-M4 / H1-H5 blocks measure have s = tau+1, i.e. the
+      standing hypothesis of every FAN lemma is FALSE on them. UPHELD.
+
+=== D4 upgrade: Observation FAN-5's second half is now PROVABLE via Lemma TAIL
+   L=2: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=2 (=L?True); TAIL predicts 2
+   L=3: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=3 (=L?True); TAIL predicts 3
+   L=4: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=4 (=L?True); TAIL predicts 4
+   L=5: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=5 (=L?True); TAIL predicts 5
+   L=6: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=6 (=L?True); TAIL predicts 6
+   L=7: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=7 (=L?True); TAIL predicts 7
+   L=8: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=8 (=L?True); TAIL predicts 8
+   L=9: s0([2]^3+[2])=2 (=lam1=2?True); steps([L]^(L+1)+[2])=9 (=L?True); TAIL predicts 9
+done

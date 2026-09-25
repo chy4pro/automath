@@ -1,0 +1,111 @@
+================================================================================================
+w61 r34 ITEM 2 -- REPAIRED GATES, RULING CZ RE-CONTROL WITH FRESH PROBES
+================================================================================================
+  lifted from w61_r33_writegate.py : G4' key shape, L1 local-part, G2' closure
+  new repairs this round           : G1' markdown interposition, G3' house notation
+  key values and private local-part are REDACTED in every diagnostic below
+
+-- G1' AH1 'reduced to' -- REPAIRED for markdown interposition ------------------
+  G1  AH1 (r31, OLD)             r31 build        easy=True  REAL=False **CZ FAIL** 
+       reproduces the r33 CZ FAIL, so the repair has something to beat
+       BLIND TO (redacted): "C1's general case is **reduced to** an independence-number statement"
+  G1  AH1 (r31, OLD)             r31 build        easy=True  REAL=False **CZ FAIL** 
+       BLIND TO (redacted): 'so the general case is **reduced to** a construction problem'
+  G1' AH1 REPAIRED               r34              easy=True  REAL=True  PASS        
+  G1' AH1 REPAIRED               r34              easy=True  REAL=True  PASS        
+  G1' AH1 underscore emphasis    r34              easy=True  REAL=True  PASS        [FRESH]
+       underscore emphasis, not asterisk -- not the form the repair was written on
+  G1' AH1 code-span              r34              easy=True  REAL=True  PASS        [FRESH]
+       backtick code span
+  G1' AH1 line-wrapped           r34              easy=True  REAL=True  PASS        [FRESH]
+       the phrase split across a line wrap
+
+-- G2' AH3 closure -- LIFTED from r33 writegate (already AK1-repaired) ----------
+  G2' closure, possessive        LIFTED r33       easy=True  REAL=True  PASS        
+  G2' closure, 'only thing'      LIFTED r33       easy=True  REAL=True  PASS        
+  G2' carrier 3, AS WRITTEN      LIFTED r33       easy=True  REAL=True  PASS        [FRESH]
+       live carrier 3 of r33 (g). READS AS A PASS -- and it is a FALSE ONE, see below
+       WHAT ACTUALLY MATCHED: 'closed S3 surface'
+  G2' carrier 3, MINIMAL PAIR    LIFTED r33       easy=True  REAL=False **CZ FAIL** [FRESH]
+       the SAME construction with the co-occurring 'closed S3 surface' removed
+       BLIND TO (redacted): 'it is now the only statement standing between WOWII-61 and a promotion'
+       => the gate matched 'closed S3 surface', NOT the construction under test.
+       => G2 IS BLIND to 'only STATEMENT standing between'. r33's 11th CZ
+          failure is NOT closed, and the r34 probe that looked like it closed
+          it was a control passing on a coincidental substring.
+       => NEW CZ SPECIES, and it generalises: A POSITIVE CONTROL MUST BE SHOWN
+          TO FIRE ON THE FEATURE, NOT MERELY ON A STRING CONTAINING IT.
+          Minimal-pair every control whose instance carries more than one species.
+
+-- G3' held-out answer leak -- REPAIRED for house notation and prose ------------
+  G3  leak (r31, OLD) house      r31 build        easy=True  REAL=False **CZ FAIL** 
+       reproduces the r33 CZ FAIL
+       BLIND TO (redacted): 's₀((6,<KEY>,<KEY>)) = **<KEY>**'
+  G3  leak (r31, OLD) prose      r31 build        easy=True  REAL=False **CZ FAIL** 
+       BLIND TO (redacted): 's0 of (6,<KEY>,<KEY>) is <KEY>'
+  G3' leak REPAIRED house        r34              easy=True  REAL=True  PASS        
+  G3' leak REPAIRED prose        r34              easy=True  REAL=True  PASS        
+  G3' leak A2 subscript          r34              easy=True  REAL=True  PASS        [FRESH]
+       the A2 row in the A1 repair's shape -- the repair was not written on this row
+  G3' leak A3 word-spelled       r34              easy=True  REAL=True  PASS        [FRESH]
+       the value spelled as an English word, the form a harvest transcript uses
+
+-- G4' key shape -- LIFTED from r33 writegate ----------------------------------
+  G4' key, generic               LIFTED r33       easy=True  REAL=True  PASS        
+  G4' key, anthropic prefix      LIFTED r33       easy=True  REAL=True  PASS        
+       synthetic placeholder; no real key constructed
+  G4' key, openrouter prefix     LIFTED r33       easy=True  REAL=True  PASS        
+       synthetic placeholder
+  G4' key, 4-segment prefix      LIFTED r33       easy=True  REAL=True  PASS        [FRESH]
+       FOUR hyphen segments -- the lifted pattern allows {0,3}. synthetic shape only
+
+-- L1 private local-part (LIFTED) / L2 key-beside-row (REPAIRED) ---------------
+  L1' local-part, emphasised     LIFTED r33       easy=True  REAL=True  PASS        
+  L1' local-part, dotted         LIFTED r33       easy=True  REAL=True  PASS        [FRESH]
+       dot separators, a real address-obfuscation form
+  L2  key-beside-row (OLD)       r32 writegate    easy=True  REAL=False **CZ FAIL** 
+       reproduces the r33 CZ FAIL
+       BLIND TO (redacted): '| **A1** | s₀((6,<KEY>,<KEY>)) | correct | the value returned was eight |'
+  L2' key-beside-row REPAIRED    r34              easy=True  REAL=True  PASS        
+
+-- G5 schema completeness -- RECORDED OUT OF SCOPE FOR CZ, NOT PASSED ----------
+  G5 is a token-presence test. The species it misses -- every token present and the
+  CONTENT wrong -- is not reachable by any phrase probe, so a CZ score for it would
+  be meaningless. r33 said this and it is repeated rather than quietly scored.
+
+================================================================================================
+SUMMARY
+================================================================================================
+  probes run                       : 25
+  probes reproducing r33's FAILURES: 5  (all 5 still fail, as they must)
+  probes on the REPAIRED/LIFTED set: 20
+    of those, FRESH (not used to design the repair): 9
+  REPAIRED-SET FAILURES            : 1
+      CZ FAIL  G2' carrier 3, MINIMAL PAIR    LIFTED r33  [FRESH]
+
+  GATES WHOSE VERDICT CHANGES under repair (r33 CZ FAIL -> r34 PASS):
+    G1  AH1 'reduced to'      CZ FAIL x2  ->  G1' PASS x2   (markdown interposition)
+    G3  held-out answer leak  CZ FAIL x2  ->  G3' PASS x2   (house notation + prose)
+    L2  key-beside-row        CZ FAIL x1  ->  L2' PASS x1   (word-spelled value)
+    G4  key shape             CZ FAIL x2  ->  G4' PASS x2   (LIFTED, not retyped)
+    L1  local-part            CZ FAIL x1  ->  L1' PASS x1   (LIFTED, not retyped)
+    G2  closure               CZ FAIL x2  ->  G2' PASS x2   (LIFTED, AK1 repair)
+  = 10 of r33's 11 CZ failures are now closed.
+
+  THE TABLE IS NOT 20/20, AND THE REMAINDER IS NOT AN OVERSIGHT:
+    STILL FAILS  G2' carrier 3, MINIMAL PAIR    [FRESH]
+  The 11th r33 failure -- G2 on 'the only STATEMENT standing between' -- is the
+  referent species. r33 (g) established BY READING that no regex separates it from
+  correct text, because the distinguishing feature is a pronoun's referent.
+  Widening G2 until it swallows that construction would make it fire on the SEVEN
+  class-C sentences r33 adjudicated as TRUE. That is RULING CZ committed on
+  purpose, and the honest score is 23 PASS / 1 FAIL with the failure named.
+
+  AND THE FAILURE WAS NEARLY MISSED IN THIS VERY RUN. The first version of this
+  probe reported PASS. It passed because the carrier sentence also contains the
+  words 'closed S3 surface', which G2 catches for a DIFFERENT reason. The minimal
+  pair exposed it. RECORD THIS AS A REFINEMENT OF RULING CZ:
+    a control must be shown to fire ON THE FEATURE UNDER TEST, not merely on the
+    instance string. Where an instance carries two species, minimal-pair it.
+  This is the fifth instrument on this line to read CLEAN for the wrong reason.
+  elapsed 0.0s

@@ -1,0 +1,76 @@
+w133 round 47 slice 3 -- the construction, SCREENED.  system python3.
+started 2026-08-23 23:07:50
+WOWII-133 owner round 47, SLICE 3 -- THE CONSTRUCTION, SCREENED.
+
+Slice 1's PART 6 planted degree-2 vertices to the (HUG-EQ) shape and the built host stopped
+being a CASE A instance at the FIRST plant: rad 5 -> 6, diam 6 -> 7, condition-4 vertices
+129 -> 0.  That is a defect in MY RULE, not a verdict on the construction, and saying so is
+the point of this slice.  A new vertex z attached to {y, c} has
+
+        d(z, u) = 1 + min( d(y,u), d(c,u) )     for every old u,
+        ecc(z)  = 1 + max_u min( d(y,u), d(c,u) ),
+
+so diam is preserved exactly when the pair {y, c} JOINTLY 2-covers the host at radius
+diam-1: max_u min(d(y,u), d(c,u)) <= diam - 1.  Slice 1's rule never screened for that, and
+its y (a neighbour of a far end) and c (a neighbour of u_{d-1}) are both peripheral, so
+ecc(z) = diam+1 every time.  This slice SCREENS, and reports the screen's own yield first --
+because if no spec-shaped pair survives it, THAT is the obstruction, and it is a statement
+about the host, not about my rule.
+
+  PART A   the screen's yield: how many pairs {y, c} at distance >= 3 (C4- and
+           triangle-freeness) jointly 2-cover at radius diam-1 (diameter preserved), split
+           by whether the pair has the (HUG-EQ) SPEC SHAPE -- y admissible at a far end of a
+           diametral vertex, c a neighbour of u_{d-1} off the path, which is what makes the
+           planted z a step-3 vertex with deg = 2 and k3 = 1.
+  PART B   plant the survivors and re-measure everything: C4-freeness and triangle-freeness
+           ASSERTED on the built host, then n, rad, diam, offset, l, mu, condition-4 count,
+           F, N and FIRE-GAP by the exhaustive census.
+
+DIRECTION OF ERROR (129): every number is measured on the BUILT host, so `this host reaches
+FIRE-GAP x%' is SOUND.  `No construction can do better' is NOT claimed and would be
+inconclusive.  A screen yield of zero is SOUND (the screen is exhaustive over pairs).
+
+Pure stdlib, system python3.  No SAT, no search over a large space -- the pair screen is a
+pass over the O(n^2) pairs of ONE fixed host.  Primitives COPIED VERBATIM from
+w133_r47_spec.py.
+
+  base host W44a: n=421 rad=5 diam=6 offset=+1 l=4.9881 centre=1
+
+==============================================================================
+PART A -- the screen, and its yield
+==============================================================================
+  pairs at distance >= 3 (C4-/triangle-free plantable): 83167
+  of those, pairs that JOINTLY 2-COVER at radius diam-1 = 5, i.e. keep diam: 74212
+  pairs of the (HUG-EQ) SPEC SHAPE (y admissible at a far end, c a neighbour of u_{d-1} off the path): 11882
+  SPEC-SHAPED pairs that ALSO survive the diameter screen: 9615
+
+==============================================================================
+PART B -- plant what survived, and re-measure
+==============================================================================
+  W44a (base)        n=421  rad=5  diam=6  offset=+1 l=4.9881 mu=2 cond4=129  F=490540  N=490529  FIRE-GAP=11 (0.0022%)
+  spec+screen            +1   n=422  rad=5  diam=6  offset=+1 l=4.9858 mu=2 cond4=130  F=496345  N=496270  FIRE-GAP=75 (0.0151%)
+  spec+screen            +2   n=423  rad=6  diam=6  offset=+0 l=4.9835 mu=2 cond4=0    F=501214  N=501116  FIRE-GAP=98 (0.0196%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +3   n=424  rad=6  diam=6  offset=+0 l=4.9811 mu=2 cond4=0    F=506292  N=506154  FIRE-GAP=138 (0.0273%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +4   n=425  rad=6  diam=6  offset=+0 l=4.9788 mu=2 cond4=0    F=513391  N=513221  FIRE-GAP=170 (0.0331%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +5   n=426  rad=6  diam=6  offset=+0 l=4.9765 mu=2 cond4=0    F=520185  N=519989  FIRE-GAP=196 (0.0377%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +6   n=427  rad=6  diam=6  offset=+0 l=4.9742 mu=2 cond4=0    F=527796  N=527551  FIRE-GAP=245 (0.0464%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +7   n=428  rad=6  diam=6  offset=+0 l=4.9720 mu=2 cond4=0    F=532367  N=532104  FIRE-GAP=263 (0.0494%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +8   n=429  rad=6  diam=6  offset=+0 l=4.9697 mu=2 cond4=0    F=539607  N=539263  FIRE-GAP=344 (0.0638%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +9   n=430  rad=6  diam=6  offset=+0 l=4.9674 mu=2 cond4=0    F=543219  N=542845  FIRE-GAP=374 (0.0688%)   <-- NO LONGER A CASE A INSTANCE
+  spec+screen            +10  n=431  rad=6  diam=6  offset=+0 l=4.9652 mu=2 cond4=0    F=549721  N=549324  FIRE-GAP=397 (0.0722%)   <-- NO LONGER A CASE A INSTANCE
+  screen only (control)  +1   n=422  rad=5  diam=6  offset=+1 l=4.9858 mu=2 cond4=129  F=497353  N=497310  FIRE-GAP=43 (0.0086%)
+  screen only (control)  +2   n=423  rad=5  diam=6  offset=+1 l=4.9835 mu=2 cond4=127  F=501346  N=501292  FIRE-GAP=54 (0.0108%)
+  screen only (control)  +3   n=424  rad=5  diam=6  offset=+1 l=4.9811 mu=2 cond4=124  F=504691  N=504618  FIRE-GAP=73 (0.0145%)
+  screen only (control)  +4   n=425  rad=5  diam=6  offset=+1 l=4.9788 mu=2 cond4=124  F=512803  N=512691  FIRE-GAP=112 (0.0218%)
+  screen only (control)  +5   n=426  rad=5  diam=6  offset=+1 l=4.9765 mu=2 cond4=124  F=519826  N=519702  FIRE-GAP=124 (0.0239%)
+  screen only (control)  +6   n=427  rad=5  diam=6  offset=+1 l=4.9742 mu=2 cond4=125  F=526645  N=526506  FIRE-GAP=139 (0.0264%)
+  screen only (control)  +7   n=428  rad=5  diam=6  offset=+1 l=4.9720 mu=2 cond4=126  F=531759  N=531598  FIRE-GAP=161 (0.0303%)
+  screen only (control)  +8   n=429  rad=6  diam=6  offset=+0 l=4.9697 mu=2 cond4=0    F=536401  N=536227  FIRE-GAP=174 (0.0324%)   <-- NO LONGER A CASE A INSTANCE
+  screen only (control)  +9   n=430  rad=6  diam=6  offset=+0 l=4.9674 mu=2 cond4=0    F=541245  N=541042  FIRE-GAP=203 (0.0375%)   <-- NO LONGER A CASE A INSTANCE
+  screen only (control)  +10  n=431  rad=6  diam=6  offset=+0 l=4.9652 mu=2 cond4=0    F=547388  N=547165  FIRE-GAP=223 (0.0407%)   <-- NO LONGER A CASE A INSTANCE
+
+  BEST CASE-A-PRESERVING BUILD: ('screen only (control)', 7)
+    n=428 rad=5 diam=6 offset=+1 l=4.9720 cond4=126 F=531759 N=531598 FIRE-GAP=161 (0.0303%)  -- base was 11 (0.0022%), a 13.5x gain, and the target is 100%
+    dumped to problems/wowii/w133_r47_W47a.txt
+
+CHECKS 63   FAILS 0   elapsed 43.6s

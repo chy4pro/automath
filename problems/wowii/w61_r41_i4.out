@@ -1,0 +1,97 @@
+====================================================================================================
+w61 r41 ITEM 2 -- THE 'I4' REDUCTION, RE-DERIVED AND TESTED
+====================================================================================================
+
+[0] CONTROLS
+   known-value  [1,1,0,0] boundary             = (1, 3)       expect (1, 3)       OK
+   known-value  R(0^5)  (C1-Y)                 = 5            expect 5            OK
+   known-value  R((1,1,0,0,0)) (C1-Y)          = 4            expect 4            OK
+   known-value  W+(2)u[2] boundary             = 3            expect 3            OK
+   known-value  MUST_ABORT [5,1] aborts        = True         expect True         OK
+
+[1] REBUILD THE r39 S1 LOCKSTEP POPULATION (sum(T) odd, sum(T) <= 14, shape S1)
+   S1 pairs rebuilt: 709   (r39 printed 709 for the same population)
+   lockstep exit classification over all 709 pairs: {'A_TERMINAL_B_not': 158, 'EQ_reached': 500, 'RELATION_BROKE': 51}
+   population for every count in this block: the 709 S1 pairs above.
+
+[2] THE DIRECT TEST OF I4's CONCLUSION
+    I4 says: both runs terminate + relation never breaks  ==>  EQ occurs.
+   pairs where the relation NEVER broke and EQ NEVER occurred        : 158
+   ...of those, pairs where BOTH runs terminate (no abort on either) : 158
+   population: the 709 S1 pairs of block [1].
+   ==> I4's CONCLUSION AS STATED IS FALSE.  Each of these 158 pairs satisfies both
+       hypotheses and violates the conclusion.  Smallest, in full:
+       A_0 = (3, 3, 2, 2, 2, 2, 2)        R(A_0) = 3
+       B_0 = (3, 3, 3, 3, 2, 2, 2)        R(B_0) = 2
+       both terminate; UP2 at stage 0: True
+         stage 0 : A=(3, 3, 2, 2, 2, 2, 2)      B=(3, 3, 3, 3, 2, 2, 2)       rel=UP2  g=2
+         stage 1 : A=(2, 2, 2, 2, 1, 1)         B=(2, 2, 2, 2, 2, 2)          rel=UP2  g=2
+         stage 2 : A=(2, 1, 1, 1, 1)            B=(2, 2, 2, 1, 1)             rel=UP2  g=2
+         stage 3 : A=(1, 1, 0, 0)               B=(1, 1, 1, 1)                rel=UP2  g=2
+         stage 4 : A=(0, 0, 0)                  B=(1, 1, 0)                   rel=UP2  g=2
+         stage 5 : A TERMINAL, B (0, 0) -- lockstep ends here
+       delta = f(T) - f(T+e_i) = 1, so the two residues DIFFER: EQ is impossible
+
+[3] THE CORRECTED STATEMENT, VERIFIED ON THE SAME POPULATION
+    (my hand, this round)  Let B_0 = A_0 with two entries raised by 1, |A_0| = n,
+    and suppose the relation 'EQ or UP2' holds at every joint stage and both runs
+    terminate.  Then EXACTLY ONE of:
+      (i)  EQ occurs at a finite stage; EQ is absorbing, so R(A)=R(B), delta = 0;
+      (ii) EQ never occurs; the lockstep ends with A_s = 0^r TERMINAL and
+           B_s = (1,1,0^(r-2)); by Lemma C1-Y R(A)-R(B) = 1, delta = 1.
+    B_s can never be terminal while A_s is not: B = A with two entries raised, so
+    B = 0^m would force two entries of A to equal -1.  Hence branch (iii) is empty.
+   non-EQ pairs ending on  A = 0^r  vs  B = (1,1,0^(r-2))  with delta = 1 : 158
+   non-EQ pairs ending any other way                                     : 0
+   pairs where B became TERMINAL while A did not (branch (iii))          : 0
+   EXCLUSION LIST for those 0s: none among the 158 non-EQ pairs / 709 S1 pairs;
+   nothing is skipped and nothing is counted elsewhere.
+   delta histogram over the non-EQ pairs: {1: 158}   (branch (ii) predicts {1: all})
+   CONTROL: the non-EQ branch is NON-EMPTY (otherwise I4 would be safe) hits=158      OK
+
+[4] I1 AND I2 RE-DERIVED AS MEASUREMENTS (not quoted)
+    I1: one HH step with pivot p drops the sum by exactly 2p (C1-X (ii)).
+      lists tested: 227   violations of sum drop == 2*pivot: 0
+    I2: under UP2, max(B) - max(A) in {0,1}.
+      UP2 states tested: 3736   violations of max(B)-max(A) in {0,1}: 0   histogram {0: 3027, 1: 709}
+      population: every UP2-related joint state reached from the 709 S1 pairs.
+      NOTE the histogram: p_B = p_A + 1 DOES occur, so I3 ('raises sit strictly below
+      the pivot') is NOT an invariant of this population -- measured, not assumed.
+   CONTROL: the UP2-state sweep is non-empty                      hits=3736     OK
+
+[5] THE QUARANTINED 'COUNTEREXAMPLE TO C1-W': is its B_0 a head-block list at all?
+   A_0 = (3, 3, 2, 2, 2, 2)   B_0 = (4, 4, 2, 2, 2, 2)   (from the quarantined file, reproduced here to be TESTED)
+   A_0 == W-(3) ?  True      (W-(3) = [3, 3, 2, 2, 2, 2])
+   head blocks W^eps(c), c=1..8, for which B_0 = W^eps(c) u (tail with entries <= c): NONE
+   EXCLUSION LIST for that empty result: none in c=1..8; and |B_0| = 6 forces c+3 <= 6,
+   i.e. c <= 3, so c=1..8 already covers every possible c.
+   ==> B_0 is NOT in the head-block family, so the pair is OUTSIDE C1-W's hypothesis
+   and outside the S2 census entirely.  It refutes a reading, not a statement.
+   For the record, its residues: R(A_0)=2  R(B_0)=3
+
+[6] C1-W AS LITERALLY STATED vs WHAT r39 ACTUALLY CENSUSED -- my own defect
+    Sec 7.54 (2b) states C1-W as: 'at every state, B_s is either EQUAL to A_s or
+    again A_s with TWO ENTRIES RAISED BY 1'.  w61_r39_monodd.py's classifier accepts
+    a state as unbroken when relation() returns UP2 **or UNIT_DOWN or DOM**:
+       | elif r not in ("UP2", "UNIT_DOWN", "DOM"):
+    So the census tested a WIDER class than the sentence names.  Measured here:
+   S1 pairs that reach a joint state which is NEITHER EQ NOR UP2 : 51 of 709
+   population: the 709 S1 pairs of block [1].  These are exactly r39's 51
+   'UNIT_DOWN' absorptions, and 500 + 51 + 158 = 709 reconciles with r39's cross-tab.
+   smallest such pair, printed rather than excluded:
+      A_0 = (5, 5, 5, 4, 4, 4, 4, 4, 4, 1) B_0 = (5, 5, 5, 5, 4, 4, 4, 4, 4, 2)
+      first non-{EQ,UP2} joint state, at stage 3:
+         A_3 = (3, 3, 3, 2, 2, 2, 1)    B_3 = (3, 3, 2, 2, 2, 2, 2)     sum diff = 0, len diff = 0
+      B_3 is NOT A_3 with two entries raised by 1 (sums differ by 0, not 2).
+   ==> C1-W AS THE SENTENCE READS IS FALSE on 51 of 709 S1 pairs.
+   What r39 measured, and what is true on this population, is the WIDER invariant:
+   every joint state is EQ, UP2, UNIT_DOWN or DOM.  The sentence must be restated.
+   CONTROL: the leave-{EQ,UP2} set is non-empty (else no defect to report) hits=51       OK
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+  diffed runA/runB calls : 762   disagreements: 0 (a disagreement exits 2)
+  controls recorded      : 15   all true: True
+  DEFECTS                : 0  
+  PARTIAL (time limit)   : False   elapsed 0.2s of internal limit 60s

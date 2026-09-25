@@ -1,0 +1,5 @@
+characters usable for order 12 (p must not divide 12 => p in {5,7}): 23
+order-4 solutions for u^3 : [(0, 1), (2, -1)]
+branches examined (choice of u^2, u^3, u^4): 12
+order-12 HeLP solutions found: 0  []
+paper: 'elements of order 12 do not exist in V(ZG)'  ->  REPRODUCED

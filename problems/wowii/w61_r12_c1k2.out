@@ -1,0 +1,12 @@
+=== Lemma C1-A' :  V(c) = steps([c]^(c+3)) = c+1 ===
+   c = 1..79 : mismatches = 0
+
+=== Theorem C1-2 :  U(w,c) = w+1 iff w+c even, aborts iff w+c odd ===
+   1830 pairs (c <= w <= 60) : mismatches = 0
+
+=== control: the excess is NOT lam_1 + (k-1) at k = 3 ===
+   lam=[2, 1, 1]  lam_1=2  k=3  s0=3  excess=1
+   lam=[3, 2, 1]  lam_1=3  k=3  s0=4  excess=1
+   lam=[4, 3, 1]  lam_1=4  k=3  s0=5  excess=1
+   lam=[2, 2, 2]  lam_1=2  k=3  s0=4  excess=2
+done

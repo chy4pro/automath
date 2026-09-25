@@ -1,0 +1,123 @@
+=== owner-w61 r22 closing grep  (2026-08-22 22:46:41 CDT) ===
+
+[1] AD1 landed at all THREE sites (each proof opens with B_lo != empty)
+3
+    want 3
+
+[2] AD1 sites are the three named ones, in order (MB1 / GFAN2-HC / GFANnu-HC)
+1538:> **Corollary MB1 (a floor on L).** In the hard core, if every low vertex is
+1541:> *Proof.* First, **`B_lo ≠ ∅`**, i.e. `L ≥ 1`: at `L = 0` Theorem K makes `B` a clique,
+3062:> **Corollary GFAN2-HC (the B-universal layer needs `L ≥ 4` and `ν ≥ 3`).** In the
+3067:> *Proof.* First, **`B_lo ≠ ∅`**, i.e. `L ≥ 1`, which is Theorem RIG's remaining
+3273:> **Corollary GFANν-HC.** In the hard core, if every low vertex is B-universal then
+3276:> *Proof.* First, **`B_lo ≠ ∅`**, i.e. `L ≥ 1`, which is Theorem RIG's remaining
+6944:445:> **Corollary MB1 (a floor on L).** In the hard core, if every low vertex is
+
+[3] ZERO TOLERANCE: no hard-core proof still imports RIG/MB off the bare vacuous clause
+    LIVENESS FIRST: the check must SEE all three sites before its verdict means anything.
+  import sites SEEN by this check : 4  (want 4 -- MB1, RIG-2, GFAN2-HC, GFANnu-HC)
+     line 1547: > cannot lie in `T₁ ∪ T₂`). Theorem MB then reads `m̄ ≤ L − 1`; and `ν ≥ 1` by
+     line 2814: > core with `L ≥ 2` and every low vertex B-universal, Theorem RIG gives
+     line 3071: > Theorem RIG (§7.12) then makes the instance `GFan(τ,L,ν)` with
+     line 3280: > Theorem RIG then gives `GFan(τ,L,ν)` with **`1 ≤ ν ≤ L−1`** — the lower boun
+     line 2814 GUARDED by a numeric L floor in its own hypothesis
+  UNGUARDED import sites : 0  (want 0)
+  statements carrying the vacuous scope clause : 6
+     line 1538: > **Corollary MB1 (a floor on L).** In the hard core, if every low vertex is
+     line 1552: > is needed and was never made**. The scope clause “if every low vertex is B-u
+     line 3063: > hard core, if every low vertex is B-universal then `L ≥ 4` and `ν ≥ 3`.
+     line 3273: > **Corollary GFANν-HC.** In the hard core, if every low vertex is B-universal
+     line 6944: 445:> **Corollary MB1 (a floor on L).** In the hard core, if every low vertex 
+     line 7883: RIG's `B_lo ≠ ∅` (i.e. `L ≥ 1`) hypothesis**; their scope clause *"if every lo
+
+[4] Theorem GFANnu is NOT reached: its statement still carries its own L floor
+1
+    want 1
+    -- RIG is cited NOWHERE inside Theorem GFANnu's statement+proof block; B_lo never occurs there:
+    block = draft lines 3161..3272 (Theorem GFANnu through, but excluding, Corollary GFANnu-HC)
+    'Theorem RIG' as a PROOF STEP in the block : 0 (want 0)
+    'Theorem RIG' mentioned at all in the block : 1 (want 1 -- Repair AB1's downstream-consumer note)
+       line 3178: > through Theorem RIG (d), where Observation R1 (`diam = 4 ⟹ B` is not a clique)
+    'B_lo' anywhere in the block : 0 (want 0)
+    statement's own floor present : True
+
+[5] the facts AD1 RESTS on are unmoved
+1
+    want 1 (MB really is L>=1, so Q37's exclusion route is really unavailable)
+2
+    want 2 (SS7.6 A + the SS7.37 quotation)
+1
+    want 1 (Corollary SL-HC)
+2
+    want 2 (Corollary FAN-HC + the SS7.37 quotation)
+1
+    want 1
+
+[6] AD3, checked on the MATHEMATICS TEXT ONLY (SS7.37 quotes the defect verbatim, as it must)
+    bare "all of B_hi (DICH(b))" in the maths text : 0
+    want 0  [ZERO TOLERANCE]
+    "remaining vertices of B_hi (DICH(b))"          : 2
+    want 2
+    legitimate "all of B_hi high" (GFan definition)  : 1
+    want 1
+
+[7] repair labels registered exactly once each as LANDED
+    AD1 LANDED : 1
+    AD3 LANDED : 1
+    want 1 each; AD2 is a lint, not a draft edit:
+    AD2 in draft as a LANDED repair (want 0): 0
+
+[8] draft md5 matches the repair script's recorded post-value + SS7.37 appended once
+7a1e8e98a7b28b6bcec98b63eb3a0dee
+    (repair-script post-md5 was 5508104694060d84cb29ab8901cdecae BEFORE SS7.37 was appended)
+1
+    want 1
+1
+    want 1 (r21 entry not clobbered)
+
+[9] ZERO TOLERANCE: nothing in SS7.37 promotes anything
+0
+    want 0
+1
+    want 1
+
+[10] held-out key still not leaked into any brief
+    98384/791/131/f4965d68 anywhere under prompts/ :        0
+    want 0
+
+[11] H3/H4 second implementation + two-way roster diff
+    second impl roster rows :      791
+    want 791
+    IN impl-1 NOT IN impl-2 : 0
+    IN impl-2 NOT IN impl-1 : 0
+    ORDERED IDENTITY (sorted lists equal) : True
+    TWO-WAY DIFF CLEAN : True
+    CHECK A : PASS
+    CHECK B : PASS
+    H4      : computed=131 expected=131 PASS   (histogram total 1002 vs 1002)
+    H3 total: computed=791 expected=791 PASS
+    H3 per-E: PASS
+    SHAPES  : computed=98384 expected=98384 PASS
+
+[12] brief lint LIVENESS (RULING S) -- it must FAIL on the artifact that motivated it
+      r20 findings            : 4
+      toolkit-as-xref present : True
+      doubled-article present : True
+      LIVENESS: PASS -- the check can fail
+
+[13] the blind regex is quoted correctly and the historical builder is UNTOUCHED
+    554:out = re.sub(r"§7\.(\d+)( [A-G])?", "the certified toolkit", out)
+    r14 builder mtime (must predate this round) : Aug 22 09:21:00 2026
+    r20 brief   mtime (must predate this round) : Aug 22 21:57:44 2026
+    Q37 harvest mtime (must predate this round) : Aug 22 22:24:12 2026
+
+[14] harvest byte-identity is described as NOT established, in the file AND in SS7.37
+1
+    want 1
+2
+    want >=1
+
+[15] OPS-11 / auto-title rules still registered exactly once (r21 carry-forward)
+    OPS-11 headings in notes/web_model_ops.md : 1
+    want 1 (the forward reference at the OPS-10 write-up is a pointer, not a second registration)
+=== end ===

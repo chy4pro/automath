@@ -1,0 +1,4 @@
+[C* n<=7 exhaustive] hard-core graphs=8 (F-b) pairs=9 C* failures=0 outside-deg>=2 failures=0
+[C* +n=8 cover]      hard-core graphs=332 (F-b) pairs=399 C* failures=0 outside-deg>=2 failures=0
+[C*] hard-core tau histogram: {2: 14, 3: 200, 4: 118}
+[C*] hard-core cases with min_B deg >= tau+1 (Theorem N hyp (i)), per tau: {2: 14, 3: 91, 4: 5}

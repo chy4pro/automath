@@ -1,0 +1,28 @@
+progress: survivors=500 coverable=42 irreducible=1 t=2s
+progress: survivors=1000 coverable=82 irreducible=1 t=7s
+progress: survivors=1500 coverable=112 irreducible=1 t=11s
+progress: survivors=2000 coverable=150 irreducible=1 t=22s
+progress: survivors=2500 coverable=181 irreducible=1 t=48s
+progress: survivors=3000 coverable=211 irreducible=1 t=75s
+progress: survivors=3500 coverable=236 irreducible=1 t=141s
+progress: survivors=4000 coverable=335 irreducible=5 t=181s
+progress: survivors=4500 coverable=442 irreducible=5 t=187s
+progress: survivors=5000 coverable=543 irreducible=5 t=197s
+progress: survivors=5500 coverable=637 irreducible=5 t=214s
+progress: survivors=6000 coverable=736 irreducible=5 t=221s
+progress: survivors=6500 coverable=823 irreducible=5 t=253s
+progress: survivors=7000 coverable=925 irreducible=5 t=294s
+progress: survivors=7500 coverable=1019 irreducible=5 t=361s
+progress: survivors=8000 coverable=1110 irreducible=5 t=547s
+progress: survivors=8500 coverable=1198 irreducible=5 t=663s
+progress: survivors=9000 coverable=1280 irreducible=5 t=867s
+progress: survivors=9500 coverable=1369 irreducible=5 t=1064s
+complete X=24 time=1738s private_ok-survivors=9903 coverable=1440 irreducible=5
+x=12: exactly-max 1; G(x)=1
+x=24: exactly-max 4; G(x)=5
+G(24) = 5
+   (2, 3, 4, 6, 12)
+   (2, 3, 4, 6, 8, 24)
+   (2, 3, 4, 8, 12, 24)
+   (2, 3, 6, 8, 12, 24)
+   (2, 4, 6, 8, 12, 24)

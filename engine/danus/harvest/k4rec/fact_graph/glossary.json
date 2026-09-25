@@ -1,0 +1,4 @@
+{
+  "clean placement": "For nonzero coefficients u_i and distinct positions s_i, a placement is clean if there is no λ in μ_m\\{1} such that F(λ)=F(λ^{-1})=0.",
+  "μ_m": "The group of m-th roots of unity in the chosen algebraic closure."
+}

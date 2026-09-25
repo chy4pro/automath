@@ -1,0 +1,30 @@
+==============================================================================
+ITEM 2 -- viability of Corollary C1-C's route, EXHAUSTIVE for |M| <= 7
+==============================================================================
+  lam            k  w  |M|  residue  minalpha  #realizations  C1-C available?
+  1+1            2  1  4    2        2         3              YES
+  3+1            2  3  6    2        3         180            *** NO ***
+  2+2            2  2  5    2        2         12             YES
+  2+1+1          3  2  6    3        3         465            YES
+  1+1+1+1        4  1  6    3        3         15             YES
+  4+2            2  4  7    2        2         1890           YES
+  3+3            2  3  6    2        2         70             YES
+  3+2+1          3  3  7    3        3         12600          YES
+  2+2+2          3  2  6    2        2         70             YES
+  2+2+1+1        4  2  7    3        3         3507           YES
+  4+4            2  4  7    2        2         465            YES
+  3+3+2          3  3  7    2        3         5670           YES
+  2+2+2+2        4  2  7    3        3         465            YES
+
+  rows: 13 ; C1-C UNAVAILABLE: 1 ; minalpha exactly k (tight): 8
+
+  Sanity, on the same rows: residue <= minalpha (FMS) and residue <= k (C1):
+   residue > minalpha : 0 ;  residue > k : 0
+
+==============================================================================
+  The disjoint-union special case, stated and checked:
+  if lam is GRAPHICAL then G := K_{w+1} (disjoint union) H realizes M, and
+  alpha(G) = 1 + alpha(H) <= 1 + (k-1) = k because H has an edge.
+==============================================================================
+   graphical lam rows with |M| <= 7 : 6 ; all have minalpha <= k
+done

@@ -1,0 +1,88 @@
+==============================================================================
+TDN r3 -- TELESCOPING IDENTITY and the LINE-SUM PARITY
+==============================================================================
+
+[1] the two corrections are functions of (u,v) / (u,k) ALONE -- checked
+    exhaustively over the entire carry space, no sampling, several primes.
+    primes swept exhaustively: [3, 5, 7, 11]
+  [PASS] P1   eps(u,v) = floor((u+v)/p) coordinatewise, independent of x : 0 violations in 1905564 (x,u,v) triples; exclusion list EMPTY
+  [PASS] P2   gam(u,k) = floor(k*u/p) coordinatewise, independent of x : 0 violations in 161856 (x,u,k) triples; exclusion list EMPTY
+
+[2] the identities at the level of real f (f enters, and cancels)
+    population of f: the round-1/2 witness, f == 0, and 60 deterministic
+    pseudo-random f (seeded, reproducible). ALL x, ALL directions, no sampling
+    of x or of directions. Directions u, v, u+v all nonzero (d_0 undefined).
+  [PASS] P3   d_{u+v}f(x) = d_u f(x) + d_v f(x+u) + eps(u,v) : 0 violations / 855600 checks
+  [PASS] P4   d_{ku}f(x) = sum_{i<k} d_u f(x+iu) + gam(u,k) : 0 violations / 148800 checks
+
+[3] the complete p=5 class  A_e1 = {(0,0),(1,0)}, |A_e2| <= 3
+    -- re-enumerated here, and every line of it tested against (III)/(IV).
+    class enumerated completely = True ; normal-form f = 10925
+    de-normalised (free p^4 action, factor p^2) = 273125
+  [PASS] K1   every f re-checked from the DEFINITIONS, not the parametrisation : 0 violations
+  [PASS] P9   fibre sum vs |T_f-T_f| literal in (Z/p^2 Z)^2 : 0 violations on a SUBSAMPLE (every 250th f); this one is a subsample, stated as such
+  [PASS] P8   the PAPER'S OWN theorem as control: Case A members with a mixed |A_w| <= 3 = 0, out of 75 Case A members, all mixed directions tested, exclusion list EMPTY
+
+    (III) the window-sum theorem, tested on every line carrying a 2-direction
+  [PASS] P5   |A_{kz}| == W_k AND A_{kz} == {k a + n s + gam(z,k)} as SETS : 0 violations / 44100 (f,line,k) checks; exclusion list EMPTY
+  [PASS] P6   W_{p-k} == W_k : 0 violations / 44100 (f,line,k) checks; exclusion list EMPTY
+  [PASS] P10  (V) THE CAP: a 2-direction caps its whole line, |A_{kz}| <= min(k,p-k)+1 and S_L <= 10 : 0 violations / 55125 checks; exclusion list EMPTY
+  [PASS] P11  (IV) elementary parity A_{-z} = -A_z - eps(z,-z) AS SETS, and |A_{-z}| = |A_z|, on EVERY line of EVERY f : 0 violations / 262200 (f,line,z) checks; exclusion list EMPTY
+
+[4] THE LINE-SUM PARITY AND THE GAP
+  [PASS] P7a  lines carrying a 2-direction with ODD S_L : 0, out of 65550 (f,line) pairs examined; exclusion list EMPTY
+  [PASS] P7b  lines (ANY line, 2-direction or not) with S_L equal to the forbidden value : 0, out of 65550 (f,line) pairs; exclusion list EMPTY
+
+    S_L spectrum, split by whether the line carries a 2-direction
+      has a 2-direction = True  : min S_L = 8 ; values = [8, 10]
+      has a 2-direction = False : min S_L = 12 ; values = [12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32]
+    S_e1 spectrum over the class : [(8, 10925)]
+    S_e2 spectrum over the class : [(8, 50), (10, 50), (12, 2225), (14, 4500), (16, 4100)]
+
+[5] WHAT THE PARITY BUYS, on this class, in the class's own numbers
+    target (2p-1)^2                                   = 81
+    S_e1 is constant on the class                     = [8]
+    min S_e2 over NON-Case-A members                  = 10
+    min S_mixed over Case A members                   = 64
+    min S_mixed over NON-Case-A members               = 62
+    Case A branch     : 1 + S_e1 + S_e2 + S_mixed >= 81
+    non-Case-A branch : 1 + S_e1 + S_e2 + S_mixed >= 81
+    both branches >= target ?  True
+
+    THE EXCHANGE FRONTIER, exactly: for each attained value of S_e2, the
+    minimum S_mixed attained WITH it, and the minimum total. This is the
+    coupled inequality, measured rather than guessed.
+      S_e2   count   min S_mixed   S_e2+min S_mixed   min total
+      8      50      64            72                 81
+      10     50      80            90                 99
+      12     2225    64            76                 85
+      14     4500    62            76                 85
+      16     4100    64            80                 89
+    what the total needs from the pair : S_e2 + S_mixed >= 72
+    the frontier's minimum of S_e2 + S_mixed          : 72
+
+    ** CORRECTION TO A BANKED FINDING (cert_tdn_r2.md section 1). **
+    r2 certified: separate per-direction-class minima give at most 1+8+8+62,
+    'exactly two short', and concluded that ANY argument bounding the
+    direction classes separately is structurally two short. The measurement
+    above says otherwise: the axis minimum 8 is attained ONLY by functions
+    with |A_e2| = 2, which is precisely the paper's Case A, where the mixed
+    minimum is not 62 but 64. Split on that and the SEPARATED bookkeeping
+    reaches the target in both branches. The lost two was not a cost of
+    separation; it was a cost of taking each minimum over the WHOLE class
+    instead of conditioning on which case attains it.
+    (values: axis min 8, Case A mixed min 64, non-Case-A axis min 10,
+     non-Case-A mixed min 62)
+
+    min |T_f - T_f| over the whole class, taken JOINTLY = 81
+    members below the target : 0 ; exclusion list NONE (all 10925 tested)
+    round 2's separated bound used S_axis >= 8 for each axis line and got
+    1 + 8 + 8 + min S_mixed, two short. The parity replaces the axis floor
+    by 'equal to 8, or at least 10' -- and that gap is worth exactly the two.
+
+==============================================================================
+  controls_ok = True
+  controls    = [('K1', True), ('P1', True), ('P10', True), ('P11', True), ('P2', True), ('P3', True), ('P4', True), ('P5', True), ('P6', True), ('P7a', True), ('P7b', True), ('P8', True), ('P9', True)]
+  complete    = True
+  elapsed_s   = 15.32
+==============================================================================

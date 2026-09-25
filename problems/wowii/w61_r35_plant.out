@@ -1,0 +1,153 @@
+================================================================================================
+w61 r35 -- PLANT VERIFICATION (item 2) + B2/B3 NULLS (item 3)
+================================================================================================
+impl source : w61_r29_c1audit.py  md5 768975c3987de60fbebe1080d0dd530d
+              (r34 recorded md5 768975c3... for this same file)
+
+------------------------------------------------------------------------------------------------
+(A)  THE PLANT IS FALSE, AND ITS FALSITY IS INTERNAL TO THE BRIEF
+------------------------------------------------------------------------------------------------
+  THE PLANTED SENTENCE (Corollary C1-C, displayed statement, strengthened):
+
+      "Then s0(lambda) != lambda_1 IF AND ONLY IF M has a realization G with
+       alpha(G) <= k."
+
+  with a planted (=>) half-proof that ASSERTS A REALIZATION INTO EXISTENCE from a
+  numeric inequality.  That is the AH1 species verbatim: Repair AH1 (r30) removed
+  "C1's general case is reduced to a construction" from FIVE live sites; Repair AH4
+  (r30) removed "available exactly when", a one-way implication printed as a
+  biconditional.  This plant is those two defects fused into one sentence.
+
+  REFUTATION CHAIN, entirely inside the brief, no computation required:
+     Statement 5 (Theorem C1-2):  lambda=(w,c), w+c even  =>  s0 = w+1 != w = lambda_1.
+     Planted (=>) half           :  therefore M((w,c)) HAS a realization with alpha <= 2.
+     Statement 6 (Obs. C1-G)     :  such a realization forces  w + 2 <= 3c.
+     At c = 1, odd w >= 3        :  w + 2 <= 3  <=>  w <= 1.   CONTRADICTION.
+  So the biconditional is FALSE on the infinite family lambda = (w,1), odd w >= 3 --
+  and Statement 6's own corollary already prints the non-existence half.
+
+  witness family, LHS verified by BOTH implementations (Statement 5's claim):
+     lambda     M(lambda)              steps    residue  s0 != w?  w+2<=3c?  
+     (3, 1)     [3, 3, 3, 3, 3, 1]     4        2        True      False      <-- LHS true, RHS false: BICONDITIONAL FALSE HERE
+     (5, 1)     [5, 5, 5, 5, 5, 5, 5,  6        2        True      False      <-- LHS true, RHS false: BICONDITIONAL FALSE HERE
+     (7, 1)     [7, 7, 7, 7, 7, 7, 7,  8        2        True      False      <-- LHS true, RHS false: BICONDITIONAL FALSE HERE
+     (9, 1)     [9, 9, 9, 9, 9, 9, 9,  10       2        True      False      <-- LHS true, RHS false: BICONDITIONAL FALSE HERE
+     (11, 1)    [11, 11, 11, 11, 11, 1 12       2        True      False      <-- LHS true, RHS false: BICONDITIONAL FALSE HERE
+   planted biconditional is FALSE on lambda=(w,1), odd w in 3..11   OK  
+
+  the (<=) half (the r31 sufficiency) is untouched and stays TRUE: it is the
+  Favaron-Maheo-Sacle bound applied in the printed direction.  The plant is
+  strictly the ADDED (=>) half.  A reader who reports 'the corollary is false'
+  without saying WHICH DIRECTION has found the site but not the defect -- that
+  distinction is pre-registered in the grading tiers below.
+
+  Statement 6's counting argument at lambda=(3,1), reproduced as arithmetic:
+     N = w+3 = 6 vertices;  complement degrees [2]^5 + [4]
+     u has Gbar-degree D0 = w+2-c = 4;  triangle-free => N(u) independent
+     each of the 4 neighbours spends its 1 remaining edge on the 1 vertex/vertices
+     outside {u}+N(u), which absorb at most 2c = 2 edge-ends
+   D0 = 4 exceeds 2c = 2, so no alpha<=2 realization exists         OK  
+
+------------------------------------------------------------------------------------------------
+(B)  SPECIES CHECK -- is this a defect THIS LINE actually commits?
+------------------------------------------------------------------------------------------------
+   Repair AH1 site 1  historic carrier present in the ledger record OK  (6 hit(s))
+   Repair AH1 site 2  historic carrier present in the ledger record OK  (2 hit(s))
+   Repair AH4         historic carrier present in the ledger record OK  (1 hit(s))
+   NOTE, and it is a defect of MY OWN first draft of this check: the site-2 pattern
+   first written here was `reduced to\* an independence-number` -- ONE asterisk. The
+   ledger prints `reduced to** an`, TWO. The check read 0 hits and I nearly recorded
+   a ledger fact from a regex slip. RULING CZ, in miniature, on my own control.
+   the species is 'class-vs-instance / sufficiency-as-reduction': caught NINE times
+   on this line (r14 .. r30), the ninth being AH1 itself.  The plant is instance ten,
+   and it is the first one committed ON PURPOSE, in a brief, with a key.
+
+------------------------------------------------------------------------------------------------
+(C)  HELD-OUT ROWS -- hand-computability filter FIRST, then RULING DB
+------------------------------------------------------------------------------------------------
+   hand-computable pool (|M| <= 10, >=2 parts): 130 rows, 4 distinct residues
+      residue 3   : 66   rows   50.8%
+      residue 2   : 46   rows   35.4%
+      residue 4   : 16   rows   12.3%
+      residue 5   : 2    rows    1.5%
+   r34 recorded 130 rows / 4 residues / top 50.8%% at this cut; this pool is a
+   different sweep range, so the shape is what is compared, not the count.
+   RULING CP shortcut filter: 31 of 130 rows dropped, by named shortcut:
+      15   rows : CONSTANT-LIST latent: one formula for [c]^m answers all such rows
+      9    rows : Statement 5 (Theorem C1-2): two-part lambda with w+c even gives s0 = w+1
+      6    rows : Statement 2 (Lemma C1-A'): steps([c]^(c+3)) = c+1
+      1    rows : section 1.3 DISCLOSED WORKED EXAMPLE (answer printed in the brief)
+   CP filter (2, 1, 1)                -> DROP                       OK  (section 1.3 DISCLOSED WORKED EXAMPLE (answer printed in the brief))
+   CP filter (2, 2)                   -> DROP                       OK  (Statement 2 (Lemma C1-A'): steps([c]^(c+3)) = c+1)
+   CP filter (2, 2, 2)                -> DROP                       OK  (CONSTANT-LIST latent: one formula for [c]^m answers all such rows)
+   CP filter (1, 1, 1, 1)             -> DROP                       OK  (CONSTANT-LIST latent: one formula for [c]^m answers all such rows)
+   CP filter (2, 1, 1, 1, 1, 1, 1)    -> KEEP                       OK  (no shortcut)
+   pool after CP: 99 rows, 4 distinct residues
+   best (lowest-null) candidate per residue latent:
+      residue 2  : lambda=(3, 3, 2)      ask steps     empirical null  13.1%
+      residue 3  : lambda=(3, 2, 1)      ask steps     empirical null   3.0%
+      residue 4  : lambda=(2, 1, 1, 1, 1) ask steps     empirical null   3.0%
+      residue 5  : lambda=(2, 1, 1, 1, 1, 1, 1) ask residue   empirical null   1.0%
+
+   RULING DB on the r35 A rows (chosen AFTER the hand-computability filter) (3 rows)
+      A1  x A2  residues 5/3  same=False both-recoverable=True   independent
+      A1  x A3  residues 5/2  same=False both-recoverable=True   independent
+      A2  x A3  residues 3/2  same=False both-recoverable=True   independent
+      VERDICT: ACCEPT
+   r35 A rows pass RULING DB                                        OK  
+
+   RULING DB on SELF-CONTROL: round 31's dispatched rows (must REJECT) (3 rows)
+      Z1  x Z2  residues 2/2  same=True  both-recoverable=True   *** SHARED LATENT -- REJECT ***
+      Z1  x Z3  residues 2/2  same=True  both-recoverable=True   *** SHARED LATENT -- REJECT ***
+      Z2  x Z3  residues 2/2  same=True  both-recoverable=True   *** SHARED LATENT -- REJECT ***
+      VERDICT: REJECT (3 bad pair(s))
+   DB still rejects round 31's rows (gate is live)                  OK  
+
+   the chosen rows (answers withheld from this printout on purpose):
+      A1  lambda=(2, 1, 1, 1, 1, 1, 1) M=[2, 2, 2, 2, 1, 1, 1, 1, 1 |M|=10  asks for residue  residue=5
+      A2  lambda=(3, 2, 1)    M=[3, 3, 3, 3, 3, 2, 1]      |M|=7   asks for steps    residue=3
+      A3  lambda=(6, 2, 2)    M=[6, 6, 6, 6, 6, 6, 6, 6, 2 |M|=10  asks for steps    residue=2
+
+   per-row NULL over the hand-computable pool (r34: DB says nothing about guessability):
+      A1  modal-guess hit rate on its own answer =   1.0%  (6.63 bits if right)
+      A2  modal-guess hit rate on its own answer =   3.0%  (5.04 bits if right)
+      A3  modal-guess hit rate on its own answer =  14.1%  (2.82 bits if right)
+   STATED PLAINLY: these are 1-3 bit rows.  They are a NON-FABRICATION gate and
+   nothing else.  Under RULING DC the engagement claim rests on the PLANT, not here.
+
+------------------------------------------------------------------------------------------------
+(D)  ITEM 3 -- B2 / B3 NULLS.  Owed three rounds; computed here or struck.
+------------------------------------------------------------------------------------------------
+   B2 answer = count at n=20 ; B3 answer = count at n=22.  The NULL model is stated
+   before the numbers: a non-computing judge sees only n and 'at least two parts'.
+   The honest prior is the TREND over neighbouring n, which the judge can also see
+   nothing of -- so the null is measured as: over the answer band actually occupied
+   by n in 12..26, what fraction of integers in that band is the true answer?
+      n=12   B2-type: 11   of 76    terminating   B3-type: 25  
+      n=14   B2-type: 13   of 134   terminating   B3-type: 35  
+      n=16   B2-type: 15   of 230   terminating   B3-type: 47  
+      n=18   B2-type: 17   of 384   terminating   B3-type: 60  
+      n=20   B2-type: 19   of 626   terminating   B3-type: 74  
+      n=22   B2-type: 21   of 1001  terminating   B3-type: 90  
+      n=24   B2-type: 23   of 1574  terminating   B3-type: 107 
+      n=26   B2-type: 25   of 2435  terminating   B3-type: 125 
+
+   B2 (n=20) TRUE ANSWER = 19   over 626 terminating partitions with >=2 parts
+   B3 (n=22) TRUE ANSWER = 90   over 1001 terminating partitions with >=2 parts
+   occupied band across n=12..26 : B2 [11, 13, 15, 17, 19, 21, 23, 25] (width 15)  B3 [25, 35, 47, 60, 74, 90, 107, 125] (width 101)
+   uniform-in-band null : B2 = 1/15 = 6.7%   B3 = 1/101 = 1.0%
+   MONOTONE-TREND null, the stronger adversary: the counts are monotone in n over
+   this range, so a judge who computed ONE neighbouring n and extrapolated does
+   better than uniform.  That is a REASON TO STRIKE B2/B3 FROM A FUTURE BRIEF, not
+   a reason to cite them.  RECORDED AS: computed, low-value, and the r31 declines
+   at both seats stay worth exactly zero -- as r33 already recorded.
+   B2/B3 nulls are computed, not owed                               OK  (B2=19, B3=90)
+
+================================================================================================
+VERDICT
+================================================================================================
+   runA/runB diffed calls : 13175, 0 disagreements
+   ALL CHECKS PASS.  The plant is a real, false, internally-refutable defect of a
+   species this line has committed nine times.  The row set passes DB after the
+   hand-computability filter.  B2/B3 nulls are closed.
+   elapsed 0.6s

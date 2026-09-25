@@ -1,0 +1,93 @@
+draft length now: 5690 lines; PINNED BOUNDARY = 5517
+
+PART 0 -- LIVENESS: every predicate fired on an input where it MUST return True
+   probe verdict: PASS
+  [OK ] LIVENESS: the gate CAN PASS (fires clean on a minimal correct probe)     got=[] want=[]
+  [OK ] LIVENESS: reflow finds a clause that WRAPS across two physical lines     got=True want=True
+  [OK ] LIVENESS: WITHOUT the reflow the same wrapped clause is MISSED           got=False want=False
+
+PART 1 -- ADDRESS POPULATION at or before the pinned boundary, enumerated in full
+   raw  : 62 distinct addresses, G0 .. G61
+   NFKC : 62 distinct addresses
+   HOLES in G0..G61: []
+  [OK ] population is CONTIGUOUS G0..G61 (0 holes)                               got=[] want=[]
+  [OK ] distinct addresses at the boundary                                       got=62 want=62
+  [OK ] raw and NFKC populations agree (no encoding-invisible address)           got=True want=True
+  [OK ] G62 is unoccupied at the boundary                                        got=False want=False
+
+PART 1b -- G61's PRE-BOUNDARY occurrences, printed line by line and classified
+   line 5261  [prose] by encoding). `G61` is unoccupied. The 2 pre-boundary `G60` occurrences are printed **line by
+  [OK ] G61 occurrences at or before the boundary                                got=1 want=1
+  [OK ] of which REGISTRATION-SHAPED (the address was FREE)                      got=0 want=0
+  [OK ] classifier FIRES on G60's real registration (positive control)           got=True want=True
+
+PART 2 -- WHOLE-DRAFT `G61` CENSUS, every occurrence classified by SECTION
+  [OK ] the mint section heading is unique and locatable by anchor               got=1 want=1
+   mint section begins at draft line 5518
+   line 5261  [FREE-ADDRESS-PROSE  ] by encoding). `G61` is unoccupied. The 2 pre-boundary `G60` occurrences are printed **line by
+   line 5518  [CITATION-IN-MINT    ] # §40 owner-w133 round 29 (2026-08-23, opus) — **REGISTRY: the IMPLICATION `(D3-C6) ⟹ pocket-1's `D = 3` Case-
+   line 5527  [CITATION-IN-MINT    ] ## 40.1 REGISTRY — **`G61` is MINTED for the IMPLICATION**, and the antecedent is IN THE STATEMENT
+   line 5536  [REGISTRATION        ] > **`G61` (Implication — elementary; a conditional TRANSFER, not a closure).**
+   line 5549  [CITATION-IN-MINT    ] > **THE ANTECEDENT IS PART OF THE STATEMENT AND TRAVELS WITH THE NUMBER.** A citation of `G61`
+   line 5552  [CITATION-IN-MINT    ] > **THREE THINGS `G61` IS NOT.** **(a)** It is **NOT §27.4's corollary** — the corollary asserts
+   line 5553  [CITATION-IN-MINT    ] > the consequent outright; `G61` asserts only the implication, and a citation of `G61` as the
+   line 5567  [CITATION-IN-MINT    ] **Against this round's own interest — `G61` does NOT inherit `G60`'s enumeration qualifier, and
+   line 5568  [CITATION-IN-MINT    ] that is a real observation, not a loophole.** `G61`'s proof runs on `G46` alone; `G46` is
+   line 5570  [CITATION-IN-MINT    ] §37. So the §35–§37 enumerations are **not** a hypothesis of `G61`. The consequence is one the
+   line 5571  [CITATION-IN-MINT    ] round would rather not have to say: **`Q41` clearing cleanly will not strengthen `G61` by one
+   line 5572  [CITATION-IN-MINT    ] line.** Q41 attacks the chain that proves the *antecedent*; `G61` is a statement about the
+   line 5573  [CITATION-IN-MINT    ] *transfer*, and the transfer was never in doubt. What `G61` waits on is part (2) — **adoption**
+   census: {'FREE-ADDRESS-PROSE': 1, 'CITATION-IN-MINT': 11, 'REGISTRATION': 1}
+  [OK ] whole-draft census has 0 UNCLASSIFIED                                    got=0 want=0
+  [OK ] exactly ONE registration in the whole draft                              got=1 want=1
+   bare G61 citations outside the mint section: []
+  [OK ] 0 bare `G61` citations outside the mint section                          got=[] want=[]
+   positive control -- injected bare citation at line 12: [12]
+  [OK ] hygiene check FIRES on an injected bare citation (hardest form)          got=[12] want=[12]
+
+PART 3 -- THE STATEMENT BLOCK, located by its OWN ADDRESS (no line number)
+   anchors found at draft lines: [5536]
+  [OK ] exactly one G61 registration anchor                                      got=1 want=1
+   statement block: 23 lines, 1823 chars reflowed
+   verdict on the real draft: PASS
+  [OK ] the real draft PASSES the whole gate                                     got=[] want=[]
+
+PART 4 -- CORRUPTIONS: hardest form of each species (RULING CZ), each asserted
+          to FIRE and to fire FOR THE RIGHT REASON
+   X1     THE REAL HISTORICAL INSTANCE: genus flipped to Corollary, all disclaimers intact
+          -> ['GENUS-NOT-IMPLICATION', 'GENUS-IS-COROLLARY']
+  [OK ] X1 FIRES                                                                 got=True want=True
+  [OK ] X1 fires for the RIGHT REASON (GENUS-IS-COROLLARY)                       got=True want=True
+   X2     r28's C2, hardest: condition survives but carries a DATE, state dropped
+          -> ['COND-NOT-IN-BLOCK(1)', 'STATE-HAS-NO-LEDGER-ADDRESS', 'DATE-CARRIER-IN-BLOCK(as of r2)']
+  [OK ] X2 FIRES                                                                 got=True want=True
+  [OK ] X2 fires for the RIGHT REASON (DATE-CARRIER-IN-BLOCK)                    got=True want=True
+   X3     r28's C3, hardest: antecedent evicted into the line immediately ABOVE the block
+          -> ['COND-NOT-IN-BLOCK(1)', 'STATE-HAS-NO-LEDGER-ADDRESS']
+  [OK ] X3 FIRES                                                                 got=True want=True
+  [OK ] X3 fires for the RIGHT REASON (COND-NOT-IN-BLOCK)                        got=True want=True
+   X4     polarity flip: 'closes NO pocket' survives, residual silently CLOSED
+          -> ['RESIDUAL-NOT-DECLARED-OPEN', 'POCKET-DECLARED-CLOSED']
+  [OK ] X4 FIRES                                                                 got=True want=True
+  [OK ] X4 fires for the RIGHT REASON (POCKET-DECLARED-CLOSED)                   got=True want=True
+   X5     the forbidden claim: part (2) declared discharged inside the disclaimer
+          -> ['DISCHARGE-DISCLAIMER-MISSING', 'PART2-CLAIMED-DISCHARGED']
+  [OK ] X5 FIRES                                                                 got=True want=True
+  [OK ] X5 fires for the RIGHT REASON (PART2-CLAIMED-DISCHARGED)                 got=True want=True
+   X6     duplicate registration, and the duplicate is a CORRECT copy
+          -> ['ANCHOR-NOT-UNIQUE(2)']
+  [OK ] X6 FIRES                                                                 got=True want=True
+  [OK ] X6 fires for the RIGHT REASON (ANCHOR-NOT-UNIQUE)                        got=True want=True
+   X7     malformed-citation clause deleted, condition left standing
+          -> ['MALFORMED-CLAUSE-MISSING']
+  [OK ] X7 FIRES                                                                 got=True want=True
+  [OK ] X7 fires for the RIGHT REASON (MALFORMED-CLAUSE-MISSING)                 got=True want=True
+
+PART 5 -- RULING CV DEMONSTRATED: 60 lines inserted ABOVE the statement block
+   anchor moved: draft line 5536 -> 5596
+  [OK ] ANCHOR-addressed verdict is UNCHANGED under a 60-line insertion above    got=[] want=[]
+   line-number-addressed block length: 23 -> 0
+  [OK ] the LINE-NUMBER-addressed gate is DESTROYED by the same insertion        got=True want=True
+  [OK ]    ... and it is destroyed to ZERO, i.e. it would read an EMPTY statement got=0 want=0
+
+checks: 34, failures: 0

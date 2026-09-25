@@ -1,0 +1,8 @@
+read problems/wowii/w133_r44_W44a.txt: n = 421, |E| = 1050
+rad = 5, diam = 6, |Ctr| = 1, Ctr = [346]
+mu = 2, l = 4.988124, mean degree = 4.988124
+condition-4 vertices with ecc = rad+1: 129  (first: [0, 10, 13, 14, 15, 16, 21, 23])
+G = H + pendant at w=0:  l(G) = 4.981043, floor(l(G)) = 4, rad(G) = 6, target = 10
+anchored induced path on 9 vertices: [0, 420, 163, 342, 361, 5, 19, 82, 71]
+so path(G) >= 1 + 9 = 10 >= target 10
+CHECKS 1496  FAILS 0

@@ -1,0 +1,4 @@
+[stage A n<=7 exhaustive] tested=995 residue=alpha:554 failS=0 failF3=0 failH=0 hitN=11 failN=0 hitNp=0 failNp=0
+[+stage B n=8 exhaustive cover] tested=109326 residue=alpha:36108 failS=0 failF3=0 failH=0 hitN=139 failN=0 hitNp=0 failNp=0
+[+random n=9..12] tested=116827 residue=alpha:36581 failS=0 failF3=0 failH=0 hitN=141 failN=0 hitNp=0 failNp=0
+[+structured] tested=116873 residue=alpha:36612 failS=0 failF3=0 failH=0 hitN=153 failN=0 hitNp=0 failNp=0

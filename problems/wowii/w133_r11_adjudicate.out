@@ -1,0 +1,28 @@
+=== (A) judge's counterexample H, re-verified from the edge list ===
+  ok: H is C4-free
+  ok: H is connected
+  ok: mu(H) = 2  (F4 form holds; NO peeling possible)  a={0: 3, 1: 2, 2: 3, 3: 4, 4: 3, 5: 2, 6: 2, 7: 2, 8: 2, 9: 2}
+  ok: 2-1-0-8 is a geodesic of length 3
+  ok: a(u0)=a(2)=3 >= 3
+  ok: a(u3)=a(8)=2 >= 2
+  ok: x=3 is a usable side-neighbour of u0 with a(x)=4
+  ok: usable-far set is exactly {9}
+  ok: Case-2-forced: every usable far y is adjacent to x
+  ok: path(H) = 6 exactly < 7 = d+4   witness [0, 8, 9, 3, 2, 6]
+  NOTE (owner scope guard): Sigma a = 25, n = 10, l(H) = 25/10 = 2.50  -> l < 3, so H lies
+       OUTSIDE pocket 1's live class (l > 3): it kills the local d=3 route, not (RP-D).
+
+=== (B) does H also touch G36 (d=4) or G37 (d=3 Case 1)?  judge says no ===
+  ok: diam(H) = 3, so H carries NO geodesic of length >= 4 -> G36 untouched
+  qualifying frames in H: [(2, 1, 0, 8, 3, (9,)), (2, 6, 4, 8, 3, (9,))]
+  ok: H carries qualifying frames at all (the test is not vacuous)
+  ok: H carries NO Case-1 frame (all 2 qualifying frames are Case-2-forced) -> G37 untouched
+
+=== (C) defect B10: peeling slack arithmetic on CE-1, leaf vs triangle-leaf ===
+  CE-1: a = {0: 2, 1: 1, 2: 3, 3: 1, 4: 2, 5: 4, 6: 2, 7: 1, 8: 1, 9: 2}  Sigma a = 19  slack Sigma a - 3n = -11
+  ok: deleting 1 (leaf): slack rises by +1 (project text says exactly +1)
+  ok: deleting 8 (triangle-leaf): slack rises by +2 (project text says exactly +1)
+  => the '+1 exactly' phrasing is FALSE for triangle-leaves (+2); '>= +1' is what every
+     downstream use needs, so no conclusion moves.  B10 CONFIRMED.
+
+FAILURES: 0

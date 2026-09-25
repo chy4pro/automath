@@ -1,0 +1,2 @@
+VERDICT: FLAWED
+The flaw is the final step claiming “the exponent, which for order p² must be p²” — while maximal order = exponent is true, the exponent need not be p². The counterexample is G = C_p × C_p (e.g., V₄ = C₂ × C₂ when p=2), which is abelian of order p², has exponent p and every non-identity element has order p, so it has no element of order p² and is not cyclic; the correct classification is C_{p²} or C_p × C_p.

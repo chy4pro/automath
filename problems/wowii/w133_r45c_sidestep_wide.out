@@ -1,0 +1,83 @@
+WOWII-133 round 45 slice 3 -- WIDENED RE-RUN of slice 2 (whose host builder had
+                              been RETYPED, not copied, and was not C4-free)
+interpreter: system python3 3.9.6 (pure stdlib)
+
+==============================================================================
+PART A -- (TAIL-2S), the SIDESTEP, and its proof
+==============================================================================
+
+  (TAIL-2S).  Let H be C4-free with mu(H) >= 2, w a vertex, u_0..u_d a geodesic from
+  w = u_0 to a far end u_d (d = ecc(w) >= 3), and y in N(u_d) admissible for (TAIL-1)
+  (y != u_{d-1} and y !~ u_{d-1}).  Suppose there is p in N(y) & N(u_{d-2}) with
+  p !~ u_{d-3}, and a(u_d) >= 3.  Then endpath(H,w) >= ecc(w)+3.
+
+  Proof.  Consider  Q := u_0 ... u_{d-2}, p, y, u_d  --  (d-1) + 3 = d+2 vertices.
+   * p != u_i for every i: p ~ u_{d-2} rules out i = d-2 and, by distance, i <= d-4;
+     p ~ y and y !~ u_{d-3} (distance from u_d) rule out i = d-3.
+   * p !~ u_i for i <= d-4: p ~ u_{d-2} and p ~ u_i would put u_i and u_{d-2} at distance
+     <= 2 through p; for i = d-4 that gives u_{d-4}, u_{d-2} the two common neighbours
+     u_{d-3} and p -- a C4.  For i < d-4 it contradicts d(u_i,u_{d-2}) = d-2-i >= 3.
+     p !~ u_{d-3} is the hypothesis.
+   * p !~ u_d: otherwise u_{d-2} and u_d have the two common neighbours u_{d-1} and p
+     (p != u_{d-1} because p ~ y and y !~ u_{d-1}) -- a C4.
+   * y !~ u_i for i <= d-2: y !~ u_{d-2} is (TAIL-1)'s C4 argument, and i <= d-3 is
+     distance (d(y,u_i) >= d(u_d,u_i) - 1 >= 2).
+   * u_d !~ u_i for i <= d-2 is the geodesic.
+  So Q is an induced path anchored at w.  Now extend by y' in N(u_d).  y' is forbidden only
+  if y' = or ~ some vertex of Q other than u_d:
+   * y' !~ u_{d-2}: N(u_d) & N(u_{d-2}) = {u_{d-1}} by C4-freeness -- ONE component.
+   * y' !~ u_i, i <= d-3: automatic, d(u_d,u_i) >= 3.
+   * y' !~ p: N(u_d) & N(p) has at most one element and y is in it, so it IS {y}.
+   * y' != y and y' !~ y: y's own matching component of G[N(u_d)] -- ONE component, and it
+     is NOT u_{d-1}'s, because y was chosen off u_{d-1}'s component.
+  Exactly two matching components of G[N(u_d)] are excluded, so a(u_d) >= 3 leaves one. []
+
+  WHY IT MATTERS.  (TAIL-2'') pays for the dodge list in a(y)/deg(y) AT y.  (TAIL-2S) pays
+  nothing at y at all: it spends the k2-witness p, which (ROW-HARD)/(ROW-K) say an OPEN
+  instance is obliged to provide at every frame.  The two conditions are therefore aimed at
+  opposite regimes, and an instance that is still open must defeat BOTH:
+
+    (ROW-HARD''').  An open offset-+1, k = 4 row instance has, at every far end u_d of w
+    and every admissible frame:  max(a(y),deg(y)-1) <= 1 + k2(y)  [round 44]  AND
+    k2(y) >= 1  [(ROW-K), from mu >= 2]  AND -- new -- either a(u_d) = 2 exactly, or every
+    witness p in N(y) & N(u_{d-2}) satisfies p ~ u_{d-3}.
+
+==============================================================================
+PART B -- (P3): does the construction actually BUILD, wherever it claims to?
+          and (P1): is `p !~ u_{d-3}' load-bearing?
+==============================================================================
+  host slots dropped by the builder or the mu >= 2 screen: 0
+  hosts: 59.  (TAIL-2S) frames examined: 44153.
+  (TAIL-2S) CORRECT form (p !~ u_{d-3} required):
+      hypotheses hold on 41523 frames; path BUILT 41523; FAILED TO BUILD 0
+  GUARD (D13) DROP-p-CONDITION (the `p !~ u_{d-3}' clause removed):
+      hypotheses hold on 49408 frames; path BUILT 41523; FAILED TO BUILD 7885
+  a(u_d) histogram over the frames: 2:2630  3:13001  4:18441  5:8990  6:1027  7:64
+  (P4) VERDICT: HELD -- the dropped clause over-claims on 7885 frames.
+
+==============================================================================
+PART C -- (P2): the new necessary condition `a(u_d) = 2 at every far end of w'
+==============================================================================
+
+  (TAIL-2S) closes an instance as soon as ONE far end u_d of w has a(u_d) >= 3 together
+  with a k2-witness p missing u_{d-3}.  So an OPEN instance needs a(u_d) = 2 at (almost)
+  every far end of w.  DIRECTION OF THE SAMPLING ERROR, FIXED FIRST (129): far ends and
+  geodesics are SAMPLED, so a printed `a(u_d) >= 3 somewhere' is SOUND (that far end really
+  does have it) while `a = 2 everywhere' would be INCONCLUSIVE.
+
+  W43a  condition-4 vertices 128; min/max a(far end) over them: 4/5 ; (TAIL-2S) closes 102
+  W43b  condition-4 vertices   1; min/max a(far end) over them: 5/5 ; (TAIL-2S) closes 1
+  W43c  condition-4 vertices   2; min/max a(far end) over them: 5/5 ; (TAIL-2S) closes 1
+  W44a  condition-4 vertices 129; min/max a(far end) over them: 2/5 ; (TAIL-2S) closes 104
+  CASE A instances examined: 260; with SOME far end at a(u_d) >= 3: 260;
+  with EVERY far end at a(u_d) = 2 (the only ones (TAIL-2S) cannot touch): 0
+  (P2, inherited from slice 2 and NOT re-predicted here) : no instance has every far end at a = 2 -- every CASE A instance this line holds has a far end with a >= 3, so the a(u_d) = 2 half of the necessary condition is violated everywhere on this family.
+  CASE A instances (TAIL-2S) does NOT close: 52
+    ... of those, WITH a far end at a(u_d) >= 3 (so the binding sub-condition
+        is the MISSING WITNESS p, not a(u_d) = 2): 52  (100.0%)
+    ... with EVERY far end at a(u_d) = 2: 0
+  (P5) VERDICT: HELD
+
+==============================================================================
+CHECKS 52   FAILS 0   elapsed 1.2s
+==============================================================================

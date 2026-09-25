@@ -1,0 +1,21 @@
+PG(2,5) incidence: n=62, 6-regular, C4-free OK, triangle-free OK
+
+ L |    n |  sum a |        l        | C4-free | a-profile check
+ 5 |  129 |    756 |          252/43 |    True | {2: 5, 6: 122, 7: 2}
+ 8 |  132 |    762 |          127/22 |    True | {2: 8, 6: 122, 7: 2}
+ 9 |  133 |    764 |         764/133 |    True | {2: 9, 6: 122, 7: 2}
+10 |  134 |    766 |          383/67 |    True | {2: 10, 6: 122, 7: 2}
+
+closed forms from the rebuild:  n = 124 + L ,  sum a = 746 + 2L
+  verified at L = 5, 8, 9, 10
+
+=== the graded rows ===
+K1  L=9 : n=133, sum=764, l=764/133 = 5.7444
+K2  L=8 : n=132, sum=762, l=127/22 = 5.7727
+F5  L=5 : n=129, sum=756   <-- W1 as F5 states it
+    L=10: n=134, sum=766  <-- what 72k-10 / 394k-22 give at k=2
+
+=== the B1 diagnosis: k-chain formula at k=2 ===
+  72*2-10  = 134   vs  L=10 rebuild n   = 134   match=True
+  394*2-22 = 766  vs  L=10 rebuild sum = 766  match=True
+  F5's W1 (L=5) = (129, 756)  -> the formula is the L=10 chain, NOT F5's W1

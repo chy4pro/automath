@@ -1,0 +1,14 @@
+[MECHANISM SCAN] Fan(tau,L>=2), tau<=8 R<=14 k<=10, 3 trajectories each (canonical + 2 randomised tie-breaks)
+  labelled HH runs = 64911
+  s - tau histogram = {1: 64911}
+  M1 (first p heads = B_hi)          fails = 0
+  M2 (C never escapes high-phase blk) fails = 0
+  M3 (suffix = [L]*(L+1)+[1,1])       fails = 0   (short runs: 0)
+  M4 (s = tau+1 exactly)              fails = 0
+  suffix histogram = {'EXACT': 64911}
+
+[CONTROL: counterfactual availability] same residue test on shapes that break ONE Fan hypothesis:
+   Bclique    tried=  46138  residue==alpha hits=36650
+   lowdegA2   tried=  46138  residue==alpha hits=0
+   noA0       tried=  46138  residue==alpha hits=0
+   (nonzero hits => the test discriminates; it is not vacuously always-negative)

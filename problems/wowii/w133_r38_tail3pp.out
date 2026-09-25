@@ -1,0 +1,182 @@
+==============================================================================
+WOWII-133 round 38 -- (F11-ALL): the cost is a MAX of two invariants, and the
+coverage census moves from FRAMES to VERTICES
+==============================================================================
+interpreter: 3.9.6 (pure stdlib; system python3)
+hard internal deadline (s): 420.0
+hosts built and certified connected + mu >= 2: 420
+hosts re-certified C4-free (sample of the small ones): 12
+
+==============================================================================
+PART 0 -- THE GUARD.  CLASS DECLARED, TESTED AGAINST MEMBERS IT HAS NOT SEEN
+==============================================================================
+CLASS CLAIMED: any COST EVALUATOR that mis-states what a frame extension costs
+  (under- or over-counting the dodge list, or paying one less than the proof
+  demands), and any QUANTIFIER-SCOPE defect that widens the legal set of frames.
+GUARD: every firing must BUILD the induced anchored path and survive a checker
+  built from the EDGE LIST, not from the adjacency sets the frame walk uses.
+UNSEEN MEMBERS (none is zero-step / one-step / late-block / off-by-one-search /
+  anchor-drift -- the five members r34..r37 tested):
+    (D1) COST-UNDERCOUNT  -- dodge list counted over half the indices
+    (D2) COST-OFFBYONE    -- pays 1+k where the proof demands 2+k
+    (D3) HOME-BLIND       -- y allowed to range over u_{d-1}'s OWN component
+
+guard hosts: 8, of which TRIANGLE-CARRYING: 2
+a(.) matching-formula vs brute independent-set, vertices agreeing: 149
+frame rows walked on the guard hosts:                    7551
+CORRECT (TAIL-2'') firings / of which BUILT:             7325 / 7325
+CORRECT evaluator FALSE ALARMS (fired, nothing to build): 0
+
+member  fires  fires-where-correct-does-not  CAUGHT by build  INVISIBLE
+  D1     7510                          185               81        104
+  D2     7537                          212               96        116
+  D3      218                          218              218          0
+
+THE THRESHOLD IS PART OF THE GUARD (r37's finding, re-measured here):
+  an over-permissive cost defect is INVISIBLE at a frame that extends anyway --
+  the INVISIBLE column counts exactly those.  A guard scored only where it fires
+  cannot see them, which is why the extra/caught split is printed separately.
+
+==============================================================================
+PART 1 -- (TAIL-2'') AND (TAIL-3''), CERTIFIED BY *BUILDING* THE PATH
+          convention: z is the FIRST constructible z, as in round 37, so the
+          margin below is head-to-head with r37's numbers
+==============================================================================
+hosts entered (n <= 130) / skipped as too big:  417 / 3
+frames examined (geodesic, y):                 77724
+  of them with t(y) = 0 (no triangle at y):    29532
+
+STEP 2 -- fires:  blanket a(y)>=4 : 42119
+                  (TAIL-2')       : 68885
+                  (TAIL-2'')      : 71489
+  (TAIL-2'') firings with the ecc+3 path BUILT and checked: 71489
+  frames (TAIL-2'') wins that (TAIL-2') LOSES:             2604
+     ... every one of them BUILT:                          2604
+
+STEP 3, HEAD-TO-HEAD GATE (r37's: step 2 reached through (TAIL-2') only)
+  frames reaching step 3 under that gate:      68885
+           fires:  blanket a(z)>=6 : 8821
+                   (TAIL-3')       : 52807
+                   (TAIL-3'')      : 58273
+
+STEP 3, ROUND 38's OWN GATE (step 2 reached through (TAIL-2''))
+  frames reaching step 3 under this gate:      71489
+           fires:  blanket a(z)>=6 : 8879
+                   (TAIL-3')       : 53945
+                   (TAIL-3'')      : 60066
+  (TAIL-3'') firings with the ecc+4 path BUILT and checked: 60066
+  frames (TAIL-3'') wins that (TAIL-3') LOSES:             6121
+     ... every one of them BUILT:                          6121
+
+WHERE THE GAIN CAN COME FROM, and it is a THEOREM about this family, not a hope:
+  deg = a + t, so deg-1 >= 2+k with a <= 1+k forces t >= 2.  On a TRIANGLE-FREE
+  vertex t = 0 and the degree half can NEVER win.  Every PG(2,q) incidence graph
+  is bipartite, so on those hosts the sharpening is VACUOUS BY CONSTRUCTION.
+
+==============================================================================
+PART 2 -- ARE THE SUMMED MINIMA SIMULTANEOUSLY ATTAINABLE?
+          section 42.3's constants 4 and 6 are the counted forms with EVERY
+          indicator set to 1.  A worst case that no frame attains is a WRONG
+          constant, not a conservative one.
+==============================================================================
+hosts entered / skipped:                       417 / 3
+frames with a step-2 index count k2:           77724
+   k2 = 0 :  24651
+   k2 = 1 :  37397
+   k2 = 2 :  15676
+frames that reached a step-3 index count k3:   73204
+   k3 = 0 :  10494
+   k3 = 1 :  27497
+   k3 = 2 :  23620
+   k3 = 3 :  11593
+   k3 = 4 :  0
+
+MAX k2 ATTAINED on this family: 2   (blanket a(y)>=4 assumes k2 = 2)
+MAX k3 ATTAINED on this family: 3   (blanket a(z)>=6 assumes k3 = 4)
+frames attaining BOTH worst cases at once (k2=2 AND k3=4): 0
+  witness for k2 = 2: host dense(s=1,n0=14), w = 0, d = 3
+  NO frame on this family attains k3 = 4.
+
+READING, and the direction of the claim is stated: this family is DESIGNED plus
+SEEDED-RANDOM and NOT exhaustive, so a k value not attained here is a
+MEASUREMENT about the family, NOT a theorem that the blanket constant is wrong.
+What it IS: the evidence needed before anyone sums those minima again.
+
+==============================================================================
+PART 3 -- THE PER-w COVERAGE CENSUS  (this is the front)
+          (F11-STRAT): ecc(w) >= rad+2 is FREE from (TAIL-1).  The target lives
+          on {w : ecc(w) <= rad+1}.  (F11-ALL) needs ONE good frame per w, not
+          all of them -- so the quantifier is EXISTENTIAL over far ends,
+          geodesics, y and z.  r37 counted FIRINGS PER FRAME; this counts w's.
+==============================================================================
+sampling: max_far = 6 far ends, max_geo = 3 geodesics each
+DIRECTION OF ERROR, stated before the numbers: COVERED is certified by BUILDING
+  the path, so COVERED is a LOWER bound on true coverage; RESIDUAL is therefore
+  an UPPER bound on the true residual -- widening the sampling can only shrink it.
+
+hosts entered (n <= 130) / skipped as too big:   417 / 3
+   of them with l > 4:                          83
+   of them with l > 4 AND rad >= 5:             22
+vertices FREE by (TAIL-1) alone (ecc >= rad+2): 6097
+NEAR-CENTRAL POPULATION the verdict is about:   10150
+   of them on hosts with l > 4:                 2730
+   of them on hosts with l > 4 AND rad >= 5:    429
+
+COVERED by the chain, path BUILT at ecc+3:      2144
+COVERED by the chain, path BUILT at ecc+4:      6826
+RESIDUAL (chain does not settle w):             1180
+   of the residual, ecc(w) < 3 so no frame exists at all: 0
+   residual on hosts with l > 4:                226
+   residual on hosts with l > 4 AND rad >= 5:   3
+COVERAGE of the near-central stratum:           8970 / 10150
+
+THE RESIDUAL INSIDE F11's HYPOTHESIS CLASS, NAMED ONE BY ONE -- this is what
+round 39 inherits, and if the list is EMPTY that is printed too:
+   host PG(2,5)+P4+C5  n=70  w=0  rad=5  ecc=6  l=5.571
+   host PG(2,5)+P4+C5  n=70  w=62  rad=5  ecc=5  l=5.571
+   host PG(2,5)+P3+C7  n=71  w=62  rad=5  ecc=5  l=5.521
+
+==============================================================================
+PART 4 -- THE RESIDUAL, SEPARATED INTO 'THE CHAIN IS SHORT' AND 'THE STATEMENT
+          FAILS' -- and the liveness test this round wrote against itself
+==============================================================================
+(F11-DEG'')  min_v max( a(v), deg(v)-1 ) >= 6  =>  (F11-ALL).
+  Strictly weaker than r37's (F11-DEG) (min_v a(v) >= 6), because deg >= a.
+  PREDICTION it makes about every residual w: some vertex within distance 2 of
+  the far end of EVERY frame from w is low in BOTH invariants.  Tested below.
+
+  PROVED BELOW: host dense(s=5,n0=14)  w=7  rad=2  ecc=3  l=2.500  endpath=5 < 6
+
+residual entries examined (n <= 80):            1180
+residual entries skipped as too big for a DFS:  0
+  ... the chain is SHORT (a rad+4 path exists): 1179
+  ... the STATEMENT FAILS (search COMPLETE):    1
+  ... UNDECIDED (search truncated):             0
+independent subset oracle rows (n <= 13) / agreeing: 75 / 75
+(F11-DEG'') prediction tested / holding:        1180 / 1180
+
+LIVENESS, designed against this round's own interest: r37 exhibited an explicit
+  vertex where (F11-ALL) is FALSE without F11's hypotheses -- dense(s=5,n0=14),
+  w=7, endpath 5 < 6.  A coverage census that CANNOT fail proves nothing, so this
+  vertex MUST land in the residual and MUST come back PROVED BELOW.
+  landed in the residual and proved below: YES
+
+==============================================================================
+PART 5 -- IS (F11-DEG'') A REAL WEAKENING OF (F11-DEG), OR ONLY A FORMAL ONE?
+==============================================================================
+host slots in the pool:                                  424
+host slots satisfying (F11-DEG)   min a >= 6:            4
+host slots satisfying (F11-DEG'') min max(a,deg-1) >= 6: 4
+host slots satisfying (F11-DEG'') but NOT (F11-DEG):     0
+vertices with a(v) < 6 <= max(a(v),deg(v)-1):            905 of 17114
+
+STATED AGAINST THIS ROUND'S INTEREST: (F11-DEG'') is a THEOREM either way -- the
+proof is the vertex count in place of the component count -- but if the two
+columns above are EQUAL then on THIS pool the weakening buys nothing, and this
+round says so rather than shipping a formal generalisation as progress.
+
+==============================================================================
+parts that self-registered: PART0,PART1,PART2,PART3,PART4,PART5
+CHECKS: 11172  FAILS: 0
+elapsed (s): 5.0
+==============================================================================

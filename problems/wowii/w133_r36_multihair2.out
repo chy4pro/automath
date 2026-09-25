@@ -1,0 +1,68 @@
+==============================================================================
+PART 0 — THE GUARD, ITS DECLARED CLASS, AND AN UNSEEN MEMBER OF THAT CLASS
+==============================================================================
+GUARD (new this round): every induced-path / endpath value used anywhere below is
+  cross-checked against an INDEPENDENT subset-enumeration oracle on every host with
+  n <= 14.  The oracle shares no code path with the DFS: it enumerates vertex subsets
+  and tests the 'is a path' predicate directly.
+CLASS THE GUARD CLAIMS TO COVER: *any* induced-path search that returns a value other
+  than the true longest induced path -- searches that block the wrong vertex set at ANY
+  depth (zero-step, one-step, or later), searches that stop early, searches that admit
+  a chord.  It is NOT a check on a symptom (a suspicious printed number); it is an
+  independent recomputation of the quantity.
+UNSEEN MEMBER USED AS THE TEST: a LATE-BLOCKING defect -- correct for the first two
+  steps, and from length 3 on it only excludes the previous vertex instead of the whole
+  path.  r34's guard was written for the ZERO-step defect; r35's real defect was the
+  ONE-step defect.  Neither has seen this one.
+  C6        n= 6  oracle= 5  correct= 5  LATE-defect= 6  ZERO-defect= 1
+  Theta333  n= 8  oracle= 6  correct= 6  LATE-defect= 8  ZERO-defect= 1
+  Petersen  n=10  oracle= 5  correct= 5  LATE-defect=10  ZERO-defect= 1
+  P5        n= 5  oracle= 5  correct= 5  LATE-defect= 5  ZERO-defect= 1
+  C9        n= 9  oracle= 8  correct= 8  LATE-defect= 9  ZERO-defect= 1
+  guard fired on the UNSEEN late-blocking defect at 4/5 hosts; on the known
+  zero-step defect at 5/5; false alarms on the correct search: 0
+  POPULATION for these counts: the 5 guard hosts listed above, all n <= 14.
+
+==============================================================================
+PARTS 1-4 — THE MULTI-HAIR FAMILY
+==============================================================================
+configurations generated: 810
+EXCLUSION LIST (identical population for every count below): 6 designed bases
+  (C6, C9, Petersen, Theta(3,3,3), P5, two C9 joined by an edge); roots among the
+  first min(n,4) vertices, distinct; k in {1,2,3}; h_i in {1,2,3}; total order
+  capped at 16.  DESIGNED, NOT EXHAUSTIVE, NO RANDOM TRAWL.
+
+--- skipped, with reasons (every 0 below ships with this list) ---
+  not C4-free (base or G): 0   mu(G') < 2: 174   disconnected: 0   past deadline: 0
+  CERTIFIED and fully computed: 636 of 810 generated
+
+PART 1 — (MH-P2) two-hair concatenation, RE-DERIVED IN MY OWN HAND
+  path(G) >= h_i + h_j + d_{G'}(w_i,w_j) + 1 : 1332 of 1332 hair PAIRS
+PART 2 — (MH-RAD-UB)
+  sharp   rad(G) <= max(ecc_{G'}(w_max), M) : 636 of 636
+  coarse  rad(G) <= rad(G') + h_max         : 636 of 636
+PART 3 — (MH-GAP)  path(G)-rad(G) >= endpath_{G'}(w_max) - rad(G')
+  holds on 636 of 636 certified configurations
+PART 3b — INDEPENDENT ORACLE double-source on every path/endpath value, n <= 14
+  agreement: 1104 of 1104 (population = the values the oracle could afford)
+PART 4 — THE CASE SPLIT
+  CASE I  rad(G) = rad(G') : 377   (closed by (MH-I), r35)
+  CASE II rad(G) > rad(G') : 259
+    conjecture MEASURED true on            : 259 of 259
+    CLOSED UNCONDITIONALLY by this round's
+    floors (no l>4, no rad>=5, no F11)     : 259 of 259
+    RESIDUAL (floor < floor(l(G)))         : 0 of 259
+  implication form (conj for G' -> conj for G), over configurations where G'
+    itself satisfies the conjecture        : 636 of 636
+
+PART 5 — AGAINST THIS ROUND'S OWN INTEREST: WHAT THE CASE-II COUNT IS NOT
+  floor(l(G)) histogram over ALL 636 certified configs : {2: 636}
+  floor(l(G)) histogram over the 259 CASE II configs    : {2: 259}
+  CASE II configurations with l(G) > 4                 : 0 of 259
+  RE-SCORED with the target constant FORCED TO 4 (the l>4 regime route A2 lives in):
+    closed by the same unconditional floors            : 209 of 259
+    RESIDUAL at constant 4                             : 50 of 259
+
+PARTS DECLARED: {0,1,2,3,4}   PARTS RUN: [0, 1, 2, 3, 4]
+CHECKS=640 FAILURES=0 ELAPSED=1.7s
+EXIT=0

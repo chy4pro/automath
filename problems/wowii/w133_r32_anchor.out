@@ -1,0 +1,227 @@
+w133 round 32 — (F11-AT-w) SHARPENED: the anchored target, its true strength,
+and the single-hair theorem.   NO SAT.  Explicit graphs only.
+
+==============================================================================
+PART 0 — PRIMITIVES, CROSS-CHECKED RATHER THAN TRUSTED
+==============================================================================
+  C9               n=9   C4-free=True   rad=4   mu=2  mean a = 2.0000
+  C5               n=5   C4-free=True   rad=2   mu=2  mean a = 2.0000
+  2xC9 glued       n=17  C4-free=True   rad=4   mu=2  mean a = 2.1176
+  2xC5 glued       n=9   C4-free=True   rad=2   mu=2  mean a = 2.2222
+  Petersen         n=10  C4-free=True   rad=2   mu=3  mean a = 3.0000
+  PG(2,2)=Heawood  n=14  C4-free=True   rad=3   mu=3  mean a = 3.0000
+  PG(2,3)          n=26  C4-free=True   rad=3   mu=4  mean a = 4.0000
+  liveness probe: C4 and K4 are both REFUSED by both implementations (they must be:
+    C4-free on this line means NO TWO VERTICES HAVE TWO COMMON NEIGHBOURS).
+  peel_all probe: C9 + 2-hair  ->  peeled [9, 10], alive = C9  [OK]
+
+==============================================================================
+PART 1 — THE QUANTIFIER: 'at the attachment of a DEEPEST hair' IS VACUOUS
+==============================================================================
+  A single hair is trivially the deepest hair, and a hair may be hung at ANY vertex of
+  G'.  So over the class of G' to which (F11-AT-w) is meant to apply, the prescribed w
+  ranges over EVERY vertex.  (F11-AT-w) is therefore the UNIVERSAL statement
+
+      (F11-ALL)   endpath(G', w) >= rad(G') + 4   for EVERY vertex w of G',
+
+  and F11 = G42 is the EXISTENTIAL one.  (F11-AT-w) is STRICTLY STRONGER than F11, not a
+  mild anchoring of it.  That is a defect in the r31 proposal and it is this round's first
+  finding against its own previous entry.
+  PG(2,3)            n=26   Sigma a = 104    l = 4.0000   ->  G'+pendant: Sigma a = 106, n = 27,
+                     l(G) > 4  <==>  Sigma_{G'}(a-4) > 2   (exact threshold, not an estimate)
+  Heawood            n=14   Sigma a = 42     l = 3.0000   ->  G'+pendant: Sigma a = 44, n = 15,
+                     l(G) > 4  <==>  Sigma_{G'}(a-4) > 2   (exact threshold, not an estimate)
+  blob_chain(3,5)    n=57   Sigma a = 220    l = 3.8596   ->  G'+pendant: Sigma a = 222, n = 58,
+                     l(G) > 4  <==>  Sigma_{G'}(a-4) > 2   (exact threshold, not an estimate)
+  CONTROL (pinned, not inferred): l(PG(2,3)) = 4.0 EXACTLY  [Sigma(a-4) = 0];
+    PG(2,3) + one pendant has Sigma(a-4) = -2, i.e. l drops BELOW 4 — so the
+    l-threshold on G is  Sigma_{G'}(a-4) > 2,  marginally stronger than l(G') > 4.
+
+==============================================================================
+PART 2 — (TAIL-1): C4-free and mu(G) >= 2  ==>  endpath(G,w) >= ecc(w) + 2, EVERY w
+==============================================================================
+  PROOF.  Let w = u_0 ... u_d be a geodesic to a vertex at distance d = ecc(w).  Since
+  a(u_d) >= 2, G[N(u_d)] (a matching, because G is C4-free) has a component other than
+  u_{d-1}'s; take y in it.  Then y !~ u_{d-1} by choice; y !~ u_i for i <= d-3 because
+  dist(u_i,u_d) >= 3; and y !~ u_{d-2}, because otherwise u_{d-2} and u_d would have the
+  TWO common neighbours u_{d-1} and y — a C4.  So u_0..u_d y is an induced path on d+2
+  vertices with w as an ENDPOINT.  []
+  Certified below by BUILDING the path at every vertex of every test graph and verifying
+  it is induced — the construction is executed, not the conclusion asserted.
+  C9                 n=9    rad=4  mu=2 : TAIL-1 built and CERTIFIED INDUCED at all 9 vertices, always ecc(w)+2
+  C11                n=11   rad=5  mu=2 : TAIL-1 built and CERTIFIED INDUCED at all 11 vertices, always ecc(w)+2
+  2xC9 glued         n=17   rad=4  mu=2 : TAIL-1 built and CERTIFIED INDUCED at all 17 vertices, always ecc(w)+2
+  2xC5 glued         n=9    rad=2  mu=2 : TAIL-1 built and CERTIFIED INDUCED at all 9 vertices, always ecc(w)+2
+  Petersen           n=10   rad=2  mu=3 : TAIL-1 built and CERTIFIED INDUCED at all 10 vertices, always ecc(w)+2
+  Heawood            n=14   rad=3  mu=3 : TAIL-1 built and CERTIFIED INDUCED at all 14 vertices, always ecc(w)+2
+  PG(2,3)            n=26   rad=3  mu=4 : TAIL-1 built and CERTIFIED INDUCED at all 26 vertices, always ecc(w)+2
+  blob_chain(2,5)    n=33   rad=6  mu=2 : TAIL-1 built and CERTIFIED INDUCED at all 33 vertices, always ecc(w)+2
+  blob_chain(3,5)    n=57   rad=6  mu=2 : TAIL-1 built and CERTIFIED INDUCED at all 57 vertices, always ecc(w)+2
+  TOTAL: 186 (graph, vertex) pairs, every one carrying an explicit induced witness.
+  TIGHTNESS (hardest form): on C6, endpath(w) = ecc(w)+2 = 5 EXACTLY for every w —
+    so TAIL-1 cannot be improved to ecc(w)+3 without a further hypothesis.
+  LIVENESS, CORRECTLY AIMED: on C9+pendant (mu = 1), the 2 vertices whose FURTHEST
+    vertex is the a=1 pendant make the construction DECLINE 2/2 times.
+    The mis-aimed version (probe AT the pendant) SUCCEEDS and tests nothing — kept as
+    a named negative, because a probe that cannot fail scores ABSENT, not PASS.
+
+==============================================================================
+PART 3 — (TAIL-2) COSTS a(y) >= 4, AND (TAIL-3) COSTS a(z) >= 6
+==============================================================================
+  SECOND EXTENSION.  Continue u_0..u_d y by z in N(y).  Forced for free by C4-freeness:
+  z !~ u_d (choose z off u_d's component of G[N(y)]) and z !~ u_{d-1} (else z-y-u_d-u_{d-1}
+  is a 4-cycle).  z !~ u_i for i <= d-4 because dist(u_i,y) >= 3.  What must be PAID FOR is
+  exactly u_{d-2} and u_{d-3}: at most ONE vertex of N(y) is adjacent to each of them (two
+  would give y and that u_j two common neighbours — a C4), so at most two components of the
+  matching G[N(y)] are spoiled, plus u_d's.  Hence  a(y) >= 4  suffices.
+
+  THIRD EXTENSION.  Continue by z' in N(z).  z' !~ u_d is forced (z'-z-y-u_d is a 4-cycle).
+  The dodge list is then {u_{d-1}, u_{d-2}, u_{d-3}, u_{d-4}} — FOUR vertices, each costing
+  at most one component — plus y's component.  Hence  a(z) >= 6  suffices, and nothing
+  smaller is delivered by this argument.
+
+  >>> l(G) > 4 IS A MEAN.  It does not supply a(y) >= 4, let alone a(z) >= 6, AT A
+  >>> PRESCRIBED VERTEX.  This is the DENSITY-vs-POSITIONAL mismatch, now LOCATED at a
+  >>> named vertex and carrying a NUMBER.
+  Petersen           n=10   : TAIL-2 succeeded at  10/ 10 vertices; a(y) >= 4 held at   0 of those
+  Heawood            n=14   : TAIL-2 succeeded at  14/ 14 vertices; a(y) >= 4 held at   0 of those
+  PG(2,3)            n=26   : TAIL-2 succeeded at  26/ 26 vertices; a(y) >= 4 held at  26 of those
+  blob_chain(2,5)    n=33   : TAIL-2 succeeded at  33/ 33 vertices; a(y) >= 4 held at   0 of those
+  blob_chain(3,5)    n=57   : TAIL-2 succeeded at  57/ 57 vertices; a(y) >= 4 held at  57 of those
+  2xC9 glued         n=17   : TAIL-2 succeeded at  17/ 17 vertices; a(y) >= 4 held at   0 of those
+  C4-FORCED exclusions verified on 157 frames: y !~ u_{d-1} and y !~ u_{d-2} every time.
+  NULL EXPECTATION stated: y !~ u_{d-2} is NOT automatic for an arbitrary neighbour of
+    u_d — it is exactly what C4-freeness buys, and a C4-carrying host would break it.
+
+==============================================================================
+PART 4 — THE THEOREM: route A2's conclusion for the SINGLE-HAIR case,
+         plus (RAD-1P), the radius dichotomy the machine forced me to find
+==============================================================================
+  SETTING.  G connected C4-free; G' = peel(G) connected with mu(G') >= 2; the peeled set
+  is a SINGLE hair of h >= 1 vertices hung at w in V(G').  (This is exactly the class in
+  which r31 killed (A2-PATH): its witness was G' + ONE pendant.)  Write r := rad(G') and
+  e := ecc_{G'}(w).
+
+  TWO BOUNDS.
+    (B1)  G' is INDUCED in G, so path(G) >= path(G').  With F11 = G42 on G' this reads
+          path(G) >= r + 4.       [needs G' to satisfy F11: C4-free, l>4, rad>=5, mu>=2 —
+                                   the SAME import route A2 has always made, inherited here]
+    (B2)  The hair prepends h vertices to any induced path of G' ending at w, so
+          path(G) >= h + endpath(G',w) >= h + e + 2.        [TAIL-1, UNCONDITIONAL]
+
+  RADIUS, single hair at w:  ecc_G(w) = max(e, h), so rad(G) <= max(e, h); and rad(G) <= r+h.
+
+  CASE ANALYSIS.
+    h >= 2 :  e >= h  ->  rad(G) <= e  and (B2) gives h+e+2 >= e+4.            CLOSED
+              h  > e  ->  rad(G) <= h  and (B2) gives h+e+2 >= h+4 (e >= 2).   CLOSED
+              -- UNCONDITIONAL: no l > 4, no rad >= 5, no F11, no (F11-AT-w).
+    h = 1  :  rad(G) <= min(e, r+1).
+              e = r     : rad(G) <= r, (B1) gives r+4 >= rad(G)+4.             CLOSED (via F11)
+              e >= r+2  : rad(G) <= r+1, (B2) gives e+3 >= r+5 >= rad(G)+4.    CLOSED
+              e = r+1   : (B1) gives r+4, (B2) gives r+4, and rad(G)+4 is r+5 if and only if
+                          rad(G) = r+1.                    SHORT BY EXACTLY ONE VERTEX.
+
+  (RAD-1P) — THE RADIUS DICHOTOMY FOR ONE PENDANT.  For c in V(G'),
+  ecc_G(c) = max(ecc_{G'}(c), d(c,w)+1), and ecc_G(pendant) = e+1.  Hence
+        rad(G) = r      <==>  SOME centre c of G' has d(c,w) <= r-1,
+        rad(G) = r + 1  <==>  EVERY centre c of G' has d(c,w) = r   (and never more).
+  So the h = 1, e = r+1 case is only residual when w is ALSO at maximum distance from every
+  centre.  I did not have this condition when I wrote the case analysis; the machine
+  produced an EMPTY residual class and that is how the condition was found.
+  CASE TALLY over 7404 (base, w, h) instances from 145 bases, every one machine-checked:
+     h>=2 CLOSED by (B2)                      4936
+     h=1 e=r CLOSED by (B1)                    908
+     h=1 e>=r+2 CLOSED by (B2)                 723
+     h=1 e=r+1, rad(G)=r  CLOSED by (B1)       835
+     h=1 e=r+1, rad(G)=r+1  RESIDUAL             2
+  (RAD-1P) verified as an EQUIVALENCE on every h=1 instance; it FIRED (rad(G)=r+1)
+     on 34 of them, so the dichotomy's non-trivial side is LIVE, not vacuous.
+  THE CONCLUSION, computed EXACTLY (longest induced path) on every host with n <= 15,
+  SPLIT BY WHICH BOUND CARRIES IT — the two branches do NOT have the same status:
+     h >= 2, closed by (B2) ALONE (UNCONDITIONAL — asserted): 244/244 hold, 0 violations
+     h  = 1, carried by (B1) = F11 on G' (IMPORT ABSENT on these sparse hosts):
+            117 hold, 5 FAIL — and the failures are the point:
+            C5                 w=0  path(G)=5  < rad(G)+4=6    l(G')=2.000  rad(G')=2
+            C5                 w=2  path(G)=5  < rad(G)+4=6    l(G')=2.000  rad(G')=2
+            C6                 w=0  path(G)=6  < rad(G)+4=7    l(G')=2.000  rad(G')=3
+            C6                 w=3  path(G)=6  < rad(G)+4=7    l(G')=2.000  rad(G')=3
+            Theta(3,3,3)       w=0  path(G)=6  < rad(G)+4=7    l(G')=2.250  rad(G')=3
+     >>> HARDEST-FORM LIVENESS CONTROL, and it was NOT designed — the machine produced it
+     >>> when a check of mine ran on a sample outside its own hypothesis (own defect, PART 7).
+     >>> DELETE F11 AND THE h = 1 BRANCH IS FALSE.  C5 + one pendant has path = 5 and
+     >>> rad + 4 = 6.  So (B1) is not decorative bookkeeping in that branch: it is the whole
+     >>> of it, and the h = 1 branch is exactly as strong as F11's applicability to G'.
+     >>> The h >= 2 branch imports nothing and holds on every one of these same hosts.
+     366 exact longest-induced-path computations in total.
+
+==============================================================================
+PART 5 — THE RESIDUAL HUNT.  POPULATION FIRST, VERDICT SECOND.
+==============================================================================
+  The residual of PART 4 is a CONJUNCTION of three conditions:
+      (a) h = 1;   (b) ecc_{G'}(w) = rad(G') + 1;   (c) every centre of G' has d(c,w) = rad(G').
+  (b) says w is nearly peripheral in ECCENTRICITY; (c) says w is maximally far from the
+  CENTRE.  They pull in the same direction and yet the sweep finds them never co-occurring.
+  POPULATIONS over 145 bases:
+     (b) ecc(w) = rad+1                       :   837 vertices
+     (c) w maximally far from EVERY centre    :    34 vertices
+     (b) AND (c)  = the residual              :     2 vertices
+  >>> THE RESIDUAL IS NON-EMPTY.  My FIRST, narrower family produced ZERO of them
+  >>> and I was one sentence away from recording the single-hair case as closed
+  >>> outright.  The SEEDED RANDOM HOSTS produced them.  A residual that only a
+  >>> wider family exhibits is exactly the residual a narrow family lets you
+  >>> claim away — so the width of the family is load-bearing, not decoration.
+  RESIDUAL INSTANCES FOUND (2), each MEASURED rather than merely listed:
+    base                 w    n    ecc(w)   rad(G')  l(G')   TAIL-2?  endpath(w) vs rad+4
+    rand(s=7,n0=18)      11   18   5        4        2.333   YES      12 vs 8
+    rand(s=30,n0=22)     13   22   5        4        2.455   no       17 vs 8
+  (TAIL-2) discharges 1 of 2 residual instances BY CONSTRUCTION.
+  >>> AND READ THE endpath COLUMN: on these hosts endpath(w) is already at or past
+  >>> rad(G')+4.  The residual is a GAP IN THE ARGUMENT, not a counterexample to
+  >>> anything.  The BOUND is short by one vertex; the GRAPHS are not.
+  EVERY residual instance carries l(G') <= 4 : the l > 4 hypothesis is UNSPENT
+     on all of them, exactly as r31 measured for (A2-PATH) over 179 witnesses.
+  NULL EXPECTATION, stated: condition (c) alone occurs at 1.4% of swept vertices and
+     condition (b) at 33.9%; if they were INDEPENDENT the expected joint count over
+     2468 vertices would be 11.53.  So the empty conjunction carries only about that
+     much information — it is a HINT, and it is reported as one.
+
+==============================================================================
+PART 6 — IN-HYPOTHESIS CONTROL (l > 4 PRESENT) AND THE SCOPE MEASUREMENT
+==============================================================================
+  HOST: two PG(2,5) incidence graphs joined by an induced path of 5 vertices (the W1
+        shape).  n=129  rad=6  mu=2  l=5.8605  C4-free=True  connected=True
+  IN-HYPOTHESIS MEMBERSHIP ASSERTED BEFORE THE CHECK RUNS: all five hypotheses present.
+  l IS PINNED BY A CONTROL, NOT INFERRED: l(PG(2,3)) = 4.0000 exactly.
+  (TAIL-1) built and certified induced at 129/129 vertices; (TAIL-2) at 129/129.
+  ECCENTRICITY PROFILE (ecc(w) - rad): {0: 1, 1: 2, 2: 2, 3: 2, 4: 12, 5: 60, 6: 50}
+     class 0 and 1 are the only ones the h=1 case analysis leaves anything to do;
+     classes >= 2 are closed by (B2) alone.
+  endpath(w) >= rad+4 = 10 ?  sampled 26 of 129 vertices; FAILURES: NONE
+     This is EVIDENCE about (F11-ALL), NOT a discharge of it: a sample, not a sweep,
+     and (F11-ALL) is a universal statement.
+
+  SCOPE, in r31's own format so the two rounds are comparable:
+    host                       connected C4-free  mu>=2   rad>=5   l       
+    2xPG(2,5)+path(5)          True      True     True    True     5.8605
+    2xPG(2,3)+path(5)          True      True     True    True     3.8596
+    2xC9 glued (r31 witness)   True      True     True    False    2.1176
+    PG(2,3)                    True      True     True    False    4.0000
+    Petersen                   True      True     True    False    3.0000
+  >>> THE r31 MISMATCH, RE-MEASURED ON THE SUCCESSOR TARGET.  The one host that carries
+  >>> l > 4 AND rad >= 5 together is the dense one, and on it (TAIL-2) is available almost
+  >>> everywhere — while the hosts that make the anchored bound TIGHT are the sparse ones,
+  >>> which carry l = 2.0 to 3.0.  l > 4 is still a DENSITY hypothesis and the failure is
+  >>> still POSITIONAL, and this round LOCATES the exchange: what l > 4 must be made to buy
+  >>> is a(y) >= 4 at ONE PRESCRIBED VERTEX — the far end of a geodesic FROM w.
+
+==============================================================================
+EVERY-PART-RAN CHECK  (r31 own-defect 7: `exit 0` is a claim about the PROCESS,
+not about the WORK.  A wrapper that exits 0 having done none of the work is the
+worst failure mode there is, so the parts are asserted, not assumed.)
+==============================================================================
+  declared: ['PART0', 'PART1', 'PART2', 'PART3', 'PART4', 'PART5', 'PART6']
+  ran     : ['PART0', 'PART1', 'PART2', 'PART3', 'PART4', 'PART5', 'PART6']
+
+CHECKS RUN : 49684
+FAILURES   : 0
+VERDICT    : all declared parts executed, all checks passed

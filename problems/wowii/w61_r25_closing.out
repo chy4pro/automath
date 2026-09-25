@@ -1,0 +1,26 @@
+=== POPULATION ===
+  §7.x sections : 40   last = ## §7.40 owner-w61 round 25: **Q38 HARVESTED — void gate `5/5` EXACT i…
+  duplicate §7.x addresses : none
+  registry ROWS (distinct) : R-1…R-23, 23 addresses, gaps=none
+  bounded-weakening notes at lines : [5414, 5945, 8322]
+
+=== CHECKS (verdicts computed only now) ===
+  [OK ] §7.40 present exactly once: 1 (want 1)
+  [OK ] §7.40 is the last section: True (want True)
+  [OK ] no duplicate §7.x address: [] (want [])
+  [OK ] registry rows contiguous R-1…R-23: (1, 23, 23) (want (1, 23, 23))
+  [OK ] three weakening notes, all before §7.40: True (want True)
+  [OK ] each weakening names what is NOT weakened: 3 (want 3)
+  [OK ] each weakening note itself says 'not a re-run and not a retraction': 3 (want 3)
+  [OK ] R-23's PROVED-S3 status word still present exactly once in its row: 1 (want 1)
+  [OK ] no promotion language for GFANν-HC: 0 (want 0)
+  [OK ] the withdrawal outcome is never called a pass: False (want False)
+  [OK ] BB2 recorded: 1 (want 1)
+  [OK ] BK1..BK7 all present: 0 (want 0)
+
+WHAT THIS GREP CANNOT SEE (RULING S): it checks structure and record claims only.
+  It does not read a single line of mathematics, it cannot tell a true weakening from
+  a well-formed false one, and it has no view of the six BRIEF files at all -- the
+  audit's findings live there and were adjudicated by hand, not by this script.
+
+CLOSING GREP PASS

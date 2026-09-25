@@ -1,0 +1,211 @@
+====================================================================================================
+w61 r44 -- HARVEST OF E03/E05/E10 + THE FOUR LEMMAS THE HARVEST PRODUCED
+====================================================================================================
+stepA/runA/runB lifted BY SOURCE TEXT from w61_r29_c1audit.py (diffed every call);
+Wp/Wm/head_of/L_of/relation lifted BY SOURCE TEXT from w61_r39_monodd.py.
+
+[0] CONTROLS AND KNOWN VALUES -- fired before any verdict
+   known  [1,1,0,0] (steps,residue)                      = (1, 3)             expect (1, 3)             OK
+   known  relation() EQ                                  = EQ                 expect EQ                 OK
+   known  relation() UP2                                 = UP2                expect UP2                OK
+   known  relation() UNIT_DOWN                           = UNIT_DOWN          expect UNIT_DOWN          OK
+   known  relation() DOM                                 = DOM                expect DOM                OK
+   known  C1-Y R(0^r), R(1,1,0^{r-2}) r=2..8             = [(2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7)] expect [(2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7)] OK
+   known  pivots([1,1,0,0])                              = (1,)               expect (1,)               OK
+
+[1] LEMMA U1  --  raising k entries by 1 moves the SORTED vector by a 0/1 vector
+    Census: every multiset A with parts <= 6 and length <= 7 drawn from partitions of
+    N <= 14 (zero-padded to a fixed length), every choice of k DISTINCT positions.
+    pool size (multisets tested) : 313
+    U1 holds on 8086 instances, FAILS on 0
+   CORRUPT CONTROL: raising ONE entry by 2 does produce a sorted-delta >= 2 hits=313      OK
+   CONTROL: the U1 census is non-empty                                    hits=8086     OK
+
+[2] REBUILD P1 (S1 head-block pairs) AND P2 (S2-derived pairs) -- r43 figures 709 / 686
+    P1 pairs: 709   (r43/r39 printed 709)
+    P2 distinct (c,tail): 686   (r43/r42 printed 686)
+   known  P1 size                                        = 709                expect 709                OK
+   known  P2 size                                        = 686                expect 686                OK
+    P2 usable pairs (L, L'_1): 686
+
+[3] THE THREE STEP LEMMAS, TESTED ON A POPULATION MUCH WIDER THAN THE HEAD BLOCKS
+    Population W: every partition A of N <= 13 with A's HH step legal, paired with every
+    B obtained by raising two DISTINCT positions of A by 1 (UP2_1), and every B obtained
+    by one unit transfer down (UNIT_DOWN).  No head-block hypothesis anywhere.
+    |W| base partitions : 357
+    pivot gap d_B - d_A over ALL UP2_1 pairs         : {0: 1350, 1: 1221}
+    U2 (gap in {0,1}) violations                     : 0
+    UP2-PERSIST  equal-pivot instances 1350 : holds 1350, FAILS 0
+    E03 Cor.B1 'both unit levels descend by 1'       : true 1084, FALSE 266
+    GAP1 instances 1221 : my prediction correct 1048, WRONG 0
+    GAP1 actual relations  : {'EQ': 891, 'OTHER': 157}
+    GAP1 predicted labels  : {'EQ': 891, 'OTHER': 157}
+    GAP1 instances NOT scored, with reason : {'B_step_not_a_list': 173}
+    UD-PERSIST  equal-pivot instances 249 : lands in {EQ,UNIT_DOWN} 249, ELSEWHERE 0
+    UD-PERSIST successor relations : {'EQ': 27, 'UNIT_DOWN': 222}
+   CONTROL: gap-1 steps actually occur in W                               hits=1221     OK
+   CONTROL: equal-pivot UP2 steps actually occur in W                     hits=1350     OK
+   CONTROL: UNIT_DOWN equal-pivot steps actually occur in W               hits=249      OK
+   CORRUPT CONTROL: E03 Cor.B1's unconditional reading is FALSE somewhere hits=266      OK
+   CONTROL: GAP1 prediction is not constant (>=2 distinct predicted labels) hits=1        OK
+
+[3b] E07 (landed 16:54, MID-ROUND) -- ITS GAP G1 IS ANSWERED BY THE SAME ALIGNMENT
+     E07 encodes a UP2 state as A = C u {x,y}, B = C u {x+1,y+1}, and its gap G1 is:
+     'the token pair can in principle re-emerge at distance >= 2', which its own endgame
+     analysis says would be fatal.  MY COROLLARY TOKEN-DRIFT: at an equal-pivot step the
+     two token indices i1 < i2 each descend by 1 IFF their index is <= d, and i1 > d >= i2
+     is impossible, so the SIGNED gap (v1 - v2) goes to itself or to itself minus 1.
+     The first version of this block asserted the ABSOLUTE gap is non-increasing.  THE RUN
+     REFUTED IT (127 rises) and the corrected statement is the one that matters: the gap
+     falls, stays, or rises 0 -> 1 (the signed gap going negative by one), so a gap <= 1
+     CAN NEVER REACH 2.  That is exactly what E07's G1 needs.  Both readings are scored.
+     TOKEN-DRIFT (corrected: gap -> gap or gap-1, and 0 -> 1) : holds 1350, FAILS 0
+     distribution of the CHANGE in token gap               : {-1: 64, 0: 1159, 1: 127}
+     ==> the RAW 'non-increasing' reading is FALSE: the gap DOES rise, 127 times.
+     every rise starts from gap : [0]   (a rise from gap >= 1 would break the corollary)
+     equal-pivot steps carrying a gap <= 1 UP TO gap >= 2  : 0   <- E07's gap G1
+     E07 sec 3 claim, cross-tab (token distance, endgame outcome) : {(0, 'EQ'): 225, (0, 'OTHER'): 65, (1, 'EQ'): 281, (1, 'OTHER'): 61, (2, 'EQ'): 220, (2, 'OTHER'): 27, (3, 'EQ'): 117, (3, 'OTHER'): 4, (4, 'EQ'): 41, (5, 'EQ'): 7}
+   CONTROL: the token gap actually DOES fall somewhere (drift is not trivial) hits=64       OK
+   CORRUPT CONTROL: the RAW non-increasing reading of TOKEN-DRIFT is refuted hits=127      OK
+   CONTROL: E07 sec3 claim -- endgames at token distance >= 2 that give EQ hits=385      OK
+   CONTROL: endgame states at token distance >= 2 actually occur          hits=416      OK
+
+[4] WHAT IS LEFT OF (PERSIST-NARROW) AFTER THE THREE LEMMAS
+    Only two obligations survive.  Measured on P1 (709) and P2 (686):
+      (GAP1-OK)  every gap-1 step lands in {EQ, UNIT_DOWN}
+      (G0-MAX)   every g=0 joint state has max(A) = max(B)
+    P1: joint states 4352 ; exits {'EQ': 551, 'TERMINAL': 158}
+    P1: relations {'EQ': 551, 'UNIT_DOWN': 65, 'UP2': 3736}
+    P1: g=2 states that are UP2_1 in the SORTED sense: 3736 of 3736 (violations 0)
+    P1: gap-1 steps 709 ; landing OUTSIDE {EQ,UNIT_DOWN}: 0   <- (GAP1-OK)
+    P1: g=0 states 616 ; with max(A) != max(B): 0      <- (G0-MAX)
+    P1: Theorem GAP1 prediction correct 551, WRONG 0 ; predicted labels {'EQ': 500, 'UNIT_DOWN': 51}
+   CONTROL: P1 has g=2 states                                             hits=3736     OK
+    P2: joint states 4020 ; exits {'EQ': 626, 'TERMINAL': 60}
+    P2: relations {'EQ': 626, 'UP2': 3394}
+    P2: g=2 states that are UP2_1 in the SORTED sense: 3394 of 3394 (violations 0)
+    P2: gap-1 steps 686 ; landing OUTSIDE {EQ,UNIT_DOWN}: 0   <- (GAP1-OK)
+    P2: g=0 states 626 ; with max(A) != max(B): 0      <- (G0-MAX)
+    P2: Theorem GAP1 prediction correct 626, WRONG 0 ; predicted labels {'EQ': 626}
+   CONTROL: P2 has g=2 states                                             hits=3394     OK
+   CONTROL: Theorem GAP1's UNIT_DOWN branch is exercised somewhere on P1/P2 hits=51       OK
+
+[4b] IS (G0-MAX) NON-VACUOUS?  A UNIT_DOWN pair OUTSIDE the head-block family
+     whose maxima DIFFER would show (G0-MAX) genuinely needs the family hypothesis.
+     UNIT_DOWN pairs with differing maxima in W : 734   e.g. ((3, 1), (2, 2))
+   CORRUPT CONTROL: (G0-MAX) is FALSE for general UNIT_DOWN pairs         hits=734      OK
+
+[4c] LOCALIZING THE SURVIVING OBLIGATION (G0-MAX) TO A SINGLE PROFILE CONDITION
+     At a UNIT_DOWN state B = A - e_p + e_q (value w lowered, value u raised, w >= u+2),
+     max(B) < max(A) IFF the LOWERED entry is the UNIQUE maximum of A.  So (G0-MAX) is
+     exactly: the lowered entry is never A's unique maximum.  Measured on P1's g=0 states.
+     And by Theorem GAP1 the lowered entry enters at sorted position d+1 of the PARENT,
+     so the danger profile is  s^A_1 = ... = s^A_{d+1} > s^A_{d+2}  (a band of exactly
+     d+1 copies straight below the pivot).  Both are counted.
+     g=0 joint states over P1+P2                       : 1242  (of which non-EQ: 65)
+     multiplicity of max(A) at the non-EQ g=0 states   : {2: 49, 3: 16}
+     ... where the LOWERED entry IS A's maximum        : 65
+     ... where it is A's UNIQUE maximum (the only way (G0-MAX) can fail) : 0
+     gap-1 parents carrying the danger cut profile     : 100
+     ... (i0 position, outcome) for those parents       : {('i0>d+1', 'EQ'): 100}
+     ... and for the i0>d+1 ones, which GAP1 branch     : {'c=u+1(EQ)': 100}
+   CONTROL: non-EQ g=0 states exist to be measured                        hits=65       OK
+     ==> the lowered entry IS the maximum at every one of these states; (G0-MAX)
+         survives ONLY because that maximum always has multiplicity >= 2.
+         MEASURED, NOT PROVED.
+
+[4d] IS THE DANGER PROFILE REALISABLE AT ALL?  Search over W EXTENDED WITH ZEROS
+     (zeros are genuine HH states and partitions exclude them -- the first pass of
+      this search used partitions only, found nothing, and its control did not fire).
+     W+zeros states realising the danger profile with g returning to 2 : 54
+     example (A, B, next_A, next_B) : ((2, 2, 2, 2, 0), (3, 2, 2, 2, 1), (2, 1, 1, 0), (1, 1, 1, 1))
+   CORRUPT CONTROL: the danger profile IS realisable outside the head-block family hits=54       OK
+
+[5] AUDIT OF E03's OWN LEMMA B AND ITS PER-UNIT RULE
+    Lemma B (next_B - next_A = U + Delta_down - Delta, U = B-A, Delta = Top_B - Top_A)
+    is re-derived by me and CORRECT.  Its stated PER-UNIT contribution '(t) - (s-1)'
+    is NOT: the correct contribution of a unit (s)-(t) is (s-1)+(t)-(t-1)-(s).
+    Lemma B identity: holds 1350, FAILS 0      (E03's construction -- CONFIRMED)
+    E03's per-unit rule '(t)-(s-1)': agrees 75, DISAGREES 1275   (its derivation -- WRONG)
+   CONTROL: E03's per-unit rule is refuted somewhere                      hits=1275     OK
+
+[5b] E03's minimal counterexample (2,2,2,1,1) -> (3,3,2,1,1), recomputed
+     A=(2, 2, 2, 1, 1) -> (1, 1, 1, 1)   B=(3, 3, 2, 1, 1) -> (2, 1, 1, 0)   rel(next)=OTHER   g_before=2 g_after=0
+   known  E03 ce: step(2,2,2,1,1)                        = (1, 1, 1, 1)       expect (1, 1, 1, 1)       OK
+   known  E03 ce: step(3,3,2,1,1)                        = (2, 1, 1, 0)       expect (2, 1, 1, 0)       OK
+   known  E03 ce: relation is not narrow                 = True               expect True               OK
+   known  E03 ce: R(A) and R(B)                          = (2, 3)             expect (2, 3)             OK
+     R(A)=2  R(B)=3
+
+[6] AUDIT OF E05  ((PIVOT-MAJ))
+    E05 sec 1.1 claims p_1 >= p_1' always; sec 1.2 claims
+    sum(step pi) - sum(step pi') = 2(p_1' - p_1).  Both re-derived by me and checked here.
+    transfer-down pairs (both terminating) : 468
+    E05 1.1  p_1 >= p_1' violations        : 0
+    p_1 - p_1' distribution                : {0: 195, 1: 273}
+    E05 1.2  sum identity violations       : 0
+   CONTROL: gap-1 (p_1 - p_1' = 1) actually occurs                        hits=273      OK
+
+[6b] E05's HAND TABLE sec 2 -- every row recomputed (it is offered as consistency data)
+     pi=(3, 3, 1, 1)       p(pi) claimed (3, 2)     true None       | pi'=(3, 2, 2, 1)       claimed (3, 1)     true (3, 1)     ** WRONG
+     pi=(3, 2, 2, 1)       p(pi) claimed (3, 1)     true (3, 1)     | pi'=(2, 2, 2, 2)       claimed (2, 2)     true (2, 2)     OK
+     pi=(4, 2, 2, 1, 1)    p(pi) claimed (4, 1)     true (4, 1)     | pi'=(3, 2, 2, 2, 1)    claimed (3, 1, 1)  true (3, 1, 1)  OK
+     pi=(5, 2, 2, 1, 1, 1) p(pi) claimed (5, 1)     true (5, 1)     | pi'=(4, 2, 2, 2, 1, 1) claimed (4, 1, 1)  true (4, 1, 1)  OK
+     pi=(5, 2, 2, 1, 1, 1) p(pi) claimed (5, 1)     true (5, 1)     | pi'=(4, 3, 2, 1, 1, 1) claimed (4, 2)     true (4, 2)     OK
+     rows with a wrong entry : 1 of 5
+
+[6c] E05 sec 3 claims '(3,3,1,1) terminates but is not graphic'.  Recomputed:
+     runA/runB on (3,3,1,1) : (None, None)   pivots: None
+
+[7] NEW: (DOM-MAJ)?  A >= B in dominance, both terminating, same N  ==>  p(A) >= p(B)?
+    E05 sec 4 suggests replacing the token bookkeeping by 'an order-ideal condition on
+    the sorted lists'.  That is exactly (DOM-MAJ).  It has never been measured.  A single
+    transfer down gives dominance, so (DOM-MAJ) IMPLIES (PIVOT-MAJ); if (DOM-MAJ) is
+    FALSE the suggested route is dead and the induction must stay on single transfers.
+    SAME LENGTH (the (PIVOT-MAJ) shape) :
+      dominance pairs, same N, both terminating, N <= 20 : 4050
+      (DOM-MAJ) holds 4050, FAILS 0
+   CONTROL: the (DOM-MAJ) population [SAME LENGTH (the (PIVOT-MAJ) shape)] is non-empty hits=4050     OK
+    ANY LENGTH (the full order ideal) :
+      dominance pairs, same N, both terminating, N <= 20 : 15901
+      (DOM-MAJ) holds 15901, FAILS 0
+   CONTROL: the (DOM-MAJ) population [ANY LENGTH (the full order ideal)] is non-empty hits=15901    OK
+
+[7b] CONTROL that could have failed: reversed (DOM-MAJ) must be violated
+   CORRUPT: reversed (DOM-MAJ) 'p(B) >= p(A)' is violated                 hits=26       OK
+
+[8] AUDIT OF E10  (C1-N / C1-R reusability)  --  only its NEW constructions are testable
+    E10 sec 7 adds two transition rows it flags as NEW and unverified:
+      (zero)   j = 0                       -> F_s(x-1, s-1; nu)
+      (middle) x+2 <= j <= x+s-1 (s >= 3)  -> F_{s-1}(x, j-x-1; nu)
+    and restates the two proved rows.  All four are checked here against the real step.
+    row zero(E10 as written)   tested 198    failures 198
+    row zero(MY correction)    tested 198    failures 0
+    row interior               tested 1224   failures 0
+    row middle                 tested 330    failures 0
+    row entry                  tested 165    failures 0
+    ==> E10's j=0 row is WRONG as written and the corrected row is  F_s(x,0;nu) -> F_s(x-1,s;nu).
+        Its derivation says 'the top x entries'; the pivot at j=0 is x-1, so the
+        decrement set has x-1 entries, not x.  Every other row of its table is correct.
+   CONTROL: the NEW rows (zero, middle) were actually exercised           hits=528      OK
+   CORRUPT CONTROL: E10's j=0 row as written is refuted                   hits=198      OK
+
+[8b] E10 sec 12 composition: M(lambda) = F_{m+1}(w, w+m+1; lambda') with w = lambda_1,
+     m = multiplicity of lambda_1, lambda' the rest.  Checked as an identity of lists.
+     composition holds 898, FAILS 0   (lambda_1 >= 2, N <= 16)
+
+[8c] E10 sec 2/5: the k = w variant of C1-N and its claimed PARITY FLIP.
+     Claim: [w]^w u lambda terminates iff |lambda| = w (mod 2); [w]^{w+1} u lambda iff |lambda| even.
+     C1-N as stated (k = w+1)  : 507 agree, 0 disagree
+     E10's k = w variant       : 507 agree, 0 disagree
+     k = w-1 (must break)      : parity alone mispredicts on 75 instances
+   CORRUPT CONTROL: at k = w-1 parity is NOT sufficient (E10's k >= w bound is real) hits=75       OK
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+diffed runA/runB calls : 3116
+controls fired         : 38 of 38
+PARTIAL (hit the internal clock limit) : False
+DEFECTS : 0
+elapsed 0.41 s (internal limit 150 s)

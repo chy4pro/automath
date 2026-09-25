@@ -1,0 +1,133 @@
+
+------------------------------------------------------------------------------
+V1  A_6 rebuilt, OPPOSITE convention  (x*y)(i) = y(x(i))
+------------------------------------------------------------------------------
+|A_6| = 360
+classes: [((1, 1, 1, 1, 1, 1), 1), ((2, 2, 1, 1), 45), ((3, 1, 1, 1), 40), ((3, 3), 40), ((4, 2), 90), ((5, 1), 72), ((5, 1), 72)]
+centraliser orders by counting commuting elements: [360, 8, 9, 9, 4, 5, 5]
+names: ['1a', '2a', '3a', '3b', '4a', '5a', '5b']
+class-algebra structure constants recomputed in the opposite convention: OK
+
+------------------------------------------------------------------------------
+V2  the ordinary character table verified as a WITNESS, exactly in Z[phi]
+------------------------------------------------------------------------------
+class order used by the witness: ['1a', '2a', '3a', '3b', '4a', '5a', '5b']
+V2a row orthogonality, all 28 pairs: 0 failures
+V2b column orthogonality against the BRUTE-FORCE centraliser orders: 0 failures
+V2c omega(k)omega(l) = sum a_klm omega(m) in Z[phi]: 0 failures of 343
+    (the three tests together pin the table up to the order of the rows.)
+
+------------------------------------------------------------------------------
+V3  the NUMBER of 2-blocks with NO CHARACTER TABLE: brute-force idempotents
+------------------------------------------------------------------------------
+F_4 arithmetic table built and its axioms checked exhaustively (64 + 64 cases)
+Z(F_2 A_6): 128 elements tested, 4 idempotents  ==>  2^r = 4  ==>  r = 2 blocks
+Z(F_4 A_6): 16384 elements tested, 8 idempotents  ==>  2^r = 8  ==>  r = 3 blocks
+    => 2 blocks over F_2, 3 blocks over F_4.  NO character table was used.
+
+------------------------------------------------------------------------------
+V4  the block partition of Irr(A_6) from the explicit primitive idempotents
+------------------------------------------------------------------------------
+primitive idempotents of Z(F_4 A_6): 3 found
+  block 0 : chi = [4]  degrees [8]
+  block 1 : chi = [5]  degrees [8]
+  block 2 : chi = [1, 2, 3, 6, 7]  degrees [1, 5, 5, 9, 10]
+  matches the builder's Osima partition {1,5,5,9,10} | {8} | {8}.
+  BLIND blocks (chi(2a) = chi(4a) throughout): [0, 1]  ==> 1 of 3 blocks can obstruct
+
+------------------------------------------------------------------------------
+V5  the two 4-dimensional 2-modular Brauer characters, MODULE-FREE
+------------------------------------------------------------------------------
+transitive A_5 inside A_6: order 60, transitive = True
+permutation characters by counting fixed points: pi_6 = [6, 2, 3, 0, 0, 1, 1], pi_6' = [6, 2, 0, 3, 0, 1, 1]
+2-regular classes: ['1a', '3a', '3b', '5a', '5b']
+  phi_1  = [1, 1, 1, 1, 1]
+  phi_4a = [4, 1, -2, -1, -1]   (= pi_6  - 2, the 4-dim section of the 6-point module)
+  phi_4b = [4, -2, 1, -1, -1]   (= pi_6' - 2)
+  chi1 (deg  1) = 1[1] + 0[4a] + 0[4b]
+  chi2 (deg  5) = 1[1] + 0[4a] + 1[4b]
+  chi3 (deg  5) = 1[1] + 1[4a] + 0[4b]
+  chi6 (deg  9) = 1[1] + 1[4a] + 1[4b]
+  chi7 (deg 10) = 2[1] + 1[4a] + 1[4b]
+  Cartan = [[8, 4, 4], [4, 3, 2], [4, 2, 3]] ; det = 8 ; basic-algebra rank = 34 ; block rank = 232
+  ==> basic algebra rank 34, block rank 232 -- MATCHES the builder.
+
+------------------------------------------------------------------------------
+V7  HeLP multiplicities by inverting the 4x4 Vandermonde over Q(i)
+------------------------------------------------------------------------------
+  2-local admissible eps_2a(u): [0, 2]   (Vandermonde route)
+  t = -2 killers: ['chi2:mu0=-1', 'chi3:mu0=-1']
+  t = +-1 killed only by the p=2 congruence (ordinary kills 0, 0)
+  positive control t = 0 (a genuine g in 4a): 0 kills, congruence OK
+
+------------------------------------------------------------------------------
+V10 the support-free 2-local enumeration, re-run independently
+------------------------------------------------------------------------------
+Claim under test: given only u^2 ~ 2a, the ordinary Luthar-Passi system plus the
+p=2 congruence leaves 300 vectors in Z_(2)^7, of which 4 are integral and 2 have
+support inside {2a,4a}.  Re-run here with the Vandermonde multiplicities of V7 and
+an eps-inversion built from the WITNESS table and the BRUTE-FORCE centraliser orders.
+  power map C -> C^2 : [('1a', '1a'), ('2a', '1a'), ('3a', '3a'), ('3b', '3b'), ('4a', '2a'), ('5a', '5b'), ('5b', '5a')]
+  chi(u) ranges: [[1], [3, 1, -1, -3], [3, 1, -1, -3], [4, 2, 0, -2, -4], [4, 2, 0, -2, -4], [5, 3, 1, -1, -3, -5], [4, 2, 0, -2, -4]]
+  chi4(u) = chi5(u) candidates                  :  2400
+  ... with all eps in Z_2 (odd denominators)    :   600
+  ... and satisfying the p=2 congruence          :   300
+  ...... integral                                :     4
+  ...... support inside {2a,4a}                  :     2
+  the four integral vectors:
+     {'3a': -2, '4a': -1, '5a': 2, '5b': 2}
+     {'3b': -2, '4a': -1, '5a': 2, '5b': 2}
+     {'4a': 1}
+     {'2a': 2, '4a': -1}
+  ==> counts and vectors REPRODUCED exactly.  The two extra integral vectors are
+      supported on classes of order 3 and 5, which is precisely what Hertweck's
+      ord(C) | n kills over Z G and what has no verified Z_2 analogue.
+  CONTROL: a genuine g in 4a (eps_4a = 1) is among the survivors: True
+  CONTROL: 2100 of the 2400 candidates are REJECTED, so the system is not vacuous.
+
+------------------------------------------------------------------------------
+V6  the Z_2C_4 lattice bounds by BRUTE-FORCE enumeration of indecomposable supports
+------------------------------------------------------------------------------
+  chi  deg  (m0,m1,m2)   closed formulas      brute force        agree
+  chi1    1  (1,0,0)      UB1= 0 UB2=0 UB3=0 LB1=0   UB1= 0 UB2=0 UB3=0 LB1=0   YES
+  chi2    5  (3,1,0)      UB1= 2 UB2=1 UB3=0 LB1=1   UB1= 2 UB2=1 UB3=0 LB1=1   YES
+  chi3    5  (3,1,0)      UB1= 2 UB2=1 UB3=0 LB1=1   UB1= 2 UB2=1 UB3=0 LB1=1   YES
+  chi4    8  (2,2,2)      UB1= 6 UB2=4 UB3=2 LB1=2   UB1= 6 UB2=4 UB3=2 LB1=2   YES
+  chi5    8  (2,2,2)      UB1= 6 UB2=4 UB3=2 LB1=2   UB1= 6 UB2=4 UB3=2 LB1=2   YES
+  chi6    9  (3,2,2)      UB1= 6 UB2=4 UB3=2 LB1=2   UB1= 6 UB2=4 UB3=2 LB1=2   YES
+  chi7   10  (0,3,4)      UB1= 6 UB2=3 UB3=0 LB1=3   UB1= 6 UB2=3 UB3=0 LB1=3   YES
+  all 28 bounds agree with the closed formulas.
+
+FEASIBILITY, recomputed: unknowns r_j(S) for S in {1,4a,4b} inside the ONE block
+that can obstruct, constrained by sum_S d_chi,S r_j(S) <= UB_j(chi).
+  j = 1 : 9 solutions, all-zero admissible = True
+  j = 2 : 4 solutions, all-zero admissible = True
+  j = 3 : 1 solutions, all-zero admissible = True
+  ==> FEASIBLE.  Independent confirmation that the p=2 lattice method does not
+      settle A_6 either.
+
+------------------------------------------------------------------------------
+V8  the A_6 GLOBAL killer, rebuilt MODULE-FREE
+------------------------------------------------------------------------------
+The 4-dimensional F_3-section of the 6-point permutation module has Brauer
+character pi_6 - 2 on 3-regular classes; its EXTERIOR SQUARE has Brauer character
+chi(g)^2 - chi(g^2))/2, valid because Brauer characters are sums of lifted
+eigenvalues and Lambda^2 has the pairwise products.
+  chi_M   on (1a,2a,4a) = [4, 0, -2]
+  Lambda^2 on (1a,2a,4a) = [6, -2, 2]   (no matrices built)
+  t = 0 : mu = ['2', '2', '0', '2']  passes  <-- POSITIVE CONTROL
+  t = 2 : mu = ['-2', '2', '4', '2']  KILLED
+  ==> confirmed: (2,-1) dies GLOBALLY for A_6 and survives 2-LOCALLY.
+
+------------------------------------------------------------------------------
+V9  the A_6 -> A_7 fusion, opposite convention
+------------------------------------------------------------------------------
+  A_6 2a -> A_7 cycle type (2, 2, 1, 1, 1) ; odd centralising element (0, 1, 2, 3, 5, 4, 6) exists ==> the S_7 class does NOT split, so A_7 has ONE class of this type
+  A_6 4a -> A_7 cycle type (4, 2, 1) ; odd centralising element (0, 1, 3, 4, 5, 2, 6) exists ==> the S_7 class does NOT split, so A_7 has ONE class of this type
+  ==> the fusion is one-to-one; the transfer lemma is confirmed.
+  DIRECTION: the lemma is the inclusion Z_2A_6 subset Z_2A_7.  Witnesses push
+  forward; non-existence does NOT pull back.  ONE-DIRECTIONAL.
+
+------------------------------------------------------------------------------
+VERIFICATION COMPLETE -- every assertion above passed
+------------------------------------------------------------------------------

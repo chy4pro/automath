@@ -1,0 +1,53 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}An integral factorial ratio and Bala's conjectures}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}What was known}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Results}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}The method in one paragraph}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Verification protocol, and how to read this paper}{5}{subsection.1.5}%
+\contentsline {section}{\numberline {2}The Landau step function}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Definition, periodicity, and the table of cell values}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Legendre's formula}{7}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Three lemmas and the main theorem}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Step 1: unit-class rigidity}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Step 2: buying a layer}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Step 3: prime-power stratification}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}The main theorem}{10}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}The size of $D(r)$}{11}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Explicit values, and how the table must be read}{12}{subsection.3.6}%
+\contentsline {paragraph}{Is $D(r)$ minimal?}{13}{section*.2}%
+\contentsline {section}{\numberline {4}The sister family $C(k,r)$}{13}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The local lemma for $kn+i$}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Stratification for $kn+i$}{15}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}The theorem}{15}{subsection.4.3}%
+\contentsline {paragraph}{Specialisation to $r=1$, stated exactly.}{16}{section*.3}%
+\contentsline {subsection}{\numberline {4.4}The mixed product: what we do and do not prove}{16}{subsection.4.4}%
+\contentsline {section}{\numberline {5}The sign is not a typographical accident}{18}{section.5}%
+\contentsline {section}{\numberline {6}Towards Vasyunin's other sporadic ratios}{19}{section.6}%
+\contentsline {section}{\numberline {7}Relation to the announcement in \texttt {formal-conjectures} issue \#4923}{20}{section.7}%
+\contentsline {paragraph}{The facts.}{20}{section*.4}%
+\contentsline {paragraph}{What we could and could not verify.}{20}{section*.5}%
+\contentsline {paragraph}{Comparison.}{20}{section*.6}%
+\contentsline {paragraph}{Consistency.}{21}{section*.7}%
+\contentsline {paragraph}{Positioning.}{21}{section*.8}%
+\contentsline {paragraph}{One observation adopted.}{21}{section*.9}%
+\contentsline {section}{\numberline {8}Formal verification in Lean 4}{22}{section.8}%
+\contentsline {subsection}{\numberline {8.1}File, environment, axiom audit}{22}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}The statements proved}{22}{subsection.8.2}%
+\contentsline {paragraph}{(i) The conjecture, strengthened.}{22}{section*.10}%
+\contentsline {paragraph}{(ii) The literal corpus statement, and its vacuity.}{22}{section*.11}%
+\contentsline {paragraph}{(iii) The $r=1$ case, re-proved.}{23}{section*.12}%
+\contentsline {paragraph}{(iv) The workhorse.}{23}{section*.13}%
+\contentsline {subsection}{\numberline {8.3}What is formalised, and what is not}{23}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Statement fidelity, and the corpus-integrated version}{24}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Two techniques worth recording}{24}{subsection.8.5}%
+\contentsline {paragraph}{Lemma\nobreakspace {}\ref {lem:A} is one call to \texttt {omega}.}{24}{section*.14}%
+\contentsline {paragraph}{Everything is reduced to indicator sums before any inequality is proved.}{24}{section*.15}%
+\contentsline {subsection}{\numberline {8.6}A recommendation to the corpus maintainers}{24}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Related work}{25}{section.9}%
+\contentsline {paragraph}{Integral factorial ratios.}{25}{section*.16}%
+\contentsline {paragraph}{The $r=1$ case.}{25}{section*.17}%
+\contentsline {paragraph}{Machine contributions to OEIS conjectures.}{25}{section*.18}%
+\contentsline {paragraph}{Placement.}{25}{section*.19}%
+\contentsline {section}{\numberline {10}Limitations, and named obstacles}{26}{section.10}%
+\contentsline {section}{\numberline {A}Numerical tables}{27}{appendix.A}%
+\contentsline {section}{\numberline {B}What the verification script checks}{28}{appendix.B}%

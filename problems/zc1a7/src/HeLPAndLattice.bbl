@@ -1,0 +1,330 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{MRSW87}
+
+\bibitem[AH80]{AH80}
+P.~J. Allen and C.~Hobby, \emph{A characterization of units in {${\bf
+  Z}[A_{4}]$}}, J. Algebra \textbf{66} (1980), no.~2, 534--543.
+
+\bibitem[BC17]{BC17}
+A.~B\"achle and M.~Caicedo, \emph{On the prime graph question for almost simple
+  groups with an alternating socle}, Internat. J. Algebra Comput. \textbf{27}
+  (2017), no.~3, 333--347.
+
+\bibitem[BG64]{BG64}
+S.~D. Berman and P.~M. Gudivok, \emph{Indecomposable representations of finite
+  groups over the ring of {$p$}-adic integers}, Izv. Akad. Nauk SSSR Ser. Mat.
+  \textbf{28} (1964), 875--910.
+
+\bibitem[BHK04]{BHK04}
+V.~Bovdi, C.~H{\"o}fert, and W.~Kimmerle, \emph{On the first {Z}assenhaus
+  conjecture for integral group rings}, Publ. Math. Debrecen \textbf{65}
+  (2004), no.~3-4, 291--303.
+
+\bibitem[BHK{\etalchar{+}}18]{BHKMS18}
+A.~B\"{a}chle, A.~Herman, A.~Konovalov, L.~Margolis, and G.~Singh, \emph{The
+  status of the {Z}assenhaus conjecture for small groups}, Exp. Math.
+  \textbf{27} (2018), no.~4, 431--436.
+
+\bibitem[BIS16]{Normaliz}
+W.~Bruns, B.~Ichim, and C.~S{\"o}ger, \emph{The power of pyramid decomposition
+  in {N}ormaliz}, J. Symbolic Comput. \textbf{74} (2016), 513--536.
+
+\bibitem[BJK11]{BJK11}
+V.~A. Bovdi, E.~Jespers, and A.~B. Konovalov, \emph{Torsion units in integral
+  group rings of {J}anko simple groups}, Math. Comp. \textbf{80} (2011),
+  no.~273, 593--615.
+
+\bibitem[BK11]{BK11}
+A.~B{\"a}chle and W.~Kimmerle, \emph{On torsion subgroups in integral group
+  rings of finite groups}, J. Algebra \textbf{326} (2011), 34--46.
+
+\bibitem[BKL08]{BKL08}
+V.~A. Bovdi, A.~B. Konovalov, and S.~Linton, \emph{Torsion units in integral
+  group ring of the {M}athieu simple group {${\rm M}_{22}$}}, LMS J. Comput.
+  Math. \textbf{11} (2008), 28--39.
+
+\bibitem[BKS20]{BKS20}
+A.~B\"{a}chle, W.~Kimmerle, and M.~Serrano, \emph{On the {F}irst {Z}assenhaus
+  {C}onjecture and {D}irect {P}roducts}, Canad. J. Math. \textbf{72} (2020),
+  no.~3, 602--624.
+
+\bibitem[BM15]{BM15}
+A.~B{\"a}chle and L.~Margolis, \emph{Torsion subgroups in the units of the
+  integral group ring of {PSL}(2,$p^3$)}, Arch. Math. (Basel) \textbf{105}
+  (2015), no.~1, 1--11.
+
+\bibitem[BM17a]{4primaryI}
+\bysame, \emph{On the prime graph question for integral group rings of
+  4-primary groups {I}}, Internat. J. Algebra Comput. \textbf{27} (2017),
+  no.~6, 731--767.
+
+\bibitem[BM17b]{BM17}
+\bysame, \emph{Rational conjugacy of torsion units in integral group rings of
+  non-solvable groups}, Proc. Edinb. Math. Soc. (2) \textbf{60} (2017), no.~4,
+  813--830.
+
+\bibitem[BM18]{HeLPPaper}
+\bysame, \emph{He{LP}: a {GAP} package for torsion units in integral group
+  rings}, J. Softw. Algebra Geom. \textbf{8} (2018), 1--9.
+
+\bibitem[BM19a]{BM19}
+\bysame, \emph{An application of blocks to torsion units in group rings}, Proc.
+  Amer. Math. Soc. \textbf{147} (2019), no.~10, 4221--4231.
+
+\bibitem[BM19b]{4primaryII}
+\bysame, \emph{On the prime graph question for integral group rings of
+  4-primary groups {II}}, Algebr. Represent. Theory \textbf{22} (2019), no.~2,
+  437--457.
+
+\bibitem[Bov87]{Bov87}
+A.~A. Bovdi, \emph{The unit group of an integral group ring ({R}ussian)},
+  Uzhgorod Univ., Uzhgorod, 1987.
+
+\bibitem[CL65]{CL65}
+J.~A. Cohn and D.~Livingstone, \emph{On the structure of group algebras. {I}},
+  Canad. J. Math. \textbf{17} (1965), 583--593.
+
+\bibitem[CM19]{CM19}
+M.~Caicedo and L.~Margolis, \emph{Orders of units in integral group rings and
+  blocks of defect 1},
+  \href{https://arxiv.org/abs/1906.03570v3}{\nolinkurl{arXiv:1906.03570v3
+  [math.GR]}}, 2019.
+
+\bibitem[CMR13]{CMdR13}
+M.~Caicedo, L.~Margolis, and \'A.~del R\'{\i}o, \emph{Zassenhaus conjecture for
+  cyclic-by-abelian groups}, J. Lond. Math. Soc. (2) \textbf{88} (2013), no.~1,
+  65--78.
+
+\bibitem[CR81]{CR81}
+Ch.~W. Curtis and I.~Reiner, \emph{Methods of representation theory. {V}ol.
+  {I}}, John Wiley \& Sons Inc., New York, 1981, With applications to finite
+  groups and orders, Pure and Applied Mathematics, A Wiley-Interscience
+  Publication.
+
+\bibitem[DM91]{DM91}
+F.~Digne and J.~Michel, \emph{Representations of finite groups of {L}ie type},
+  London Mathematical Society Student Texts, vol.~21, Cambridge University
+  Press, Cambridge, 1991.
+
+\bibitem[Dni69]{Dni69}
+\emph{Dniester notebook: unsolved problems in the theory of rings and modules},
+  First All-Union Symposium on the Theory of Rings and Modules (Kishinev, 1968)
+  (Russian), Redakc.-Izdat. Otdel Akad. Nauk Moldav. SSR, Kishinev, 1969.
+
+\bibitem[dRS19]{dRS19}
+\'{A}. del R\'{\i}o and M.~Serrano, \emph{Zassenhaus conjecture on torsion
+  units holds for {${\rm SL}(2,p)$} and {${\rm SL}(2,p^2)$}}, J. Group Theory
+  \textbf{22} (2019), no.~5, 953--974.
+
+\bibitem[EM18]{EM18}
+Florian Eisele and Leo Margolis, \emph{A counterexample to the first
+  {Z}assenhaus conjecture}, Adv. Math. \textbf{339} (2018), 599--641.
+
+\bibitem[GAP19]{GAP}
+The GAP~Group, \emph{{GAP -- Groups, Algorithms, and Programming, Version
+  4.10.2}}, 2019, http://www.gap-system.org.
+
+\bibitem[Gil13]{Gil13}
+J.~Gildea, \emph{Zassenhaus conjecture for integral group ring of simple linear
+  groups}, J. Algebra Appl. \textbf{12} (2013), no.~6, 1350016, 10.
+
+\bibitem[Her01]{Her01}
+M.~Hertweck, \emph{A counterexample to the isomorphism problem for integral
+  group rings}, Ann. of Math. (2) \textbf{154} (2001), no.~1, 115--138.
+
+\bibitem[Her06]{Her06}
+\bysame, \emph{On the torsion units of some integral group rings}, Algebra
+  Colloq. \textbf{13} (2006), no.~2, 329--348.
+
+\bibitem[Her07]{HertweckBrauer}
+\bysame, \emph{Partial augmentations and {B}rauer character values of torsion
+  units in group rings}, 16 pages,
+  \href{https://arxiv.org/abs/math/0612429v2}{\nolinkurl{arXiv:math/0612429v2[math.RA]}}.
+
+\bibitem[Her08a]{Her08}
+\bysame, \emph{Torsion units in integral group rings of certain metabelian
+  groups}, Proc. Edinb. Math. Soc. (2) \textbf{51} (2008), no.~2, 363--385.
+
+\bibitem[Her08b]{HertweckCpCp}
+\bysame, \emph{Unit groups of integral finite group rings with no noncyclic
+  abelian finite {$p$}-subgroups}, Comm. Algebra \textbf{36} (2008), no.~9,
+  3224--3229.
+
+\bibitem[Her08c]{HertweckA6}
+\bysame, \emph{Zassenhaus conjecture for {$A_6$}}, Proc. Indian Acad. Sci.
+  Math. Sci. \textbf{118} (2008), no.~2, 189--195.
+
+\bibitem[Her12]{Her12}
+\bysame, \emph{On torsion units in integral group rings of {F}robenius groups},
+  8 pages,
+  \href{https://arxiv.org/abs/1207.5256}{\nolinkurl{arXiv:1207.5256[math.RA]}}.
+
+\bibitem[HHK09]{HHK09}
+M.~Hertweck, C.~H\"ofert, and W.~Kimmerle, \emph{Finite groups of units and
+  their composition factors in the integral group rings of the group {${\rm
+  PSL}(2,q)$}}, J. Group Theory \textbf{12} (2009), no.~6, 873--882.
+
+\bibitem[Hig40]{Hig40}
+G.~Higman, \emph{Units in group rings}, 1940, Thesis (Ph.D.)--Univ. Oxford.
+
+\bibitem[HL89]{HL89}
+G.~Hiss and K.~Lux, \emph{Brauer trees of sporadic groups}, Oxford Science
+  Publications, The Clarendon Press, Oxford University Press, New York, 1989.
+
+\bibitem[H{\"o}f08]{HoefertDoktor}
+C.~H{\"o}fert, \emph{Bestimmung von {K}ompositionsfaktoren endlicher {G}ruppen
+  aus {B}urnsideringen und ganzzahligen {G}ruppenringen}, Doktorarbeit,
+  Universität Stuttgart, 2008,
+  http://elib.uni-stuttgart.de/opus/volltexte/2008/3541/.
+
+\bibitem[HP72]{HP72}
+I.~Hughes and K.~R. Pearson, \emph{The group of units of the integral group
+  ring {$ZS_{3}$}}, Canad. Math. Bull. \textbf{15} (1972), 529--534.
+
+\bibitem[HS15]{HS15}
+A.~Herman and G.~Singh, \emph{Revisiting the {Z}assenhaus conjecture on torsion
+  units for the integral group rings of small groups}, Proc. Indian Acad. Sci.
+  Math. Sci. \textbf{125} (2015), no.~2, 167--172.
+
+\bibitem[Jam87]{Jam86}
+G.~James, \emph{The representation theory of the symmetric groups}, The
+  {A}rcata {C}onference on {R}epresentations of {F}inite {G}roups ({A}rcata,
+  {C}alif., 1986), Proc. Sympos. Pure Math., vol.~47, Amer. Math. Soc.,
+  Providence, RI, 1987, pp.~111--126.
+
+\bibitem[JMN07]{JMNK07}
+\emph{Mini-{W}orkshop: {A}rithmetik von {G}ruppenringen}, Oberwolfach Rep.
+  \textbf{4} (2007), no.~4, 3209--3239, Abstracts from the mini-workshop held
+  November 25--December 1, 2007, Organized by Eric Jespers, Wolfgang Kimmerle,
+  Zbigniew Marciniak and Gabriele Nebe.
+
+\bibitem[JPM00]{JPM00}
+Stanley~O. Juriaans and C\'{e}sar Polcino~Milies, \emph{Units of integral group
+  rings of {F}robenius groups}, J. Group Theory \textbf{3} (2000), no.~3,
+  277--284.
+
+\bibitem[JR16a]{JdR16a}
+E.~Jespers and {\'A}.~del R{\'{\i}}o, \emph{{Group ring groups. Volume 1:
+  Orders and generic constructions of units}}, Berlin: De Gruyter, 2016.
+
+\bibitem[JR16b]{JdR16b}
+\bysame, \emph{{Group ring groups. Volume 2: Structure theorems of unit
+  groups}}, Berlin: De Gruyter, 2016.
+
+\bibitem[Kim06]{Kim06}
+W.~Kimmerle, \emph{On the prime graph of the unit group of integral group rings
+  of finite groups}, Groups, rings and algebras, Contemp. Math., vol. 420,
+  Amer. Math. Soc., Providence, RI, 2006, pp.~215--228.
+
+\bibitem[KK17]{KK16}
+W.~Kimmerle and A.~Konovalov, \emph{On the {G}ruenberg-{K}egel graph of
+  integral group rings of finite groups}, Internat. J. Algebra Comput.
+  \textbf{27} (2017), no.~6, 619--631.
+
+\bibitem[KM17]{KM17}
+W.~Kimmerle and L.~Margolis, \emph{{$p$}-subgroups of units in {$\Bbb ZG$}},
+  Groups, rings, group rings, and {H}opf algebras, Contemp. Math., vol. 688,
+  Amer. Math. Soc., Providence, RI, 2017, pp.~169--179.
+
+\bibitem[LB83]{LB83}
+I.~S. Luthar and A.~K. Bhandari, \emph{Torsion units of integral group rings of
+  metacyclic groups}, J. Number Theory \textbf{17} (1983), no.~2, 270--283.
+
+\bibitem[LP89]{LP89}
+I.~S. Luthar and I.~B.~S. Passi, \emph{Zassenhaus conjecture for {$A_5$}},
+  Proc. Indian Acad. Sci. Math. Sci. \textbf{99} (1989), no.~1, 1--5.
+
+\bibitem[LP10]{LP10}
+K.~Lux and H.~Pahlings, \emph{Representations of groups. a computational
+  approach}, Cambridge Studies in Advanced Mathematics, vol. 124, Cambridge
+  University Press, Cambridge, 2010.
+
+\bibitem[LT91]{LT91}
+I.~S. Luthar and P.~Trama, \emph{Zassenhaus conjecture for {$S_5$}}, Comm.
+  Algebra \textbf{19} (1991), no.~8, 2353--2362.
+
+\bibitem[Mar17a]{Mar17}
+L.~Margolis, \emph{Subgroup isomorphism problem for units of integral group
+  rings}, J. Group Theory \textbf{20} (2017), no.~2, 289--307.
+
+\bibitem[Mar17b]{MargolisHertweck}
+\bysame, \emph{A theorem of {H}ertweck on $p$-adic conjugacy}, 11 pages,
+  \href{https://arxiv.org/abs/1706.02117v1}{\nolinkurl{ arXiv:1706.02117v1
+  [math.RA]}}.
+
+\bibitem[Mar19]{Mar19}
+\bysame, \emph{On the prime graph question for integral group rings of {C}onway
+  simple groups}, J. Symbolic Comput. \textbf{95} (2019), 162--176.
+
+\bibitem[MdR19a]{MdRSurvey}
+L.~Margolis and \'{A}. del R\'{\i}o, \emph{Finite subgroups of group rings: A
+  survey}, Adv. Group Theory Appl. \textbf{8} (2019), 1--37.
+
+\bibitem[MdR19b]{MdR19}
+\bysame, \emph{Partial augmentations power property: a {Z}assenhaus conjecture
+  related problem}, J. Pure Appl. Algebra \textbf{223} (2019), no.~9,
+  4089--4101.
+
+\bibitem[MdRS19]{MdRS19}
+L.~Margolis, \'{A}. del R\'{\i}o, and M.~Serrano, \emph{Zassenhaus conjecture
+  on torsion units holds for {${\rm PSL}(2,p)$} with {$p$} a {F}ermat or
+  {M}ersenne prime}, J. Algebra \textbf{531} (2019), 320--335.
+
+\bibitem[MRSW87]{MRSW87}
+Z.~Marciniak, J.~Ritter, S.~K. Sehgal, and A.~Weiss, \emph{Torsion units in
+  integral group rings of some metabelian groups. {II}}, J. Number Theory
+  \textbf{25} (1987), no.~3, 340--352.
+
+\bibitem[PMS02]{PMS02}
+C.~Polcino~Milies and S.~K. Sehgal, \emph{An introduction to group rings},
+  Algebra and Applications, vol.~1, Kluwer Academic Publishers, Dordrecht,
+  2002.
+
+\bibitem[Sal07]{Sal07}
+M.~A. Salim, \emph{Torsion units in the integral group ring of the alternating
+  group of degree 6}, Comm. Algebra \textbf{35} (2007), no.~12, 4198--4204.
+
+\bibitem[Sal11]{Sal11}
+\bysame, \emph{Kimmerle's conjecture for integral group rings of some
+  alternating groups}, Acta Math. Acad. Paedagog. Nyh\'azi. (N.S.) \textbf{27}
+  (2011), no.~1, 9--22.
+
+\bibitem[Sal13]{Sal13}
+\bysame, \emph{The prime graph conjecture for integral group rings of some
+  alternating groups}, Int. J. Group Theory \textbf{2} (2013), no.~1, 175--185.
+
+\bibitem[San81]{San81}
+R.~Sandling, \emph{Graham {H}igman's thesis ``{U}nits in group rings''},
+  Integral representations and applications ({O}berwolfach, 1980), Lecture
+  Notes in Math., vol. 882, Springer, Berlin-New York, 1981, pp.~93--116.
+
+\bibitem[Seh78]{Seh78}
+S.~K. Sehgal, \emph{Topics in group rings}, Monographs and Textbooks in Pure
+  and Applied Math., vol.~50, Marcel Dekker, Inc., New York, 1978.
+
+\bibitem[Seh93]{Seh93}
+\bysame, \emph{Units in integral group rings}, Pitman Monographs and Surveys in
+  Pure and Applied Mathematics, vol.~69, Longman Scientific \& Technical,
+  Harlow, 1993.
+
+\bibitem[tt]{4ti2}
+4ti2 team, \emph{4ti2---a software package for algebraic, geometric and
+  combinatorial problems on linear spaces}, {A}vailable at \url{www.4ti2.de},
+  Version 1.6.7.
+
+\bibitem[Wag95]{Wag95}
+R.~Wagner, \emph{Zassenhausvermutung über die {G}ruppen
+  {$\operatorname{PSL}(2,p)$}}, Diplomarbeit, Universität Stuttgart, Mai 1995.
+
+\bibitem[Wei91]{Wei91}
+A.~Weiss, \emph{Torsion units in integral group rings}, J. Reine Angew. Math.
+  \textbf{415} (1991), 175--187.
+
+\end{thebibliography}

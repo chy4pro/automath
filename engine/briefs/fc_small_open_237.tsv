@@ -1,0 +1,237 @@
+FormalConjectures/Paper/KotzigConjecture.lean	52	1	kotzig_conjecture	For any tree $T$ with $n$ edges, the complete graph $K_{2n+1}$ decomposes into
+FormalConjectures/Paper/Dubner.lean	66	1	IsTwinPrime,t1,t2,t3	A twin prime is a prime number that has a prime gap of 2, meaning either p - 2 or p + 2
+FormalConjectures/Paper/LatinTableau.lean	45	1	LatinTableauConjecture	The Latin Tableau Conjecture: If G is the simple graph
+FormalConjectures/Paper/RingelConjecture.lean	50	1	ringel_conjecture	For any tree $T$ with $n$ edges, the complete graph $K_{2n+1}$ decomposes into
+FormalConjectures/Paper/CardinalityLindelof.lean	46	1	HasG	Is there a Lindelöf space with singletons as Gδ sets with cardinality greater than the continuum?
+FormalConjectures/Paper/FusibleNumber.lean	76	1	isFusible_one_half,isFusible_one,conj_7_1	A rational number is fusible if it belongs to the smallest set containing $0$ and closed under
+FormalConjectures/Paper/Chvatal.lean	49	1	Decreasing,Intersecting,exists_maximal_star	A family F of sets is Decreasing if it is closed under taking subsets.
+FormalConjectures/Paper/PrimeTuples.lean	38	1	prime_tuples_conjecture	For any `k ≥ 2`, let `a₁,...,aₖ` and `b₁,...,bₖ` be integers with `aᵢ > 0`. Suppose that for
+FormalConjectures/OEIS/115257.lean	71	1	a,a_0,a_1,a_2	The primary defining sequence `a`.
+FormalConjectures/OEIS/113213.lean	63	1	a,a_1,a_2,a_3	a n is the smallest number m such that $2^n - m$ and $2^n + m$ are primes.
+FormalConjectures/OEIS/114831.lean	78	1	a,a_1,a_2,a_3	The primary defining sequence `a`.
+FormalConjectures/OEIS/109845.lean	69	1	a,a_0,a_1,a_2	$a(1) = 2$; $a(2n)$ = lcm of all previous terms + 1; $a(2n+1)$ = lcm of all previous terms - 1.
+FormalConjectures/OEIS/109074.lean	79	1	frac,a,a_0,a_1	The rational number defined by $\binom{6n-2}{2n} / \left(2 \binom{4n-1}{2n}\right)$,
+FormalConjectures/OEIS/67720.lean	78	1	A,a_1,a_2,a_4	A number $k$ is in the sequence A067720 if $\varphi(k^2 + 1) = k \cdot \varphi(k + 1)$.
+FormalConjectures/OEIS/113258.lean	58	2	a,a_1,a_2,a_3	The primary defining sequence `a`.
+FormalConjectures/OEIS/110566.lean	66	1	a,a_1,a_2,a_3	The primary defining sequence `a`.
+FormalConjectures/OEIS/103425.lean	72	2	a,a_0,a_1,a_2	The primary defining sequence `a`.
+FormalConjectures/OEIS/239957.lean	49	1	A,a_2,conjecture	The predicate that $p$ has a primitive root $0 < g < p$ of the form $k^2 + 1$, where $k$ is an integer.
+FormalConjectures/OEIS/81091.lean	65	2	isPrimeBitsSet,A,a_7,a_11	Primes with $m$ one bits in their binary representation.
+FormalConjectures/OEIS/103151.lean	69	1	a,a_1,a_2,a_3	The primary defining sequence `a`.
+FormalConjectures/OEIS/287616.lean	68	1	A,a_0,a_1,a_2	The predicate that `n` can be written as $x(x+1)/2 + y(3y+1)/2 + z(5z+1)/2$ for
+FormalConjectures/OEIS/111291.lean	72	1	countRefactorableNat,a,a_0,a_1	Helper function: number of refactorable numbers $\le m$.
+FormalConjectures/OEIS/228828.lean	68	1	a,a_0,a_1,a_2	Numbers $n$ such that $n^2 + \pi(n)$ is prime.
+FormalConjectures/OEIS/308734.lean	73	1	A,a_2,a_3,a_4	The predicate that `n` can be written as $(2^a \cdot 3^b)^2 + (2^c \cdot 5^d)^2 + x^2 + y^2$
+FormalConjectures/OEIS/303656.lean	77	1	A,a_2,a_3,a_4	The predicate that `n` can be written as $a^2 + b^2 + 3^c + 5^d$ for nonnegative integers.
+FormalConjectures/OEIS/113609.lean	73	2	IsOeisPrimePower,a,a_1,a_2	A number $n$ is an "OEIS prime power" (for the context of A113609's definition)
+FormalConjectures/OEIS/113019.lean	66	2	a,a_0,a_1,a_2	a n is the (Number of digits of n) raised to the power of (the digital root of n),
+FormalConjectures/OEIS/231201.lean	70	1	A,a_2,a_3,a_4	The predicate that `n` can be written as $x + y$ with $x,y >0$ such that
+FormalConjectures/OEIS/109905.lean	64	2	a,a_1,a_2,a_3	$a(n)$ is the greatest prime of the form $k(n-k)+1$, where $k$ can take values
+FormalConjectures/OEIS/1157.lean	62	1	a,a_1,a_2,a_3	a n is the sum of squares of divisors of $n$.
+FormalConjectures/OEIS/102847.lean	61	2	a,a_0,a_1,a_2	The primary defining sequence `a`.
+FormalConjectures/OEIS/116150.lean	58	2	a,a_1,a_2,a_3	a n is the sum of $3^j + (-2)^j$ for j from 1 to n.
+FormalConjectures/OEIS/109909.lean	61	1	a,a_1,a_2,a_3	$a(n)$ is the number of primes of the form $k(n-k)-1$.
+FormalConjectures/OEIS/41.lean	60	2	a,a_0,a_1,a_2	The `n`-th partition number.
+FormalConjectures/OEIS/306477.lean	73	1	A,a_1,a_2,a_3	The predicate that `n` can be written as $\binom{w+2}{2} + \binom{x+3}{4} + \binom{y+5}{6} + \binom{z+7}{8}$
+FormalConjectures/OEIS/109908.lean	61	1	a,a_1,a_2,a_3	$a(n)$ = greatest prime of the form $k(n-k)-1$, or $0$ if no such prime exists.
+FormalConjectures/OEIS/232174.lean	74	1	A,a_2,a_3,a_4	The predicate that `n` can be written as $x + y$ with $x, y > 0$ such that both
+FormalConjectures/OEIS/111114.lean	79	1	a,a_2,a_3,a_4	`a n` is the integer part of $\mathrm{prime}(n)/\pi(n)$.
+FormalConjectures/OEIS/104320.lean	58	1	a,a_0,a_1,a_2	The primary defining sequence `a`.
+FormalConjectures/OEIS/108211.lean	63	1	a,a_1,a_2,a_3	The primary defining sequence `a`.
+FormalConjectures/OEIS/280831.lean	76	1	A,a_0,a_1,a_2	The predicate that `n` can be written as $x^2 + y^2 + z^2 + w^2$ with $x, y, z, w$ nonnegative
+FormalConjectures/OEIS/113010.lean	58	2	a,a_0,a_1,a_2	a n is the {Number of digits of n} raised to the power of {the sum of the digits of n}.
+FormalConjectures/OEIS/109671.lean	75	2	a,a_1,a_2,a_3	The primary defining sequence `a`.
+FormalConjectures/OEIS/113271.lean	60	2	a,a_0,a_1,a_2	The primary defining sequence `a`.
+FormalConjectures/OEIS/115366.lean	66	1	a,a_0,a_1,a_2	The primary defining sequence `a`.
+FormalConjectures/OEIS/108866.lean	77	1	a,a_0,a_1,a_2	The primary defining sequence `a`.
+FormalConjectures/OEIS/167604.lean	76	2	next,product,a,a_1	The least prime occurring among the sums $d + n / d$ for divisors $d$ of $n$.
+FormalConjectures/WrittenOnTheWallII/GraphConjecture61.lean	59	1	conjecture61	WOWII [Conjecture 61](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/)
+FormalConjectures/WrittenOnTheWallII/GraphConjecture141.lean	57	1	conjecture141	WOWII [Conjecture 141](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/)
+FormalConjectures/WrittenOnTheWallII/GraphConjecture100.lean	77	1	conjecture100	WOWII [Conjecture 100](http://cms.uhd.edu/faculty/delavinae/research/wowII/all.html#conj100)
+FormalConjectures/WrittenOnTheWallII/GraphConjecture40.lean	45	1	conjecture40	WOWII [Conjecture 40](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/)
+FormalConjectures/WrittenOnTheWallII/GraphConjecture198a.lean	58	1	conjecture198a	WOWII [Conjecture 198a](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/)
+FormalConjectures/WrittenOnTheWallII/GraphConjecture133.lean	66	1	conjecture133	WOWII [Conjecture 133](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/):
+FormalConjectures/WrittenOnTheWallII/GraphConjecture19.lean	48	1	conjecture19	WOWII [Conjecture 19](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/)
+FormalConjectures/GreensOpenProblems/12.lean	48	2	green_12	Let $G$ be an abelian group of size $N$, and suppose that $A \subset G$ has density $\alpha$.
+FormalConjectures/GreensOpenProblems/53.lean	48	2	green_53	Suppose that $\mathbb{F}_2^n$ is partitioned in to sets $A_1, ..., A_K$.
+FormalConjectures/GreensOpenProblems/28.lean	55	2	IsUniformOnSupport,indepSum,green_28	True if a PMF on $\mathbb{Z}$ is uniformly distributed on its support.
+FormalConjectures/GreensOpenProblems/33.lean	62	2	green_33,green_33.sanity_sq_bound	Are there infinitely many $q$ for which there is a set $A \subset \mathbb{Z}/q\mathbb{Z}$,
+FormalConjectures/GreensOpenProblems/3.lean	37	2	green_3	Suppose that $A \subset [0,1]$ is open and has measure greater than $\frac{1}{3}$. Is there a solution to $xy = z$ with $x, y, z \in A$?
+FormalConjectures/GreensOpenProblems/62.lean	45	2	green_62	Let $p$ be a large prime, and let $A$ be the set of all primes less than $p$.
+FormalConjectures/GreensOpenProblems/58.lean	40	2	green_58	Suppose $A, B ⊆ \{1, \dots, N\}$ both have size at least $N^{0.49}$. Must the sumset $A + B$
+FormalConjectures/GreensOpenProblems/61.lean	47	2	green_61	Suppose that $A + A$ contains the first $n$ squares. Is $|A| \geq n^{1 - o(1)}$?
+FormalConjectures/GreensOpenProblems/77.lean	42	2	green_77	Given $n$ points in the unit disc, must there be a triangle of area at most $n^{-2+o(1)}$
+FormalConjectures/GreensOpenProblems/7.lean	45	2	green_7.variants.positive_density	Does Ulam's sequence have positive density?
+FormalConjectures/GreensOpenProblems/60.lean	40	2	green_60	Is there an absolute constant $c > 0$ such that, whenever $A ⊆ \mathbb{N}$ is a set of squares
+FormalConjectures/GreensOpenProblems/47.lean	54	2	green_47	Suppose that a large sieve process leaves a set of quadratic size. Is that set quadratic?
+FormalConjectures/GreensOpenProblems/50.lean	60	2	green_50	Let $A \subset \mathbb{F}_2^n$ be a set of density $\alpha > 0$. Does $10A$ contain a coset
+FormalConjectures/GreensOpenProblems/1.lean	41	2	green_1	Let $A$ be a set of $n$ positive integers. Does $A$ contain a sum-free set
+FormalConjectures/Wikipedia/Lemoine.lean	50	2	OddPrime,lemoine_conjecture,lemoine_conjecture_extension	For all odd integers $n ≥ 7$ there are prime numbers $p,q$ such that $n = p+2q$.
+FormalConjectures/Wikipedia/TwinPrimes.lean	38	2	twin_primes	Are there infinitely many primes p such that p + 2 is prime?
+FormalConjectures/Wikipedia/CollatzConjecture.lean	53	1	collatzStep,collatz_conjecture	Consider the following operation on the natural numbers:
+FormalConjectures/Wikipedia/CarmichaelTotient.lean	67	2	CarmichaelTotientFor,carchimichealTotientFor_zero,to,carmichealTotientFor_odd	Natural number $n$ for which there exists a $m ≠ n$ with $φ(m) = φ(n)$
+FormalConjectures/Wikipedia/PrimeTriplets.lean	35	2	prime_triplets	Are there infinitely many tuples of three consecutive primes $(p, q, r)$ such that $r - p = 6$?
+FormalConjectures/Wikipedia/DeterminantalConjecture.lean	50	1	determinantal_conjecture	Does the determinant of the sum $A + B$ of two $n \times n$ normal
+FormalConjectures/Wikipedia/Bunyakovsky.lean	38	1	bunyakovsky_conjecture	**Bunyakovsky conjecture**
+FormalConjectures/Wikipedia/WoodalPrimes.lean	34	1	infinitely_many_woodall_primes	There are infinitely many prime numbers of the form `k * 2 ^ k - 1` for `k > 1`.
+FormalConjectures/Wikipedia/ClassNumberProblem.lean	51	2	IsClassNumberOne,class_number_problem,class_number_problem.variants.imaginary	There are infinitely many real quadratic fields `ℚ(√d)` with class number one,
+FormalConjectures/Wikipedia/PrimesAndPerfectSquares.lean	36	2	infinite_prime_sq_add_one	
+FormalConjectures/Wikipedia/LanderParkinAndSelfridgeConjecture.lean	60	2	lander_parkin_selfridge,lander_parkin_selfridge.variants.five_three	The Lander–Parkin–Selfridge conjecture: if the sum of $n$ positive integer $k$-th powers
+FormalConjectures/Wikipedia/Gilbreath.lean	45	1	d,gilbreath_conjecture	**Gilbreath's nth difference**, $d^n$
+FormalConjectures/Wikipedia/JugglerConjecture.lean	51	1	jugglerStep,juggler_conjecture,jugglerStep_36	Consider the following operation on the natural numbers:
+FormalConjectures/Wikipedia/FermatCatalanConjecture.lean	72	2	FermatCatalanSet',FermatCatalanSet,fermatCatalanConjecture,fermat_catalan	The set of solutions to the Fermat-Catalan Conjecture, i.e. the
+FormalConjectures/Wikipedia/WilsonPrime.lean	63	1	IsWilsonPrime,infinitely_many_wilson_primes,isWilsonPrime_five,isWilsonPrime_thirteen	A Wilson prime is a prime $p$ such that $p^2 \mid (p-1)!+1$.
+FormalConjectures/Wikipedia/BrocardConjecture.lean	53	2	brocard_conjecture,brocard_conjecture.ferreira_large_n	**Brocard's Conjecture**
+FormalConjectures/Wikipedia/Toronto.lean	69	1	DiscreteTopology.of_t2_of_torontoSpace	A *Toronto space* is a topological space
+FormalConjectures/Wikipedia/Superperfectnumbers.lean	44	1	PerfectFor,twoFivePerfect	A positive integer $n$ is $(m,k)$-perfect if $\sigma^m(n) = kn$ where $\sigma^m$ is the $m$-th iterate of $σ$.
+FormalConjectures/Wikipedia/AlmostPerfectNumbers.lean	49	2	AlmostPerfect,exists_almost_perfect_not_power_of_two	A number is almost perfect if the sum of its divisors is equal to $2n - 1$.
+FormalConjectures/Wikipedia/VaughtConjecture.lean	46	1	numberOfCountableModels,vaught_conjecture	The number of countable models of some L-Theory T up to isomorphism
+FormalConjectures/Wikipedia/LonelyRunnerConjecture.lean	79	2	lonely_runner_conjecture,deltaTuple,deltaGap,lonely_runner_conjecture.variants.tao_2017	Consider $n$ runners on a circular track of unit length. At the initial time
+FormalConjectures/Wikipedia/BealConjecture.lean	68	1	bealConjecture,beal_conjecture,flt_of_beal_conjecture	The **Beal Conjecture**: if we are given positive integers $A, B, C, x, y, z$ such that
+FormalConjectures/Wikipedia/LittlewoodConjecture.lean	60	2	littlewood_conjecture,padic_littlewood_conjecture	For any two real numbers $\alpha$ and $\beta$,
+FormalConjectures/Wikipedia/FeitThompsonPrimeConjecture.lean	35	1	feit_thompson_primes	There are no distinct primes $p$ and $q$ such that $\frac{q^p - 1}{q - 1}$ divides $\frac{p^q - 1}{p - 1}$
+FormalConjectures/Wikipedia/FactorialPrime.lean	52	1	IsFactorialPrime,seven_isFactorialPrime,twentyThree_isFactorialPrime,infinitely_many_factorial_primes	A factorial prime is a prime one above or one below a factorial.
+FormalConjectures/Wikipedia/Schanuel.lean	40	1	schanuel_conjecture	Given any set of $n$ complex numbers $\{z_1, ..., z_n\}$ that are linearly independent over
+FormalConjectures/Wikipedia/RationalDistanceProblem.lean	45	2	UnitSquareCorners,rational_distance_problem	Does there exist a point in the plane at rational distance from all four vertices of the unit square?
+FormalConjectures/Wikipedia/Exponentials.lean	49	2	four_exponentials_conjecture,two_pow_three_pow_transcendental	**Four exponentials conjecture**
+FormalConjectures/Wikipedia/LehmerTotient.lean	36	2	lehmer_totient	Does there exist a composite number $n > 1$ such that Euler’s totient function
+FormalConjectures/Wikipedia/Schinzel.lean	37	1	schinzel_conjecture	**Schinzel conjecture (H hypothesis)**
+FormalConjectures/Wikipedia/PierpontPrime.lean	52	1	IsPierpontPrime,two_isPierpontPrime,thirtySeven_isPierpontPrime,infinitely_many_pierpont_primes	A Pierpont prime is a prime of the form $2^a3^b + 1$.
+FormalConjectures/Wikipedia/Andrica.lean	46	2	andrica_conjecture,andrica_conjecture.ferreira_large_n	**Andrica's conjecture**
+FormalConjectures/Wikipedia/GapConjecture.lean	46	1	gap_conjecture	If a finitely generated group has superpolynomial growth, then with respect to any finite
+FormalConjectures/Wikipedia/conjecture_1_3_to_2_3.lean	43	2	conjecture_1_3_to_2_3	Does every finite partially ordered set that is not totally ordered
+FormalConjectures/Wikipedia/Goormaghtigh.lean	68	1	repunit,IsGoormaghtighNumber,goormaghtigh_conjecture,isGoormaghtighNumber_31	The repunit with `digits` digits in the given base, expressed without division.
+FormalConjectures/Wikipedia/BoundedBurnsideProblem.lean	37	2	bounded_burnside_problem	Let $G$ be a finitely generated group, and assume there exists $n$ such that for every $g$ in $G$,
+FormalConjectures/Wikipedia/KummerVandiver.lean	40	1	kummer_vandiver	Kummer–Vandiver conjecture states that for every prime $p$, the class number of the maximal
+FormalConjectures/Wikipedia/EulerSumOfPowers.lean	60	1	eulers_sum_of_powers_conjecture,eulers_sum_of_powers_conjecture.false_for_k4,eulers_sum_of_powers_conjecture.false_for_k5	Euler's sum of powers conjecture states that for integers $n > 1$ and $k > 1$,
+FormalConjectures/Wikipedia/Grimm.lean	51	2	grimm_conjecture,grimm_conjecture_weak	**Grimm's Conjecture**
+FormalConjectures/Wikipedia/Singmaster.lean	50	1	solutions,singmaster	The set of pairs (n, k) representing the solutions to the equation
+FormalConjectures/Wikipedia/QuasiperfectNumbers.lean	47	2	Quasiperfect,exists_quasiperfect	A number is quasiperfect if the sum of its divisors is equal to $2n + 1$.
+FormalConjectures/Wikipedia/FibonacciPrimes.lean	65	2	fib_primes_infinite,fib_primes_infinite.variant,indices_infinite_iff_fib_primes_infinite	There are infinitely many Fibonacci primes, i.e., Fibonacci numbers that are prime
+FormalConjectures/Wikipedia/NormalityOfPi.lean	43	1	pi_normal_base_ten	$\pi$ is normal in base 10.
+FormalConjectures/Wikipedia/BingBorsuk.lean	52	1	bing_borsuk_conjecture	The Bing-Borsuk Conjecture: every $n$-dimensional homogeneous absolute neighborhood retract
+FormalConjectures/Wikipedia/ErdosMoser.lean	62	1	powerSum,erdos_moser_conjecture,powerSum_one_three,powerSum_two_three	The power sum $S_k(m)=\sum_{i=1}^{m-1} i^k$.
+FormalConjectures/Wikipedia/Firoozbakht.lean	55	2	firoozbakhtSeq,firoozbakht_conjecture,firoozbakht_conjecture_consequence	The sequence of $\sqrt[n]{p_n}$ where $p_n$ is the n:th prime number.
+FormalConjectures/Books/BugeaudDistributionModuloOne/Problem10_7.lean	43	2	problem_10_7	Problem 10.7. Let $\varepsilon$ be a positive real number. Are there arbitrarily
+FormalConjectures/Books/BugeaudDistributionModuloOne/Problem10_4.lean	48	1	Spectrum,spectrum_xi_alpha_pow_countable	The spectrum of a sequence $(x_n)_{n \ge 1}$ of real numbers is the set of
+FormalConjectures/Kourovka/19_25.lean	45	2	kourovka.	Let $G$ and $H$ be finite groups of the same order with
+FormalConjectures/Kourovka/20_76.lean	37	2	kourovka.	Let $G$ be a finite $p$-group and assume that all abelian normal subgroups of $G$
+FormalConjectures/Kourovka/1_74.lean	55	2	IsTarskiMonster,kourovka.	A Tarski monster group: an infinite group in which every non-trivial proper
+FormalConjectures/Kourovka/1_40.lean	67	2	engelCommutator,IsEngelElement,IsEngelGroup,kourovka.	The iterated commutator $[x,\, {}_n y]$, defined by $[x,\, {}_0 y] = x$ and
+FormalConjectures/Arxiv/0912.2382/CurlingNumberConjecture.lean	58	1	k,S,curling_number_conjecture	The curling number
+FormalConjectures/Arxiv/1601.03081/UniqueCrystalComponents.lean	53	1	IsCrystalWithComponents,isCrystalWithComponents_35_5_7,crystals_components_unique	An odd number $n$ is called a crystal if $n = ab$, with $a, b > 1$
+FormalConjectures/Arxiv/2107.00295/IndependentDomination.lean	55	2	independentDominationEven,independentDominationOdd	**Conjecture 1.6 (Even case).**
+FormalConjectures/Arxiv/2107.12475/CollatzLike.lean	54	1	CollatzLike,two_not_in_digits_three_pow_eight	For $n > 8$, $2^n$ is not the the sum of distinct powers of $3$. Expressed here in terms of the base $3$ digits of $n$.
+FormalConjectures/Arxiv/2402.13202/CirculantHadamard.lean	55	1	orderFourGenerator,orderFourGenerator_isHadamard,circulant_hadamard_conjecture	A generator for a circulant Hadamard matrix of order four.
+FormalConjectures/Mathoverflow/21003.lean	43	2	mathoverflow_21003	Is there any polynomial $f(x, y) \in \mathbb{Q}[x, y]$ such that
+FormalConjectures/Mathoverflow/31809.lean	38	2	mathoverflow_31809	Does there exist a category that is pretriangulated but not triangulated?
+FormalConjectures/Mathoverflow/339137.lean	70	2	IsZeroOne,mathoverflow_339137,mathoverflow_339137_probabilistic	The predicate that all coefficients of a polynomial are either zero or one.
+FormalConjectures/Mathoverflow/1973.lean	43	2	mathoverflow_1973	The unit `n`-sphere, defined as `Metric.sphere 0 1` in `EuclideanSpace ℝ (Fin (n + 1))`.
+FormalConjectures/ErdosProblems/234.lean	39	2	erdos_234	Is it true that for all `c ≥ 0`, the density `f c` of integers for which
+FormalConjectures/ErdosProblems/371.lean	37	1	erdos_371	Let $P(n)$ denote the largest prime factor of $n$. Show that the set of $n$
+FormalConjectures/ErdosProblems/849.lean	38	2	erdos_849	Is it true that, for every integer $t\geq1$, there is some integer $a$ such that ${n \choose k} = a$
+FormalConjectures/ErdosProblems/1094.lean	39	1	erdos_1094	For all $n\ge 2k$ the least prime factor of $\binom{n}{k}$ is $\le\max(n/k,k)$, with only
+FormalConjectures/ErdosProblems/520.lean	60	2	erdos_520	A random function $f$ is Rademacher multiplicative if $f(1) = 1$,
+FormalConjectures/ErdosProblems/28.lean	42	1	erdos_28	If $A ⊆ \mathbb{N}$ is such that $A + A$ contains all but finitely many integers then
+FormalConjectures/ErdosProblems/873.lean	42	2	erdos_873	Let $a$ be some sequence of natural numbers. We set $F(A,X,k)$ to be the count of
+FormalConjectures/ErdosProblems/598.lean	49	2	erdos_598	Let $\kappa = (2^{\aleph_0})^+$. This is the successor cardinal of the continuum.
+FormalConjectures/ErdosProblems/424.lean	60	2	nextGeneration,sequenceSet,generatedSet,erdos_424	Defines the set of new numbers generated from a set A by the operation
+FormalConjectures/ErdosProblems/1041.lean	72	2	length,exists_connected_component_contains_two_roots,erdos_1041	The length of a subset $s$ of $\mathbb{C}$ is defined to be its 1-dimensional
+FormalConjectures/ErdosProblems/536.lean	44	2	erdos_536	Let $\epsilon>0$ and $N$ be sufficiently large. Is it true that if $A\subseteq \{1,\ldots,N\}$ has
+FormalConjectures/ErdosProblems/1061.lean	49	2	erdos_1061	Let `S x` count the number of **ordered** pairs of positive integers `(a, b)` with `a + b ≤ x`
+FormalConjectures/ErdosProblems/853.lean	56	2	r,erdos_853.parts.i,erdos_853.parts.ii	Let $d_n = p_{n+1} - p_n$, where $p_n$ is the $n$th prime. Let $r(x)$ be the smallest even
+FormalConjectures/ErdosProblems/279.lean	37	2	erdos_279	Let $k\geq 3$. Is there a choice of congruence classes $a_p\pmod{p}$ for every prime $p$
+FormalConjectures/ErdosProblems/412.lean	39	2	erdos_412	Let $σ_1(n)=σ(n)$, the sum of divisors function, and $σ_k(n) = σ(σ_{k-1}(n))$.
+FormalConjectures/ErdosProblems/486.lean	37	2	erdos_486	For each $n \in \mathbb{N}$ choose some $X_n \subseteq \mathbb{Z}/n\mathbb{Z}$.
+FormalConjectures/ErdosProblems/740.lean	50	2	NoShortOddCycle,erdos_740	A graph avoids odd cycles of length $\leq r$ if it contains no odd cycles of length at most $r$.
+FormalConjectures/ErdosProblems/982.lean	38	1	erdos_982	If $n$ distinct points in $\mathbb{R}^2$ form a convex polygon then some vertex has at least
+FormalConjectures/ErdosProblems/428.lean	46	2	primeDensityRatio,erdos_428	The density ratio of set $A$ up to $n$ relative to the prime counting function $\pi(n)$.
+FormalConjectures/ErdosProblems/701.lean	43	2	erdos_701	Let $\mathcal{F}$ be a family of sets closed under taking subsets (i.e. if
+FormalConjectures/ErdosProblems/243.lean	44	1	erdos_243	Let $a_1 < a_2 < \dots$ be a sequence of integers such that
+FormalConjectures/ErdosProblems/242.lean	54	2	erdos_242,erdos_242.variants.schinzel_generalization	For every $n>2$ there exist distinct integers $1 ≤ x < y < z$
+FormalConjectures/ErdosProblems/64.lean	40	2	erdos_64	Does every finite graph with minimum degree at least $3$
+FormalConjectures/ErdosProblems/203.lean	37	2	erdos_203	Is there an integer $m$ with $(m, 6) = 1$ such that none of $2^k \cdot 3^\ell \cdot m + 1$ are prime,
+FormalConjectures/ErdosProblems/653.lean	39	2	erdos_653	Let $x_1,\ldots,x_n\in \mathbb{R}^2$ and let $R(x_i)=\#\{ \lvert x_j-x_i\rvert : j\neq i\}$,
+FormalConjectures/ErdosProblems/25.lean	41	2	erdos_25	Let $n_1 < n_2 < \dots$ be an arbitrary sequence of integers, each with an associated residue class
+FormalConjectures/ErdosProblems/1060.lean	46	2	erdos_1060.parts.i,erdos_1060.parts.ii	The conjecture is about the function $f(n)$ which counts the number of solutions to
+FormalConjectures/ErdosProblems/68.lean	61	2	erdos_68,sum_factorial_inv_eq_geometric,have	Is
+FormalConjectures/ErdosProblems/3.lean	39	2	erdos_3	If $A \subset \mathbb{N}$ has $\sum_{n \in A}\frac 1 n = \infty$, then must $A$ contain arbitrarily
+FormalConjectures/ErdosProblems/52.lean	40	2	erdos_52	Let $A$ be a finite set of integers. Is it true that for every $\epsilon>0$
+FormalConjectures/ErdosProblems/389.lean	53	2	erdos_389,erdos_389.variants.mehta_four	Is it true that for every $n \geq 1$ there is a $k$ such that
+FormalConjectures/ErdosProblems/624.lean	60	1	ExistsEventuallySurjective,H,erdos_624	The condition that an integer `m` ensures the existence of a function `f` covering `Fin n`
+FormalConjectures/ErdosProblems/681.lean	41	2	IsLPF,erdos_681	`IsLPF p m` says that `p` is the least prime factor of `m`.
+FormalConjectures/ErdosProblems/906.lean	35	2	erdos_906	Does there exists an entire non-zero transcendental function `f : ℂ → ℂ` such that for any
+FormalConjectures/ErdosProblems/855.lean	40	2	erdos_855	Erdős Problem 855 (Segal's conjecture): $\pi(x + y) \le \pi(x) + \pi(y)$
+FormalConjectures/ErdosProblems/414.lean	39	2	h,erdos_414	Let $h_1(n) = h(n)$ and $h_k(n) = h(h_{k-1}(n))$. Is it true, for any $m,n$, there exist
+FormalConjectures/ErdosProblems/101.lean	56	1	linesWithPointsFor,numLinesWithFourPointMax,erdos_101	The set of lines in $\mathbb{R}^2$ containing exactly $k$ points from a given set $S$.
+FormalConjectures/ErdosProblems/75.lean	50	2	erdos_75	Is there a graph of chromatic number `ℵ_ 1` with `ℵ_ 1` vertices such that for all
+FormalConjectures/ErdosProblems/592.lean	42	2	erdos_592	Determine which countable ordinals $β$ have the property that, if $α = \omega^β$, then in any
+FormalConjectures/ErdosProblems/341.lean	49	2	erdos_341	Let $A=\{a_1 < \cdots < a_k\}$ be a finite set of integers and extend it to an infinite
+FormalConjectures/ErdosProblems/212.lean	35	2	erdos_212	Is there a dense subset of ℝ^2 such that all pairwise distances
+FormalConjectures/ErdosProblems/479.lean	35	2	erdos_479	Is it true that, for all $k\neq 1$, there are infinitely many $n$ such that
+FormalConjectures/ErdosProblems/398.lean	39	2	erdos_398	**Brocard's Problem**
+FormalConjectures/ErdosProblems/623.lean	42	2	erdos_623	Let $X$ be a set of cardinality $\aleph_\omega$ and $f$ be a function from the finite subsets of
+FormalConjectures/ErdosProblems/463.lean	44	2	erdos_463	Is there a function $f$ with $f(n)\to\infty$ as $n\to\infty$ such that,
+FormalConjectures/ErdosProblems/96.lean	73	2	convexUnitDistanceCounts,confirms,convexUnitDistanceCounts_bddAbove,maxConvexUnitDistances	The set of all possible numbers of unit distances determined by the vertices of a convex
+FormalConjectures/ErdosProblems/249.lean	38	2	erdos_249	Is
+FormalConjectures/ErdosProblems/39.lean	42	2	erdos_39	Is there an infinite Sidon set $A\subset \mathbb{N}$ such that
+FormalConjectures/ErdosProblems/566.lean	52	2	erdos_566	Let $G$ be such that any subgraph on $k$ vertices has at most $2k-3$ edges.
+FormalConjectures/ErdosProblems/1139.lean	41	2	erdos_1139	Let $1\leq u_1 < u_2 < \cdots$ be the sequence of integers with at most $2$ prime factors.
+FormalConjectures/ErdosProblems/730.lean	66	2	erdos_730,erdos_730.variants.explicit_pairs,erdos_730.variants.delta_ne_one	Are there infinitely many pairs of integers $n < m$ such that $\binom{2n}{n}$
+FormalConjectures/ErdosProblems/458.lean	43	2	lcm_upto,erdos_458	The least common multiple of the integers in the set $\{1, \dots, n\}$.
+FormalConjectures/ErdosProblems/15.lean	45	2	erdos_15	Is it true that $\sum_{n=1}^\infty(-1)^n\frac{n}{p_n}$ converges,
+FormalConjectures/ErdosProblems/881.lean	57	2	IsMinimalAsymptoticAddBasisOfOrder,erdos_881	We interpret "additive basis of order `k`" as an asymptotic additive basis of order `k`,
+FormalConjectures/ErdosProblems/383.lean	40	2	erdos_383	Is it true that for every $k$ there are infinitely many primes $p$ such that the largest prime
+FormalConjectures/ErdosProblems/1135.lean	45	1	erdos_1135	The Collatz conjecture states that for any positive integer $n$, there exists a natural
+FormalConjectures/ErdosProblems/251.lean	34	2	erdos_251	Is $\sum_{n=1}^\infty \frac{p_n}{2^n}$ irrational? Here $p_n$ is the $n$-th prime ($p_1=2, p_2=3, \dots$).
+FormalConjectures/ErdosProblems/197.lean	40	2	erdos_197	Can $\mathbb{N}$ be partitioned into two sets, each of which can be permuted to avoid monotone
+FormalConjectures/ErdosProblems/1073.lean	40	2	A,erdos_1073	Let $A(x)$ count the number of composite $u < x$ such that $n!+1 \equiv 0 (\mod u)$ for some $n$.
+FormalConjectures/ErdosProblems/857.lean	49	2	m,erdos_857	`m(n, k)`: minimal sunflower-forcing family size in the non-uniform `[n]` model.
+FormalConjectures/ErdosProblems/396.lean	39	2	erdos_396	Is it true that for every $k$ there exists $n$ such that
+FormalConjectures/ErdosProblems/82.lean	65	2	IsRegularInduced,F,erdos_82,erdos_82.variants.F_upper_bound	A predicate that holds if $S$ is a regular induced subgraph of $G$
+FormalConjectures/ErdosProblems/932.lean	46	2	erdos_932,erdos_932.variants.one_le	Let $p_k$ denote the $k$th prime. For infinitely many $r$ there are at least two
+FormalConjectures/ErdosProblems/41.lean	59	2	NtupleCondition,erdos_41,erdos_41.variants.pairwise	For a given set `A`, the n-tuple sums `a₁ + ... + aₙ` are all distinct for `a₁, ..., aₙ` in `A`
+FormalConjectures/ErdosProblems/1068.lean	39	2	erdos_1068	Does every graph with chromatic number $\aleph_1$ contain a countable subgraph which is
+FormalConjectures/ErdosProblems/289.lean	42	2	erdos_289	Is it true that, for all sufficiently large $k$, there exists finite intervals
+FormalConjectures/ErdosProblems/677.lean	45	1	lcmInterval_eq_example1,erdos_677	Erdős expected very few solutions for $M(n, k) = M(m, l)$, where $m \geq n + k$ and $l > 1$.
+FormalConjectures/ErdosProblems/749.lean	41	2	erdos_749	Let $\epsilon>0$. Does there exist $A\subseteq \mathbb{N}$
+FormalConjectures/ErdosProblems/7.lean	38	2	erdos_7	Is there a covering system all of whose moduli are odd (and greater than 1)?
+FormalConjectures/ErdosProblems/972.lean	41	2	primeSet,erdos_972	The set of primes `p` such that `Nat.floor (α * p)` is also prime.
+FormalConjectures/ErdosProblems/421.lean	38	2	erdos_421	Is there a sequence $1 \le d_1 < d_2 < \dots$ with density 1 such that all products
+FormalConjectures/ErdosProblems/564.lean	41	2	erdos_564	Let $R_3(n)$ be the minimal $m$ such that if the edges of the $3$-uniform hypergraph on $m$
+FormalConjectures/ErdosProblems/1101.lean	68	2	ASet,A,t,IsGood	The set of integers not divisible by any u_i.
+FormalConjectures/ErdosProblems/952.lean	41	2	erdos_952	Is there an infinite sequence of distinct Gaussian primes $x_1,x_2,\ldots$
+FormalConjectures/ErdosProblems/1176.lean	46	2	erdos_1176	Let $G$ be a graph with chromatic number $\aleph_1$. Is it true that there is a colouring of the
+FormalConjectures/ErdosProblems/155.lean	47	2	erdos_155	Let $F(N)$ be the size of the largest Sidon subset of $\{1, \dots, N\}$.
+FormalConjectures/ErdosProblems/1137.lean	42	2	erdos_1137	Let $d_n=p_{n+1}-p_n$, where $p_n$ denotes the $n$th prime. Is it true that
+FormalConjectures/ErdosProblems/196.lean	31	2	erdos_196	Must every permutation of $\mathbb{N}$, contain a monotone 4-term arithmetic progression?
+FormalConjectures/ErdosProblems/99.lean	51	2	HasMinDist1,FormsEquilateralTriangle,erdos_99	A set has minimum distance $1$ if all pairwise distances are at least $1$,
+FormalConjectures/ErdosProblems/495.lean	37	2	erdos_495	Let $\alpha,\beta \in \mathbb{R}$. Is it true that$$\liminf_{n\to \infty} n \| n\alpha \|
+FormalConjectures/ErdosProblems/1110.lean	51	2	Representable,erdos_1110	$n$ is representable with respect to $p$ and $q$ if it is the sum of a finite
+FormalConjectures/ErdosProblems/826.lean	40	2	erdos_826	Are there infinitely many $n$ such that, for all $k\geq 1$
+FormalConjectures/ErdosProblems/172.lean	38	2	erdos_172	Is it true that in any finite colouring of $\mathbb{N}$ there exist arbitrarily large finite $A$ such that all sums
+FormalConjectures/ErdosProblems/488.lean	44	2	erdos_488	Let $A$ be a finite set and
+FormalConjectures/ErdosProblems/51.lean	47	2	erdos_51	Is there an infinite set $A \subset \mathbb{N}$ such that for every $a \in A$,
+FormalConjectures/ErdosProblems/774.lean	52	2	Set.IsDissociated,Set.IsProportionatelyDissociated,erdos_774	We call $A\subset \mathbb{N}$ dissociated if $\sum_{n\in X}n\neq \sum_{m\in Y}m$
+FormalConjectures/ErdosProblems/689.lean	39	2	erdos_689	Let `n` be sufficiently large. Is there some choice of congruence class `a_p` for all primes
+FormalConjectures/ErdosProblems/236.lean	42	1	f,erdos_236	$f(n)$ counts the number of solutions to $n=p+2^k$ for prime $p$ and $k\geq 0$.
+FormalConjectures/ErdosProblems/30.lean	44	2	erdos_30	Let $h(N)$ be the maximum size of a Sidon set in $\{1, \dots, N\}$.
+FormalConjectures/ErdosProblems/312.lean	45	2	erdos_312	Does there exist a constant `c > 0` such that, for any `K > 1`, whenever `A` is a sufficiently large
+FormalConjectures/ErdosProblems/938.lean	37	2	erdos_938	Let $A=\{n_1 < n_2 < \cdots\}$ be the sequence of powerful numbers (if $p\mid n$ then $p^2\mid n$).
+FormalConjectures/ErdosProblems/943.lean	37	2	erdos_943	Let $A$ be the set of powerful numbers. Is is true that $1_A\ast 1_A(n)=n^{o(1)}$ for every $n$?
+FormalConjectures/ErdosProblems/410.lean	44	2	erdos_410	Let $σ_1(n) = σ(n)$, the sum of divisors function, and $σ_k(n) = σ(σ_{k-1}(n))$.
+FormalConjectures/ErdosProblems/779.lean	42	1	erdos_779	A Conjecture of Marian Deaconescu, see p.120 in https://doi.org/10.2307/2975810
+FormalConjectures/ErdosProblems/850.lean	39	2	erdos_850	Can there exist two distinct integers $x$ and $y$ such that $x,y$ have the same prime factors,
+FormalConjectures/ErdosProblems/153.lean	48	2	f,erdos_153	Define $f(n)$ to be the minimum of
+FormalConjectures/ErdosProblems/128.lean	40	2	erdos_128	Let G be a graph with n vertices such that every induced subgraph on ≥ $n/2$
+FormalConjectures/ErdosProblems/66.lean	43	2	erdos_66	Is there and $A \subset \mathbb{N}$ is such that
+FormalConjectures/ErdosProblems/352.lean	42	2	erdos_352	Is there some $c > 0$ such that every measurable $A \subseteq \mathbb{R}^2$ of measure $\geq c$
+FormalConjectures/ErdosProblems/260.lean	44	2	erdos_260,under,under	Let $a_1 < a_2 < \cdots$ be an increasing sequence such that $\frac{a_n}{n} \to \infty$.
+FormalConjectures/ErdosProblems/276.lean	51	2	IsLucasSequence,erdos_276	We define a Lucas sequence to be a Fibonacci sequence with arbitrary starting points
+FormalConjectures/ErdosProblems/364.lean	60	2	erdos_364,erdos_364.variants.strong,erdos_364.variants.weak	There is no consecutive triple of powerful numbers.
+FormalConjectures/ErdosProblems/108.lean	46	2	erdos_108	For every r ≥ 4 and k ≥ 2 is there some finite f(k,r) such that every graph of chromatic number ≥ f(k,r)
+FormalConjectures/ErdosProblems/1146.lean	55	2	IsEssentialComponent,erdos_1146	We say that $A\subset \mathbb{N}$ is an essential component if $d_s(A \oplus B)>d_s(B)$ for every
+FormalConjectures/ErdosProblems/348.lean	43	2	erdos_348	For what values of $0 \leq m < n$ is there a complete sequence
+FormalConjectures/ErdosProblems/85.lean	46	2	f,erdos_85	Let $f(n)$ be the smallest integer for which every graph on $n$ vertices with minimal degree $\geq
+FormalConjectures/ErdosProblems/562.lean	43	2	erdos_562	Let $R_r(n)$ denote the $r$-uniform hypergraph Ramsey number: the minimal $m$ such that if we
+FormalConjectures/ErdosProblems/1107.lean	50	2	SumOfRPowerful,erdos_1107,erdos_1107.variants.two	Helper Property: $n$ is the sum of at most $r+1$ numbers, each of which is $r$-full.

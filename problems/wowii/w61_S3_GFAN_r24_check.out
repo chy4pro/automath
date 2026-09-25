@@ -1,0 +1,88 @@
+=== CALIBRATION (printed before held-out computations) ===
+K2 degrees [1,1]: valid=True, steps=1, residue=1, expected=1
+C3 degrees [2, 2, 2]: valid=True, steps=2, residue=1, expected=1
+C4 degrees [2, 2, 2, 2]: valid=True, steps=2, residue=2, expected=2
+C5 degrees [2, 2, 2, 2, 2]: valid=True, steps=3, residue=2, expected=2
+C6 degrees [2, 2, 2, 2, 2, 2]: valid=True, steps=4, residue=2, expected=2
+C7 degrees [2, 2, 2, 2, 2, 2, 2]: valid=True, steps=4, residue=3, expected=3
+C8 degrees [2, 2, 2, 2, 2, 2, 2, 2]: valid=True, steps=5, residue=3, expected=3
+C9 degrees [2, 2, 2, 2, 2, 2, 2, 2, 2]: valid=True, steps=6, residue=3, expected=3
+
+=== SECTION 0 HELD-OUT COMPUTATIONS ===
+H1 lambda=[12, 6, 4]: valid=True steps=14 residue=2 heads=[12, 12, 10, 10, 8, 8, 6, 6, 5, 4, 3, 2, 2, 1]
+H1 lambda=[9, 7, 3, 3]: valid=True steps=12 residue=2 heads=[9, 9, 7, 7, 6, 5, 4, 3, 2, 2, 1, 1]
+H1 lambda=[14, 5, 2, 1]: valid=True steps=16 residue=3 heads=[14, 14, 12, 12, 10, 10, 8, 8, 6, 6, 5, 4, 3, 2, 1, 1]
+H1 lambda=[8, 8, 6]: valid=True steps=10 residue=2 heads=[8, 8, 7, 6, 5, 4, 3, 3, 2, 1]
+H2 terms=[7920, 11286, 11760, 13475, 12474, 12705, 10560, 8910, 6060, 3234]; S(11)=98384
+H3 tested=98384; survivors=791; per-E E=1..10=[6, 14, 21, 35, 47, 85, 110, 155, 170, 148]; FAN6-misses=0
+H4 partitions(22)=1002; count s0=13 is 131
+H4 matching partitions: [[12, 10], [12, 9, 1], [11, 9, 2], [11, 9, 1, 1], [11, 8, 3], [11, 8, 2, 1], [11, 8, 1, 1, 1], [11, 7, 4], [11, 7, 3, 1], [11, 7, 2, 2], [11, 6, 5], [11, 6, 4, 1], [11, 6, 3, 2], [11, 5, 5, 1], [10, 8, 2, 1, 1], [10, 8, 1, 1, 1, 1], [10, 7, 3, 1, 1], [10, 7, 2, 2, 1], [10, 7, 2, 1, 1, 1], [10, 7, 1, 1, 1, 1, 1], [10, 6, 4, 2], [10, 6, 4, 1, 1], [10, 6, 3, 3], [10, 6, 3, 2, 1], [10, 6, 3, 1, 1, 1], [10, 6, 2, 2, 2], [10, 6, 2, 2, 1, 1], [10, 5, 5, 2], [10, 5, 5, 1, 1], [10, 5, 4, 3], [10, 5, 4, 2, 1], [10, 5, 4, 1, 1, 1], [10, 5, 3, 3, 1], [10, 5, 3, 2, 2], [10, 5, 3, 2, 1, 1], [10, 5, 2, 2, 2, 1], [10, 4, 4, 4], [10, 4, 4, 3, 1], [10, 4, 4, 2, 2], [10, 4, 3, 3, 2], [10, 3, 3, 3, 3], [9, 7, 2, 1, 1, 1, 1], [9, 7, 1, 1, 1, 1, 1, 1], [9, 6, 3, 1, 1, 1, 1], [9, 6, 2, 2, 1, 1, 1], [9, 6, 2, 1, 1, 1, 1, 1], [9, 6, 1, 1, 1, 1, 1, 1, 1], [9, 5, 4, 2, 1, 1], [9, 5, 4, 1, 1, 1, 1], [9, 5, 3, 3, 1, 1], [9, 5, 3, 2, 2, 1], [9, 5, 3, 2, 1, 1, 1], [9, 5, 3, 1, 1, 1, 1, 1], [9, 5, 2, 2, 2, 2], [9, 5, 2, 2, 2, 1, 1], [9, 5, 2, 2, 1, 1, 1, 1], [9, 4, 4, 3, 1, 1], [9, 4, 4, 2, 2, 1], [9, 4, 4, 2, 1, 1, 1], [9, 4, 4, 1, 1, 1, 1, 1], [9, 4, 3, 3, 2, 1], [9, 4, 3, 3, 1, 1, 1], [9, 4, 3, 2, 2, 2], [9, 4, 3, 2, 2, 1, 1], [9, 4, 3, 2, 1, 1, 1, 1], [9, 4, 2, 2, 2, 2, 1], [9, 4, 2, 2, 2, 1, 1, 1], [9, 3, 3, 3, 3, 1], [9, 3, 3, 3, 2, 2], [9, 3, 3, 3, 2, 1, 1], [9, 3, 3, 2, 2, 2, 1], [9, 3, 2, 2, 2, 2, 2], [8, 6, 2, 1, 1, 1, 1, 1, 1], [8, 6, 1, 1, 1, 1, 1, 1, 1, 1], [8, 5, 3, 1, 1, 1, 1, 1, 1], [8, 5, 2, 2, 1, 1, 1, 1, 1], [8, 5, 2, 1, 1, 1, 1, 1, 1, 1], [8, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1], [8, 4, 4, 2, 1, 1, 1, 1], [8, 4, 4, 1, 1, 1, 1, 1, 1], [8, 4, 3, 3, 1, 1, 1, 1], [8, 4, 3, 2, 2, 1, 1, 1], [8, 4, 3, 2, 1, 1, 1, 1, 1], [8, 4, 3, 1, 1, 1, 1, 1, 1, 1], [8, 4, 2, 2, 2, 2, 1, 1], [8, 4, 2, 2, 2, 1, 1, 1, 1], [8, 4, 2, 2, 1, 1, 1, 1, 1, 1], [8, 3, 3, 3, 2, 1, 1, 1], [8, 3, 3, 3, 1, 1, 1, 1, 1], [8, 3, 3, 2, 2, 2, 1, 1], [8, 3, 3, 2, 2, 1, 1, 1, 1], [8, 3, 3, 2, 1, 1, 1, 1, 1, 1], [8, 3, 2, 2, 2, 2, 2, 1], [8, 3, 2, 2, 2, 2, 1, 1, 1], [8, 3, 2, 2, 2, 1, 1, 1, 1, 1], [8, 2, 2, 2, 2, 2, 2, 2], [8, 2, 2, 2, 2, 2, 2, 1, 1], [7, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1], [7, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [7, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1], [7, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1], [7, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1], [7, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [7, 3, 3, 3, 1, 1, 1, 1, 1, 1], [7, 3, 3, 2, 2, 1, 1, 1, 1, 1], [7, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1], [7, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1], [7, 3, 2, 2, 2, 2, 1, 1, 1, 1], [7, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1], [7, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1], [7, 2, 2, 2, 2, 2, 2, 1, 1, 1], [7, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1], [7, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1], [6, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [6, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [6, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [6, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1], [6, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [6, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [6, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1], [6, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1], [6, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [5, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [5, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [5, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [5, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+H5 L=13 E=3 e=[2,1] lambda=[5,4,4,3,3]: valid=True steps=16 residue=3 heads=[15, 13, 11, 10, 9, 8, 7, 6, 5, 4, 4, 3, 2, 2, 2, 1]
+
+=== GFANnu INDEPENDENT ENUMERATION ===
+nu=1: E+ tested=0, split={}, survivors=0, misses=0; E0 s0=lambda1=1 [(2,)]; boundary tested=0, survivors=0
+  comparison with printed aggregate data: AGREE
+nu=2: E+ tested=3, split={1: 1}, survivors=1, misses=0; E0 s0=lambda1=1 [(4,)]; boundary tested=1, survivors=1
+  comparison with printed aggregate data: AGREE
+nu=3: E+ tested=24, split={1: 2, 2: 2}, survivors=4, misses=0; E0 s0=lambda1=1 [(6,)]; boundary tested=3, survivors=1
+  comparison with printed aggregate data: AGREE
+nu=4: E+ tested=110, split={1: 2, 2: 4, 3: 3}, survivors=9, misses=0; E0 s0=lambda1=1 [(8,)]; boundary tested=7, survivors=2
+  comparison with printed aggregate data: AGREE
+nu=5: E+ tested=397, split={1: 3, 2: 5, 3: 6, 4: 6}, survivors=20, misses=0; E0 s0=lambda1=1 [(10,)]; boundary tested=14, survivors=2
+  comparison with printed aggregate data: AGREE
+nu=6: E+ tested=1211, split={1: 3, 2: 6, 3: 8, 4: 12, 5: 9}, survivors=38, misses=0; E0 s0=lambda1=1 [(12,)]; boundary tested=26, survivors=3
+  comparison with printed aggregate data: AGREE
+nu=7: E+ tested=3340, split={1: 4, 2: 8, 3: 10, 4: 17, 5: 18, 6: 18}, survivors=75, misses=0; E0 s0=lambda1=1 [(14,)]; boundary tested=45, survivors=3
+  comparison with printed aggregate data: AGREE
+nu=8: E+ tested=8457, split={1: 4, 2: 9, 3: 12, 4: 22, 5: 26, 6: 36, 7: 28}, survivors=137, misses=0; E0 s0=lambda1=1 [(16,)]; boundary tested=75, survivors=4
+  comparison with printed aggregate data: AGREE
+nu=9: E+ tested=20126, split={1: 5, 2: 11, 3: 15, 4: 25, 5: 34, 6: 53, 7: 56, 8: 52}, survivors=251, misses=0; E0 s0=lambda1=1 [(18,)]; boundary tested=120, survivors=4
+  comparison with printed aggregate data: AGREE
+nu=10: E+ tested=45450, split={1: 5, 2: 12, 3: 17, 4: 31, 5: 40, 6: 70, 7: 83, 8: 104, 9: 85}, survivors=447, misses=0; E0 s0=lambda1=1 [(20,)]; boundary tested=187, survivors=5
+  comparison with printed aggregate data: AGREE
+nu=11: E+ tested=98384, split={1: 6, 2: 14, 3: 21, 4: 35, 5: 47, 6: 85, 7: 110, 8: 155, 9: 170, 10: 148}, survivors=791, misses=0; E0 s0=lambda1=1 [(22,)]; boundary tested=284, survivors=5
+GFANnu nu<=10 aggregate comparison: ALL AGREE
+
+=== GFAN2 DIRECT TRAJECTORIES ===
+L=4 E=0 lambda=(4,): valid=True, steps=4, cert=(4, 0, True)
+L=4 E=0 lambda=(3, 1): valid=True, steps=5, cert=(3, 1, True)
+L=4 E=0 lambda=(2, 2): valid=True, steps=5, cert=(2, 2, False)
+L=4 E=0 lambda=(2, 1, 1): valid=True, steps=5, cert=(2, 1, False)
+L=4 E=0 lambda=(1, 1, 1, 1): valid=True, steps=6, cert=(1, 1, False)
+L=5 E=0 lambda=(4,): valid=True, steps=5, cert=(4, 0, True)
+L=5 E=0 lambda=(3, 1): valid=True, steps=6, cert=(3, 1, True)
+L=5 E=0 lambda=(2, 2): valid=True, steps=6, cert=(2, 2, False)
+L=5 E=0 lambda=(2, 1, 1): valid=True, steps=6, cert=(2, 1, False)
+L=5 E=0 lambda=(1, 1, 1, 1): valid=True, steps=7, cert=(1, 1, False)
+L=8 E=0 lambda=(4,): valid=True, steps=8, cert=(4, 0, True)
+L=8 E=0 lambda=(3, 1): valid=True, steps=9, cert=(3, 1, True)
+L=8 E=0 lambda=(2, 2): valid=True, steps=9, cert=(2, 2, False)
+L=8 E=0 lambda=(2, 1, 1): valid=True, steps=9, cert=(2, 1, False)
+L=8 E=0 lambda=(1, 1, 1, 1): valid=True, steps=10, cert=(1, 1, False)
+L=3 E=0 e=() lambda=(4,): valid=True, steps=3, cert=(4, 0, True)
+L=3 E=0 e=() lambda=(3, 1): valid=True, steps=4, cert=(3, 1, True)
+L=3 E=0 e=() lambda=(2, 2): valid=True, steps=4, cert=(2, 2, False)
+L=3 E=0 e=() lambda=(2, 1, 1): valid=True, steps=4, cert=(2, 1, False)
+L=3 E=0 e=() lambda=(1, 1, 1, 1): valid=True, steps=5, cert=(1, 1, False)
+L=3 E=1 e=(1,) lambda=(3,): valid=True, steps=3, cert=(3, 0, True)
+L=3 E=1 e=(1,) lambda=(2, 1): valid=True, steps=4, cert=(2, 1, False)
+L=3 E=1 e=(1,) lambda=(1, 1, 1): valid=True, steps=4, cert=(1, 1, False)
+
+=== NAMED ROSTER SPOT CHECKS ===
+nu=5 L=6 E=4 e=(2, 2) lambda=(4, 2): valid=True, steps=6, cert=(4, 2, True), list=[8, 8, 6, 6, 6, 6, 6, 4, 2]
+nu=6 L=7 E=5 e=(3, 2) lambda=(4, 2, 1): valid=True, steps=7, cert=(4, 2, True), list=[10, 9, 7, 7, 7, 7, 7, 7, 4, 2, 1]
+nu=7 L=8 E=6 e=(2, 2, 2) lambda=(5, 3): valid=True, steps=8, cert=(5, 3, True), list=[10, 10, 10, 8, 8, 8, 8, 8, 8, 5, 3]
+nu=8 L=10 E=2 e=(2,) lambda=(12, 2): valid=True, steps=10, cert=(12, 2, True), list=[12, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 12, 2]
+nu=10 L=11 E=9 e=(4, 4, 1) lambda=(5, 2, 2, 2): valid=True, steps=11, cert=(5, 2, True), list=[15, 15, 12, 11, 11, 11, 11, 11, 11, 11, 11, 11, 5, 2, 2, 2]
+
+=== SPECIFICATION CONTROLS ===
+zero-padding checks=730320, mismatches=0
+TAIL direct-vs-formula checks=31210, mismatches=0
+counterfactual shape nu=3 L=4 E=1 e=(1) lambda=(4): list=[5, 4, 4, 4, 4, 4], valid=False, steps=4; required lambda mass=5, actual=4
+
+=== CONSTRUCTION / QUANTIFIER SEARCH ===
+exhaustive labeled n=6 graphs tested=32768; full hard-core/all-low-universal hits=0
+fixed-seed sampled n=7..10 graphs tested=12000; cumulative hits=0
+Vacuity honesty: this bounded search contained no instance satisfying all composite hypotheses; this is not positive evidence for the theorem.
+
+VERDICT: GAP

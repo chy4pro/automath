@@ -1,0 +1,18 @@
+[A] the two candidate suffixes, simulated directly
+    (L+1 entries of value L, plus the residual of A'-total 2)
+    L=2:  [L]^(L+1),1,1 clears in 3 steps (need 2);   [L]^(L+1),2 clears in 2 steps (need 2)
+    L=3:  [L]^(L+1),1,1 clears in 4 steps (need 3);   [L]^(L+1),2 clears in 3 steps (need 3)
+    L=4:  [L]^(L+1),1,1 clears in 5 steps (need 4);   [L]^(L+1),2 clears in 4 steps (need 4)
+    L=5:  [L]^(L+1),1,1 clears in 6 steps (need 5);   [L]^(L+1),2 clears in 5 steps (need 5)
+    L=6:  [L]^(L+1),1,1 clears in 7 steps (need 6);   [L]^(L+1),2 clears in 6 steps (need 6)
+    L=7:  [L]^(L+1),1,1 clears in 8 steps (need 7);   [L]^(L+1),2 clears in 7 steps (need 7)
+    L=8:  [L]^(L+1),1,1 clears in 9 steps (need 8);   [L]^(L+1),2 clears in 8 steps (need 8)
+    => the [2] residual WOULD terminate on time: Lemma 2's '1+1, not 2'
+       is load-bearing for EVERY L>=2.
+
+[B] does the [2] residual ever occur?  SUPERSET Fan box, no type requirement, A'-residual partition at the start of step p+1
+    Fan degree sequences reaching step p+1 = 450303
+    (C-part is exactly [L]^(L+1) ?, A'-residual partition) histogram:
+       (True, (1, 1)) : 450303
+    instances violating 'C-part=[L]^(L+1) and A'-sum=2' = 0
+    => a (True,(2,)) row would be a hard-core SURVIVOR; a (True,(1,1)) row is killed by Lemma FAN-3.

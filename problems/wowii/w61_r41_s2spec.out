@@ -1,0 +1,184 @@
+====================================================================================================
+w61 r41 ITEM 1 -- SHAPE S2 SPECIFIED AT THE LIST LEVEL
+====================================================================================================
+definitions Wp/Wm/head_of/L_of lifted by SOURCE TEXT from w61_r39_monodd.py:
+   | def Wp(c):   return [c] * 3 + [c - 1] * c
+   | def Wm(c):   return [c] * 2 + [c - 1] * (c + 1)
+   | def head_of(T):
+   |     """the head block f(.) puts in front of T[1:].  THE definition, written once."""
+   |     c = T[0]
+   |     return Wp(c) if sum(T) % 2 == 0 else Wm(c)
+   | def L_of(T):
+   |     """the full list whose residue is f(T)."""
+   |     T = ms(T)
+   |     if not T:
+   |         return None
+   |     return head_of(T) + list(T[1:])
+   | FC = {}
+
+[0] CONTROLS -- fired on the feature, before any verdict (RULING CZ')
+   known-value  residue(M((5,4,3)))                = 2          expect 2          OK
+   known-value  [1,1,0,0] boundary                 = (1, 3)     expect (1, 3)     OK
+   known-value  W+(2)u[2] boundary                 = 3          expect 3          OK
+   known-value  W-(3)u[2] boundary                 = 3          expect 3          OK
+   known-value  f(1^5)  (C1-U: ceil(5/2)+2)        = 5          expect 5          OK
+   known-value  |W-(c)| = c+3, c=1..12             = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expect [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] OK
+   known-value  |W+(c)| = c+3, c=1..12             = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] expect [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] OK
+   known-value  MUST_ABORT inputs aborting         = 4          expect 4          OK
+   TOOL CONTROL  residue is a trajectory invariant: 119 lists, 0 violations
+   CORRUPT: 'step COUNT is also invariant' is violated            hits=34       OK
+
+[1] REPRODUCE THE Sec 7.54 (c) CENSUS -- same generator, same range
+    population: MON instances (T, T+e_i) with sum(T) ODD, over all partitions T
+    with sum(T) <= 18.  Aborting instances are skipped on BOTH sides and counted
+    nowhere else.  Exclusion list for every 0 below: none.
+   population (both shapes, sum(T) odd, sum(T) <= 18): 4073
+   S1_head_parity_flip    n=3057    delta = f(T)-f(T+e_i) histogram {0: 2473, 1: 584}
+   S2_max_rises           n=1016    delta = f(T)-f(T+e_i) histogram {0: 836, 1: 180}
+      S1_head_parity_flip    violations of 0<=delta<=1 = 0     exclusions: none; list=[]
+      S2_max_rises           violations of 0<=delta<=1 = 0     exclusions: none; list=[]
+   CORRUPT: 'delta is always 0' is violated                       hits=764      OK
+
+[2] THE STRUCTURE OF S2 -- measured on EVERY S2 instance in the census
+    population for every count in this block: the 1016 S2 instances of block [1].
+   (i)   U[1:] == T[1:] as multisets (the TAIL IS UNCHANGED)      : 1016 of 1016
+   (ii)  L == W-(c) u tail   AND   L' == W+(c+1) u tail          : 1016 of 1016
+   (iii) len(L') - len(L) == 1  (LISTS OF DIFFERENT LENGTH)      : 1016 of 1016
+   (iv)  sum(L') - sum(L) == 2c+4                                 : 1016 of 1016
+   (v)   histogram of len(L')-len(L) over all S2 instances        : {1: 1016}
+   (vi)  S2 instances whose tail has an entry > c-1 (brief says none): 490 of 1016
+
+[3] IS S2 EVER THE 'RAISE TWO ENTRIES BY 1' (UP2) MOVE THE BRIEF SAYS IT IS?
+    UP2 requires, necessarily: len(L')==len(L) and sum(L')==sum(L)+2.
+   S2 instances that ARE a UP2 pair                : 0 of 1016
+   ...of which fail on LENGTH alone                : 0 of 1016 have len(L')==len(L)
+   ...of which fail on SUM alone                   : 0 of 1016 have sum(L')==sum(L)+2
+   EXCLUSION LIST for the three 0s above: none -- every one of the 1016 S2 instances
+   of block [1] is tested; nothing is skipped, nothing is counted elsewhere.
+   CONTROL, same test on S1 (which the brief states correctly): 3057 of 3057 ARE UP2
+   CONTROL: the UP2 test is not vacuous (fires positive on S1)    hits=3057     OK
+
+   THE ARITHMETIC, INDEPENDENT OF THE CENSUS -- why no c can ever work:
+   c | |W-(c)| |W+(c+1)| dlen | sum W-(c) sum W+(c+1) dsum | UP2 needs dlen=0,dsum=2
+   1 |     4        5    +1 |        2           8     +6 | UNSATISFIABLE
+   2 |     5        6    +1 |        7          15     +8 | UNSATISFIABLE
+   3 |     6        7    +1 |       14          24    +10 | UNSATISFIABLE
+   4 |     7        8    +1 |       23          35    +12 | UNSATISFIABLE
+   5 |     8        9    +1 |       34          48    +14 | UNSATISFIABLE
+   6 |     9       10    +1 |       47          63    +16 | UNSATISFIABLE
+   7 |    10       11    +1 |       62          80    +18 | UNSATISFIABLE
+   8 |    11       12    +1 |       79          99    +20 | UNSATISFIABLE
+   9 |    12       13    +1 |       98         120    +22 | UNSATISFIABLE
+  10 |    13       14    +1 |      119         143    +24 | UNSATISFIABLE
+   values of c in 1..10 for which the brief's S2 sentence is satisfiable: 0
+   EXCLUSION LIST for that 0: none in the range c=1..10; and the general reason is
+   printed, not sampled -- |W+(c+1)|-|W-(c)| = (c+4)-(c+3) = 1 for EVERY c, so no
+   length-preserving move exists at any c whatsoever.
+
+[4] WORKED INSTANCES, DRAWN FROM THE 1016-INSTANCE S2 CENSUS OF BLOCK [1]
+
+   --- SMALLEST S2 instance in the census
+   T      = (1,)                     sum(T) = 1    (odd, as required)
+   i      : the raised part is a copy of the maximum, so U[0] = c+1
+   U      = (2,)                     sum(U) = 2  
+   c      = T[0] = 1      tail = T[1:] = ()   (UNCHANGED between T and U)
+   W-(c)      = [1, 1, 0, 0]
+   W+(c+1)    = [2, 2, 2, 1, 1]   <- THREE copies of c+1 = 2, then 2 copies of 1
+   L  = W-(c)   u tail = (1, 1, 0, 0)                   |L|  = 4   sum = 2
+   L' = W+(c+1) u tail = (2, 2, 2, 1, 1)                |L'| = 5   sum = 8
+   HH trajectory of L  (TERMINAL): (1, 1, 0, 0) -> (0, 0, 0)
+   HH trajectory of L' (TERMINAL): (2, 2, 2, 1, 1) -> (1, 1, 1, 1) -> (1, 1, 0) -> (0, 0)
+   R(L)  = f(T)  = 3   (n=4, s=1, n-s=3)
+   R(L') = f(U)  = 2   (n=5, s=3, n-s=2)
+   delta = f(T) - f(U) = 1
+   len(L')-len(L) = 1  and  sum(L')-sum(L) = 6 = 2c+4 = 6
+   => NOT a UP2 pair: confirmed
+
+   --- smallest S2 instance with NON-EMPTY tail and delta = 0
+   T      = (2, 1)                   sum(T) = 3    (odd, as required)
+   i      : the raised part is a copy of the maximum, so U[0] = c+1
+   U      = (3, 1)                   sum(U) = 4  
+   c      = T[0] = 2      tail = T[1:] = (1,)   (UNCHANGED between T and U)
+   W-(c)      = [2, 2, 1, 1, 1]
+   W+(c+1)    = [3, 3, 3, 2, 2, 2]   <- THREE copies of c+1 = 3, then 3 copies of 2
+   L  = W-(c)   u tail = (2, 2, 1, 1, 1, 1)             |L|  = 6   sum = 8
+   L' = W+(c+1) u tail = (3, 3, 3, 2, 2, 2, 1)          |L'| = 7   sum = 16
+   HH trajectory of L  (TERMINAL): (2, 2, 1, 1, 1, 1) -> (1, 1, 1, 1, 0) -> (1, 1, 0, 0) -> (0, 0, 0)
+   HH trajectory of L' (TERMINAL): (3, 3, 3, 2, 2, 2, 1) -> (2, 2, 2, 2, 1, 1) -> (2, 1, 1, 1, 1) -> (1, 1, 0, 0) -> (0, 0, 0)
+   R(L)  = f(T)  = 3   (n=6, s=3, n-s=3)
+   R(L') = f(U)  = 3   (n=7, s=4, n-s=3)
+   delta = f(T) - f(U) = 0
+   len(L')-len(L) = 1  and  sum(L')-sum(L) = 8 = 2c+4 = 8
+   => NOT a UP2 pair: confirmed
+
+   --- smallest S2 instance with NON-EMPTY tail and delta = 1
+   T      = (1, 1, 1)                sum(T) = 3    (odd, as required)
+   i      : the raised part is a copy of the maximum, so U[0] = c+1
+   U      = (2, 1, 1)                sum(U) = 4  
+   c      = T[0] = 1      tail = T[1:] = (1, 1)   (UNCHANGED between T and U)
+   W-(c)      = [1, 1, 0, 0]
+   W+(c+1)    = [2, 2, 2, 1, 1]   <- THREE copies of c+1 = 2, then 2 copies of 1
+   L  = W-(c)   u tail = (1, 1, 1, 1, 0, 0)             |L|  = 6   sum = 4
+   L' = W+(c+1) u tail = (2, 2, 2, 1, 1, 1, 1)          |L'| = 7   sum = 10
+   HH trajectory of L  (TERMINAL): (1, 1, 1, 1, 0, 0) -> (1, 1, 0, 0, 0) -> (0, 0, 0, 0)
+   HH trajectory of L' (TERMINAL): (2, 2, 2, 1, 1, 1, 1) -> (1, 1, 1, 1, 1, 1) -> (1, 1, 1, 1, 0) -> (1, 1, 0, 0) -> (0, 0, 0)
+   R(L)  = f(T)  = 4   (n=6, s=2, n-s=4)
+   R(L') = f(U)  = 3   (n=7, s=4, n-s=3)
+   delta = f(T) - f(U) = 1
+   len(L')-len(L) = 1  and  sum(L')-sum(L) = 6 = 2c+4 = 6
+   => NOT a UP2 pair: confirmed
+
+   --- smallest S2 instance where the raised part is a REPEATED maximum (i >= 1)
+   T      = (1, 1, 1)                sum(T) = 3    (odd, as required)
+   i      : the raised part is a copy of the maximum, so U[0] = c+1
+   U      = (2, 1, 1)                sum(U) = 4  
+   c      = T[0] = 1      tail = T[1:] = (1, 1)   (UNCHANGED between T and U)
+   W-(c)      = [1, 1, 0, 0]
+   W+(c+1)    = [2, 2, 2, 1, 1]   <- THREE copies of c+1 = 2, then 2 copies of 1
+   L  = W-(c)   u tail = (1, 1, 1, 1, 0, 0)             |L|  = 6   sum = 4
+   L' = W+(c+1) u tail = (2, 2, 2, 1, 1, 1, 1)          |L'| = 7   sum = 10
+   HH trajectory of L  (TERMINAL): (1, 1, 1, 1, 0, 0) -> (1, 1, 0, 0, 0) -> (0, 0, 0, 0)
+   HH trajectory of L' (TERMINAL): (2, 2, 2, 1, 1, 1, 1) -> (1, 1, 1, 1, 1, 1) -> (1, 1, 1, 1, 0) -> (1, 1, 0, 0) -> (0, 0, 0)
+   R(L)  = f(T)  = 4   (n=6, s=2, n-s=4)
+   R(L') = f(U)  = 3   (n=7, s=4, n-s=3)
+   delta = f(T) - f(U) = 1
+   len(L')-len(L) = 1  and  sum(L')-sum(L) = 6 = 2c+4 = 6
+   => NOT a UP2 pair: confirmed
+
+[5] THE BRIEF'S OTHER TWO POPULATION ERRORS, MEASURED
+   (a) the brief attributes its 6469-state-pair census to 'all S1/S2-shaped (A0,B0)
+       pairs'.  w61_r39_monodd.py:237 appends to the lockstep list ONLY when
+       sh == 'S1_head_parity_flip' and sum(T) <= 14.  Source line, verbatim:
+       | if sh == "S1_head_parity_flip" and sum(T) <= 14:
+       S1 instances with sum(T) <= 14 (what was actually stepped) : 709
+       S2 instances with sum(T) <= 14 (what was NOT stepped)      : 331
+       population for both counts: block [1]'s census restricted to sum(T) <= 14.
+   (b) the brief defines a head-block list as W^eps(c) u tail with every tail entry
+       <= c-1.  In the real construction tail = T[1:], whose entries are <= T[0] = c.
+       S1 instances with a tail entry > c-1 : 612 of 3057
+       S2 instances with a tail entry > c-1 : 490 of 1016
+       population: block [1]'s census, both shapes, sum(T) <= 18.
+
+[6] THE STATEMENT S2 ACTUALLY IS -- and it is verified on the whole census
+   (S2)  Let c >= 1 and let tail be a weakly-decreasing list of integers in [0,c]
+         with c + sum(tail) ODD.  Put  L = W-(c) u tail  and  L' = W+(c+1) u tail.
+         If the Havel-Hakimi runs of L and of L' both terminate, then
+                        0 <= R(L) - R(L') <= 1.
+   Note |L'| = |L| + 1 and sum(L') = sum(L) + 2c + 4: these are TWO SEPARATELY
+   CONSTRUCTED lists, NOT one list and a perturbation of it.
+   distinct (c, tail) pairs arising in the census : 686
+   ...satisfying 0 <= R(L)-R(L') <= 1             : 686
+   ...violating it                                : 0
+   EXCLUSION LIST for that 0: none among the 686 distinct (c,tail) pairs; pairs whose
+   run aborts on either side are skipped and counted nowhere else (0 skipped).
+   CONTROL: the (c,tail) sweep is non-empty                       hits=686      OK
+   CORRUPT: 'R(L') - R(L) in [0,1]' (swapped) is violated         hits=180      OK
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+  diffed runA/runB calls : 5859   disagreements: 0 (a disagreement exits 2)
+  controls recorded      : 25   all true: True
+  DEFECTS                : 0  
+  PARTIAL (time limit)   : False   elapsed 0.2s of internal limit 60s
+  VERDICT ON ITEM 1      : printed above; see [3] for whether the engines were right

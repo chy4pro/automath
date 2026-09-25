@@ -1,0 +1,37 @@
+============================================================================
+[1] T6 — the engine answered path(R) = 7 and exhibited 6-4-0-1-2-3-5
+============================================================================
+  PASS  the exhibited 7-sequence IS a path (consecutive vertices adjacent)
+  PASS  but it is NOT induced: it carries a chord   [chords [(4, 5)]]
+  PASS  the chord is the edge 4-5, the FIFTH edge of R's printed edge list   [R's edge list position 5]
+  PASS  exhaustive induced-path search over R gives path(R) = 6, NOT 7   [path(R) = 6, witness [1, 2, 3, 5, 4, 6]]
+
+============================================================================
+[2] the load-bearing factual claim of Angle 2: 'diam(CE-2) = 2'
+============================================================================
+  PASS  diam(CE-2) = 3, NOT 2   [ecc = {0: 2, 1: 3, 2: 3, 3: 2, 4: 2, 5: 3, 6: 3, 7: 3, 8: 3, 9: 3}, diam = 3]
+  PASS  dist_CE2(2,8) = 3 — the very geodesic 2-1-0-8 the brief printed   [dist(2,8) = 3]
+  PASS  ecc_CE2(0) = 2 — the true statement the engine generalised from   [ecc(0) = 2]
+
+============================================================================
+[3] Byproduct 3 — the diam-2 counting identity, checked as MATHEMATICS
+============================================================================
+  Petersen: n=10 m=15 T=0 Sum a=30 Sum C(d,2)=30 diam2=True
+  PASS  Petersen: the path-count identity Sum C(d,2) = C(n,2)-m+3T holds iff diam = 2 (here diam2=True)   [30 vs 30]
+  PASS  Petersen: the derived identity Sum a = m - Sum C(d,2) + C(n,2) holds iff diam = 2   [Sum a = 30, formula gives 30]
+  CE-2: n=10 m=14 T=1 Sum a=25 Sum C(d,2)=29 diam2=False
+  PASS  CE-2: the path-count identity Sum C(d,2) = C(n,2)-m+3T holds iff diam = 2 (here diam2=False)   [29 vs 34]
+  PASS  CE-2: the derived identity Sum a = m - Sum C(d,2) + C(n,2) holds iff diam = 2   [Sum a = 25, formula gives 30]
+  PASS  the engine's arithmetic for Sum C(d,2) on CE-2 is WRONG (it wrote 26)   [true value 29]
+  PASS  CE-2 is therefore NOT a valid instance of Byproduct 3 (it fails the diam = 2 hypothesis)
+  PASS  Petersen IS a valid instance of Byproduct 3, and it was printed in the brief   [Sum a = 30 = 15 - 30 + 45]
+
+============================================================================
+[4] Lemma 1 and Lemma 2 — the two survivors
+============================================================================
+  PASS  Lemma 1 holds on EVERY induced C6 of R, CE-2 and Petersen (non-empty scan)   [15 induced C6s scanned, 0 violations]
+  PASS  Lemma 2's identity a(z) = 2 + |W_z| - t(z) and the bound <= 2|W'| hold on the same scan   [0 violations]
+  PASS  the BRIEF's PART 5 hint was WRONG: three pairwise-opposite vertices on a C6 do not exist   [0 such triples]
+
+FAILURES: 0
+elapsed 0.0s

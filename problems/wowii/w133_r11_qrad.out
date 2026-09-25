@@ -1,0 +1,36 @@
+=== (A) baseline blob: PG(2,q) incidence graphs ===
+PG(2,3) incidence                  n=26     sum_a=104     l=4          (4.0000)  rad=3   diam=3    min_a=4
+PG(2,5) incidence                  n=62     sum_a=372     l=6          (6.0000)  rad=3   diam=3    min_a=6
+
+=== (B) two blobs joined by a path: l > 4 AND rad >= 5 ===
+2 x PG(2,5) + path(L=5)            n=129    sum_a=756     l=252/43     (5.8605)  rad=6   diam=12   min_a=2
+2 x PG(2,5) + path(L=10)           n=134    sum_a=766     l=383/67     (5.7164)  rad=9   diam=17   min_a=2
+2 x PG(2,5) + path(L=15)           n=139    sum_a=776     l=776/139    (5.5827)  rad=11  diam=22   min_a=2
+2 x PG(2,5) + path(L=20)           n=144    sum_a=786     l=131/24     (5.4583)  rad=14  diam=27   min_a=2
+2 x PG(2,5) + path(L=30)           n=154    sum_a=806     l=403/77     (5.2338)  rad=19  diam=37   min_a=2
+
+=== (C) chains: radius grows without bound while l stays > 4 ===
+2 x PG(2,5) chained, L=10          n=134    sum_a=766     l=383/67     (5.7164)  rad=9   diam=17   min_a=2
+3 x PG(2,5) chained, L=10          n=206    sum_a=1160    l=580/103    (5.6311)  rad=15  diam=30   min_a=2
+4 x PG(2,5) chained, L=10          n=278    sum_a=1554    l=777/139    (5.5899)  rad=22  diam=43   min_a=2
+6 x PG(2,5) chained, L=10          n=422    sum_a=2342    l=1171/211   (5.5498)  rad=35  diam=69   min_a=2
+8 x PG(2,5) chained, L=10          n=566    sum_a=3130    l=1565/283   (5.5300)  rad=48  diam=95   min_a=2
+
+=== (D) the smallest explicit witness we certify, with its exact data ===
+WITNESS W1 = 2 x PG(2,5) + path(L=5) n=129    sum_a=756     l=252/43     (5.8605)  rad=6   diam=12   min_a=2
+    exact l = 252/43 = 5.860465 ;  rad = 6 ;  diam = 12 ; n = 129
+    a-value histogram: {2: 5, 6: 122, 7: 2}
+
+=== (E) are these witnesses HARD instances of (G+k) k=2 (path >= rad+4)? ===
+    A geodesic is an induced path, so path(G) >= diam(G)+1 ALWAYS.
+    Hence path >= rad+4 is at risk ONLY when diam+1 < rad+4, i.e. diam <= rad+2.
+    k=2 L=5: rad=6 diam=12  path >= 13  vs rad+4 = 10   -> trivially satisfied (diam > rad+2)
+    k=2 L=30: rad=19 diam=37  path >= 38  vs rad+4 = 23   -> trivially satisfied (diam > rad+2)
+    k=4 L=10: rad=22 diam=43  path >= 44  vs rad+4 = 26   -> trivially satisfied (diam > rad+2)
+
+    CONCLUSION (E): the (Q-RAD) witnesses settle NON-EMPTINESS of
+    {C4-free, l>4, rad>=5} but every one of them has diam >> rad+2, so none is a
+    hard instance of (G+k) k=2.  The refined open fork is (Q-RAD'):
+    does there exist a C4-free graph with l>4, rad>=5 AND diam <= rad+2 ?
+
+FAILURES: 0

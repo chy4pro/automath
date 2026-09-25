@@ -1,0 +1,107 @@
+independent group build (opposite multiplication convention): |A_7| = 2520
+class reps re-found by cycle type: 1a=(1, 1, 1, 1, 1, 1, 1), 2a=(2, 2, 1, 1, 1), 3a=(3, 1, 1, 1, 1), 3b=(3, 3, 1), 4a=(4, 2, 1), 5a=(5, 1, 1), 6a=(3, 2, 2)
+
+==============================================================================
+(1) MODULES ARE MODULES, AND THE VALUES ARE CLASS FUNCTIONS
+   p=2: all 6 modules satisfy M(a)^3 = M(b)^7 = I and M(g)M(h) = M(gh) on 12 random pairs each
+   p=3: all 5 modules satisfy M(a)^3 = M(b)^7 = I and M(g)M(h) = M(gh) on 12 random pairs each
+   p=5: all 7 modules satisfy M(a)^3 = M(b)^7 = I and M(g)M(h) = M(gh) on 12 random pairs each
+   p=7: all 7 modules satisfy M(a)^3 = M(b)^7 = I and M(g)M(h) = M(gh) on 12 random pairs each
+
+==============================================================================
+(2) BRAUER VALUES RECOMPUTED FROM CHARACTERISTIC POLYNOMIALS
+   p=2: all 6 Brauer characters reproduced EXACTLY by the charpoly route, and every value survives a 5-element class-function check
+   p=3: all 5 Brauer characters reproduced EXACTLY by the charpoly route, and every value survives a 5-element class-function check
+   p=5: all 7 Brauer characters reproduced EXACTLY by the charpoly route, and every value survives a 5-element class-function check
+   p=7: all 7 Brauer characters reproduced EXACTLY by the charpoly route, and every value survives a 5-element class-function check
+
+==============================================================================
+(3) MODULE-FREE TEST D0 -- defect-zero blocks
+   p=5  chi3  (deg 10): |G|_p = 5 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   p=5  chi4  (deg 10): |G|_p = 5 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   p=5  chi7  (deg 15): |G|_p = 5 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   p=5  chi9  (deg 35): |G|_p = 5 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   p=7  chi5  (deg 14): |G|_p = 7 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   p=7  chi6  (deg 14): |G|_p = 7 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   p=7  chi8  (deg 21): |G|_p = 7 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   p=7  chi9  (deg 35): |G|_p = 7 divides the degree => defect 0 => chi restricted must BE an irreducible Brauer character.  FOUND.
+   8 defect-zero checks, all passed.  (This test uses only the ordinary table and block theory -- no module, no MeatAxe.)
+
+==============================================================================
+(4) MODULE-FREE TEST DEC -- decomposition matrices
+   p=2, basic columns (degree; 1a,3a,3b,5a):
+        deg 1   [1, 1, 1, 1]
+        deg 6   [6, 3, 0, 1]
+        deg 14  [14, 2, -1, -1]
+        deg 4   [4, -2, 1, -1]
+        deg 20  [20, -4, -1, 0]
+      chi1  (deg 1 ) = 1*(deg 1)   [unique]
+      chi2  (deg 6 ) = 1*(deg 6)   [unique]
+      chi3  (deg 10) = 1*(deg 6) + 1*(deg 4)   [unique]
+      chi4  (deg 10) = 1*(deg 6) + 1*(deg 4)   [unique]
+      chi5  (deg 14) = 1*(deg 6) + 2*(deg 4)   [unique]
+      chi6  (deg 14) = 1*(deg 14)   [unique]
+      chi7  (deg 15) = 1*(deg 1) + 1*(deg 14)   [unique]
+      chi8  (deg 21) = 1*(deg 1) + 1*(deg 20)   [unique]
+      chi9  (deg 35) = 1*(deg 1) + 1*(deg 14) + 1*(deg 20)   [unique]
+   p=2: ALL 9 ordinary characters decompose with non-negative integer multiplicities.  A missing or wrong irreducible would break this.
+   p=3, basic columns (degree; 1a,2a,4a,5a):
+        deg 1   [1, 1, 1, 1]
+        deg 6   [6, 2, 0, 1]
+        deg 13  [13, 1, -1, -2]
+        deg 15  [15, -1, -1, 0]
+        deg 10  [10, -2, 0, 0]
+      chi1  (deg 1 ) = 1*(deg 1)   [unique]
+      chi2  (deg 6 ) = 1*(deg 6)   [unique]
+      chi3  (deg 10) = 1*(deg 10)   [unique]
+      chi4  (deg 10) = 1*(deg 10)   [unique]
+      chi5  (deg 14) = 1*(deg 1) + 1*(deg 13)   [unique]
+      chi6  (deg 14) = 1*(deg 1) + 1*(deg 13)   [unique]
+      chi7  (deg 15) = 1*(deg 15)   [unique]
+      chi8  (deg 21) = 1*(deg 6) + 1*(deg 15)   [unique]
+      chi9  (deg 35) = 2*(deg 1) + 1*(deg 13) + 2*(deg 10)   [unique]
+   p=3: ALL 9 ordinary characters decompose with non-negative integer multiplicities.  A missing or wrong irreducible would break this.
+   p=5, basic columns (degree; 1a,2a,3a,3b,4a,6a):
+        deg 6   [6, 2, 3, 0, 0, -1]
+        deg 1   [1, 1, 1, 1, 1, 1]
+        deg 8   [8, 0, -1, -1, 0, 3]
+        deg 13  [13, 1, -2, 1, -1, -2]
+        deg 15  [15, -1, 3, 0, -1, -1]
+        deg 35  [35, -1, -1, -1, 1, -1]
+        deg 10  [10, -2, 1, 1, 0, 1]
+      chi1  (deg 1 ) = 1*(deg 1)   [unique]
+      chi2  (deg 6 ) = 1*(deg 6)   [unique]
+      chi3  (deg 10) = 1*(deg 10)   [unique]
+      chi4  (deg 10) = 1*(deg 10)   [unique]
+      chi5  (deg 14) = 1*(deg 1) + 1*(deg 13)   [unique]
+      chi6  (deg 14) = 1*(deg 6) + 1*(deg 8)   [unique]
+      chi7  (deg 15) = 1*(deg 15)   [unique]
+      chi8  (deg 21) = 1*(deg 8) + 1*(deg 13)   [unique]
+      chi9  (deg 35) = 1*(deg 35)   [unique]
+   p=5: ALL 9 ordinary characters decompose with non-negative integer multiplicities.  A missing or wrong irreducible would break this.
+   p=7, basic columns (degree; 1a,2a,3a,3b,4a,5a,6a):
+        deg 1   [1, 1, 1, 1, 1, 1, 1]
+        deg 5   [5, 1, 2, -1, -1, 0, -2]
+        deg 14  [14, 2, 2, -1, 0, -1, 2]
+        deg 14  [14, 2, -1, 2, 0, -1, -1]
+        deg 10  [10, -2, 1, 1, 0, 0, 1]
+        deg 35  [35, -1, -1, -1, 1, 0, -1]
+        deg 21  [21, 1, -3, 0, -1, 1, 1]
+      chi1  (deg 1 ) = 1*(deg 1)   [unique]
+      chi2  (deg 6 ) = 1*(deg 1) + 1*(deg 5)   [unique]
+      chi3  (deg 10) = 1*(deg 10)   [unique]
+      chi4  (deg 10) = 1*(deg 10)   [unique]
+      chi5  (deg 14) = 1*(deg 14)   [unique]
+      chi6  (deg 14) = 1*(deg 14)   [unique]
+      chi7  (deg 15) = 1*(deg 5) + 1*(deg 10)   [unique]
+      chi8  (deg 21) = 1*(deg 21)   [unique]
+      chi9  (deg 35) = 1*(deg 35)   [unique]
+   p=7: ALL 9 ordinary characters decompose with non-negative integer multiplicities.  A missing or wrong irreducible would break this.
+
+==============================================================================
+(5) THE ORDER-4 MULTIPLICITIES, RECOMPUTED OVER Q(i) BY LINEAR ALGEBRA
+   28 characters (ordinary + 3-,5-,7-modular).  Multiplicity vectors with a negative or non-integral entry: 0
+   => (eps_2a, eps_4a) = (2,-1) SURVIVES the complete system.  CONFIRMED INDEPENDENTLY.
+   tight characters (mu_0 = 0 or mu_2 = 0): 13
+   characters that reject (eps_2a,eps_4a) = (-2,3), i.e. t = -2: ['7-mod phi(deg 5)']
+   => the SINGLE load-bearing inequality of round 1 is still the single load-bearing inequality of the COMPLETE system.

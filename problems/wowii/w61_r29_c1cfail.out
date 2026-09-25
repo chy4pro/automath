@@ -1,0 +1,26 @@
+==============================================================================
+COROLLARY C1-C's HYPOTHESIS ON lam = (w,1), w ODD  --  second implementation
+==============================================================================
+  w   lam     |M|  k  residue  s0   C1 true?  exists G with alpha<=k ?  nodes
+  3   [3, 1]  6    2  2        4    YES       *** NO ***               204
+  5   [5, 1]  8    2  2        6    YES       *** NO ***               3903
+  7   [7, 1]  10   2  2        8    YES       *** NO ***               95092
+  9   [9, 1]  12   2  2        10   YES       *** NO ***               2892119
+
+  control -- the same enumerator on rows the mask sweep called AVAILABLE:
+   lam=1+1        k=2  alpha<=k realizable: True   (mask sweep said YES)
+   lam=2+2        k=2  alpha<=k realizable: True   (mask sweep said YES)
+   lam=2+1+1      k=3  alpha<=k realizable: True   (mask sweep said YES)
+   lam=3+3        k=2  alpha<=k realizable: True   (mask sweep said YES)
+   lam=3+2+1      k=3  alpha<=k realizable: True   (mask sweep said YES)
+   lam=2+2+2      k=3  alpha<=k realizable: True   (mask sweep said YES)
+   lam=3+3+2      k=3  alpha<=k realizable: True   (mask sweep said YES)
+
+  control -- alpha<=k-1 vs residue.  FMS forbids alpha<=k-1 exactly when residue=k;
+  rows with residue=k-1 are NOT forbidden, and the enumerator must say so:
+   lam=2+1+1      k=3  residue=3 (= k)    alpha<=k-1 realizable: False  (FMS predicts False)
+   lam=1+1+1+1    k=4  residue=3 (= k-1)  alpha<=k-1 realizable: True   (FMS predicts possible)
+   lam=3+2+1      k=3  residue=3 (= k)    alpha<=k-1 realizable: False  (FMS predicts False)
+   lam=2+2+1+1    k=4  residue=3 (= k-1)  alpha<=k-1 realizable: True   (FMS predicts possible)
+   lam=2+2+2+2    k=4  residue=3 (= k-1)  alpha<=k-1 realizable: True   (FMS predicts possible)
+done

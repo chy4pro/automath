@@ -1,0 +1,26 @@
+=== (A) THE NAIL: (R3a) vs (R3b) are NOT equivalent ===
+  HS + pendant leaf    n=51  C4free=True rad=2 diam=3 l=6.902 | (R3a)=True (R3b)=False | in RES(a)=True in RES(b)=False
+      witness: a[2]=7>=3, ecc=3=3; the 1 vertices at distance 3 from it all have a-value [1] (so (R3a) is silent)
+  HS + triangle-leaf   n=51  C4free=True rad=2 diam=3 l=6.882 | (R3a)=True (R3b)=False | in RES(a)=True in RES(b)=False
+      witness: a[3]=7>=3, ecc=3=3; the 1 vertices at distance 3 from it all have a-value [1] (so (R3a) is silent)
+  ER_5 + pendant leaf  n=32  C4free=True rad=2 diam=3 l=3.812 | (R3a)=True (R3b)=False | in RES(a)=True in RES(b)=False
+      witness: a[2]=3>=3, ecc=3=3; the 1 vertices at distance 3 from it all have a-value [1] (so (R3a) is silent)
+  ER_7 + pendant leaf  n=58  C4free=True rad=2 diam=3 l=4.862 | (R3a)=True (R3b)=False | in RES(a)=True in RES(b)=False
+      witness: a[2]=4>=3, ecc=3=3; the 1 vertices at distance 3 from it all have a-value [1] (so (R3a) is silent)
+  ==> RES(a) is INHABITED (4 explicit members); RES(b) members among them: 0
+  conjecture unharmed on the witnesses: path certificates [21, 21, 16, 22] (need >= 6)
+
+=== (B) numerical backing for the round-5 lemmas ===
+  test pool: 48 connected C4-free graphs (n from 8 to 133)
+  G18  n = 1 + sum_{x~h} d(x) - 2t(h)  for ecc(h)=2 : 371 instances, 0 failures
+  G16  |ball2(u) cap ball2(z)| <= d(u)d(z)+d(u)+d(z) : 1363 distance-3 pairs, 0 failures
+  G17  sum_S a(h) <= |N(S)| + #(pairs with a common neighbour) : 329 subsets, 0 failures
+  (*)  sum_{b in B(c)}(a(b)-2) > 3 + d(c)  for l>3, ecc(c)=2 : 301 centres, 0 failures
+  G17b every centre of an l>3 C4-free graph has a high vertex at distance exactly 2 : 301 centres, 0 failures
+
+=== (C) structured hunt for a member of RES(b) (no exhaustive search) ===
+  candidates in the plain class (C4-free, rad 2, diam 3, l>3): 19
+  of them in RES(a): 5  -> ['HS+pendant', 'HS+trileaf', 'ER_5+pendant', 'ER_7+pendant', 'ER_11+pendant']
+  of them in RES(b): 0
+
+=== TOTAL ASSERT FAILURES: 0 ===

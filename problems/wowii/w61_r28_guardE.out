@@ -1,0 +1,412 @@
+==============================================================================
+GUARD E RUN: REBUILT BRIEF prompts/w61_S3_GFAN_r28.md (NOT YET SENT -- the bench is empty)
+==============================================================================
+-- declared transform table (39 entries), applied to BOTH sides --
+   'τ'->'tau'  'α'->'alpha'  'ν'->'nu'  'Δ'->'Delta'  'Σ'->'sum'  '∑'->'sum'  'δ'->'delta'  'λ'->'lambda'  '≤'->'<='  '≥'->'>='
+   '≠'->'!='  '−'->'-'  '≡'->'=='  '∈'->' in '  '∉'->' notin '  '∪'->' u '  '∩'->' cap '  '∅'->'empty'  '⁺'->'+'  '⁰'->'^0'  '¹'->'^1'  '²'->'^2'
+   '₀'->'_0'  '₁'->'_1'  '₂'->'_2'  '₃'->'_3'  'm̄'->'mbar'  '¯'->'bar'  '′'->"'"  '’'->"'"  '‘'->"'"  '—'->'-'  '–'->'-'  '\xa0'->' '  '\u2009'->' '  '\\'->''  '`'->''  '*'->''  '$'->''
+   plus: whitespace-insensitive comparison, case-folded.
+
+------------------------------------------------------------------------------
+[Lemma S]  brief line 614   <-->   source SS7.2 B, draft line 521
+   POPULATION: 5 brief atoms, 3 source atoms  (printed in full before the verdict)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 559) residue(G) = alpha(G)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 517) s = tau
+     FWD  MATCH-IN-BLOCK           <= tau
+     FWD  MATCH-IN-BLOCK           deg(v) >= tau+1
+     FWD  MATCH-IN-BLOCK           #{v : deg v >= tau+1} <= tau
+     REV  MATCH-IN-BRIEF           #{v : deg v ≥ τ+1} ≤ τ
+     REV  MATCH-IN-BRIEF           <= tau
+     REV  MATCH-IN-BRIEF           deg(v) >= tau+1
+------------------------------------------------------------------------------
+[Lemma Z+]  brief line 619   <-->   source SS7.5, draft line 1068
+   POPULATION: 2 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           s - j + 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1071) block_j
+     REV  MATCH-IN-BRIEF           s − j + 1
+------------------------------------------------------------------------------
+[Lemma F3']  brief line 623   <-->   source SS7.5 Repair R2, draft line 1660
+   POPULATION: 2 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           1 <= j <= s
+     FWD  MATCH-IN-BLOCK           <= s - j + 1
+     REV  MATCH-IN-BRIEF           1 ≤ j ≤ s
+     REV  MATCH-IN-BRIEF           ≤ s − j + 1
+------------------------------------------------------------------------------
+[Theorem K]  brief line 627   <-->   source SS7.5, draft line 1100
+   POPULATION: 11 brief atoms, 4 source atoms  (printed in full before the verdict)
+     ---  EXCLUDED AS PROSE by the class rule (>=3 alphabetic tokens): >   Assume residue(G) = alpha(G) (so s = tau) and that every   has
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           b in B
+     FWD  MATCH-IN-BLOCK           deg(b) >= tau + 1
+     FWD  MATCH-IN-BLOCK           K = B
+     FWD  MATCH-IN-BLOCK           e_B = C(tau,2)
+     FWD  MATCH-IN-BLOCK           e_B
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 514) G[B]
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 407) diam = 4
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 463) f = alpha+1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           b ∈ B
+     REV  MATCH-IN-BRIEF           deg(b) ≥ τ + 1
+     REV  MATCH-IN-BRIEF           K = B
+     REV  MATCH-IN-BRIEF           e_B = C(τ,2)
+------------------------------------------------------------------------------
+[Theorem MB]  brief line 634   <-->   source SS7.6, draft line 1508
+   POPULATION: 4 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  MATCH-IN-BLOCK           |B_lo+| + c + mbar <= L + nu(B_lo) - 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1519) c = |B_lo ∩ (T_1 ∪ T_2)|
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  MATCH-IN-BRIEF           |B_lo⁺| + c + m̄ ≤ L + ν(B_lo) − 1
+------------------------------------------------------------------------------
+[Theorem SL]  brief line 662   <-->   source SS7.6 F, draft line 1382
+   POPULATION: 7 brief atoms, 7 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           tau >= 2
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  MATCH-IN-BLOCK           slack := L(tau+1) - ( sum_{b in B_lo} deg(b) + nu ) >= 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg(b) + nu <= L(tau+1) - 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg_A(b) + e(B_lo) + mbar <= L(L+3)/2 - 1
+     REV  MATCH-IN-BRIEF           residue(G) = α(G)
+     REV  MATCH-IN-BRIEF           s = τ
+     REV  MATCH-IN-BRIEF           τ ≥ 2
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  MATCH-IN-BRIEF           slack := L(τ+1) − ( Σ_{b∈B_lo} deg(b) + ν ) ≥ 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg(b) + ν ≤ L(τ+1) − 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg_A(b) + e(B_lo) + m̄ ≤ L(L+3)/2 − 1
+------------------------------------------------------------------------------
+[Favaron-Maheo-Sacle]  brief line 692   <-->   source SS7.1 Fact 2, draft line 132
+   POPULATION: 1 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) <= alpha(G)
+     REV  MATCH-IN-BRIEF           residue(G) ≤ α(G)
+------------------------------------------------------------------------------
+VERDICT for REBUILT BRIEF prompts/w61_S3_GFAN_r28.md (NOT YET SENT -- the bench is empty)
+   atoms matched in block : 43
+   atoms matched ELSEWHERE in the draft (adjudication list, below) : 9
+   atoms with NO MATCH ANYWHERE : 0   <== these are DEFECTS
+
+==============================================================================
+GUARD E RUN: DELIBERATELY CORRUPTED -- C1 ALTERED CONSTANT (the AZ species)
+==============================================================================
+-- declared transform table (39 entries), applied to BOTH sides --
+   'τ'->'tau'  'α'->'alpha'  'ν'->'nu'  'Δ'->'Delta'  'Σ'->'sum'  '∑'->'sum'  'δ'->'delta'  'λ'->'lambda'  '≤'->'<='  '≥'->'>='
+   '≠'->'!='  '−'->'-'  '≡'->'=='  '∈'->' in '  '∉'->' notin '  '∪'->' u '  '∩'->' cap '  '∅'->'empty'  '⁺'->'+'  '⁰'->'^0'  '¹'->'^1'  '²'->'^2'
+   '₀'->'_0'  '₁'->'_1'  '₂'->'_2'  '₃'->'_3'  'm̄'->'mbar'  '¯'->'bar'  '′'->"'"  '’'->"'"  '‘'->"'"  '—'->'-'  '–'->'-'  '\xa0'->' '  '\u2009'->' '  '\\'->''  '`'->''  '*'->''  '$'->''
+   plus: whitespace-insensitive comparison, case-folded.
+
+------------------------------------------------------------------------------
+[Lemma S]  brief line 614   <-->   source SS7.2 B, draft line 521
+   POPULATION: 5 brief atoms, 3 source atoms  (printed in full before the verdict)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 559) residue(G) = alpha(G)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 517) s = tau
+     FWD  MATCH-IN-BLOCK           <= tau
+     FWD  MATCH-IN-BLOCK           deg(v) >= tau+1
+     FWD  MATCH-IN-BLOCK           #{v : deg v >= tau+1} <= tau
+     REV  MATCH-IN-BRIEF           #{v : deg v ≥ τ+1} ≤ τ
+     REV  MATCH-IN-BRIEF           <= tau
+     REV  MATCH-IN-BRIEF           deg(v) >= tau+1
+------------------------------------------------------------------------------
+[Lemma Z+]  brief line 619   <-->   source SS7.5, draft line 1068
+   POPULATION: 2 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           s - j + 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1071) block_j
+     REV  MATCH-IN-BRIEF           s − j + 1
+------------------------------------------------------------------------------
+[Lemma F3']  brief line 623   <-->   source SS7.5 Repair R2, draft line 1660
+   POPULATION: 2 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           1 <= j <= s
+     FWD  MATCH-IN-BLOCK           <= s - j + 1
+     REV  MATCH-IN-BRIEF           1 ≤ j ≤ s
+     REV  MATCH-IN-BRIEF           ≤ s − j + 1
+------------------------------------------------------------------------------
+[Theorem K]  brief line 627   <-->   source SS7.5, draft line 1100
+   POPULATION: 11 brief atoms, 4 source atoms  (printed in full before the verdict)
+     ---  EXCLUDED AS PROSE by the class rule (>=3 alphabetic tokens): >   Assume residue(G) = alpha(G) (so s = tau) and that every   has
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           b in B
+     FWD  MATCH-IN-BLOCK           deg(b) >= tau + 1
+     FWD  MATCH-IN-BLOCK           K = B
+     FWD  MATCH-IN-BLOCK           e_B = C(tau,2)
+     FWD  MATCH-IN-BLOCK           e_B
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 514) G[B]
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 407) diam = 4
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 463) f = alpha+1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           b ∈ B
+     REV  MATCH-IN-BRIEF           deg(b) ≥ τ + 1
+     REV  MATCH-IN-BRIEF           K = B
+     REV  MATCH-IN-BRIEF           e_B = C(τ,2)
+------------------------------------------------------------------------------
+[Theorem MB]  brief line 634   <-->   source SS7.6, draft line 1508
+   POPULATION: 4 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  *** NO MATCH ***         |B_lo+| + c + mbar <= L + nu(B_lo) + 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1519) c = |B_lo ∩ (T_1 ∪ T_2)|
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  *** DROPPED FROM BRIEF *** |B_lo⁺| + c + m̄ ≤ L + ν(B_lo) − 1
+------------------------------------------------------------------------------
+[Theorem SL]  brief line 662   <-->   source SS7.6 F, draft line 1382
+   POPULATION: 7 brief atoms, 7 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           tau >= 2
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  MATCH-IN-BLOCK           slack := L(tau+1) - ( sum_{b in B_lo} deg(b) + nu ) >= 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg(b) + nu <= L(tau+1) - 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg_A(b) + e(B_lo) + mbar <= L(L+3)/2 - 1
+     REV  MATCH-IN-BRIEF           residue(G) = α(G)
+     REV  MATCH-IN-BRIEF           s = τ
+     REV  MATCH-IN-BRIEF           τ ≥ 2
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  MATCH-IN-BRIEF           slack := L(τ+1) − ( Σ_{b∈B_lo} deg(b) + ν ) ≥ 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg(b) + ν ≤ L(τ+1) − 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg_A(b) + e(B_lo) + m̄ ≤ L(L+3)/2 − 1
+------------------------------------------------------------------------------
+[Favaron-Maheo-Sacle]  brief line 692   <-->   source SS7.1 Fact 2, draft line 132
+   POPULATION: 1 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) <= alpha(G)
+     REV  MATCH-IN-BRIEF           residue(G) ≤ α(G)
+------------------------------------------------------------------------------
+VERDICT for DELIBERATELY CORRUPTED -- C1 ALTERED CONSTANT (the AZ species)
+   atoms matched in block : 41
+   atoms matched ELSEWHERE in the draft (adjudication list, below) : 9
+   atoms with NO MATCH ANYWHERE : 2   <== these are DEFECTS
+      DEFECT  [Theorem MB]  |B_lo+| + c + mbar <= L + nu(B_lo) + 1   (brief->source)
+      DEFECT  [Theorem MB]  |B_lo⁺| + c + m̄ ≤ L + ν(B_lo) − 1   (source->brief)
+
+==============================================================================
+GUARD E RUN: DELIBERATELY CORRUPTED -- C2 DROPPED HYPOTHESIS (the AB2/AE1 species -- the dangerous direction)
+==============================================================================
+-- declared transform table (39 entries), applied to BOTH sides --
+   'τ'->'tau'  'α'->'alpha'  'ν'->'nu'  'Δ'->'Delta'  'Σ'->'sum'  '∑'->'sum'  'δ'->'delta'  'λ'->'lambda'  '≤'->'<='  '≥'->'>='
+   '≠'->'!='  '−'->'-'  '≡'->'=='  '∈'->' in '  '∉'->' notin '  '∪'->' u '  '∩'->' cap '  '∅'->'empty'  '⁺'->'+'  '⁰'->'^0'  '¹'->'^1'  '²'->'^2'
+   '₀'->'_0'  '₁'->'_1'  '₂'->'_2'  '₃'->'_3'  'm̄'->'mbar'  '¯'->'bar'  '′'->"'"  '’'->"'"  '‘'->"'"  '—'->'-'  '–'->'-'  '\xa0'->' '  '\u2009'->' '  '\\'->''  '`'->''  '*'->''  '$'->''
+   plus: whitespace-insensitive comparison, case-folded.
+
+------------------------------------------------------------------------------
+[Lemma S]  brief line 614   <-->   source SS7.2 B, draft line 521
+   POPULATION: 5 brief atoms, 3 source atoms  (printed in full before the verdict)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 559) residue(G) = alpha(G)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 517) s = tau
+     FWD  MATCH-IN-BLOCK           <= tau
+     FWD  MATCH-IN-BLOCK           deg(v) >= tau+1
+     FWD  MATCH-IN-BLOCK           #{v : deg v >= tau+1} <= tau
+     REV  MATCH-IN-BRIEF           #{v : deg v ≥ τ+1} ≤ τ
+     REV  MATCH-IN-BRIEF           <= tau
+     REV  MATCH-IN-BRIEF           deg(v) >= tau+1
+------------------------------------------------------------------------------
+[Lemma Z+]  brief line 619   <-->   source SS7.5, draft line 1068
+   POPULATION: 2 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           s - j + 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1071) block_j
+     REV  MATCH-IN-BRIEF           s − j + 1
+------------------------------------------------------------------------------
+[Lemma F3']  brief line 623   <-->   source SS7.5 Repair R2, draft line 1660
+   POPULATION: 2 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           1 <= j <= s
+     FWD  MATCH-IN-BLOCK           <= s - j + 1
+     REV  MATCH-IN-BRIEF           1 ≤ j ≤ s
+     REV  MATCH-IN-BRIEF           ≤ s − j + 1
+------------------------------------------------------------------------------
+[Theorem K]  brief line 627   <-->   source SS7.5, draft line 1100
+   POPULATION: 11 brief atoms, 4 source atoms  (printed in full before the verdict)
+     ---  EXCLUDED AS PROSE by the class rule (>=3 alphabetic tokens): >   Assume residue(G) = alpha(G) (so s = tau) and that every   has
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           b in B
+     FWD  MATCH-IN-BLOCK           deg(b) >= tau + 1
+     FWD  MATCH-IN-BLOCK           K = B
+     FWD  MATCH-IN-BLOCK           e_B = C(tau,2)
+     FWD  MATCH-IN-BLOCK           e_B
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 514) G[B]
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 407) diam = 4
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 463) f = alpha+1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           b ∈ B
+     REV  MATCH-IN-BRIEF           deg(b) ≥ τ + 1
+     REV  MATCH-IN-BRIEF           K = B
+     REV  MATCH-IN-BRIEF           e_B = C(τ,2)
+------------------------------------------------------------------------------
+[Theorem MB]  brief line 634   <-->   source SS7.6, draft line 1508
+   POPULATION: 4 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  MATCH-IN-BLOCK           |B_lo+| + c + mbar <= L + nu(B_lo) - 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1519) c = |B_lo ∩ (T_1 ∪ T_2)|
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  MATCH-IN-BRIEF           |B_lo⁺| + c + m̄ ≤ L + ν(B_lo) − 1
+------------------------------------------------------------------------------
+[Theorem SL]  brief line 662   <-->   source SS7.6 F, draft line 1382
+   POPULATION: 6 brief atoms, 7 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  MATCH-IN-BLOCK           slack := L(tau+1) - ( sum_{b in B_lo} deg(b) + nu ) >= 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg(b) + nu <= L(tau+1) - 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg_A(b) + e(B_lo) + mbar <= L(L+3)/2 - 1
+     REV  MATCH-IN-BRIEF           residue(G) = α(G)
+     REV  MATCH-IN-BRIEF           s = τ
+     REV  *** DROPPED FROM BRIEF *** τ ≥ 2
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  MATCH-IN-BRIEF           slack := L(τ+1) − ( Σ_{b∈B_lo} deg(b) + ν ) ≥ 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg(b) + ν ≤ L(τ+1) − 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg_A(b) + e(B_lo) + m̄ ≤ L(L+3)/2 − 1
+------------------------------------------------------------------------------
+[Favaron-Maheo-Sacle]  brief line 692   <-->   source SS7.1 Fact 2, draft line 132
+   POPULATION: 1 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) <= alpha(G)
+     REV  MATCH-IN-BRIEF           residue(G) ≤ α(G)
+------------------------------------------------------------------------------
+VERDICT for DELIBERATELY CORRUPTED -- C2 DROPPED HYPOTHESIS (the AB2/AE1 species -- the dangerous direction)
+   atoms matched in block : 41
+   atoms matched ELSEWHERE in the draft (adjudication list, below) : 9
+   atoms with NO MATCH ANYWHERE : 1   <== these are DEFECTS
+      DEFECT  [Theorem SL]  τ ≥ 2   (source->brief)
+
+==============================================================================
+GUARD E RUN: DELIBERATELY CORRUPTED -- C3 WEAKENED RIDER (a plausible-looking edit)
+==============================================================================
+-- declared transform table (39 entries), applied to BOTH sides --
+   'τ'->'tau'  'α'->'alpha'  'ν'->'nu'  'Δ'->'Delta'  'Σ'->'sum'  '∑'->'sum'  'δ'->'delta'  'λ'->'lambda'  '≤'->'<='  '≥'->'>='
+   '≠'->'!='  '−'->'-'  '≡'->'=='  '∈'->' in '  '∉'->' notin '  '∪'->' u '  '∩'->' cap '  '∅'->'empty'  '⁺'->'+'  '⁰'->'^0'  '¹'->'^1'  '²'->'^2'
+   '₀'->'_0'  '₁'->'_1'  '₂'->'_2'  '₃'->'_3'  'm̄'->'mbar'  '¯'->'bar'  '′'->"'"  '’'->"'"  '‘'->"'"  '—'->'-'  '–'->'-'  '\xa0'->' '  '\u2009'->' '  '\\'->''  '`'->''  '*'->''  '$'->''
+   plus: whitespace-insensitive comparison, case-folded.
+
+------------------------------------------------------------------------------
+[Lemma S]  brief line 614   <-->   source SS7.2 B, draft line 521
+   POPULATION: 5 brief atoms, 3 source atoms  (printed in full before the verdict)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 559) residue(G) = alpha(G)
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 517) s = tau
+     FWD  MATCH-IN-BLOCK           <= tau
+     FWD  MATCH-IN-BLOCK           deg(v) >= tau+1
+     FWD  MATCH-IN-BLOCK           #{v : deg v >= tau+1} <= tau
+     REV  MATCH-IN-BRIEF           #{v : deg v ≥ τ+1} ≤ τ
+     REV  MATCH-IN-BRIEF           <= tau
+     REV  MATCH-IN-BRIEF           deg(v) >= tau+1
+------------------------------------------------------------------------------
+[Lemma Z+]  brief line 619   <-->   source SS7.5, draft line 1068
+   POPULATION: 2 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           s - j + 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1071) block_j
+     REV  MATCH-IN-BRIEF           s − j + 1
+------------------------------------------------------------------------------
+[Lemma F3']  brief line 623   <-->   source SS7.5 Repair R2, draft line 1660
+   POPULATION: 2 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           1 <= j <= s
+     FWD  MATCH-IN-BLOCK           <= s - j + 1
+     REV  MATCH-IN-BRIEF           1 ≤ j ≤ s
+     REV  MATCH-IN-BRIEF           ≤ s − j + 1
+------------------------------------------------------------------------------
+[Theorem K]  brief line 627   <-->   source SS7.5, draft line 1100
+   POPULATION: 11 brief atoms, 4 source atoms  (printed in full before the verdict)
+     ---  EXCLUDED AS PROSE by the class rule (>=3 alphabetic tokens): >   Assume residue(G) = alpha(G) (so s = tau) and that every   has
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           b in B
+     FWD  MATCH-IN-BLOCK           deg(b) >= tau
+     FWD  MATCH-IN-BLOCK           K = B
+     FWD  MATCH-IN-BLOCK           e_B = C(tau,2)
+     FWD  MATCH-IN-BLOCK           e_B
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 514) G[B]
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 407) diam = 4
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 463) f = alpha+1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           b ∈ B
+     REV  *** DROPPED FROM BRIEF *** deg(b) ≥ τ + 1
+     REV  MATCH-IN-BRIEF           K = B
+     REV  MATCH-IN-BRIEF           e_B = C(τ,2)
+------------------------------------------------------------------------------
+[Theorem MB]  brief line 634   <-->   source SS7.6, draft line 1508
+   POPULATION: 4 brief atoms, 2 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  MATCH-IN-BLOCK           |B_lo+| + c + mbar <= L + nu(B_lo) - 1
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 1519) c = |B_lo ∩ (T_1 ∪ T_2)|
+     FWD  MATCH-ELSEWHERE-IN-DRAFT (draft line 632) tau >= 4
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  MATCH-IN-BRIEF           |B_lo⁺| + c + m̄ ≤ L + ν(B_lo) − 1
+------------------------------------------------------------------------------
+[Theorem SL]  brief line 662   <-->   source SS7.6 F, draft line 1382
+   POPULATION: 7 brief atoms, 7 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) = alpha(G)
+     FWD  MATCH-IN-BLOCK           s = tau
+     FWD  MATCH-IN-BLOCK           tau >= 2
+     FWD  MATCH-IN-BLOCK           L >= 1
+     FWD  MATCH-IN-BLOCK           slack := L(tau+1) - ( sum_{b in B_lo} deg(b) + nu ) >= 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg(b) + nu <= L(tau+1) - 1
+     FWD  MATCH-IN-BLOCK           sum_{b in B_lo} deg_A(b) + e(B_lo) + mbar <= L(L+3)/2 - 1
+     REV  MATCH-IN-BRIEF           residue(G) = α(G)
+     REV  MATCH-IN-BRIEF           s = τ
+     REV  MATCH-IN-BRIEF           τ ≥ 2
+     REV  MATCH-IN-BRIEF           L ≥ 1
+     REV  MATCH-IN-BRIEF           slack := L(τ+1) − ( Σ_{b∈B_lo} deg(b) + ν ) ≥ 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg(b) + ν ≤ L(τ+1) − 1
+     REV  MATCH-IN-BRIEF           Σ_{b∈B_lo} deg_A(b) + e(B_lo) + m̄ ≤ L(L+3)/2 − 1
+------------------------------------------------------------------------------
+[Favaron-Maheo-Sacle]  brief line 692   <-->   source SS7.1 Fact 2, draft line 132
+   POPULATION: 1 brief atoms, 1 source atoms  (printed in full before the verdict)
+     FWD  MATCH-IN-BLOCK           residue(G) <= alpha(G)
+     REV  MATCH-IN-BRIEF           residue(G) ≤ α(G)
+------------------------------------------------------------------------------
+VERDICT for DELIBERATELY CORRUPTED -- C3 WEAKENED RIDER (a plausible-looking edit)
+   atoms matched in block : 42
+   atoms matched ELSEWHERE in the draft (adjudication list, below) : 9
+   atoms with NO MATCH ANYWHERE : 1   <== these are DEFECTS
+      DEFECT  [Theorem K]  deg(b) ≥ τ + 1   (source->brief)
+
+
+##############################################################################
+# GUARD E LIVENESS -- the guard shown FAILING on purpose
+##############################################################################
+baseline (shipped brief) NO-MATCH count = 0
+  C1 ALTERED CONSTANT (the AZ species)                              FIRES  (NO-MATCH 2)
+        newly-unmatched atom: |B_lo+| + c + mbar <= L + nu(B_lo) + 1
+        newly-unmatched atom: |B_lo⁺| + c + m̄ ≤ L + ν(B_lo) − 1
+  C2 DROPPED HYPOTHESIS (the AB2/AE1 species -- the dangerous direction)  FIRES  (NO-MATCH 1)
+        newly-unmatched atom: τ ≥ 2
+  C3 WEAKENED RIDER (a plausible-looking edit)                      FIRES  (NO-MATCH 1)
+        newly-unmatched atom: deg(b) ≥ τ + 1
+  ALL THREE CORRUPTIONS DETECTED = True
+
+##############################################################################
+# ADJUDICATION LIST -- RULING CE: a false positive is named in the open,
+# with its reason, and is NEVER regexed away.  Narrowing the class to
+# silence one is how BK1 was born.
+##############################################################################
+  [Lemma S             ] draft line 559    residue(G) = alpha(G)
+  [Lemma S             ] draft line 517    s = tau
+  [Lemma Z+            ] draft line 1071   block_j
+  [Theorem K           ] draft line 514    G[B]
+  [Theorem K           ] draft line 407    diam = 4
+  [Theorem K           ] draft line 463    f = alpha+1
+  [Theorem K           ] draft line 632    tau >= 4
+  [Theorem MB          ] draft line 1519   c = |B_lo ∩ (T_1 ∪ T_2)|
+  [Theorem MB          ] draft line 632    tau >= 4
+  (count 9 -- each one is content that IS in the draft but NOT inside the
+   statement block the brief attributes it to.  That is a PROVENANCE finding,
+   not a correctness finding, and it is reported as such.)
+
+##############################################################################
+# WHAT GUARD E DOES NOT DO -- stated here, not left for a judge
+##############################################################################
+  * It matches ATOMS, not MEANING.  Two clauses can share every atom and
+    still say different things (quantifier order, scope of a 'for every').
+  * It cannot see a hypothesis that the SOURCE itself leaves standing
+    outside its statement block (SS7.2's standing reductio is a paragraph
+    above Lemma S, not inside it).  Those show up as MATCH-ELSEWHERE.
+  * It says nothing about whether the SOURCE is right.  GUARD B said the
+    brief no longer lies about what it contains; GUARD E says the brief's
+    transcription matches the draft.  Neither says the mathematics is true.
+
+##############################################################################
+# GUARD E FALSE-POSITIVE PROBES (RULING CI) -- the guard must stay SILENT
+##############################################################################
+baseline (shipped brief) NO-MATCH count = 0
+  FP1 WHITESPACE REFLOW inside a statement block (semantics identical)  SILENT (correct)  (NO-MATCH 0)
+  FP2 UNICODE tau FOR ASCII tau in Theorem K (a pure transform difference)  SILENT (correct)  (NO-MATCH 0)
+  NO FALSE POSITIVE ON EITHER PROBE = True
+  (Liveness says the guard can say NO.  This says it does not say NO to
+   text it has no business objecting to.  Both are required from here on.)

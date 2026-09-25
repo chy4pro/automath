@@ -1,0 +1,461 @@
+
+==============================================================================
+PART A -- A_6 built from scratch, classes, power map, character table
+==============================================================================
+|A_6| = 360   (must be 360)
+number of conjugacy classes = 7
+classes  1a:size1:type(1, 1, 1, 1, 1, 1)  2a:size45:type(2, 2, 1, 1)  3a:size40:type(3, 1, 1, 1)  3b:size40:type(3, 3)  4a:size90:type(4, 2)  5a:size72:type(5, 1)  5b:size72:type(5, 1)
+inverse map on classes: ['1a', '2a', '3a', '3b', '4a', '5a', '5b']
+class-algebra structure constants computed by actual multiplication: OK
+Dixon mod 421: 7 one-dimensional common eigenspaces found
+degrees: [1, 5, 5, 8, 8, 9, 10]   sum of squares = 360
+rational classes: ['1a', '2a', '3a', '3b', '4a']
+irrational (Galois-moved) classes: ['5a', '5b']
+
+ordinary character table of A_6 (Dixon mod 421, symmetric lift):
+            1a    2a    3a    3b    4a    5a    5b
+chi1         1     1     1     1     1     1     1
+chi2         5     1    -1     2    -1     0     0
+chi3         5     1     2    -1    -1     0     0
+chi4         8     0    -1    -1     0  -110   111
+chi5         8     0    -1    -1     0   111  -110
+chi6         9     1     0     0     1    -1    -1
+chi7        10    -2     1     1     0     0     0
+  (entries on the Galois-moved classes ['5a', '5b'] are only correct where the value is
+   rational; the two degree-8 characters are treated symbolically below.)
+C1 column orthogonality on rational classes: OK
+C2 class-algebra identity omega(k)omega(l) = sum a_klm omega(m): 0 failures out of 343
+C3 permutation characters (counted fixed points): pi_6 = [6, 2, 3, 0, 0, 1, 1], pi_15 = [15, 3, 3, 0, 1, 0, 0]
+    pi_6  = ['1', '0', '1', '0', '0', '0', '0']
+    pi_15 = ['1', '0', '1', '0', '0', '1', '0']
+C3 both decompose with non-negative integer multiplicities: OK
+
+classes used: 1a=1a  2a=2a(size 45)  4a=4a(size 90)  order3=['3a', '3b']  order5=['5a', '5b']
+power map: (4a)^2 = 2a  -- the square of an order-4 element
+
+values on (1a, 2a, 4a):
+  chi1  deg  1   chi(2a) =   1   chi(4a) =   1   BLIND (chi(2a)=chi(4a))
+  chi2  deg  5   chi(2a) =   1   chi(4a) =  -1   distinguishes
+  chi3  deg  5   chi(2a) =   1   chi(4a) =  -1   distinguishes
+  chi4  deg  8   chi(2a) =   0   chi(4a) =   0   BLIND (chi(2a)=chi(4a))
+  chi5  deg  8   chi(2a) =   0   chi(4a) =   0   BLIND (chi(2a)=chi(4a))
+  chi6  deg  9   chi(2a) =   1   chi(4a) =   1   BLIND (chi(2a)=chi(4a))
+  chi7  deg 10   chi(2a) =  -2   chi(4a) =   0   distinguishes
+
+==============================================================================
+PART B -- the 2-blocks of A_6: defects, decomposition, Cartan, BLIND census
+==============================================================================
+degree-8 characters on the order-5 classes: mod-421 lift gives sum = 1, product = -1
+  => the pair of values are the two roots of x^2 - x - 1, i.e. phi and 1-phi,
+     phi = (1+sqrt5)/2.  Carried SYMBOLICALLY from here on -- no mod-p lift used.
+all omega_chi(C) are algebraic integers of Z[phi]: OK  (divisibility asserted)
+
+2-blocks over F_4 (Osima: chi ~ psi iff omega_chi = omega_psi mod (2)):
+  block 0 : Irr = ['chi1', 'chi2', 'chi3', 'chi6', 'chi7']   degrees [1, 5, 5, 9, 10]
+  block 1 : Irr = ['chi4']   degrees [8]
+  block 2 : Irr = ['chi5']   degrees [8]
+  number of 2-blocks over F_4 = 3
+  number of 2-blocks over F_2 = 2   (Frobenius orbits: [[0], [1, 2]])
+
+nu_2(|A_6|) = 3
+  block 0: defect 3  (|D| = 8)
+  block 1: defect 0  (|D| = 1)
+  block 2: defect 0  (|D| = 1)
+Sylow 2-subgroup of A_6: order 8, 5 elements of order 2, 2 of order 4, abelian=False
+  => D_8 (dihedral): Q_8 would have 6 elements of order 4, C_2xC_4 would be abelian,
+     C_2^3 would have no element of order 4.  DIHEDRAL OF ORDER 8.
+
+GREEN'S THEOREM CONTROL (zeros of characters):
+  a block of defect 0 has all its characters vanishing on every 2-singular class.
+  block 0 (defect 3): (chi(2a), chi(4a)) = [(1, 1), (1, -1), (1, -1), (1, 1), (-2, 0)]
+  block 1 (defect 0): (chi(2a), chi(4a)) = [(0, 0)]
+  block 2 (defect 0): (chi(2a), chi(4a)) = [(0, 0)]
+  the two defect-0 blocks vanish on BOTH 2-singular classes; the defect-3 block
+  does not  => the control DISCRIMINATES.
+
+*** BLIND-BLOCK CENSUS (which blocks can obstruct at all) ***
+A block B all of whose characters satisfy chi(2a) = chi(4a) is satisfied by
+u_B = e_B g for a genuine g in 4a, and can NEVER obstruct.
+  block 0  [1, 5, 5, 9, 10]  : CAN OBSTRUCT
+  block 1  [8]  : BLIND
+  block 2  [8]  : BLIND
+  ==> of 3 2-blocks of A_6 over F_4, 1 can obstruct and 2 cannot.
+  ==> of 2 2-blocks of A_6 over Z_2 (= over F_2, idempotents lift), 1 can obstruct.
+      Either way it is ONE block.  A_7 has 2 of 2 in both counts (r4).
+
+--- 2-modular irreducibles of A_6, built as explicit F_2-modules ---
+2-regular classes: ['1a', '3a', '3b', '5a', '5b']   (#IBr over a splitting field = 5, Brauer)
+Berman: orbits of 2-regular classes under squaring = [['1a'], ['3a'], ['3b'], ['5a', '5b']]  => 4 irreducible F_2-modules
+transitive A_5 <= A_6 : order 60, transitive = True
+second 6-point action built from the cosets of that transitive A_5
+two 4-dimensional F_2 A_6-modules built (dims 4, 4)
+  module 4a: Norton criterion (an IFF) says irreducible = True ; dim End_{F_2} = 1
+  module 4b: Norton criterion (an IFF) says irreducible = True ; dim End_{F_2} = 1
+
+Brauer characters of the principal-block simples on the 2-regular classes
+            1a    3a    3b    5a    5b
+  1        1     1     1     1     1
+  4a       4     1    -2    -1    -1
+  4b       4    -2     1    -1    -1
+  (all values RATIONAL: every Frobenius orbit of roots is a full Galois orbit,
+   asserted in code -- so NO embedding mu_5(F_2bar) -> C is chosen.)
+
+decomposition matrix of the principal 2-block (solved, and UNIQUENESS asserted):
+  chi1 (deg  1) = 1*[1] + 0*[4a] + 0*[4b]
+  chi2 (deg  5) = 1*[1] + 0*[4a] + 1*[4b]
+  chi3 (deg  5) = 1*[1] + 1*[4a] + 0*[4b]
+  chi6 (deg  9) = 1*[1] + 1*[4a] + 1*[4b]
+  chi7 (deg 10) = 2*[1] + 1*[4a] + 1*[4b]
+  every decomposition exists and is UNIQUE over the box [0,11]^3.
+
+Cartan matrix of the principal 2-block of A_6 = D^T D =
+      [8, 4, 4]
+      [4, 3, 2]
+      [4, 2, 3]
+  det = 8  (must be 2^defect = 8)
+  k(B) = 5 ordinary characters, l(B) = 3 simple modules
+  Z_2-rank of the block        = sum chi(1)^2 = 232
+  Z_2-rank of its BASIC ALGEBRA = sum C_ij     = 34
+  consistency  sum n_i n_j c_ij = 232  (must equal the block rank 232)
+
+==============================================================================
+PART C -- the 2-local HeLP system for |u| = 4 in V(Z_2 A_6), with census
+==============================================================================
+Admissibility 2-locally (r4 sec.2, re-derived here):
+  * Luthar-Passi for ORDINARY characters survives: D(u) is diagonalisable over
+    Qbar_2 with 4th-root-of-unity eigenvalues, so mu(zeta^-j,u,chi) is a
+    non-negative rational integer.
+  * p-Brauer characters for p = 3, 5 do NOT: they enter through Z_p G -> F_p G,
+    and a unit of V(Z_2 A_6) admits no such reduction.
+  * Hertweck's congruence AT p = 2 survives (Frobenius congruence over Z_2).
+  * support {2a,4a} is SPECIFIED by the question (r4 sec.2 flagged that the
+    Z_2-analogues of Berman-Higman and of Hertweck's ord(C)|n were not verified;
+    nothing below rests on them, because the support is a hypothesis here).
+
+enumeration over t = eps_2a(u) in [-6,6] (boundedness PROVED below, not assumed):
+  t = -6 : ordinary kills = 3  [chi2:mu0=-5, chi3:mu0=-5, chi7:mu2=-4]    congruence OK   
+  t = -5 : ordinary kills = 3  [chi2:mu0=-4, chi3:mu0=-4, chi7:mu2=-3]    congruence NO   
+  t = -4 : ordinary kills = 3  [chi2:mu0=-3, chi3:mu0=-3, chi7:mu2=-2]    congruence OK   
+  t = -3 : ordinary kills = 3  [chi2:mu0=-2, chi3:mu0=-2, chi7:mu2=-1]    congruence NO   
+  t = -2 : ordinary kills = 2  [chi2:mu0=-1, chi3:mu0=-1]                 congruence OK   
+  t = -1 : ordinary kills = 0                                             congruence NO   
+  t = +0 : ordinary kills = 0                                             congruence OK   SURVIVES
+  t = +1 : ordinary kills = 0                                             congruence NO   
+  t = +2 : ordinary kills = 0                                             congruence OK   SURVIVES
+  t = +3 : ordinary kills = 3  [chi2:mu2=-1, chi3:mu2=-1, chi7:mu0=-1]    congruence NO   
+  t = +4 : ordinary kills = 3  [chi2:mu2=-2, chi3:mu2=-2, chi7:mu0=-2]    congruence OK   
+  t = +5 : ordinary kills = 3  [chi2:mu2=-3, chi3:mu2=-3, chi7:mu0=-3]    congruence NO   
+  t = +6 : ordinary kills = 3  [chi2:mu2=-4, chi3:mu2=-4, chi7:mu0=-4]    congruence OK   
+
+  boundedness PROOF (not an assumption): chi7 (deg 10, chi(2a) = -2, chi(4a) = 0)
+     gives mu_0 = 2 - t >= 0 and mu_2 = 2 + t >= 0, i.e. |t| <= 2.
+  2-LOCAL admissible set for A_6:  eps_2a(u) in [0, 2]
+  i.e. (eps_2a, eps_4a) in [(0, 1), (2, -1)]
+
+CONTROLS:
+  positive: t = 0 must be admissible -- it is realised by a genuine g in 4a.
+            all 28 multiplicities at t = 0 are non-negative integers: OK
+  rejection: t = +-3, +-4 killed by ordinary characters (3, 3, 3, 3 constraints);
+             t = -2 killed by ordinary characters (2 constraints);
+             t = +-1 ordinary-admissible and killed ONLY by the p=2 congruence
+             (0, 0 ordinary kills) -- so the congruence is not idle.
+  the -2 killers are: ['chi2:mu0=-1', 'chi3:mu0=-1']
+
+*** CENSUS (sec.90/104) -- the number I am entitled to ***
+  ordinary system: 7 characters x 4 eigenvalues = 28 constraints.
+  mu_1 and mu_3 never depend on t; mu_0 and mu_2 depend on t only when
+  chi(2a) != chi(4a).  Discriminating characters: ['chi2', 'chi3', 'chi7']
+  ==> exactly 6 of the 28 ordinary constraints could have killed (2,-1). None did.
+  LIMITATION printed beside the number: the complete 3- and 5-modular tables of A_6
+  were NOT recomputed this round (r4 banked them), so I do NOT state how many odd-p
+  Brauer constraints are lost on 2-localisation.  What is re-run below is the single
+  GLOBAL killer, because it is load-bearing.
+
+--- C.2  IS THE SUPPORT HYPOTHESIS {2a,4a} FORCED 2-LOCALLY?  Complete enumeration ---
+Over Z G a partial augmentation is a RATIONAL INTEGER and Hertweck's ord(C)|n cuts
+the support down to {2a,4a}.  Over Z_2 G neither is available: eps_C(u) is a sum of
+Z_2-coefficients, hence a 2-ADIC integer.  So the honest 2-local parameter space is
+not Z^7.  Here is what it actually is, computed.
+
+Step 1.  Every mu(zeta^-j, u, chi) is a non-negative RATIONAL integer, and
+chi(u) = mu_0 - mu_2, so chi(u) in Z for every ordinary chi.  With u^2 ~ 2a
+(the same hypothesis r4 and sec.3 use) mu_1 = mu_3 = (chi(1)-chi(2a))/4 is FIXED and
+mu_0 + mu_2 = chi(1) - 2 mu_1, so chi(u) runs over a finite arithmetic progression.
+   chi1 (deg  1): mu_1 = 0, chi(u) in [1]
+   chi2 (deg  5): mu_1 = 1, chi(u) in [3, 1, -1, -3]
+   chi3 (deg  5): mu_1 = 1, chi(u) in [3, 1, -1, -3]
+   chi4 (deg  8): mu_1 = 2, chi(u) in [4, 2, 0, -2, -4]
+   chi5 (deg  8): mu_1 = 2, chi(u) in [4, 2, 0, -2, -4]
+   chi6 (deg  9): mu_1 = 2, chi(u) in [5, 3, 1, -1, -3, -5]
+   chi7 (deg 10): mu_1 = 3, chi(u) in [4, 2, 0, -2, -4]
+   box size = 12000  (finite and PROVED finite, not assumed)
+
+Step 2.  eps_C = (1/|C_G(g_C)|) sum_chi chi(u) chi(g_C^-1), an identity in Qbar_2.
+   2 is INERT in Q(sqrt5), so sqrt5 is not in Q_2 and Q(sqrt5) cap Q_2 = Q inside
+   Q_2(sqrt5).  eps_C lies in Z_2, hence in Q, hence its phi-part must VANISH.
+   For A_6 that reduces to the single condition chi4(u) = chi5(u).
+   Then eps_C in Z_2 means: eps_C rational with ODD denominator.
+
+   candidates with chi4(u) = chi5(u)                        :  2400
+   ... with every eps_C a 2-ADIC INTEGER (odd denominator)  :   600
+   ... and satisfying the p=2 Hertweck congruence            :   300
+   ...... of those, eps a RATIONAL INTEGER vector            :     4
+   ...... of those, SUPPORT contained in {2a,4a}             :     2
+
+   the integral ones, in full (these are the vectors an argument over Z G would see):
+     chi(u) = [1, 3, -3, 4, 4, -5, -2]   eps = {'3a': -2, '4a': -1, '5a': 2, '5b': 2} 
+     chi(u) = [1, -3, 3, 4, 4, -5, -2]   eps = {'3b': -2, '4a': -1, '5a': 2, '5b': 2} 
+     chi(u) = [1, -1, -1, 0, 0, 1, 0]    eps = {'4a': 1}                          <-- support {2a,4a}
+     chi(u) = [1, 3, 3, 0, 0, 1, -4]     eps = {'2a': 2, '4a': -1}                <-- support {2a,4a}
+
+   three NON-INTEGRAL survivors, exhibited (denominators are odd, so they are
+   genuine 2-adic integers and the Luthar-Passi system cannot see them):
+     chi(u) = [1, 3, 3, 4, 4, 1, 4]      eps = {'1a': '2/5', '4a': '-1', '5a': '4/5', '5b': '4/5'}
+     chi(u) = [1, 3, 3, 4, 4, 1, 0]      eps = {'1a': '13/45', '2a': '1', '3a': '-4/9', '3b': '-4/9', '4a': '-1', '5a': '4/5', '5b': '4/5'}
+     chi(u) = [1, 3, 3, 4, 4, 1, -4]     eps = {'1a': '8/45', '2a': '2', '3a': '-8/9', '3b': '-8/9', '4a': '-1', '5a': '4/5', '5b': '4/5'}
+
+   ==> THE SUPPORT HYPOTHESIS IS NOT FORCED 2-LOCALLY, and the parameter space is
+       not Z^7 either: over Z_2 G a partial augmentation is a 2-ADIC integer, so the
+       enumeration lives in Z_(2)^7 (rationals with odd denominator).
+       This is a SCOPING correction to the r4/r5 framing: '(2,-1) in V(Z_2 A_6)' is
+       a HYPOTHESIS about the support and the integrality, not a derived restriction.
+       It does not change any result above -- every one of them takes the support as
+       given -- but it says what a support-free 2-local attack would have to handle.
+       (counts: 300 survive, 4 integral, 2 with support {2a,4a})
+   CONTROL (positive): the trivial vector eps_4a = 1, realised by a genuine g in 4a,
+       is present: True
+   CONTROL (the open case): eps = (2,-1) on (2a,4a) is present: True
+   CONTROL (rejection): the enumeration is not vacuous -- 2100 of the 2400 candidates
+       with chi4(u) = chi5(u) are rejected.
+   ** AND THE TWO EXTRA INTEGRAL VECTORS ARE EXACTLY WHAT HERTWECK'S ord(C)|n KILLS
+      OVER Z G: their supports meet the classes 3a/3b and 5a/5b, of orders 3 and 5,
+      which do not divide 4.  That theorem's Z_2-analogue is UNVERIFIED (r4 sec.2,
+      restated in sec.3 here), so 2-locally they stand. **
+
+--- the GLOBAL killer of (2,-1) for A_6, rebuilt and re-run (item (f)) ---
+F_3-module of dimension 4 built as (sum-zero subspace of F_3^6)/<all-ones>
+exterior square built explicitly: dimension 6
+its 3-modular Brauer character on (1a, 2a, 4a) = [6, -2, 2]   (computed, not quoted)
+   t = 0 :  mu = ['2', '2', '0', '2']   passes  <-- POSITIVE CONTROL
+   t = 2 :  mu = ['-2', '2', '4', '2']   KILLED (mu_0 < 0)
+  ==> (2,-1) is dead GLOBALLY for A_6 and alive 2-LOCALLY.  Re-run, not read.
+
+==============================================================================
+PART D -- the r3 Z_2C_4 lattice machinery transplanted to A_6
+==============================================================================
+Bounds (r3 sec.4, derived there from Berman-Gudkov + the Z_2C_2 classification):
+   UB2 = min(m0,m1) + min(m2,m1)      UB3 = min(m0,m1,m2)
+   UB1 = n - m1 - max((m0-m1)^+,(m2-m1)^+)     LB1 = m1
+
+  chi   deg   m0 m1 m2 |  LB1 UB1 UB2 UB3  |  same for a genuine g in 4a
+  chi1     1    1  0  0 |    0   0   0   0  |    0   0   0
+  chi2     5    3  1  0 |    1   2   1   0  |    3   2   1
+  chi3     5    3  1  0 |    1   2   1   0  |    3   2   1
+  chi4     8    2  2  2 |    2   6   4   2  |    6   4   2
+  chi5     8    2  2  2 |    2   6   4   2  |    6   4   2
+  chi6     9    3  2  2 |    2   6   4   2  |    6   4   2
+  chi7    10    0  3  4 |    3   6   3   0  |    7   4   2
+
+composition factors of the mod-2 reduction of each ordinary lattice:
+  chi1  (deg  1) -> 1*[1]
+  chi2  (deg  5) -> 1*[1] + 1*[4b]
+  chi3  (deg  5) -> 1*[1] + 1*[4a]
+  chi4  (deg  8) -> 1*[8a]
+  chi5  (deg  8) -> 1*[8b]
+  chi6  (deg  9) -> 1*[1] + 1*[4a] + 1*[4b]
+  chi7  (deg 10) -> 2*[1] + 1*[4a] + 1*[4b]
+
+*** IS THERE A FORCED NON-ZERO LOWER BOUND?  (r3's banked r_1(S_6) >= 1 for A_7) ***
+r3 got r_1(S_6) >= 1 for A_7 because chi_2 (deg 6) reduces to a SINGLE simple with
+multiplicity 1 and has m_1 = 1, so LB1 transfers verbatim to that simple.
+     chi1  -> 1 distinct simple factor(s), m_1 = 0 
+     chi2  -> 2 distinct simple factor(s), m_1 = 1 
+     chi3  -> 2 distinct simple factor(s), m_1 = 1 
+     chi4  -> 1 distinct simple factor(s), m_1 = 2   <-- SINGLE FACTOR, m_1 > 0: forces r_1(8a) >= 2
+     chi5  -> 1 distinct simple factor(s), m_1 = 2   <-- SINGLE FACTOR, m_1 > 0: forces r_1(8b) >= 2
+     chi6  -> 3 distinct simple factor(s), m_1 = 2 
+     chi7  -> 3 distinct simple factor(s), m_1 = 3 
+
+  I expected NONE and the search returned TWO.  Correcting the claim rather than
+  the search: A_6 DOES get forced non-zero lower bounds, r_1(8a) >= 2 and
+  r_1(8b) >= 2 -- but BOTH simples lie in the two DEFECT-0 blocks, which the
+  sec.B census already showed to be BLIND (chi(2a) = chi(4a) = 0).  A blind block is
+  satisfied by u_B = e_B g for a genuine g in 4a, so a lower bound there is
+  automatically consistent and carries no information.
+  ==> in the ONE block that can obstruct, forced non-zero lower bounds: NONE
+      A_7, by contrast, has r_1(S_6) >= 1 inside its obstructing Klein-four block.
+      On this measure the A_6 instance is STRICTLY WEAKER than the A_7 one.
+
+FEASIBILITY of the 2-local lattice system at (2,-1): complete enumeration over the
+provably bounded box 0 <= r_j(S) <= dim S - 1 (ubar-1 is nilpotent), WITH the two
+forced lower bounds imposed.
+  FULL system,      j = 1 : 225 solutions   (all-zero admissible = False)
+  FULL system,      j = 2 : 100 solutions   (all-zero admissible = True)
+  FULL system,      j = 3 : 9 solutions   (all-zero admissible = True)
+
+  and restricted to the ONE block that can obstruct (simples 1, 4a, 4b;
+  characters chi1, chi2, chi3, chi6, chi7):
+  PRINCIPAL block,  j = 1 : 9 solutions   (all-zero admissible = True)
+  PRINCIPAL block,  j = 2 : 4 solutions   (all-zero admissible = True)
+  PRINCIPAL block,  j = 3 : 1 solutions   (all-zero admissible = True)
+  ==> FEASIBLE at every exponent, and the all-zero vector -- the one that makes the
+      whole apparatus vacuous -- is admissible in the obstructing block.  The p = 2
+      lattice method does NOT settle A_6 either, and the failure is the one r3
+      diagnosed for A_7: |u| = 4 and p = 2 give a TRIVIAL 2'-part, the splitting step
+      of the lattice method is empty, only upper bounds are produced.
+      r3's diagnosis was a CONJECTURE (item (c)).  This is its SECOND instance, on a
+      group with a DIFFERENT block structure at p = 2.  It survived the test.
+
+POSITIVE CONTROL -- explicit F_2 ranks of a genuine g in 4a and g in 2a:
+    g in 4a on Lbar_chi3(5) r_1=3 r_2=2 r_3=1
+    g in 2a on Lbar_chi3(5) r_1=2 r_2=0 r_3=0
+    g in 4a on simple 4a   r_1=3 r_2=2 r_3=1
+    g in 4b on simple 4b   r_1=3 r_2=2 r_3=1
+    (so the machinery is not vacuous: a real element has non-zero ranks.)
+
+*** CONSEQUENCE (the A_6 analogue of the sourcing paper's A_7 Proposition) ***
+  chi3 has (m0,m1,m2) = [3, 1, 0] at (2,-1), so UB2 = 1: rank_F2(ubar^2 - 1) <= 1 on the
+  5-dimensional lattice.  A genuine g in 2a has rank_F2(g - 1) = 2 there (computed
+  above), and 1 < 2, so u^2 is NOT conjugate in Z_2 A_6 to an element of 2a.
+  This is exactly the paper's degree-6 argument for A_7, transplanted; it is
+  INFORMATION about the hypothetical unit, not a contradiction with it.
+
+==============================================================================
+PART E -- A_6 vs A_7: the object that must ACTUALLY be attacked
+==============================================================================
+A_7's block data is BANKED (r4, planner cert sec.2) and is NOT re-derived here.
+What IS re-run is every arithmetic step that the comparison rests on (item (f)).
+  A_7 B_1 (Klein four V_4)     k(B)=4 l(B)=3 defect=2 det(C)=4  block rank= 432  basic rank=18  consistency OK
+  A_7 B_0 (dihedral D_8)       k(B)=5 l(B)=3 defect=3 det(C)=8  block rank=2088  basic rank=19  consistency OK
+  A_6 principal (dihedral D_8) k(B)=5 l(B)=3 defect=3 det(C)=8  block rank= 232  basic rank=34  consistency OK
+  A_7 block ranks sum to 2520 = |A_7| : True
+  A_6 block ranks sum to 360 = |A_6| : True
+
+*** THE ORDERING RATIONALE, MEASURED ***
+  Non-existence needs a contradiction in ONE block only: u exists iff EVERY block
+  B carries a u_B with u_B^4 = e_B and the prescribed character, so a single
+  contradictory block finishes it.  Therefore the object to attack is the SMALLEST
+  block that can obstruct.
+    A_7 : 2 blocks over Z_2 (and 2 split), BOTH obstruct.  Smallest basic algebra: 18
+          (B_1, Klein four defect, and by CEKL one of exactly THREE Morita classes).
+    A_6 : 2 blocks over Z_2 (3 split), exactly ONE obstructs, the principal one:
+          basic algebra rank 34, dihedral D_8 defect.
+  ==> 'A_6 is smaller' is true of the GROUP (360 < 2520) and FALSE of the object
+      that has to be attacked: 34 > 18, by a factor of about 2, and A_6 offers no
+      second, smaller site.  The A_6 census is BETTER (1 of 3 vs 2 of 2) and the
+      A_6 target is WORSE.
+  Citation-level, NOT verified this round: for Klein four defect the Morita
+  classification is a finite explicit list of three (CEKL, Math. Z. 268 (2011),
+  read at content level in r4).  I have NOT located an equally explicit finite
+  Morita list for blocks with D_8 defect and l(B)=3; Erdmann's tame classification
+  is by families carrying scalar parameters.  Recorded as a GAP in my knowledge,
+  not as a negative about the literature.
+  And r4's finding stands, re-derived here: A_6 has NO Klein four block (its only
+  non-defect-0 block has defect 3), so the A_6 instance cannot exercise, calibrate
+  or inform the CEKL/A_5-type machinery that the A_7 B_1 route needs.
+
+--- ADDENDUM: A_7's discriminating constraints, PER BLOCK, recovered by running
+    the arithmetic on r3's banked (m0,m1,m2) table rather than reading r4's total ---
+    chi   deg  recovered chi(2a) chi(4a)   block   distinguishes?
+    chi1    1         1      1      B_0    blind
+    chi2    6         2      0      B_1    YES
+    chi3   10        -2      0      B_1    YES
+    chi4   10        -2      0      B_1    YES
+    chi5   14         2      0      B_1    YES
+    chi6   14         2      0      B_0    YES
+    chi7   15        -1     -1      B_0    blind
+    chi8   21         1     -1      B_0    YES
+    chi9   35        -1      1      B_0    YES
+    consistency with r4's Green's-theorem control: every chi in B_1 has chi(4a) = 0 : True
+    discriminating 2-local constraints:  B_1 = 8,  B_0 = 6,  total = 14
+    r4's banked total was 14 ordinary survivors -- REPRODUCED, and now SPLIT:
+    *** B_1 carries 8 of the 14, i.e. the MAJORITY of the surviving discriminating
+        power sits in the SMALLEST block.  A_6, for comparison, has 6 in total and
+        all of them in its single, larger obstructing block. ***
+
+==============================================================================
+PART F -- the transfer lemma re-checked, and its DIRECTION
+==============================================================================
+A_6 = stabiliser of the point 7 inside A_7.  Fusion of the two classes of 2-power
+order, checked WITHOUT building A_7 (2520 elements not needed):
+  A_6 classes of 2-power order: [('2a', (2, 2, 1, 1), 45), ('4a', (4, 2), 90)]
+  A_6 2a (type (2, 2, 1, 1))  ->  A_7 cycle type (2, 2, 1, 1, 1), S_7-class size 105, splits in A_7 = False
+       odd centralising witness = (0, 1, 2, 3, 5, 4, 6)  (so the S_7-class is a SINGLE A_7-class)
+  A_6 4a (type (4, 2))  ->  A_7 cycle type (4, 2, 1), S_7-class size 630, splits in A_7 = False
+       odd centralising witness = (0, 1, 3, 4, 5, 2, 6)  (so the S_7-class is a SINGLE A_7-class)
+  A_7 therefore has exactly one class of each of the two 2-power cycle types, of
+  sizes 105 and 630, and the map is ONE-TO-ONE.
+
+TRANSFER LEMMA (r4, re-checked): u in V(Z_2 A_6) of order 4 with (eps_2a,eps_4a)
+  = (2,-1) IS, verbatim, an element of V(Z_2 A_7) with (eps_2a,eps_4a) = (2,-1).
+
+*** ITS DIRECTION -- and this corrects the dispatch's own rationale (item (c)) ***
+  The lemma is an INCLUSION Z_2 A_6 subset Z_2 A_7 of group rings.  A witness
+  pushes FORWARD along it.  Nothing pulls BACK: proving that no such u exists in
+  Z_2 A_6 says NOTHING about Z_2 A_7, because a hypothetical A_7 unit has no reason
+  to lie in the subring.  The transfer is ONE-DIRECTIONAL.
+  The planner's sec.7 ruling reads: 'your transfer lemma is proved, so a result
+  there lands on A_7 regardless of which way it goes.'  That is true for EXISTENCE
+  and false for NON-EXISTENCE.
+  Combined with cert sec.1 -- 'existence is devalued, non-existence retains full
+  value' -- the only half of the A_6 question that transfers to A_7 is the half
+  that was priced down.  A_6-first therefore dispatches the devalued half.
+  I report this the same way r4 reported the calibration that devalued my own r3
+  recommendation: against the instruction I was given, with the arithmetic beside it.
+
+==============================================================================
+PART G -- the Macgregor Morita class of each block, RE-RUN not read
+==============================================================================
+The round-5 literature check returned a result that REFUTES my own sec.E remark:
+blocks with dihedral defect ARE classified up to Morita equivalence over a field.
+  N. Macgregor, 'Morita equivalence classes of tame blocks of finite groups',
+  J. Algebra 608 (2022) 719-754 (arXiv:2106.13056).  For dihedral defect of order
+  2^n, n >= 3, with l(B) = 3 there are EXACTLY THREE classes -- the same count as
+  CEKL's three Klein-four classes.  So the 'A_6 is less classified' leg of my
+  ordering argument is WITHDRAWN.
+
+What I can re-run rather than read is the CLASS ASSIGNMENT, because Macgregor's
+classes are separated by their decomposition matrices, which I have computed:
+  A_6 principal block, decomposition rows COMPUTED THIS ROUND : [(1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1), (2, 1, 1)]
+  A_7 principal block, decomposition rows BANKED from r4       : [(0, 1, 0), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)]
+    (3A) = B_0(k PSL_2(q)), q = 1 mod 4, (q-1)_2 = 2^n   A_6 match: True   A_7 match: False
+    (3K) = B_0(k PSL_2(q)), q = -1 mod 4, (q+1)_2 = 2^n  A_6 match: False  A_7 match: False
+    (3B) = B_0(k A_7), occurring ONLY for n = 3          A_6 match: False  A_7 match: True
+  Cartan from Macgregor's (3A) rows = [[8, 4, 4], [4, 3, 2], [4, 2, 3]]   (mine for A_6: [[8, 4, 4], [4, 3, 2], [4, 2, 3]])
+  Cartan from Macgregor's (3B) rows = [[4, 2, 2], [2, 3, 1], [2, 1, 2]]   (r4's for A_7 B_0: [[4,2,2],[2,3,1],[2,1,2]])
+  ALL FOUR fingerprints match, and the three classes are pairwise DISTINCT: True
+
+*** WHAT THE RE-RUN ESTABLISHES ***
+  A_6's principal 2-block is Macgregor class (3A) -- the class of B_0(k PSL_2(q)),
+  i.e. of exactly the groups for which ZC1 IS KNOWN.  (A_6 = PSL(2,9), so this is
+  consistent by construction, not a coincidence to be read as evidence.)
+  A_7's principal 2-block is class (3B), which Macgregor's theorem says occurs ONLY
+  at n = 3 and, up to Morita equivalence over k, only for A_7.
+  ==> the two D_8 blocks on this line are in DIFFERENT Morita classes.  A_6's
+      dihedral block is not a small model of A_7's.
+  ⚠ AND THIS DOES NOT TRANSFER TO THE UNIT QUESTION.  Macgregor works over an
+  algebraically closed FIELD; the unit lives in a Z_2-ORDER.  A Morita equivalence
+  over k says nothing about torsion units of the block over Z_2.  Recorded as the
+  same refusal to over-claim a citation's scope that r4 made about CEKL.
+
+==============================================================================
+SUMMARY OF ROUND 5 (nothing here is claimed to settle A_6 or A_7)
+==============================================================================
+1. A_6 has 3 2-blocks over F_4 (2 over F_2).  Exactly ONE can obstruct: the
+   principal one, defect 3, defect group D_8 DIHEDRAL, k(B)=5, l(B)=3,
+   Cartan [[8,4,4],[4,3,2],[4,2,3]], det 8, block rank 232, basic algebra rank 34.
+2. Census: 1 of 2 blocks over Z_2 can obstruct (1 of 3 over a splitting field);
+   A_7 has 2 of 2 in both counts.
+   Of the 28 ordinary 2-local constraints, exactly 6 can depend on the partial
+   augmentations, and none kills (2,-1).
+3. The r3 lattice machinery is FEASIBLE on A_6 at every exponent, with the all-zero
+   vector admissible in the obstructing block: r3's diagnosis passes its second test.
+4. A_6 has no forced non-zero lower bound INSIDE the block that can obstruct
+   (the two it does have live in blind defect-0 blocks) -- strictly weaker than A_7.
+5. u^2 is not Z_2A_6-conjugate to an element of 2a: the paper's A_7 argument
+   transplants, as information, not as a contradiction.
+6. The smallest object that can obstruct has basic-algebra rank 34 for A_6 and 18
+   for A_7.  'A_6 is smaller' fails on the measure that matters.
+7. The transfer lemma is ONE-DIRECTIONAL: only the devalued half lands on A_7.
+
+NOT ANSWERED: whether a unit of order 4 with (2,-1) exists in V(Z_2 A_6).
