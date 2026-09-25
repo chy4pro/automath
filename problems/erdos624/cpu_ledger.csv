@@ -107,3 +107,6 @@
 2026-09-25T14:59:11,u_5_3_EH_sb0_dratrim,0.03,0.03,0,59,/home/agent/tools/bin/drat-trim runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/raw.drat -L runs/u_5_3_EH_sb0/trim.lrat -w
 2026-09-25T14:59:11,u_5_3_EH_sb0_cakelpr,0.00,0.01,0,8,/home/agent/tools/bin/cake_lpr --CML_HEAP_SIZE=1400 --CML_STACK_SIZE=256 runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/trim.lrat
 2026-09-25T14:59:11,u_5_3_EH_sb0_lratcheck,0.00,0.00,0,33,/home/agent/tools/bin/lrat-check runs/u_5_3_EH_sb0/f.cnf runs/u_5_3_EH_sb0/trim.lrat
+2026-09-25T15:07:30,ckpt2_c_12_4_L_sb0_ABORTED_restart,1.9,1.9,-9,120,ABORTED: no-proof probe killed and restarted via certify_unsat.sh to also capture DRAT proof
+2026-09-25T15:07:30,ckpt2_c_12_4_L_sb1_ABORTED_restart,1.9,1.9,-9,90,ABORTED: no-proof probe killed and restarted via certify_unsat.sh to also capture DRAT proof
+2026-09-25T15:07:30,ckpt2_c_12_4_L_sb2_ABORTED_restart,1.8,1.8,-9,90,ABORTED: no-proof probe killed and restarted via certify_unsat.sh to also capture DRAT proof
