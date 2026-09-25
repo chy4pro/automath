@@ -34,7 +34,9 @@ Written by the Fable 5.1 coordinator on restart. Sources checked today: Quanta (
    for the *verifiable public record*: GitHub (now `chy4pro/automath`, public) + Zenodo + Lean.
    Submit one clean claim per problem and move on.
 2. **Lean is our quality gate, not our sales pitch.** Keep kernel verification as the internal
-   red line; do not expect it to move reviewers.
+   red line; do not expect it to move reviewers. **Amended 2026-09-25 (owner):** Lean comes
+   last — formalise only a result that is big enough to be worth verifying, after referee and G2.
+   No Lean infrastructure work (rebuilds, CI, import trimming) before such a result exists.
 3. **Fix the concrete miss:** claim 262 must link the Lean (`lean/proofenv/Erdos708/`). Owner
    action (site login), text supplied below.
 4. **Engines: Claude only, tiered.** Fable coordinates and judges (scarce: 75% of weekly pool
