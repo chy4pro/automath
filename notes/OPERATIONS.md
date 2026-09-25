@@ -89,7 +89,7 @@ task completion), not a high-frequency screenshot/polling loop.
   claim summary to the 12n result and add the Lean link. Text fixed by the coordinator (Fable 5.1);
   a Sonnet browser subagent may send it verbatim. This does not create a standing permission.
 - Do not put the owner's private email, keys, login tokens, internal session dumps or unrelated
-  personal conversations into a publication. Do not read/print engine-key files to prove access.
+  personal conversations into a publication. **2026-09-25 scrub (owner: rewrite, it is not project content):** the public repo was rewritten from a single root; never commit local paths (`/Users/...`), chat/session links (chatgpt.com/c/…, claude.ai/…session…), GCP ids, e-mail addresses, quoted owner chat, arXiv text extracts, or GCP scripts. Commit trailers carry `Co-Authored-By` only, no session link. Pre-push grep: `roychen|chatgpt\.com/c/|claude\.ai/.*session|gmail|chenhaoyu1995`. Do not read/print engine-key files to prove access.
 - Owner-only pending items from handoff: account data export/deletion choice, Prove2Me key rotation,
   and whether to obtain additional Lean checker implementations. None authorizes automatic cleanup.
 
