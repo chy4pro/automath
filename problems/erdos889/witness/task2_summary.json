@@ -1,0 +1,70 @@
+{
+  "N": 10000000,
+  "window_formula": "k in [l, floor(40*ln(n+2)+40)]",
+  "note": "v(n,k) >= 2 becomes overwhelmingly likely for larger k; this is a truncation, so 'v_l(n) <= 1' below really means 'no witness k in the stated window', a caveat that matters only if the true sup is achieved at some k beyond the window for an n not listed here.",
+  "by_l": {
+    "1": {
+      "count": 29,
+      "largest": 330,
+      "expected_largest_up_to_1e6_from_selection_report": 330,
+      "matches_expected": true,
+      "runtime_seconds": 1.3631925582885742,
+      "list_file": "exceptions_l1.csv",
+      "list_sha256": "80d59a26b54906a905520d6565a103d60f1f46fbd623f5abeb1573440ac22c89"
+    },
+    "2": {
+      "count": 103,
+      "largest": 1365,
+      "expected_largest_up_to_1e6_from_selection_report": 1365,
+      "matches_expected": true,
+      "runtime_seconds": 1.9952168464660645,
+      "list_file": "exceptions_l2.csv",
+      "list_sha256": "2843f55e803cdfeaa340ac57f4169bd30f3e33aaadc3600a8d29049d8e0240e3"
+    },
+    "3": {
+      "count": 187,
+      "largest": 1365,
+      "expected_largest_up_to_1e6_from_selection_report": 1365,
+      "matches_expected": true,
+      "runtime_seconds": 2.1633219718933105,
+      "list_file": "exceptions_l3.csv",
+      "list_sha256": "2be323130e4421efd5eb43feb2cb244907078ad4cb6b39e06f693c4d216e41f2"
+    },
+    "5": {
+      "count": 383,
+      "largest": 2415,
+      "expected_largest_up_to_1e6_from_selection_report": 2415,
+      "matches_expected": true,
+      "runtime_seconds": 2.530517101287842,
+      "list_file": "exceptions_l5.csv",
+      "list_sha256": "650dd718de21331fa484f7cb5aae9f506da46e7fddf1fce7aba954f2a88b102d"
+    },
+    "8": {
+      "count": 722,
+      "largest": 4895,
+      "expected_largest_up_to_1e6_from_selection_report": 4895,
+      "matches_expected": true,
+      "runtime_seconds": 2.8383753299713135,
+      "list_file": "exceptions_l8.csv",
+      "list_sha256": "68f916b5563c6ab5e1d2b8bcafc9beaa5a0e752e674c6c49170ca88e1ed5f8ab"
+    },
+    "13": {
+      "count": 1531,
+      "largest": 11655,
+      "expected_largest_up_to_1e6_from_selection_report": 11655,
+      "matches_expected": true,
+      "runtime_seconds": 3.490588903427124,
+      "list_file": "exceptions_l13.csv",
+      "list_sha256": "f71897e425607c25da634b0b4a83f2bdcda5040e9e3f60b2eeece2725f049d9c"
+    },
+    "20": {
+      "count": 2817,
+      "largest": 27714,
+      "expected_largest_up_to_1e6_from_selection_report": 27714,
+      "matches_expected": true,
+      "runtime_seconds": 3.848707914352417,
+      "list_file": "exceptions_l20.csv",
+      "list_sha256": "0bb2b610c88c92f55c5fabfa6a062c1ba01077f9609796ba88c09be90303889e"
+    }
+  }
+}
