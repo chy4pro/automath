@@ -54,10 +54,12 @@ Moreover, B may be replaced by B*.
   rendered locally.
 * Pages 125, 126 and 127 were read visually: (1.1)–(1.4), the first paragraph of §2, (2.1)–(2.6),
   Theorems 2.1–2.2, Corollary 2.3 and Remark 2.1.
-* The English translation PDF was downloaded, but its text layer uses a custom font encoding and
-  could not be read. **The English wording of Cor. 2.3 was not compared.**
-* §5 (definition of h) was not read. With D = 1 the relative and absolute heights coincide, and
-  h(a/b) = log max(|a|,|b|) is the standard definition.
+* The English translation (Izv. Math. 64:6, 1217–1269) was compared by the same-vendor referee
+  (`REFEREE_CLAUDE_20260925.md`), using the text layer decoded through the embedded Type 1 font
+  encodings. On p. 1219, (2.1), (2.4), (2.6), "arbitrary fixed non-zero values of the
+  logarithms" and "where B may be replaced by B* (see (1.4))" agree with the Russian.
+* §5 defines h(α) = D⁻¹ Σ_σ max{0, ln|α|_σ}. For a/b in lowest terms this gives
+  log max(|a|,|b|).
 
 ### E2. Rosser–Schoenfeld 1962
 
@@ -202,7 +204,6 @@ The same list applies to (6.1) and to Remark 7.2.
 
 ## C. Not justified, or open
 
-* The English translation of Matveev's Cor. 2.3 was not compared with the Russian original (B.1).
 * Langevin's hypotheses and constants (Remark 7.1) were not refereed. The estimate
   "log log N0 at least of order 10⁶" for that route is ours and rough.
 * Novelty, as in B.14.

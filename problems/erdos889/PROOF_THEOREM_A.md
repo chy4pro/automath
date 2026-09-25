@@ -1,7 +1,12 @@
 # Erdős #889: an explicit threshold for the lowercase v₁ problem (Theorem A)
 
+Status (2026-09-25): refereed same-vendor (Claude Opus, adversarial, fresh context) —
+PASS-WITH-REPAIRS, repairs R1–R6 applied; see REFEREE_CLAUDE_20260925.md. Not cross-vendor
+refereed; no Lean.
+
 Status: proof draft for a referee, 2026-09-25. Written by a Claude (Opus) worker for the automath
-project. Same-vendor work only. No independent referee yet, and nothing here is kernel-checked.
+project. Same-vendor work only. One same-vendor referee report
+(`REFEREE_CLAUDE_20260925.md`, PASS-WITH-REPAIRS); no cross-vendor or human referee yet, and nothing here is kernel-checked.
 All numerical constants come from `n0_compute.py` in this directory, which uses mpmath interval
 arithmetic. Its full output is reproduced in Appendix A. External theorems and attack points are
 listed in `CHECKS.md`.
@@ -32,8 +37,10 @@ log log n ≥ 45.28, and no such n exists. The value 45.28 is the least multiple
 this certificate holds; 45.27 fails.
 
 **Corollary A1.** Every n with v₁(n) = 1 satisfies n < N0, so {n : v₁(n) = 1} is finite. In
-Formal Conjectures terms (`FormalConjectures/ErdosProblems/889.lean`), this proves
-`Erdos889.erdos_889.variants.v1_eq_1_finite` with answer "yes".
+Formal Conjectures terms (`FormalConjectures/ErdosProblems/889.lean`), this is a paper proof,
+not a Lean proof, that `Erdos889.erdos_889.variants.v1_eq_1_finite` holds with answer `True`. It
+depends on the published results E1–E3 (§2). The qualitative finiteness also follows from
+Langevin 1981 together with Lemma R(1) (§7.1).
 
 **Theorem A_l (fixed l).** Let l ≥ 1 be an integer and C₀ = 10. Compute the constants (5.1) for
 this l. If ℓ₁ passes the certificate of Proposition 5.2, then every n with log log n ≥ ℓ₁ and
@@ -469,8 +476,10 @@ direct right side is ≤ Kℓ⁵ at ℓ ∈ {45.28, 46, 50, 60, 100, 1000}. This
 | 15 | 45.55 | 6.055 × 10¹⁹ | 3.076 × 10¹¹ |
 | 20 | 45.58 | 6.239 × 10¹⁹ | 3.154 × 10¹¹ |
 
-All l from 1 to 20 are in Appendix A. N(l) depends on l only through m = log(10l), so log N(l)
-grows like a power of log l.
+All l from 1 to 20 are in Appendix A. The per-l threshold depends on l only through
+m = log(10l), and it grows slowly: the same certificate gives ℓ₁(l) = 45.95 at l = 10³, 46.53 at
+l = 10⁶ and 47.54 at l = 10¹². For every l with 1 ≤ l ≤ log n, §6 gives the single threshold
+log log n ≥ 48.82.
 
 ## 6. Uniform in l
 
@@ -541,7 +550,9 @@ So the qualitative Corollary A1 follows from [La81] together with Lemma R(1). Th
 Lemma R(1) gives Corollary A_l qualitatively as well.
 
 This route was found in the G2 gate (`G2_KILL_GATE_20260925.md` §3). We have not refereed
-Langevin's proof. We have also not checked how his t₁ is fixed; a = 1 < n^{t₁} needs t₁ > 0.
+Langevin's proof. His Théorème 1 allows any real t₁ < 1, and C and c depend on t₁, …, t₆. His
+Exemple (p. 242) takes t₁ = 1/2, t₂ = 1, t₃ = 1/3, t₄ = 3 and t₅ = t₆ = 6. With t₁ = 1/2, the
+condition a = 1 < n^{t₁} holds for every n > 1.
 
 The threshold from this route is effective but astronomically larger. Langevin's example constants
 are C = exp 10⁶ and c = 2000 when k > exp 10⁴. With them, the condition log n/log K ≥ r(ε) already
@@ -614,7 +625,8 @@ consistency check of the code and of the statements. It is not part of the proof
 
 ## 8. What this adds and what it does not
 
-What is proved here, relative to the sources checked in the G2 gate:
+What is proved here, relative to the sources checked in the G2 gate and in prior-art pass B
+(`PRIOR_ART_20260925_B.md`):
 
 1. An explicit threshold, log N0 = e^45.28 = 4.62 × 10¹⁹, for Theorem A. This gives an explicit
    bound for the finiteness of {n : v₁(n) = 1}.
@@ -633,14 +645,17 @@ What is not new:
 
 N0 is nowhere near the conjectured largest exception, 330.
 
-The novelty check has limits. The G2 gate was a single pass by the same vendor, without general
-web search. It did not obtain:
+The novelty check has limits. It consists of the G2 gate and prior-art pass B. Both were single
+same-vendor passes without general web search. Pass B obtained Guy, *Unsolved Problems in Number
+Theory*, 3rd ed. (2004), B27, which still says Erdős and Selfridge "are unable to prove even
+that v₁(n) = 1 has only a finite number of solutions" and cites no later work on it. The
+following were not obtained and have not been checked:
 
-* Guy, UPINT B27 (3rd ed.);
 * Erdős 1998, p. 178;
-* Shorey–Tijdeman 1986;
+* Shorey–Tijdeman, *Exponential Diophantine Equations* (1986);
 * Erdős, Publ. Math. Debrecen 23 (1976);
-* the Tijdeman result that Langevin cites (MR 54, 1977, p. 246).
+* the Tijdeman result that Langevin cites (MR 54, 1977, p. 246);
+* the MR review of Langevin 1981.
 
 Any of these may already contain Theorem A or its qualitative form.
 
@@ -662,7 +677,7 @@ Any of these may already contain Theorem A or its qualitative form.
 - [RS62] J. B. Rosser, L. Schoenfeld, Approximate formulas for some functions of prime numbers,
   Illinois J. Math. 6 (1962), 64–94.
 - [Ti73] R. Tijdeman, On integers with many small prime factors, Compositio Math. 26 (1973),
-  319–330. The brief for this task said "Tijdeman 1974". This 1973 paper is the only Tijdeman
+  319–330. This 1973 paper is the only Tijdeman
   paper on the topic that has been checked. Its Theorem 1 does not give Theorem A; see the G2 gate,
   row 2.
 - [FC] google-deepmind/formal-conjectures, `FormalConjectures/ErdosProblems/889.lean`.
