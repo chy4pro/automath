@@ -1,0 +1,5 @@
+depth Q=  5  n=1125  factor(n)={3: 2, 5: 3}  log n=7.026  Q/log n=0.712  pi(Q)=3  k3_0(n)=-1  [0s]
+depth Q=  7  n=1225  factor(n)={5: 2, 7: 2}  log n=7.111  Q/log n=0.984  pi(Q)=4  k3_0(n)=-1  [0s]
+depth Q= 11  n=1893  factor(n)={3: 1, 631: 1}  log n=7.546  Q/log n=1.458  pi(Q)=5  k3_0(n)=-1  [0s]
+depth Q= 13  n=110661  factor(n)={3: 1, 36887: 1}  log n=11.614  Q/log n=1.119  pi(Q)=6  k3_0(n)=-1  [0s]
+depth Q= 17  n=65855792  factor(n)={2: 4, 4115987: 1}  log n=18.003  Q/log n=0.944  pi(Q)=7  k3_0(n)=6  [33s]

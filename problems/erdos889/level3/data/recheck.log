@@ -1,0 +1,4 @@
+# big-n re-check: 40 rows (e <= 18), mismatches = 0
+# re-checking 19012 values of n
+# done: 19012 n, k3 checks = 57036, block checks = 57036, mismatches = 0
+RECHECK PASS
