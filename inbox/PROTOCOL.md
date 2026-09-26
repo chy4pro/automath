@@ -26,6 +26,15 @@ alternative, and act on your own judgement when the task leaves room. The only g
 valuable correct mathematics; nobody's plan is sacred, including this protocol. Disagreements are
 resolved by evidence (a proof, a counterexample, a source), not by rank.
 
+## Clean-room rule (owner, 2026-09-26)
+Literature search has one job: confirm nobody has finished the target and locate the exact frontier.
+Once that is confirmed, the attack itself is done by CLEAN-ROOM agents: fresh context, no web search,
+no papers, no campaign files — only the problem statement, the definitions and the precise target
+(the inequality or theorem to prove), plus the standard mathematics the agent already knows. The
+point is to avoid being trapped in the framing of existing human proofs. Tasks marked `clean-room: yes`
+must be run that way; the route reports (which do cite literature) are then compared with the
+clean-room output by the coordinator, never fed to the clean-room agents.
+
 ## For Claude (the coordinator)
 - Writes tasks, reads STATUS.md and reports, moves finished tasks to `inbox/archive/`, answers QUESTIONS.md
   by appending under the question. Commits/pushes are Claude's job.
