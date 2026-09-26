@@ -32,3 +32,10 @@
 2026-09-26T16:58:50.137Z START 017 cleanroom_set_energy_SE (first fresh seat; remaining fresh seats as current work finishes)
 2026-09-26T17:02:12.656Z DONE 010 cleanroom_zaremba_from_scratch → /work/campaigns/zaremba-M/phase1/CLEANROOM_ZAREMBA.md (three fresh attempts; explicit counting and conditional reductions, no unconditional fixed M)
 2026-09-26T17:06:49.883Z DONE 015 pin_E1_normalization_and_certified_M → /work/campaigns/zaremba-M/phase1/E1_normalization_certified_M.md (true p-scale gain, conditional rational ledgers, full onset still unproved)
+2026-09-26T17:12:28.058Z START 019 referee_E1_restricted_theorem
+2026-09-26T17:12:28.058Z NOTE scheduling: task019 isolated referees/G2 precede the new task018 extension campaign under the operating G2-before-expensive-work rule; task017 proofs are being finalized.
+2026-09-26T17:17:59.495Z DONE 017 cleanroom_set_energy_SE → /work/campaigns/zaremba-M/phase1/CLEANROOM_SE.md (three fresh attempts; dense, central, hyperplane, and coset-incidence cases proved; unrestricted SE open)
+2026-09-26T17:18:58.979Z DONE 007 N8_numerics_grid → /work/campaigns/zaremba-M/phase0/N8_numerics.md (40 corrected grid points, 8 dense SVD checks; CPU 3229.42–3239.42s; max recorded RSS252.34MiB; lower estimates only)
+2026-09-26T17:20:19.602Z START 018 extend_E1_flattening_to_walk_measures (after primary-source G2 and isolated proof/numerical audits; three distinct strategies)
+2026-09-26T17:22:49.277Z DONE 019 referee_E1_restricted_theorem → /work/campaigns/zaremba-M/phase1/REFEREE_E1.md (two isolated checks PASS; 787 exact finite samples; G2 standard central-Fourier corollary, not a new general flattening theorem)
+2026-09-26T17:36:01.648Z DONE 018 extend_E1_flattening_to_walk_measures → /work/campaigns/zaremba-M/phase1/E1_EXTENSION.md (three concurrent strategies; tensor-envelope theorem checked by a second agent; actual capped family excludes uniform d=4 envelope; useful fixed-stage input remains open)
