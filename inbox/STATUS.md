@@ -25,3 +25,6 @@
 2026-09-26T16:41:41.030Z DONE 014 dashboard_update → /work/notes/automath-dashboard-src.html (dated UTC events, slots updated, HTML/privacy check; no deployment)
 2026-09-26T16:41:41.030Z START 010 cleanroom_zaremba_from_scratch
 2026-09-26T16:51:11.404Z DONE 012 F1_second_audit_isolated → /work/campaigns/zaremba-M/phase1/F1_second_audit.md (isolated sources audit; no certified replacement M)
+2026-09-26T16:54:47.714Z DONE 011 R2_E1_followup_set_energy → /work/campaigns/zaremba-M/phase1/R2_E1b.md (both branches checked; weaker set energy proved, usable class reduction still open)
+2026-09-26T16:54:47.714Z START 015 pin_E1_normalization_and_certified_M
+2026-09-26T16:54:47.714Z START 016 note_to_author_draft
