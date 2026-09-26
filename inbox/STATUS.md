@@ -9,3 +9,5 @@
 2026-09-26T16:14:50.763Z DONE 003 R2_E1_energy_larsen_pink → /work/campaigns/zaremba-M/phase1/R2_E1.md
 2026-09-26T16:14:50.763Z START 005 R3_bilinear_Kloosterman
 2026-09-26T16:14:50.763Z START 006 R4_automorphic_gap
+2026-09-26T16:17:59.603Z DONE 001 G0_gate_audit → /work/campaigns/zaremba-M/phase1/G0_gate_audit.md
+2026-09-26T16:17:59.603Z START 009 cleanroom_R2_inequality

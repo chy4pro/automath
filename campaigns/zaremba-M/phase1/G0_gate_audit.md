@@ -518,7 +518,7 @@ For `(C1,C2,c_H,tau)=(9,32,1/20,1/4)`, the minimum is `1/1640`, and
  \begin{aligned}
  k_{\rm app}&=1641,\\
  \log_2(1/\delta)&=1645+\log_2 1640
-                   =1655.6794820\ldots,\\
+                   =1655.6794801\ldots,\\
  \log_2(1/\kappa_{14})&=1645+\log_2 9840
                    =1658.2644426\ldots,\\
  B_{\rm thr}&=2^{1645}\frac{1388762496}{5},\\
