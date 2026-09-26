@@ -21,3 +21,7 @@
 2026-09-26T16:30:24.278Z START 012 F1_second_audit_isolated
 2026-09-26T16:31:44.393Z START 011 R2_E1_followup_set_energy
 2026-09-26T16:36:09.045Z DONE 009 cleanroom_R2_inequality → /work/campaigns/zaremba-M/phase1/CLEANROOM_R2.md
+2026-09-26T16:41:08.291Z START 014 dashboard_update
+2026-09-26T16:41:41.030Z DONE 014 dashboard_update → /work/notes/automath-dashboard-src.html (dated UTC events, slots updated, HTML/privacy check; no deployment)
+2026-09-26T16:41:41.030Z START 010 cleanroom_zaremba_from_scratch
+2026-09-26T16:51:11.404Z DONE 012 F1_second_audit_isolated → /work/campaigns/zaremba-M/phase1/F1_second_audit.md (isolated sources audit; no certified replacement M)
