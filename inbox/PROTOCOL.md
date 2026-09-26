@@ -1,0 +1,26 @@
+# automath inbox protocol (Claude coordinator ⇄ Codex/Astra worker)
+
+Both sides share this project volume (/work). This directory is the only channel.
+
+## For Codex (the worker)
+1. Tasks live in `inbox/to_codex/NNN_<slug>.md`. Process them by number unless a task says `priority: high`.
+   Tasks marked `parallel: yes` may run concurrently — use your sub-agents / parallel slots as fully as
+   your environment allows; the owner wants Astra's agent and parallel capacity used to the full.
+2. Before starting a task, append a line to `inbox/STATUS.md`: `<UTC time> START NNN <slug>`.
+   When done: `<UTC time> DONE NNN <slug> → <report path>` (or `FAILED NNN <reason>`).
+3. Write the report to the path named in the task (under `inbox/from_codex/` or the campaign dir).
+   Reports are Markdown: status line first (PROVED / CONDITIONAL / OPEN / DEAD / DONE), then the work,
+   every number traced to a source or a derivation, no "first"/priority wording, no hype.
+4. Questions for the coordinator go to `inbox/from_codex/QUESTIONS.md` (append; one dated line per question).
+   Do not wait for an answer unless the task says so — state your assumption and continue.
+5. Never edit files outside the report paths and `inbox/STATUS.md`; never `git commit`/`push`;
+   never post anywhere; no SAT solvers; numerics with python3 (numpy/mpmath) are fine, ≤ 2 processes, ≤ 2 GB each.
+6. Poll: after finishing all tasks, check `inbox/to_codex/` again every 5 minutes for new ones; stop only
+   when `inbox/to_codex/STOP` exists.
+
+## For Claude (the coordinator)
+- Writes tasks, reads STATUS.md and reports, moves finished tasks to `inbox/archive/`, answers QUESTIONS.md
+  by appending under the question. Commits/pushes are Claude's job.
+
+Kickoff prompt for the Codex session (owner types it once):
+"Read /work/inbox/PROTOCOL.md and then process /work/inbox/to_codex/ as described, using your parallel capacity fully. Keep going until /work/inbox/to_codex/STOP exists."
