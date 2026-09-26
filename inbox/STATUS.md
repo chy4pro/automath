@@ -28,3 +28,7 @@
 2026-09-26T16:54:47.714Z DONE 011 R2_E1_followup_set_energy → /work/campaigns/zaremba-M/phase1/R2_E1b.md (both branches checked; weaker set energy proved, usable class reduction still open)
 2026-09-26T16:54:47.714Z START 015 pin_E1_normalization_and_certified_M
 2026-09-26T16:54:47.714Z START 016 note_to_author_draft
+2026-09-26T16:56:35.290Z DONE 016 note_to_author_draft → /work/campaigns/zaremba-M/phase1/NOTE_TO_AUTHOR_DRAFT.md (private draft only; not sent)
+2026-09-26T16:58:50.137Z START 017 cleanroom_set_energy_SE (first fresh seat; remaining fresh seats as current work finishes)
+2026-09-26T17:02:12.656Z DONE 010 cleanroom_zaremba_from_scratch → /work/campaigns/zaremba-M/phase1/CLEANROOM_ZAREMBA.md (three fresh attempts; explicit counting and conditional reductions, no unconditional fixed M)
+2026-09-26T17:06:49.883Z DONE 015 pin_E1_normalization_and_certified_M → /work/campaigns/zaremba-M/phase1/E1_normalization_certified_M.md (true p-scale gain, conditional rational ledgers, full onset still unproved)
