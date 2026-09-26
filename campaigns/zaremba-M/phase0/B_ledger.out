@@ -1,0 +1,70 @@
+== Baseline (Shkredov's inputs) ==
+c = 1/1640  (binding: ['cH'])
+k = ceil(1/c)+1 = 1641
+delta = c/2^(k+4) = 1/(1640 * 2^1645);  log2 delta = -1655.6795
+kappa = delta/6;  log2 kappa = -1658.2644   (appendix states kappa >= 2^-1656)
+kappa/2^-1656 = 2^-2.2644 = 0.2081
+kappa_C = kappa/2;  log2 kappa_C = -1659.2644
+M* ratio = 198/5 ; log2 M_thr = 1665.7418
+log2 M: A (157 literal, true kappa) = 1665.7563;  B (full chain) = 1673.0492;  C (100 M_thr) = 1672.3857
+A with Shkredov's stated kappa=2^-1656: 1663.4919
+kappa-independent overhead C0 = M_B * kappa(L14): log2 C0 = 14.7848; with kappa=1/2 -> log2 M_B = 15.78
+exact-exponent variant: B = 1672.8834
+
+== Sensitivity table ==
+| scenario | c | binding term | k | log2 kappa(L14) | log2 M [A: (157) literal] | log2 M [B: full visible chain] | log2 M [C: 100*M_thr] |
+|---|---|---|---|---|---|---|---|
+| baseline (c_H=1/20, C1=9, C2=32, tau=1/4) | 1/1640.0 | cH | 1641 | -1658.26 | 1665.8 | 1673.0 | 1672.4 |
+| c_H = 1/20 | 1/1640.0 | cH | 1641 | -1658.26 | 1665.8 | 1673.0 | 1672.4 |
+| c_H = 1/15 | 1/1230.0 | cH | 1231 | -1247.85 | 1255.3 | 1262.6 | 1262.0 |
+| c_H = 1/12 | 1/984.0 | cH | 985 | -1001.53 | 1009.0 | 1016.3 | 1015.6 |
+| c_H = 1/10 | 1/820.0 | cH | 821 | -837.26 | 844.8 | 852.0 | 851.4 |
+| c_H = 1/8 | 1/656.0 | cH | 657 | -672.94 | 680.4 | 687.7 | 687.1 |
+| c_H = 1/6 | 1/512.0 | tau4C2 | 513 | -528.58 | 536.1 | 543.4 | 542.7 |
+| c_H = 1/5 | 1/512.0 | tau4C2 | 513 | -528.58 | 536.1 | 543.4 | 542.7 |
+| c_H = 1/4 | 1/512.0 | tau4C2 | 513 | -528.58 | 536.1 | 543.4 | 542.7 |
+| c_H = 1/3 | 1/512.0 | tau4C2 | 513 | -528.58 | 536.1 | 543.4 | 542.7 |
+| c_H = 1/2 | 1/512.0 | tau4C2 | 513 | -528.58 | 536.1 | 543.4 | 542.7 |
+| C1 halved (4.5) | 1/1460.0 | cH | 1461 | -1478.10 | 1485.6 | 1492.9 | 1492.2 |
+| C2 halved (16) | 1/1000.0 | cH | 1001 | -1017.55 | 1025.0 | 1032.3 | 1031.7 |
+| C1, C2 both halved | 1/820.0 | cH | 821 | -837.26 | 844.8 | 852.0 | 851.4 |
+| tau = 1/5 (MMS 2212.14646 girth) | 1/1640.0 | cH | 1641 | -1658.26 | 1665.8 | 1673.0 | 1672.4 |
+| tau = 1/8 (MMS 1808.05845: m <= d/2) | 1/1640.0 | cH | 1641 | -1658.26 | 1665.8 | 1673.0 | 1672.4 |
+| tau = 1/20 (MMS22 m-coefficient tau/4) | 1/2560.0 | tau4C2 | 2561 | -2578.91 | 2586.4 | 2593.7 | 2593.0 |
+| c_H=1/2, tau=1/5 | 1/640.0 | tau4C2 | 641 | -656.91 | 664.4 | 671.7 | 671.0 |
+| c_H=1/4, tau=1/5 | 1/640.0 | tau4C2 | 641 | -656.91 | 664.4 | 671.7 | 671.0 |
+| c_H=1/8, tau=1/5 | 1/656.0 | cH | 657 | -672.94 | 680.4 | 687.7 | 687.1 |
+| c_H=1/2, C2 halved | 1/256.0 | tau4C2 | 257 | -271.58 | 279.1 | 286.4 | 285.7 |
+| BSG loss removed in c_H term only: min{1/3,1/(8C2),tau/(4C2),c_H/2} | 1/512.0 | tau4C2 | 513 | -528.58 | 536.1 | 543.4 | 542.7 |
+| R2 claim: all C2-terms gone, min{1/3, c_H/2} | 1/40.0 | cH | 41 | -52.91 | 60.4 | 67.7 | 67.0 |
+
+== Overhead factors removed one at a time (baseline inputs) ==
+| factor removed | source | log2 M [B] | saving (bits) |
+|---|---|---|---|
+| Lemma 10: 4 -> 1 (Remark 11, M+2) | Lemma 10 / Rem. 11 | 1671.05 | 2.00 |
+| Thm 38 slack: M* ratio 39.6 -> 10 (needs 1-w_M ~ 6/(pi^2 M) both sides) | Thm 38 / Hensley Thm 12 | 1671.08 | 1.97 |
+| M* ratio 39.6 -> 1 (no second Cantor level) | Sec 5.4 (155) | 1667.76 | 5.29 |
+| Cor 16 halving kappa/2 -> kappa | Cor 16 proof | 1672.05 | 1.00 |
+| N_* = N^(1/10) -> N (H=1) | Sec 5.4, H=N^(9/20) | 1669.73 | 3.32 |
+| eps 1/18 -> 1/4 (interval length q^(1/2)) | (119),(151),(156) | 1670.88 | 2.17 |
+| 0.99 -> 6/pi^2 ~ 0.6079 (Hensley asymptotic) | Thm 38 vs Thm 12 | 1671.64 | 1.41 |
+| kappa = delta/6 -> delta | App. [43,p.9] | 1670.46 | 2.58 |
+| delta = c/2^(k+4) -> c/2^k | App. | 1669.05 | 4.00 |
+| factor c in delta -> 1 | App. | 1662.37 | 10.68 |
+| k = ceil(1/c)+1 -> ceil(1/c) | App. | 1672.05 | 1.00 |
+| all pure bookkeeping at once (Lemma10->1, M* ratio->10 with 6/pi^2, Cor16 halving, /6, 2^4, +1) | | 1659.78 | 13.27 |
+| ... plus N_*->N, eps->1/4, c-prefactor in delta | | 1643.60 | 29.45 |
+
+== c needed for targets (reading B, all other inputs Shkredov's) ==
+log2 M <= 500: need 1/c <= 468 (log2 M = 499.24 at c = 1/468)
+log2 M <= 150: need 1/c <= 120 (log2 M = 149.28 at c = 1/120)
+
+== Structural question for RB1 (not a sensitivity input): doubling count k = ceil(k_mult/c)+1 ==
+| reading of k | tau | c | k | log2 M [B] |
+|---|---|---|---|---|
+| appendix: k = ceil(1/c)+1 | 1/4 | 1/1640 | 1641 | 1673.0 |
+| k = ceil((log(|G|/d)/log K)/c)+1, K=p^(tau/6): 12/tau | 1/4 | 1/1640 | 78721 | 78753.0 |
+| k = ceil((log|G|/log K)/c)+1 (survey Thm 49 error<main): 18/tau | 1/4 | 1/1640 | 118081 | 118113.0 |
+| appendix: k = ceil(1/c)+1 | 1/5 | 1/1640 | 1641 | 1673.0 |
+| k = ceil((log(|G|/d)/log K)/c)+1, K=p^(tau/6): 12/tau | 1/5 | 1/1640 | 98401 | 98433.0 |
+| k = ceil((log|G|/log K)/c)+1 (survey Thm 49 error<main): 18/tau | 1/5 | 1/1640 | 147601 | 147633.0 |

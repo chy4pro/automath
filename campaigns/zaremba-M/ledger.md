@@ -1,2 +1,3 @@
 - 2026-09-26T04:23:33Z campaign created; Phase 0 dispatched
 - 2026-09-26T06:17:48Z owner: pause after Phase 0 completes; Phase 1 not to be launched until the owner says so
+- 2026-09-26T07:43:27Z Phase 0 finished PARTIAL: A, B, N1, N3, N9 done; N4/N5, N6, N7(script only), N8(script only) failed on the weekly limit (reset 05:00Z); synthesis recovered into phase0/SUMMARY.md. K0 = CLEAR (no explicit M < 2^2000 in print; no v3 of 2603.14116; Zhang gives no value). PAUSED per owner; Phase 1 not launched; on resume rerun N4/N5, N6, N7, N8 first, then G0 gate audit.
