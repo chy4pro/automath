@@ -16,12 +16,15 @@ For sets A,B in F_p:  #{(a,b,c): (a+2c)(b+2c)=1} = N <1_B, T1 1_A>  (b = g_c a, 
 All three operators are real symmetric (T1: average of involution permutations; T2 = U J U^*,
 U = (1/N) sum_h shift_h) and doubly stochastic, so sigma_max on mean-zero functions = max |eigenvalue|
 on 1^perp. Every value computed by Lanczos/power iteration is a Rayleigh-Ritz value, hence a LOWER bound
-for the true max over the spectrum's edge (up to floating point); the dense check gives the exact value.
+for the true max over the spectrum's edge (up to floating point); dense SVD is an independent
+floating-point recheck, not an exact-arithmetic certificate. The free N-involution comparator
+2 sqrt(N-1)/N applies to T1's free model and is not a theorem or prediction for T2.
 
 Usage:
   python N8_harness.py selftest
   python N8_harness.py sparse  <p> <kind> <N1,N2,...>      kind in T1,T2,T2e
   python N8_harness.py dense   <p> <kind> <N1,N2,...>
+  python N8_harness.py power   <p> <kind> <N1,N2,...> [iterations=150]
   python N8_harness.py free    <N1,N2,...>                 free-model value for T2 / T2e (S-transform)
   python N8_harness.py randperm <n> <N1,...>               random-involution model for T2 (checks 'free')
 Output: one JSON object per line on stdout.
@@ -113,6 +116,12 @@ class Ops:
         g = self._step2(self.uminus, f, N); g = g[self.J]; return self._step2(self.uplus, g, N)
 
     def build_T1(self, Nmax):
+        # Keep the p~2e6, N=256 case well below the 2 GB process cap.
+        # Larger families are evaluated one permutation at a time.
+        self.stream_Nmax = Nmax
+        if Nmax * self.n * 4 > 256 * 1024 ** 2:
+            self.perms = None
+            return
         p = self.p; x = np.arange(p, dtype=np.int64)
         P = np.empty((Nmax, p + 1), dtype=np.int32)
         for c in range(1, Nmax + 1):
@@ -121,11 +130,22 @@ class Ops:
             P[c - 1, :p] = y; P[c - 1, p] = (-2 * c) % p
         self.perms = P
     def T1(self, f, N):
+        if self.perms is None:
+            p = self.p; x = np.arange(p, dtype=np.int64)
+            out = np.zeros_like(f)
+            for c in range(1, N + 1):
+                s = (x + 2 * c) % p
+                y = np.where(s == 0, p, (self.inv[s] - 2 * c) % p)
+                out[:p] += f[y]
+                out[p] += f[(-2 * c) % p]
+            return out / N
         P = self.perms; out = f[P[0]].copy()
         for c in range(1, N): out += f[P[c]]
         return out / N
 
     def op(self, kind, N):
+        if not 1 <= N <= min(256, self.p):
+            raise ValueError('require 1 <= N <= min(256,p)')
         if kind == 'T1':
             if self.perms is None or self.perms.shape[0] < N: self.build_T1(N)
             A = lambda f: self.T1(f, N)
@@ -155,6 +175,34 @@ def power_iter(A0, n, iters, seed=1):
         g = A0(A0(f)); r = float(f @ g); nf = np.linalg.norm(g); f = g / nf
         if it in (25, 50, 100, 200, 400, 800): hist.append((it, math.sqrt(max(r, 0.0))))
     return math.sqrt(max(r, 0.0)), hist
+
+def power_diagnostics(A0, n, iters=150, seed=1, cpu_seconds=3500):
+    """Power iteration on A0* A0 (A0 is symmetric), with an eigen-residual.
+
+    A small residual locates some eigenvalue, not necessarily the largest one.
+    Report this as a numerical lower estimate, never a certified upper bound.
+    """
+    if iters < 1 or cpu_seconds <= 0:
+        raise ValueError('positive iteration count and CPU budget required')
+    started = time.process_time()
+    rng = np.random.default_rng(seed)
+    f = rng.standard_normal(n); f -= f.mean(); f /= np.linalg.norm(f)
+    history = []
+    for it in range(1, iters + 1):
+        g = A0(f); h = A0(g)
+        lam = max(float(g @ g), 0.0)
+        residual = float(np.linalg.norm(h - lam * f))
+        hn = float(np.linalg.norm(h))
+        if it % 25 == 0 or it == iters:
+            history.append(dict(iteration=it, sigma=math.sqrt(lam), residual=residual))
+        if hn == 0 or time.process_time() - started >= cpu_seconds:
+            break
+        if residual <= 1e-11 * max(1.0, lam):
+            break
+        f = h / hn
+    return dict(sigma_lower_estimate=math.sqrt(lam), residual_tstar_t=residual,
+                iterations=it, seed=seed, history=history,
+                cpu_seconds=time.process_time()-started)
 
 # ---------------------------------------------------------------- dense, independent construction
 def dense(p, kind, N):
@@ -255,6 +303,25 @@ def main():
         return
     p = int(sys.argv[2]); kind = sys.argv[3]; Ns = list(map(int, sys.argv[4].split(',')))
     piters = int(sys.argv[5]) if len(sys.argv) > 5 else 0
+    if mode == 'power':
+        if p > 2_000_000:
+            raise ValueError('task cap p <= 2e6')
+        deadline = 3500.0  # Absolute process CPU, including imports and construction.
+        O = Ops(p)
+        for N in Ns:
+            if time.process_time() >= deadline: break
+            A0 = O.op(kind, N)
+            remaining = deadline - time.process_time()
+            if remaining <= 0: break
+            started = time.time()
+            d = power_diagnostics(A0, p + 1, piters or 150,
+                                  cpu_seconds=remaining)
+            d.update(mode='power', p=p, kind=kind, N=N,
+                     free_T1_comparator=2*math.sqrt(N-1)/N if N>1 else 1.0,
+                     seconds=time.time()-started,
+                     upper_bound_status='no certified numerical upper bound')
+            print(json.dumps(d), flush=True)
+        return
     if mode == 'dense':
         for N in Ns:
             t = time.time(); d = dense(p, kind, N)
