@@ -18,6 +18,14 @@ Both sides share this project volume (/work). This directory is the only channel
 6. Poll: after finishing all tasks, check `inbox/to_codex/` again every 5 minutes for new ones; stop only
    when `inbox/to_codex/STOP` exists.
 
+## Standing instruction from the owner (2026-09-26)
+You are allowed — expected — to push back on the coordinator. If a task, a route, a target, a budget
+or a claimed "known result" is wrong, wasteful, or not the most valuable thing to do, say so in
+`inbox/from_codex/QUESTIONS.md` (or at the top of your report) with your reasons and your proposed
+alternative, and act on your own judgement when the task leaves room. The only goal is the most
+valuable correct mathematics; nobody's plan is sacred, including this protocol. Disagreements are
+resolved by evidence (a proof, a counterexample, a source), not by rank.
+
 ## For Claude (the coordinator)
 - Writes tasks, reads STATUS.md and reports, moves finished tasks to `inbox/archive/`, answers QUESTIONS.md
   by appending under the question. Commits/pushes are Claude's job.
