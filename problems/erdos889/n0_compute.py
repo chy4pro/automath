@@ -87,7 +87,7 @@ def fixed_l(ell1, l, c='10', R=R11, C13=None):
         (eps2.b < 1, 'eps2 < 1 (so A - 1 > 0)'),
         ((k3 * l1 ** 2).a >= 0.16, 'kappa3 * ell1^2 >= 0.16'),
         ((m - 1).a > 0, 'm > 1 (monotonicity of ratio, sign of e1 bracket)'),
-        ((c * L_ * iv.exp(iv.exp(l1)) - 67).a > 0, 'y = c l L >= 67 (so >= 17)'),
+        ((c * L_ * iv.exp(l1) - 67).a > 0, 'y = c l L >= 67 (so >= 17)'),
     ]
     return d
 

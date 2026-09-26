@@ -1,14 +1,15 @@
 # Erdős #889: an explicit threshold for the lowercase v₁ problem (Theorem A)
 
+Cross-vendor refereed 2026-09-26 (OpenAI Codex, GPT-6 Astra): PASS-WITH-REPAIRS, N0 unchanged; repairs applied — see REFEREE_ASTRA_20260926.md.
+
 **Published 2026-09-25:** Zenodo DOI [10.5281/zenodo.22962744](https://doi.org/10.5281/zenodo.22962744) (concept DOI 10.5281/zenodo.22962743). Source of the note: publish/automath-papers/erdos889/.
 
-Status (2026-09-25): refereed same-vendor (Claude Opus, adversarial, fresh context) —
-PASS-WITH-REPAIRS, repairs R1–R6 applied; see REFEREE_CLAUDE_20260925.md. Not cross-vendor
-refereed; no Lean.
+Historical status (2026-09-25): refereed same-vendor (Claude Opus, adversarial, fresh context) —
+PASS-WITH-REPAIRS, repairs R1–R6 applied; see REFEREE_CLAUDE_20260925.md.
 
-Status: proof draft for a referee, 2026-09-25. Written by a Claude (Opus) worker for the automath
-project. Same-vendor work only. One same-vendor referee report
-(`REFEREE_CLAUDE_20260925.md`, PASS-WITH-REPAIRS); no cross-vendor or human referee yet, and nothing here is kernel-checked.
+Written by a Claude (Opus) worker for the automath project. The same-vendor report was followed
+by a Codex cross-vendor review on 2026-09-26 (`REFEREE_ASTRA_20260926.md`, PASS-WITH-REPAIRS).
+No human referee or Lean verification is claimed; nothing here is kernel-checked.
 All numerical constants come from `n0_compute.py` in this directory, which uses mpmath interval
 arithmetic. Its full output is reproduced in Appendix A. External theorems and attack points are
 listed in `CHECKS.md`.
@@ -21,7 +22,7 @@ p-adic valuation, and π(x) = #{p ≤ x} for real x.
 
 **Theorem A.** Put ℓ₁ := 45.28 and N0 := exp(exp(ℓ₁)). Then
 
-  log N0 = e^45.28 = 4.62 × 10¹⁹ (4.6223 × 10¹⁹ to five figures).
+  log N0 = e^45.28 ≈ 4.62 × 10¹⁹ (4.6223 × 10¹⁹ to five figures).
 
 For every integer n ≥ N0 there is an integer k with 1 ≤ k ≤ 10 log n and v(n,k) ≥ 2. In words,
 n + k has at least two distinct prime factors greater than k.
@@ -53,7 +54,7 @@ log n ≥ l has a k with l ≤ k ≤ 10·l·log n and v(n,k) ≥ 2. The certifie
 log n ≥ l. Then there is an integer k with l ≤ k ≤ 10·l·log n and v(n,k) ≥ 2. Equivalently, the
 statement holds for C₀ = 10 and every n ≥ N(l), where
 
-  N(l) := max(exp(e^48.82), ⌈e^l⌉),  e^48.82 = 1.59 × 10²¹.
+  N(l) := max(exp(e^48.82), ⌈e^l⌉),  e^48.82 ≈ 1.593 × 10²¹.
 
 **Corollary A_l.** For every l ≥ 1 and every n ≥ N(l), v_l(n) ≥ 2. This is the level-2 case of
 `erdos_889.variants.general`. That variant asks for v_l(n) → ∞, which is not proved here.
@@ -101,7 +102,7 @@ Thus v(n,k) ≥ 2 means that n + k has two distinct prime factors greater than k
 means that n + k has at most one prime factor greater than k.
 
 *Proof of Corollary A1 from Theorem A.* Let n ≥ N0. Theorem A gives some k ≥ 1 with v(n,k) ≥ 2.
-Then v_l 1 n ≥ 2, so v_l 1 n ≠ 1. Hence {n | v_l 1 n = 1} ⊆ {0, 1, …, N0 − 1}, which is finite. ∎
+Then v_l 1 n ≥ 2, so v_l 1 n ≠ 1. Hence {n | v_l 1 n = 1} ⊆ {n ∈ ℕ : n < N0}, which is finite. ∎
 
 Corollary A_l follows from Theorem A_unif in the same way.
 
@@ -525,11 +526,11 @@ follows.
 
 With c = 10 (and 4R = 5.5364 < 10), the script certifies ℓ₁ = 48.82. The values are κ₁ᵘ = 2.0472,
 μᵘ = 1.4280, ρᵘ = 2.0877, ε₂ᵘ = 2.87 × 10⁻¹⁷, κ₃ᵘ = 9.5752, Kᵘ = 5.734 × 10¹² and
-φᵘ = 0.00182 > 0. This proves Theorem A_unif; the threshold is e^48.82 = 1.593 × 10²¹ for log n.
+φᵘ = 0.00182 > 0. This proves Theorem A_unif; the threshold is e^48.82 ≈ 1.593 × 10²¹ for log n.
 
 ## 7. Remarks
 
-### 7.1 The Langevin route: qualitative, with a much larger threshold
+### 7.1 The Langevin route: qualitative
 
 Lemma R(1) alone reduces Theorem A to a statement about smooth numbers in short intervals. Take
 l = 1 and y = K := ⌊10 log n⌋. Under (H), the set 𝒴 := {1 ≤ i ≤ K : P(n + i) ≤ K} has at least
@@ -556,11 +557,7 @@ Langevin's proof. His Théorème 1 allows any real t₁ < 1, and C and c depend 
 Exemple (p. 242) takes t₁ = 1/2, t₂ = 1, t₃ = 1/3, t₄ = 3 and t₅ = t₆ = 6. With t₁ = 1/2, the
 condition a = 1 < n^{t₁} holds for every n > 1.
 
-The threshold from this route is effective but astronomically larger. Langevin's example constants
-are C = exp 10⁶ and c = 2000 when k > exp 10⁴. With them, the condition log n/log K ≥ r(ε) already
-forces log log n ≳ 10⁶(1 + 2001/ε). Letting ε grow instead makes the factor (1 + c + ε) in (8)
-large. Either way log log N0 is at least of order 10⁶. This is our rough estimate and has not been
-verified. Here, log log N0 = 45.28.
+Langevin's constants are effective. We have not computed a certified numerical onset for this alternative route and use it only to establish the qualitative consequence.
 
 RST II [RST76, Theorem 2] bounds the number of k-smooth terms among u+1, …, u+k by π(k). That bound
 is exactly borderline: it does not contradict π(K) − ω(n), so it does not suffice.
@@ -602,7 +599,7 @@ Case 2 is dominated when κ₃′ℓ₁ ≥ C₁(2)κ₂/C₁(3). Put
 Q is non-increasing for ℓ ≥ ℓ₁ when ℓ₁ ≥ 10 and ℓ₁ − d′ ≥ 3, because its log-derivative is
 ≤ 4/ℓ + 1/(ℓ − d′) − 1 < 0. The script certifies ℓ₁ = 44.96, Q(44.96) = 0.99329 < 1 and all side
 conditions. So the conclusion of Theorem A holds for all n with log log n ≥ 44.96, that is with
-log N0′ = e^44.96 = 3.356 × 10¹⁹.
+log N0′ = e^44.96 ≈ 3.356 × 10¹⁹.
 
 Theorem A is stated with the simpler 45.28. The refinement changes log N0 only by a factor 0.73.
 
@@ -630,10 +627,9 @@ consistency check of the code and of the statements. It is not part of the proof
 What is proved here, relative to the sources checked in the G2 gate and in prior-art pass B
 (`PRIOR_ART_20260925_B.md`):
 
-1. An explicit threshold, log N0 = e^45.28 = 4.62 × 10¹⁹, for Theorem A. This gives an explicit
+1. An explicit threshold, log N0 = e^45.28 ≈ 4.62 × 10¹⁹, for Theorem A. This gives an explicit
    bound for the finiteness of {n : v₁(n) = 1}.
-2. An explicit uniform-in-l statement with C₀ = 10 and N(l) = max(exp(1.59 × 10²¹), ⌈e^l⌉), plus
-   sharper per-l values for l ≤ 20.
+2. An explicit uniform-in-l statement with C0=10 and N(l)=max(exp(exp(48.82)), ceil(exp(l))), plus sharper per-l values for l<=20. Here exp(48.82) is approximately 1.59315 × 10^21.
 
 What is not new:
 
@@ -686,8 +682,10 @@ Any of these may already contain Theorem A or its qualitative form.
 
 ## Appendix A. Output of `n0_compute.py --check`
 
-The script's sha256 is recorded in `CHECKS.md`. The run used Python 3.12 and mpmath 1.3.0, and took
-about 6 s on one core.
+This is the historical output before the 2026-09-26 R1 side-check correction, not a new execution.
+The script's historical sha256 is recorded in `CHECKS.md`. The run used Python 3.12 and mpmath 1.3.0, and took
+about 6 s on one core. The corrected side condition was independently checked in the cross-vendor report;
+Python is unavailable in the repair environment, so this transcript has not been regenerated.
 
 ```
 Erdos #889 -- threshold computation (mpmath 1.3.0 , iv.dps = 60 )
