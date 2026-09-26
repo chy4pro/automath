@@ -57,7 +57,7 @@ See [the takeover review](CODEX_TAKEOVER_REVIEW_20260909.md).
   pending, no numerical onset or novelty claim.
 - A question has been sent to the owner about one independent Claude referee session. Do not
   treat the pending question as permission. The outgoing handoff conversation is not the referee.
-- **Engines on restart: Claude only** (Fable coordinates; Opus executes; Sonnet/Haiku mechanical). No Codex/Astra/ChatGPT seats. Strategy: notes/STRATEGY_RESTART_20260925.md. Historical note — genuine non-OpenAI alternatives included Anthropic or Qwen, but a current login/model check is
+- **2026-09-26: Codex/Astra is back** as a cross-vendor engine via Workbench `session_run` (ai codex, project proj-656d7af54e8b; model gpt-6-astra, effort xhigh; shell blocked by bwrap, web fetch works — feed material by prompt or public URL). Astra doctrine: hardest/most critical tasks and cross-vendor refereeing. Previously: **Engines on restart: Claude only** (Fable coordinates; Opus executes; Sonnet/Haiku mechanical). No Codex/Astra/ChatGPT seats. Strategy: notes/STRATEGY_RESTART_20260925.md. Historical note — genuine non-OpenAI alternatives included Anthropic or Qwen, but a current login/model check is
   required. ChatGPT Pro, Astra and Spark are all OpenAI and do not diversify the vendor.
 
 Do not keep improving an arbitrary constant solely because a seat is idle. First finish the
