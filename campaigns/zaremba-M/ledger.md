@@ -1,1 +1,2 @@
 - 2026-09-26T04:23:33Z campaign created; Phase 0 dispatched
+- 2026-09-26T06:17:48Z owner: pause after Phase 0 completes; Phase 1 not to be launched until the owner says so
