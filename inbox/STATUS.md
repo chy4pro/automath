@@ -11,3 +11,4 @@
 2026-09-26T16:14:50.763Z START 006 R4_automorphic_gap
 2026-09-26T16:17:59.603Z DONE 001 G0_gate_audit → /work/campaigns/zaremba-M/phase1/G0_gate_audit.md
 2026-09-26T16:17:59.603Z START 009 cleanroom_R2_inequality
+2026-09-26T16:21:42.940Z DONE 008 referee_erdos889_note → /work/problems/erdos889/REFEREE_ASTRA_20260926.md
