@@ -20,3 +20,13 @@ Reading: the boundary constant b = 2/3 claimed in SIDON_BOUND_PROOF.md §3–§4
 numerically; within these families the linear kernel is a local minimiser of √(ab), and the
 published numerical records (0.94349, 0.94324, 0.94301) sit where nearby kernels land. This
 supports — but does not prove — that 2√2/3 is the limit of this method family.
+
+## Numerical optimisation over kernel shapes (same day; numerics/kernel_opt.py, log kernel_opt_m16.log)
+
+L-BFGS-B over nonnegative piecewise-constant kernels on [0,1] with 16 free values, four starts
+(the ramp and three random perturbations of it): all four converge to the same optimum, which is
+the ramp itself up to the left-endpoint/midpoint sampling artefact (values 1.000, 0.938, 0.875, …,
+0.064 = (16−i)/16). Objective a·b = 0.889677 against 0.889743 for the midpoint-sampled ramp on the
+same grid (difference 3.5·10⁻⁵ in √(ab), i.e. discretisation noise; exact value 8/9 = 0.888889).
+Reading: no kernel in this class beats the ramp; the search returns the ramp from every start.
+Evidence only — the optimality question is being attacked as a theorem (Codex task 030).

@@ -1,0 +1,7 @@
+ramp (same discretisation): ab=0.889743 sqrt=0.943262  a=1.3320 b=0.6680   exact 8/9=0.888889
+ start 0: ab=0.889677 sqrt=0.943227
+ start 1: ab=0.889677 sqrt=0.943227
+ start 2: ab=0.889677 sqrt=0.943227
+ start 3: ab=0.889677 sqrt=0.943227
+best: ab=0.889677 sqrt=0.943227  gain vs ramp (same grid) = 0.000035
+best h (normalised to max 1): [1.0, 0.938, 0.875, 0.813, 0.75, 0.688, 0.626, 0.564, 0.501, 0.439, 0.377, 0.315, 0.253, 0.19, 0.127, 0.064]
