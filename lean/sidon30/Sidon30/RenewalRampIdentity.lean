@@ -37,7 +37,10 @@ theorem sum_rampWeight_mul_renewal {T : ℕ} (hT : 1 ≤ T) (n : ℕ) :
   have hT1ne : (T : ℝ) + 1 ≠ 0 := by positivity
   induction n with
   | zero =>
-    simp only [Finset.sum_range_one, Nat.sub_self, renewal_zero, rampWeight_zero hT]
+    change (∑ k ∈ Finset.range 1, rampWeight T (0 - k) * renewal T k) = 1
+    rw [Finset.sum_range_one]
+    change rampWeight T 0 * renewal T 0 = 1
+    rw [rampWeight_zero hT, renewal_zero]
     field_simp [hT1ne] <;> ring
   | succ n ih =>
     have hsum :

@@ -166,6 +166,50 @@ theorem rampCorrelation_sum_eq_doublePotential (T : ℕ) (V : Finset ℤ)
       rw [hs, if_pos hselected]
       ring
 
+/-- Support version of the potential bridge. A coefficient array that vanishes
+outside `V` needs no geometric coverage assumption on the sampled locations. -/
+theorem rampCorrelation_sum_eq_doublePotential_of_support (T : ℕ) (V : Finset ℤ)
+    (μ : ℤ → ℝ) (x : ℤ) (hμ : ∀ y : ℤ, y ∉ V → μ y = 0) :
+    (∑ y ∈ V, μ y * rampCorrelation T (x - y)) = rampDoublePotential T μ x := by
+  calc
+    (∑ y ∈ V, μ y * rampCorrelation T (x - y)) =
+        ∑ y ∈ V, ∑ i ∈ Finset.range T, ∑ j ∈ Finset.range T,
+          μ y * (if (j : ℤ) - (i : ℤ) = x - y then
+            rampWeight T i * rampWeight T j else 0) := by
+      apply Finset.sum_congr rfl
+      intro y _hy
+      rw [rampCorrelation_eq_double]
+      simp_rw [Finset.mul_sum]
+    _ = ∑ i ∈ Finset.range T, ∑ j ∈ Finset.range T, ∑ y ∈ V,
+          μ y * (if (j : ℤ) - (i : ℤ) = x - y then
+            rampWeight T i * rampWeight T j else 0) := by
+      rw [Finset.sum_comm]
+      apply Finset.sum_congr rfl
+      intro i _hi
+      rw [Finset.sum_comm]
+    _ = rampDoublePotential T μ x := by
+      unfold rampDoublePotential
+      apply Finset.sum_congr rfl
+      intro i _hi
+      apply Finset.sum_congr rfl
+      intro j _hj
+      have hs := Finset.sum_eq_single
+        (f := fun y : ℤ => μ y *
+          (if (j : ℤ) - (i : ℤ) = x - y then
+            rampWeight T i * rampWeight T j else 0))
+        (x + (i : ℤ) - (j : ℤ))
+        (by
+          intro y _hy hne
+          have hdiff : (j : ℤ) - (i : ℤ) ≠ x - y := by omega
+          simp only [if_neg hdiff, mul_zero])
+        (by
+          intro hnot
+          rw [hμ (x + (i : ℤ) - (j : ℤ)) hnot, zero_mul])
+      have hselected : (j : ℤ) - (i : ℤ) =
+          x - (x + (i : ℤ) - (j : ℤ)) := by ring
+      rw [hs, if_pos hselected]
+      ring
+
 end Sidon30
 
 end

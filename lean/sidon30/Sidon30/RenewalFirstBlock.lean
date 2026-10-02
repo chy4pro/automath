@@ -46,7 +46,9 @@ theorem renewal_firstBlock {T : ℕ} (hT : 1 ≤ T) (n : ℕ) :
       by_cases hn : n = 0
       · subst n
         rw [renewal_eq_full_prefix (by omega) hnT]
-        simp only [Finset.sum_range_one, renewal_zero, pow_one]
+        change (1 / (T : ℝ)) * (∑ k ∈ Finset.range 1, renewal T k) =
+          (1 / 2 : ℝ) * (1 + 1 / (T : ℝ)) ^ 1
+        rw [Finset.sum_range_one, renewal_zero, pow_one]
         field_simp [hTne]
         <;> ring
       · have hnpos : 0 < n := Nat.pos_of_ne_zero hn

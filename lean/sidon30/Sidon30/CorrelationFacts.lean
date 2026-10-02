@@ -116,7 +116,7 @@ theorem rampCorrelation_neg (T : ℕ) (d : ℤ) :
   apply Finset.sum_congr rfl
   intro j _hj
   have heq : (i : ℤ) - (j : ℤ) = -d ↔ (j : ℤ) - (i : ℤ) = d := by omega
-  rw [heq]
+  simp only [heq]
   split_ifs <;> ring
 
 /-- The support is strictly inside the integer interval `[-T, T]`. -/
@@ -158,7 +158,7 @@ theorem sum_sq_shift_rampWeightInt_le {T : ℕ} (hT : 1 ≤ T) (d : ℤ) :
       apply Finset.sum_congr rfl
       intro i _hi
       have heq : (j : ℤ) = (i : ℤ) + d ↔ (i : ℤ) = (j : ℤ) - d := by omega
-      rw [heq]
+      simp only [heq]
     _ ≤ ∑ j ∈ Finset.range T, (rampWeight T j) ^ 2 := by
       apply Finset.sum_le_sum
       intro j _hj

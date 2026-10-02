@@ -431,3 +431,5 @@ Unfinished proof inventory: cards06,09–20,22, plus the finite-convolution spec
 
 - **Baseline green:** run37056219882, commitf8e0beb, Build completed8719jobs and Axioms succeeded. Imported proof cards01–05,07–09,21 compiled. The first three diagnostic theorems each depend only on [propext, Classical.choice, Quot.sound]; their exact outputs are now guarded. The main theorem remains absent.
 - Next batch imports source cards06,10–12,20, the generic Gram/certificate bridges, CorrectionBasic, actual finite BoundaryPotential and the conditional FinalReduction. They are not yet claimed compiled. Cards13–16,18–19 actual certificate closure and Main remain unfinished.
+
+- Run37057054792 / 91a49ac: IntegerScaleAndTail compiled; batch failed in first-block/ramp base-index simplification, matrix equal-index ite_true, dependent conditional rewrites in CorrelationFacts, and the empty-set cast in FinalReduction. Repairs normalize the indices/cast and use simp for proposition rewrites. Next commit keeps the same imported chain while storing ready13/15/16 source without yet importing it.

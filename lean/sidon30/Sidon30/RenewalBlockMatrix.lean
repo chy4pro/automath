@@ -111,7 +111,7 @@ theorem renewalBlockKernel_step (T : ℕ) {i j : ℕ} (hi : 1 ≤ i) (hj : 1 ≤
   · subst j
     simp only [renewalBlockKernel,
       if_neg (show ¬ i + 1 ≤ i by omega), if_pos (le_refl i),
-      if_pos (show i = i from rfl),
+      if_pos (show i = i from rfl), ite_true,
       show i + 1 - i - 1 = 0 by omega, pow_zero, mul_one]
     rw [hpow]
     ring

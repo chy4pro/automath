@@ -47,6 +47,7 @@ theorem sidon_second_order_of_discreteCertificate
   by_cases hkzero : B.card = 0
   · have hAzero : A.card = 0 := hcard.symm.trans hkzero
     rw [hAzero]
+    norm_num only [Nat.cast_zero]
     positivity
   · have hkone : (1 : ℝ) ≤ (B.card : ℝ) := by
       exact_mod_cast (show 1 ≤ B.card by omega)
