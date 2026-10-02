@@ -433,3 +433,5 @@ Unfinished proof inventory: cards06,09–20,22, plus the finite-convolution spec
 - Next batch imports source cards06,10–12,20, the generic Gram/certificate bridges, CorrectionBasic, actual finite BoundaryPotential and the conditional FinalReduction. They are not yet claimed compiled. Cards13–16,18–19 actual certificate closure and Main remain unfinished.
 
 - Run37057054792 / 91a49ac: IntegerScaleAndTail compiled; batch failed in first-block/ramp base-index simplification, matrix equal-index ite_true, dependent conditional rewrites in CorrelationFacts, and the empty-set cast in FinalReduction. Repairs normalize the indices/cast and use simp for proposition rewrites. Next commit keeps the same imported chain while storing ready13/15/16 source without yet importing it.
+
+- Run37057713673 / 0ea8672: only RampGramEnergy failed, on a lambda-wrapped shift injection supplied to omega. The explicit change repair matches the already successful earlier pattern. FinalReduction compiled, but remains conditional on the unproved finite certificate. No main-theorem PASS is inferred.

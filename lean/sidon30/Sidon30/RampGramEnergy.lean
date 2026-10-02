@@ -56,6 +56,7 @@ theorem rampGramKernel_eq (T : ℕ) (Z : Finset ℤ) (x y : ℤ)
   have hinj : Set.InjOn (fun j : ℕ => x + (j : ℤ))
       (↑(Finset.range T) : Set ℕ) := by
     intro i _hi j _hj hij
+    change x + (i : ℤ) = x + (j : ℤ) at hij
     omega
   have hsum :
       (∑ z ∈ shiftedRampSupport T x,

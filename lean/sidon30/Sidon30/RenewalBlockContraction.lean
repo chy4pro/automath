@@ -173,7 +173,7 @@ theorem renewalBlock_interval_order {T : ℕ} (hT : 1 ≤ T)
       renewalBlockCenter T v + (1 - renewalBlockCommonMass T) * u := by
   have hcoef : 0 ≤ 1 - renewalBlockCommonMass T :=
     sub_nonneg.mpr (renewalBlockCommonMass_bounds hT).2
-  exact add_le_add_left (mul_le_mul_of_nonneg_left hlu hcoef) _
+  exact add_le_add le_rfl (mul_le_mul_of_nonneg_left hlu hcoef)
 
 /-- The width contracts by at least the factor three quarters. -/
 theorem renewalBlock_interval_width {T : ℕ} (hT : 1 ≤ T)
