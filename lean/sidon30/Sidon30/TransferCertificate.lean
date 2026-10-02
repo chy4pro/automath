@@ -71,7 +71,6 @@ theorem ramp_card_sq_le_certificate (N T : ℕ) (A : Finset ℕ)
       (fun _ => 1) (fun _ => 1) hZA]
     simp only [one_mul]
     rw [liftedSidonSet_pairEnergy]
-    exact le_rfl
   have hC :
       finiteGramEnergy Z V V (fun z x : ℤ => rampWeightInt T (z - x))
           (boundaryCertificate N T) (boundaryCertificate N T) ≤ C := by
