@@ -1,1 +1,7 @@
+[v1, posted 2026-10-02, https://x.com/HaoyuChn/status/2106093758110728328 — to be deleted by the owner and replaced by v2 (one post only)]
 New bound for Sidon sets (Erdős problem #30), found by AI (GPT-6 Astra), refereed by Claude: |A| ≤ √N + (2√2/3)·N^(1/4) + 1 for all N ≥ 120⁴, and 2√2/3 is provably the limit of this energy method. Not yet checked by a human expert. Paper + code: https://doi.org/10.5281/zenodo.23103979
+
+[v2, prepared in the composer 2026-10-02, not yet posted; replaces v1]
+New bound for Sidon sets (Erdős problem #30), found by AI (GPT-6 Astra), refereed by Claude, now verified in Lean 4: |A| ≤ √N + (2√2/3)·N^(1/4) + 1 for all N ≥ 120⁴. Not yet checked by a human expert.
+Paper: https://zenodo.org/doi/10.5281/zenodo.23103979
+Lean: https://github.com/chy4pro/automath/tree/main/lean/sidon30

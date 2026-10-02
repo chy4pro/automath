@@ -1,11 +1,12 @@
-Draft for the owner (to the erdosproblems.com moderator; send only by / with authorization of the owner).
+Sent 2026-10-02 20:53 (site time) to the erdosproblems.com Moderator, in the existing direct-message thread, on the owner's instruction.
 
-Hi Thomas — a small addition to my proof claim on #30 (Sidon upper bound, coefficient 2*sqrt(2)/3):
-the upper-bound theorem is now formalized in Lean 4 with Mathlib and kernel-checked.
+Hello,
 
-  Lean: https://github.com/chy4pro/automath/tree/main/lean/sidon30
-  (theorem `sidon_second_order`, statement in Sidon30/Statement.lean; CI run
-  https://github.com/chy4pro/automath/actions/runs/37060176909 ; axioms: propext, Classical.choice, Quot.sound)
+A small addition to my proof claim on #30 (submitted today, awaiting approval). The upper bound in part (1) of the claim is now formalised in Lean 4 with Mathlib and kernel-checked. Could you please add this as the Lean formalisation link of the claim:
 
-Could you add this link to the Lean field of the claim? The formalization covers the bound for every N >= 120^4;
-the "optimal within the fixed-kernel method" theorem in the paper is not formalized. Thanks!
+https://github.com/chy4pro/automath/tree/main/lean/sidon30
+
+The theorem is sidon_second_order (statement in Sidon30/Statement.lean): the bound for every natural N >= 120^4, with coefficient 2*sqrt(2)/3 and additive constant 1. It depends only on propext, Classical.choice and Quot.sound; CI run: https://github.com/chy4pro/automath/actions/runs/37060176909 . Part (2) of the claim (optimality within the method) is not formalised.
+
+Thank you,
+Haoyu Chen
