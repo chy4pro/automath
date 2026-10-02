@@ -2,6 +2,8 @@ PROVED — same-vendor reviewed only. Cross-vendor review, independent human ver
 
 # An explicit upper bound for finite Sidon sets
 
+**Status 2026-10-02:** same-vendor review PASS; two isolated cross-vendor referees (Claude Opus) PASS, no repair required (REFEREE_CLAUDE_A_20261002.md, REFEREE_CLAUDE_B_20261002.md); python checker run by the coordinator (exit 0). Published: Zenodo DOI 10.5281/zenodo.23103980. No human referee; no Lean.
+
 **Status: same-vendor reviewed only.** This is a standalone expansion of the
 SID-B argument and its ordinary adversarial review. No cross-vendor review,
 independent human verification, or kernel formalization is asserted here. No
