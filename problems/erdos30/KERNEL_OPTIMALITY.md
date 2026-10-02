@@ -1,14 +1,18 @@
-PROVED — inf a b = 8/9 for the stated positive-capacity kernel class, attained by the ramp. Same-vendor derivation and integration reviews PASS; new cross-vendor, human and kernel reviews remain outstanding.
+PROVED — liminf(C_f(L)-L) >= 8/(9f(0)); the ramp attains equality. Same-vendor reviews PASS; cross-vendor referee A (Claude Opus): PASS-WITH-REPAIRS, repairs applied. Referee B manuscript status awaits coordinator update; human and kernel reviews remain outstanding.
 
 # The optimal kernel constant for the scalar Sidon capacity method
 
-Date: 2026-10-02. Task 030.
+Date: 2026-10-02. Task 030, strengthened by Task 033.
 
-**Main result.** Over the admissible fixed kernels defined below,
+**Main result.** For the kernel class in Theorem 1, set
+beta(f)=liminf_{L->infinity}(C_f(L)-L), allowing infinity. Then
 
 \[
-\boxed{\inf_f f(0)b(f)=\frac89.}
+\boxed{\beta(f)\ge\frac8{9f(0)},\qquad
+       \inf_f f(0)\beta(f)=\frac89.}
 \]
+
+The finite-intercept subclass still has inf_f f(0)b(f)=8/9.
 
 The ramp h(t)=2(1-t)1_[0,1](t) attains the infimum, with a=4/3 and b=2/3.
 The lower bound permits signed h, nonmonotone f and unbounded support.
@@ -17,7 +21,10 @@ It does not identify positive and signed capacities or assume a
 nonnegative spectral factor.
 
 The consequent barrier is for the **fixed-kernel scalar capacity and
-nonnegative difference-majorization method**. It is not a barrier for all
+nonnegative difference-majorization method**, under the separate unit-slope
+hypothesis in Section 7 and using the full infinite lattice difference
+sum. The capacity theorem itself needs no slope hypothesis. It is not
+a barrier for all
 weighted Erdős--Turán arguments, additional variance/missing-difference
 information, or the original Erdős #30 conjecture. The existing explicit
 Sidon bound and its onset are not changed by this report.
@@ -44,22 +51,34 @@ on some neighborhood of zero, and partitioning [0,L] into finitely many
 intervals of smaller diameter gives a uniform positive lower energy
 bound using the sum of squared interval masses.
 
-For the optimization assume the finite intercept exists:
-
-    C_f(L)=L+b+o(1), as real L tends to infinity.
-
-For application to Sidon sets also require the sampling bound
+The capacity theorem below requires no finite intercept. When one exists,
+write C_f(L)=L+b+o(1); then beta=b. For obtaining an asymptotic Sidon
+upper bound the upper sampling estimate
 
     sum_{d>=1} f(d/T) <= T/2+O(1), as T tends to infinity,
 
-with a controlled error when explicit constants are requested.
-No monotonicity or support restriction is built into this condition.
+is useful, with a controlled error when explicit constants are requested.
+Section 7 separates that sufficient upper-bound condition from the
+weaker unit-slope assumption used in the barrier direction. No
+monotonicity or support restriction is imposed.
 
-**Theorem 1 (universal barrier).** In fact the following larger class
-already satisfies ab>=8/9: f is any even, nonnegative member of
-C_0(R) intersect L1(R), integral f=1, a=f(0)>0, and C_f(L)=L+b+o(1)
-with finite b. Autocorrelation and positive definiteness are not needed
-for this lower-bound direction.
+**Theorem 1 (universal capacity lower bound).** Let f be any even,
+nonnegative member of C_0(R) intersect L1(R), with integral f=1 and
+a=f(0)>0. Define the extended real number
+
+    beta(f)=liminf_{L->infinity}(C_f(L)-L).
+
+Then
+
+\[
+ \boxed{\beta(f)\ge\frac8{9a}.}
+\]
+
+No finite intercept, unit-slope hypothesis, autocorrelation
+representation, positive definiteness, or sampling assumption is
+required. In particular, if C_f(L)=L+b+o(1) with finite b, then
+beta=b and ab>=8/9. The separate slope assumption used for the
+method barrier is stated in Section 7.
 
 **Theorem 2 (attainment).** For the ramp autocorrelation
 
@@ -83,7 +102,7 @@ In particular |C_f0(L)-L-2/3|<=360e^(-alpha L), b=2/3,
 and the exact sampling bound sum_{d>=1} f_0(d/T)<=T/2 holds for every T>0.
 These theorems establish the stated infimum for the admissible Sidon class.
 
-## 2. Positive capacity and its necessary first moment
+## 2. Positive capacity and the first-moment dichotomy
 
 For positive finite measures nu supported on [0,L], write M(nu)=nu(R).
 Scaling a probability measure and maximizing 2c-c^2 E_f(mu,mu) over c>=0
@@ -102,15 +121,19 @@ Lebesgue measure lambda_L on [0,L] yields
     M_1(L)=integral_R min(|t|,L)f(t)dt,
     C_f(L)>=L+M_1(L).
 
-Because M_1(L) increases to integral |t|f(t)dt, the finite intercept implies
+Because M_1(L) increases to the possibly infinite first moment,
 
 \[
- m_1:=\int_{\mathbb R}|t|f(t)\,dt\le b<\infty.
+ m_1:=\int_{\mathbb R}|t|f(t)\,dt
+ \le \beta:=\liminf_{L\to\infty}(C_f(L)-L).
 \tag{2.2}
 \]
 
-This moment is therefore a consequence of the question's hypothesis,
-not an extra assumption excluding unbounded support.
+If m_1=infinity, the uniform trial already gives beta=infinity and
+proves Theorem 1. If m_1<infinity, the boundary expansion in Section 5
+applies directly, without requiring beta to be finite or a limit to
+exist. A finite intercept b is the special case beta=b and forces
+m_1<=b<infinity.
 
 ## 3. An elementary renewal measure
 
@@ -291,6 +314,9 @@ definition it is 2m=2/3. Hence d=0, proving (4.2). QED.
 
 ## 5. Positive trials for every kernel and proof of Theorem 1
 
+If m_1=infinity, Section 2 already proves the theorem. Throughout the
+rest of this proof assume m_1<infinity; beta may still be infinite.
+
 Truncate the two boundary corrections and set
 
     nu_L=lambda_L+kappa|_[0,L]+reflection(kappa|_[0,L]).
@@ -302,7 +328,7 @@ The endpoint atoms have mass 1/2. The interior density is
 Thus nu_L is a NONNEGATIVE measure for every L>0, not just a formal signed
 boundary ansatz. Its mass is L+2m+o(1)=L+2/3+o(1).
 
-For every kernel in Theorem 1, expansion of the energy gives
+In this finite-first-moment case, expansion of the energy gives
 
 \[
  E_f(\nu_L,\nu_L)=L+\int_{\mathbb R} f(t)\,dB(t)+o(1).
@@ -330,10 +356,10 @@ linear-growth density converges by (2.2). By the certificate (4.2),
       = L+a/2-(1/2)integral_{|t|>1} f(t)R(|t|-1)dt+o(1).
 
 Use nu_L in the POSITIVE variational formula (2.1). After subtracting L
-and taking the limit,
+and taking the lower limit,
 
 \[
- b\ge\frac43-\frac a2
+ \beta\ge\frac43-\frac a2
        +\frac12\int_{|t|>1} f(t)R(|t|-1)dt
  \ge\frac43-\frac a2.
 \tag{5.2}
@@ -341,14 +367,15 @@ and taking the limit,
 
 For any ell>0 apply this statement to f_ell(t)=ell f(ell t).
 Its integral is one, its value at zero is ell a, and changing variables
-in the positive measure problem gives
+in the positive measure problem gives the exact relation
 
-    C_fell(L)=C_f(ell L)/ell=L+b/ell+o(1).
+    C_fell(L)=C_f(ell L)/ell,
+    beta(f_ell)=beta(f)/ell.
 
-Thus the full scaled certificate is
+The latter holds in the extended real numbers. Thus the scaled certificate is
 
 \[
- b\ge\frac{4\ell}{3}-\frac{a\ell^2}{2}
+ \beta\ge\frac{4\ell}{3}-\frac{a\ell^2}{2}
        +\frac\ell2\int_{|t|>\ell}f(t)R(|t|/\ell-1)dt
  \ge\frac{4\ell}{3}-\frac{a\ell^2}{2}.
 \tag{5.3}
@@ -357,12 +384,14 @@ Thus the full scaled certificate is
 Set ell=4/(3a), maximizing the final quadratic. This proves
 
 \[
-\boxed{b\ge\frac8{9a},\qquad ab\ge\frac89.}
+\boxed{\liminf_{L\to\infty}(C_f(L)-L)
+       =\beta\ge\frac8{9a}.}
 \]
 
-Notice that neither the sampling estimate nor positive definiteness was
-needed in this lower-bound proof. As a necessary equality condition,
-ab=8/9 forces f(t)=0 for |t|>4/(3a), since R>=1 there in (5.3).
+When a finite intercept exists, beta=b and ab>=8/9 follows.
+Neither an upper sampling estimate nor positive definiteness was used.
+As a necessary equality condition, a beta=8/9 forces
+f(t)=0 for |t|>4/(3a), since R>=1 there in (5.3).
 This is NOT a uniqueness theorem for all equality kernels.
 
 ## 6. Actual positive-capacity attainment and explicit remainder
@@ -421,49 +450,136 @@ Monotonicity of f_0 gives, for every T>0,
     f_0(d/T)<=T integral_((d-1)/T)^(d/T) f_0(s)ds,
     sum_{d>=1} f_0(d/T)<=T/2.
 
-Monotonicity is sufficient but unnecessary for general admissibility.
+Monotonicity is sufficient but unnecessary for this upper sampling bound.
 For example, if f has total variation V<infinity on the positive
 half-line, summing the cellwise variation bound gives
 
     |sum_{d>=1} f(d/T)-T/2|<=V.
 
-Thus nonmonotone kernels with this regularity satisfy the required
-sampling bound. Signed h and unbounded support are permitted provided
-the stated conditions on f and the finite capacity intercept hold.
+This upper bound is useful for obtaining an effective Sidon estimate.
+It is not an assumption of the capacity theorem, and is not needed
+for the barrier direction below.
+
+### 7.1. A sampling lower bound from unit capacity slope
+
+For this subsection impose the separate hypothesis
+
+    limsup_{L->infinity} C_f(L)/L <= 1.                         (7.1)
+
+It holds whenever C_f(L)=L+b+o(1) with finite b. It is NOT an
+assumption of Theorem 1; it is stated explicitly as a hypothesis
+of the method limitation. Set
+
+    S_T=sum_{d in Z} f(d/T), in (0,infinity].
+
+Then, for every T>0,
+
+    S_T >= T.                                                (7.2)
+
+If S_T is infinite this is immediate. Otherwise take the probability
+measure mu_n=(1/n)sum_{j=0}^{n-1}delta_(j/T). Nonnegativity gives
+
+    E_f(mu_n,mu_n)
+      =(1/n^2)sum_{|d|<n}(n-|d|)f(d/T) <= S_T/n,
+    C_f((n-1)/T) >= n/S_T.
+
+Divide by (n-1)/T and let n tend to infinity. Hypothesis (7.1)
+gives 1>=T/S_T, proving (7.2). No upper sampling estimate was used.
 
 The Sidon convention is injectivity of unordered pair sums INCLUDING
-diagonal pairs. Equivalently, each positive difference has at most one
-representation. For |A|=k, A subset {1,...,N}, the associated discrete
-measure then satisfies
+diagonal pairs. Equivalently, each positive difference has at most
+one representation. For a Sidon set A subset {1,...,N}, |A|=k,
+nonnegative difference majorization therefore yields the exact scalar
+inequality
 
-    E_f(sum_{u in A}delta_(u/T))<=ak+T+O(1),
+    k^2 <= C_f(N/T)[ak+2 sum_{d>=1}f(d/T)]
+        = C_f(N/T)[a(k-1)+S_T].                              (7.3)
+
+An infinite lattice sum makes this inequality uninformative. By (7.2),
+its right side is at least C_f(N/T)[a(k-1)+T]. Thus exceptionally
+small lattice sums cannot evade the barrier.
+
+### 7.2. A single scalar comparison works for every T
+
+Let beta=liminf_{L->infinity}(C_f(L)-L), as in Theorem 1. For every
+real theta<sqrt(a beta), where beta=infinity permits every finite
+theta, all sufficiently large N have the following property:
+
+    x=N^(1/4), k_N=floor(x^2+theta x)
+    ==> k_N^2 <= C_f(N/T)[a(k_N-1)+T] for EVERY T>0.           (7.4)
+
+These are scalar comparison integers, NOT constructed Sidon sets.
+The threshold in N is independent of T.
+
+Proof: choose a finite B with 0<B<beta and sqrt(aB)>theta, possible
+by Theorem 1. Write L=N/T and c(L)=C_f(L)-L. By the definition of
+liminf choose L_0>0 such that c(L)>=B whenever L>=L_0.
+The uniform trial gives c(L)>=M_1(L)>0 for every L>0, and
+
+    M_1(L)/L = integral min(|t|/L,1)f(t)dt
+              >= M_1(L_0)/L_0 =: eta >0   (0<L<=L_0).
+
+In particular this ratio tends to one as L decreases to zero, by
+dominated convergence. For 0<L<=L_0 and large N, k_N>=1, so
+
+    C_f(L)[N/L+a(k_N-1)] >= N(1+eta) > k_N^2.
+
+For L>=L_0, expansion and AM--GM give, uniformly in L,
+
+    (L+c(L))[N/L+a(k_N-1)]
+      >= N + NB/L + a(k_N-1)L
+      >= N + 2 sqrt(aBN(k_N-1))
+       = x^4 + 2 sqrt(aB) x^3 + O(x^2).
+
+But k_N^2=x^4+2 theta x^3+O(x^2), so sqrt(aB)>theta proves (7.4)
+for all large N, simultaneously over the entire range of L. QED.
+
+Under the separate slope hypothesis (7.1), (7.2)--(7.4) show that
+k_N satisfies all exact majorized scalar inequalities simultaneously.
+Thus no choice T=T(N), nor simultaneous use of all such T, excludes
+every scalar comparison with coefficient below sqrt(a beta).
+Equivalently, a purported bound with coefficient c<sqrt(a beta) and
+a fixed additive constant is contradicted by choosing
+c<theta<sqrt(a beta) in (7.4). Since a beta>=8/9, the universal floor
+is 2sqrt(2)/3. For a finite intercept b, beta=b; the referee's
+comparison floor(x^2+(sqrt(ab)-epsilon)x) follows for every epsilon>0.
+The argument also covers a nonconvergent capacity excess when (7.1)
+holds. If beta=infinity, every finite comparison coefficient survives.
+
+### 7.3. Producing an upper bound and preserving the scope
+
+If in addition C_f(L)=L+b+o(1) with finite b and the upper sampling
+bound holds, then
+
     k^2<=C_f(N/T)(ak+T+O(1)).
 
-For a fixed admissible kernel write x=N^(1/4), T=t x^3 with fixed t>0.
-The positive root of this quadratic is
+For x=N^(1/4) and T=t x^3 with fixed t>0, the positive root is
 
     x^2 + (bt+a/t)x/2 + o(x).
 
-This is an upper bound on k, not an assertion that sparse Sidon sets
-have this cardinality. Optimizing t gives coefficient sqrt(ab), hence
-at least 2sqrt(2)/3 by Theorem 1.
+This is an upper bound on k, not an assertion about sparse Sidon sets.
+Optimizing t gives sqrt(ab). The all-T argument above, rather than
+this fixed-t expansion alone, establishes the method limitation.
 
-An o(1) capacity remainder alone yields an o(N^(1/4)) Sidon remainder,
-not a uniform additive O(1). A sufficient condition for additive O(1)
-is C_f(L)<=L+b+O(1/L), with a bounded sampling error. The ramp's explicit
-exponential remainder is stronger. The previously proved bound
+An o(1) capacity remainder yields an o(N^(1/4)) Sidon remainder,
+not a uniform additive O(1). The sufficient assumptions
+C_f(L)<=L+b+O(1/L) and a bounded sampling error give an additive O(1).
+The ramp's explicit exponential remainder is stronger. The existing
+effective theorem remains
 
-    |A|<=sqrt(N)+(2sqrt(2)/3)N^(1/4)+1,  N>=120^4=207360000,
+    |A|<=sqrt(N)+(2sqrt(2)/3)N^(1/4)+1, N>=120^4=207360000.
 
-remains the existing effective theorem; this report is not lowering
-that onset or declaring it minimal.
-
-The barrier concerns these scalar inequalities and fixed kernels with
-the assumed finite intercept. It does not settle what can be obtained
-from extra information on the Sidon differences, a different counting
-majorant, or arbitrary N-dependent kernels without uniform control.
-It neither solves Erdős's original conjecture nor proves uniqueness
-of the optimizing kernel.
+No onset is lowered or declared minimal here. The barrier concerns
+fixed kernels, the scalar positive-capacity inequality, nonnegative
+majorization by the FULL infinite lattice difference sum, and the stated
+unit-slope hypothesis. It does not cover replacing that sum by a
+truncated sum restricted to d<=N.
+The capacity lower bound itself needs no slope hypothesis. This is
+not a barrier for other weighted Erdős--Turán arguments, extra
+variance or missing-difference information, other counting majorants,
+or arbitrary N-dependent kernels without uniform control. It neither
+solves the original conjecture nor proves uniqueness of the optimizer.
+No lattice-restricted capacity extension is asserted.
 
 ## 8. Why the proof must retain positivity and not assume a factor theorem
 
@@ -517,13 +633,31 @@ repairs. These final reads are informed integration reviews, not additional
 clean-room probes. Neither final reader independently repeated the literature
 search or the earlier explicit Sidon onset proof.
 
-This is same-vendor mathematical derivation and review (OpenAI), not
-cross-vendor, human, or Lean verification of the new optimality theorem.
-The earlier two Claude reports concerned the explicit Sidon upper bound;
-their verdicts are NOT transferred to this extension. No git operation,
-publication, forum message, solver run, dependency installation, or
-cloud task was performed. No numerical optimization establishes any
-claim above. Token and monetary costs were not exposed by the tools.
+The original derivation and integration reviews above are same-vendor
+(OpenAI). A subsequent cross-vendor referee A report by Claude Opus,
+[REFEREE_KERNEL_A_20261002.md](REFEREE_KERNEL_A_20261002.md), returned
+**PASS-WITH-REPAIRS**: the two core theorems were correct, but the
+all-T scope needed the short argument R1. Task 033 independently checked
+and applied R1 and the proposed strengthenings S1 (liminf without an
+intercept) and S2 (sampling lower bound from unit slope).
+The old and new text and the integration checks are recorded in
+[REPAIRS_KERNEL_APPLIED.md](REPAIRS_KERNEL_APPLIED.md).
+Referee A's reported numerical checks were not independently rerun in
+this integration and are not certified numerical proofs.
+
+The root reviewer has read the newly available referee B report, which
+records PASS. The integration worker did not read or incorporate that
+report; the manuscript's B placeholder remains pending under the explicit
+Task 033 instruction, for coordinator update. B's floating-point
+experiments were not rerun or certified in this integration. The earlier
+two Claude reports concern the v1 explicit Sidon bound and are not
+transferred to the optimality theorem. No human or Lean/kernel
+verification of the new theorem is claimed.
+
+No git operation, publication, forum message, solver run, dependency
+installation, or cloud task was performed. No numerical optimization
+establishes any claim above. Token and monetary costs were not exposed
+by the tools.
 
 ## 10. Bounded literature check
 
@@ -603,4 +737,3 @@ not an exhaustive novelty or priority certification.
   alone is insufficient. The older counterexample they cite was not
   independently inspected in this search.
   [Author-hosted paper](https://ewerhart.net/files/2024%20Ewerhart%20Serena%20MathOR%20On%20the%20(Im-)possibility%20of%20Representing%20Probability%20Distributions.pdf).
-

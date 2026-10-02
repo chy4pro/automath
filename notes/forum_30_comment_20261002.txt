@@ -1,0 +1,9 @@
+A new explicit bound for the second-order term, together with a limitation result for the method.
+
+(1) For every Sidon set A in {1,...,N} with N >= 120^4: |A| <= sqrt(N) + (2 sqrt(2)/3) N^{1/4} + 1, where 2 sqrt(2)/3 = 0.942809... The proof is the weighted Erdős–Turán energy argument with the kernel h(t) = 2(1-t) on [0,1] (diagonal cost f(0) = 4/3), plus an exact boundary term: for this kernel the capacity of an interval of length L is L + 2/3 up to an exponentially small error, in place of the L + 1 that gives Lindström's bound.
+
+(2) Within this method the constant is optimal: for every even nonnegative kernel f with integral 1, liminf (C_f(L) - L) >= 8/(9 f(0)), with equality for the ramp, so the fixed-kernel capacity argument cannot give a coefficient below sqrt(8/9) = 2 sqrt(2)/3 for any choice of scale. This appears to be the limit that the recent numerical values (0.94349, 0.94324, 0.94301) have been approaching.
+
+Paper (17 pp.): https://doi.org/10.5281/zenodo.23103979 . Proof text, checker and referee reports: https://github.com/chy4pro/automath/tree/main/problems/erdos30
+
+This was found by an AI pipeline (GPT-6 Astra agents working without access to the literature) and refereed independently by Claude Opus agents (two reports on the bound, two on the optimality theorem). No human has checked it yet, so scrutiny is very welcome, especially of the capacity lemma and the optimality proof. It does not touch the conjecture F(N) = sqrt(N) + O(N^eps).
