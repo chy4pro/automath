@@ -2,7 +2,7 @@ OPEN — neither the desired SE(1/20,1) estimate nor a usable conjugacy reductio
 
 # R2 follow-up: set energy and class reduction
 
-Task011, 2026-09-26. Branches A and B were assigned to separate agents and ran concurrently. This is ordinary literature-informed work, not a clean-room report. Root is assembling and checking the two outputs; STATUS remains the completion record. The normalization uses a=tau/6 for the all-coset exponent, unlike task009 where the symbol tau denoted that exponent itself.
+Task011, 2026-09-26. Branches A and B were assigned to separate agents and ran concurrently. This is ordinary literature-informed work, not a clean-room report. Root checked and assembled both outputs; STATUS records completion. The normalization uses a=tau/6 for the all-coset exponent, unlike task009 where the symbol tau denoted that exponent itself.
 
 ## A. Exact missing estimate
 
