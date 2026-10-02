@@ -1,0 +1,11 @@
+Draft for the owner (to the erdosproblems.com moderator; send only by / with authorization of the owner).
+
+Hi Thomas — a small addition to my proof claim on #30 (Sidon upper bound, coefficient 2*sqrt(2)/3):
+the upper-bound theorem is now formalized in Lean 4 with Mathlib and kernel-checked.
+
+  Lean: https://github.com/chy4pro/automath/tree/main/lean/sidon30
+  (theorem `sidon_second_order`, statement in Sidon30/Statement.lean; CI run
+  https://github.com/chy4pro/automath/actions/runs/37060176909 ; axioms: propext, Classical.choice, Quot.sound)
+
+Could you add this link to the Lean field of the claim? The formalization covers the bound for every N >= 120^4;
+the "optimal within the fixed-kernel method" theorem in the paper is not formalized. Thanks!
