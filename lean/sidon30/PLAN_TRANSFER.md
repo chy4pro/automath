@@ -31,4 +31,26 @@ guards. Existing completed worker seats were inspected before reuse.
 All new headline theorems must pass `#guard_msgs` axiom checks before a
 PROVED milestone. Statement audit is requested first through the inbox.
 
-2026-10-02: initial exact definitions prepared; proofs and CI pending.
+## Evidence ledger
+
+- 2026-10-02: exact definitions passed CI `37072461005` / `f6bdf41`.
+  The coordinator read the statement module and approved all three
+  definitions and target propositions through the inbox. They are frozen.
+- CI `37073205929` / `044351c` passed the arbitrary-set and indexed-row
+  capacity certificates, g-thin difference counting and scale estimates,
+  and the initial sliding-window identities. The indexed certificate
+  explicitly allows repeated row values.
+- The complete g-thin proof and weak-Sidon proof are assembled as
+  candidates. Headline axiom gates are appended after the original thirteen
+  guards; their passing run is still required before a theorem milestone.
+- The sonar finite route sums the indexed capacity inequality over every
+  horizontal window. Its exact squared column count is
+  `m U^2 - (U^3-U)/3`; uniqueness of displacement vectors bounds the summed
+  row energy by `m U a_V + U(U-1)`. This yields the discrete triangle/ramp
+  sandwich without continuous integration. At `x=n^(1/3) >= 48`, use
+  `U=ceil(2x^2)`, `V=ceil(x^2)` and the explicit geometric tail `< 1`.
+  These final sonar cards are still candidates, not a kernel milestone.
+
+Only actual CI outcomes are listed as checked. Mathematical review and
+source inspection of a candidate are not substitutes for compilation and
+the headline axiom guards. No local Lean build has been run.

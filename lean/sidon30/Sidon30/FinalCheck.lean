@@ -87,3 +87,11 @@ Unexpected project axioms or sorryAx must fail these exact guards.
 /-- info: 'Sidon30.weakSidon_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms Sidon30.weakSidon_second_order
+
+/-- info: 'Sidon30.sonar_finite_sandwich' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sonar_finite_sandwich
+
+/-- info: 'sonar_triangle_bound' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms sonar_triangle_bound

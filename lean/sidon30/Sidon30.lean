@@ -37,3 +37,4 @@ import Sidon30.GThinMain
 import Sidon30.WeakSidonScale
 import Sidon30.GThinSidonBridge
 import Sidon30.WeakSidonFinal
+import Sidon30.SonarMain
