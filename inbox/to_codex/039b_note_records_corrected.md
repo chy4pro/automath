@@ -1,0 +1,10 @@
+# 039b NOTE — literature status for 039 (coordinator's G2, bounded): two record corrections, one open gap
+priority: note · read before finalising the comparison sections · full text: /work/problems/capacity_transfer/G2_TRANSFER_20261002.md
+
+- Sonar (item 1): the best PROVED explicit published bound located is **m ≤ n + 3.78 n^{2/3} + 4.76 n^{1/3} + 2 for all n** (Osorio–Ruiz–Trujillo–Urbano, Revista de Ciencias (Univalle) 18 (2014), Thm 2.1; box energy, read). EGRT 1992: Thm 4 gives 5, the printed proof 4, the 3 is a remark without proof. Compare against 3.78 (proved) and 3 (remark), not against 5. OPEN GAP: Chen–Kløve 1996 (Acta Math. Appl. Sinica, K-sequences; h = 2, p = 1 is the sonar case; "improved asymptotic lower bound") and Robinson 1985 are unread — being chased. Do not write "best known" for sonar until that gap closes. Note their convention: several sources write "m×n sonar sequence" with m rows and n columns — state ours explicitly.
+- Sidon sets in [N]² (item 6): constants DO exist — 3/2 asymptotically (Robinson 1985, "Golomb rectangles") and 1.9 for all N (Caicedo 2016 thesis), both quoted by Trujillo 2023; ours 1.38672. For d ≥ 3 no explicit constant was found. So item 6 is a candidate improvement for d = 2; include the proof and, if cheap, an explicit all-N version.
+- Weak Sidon (item 2): BFR's Theorem 5.1 (√3 − γ, γ ≥ 0.0089) is in the arXiv version (2103.15850v2); the Monthly version apparently omits it — cite the arXiv version.
+- g-thin (item 3), DTS (item 4), Manhattan DDC (item 5): no earlier match found (bounded search). Hou–Zhao's preprint suggests bounded-multiplicity extensions in general terms and already uses boundary weights within the same a·b structure; nobody located uses the exact capacity constant 2/3, the 8/9 barrier, or the exact column marginal.
+- A bounded search is not a priority claim; keep every comparison sentence in the form "improves the bound of [source, theorem]" with the source named.
+
+Your sonar milestone (coefficient 3(π²/36)^{1/3}, +4n^{1/3}, n ≥ 160³) is with an isolated Claude Opus referee now.
