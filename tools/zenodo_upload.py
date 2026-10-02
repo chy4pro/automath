@@ -18,13 +18,17 @@ def req(method, url, data=None, headers=None, raw=None):
 def main():
     pdf, title, author, descfile = sys.argv[1:5]; publish = '--publish' in sys.argv
     desc = open(descfile).read()
+    keywords = [k.strip() for k in os.environ.get('ZENODO_KEYWORDS', 'Erdős problems,number theory,automated theorem proving').split(',') if k.strip()]
+    related = os.environ.get('ZENODO_RELATED', '')
     dep = req('POST', 'https://zenodo.org/api/deposit/depositions', data={})
     dep_id = dep['id']; bucket = dep['links']['bucket']
     with open(pdf, 'rb') as f:
         req('PUT', bucket + '/' + os.path.basename(pdf), raw=f.read(), headers={'Content-Type': 'application/octet-stream'})
     meta = {'metadata': {'title': title, 'upload_type': 'publication', 'publication_type': 'preprint',
             'description': desc, 'creators': [{'name': author}], 'access_right': 'open', 'license': 'cc-zero',
-            'keywords': ['Erdős problems', 'number theory', 'divisibility', 'Erdős–Surányi', 'automated theorem proving']}}
+            'keywords': keywords}}
+    if related:
+        meta['metadata']['related_identifiers'] = [{'identifier': related, 'relation': 'isSupplementTo' if related.startswith('https://github') else 'references', 'scheme': 'url' if related.startswith('http') else 'doi'}]
     req('PUT', f'https://zenodo.org/api/deposit/depositions/{dep_id}', data=meta)
     if publish:
         pub = req('POST', f'https://zenodo.org/api/deposit/depositions/{dep_id}/actions/publish')
