@@ -129,6 +129,7 @@ theorem rampDoublePotential_reflected_renewal {T : ℕ} (hT : 1 ≤ T)
     apply Finset.sum_congr rfl
     intro j _hj
     have harg : D - (x + (j : ℤ) - (i : ℤ)) = D - x + (i : ℤ) - (j : ℤ) := by omega
+    dsimp only
     rw [harg]
     ring
   rw [hswap]
