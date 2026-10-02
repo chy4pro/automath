@@ -1,4 +1,4 @@
-OPEN — the exact Sidon theorem now has a complete source dependency chain, awaiting CI for its newly integrated final cards. The middle chain passed run37058690156 / 346252d, including unit potential and the conditional final reduction. No complete target kernel verification is claimed until Main and its guarded axiom audit pass.
+PROVED — the exact Sidon second-order theorem sidon_second_order is kernel-checked in Lean v4.34.0-rc1. Full-chain CI run37060176909 / f8e97665f26ea40ec867d8d054d352b5fc5ec56c passed Build (8737 jobs) and Axioms on 2026-10-02. All thirteen exact axiom guards passed, including the unconditional main theorem, with only [propext, Classical.choice, Quot.sound].
 
 # Sidon30 formalisation plan and finite certificate
 
@@ -16,18 +16,17 @@ The target remains, for every natural N and finite A contained in {1,...,N},
 
 The Sidon definition includes diagonal sums and requires equality of the two sorted pairs, not just equality as sets. N need not be a fourth power.
 
-Current implementation status (updated after run37059252632):
+Current implementation status (updated after run37060176909):
 
 | Files / cards | Verification state |
 |---|---|
 | Basic, Statement | The original strong Sidon definition and exact target specification compile. |
 | Differences, WeightedCount, PairCount, ShiftWindow, RampWeights, FiniteEnergyCS, SidonEnergyUpper, RenewalRecurrence, SecondOrderFinal | Baseline compiled in green run37056219882 / f8e0beb. |
 | CorrelationFacts, RenewalRampIdentity, RenewalFirstBlock, IntegerScaleAndTail, FinalReduction, RampGramEnergy, DiscreteSidonCertificate, CorrectionBasic, FiniteBoundaryPotential, RenewalBlockMatrix | Middle chain compiled in green run37058690156 / 346252d. |
-| CorrectionFiniteL1, CorrectionFiniteMass | Compiled in run37059252632, whose overall build failed in other cards. |
-| RenewalBlockContraction, RenewalErrorBound, FiniteBoundaryCost, SidonRampEnergy, FiniteCertificateAssembly, Main | Complete source integrated; first full-chain run37059252632 failed in three files. The repairs and downstream compilation are pending. |
-| FinalCheck | Exact standard-axiom guards for the observed milestones and for the new main theorem; final guards pending CI. |
+| RenewalBlockContraction, RenewalErrorBound, CorrectionFiniteL1, CorrectionFiniteMass, FiniteBoundaryCost, SidonRampEnergy, FiniteCertificateAssembly, Main | All compiled in full-chain green run37060176909 / f8e9766. |
+| FinalCheck | All thirteen exact standard-axiom guards passed in the same run, including the unconditional main theorem. |
 
-There are no unfinished Lean proof placeholders or new project axioms in the source. The global theorem sidon_second_order now exists in Main.lean, but its newly integrated dependency chain has not yet passed CI. A source declaration is not a kernel-verification claim.
+There are no unfinished Lean proof placeholders or new project axioms in the source. The global theorem sidon_second_order in Main.lean and its complete dependency chain passed CI. Its exact guarded axiom diagnostic excludes sorryAx and additional project axioms.
 
 The first complete formal milestone targets the **original +1 and 120⁴ statement**. The finite route below includes explicit error estimates preserving both. The finite certificate inequality (S) is also exposed independently; Main supplies every hypothesis of the intermediate conditional reductions using actual theorem proofs.
 
@@ -393,7 +392,7 @@ theorem sidon_second_order : SidonSecondOrderBound := ...
 
 The displayed ellipsis abbreviates the actual proof in Main.lean; it is not a Lean placeholder in the project. Main proves the finite certificate by applying the boundary-cost theorem with the actual renewal error bound, then applies FinalReduction.
 
-FinalCheck imports the actual theorem and requires the following standard-axiom diagnostic. The new final guard is not counted as passed until CI succeeds:
+FinalCheck imports the actual theorem and requires the following standard-axiom diagnostic. This exact guard passed in run37060176909:
 
 ~~~lean
 /-- info: 'sidon_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -403,7 +402,7 @@ FinalCheck imports the actual theorem and requires the following standard-axiom 
 
 Use the exact reviewed output of that theorem; a smaller subset of those standard axioms is acceptable. Do not silently regenerate expected output when an unexpected axiom appears. sorryAx or any project axiom is a failure. Printing axioms of the Prop definition instead would not audit a proof and is expressly insufficient.
 
-FinalCheck now guards nine previously observed milestone diagnostics and four newly integrated diagnostics, including the unconditional global theorem. The latter four guards are pending their first full-chain CI run.
+FinalCheck guards thirteen diagnostics, including the unconditional global theorem. Every guard passed in the full-chain run37060176909.
 
 ## 7. CI protocol, risks and honest status
 
@@ -417,7 +416,7 @@ FinalCheck now guards nine previously observed milestone diagnostics and four ne
 - No finite numerical enumeration proves this parameterized certificate. No numerical experiment was run for this plan. The finite route was derived by one worker and independently checked by the root; another worker checked the normalization and pinned APIs but did not audit every detail of the tail constant 29. These are same-vendor mathematical reviews, not cross-vendor, human or Lean verification of the new discrete proof.
 - The source cards were written on a separate informed worker and read by the root. No clean-room claim is made for this formalisation planning task. Token and monetary costs are not exposed and are not estimated.
 
-Source inventory: every mathematical card has an implementation, including the main theorem. Full-chain compilation and the final guarded axiom audit are still pending. Kernel optimality remains outside scope. The timestamped ledger below records earlier intermediate states, not current missing declarations.
+Source inventory: every mathematical card has an implementation, including the main theorem. Full-chain compilation and the final guarded axiom audit passed. Kernel optimality remains outside scope. The timestamped ledger below records earlier intermediate states, not current missing declarations.
 
 ### CI implementation ledger
 
@@ -439,3 +438,5 @@ Source inventory: every mathematical card has an implementation, including the m
 - Main.lean now supplies the actual renewal pointwise bound to boundaryCertificate_energy_le, supplies the resulting concrete double-sum bound to discreteSidonCertificate_of_boundaryCost, and applies the exact final reduction. Every previously explicit mathematical hypothesis is supplied by a theorem; no new axiom or sorry is used. The complete imported source and exact final axiom guards are **pending CI**, not yet a kernel result.
 
 - Run37059252632 / fbc8b92: the first full source chain failed in RenewalBlockContraction (sum notation excluded an unparenthesized subtraction term from the binder scope), FiniteBoundaryCost (two beta-reductions and subtraction syntax under absolute value), and SidonRampEnergy (untyped Nat-to-Int image lambda and downstream elaboration). CorrectionFiniteL1 and CorrectionFiniteMass compiled. Three workers repair these separate files concurrently; no change to the theorem statement, constants or hypotheses is required by these diagnostics. FinalCheck was skipped after Build failed.
+
+- **Full theorem green:** [run37060176909](https://github.com/chy4pro/automath/actions/runs/37060176909), full commit f8e97665f26ea40ec867d8d054d352b5fc5ec56c. Build succeeded with8737jobs and Axioms succeeded. The public jobs API independently confirmed both step conclusions. The build job ran20:22:43–20:25:45UTC (182s), its Build step20:24:30–20:25:38UTC (68s), and Axioms20:25:38–20:25:42UTC (4s). All thirteen exact guards passed, including renewalCorrection_bound, boundaryCertificate_energy_le, discreteSidonCertificate and the unconditional global sidon_second_order. The CI fetcher's concise summary omits diagnostics successfully captured by guard_msgs; the successful Axioms step is the guard evidence. No local build was run; token use and monetary charges are unavailable, so no cost estimate is asserted. The original coefficient, +1, onset120^4, all-natural-N quantifier and diagonal Sidon convention are preserved. This establishes the stated upper bound, not the full Erdős conjecture or the separate kernel-optimality result.

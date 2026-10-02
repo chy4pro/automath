@@ -2,9 +2,8 @@ import Sidon30
 
 /-!
 Axiom gates for the exact theorem and its principal finite proof milestones.
-The first nine outputs were observed in successful CI runs. The final four
-expect only the same standard logical axioms and must pass CI before any
-claim of complete kernel verification. The global sidon_second_order theorem
+All thirteen exact guards passed in CI run37060176909, commit f8e9766,
+with only the standard logical axioms. The global sidon_second_order theorem
 discharges the explicit hypotheses of the conditional intermediate reductions.
 Unexpected project axioms or sorryAx must fail these exact guards.
 -/
@@ -60,4 +59,3 @@ Unexpected project axioms or sorryAx must fail these exact guards.
 /-- info: 'sidon_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms sidon_second_order
-
