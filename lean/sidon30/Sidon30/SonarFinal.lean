@@ -103,13 +103,13 @@ theorem sonar_of_scaled_sandwich {x m U a C : ℝ}
   have hUbase := mul_le_mul_of_nonneg_left hbase hUpos.le
   have hscaled :
       m * (1 - sonarRatio x) ≤ x ^ 3 + (4 : ℝ) / 3 * x ^ 2 + (4 : ℝ) / 3 := by
-    apply (mul_le_mul_right hUpos).mp
+    apply (mul_le_mul_iff_of_pos_right hUpos).mp
     nlinarith only [hraw, hmratio, hUbase]
   have hcomparison :
       m * (1 - sonarRatio x) <
         (x ^ 3 + 2 * x ^ 2 + 3 * x) * (1 - sonarRatio x) :=
     hscaled.trans_lt (sonarRatio_margin_pos hx)
-  exact ((mul_lt_mul_right hdenpos).mp hcomparison).le
+  exact ((mul_lt_mul_iff_of_pos_right hdenpos).mp hcomparison).le
 
 /-- The finite cost and diagonal supplied by the existing ramp certificate
 give the target polynomial as soon as the stated window sandwich is proved. -/
@@ -151,4 +151,3 @@ theorem sonar_of_finite_sandwich {n : ℕ} {x m : ℝ}
 end Sidon30
 
 end
-

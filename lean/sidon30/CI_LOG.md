@@ -1,78 +1,64 @@
-# sidon30 CI — run 37074337091  (completed / failure, commit 1298b13)
+# sidon30 CI — run 37074847215  (completed / failure, commit 7ab3dca)
 
 ## Errors and warnings with context
 ```
-286:✖ [8720/8754] Building Sidon30.SonarScale (6.8s)
-287-trace: .> LEAN_PATH=/home/runner/work/automath/automath/lean/sidon30/.lake/packages/Cli/.lake/build/lib/lean:/home/runner/work/automath/automath/lean/sidon30/.lake/packages/batteries/.lake/build/lib/lean:/home/runner/work/automath/automath/lean/sidon30/.la
-288:error: Sidon30/SonarScale.lean:163:27: Tactic `rewrite` failed: Did not find an occurrence of the pattern
-289-  (↑n ^ ?y) ^ ?z
-290-in the target expression
-291-  (↑n).rpow (1 / 3) ^ ↑3 = ↑n
-292-
-293-n : ℕ
-294-⊢ (↑n).rpow (1 / 3) ^ ↑3 = ↑n
-295:error: Sidon30/SonarScale.lean:169:27: Tactic `rewrite` failed: Did not find an occurrence of the pattern
-296-  (↑n ^ ?y) ^ ?z
-297-in the target expression
-298-  (↑n).rpow (1 / 3) ^ ↑2 = (↑n).rpow (2 / 3)
-299-
-300-n : ℕ
-301-⊢ (↑n).rpow (1 / 3) ^ ↑2 = (↑n).rpow (2 / 3)
-302-⚠ [8721/8754] Built Sidon30.WeakSidonScale (8.3s)
-303-warning: Sidon30/WeakSidonScale.lean:101:10: this tactic is never executed
-304-
-305-Note: This linter can be disabled with `set_option linter.unreachableTactic false`
-306-warning: Sidon30/WeakSidonScale.lean:101:10: Unused tactic linter: `ring` does nothing
-307-
-308-Note: This linter can be disabled with `set_option linter.unusedTactic false`
-309-⚠ [8723/8754] Built Sidon30.RenewalRampIdentity (6.9s)
+345:✖ [8729/8754] Building Sidon30.SonarFinal (7.1s)
+346-trace: .> LEAN_PATH=/home/runner/work/automath/automath/lean/sidon30/.lake/packages/Cli/.lake/build/lib/lean:/home/runner/work/automath/automath/lean/sidon30/.lake/packages/batteries/.lake/build/lib/lean:/home/runner/work/automath/automath/lean/sidon30/.la
+347-warning: Sidon30/SonarFinal.lean:46:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+348-
+349-Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+350-warning: Sidon30/SonarFinal.lean:55:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+351-
+352-Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+353:error: Sidon30/SonarFinal.lean:106:35: Invalid field `mp`: The environment does not contain `Function.mp`, so it is not possible to project the field `mp` from an expression
+354-  mul_le_mul_right ?m.860
+355-of type
+356-  ∀ (a : ?m.854), a * ?m.858 ≤ a * ?m.859
+357:error: Sidon30/SonarFinal.lean:106:28: Application type mismatch: The argument
+358-  hUpos
+359-has type
+360-  0 < U
+361-but is expected to have type
+362-  ?m.858 ≤ ?m.859
+363-in the application
+364-  mul_le_mul_right hUpos
+365:error: Sidon30/SonarFinal.lean:112:10: failed to synthesize instance of type class
+366-  MulLeftStrictMono ℝ
+367-
+368-Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+369-✔ [8730/8754] Built Sidon30.FinalReduction (6.7s)
+370-⚠ [8731/8754] Built Sidon30.CorrectionFiniteMass (5.4s)
+371-warning: Sidon30/CorrectionFiniteMass.lean:22:6: `if_pos` has been deprecated: Use `ite_eq_left` instead
+372-warning: Sidon30/CorrectionFiniteMass.lean:42:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+373-warning: Sidon30/CorrectionFiniteMass.lean:42:32: `if_pos` has been deprecated: Use `ite_eq_left` instead
+374-warning: Sidon30/CorrectionFiniteMass.lean:44:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+375-warning: Sidon30/CorrectionFiniteMass.lean:44:35: `if_neg` has been deprecated: Use `ite_eq_right` instead
+376-warning: Sidon30/CorrectionFiniteMass.lean:55:19: `if_neg` has been deprecated: Use `ite_eq_right` instead
+377-warning: Sidon30/CorrectionFiniteMass.lean:60:19: `if_pos` has been deprecated: Use `ite_eq_left` instead
+378-⚠ [8732/8754] Built Sidon30.RampGramEnergy (5.9s)
+379-warning: Sidon30/RampGramEnergy.lean:164:21: `if_neg` has been deprecated: Use `ite_eq_right` instead
 --
-467:✖ [8750/8754] Building Sidon30.SonarEnergy (3.3s)
-468-trace: .> LEAN_PATH=/home/runner/work/automath/automath/lean/sidon30/.lake/packages/Cli/.lake/build/lib/lean:/home/runner/work/automath/automath/lean/sidon30/.lake/packages/batteries/.lake/build/lib/lean:/home/runner/work/automath/automath/lean/sidon30/.la
-469-warning: Sidon30/SonarEnergy.lean:38:22: `if_false` has been deprecated: Use `ite_false` instead
-470-warning: Sidon30/SonarEnergy.lean:38:37: `if_true` has been deprecated: Use `ite_true` instead
-471-warning: Sidon30/SonarEnergy.lean:42:24: `if_true` has been deprecated: Use `ite_true` instead
-472-warning: Sidon30/SonarEnergy.lean:42:52: `if_false` has been deprecated: Use `ite_false` instead
-473-warning: Sidon30/SonarEnergy.lean:46:22: `if_false` has been deprecated: Use `ite_false` instead
-474-warning: Sidon30/SonarEnergy.lean:46:37: `if_true` has been deprecated: Use `ite_true` instead
-475:error: Sidon30/SonarEnergy.lean:217:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
-476-  Finset.product ?m.702 ?m.703
-477-in the target expression
-478-  ∑ d ∈ Finset.Icc 1 (U - 1) ×ˢ Finset.Icc (1 - ↑V) (↑V - 1), ↑(U - d.1) * rampCorrelation V d.2 = ↑U * (↑U - 1) / 2
-479-
-480-m n U V : ℕ
-481-y : Fin m → Fin n
-482-hA : IsSonar y
-483-hU : 1 ≤ U
-484-hV : 1 ≤ V
-485-K : Fin m → Fin m → ℝ := fun i j ↦ ↑(U - (max ↑i ↑j - min ↑i ↑j)) * rampCorrelation V (↑↑(y i) - ↑↑(y j))
-486-δ : Fin m × Fin m → ℕ × ℤ := fun p ↦ (↑p.1 - ↑p.2, ↑↑(y p.1) - ↑↑(y p.2))
-487-w : ℕ × ℤ → ℝ := fun d ↦ ↑(U - d.1) * rampCorrelation V d.2
-488-D : Finset (ℕ × ℤ) := (Finset.Icc 1 (U - 1)).product (Finset.Icc (1 - ↑V) (↑V - 1))
-489-hsymm : ∀ (i j : Fin m), K j i = K i j
---
-498:error: build failed
-499-##[error]Process completed with exit code 1.
-500-##[group]Run actions/upload-artifact@v4
-501-with:
-502-  name: build-log
-503-  path: lean/sidon30/build.log
-504-  if-no-files-found: warn
-505-  compression-level: 6
-506-  overwrite: false
-507-  include-hidden-files: false
-508-##[endgroup]
-509-(node:3009) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-510-(Use `node --trace-deprecation ...` to show where the warning was created)
-511-With the provided path, there will be 1 file uploaded
-512-Artifact name is valid!
+486:error: build failed
+487-##[error]Process completed with exit code 1.
+488-##[group]Run actions/upload-artifact@v4
+489-with:
+490-  name: build-log
+491-  path: lean/sidon30/build.log
+492-  if-no-files-found: warn
+493-  compression-level: 6
+494-  overwrite: false
+495-  include-hidden-files: false
+496-##[endgroup]
+497-(node:3005) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+498-(Use `node --trace-deprecation ...` to show where the warning was created)
+499-With the provided path, there will be 1 file uploaded
+500-Artifact name is valid!
 ```
 ## Summary
 ```
-✖ [8720/8754] Building Sidon30.SonarScale (6.8s)
-error: Sidon30/SonarScale.lean:163:27: Tactic `rewrite` failed: Did not find an occurrence of the pattern
-error: Sidon30/SonarScale.lean:169:27: Tactic `rewrite` failed: Did not find an occurrence of the pattern
-✖ [8750/8754] Building Sidon30.SonarEnergy (3.3s)
-error: Sidon30/SonarEnergy.lean:217:8: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+✖ [8729/8754] Building Sidon30.SonarFinal (7.1s)
+error: Sidon30/SonarFinal.lean:106:35: Invalid field `mp`: The environment does not contain `Function.mp`, so it is not possible to project the field `mp` from an expression
+error: Sidon30/SonarFinal.lean:106:28: Application type mismatch: The argument
+error: Sidon30/SonarFinal.lean:112:10: failed to synthesize instance of type class
 error: build failed
 ```

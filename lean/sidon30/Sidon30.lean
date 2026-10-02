@@ -38,3 +38,4 @@ import Sidon30.WeakSidonScale
 import Sidon30.GThinSidonBridge
 import Sidon30.WeakSidonFinal
 import Sidon30.SonarMain
+import Sidon30.DifferenceTriangleStatement
