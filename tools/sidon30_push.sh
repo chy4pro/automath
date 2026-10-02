@@ -16,6 +16,10 @@ if git diff --cached | grep -E -i "roychen|chatgpt\.com/c/|claude\.ai/.*session|
 git commit -q -m "${1:-sidon30: Lean update}
 
 Co-Authored-By: GPT-6 Astra (Codex) <noreply@openai.com>"
-"${G[@]}" pull -q --rebase origin main
-"${G[@]}" push -q origin HEAD:main
+# /work is one shared working tree, so origin normally has nothing new; rebase only if the push is rejected.
+if ! "${G[@]}" push -q origin HEAD:main 2>/dev/null; then
+  "${G[@]}" fetch -q origin main
+  "${G[@]}" -c rebase.autoStash=true rebase -q origin/main
+  "${G[@]}" push -q origin HEAD:main
+fi
 git log --oneline -1
