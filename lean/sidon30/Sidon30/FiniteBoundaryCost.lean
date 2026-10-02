@@ -327,7 +327,7 @@ private theorem cost_indicator_potential {N T : ℕ} (hT : 1 ≤ T) (x : ℤ) :
     apply Finset.sum_nonneg
     intro j _hj
     exact mul_nonneg (mul_nonneg (rampWeight_nonneg T i) (rampWeight_nonneg T j))
-      (by split_ifs <;> norm_num)
+      (by dsimp only; split_ifs <;> norm_num)
   rw [abs_of_nonneg hnonneg]
   calc
     _ ≤ rampDoublePotential T (fun _ => 1) x := by
@@ -338,6 +338,7 @@ private theorem cost_indicator_potential {N T : ℕ} (hT : 1 ≤ T) (x : ℤ) :
       intro j _hj
       apply mul_le_mul_of_nonneg_left _
         (mul_nonneg (rampWeight_nonneg T i) (rampWeight_nonneg T j))
+      dsimp only
       split_ifs <;> norm_num
     _ = 1 := rampDoublePotential_const hT 1 x
 
@@ -453,8 +454,10 @@ theorem boundaryEnergy_mass_error {N T : ℕ} (hN : 1 ≤ N) (hT : 1 ≤ T)
       have hp := boundaryCertificate_potential_abs_le hN hT hq x
       have ha := abs_add_le (rampDoublePotential T (boundaryCertificate N T) x) (-1 : ℝ)
       have hd : |rampDoublePotential T (boundaryCertificate N T) x - 1| ≤ 14 := by
-        norm_num at ha
-        linarith
+        calc
+          _ ≤ |rampDoublePotential T (boundaryCertificate N T) x| + 1 := by
+            simpa only [sub_eq_add_neg, abs_neg, abs_one] using ha
+          _ ≤ 14 := by linarith
       rw [abs_mul]
       calc
         _ ≤ |boundaryCertificate N T x| * 14 :=

@@ -59,7 +59,7 @@ theorem isSidon_rampEnergy_le {A : Finset ℕ} {T : ℕ}
   · rw [← sum_pos_rampCorrelation_eq_nat hT]
     exact two_mul_sum_pos_rampCorrelation hT
 
-def liftedSidonSet (A : Finset ℕ) : Finset ℤ := A.image (fun a => (a : ℤ))
+def liftedSidonSet (A : Finset ℕ) : Finset ℤ := A.image (fun a : ℕ => (a : ℤ))
 
 @[simp]
 theorem mem_liftedSidonSet {A : Finset ℕ} {x : ℤ} :

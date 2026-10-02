@@ -125,9 +125,9 @@ theorem renewalBlock_interval {T : ℕ} (hT : 1 ≤ T) (v : ℕ → ℝ) (l u : 
   have hres (j : ℕ) : 0 ≤ renewalBlockKernel T i j - renewalBlockMinorant T j :=
     sub_nonneg.mpr (renewalBlockMinorant_le_kernel hT i j)
   have hmass :
-      (∑ j ∈ Finset.Icc 1 T, renewalBlockKernel T i j - renewalBlockMinorant T j) =
+      (∑ j ∈ Finset.Icc 1 T, (renewalBlockKernel T i j - renewalBlockMinorant T j)) =
         1 - renewalBlockCommonMass T := by
-    change (∑ j ∈ Finset.Icc 1 T, renewalBlockKernel T i j - renewalBlockMinorant T j) =
+    change (∑ j ∈ Finset.Icc 1 T, (renewalBlockKernel T i j - renewalBlockMinorant T j)) =
       1 - ∑ j ∈ Finset.Icc 1 T, renewalBlockMinorant T j
     rw [Finset.sum_sub_distrib, sum_renewalBlockKernel hT i hi hiT]
   have hdecomp :
@@ -143,7 +143,7 @@ theorem renewalBlock_interval {T : ℕ} (hT : 1 ≤ T) (v : ℕ → ℝ) (l u : 
       ∑ j ∈ Finset.Icc 1 T, (renewalBlockKernel T i j - renewalBlockMinorant T j) * v j := by
     calc
       (1 - renewalBlockCommonMass T) * l =
-          (∑ j ∈ Finset.Icc 1 T, renewalBlockKernel T i j - renewalBlockMinorant T j) * l := by
+          (∑ j ∈ Finset.Icc 1 T, (renewalBlockKernel T i j - renewalBlockMinorant T j)) * l := by
         rw [hmass]
       _ = ∑ j ∈ Finset.Icc 1 T,
           (renewalBlockKernel T i j - renewalBlockMinorant T j) * l := by rw [Finset.sum_mul]

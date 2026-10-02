@@ -16,21 +16,20 @@ The target remains, for every natural N and finite A contained in {1,...,N},
 
 The Sidon definition includes diagonal sums and requires equality of the two sorted pairs, not just equality as sets. N need not be a fourth power.
 
-Current files:
+Current implementation status (updated after run37059252632):
 
-| File | What exists now |
+| Files / cards | Verification state |
 |---|---|
-| Sidon30/Basic.lean | Existing global IsSidon and empty-set lemma; previously compiled smoke test. |
-| Sidon30/Statement.lean | SidonSecondOrderBound, a Prop defining the exact target, with no proof. |
-| Sidon30/Differences.lean | Strong Sidon iff uniqueness of positive natural differences; positive-pair definition and difference injectivity. |
-| Sidon30/WeightedCount.lean | Actual representation counts, zero-difference exclusion, count at most one, and weighted finite-sum majorization. |
-| Sidon30/PairCount.lean | Positive ordered pairs inject into the N−1 possible positive differences. |
-| Sidon30/FinalCheck.lean | Preliminary axiom reports for those three cards only; no final theorem audit. |
-| Sidon30.lean | Imports the current definition, statement and three cards. |
+| Basic, Statement | The original strong Sidon definition and exact target specification compile. |
+| Differences, WeightedCount, PairCount, ShiftWindow, RampWeights, FiniteEnergyCS, SidonEnergyUpper, RenewalRecurrence, SecondOrderFinal | Baseline compiled in green run37056219882 / f8e0beb. |
+| CorrelationFacts, RenewalRampIdentity, RenewalFirstBlock, IntegerScaleAndTail, FinalReduction, RampGramEnergy, DiscreteSidonCertificate, CorrectionBasic, FiniteBoundaryPotential, RenewalBlockMatrix | Middle chain compiled in green run37058690156 / 346252d. |
+| CorrectionFiniteL1, CorrectionFiniteMass | Compiled in run37059252632, whose overall build failed in other cards. |
+| RenewalBlockContraction, RenewalErrorBound, FiniteBoundaryCost, SidonRampEnergy, FiniteCertificateAssembly, Main | Complete source integrated; first full-chain run37059252632 failed in three files. The repairs and downstream compilation are pending. |
+| FinalCheck | Exact standard-axiom guards for the observed milestones and for the new main theorem; final guards pending CI. |
 
-The three new proof cards contain nine theorem declarations and no sorry, admit or new axiom declarations. Their source has been reviewed. CI runs 37052528691 (7485d4d) and 37052888598 (2d672bd) failed at the membership simp lemma in Differences; The destructuring-only repair also failed in run 37054355993 / 1df3d1c. Inspection of the pinned Prod.lean now identifies the exact missing bridge: Finset.product_eq_sprod before Finset.mem_product; that repair is submitted in the next batch. The downstream cards have not yet been validated. Cards 04, 05, 07, 08 and 21 now have source, awaiting CI; card07 is a generic finite Gram interface whose convolution specialization remains pending. Cards09–10 are in progress; the other later cards remain unimplemented rather than hidden behind placeholders. In particular, sidon_second_order does not yet exist.
+There are no unfinished Lean proof placeholders or new project axioms in the source. The global theorem sidon_second_order now exists in Main.lean, but its newly integrated dependency chain has not yet passed CI. A source declaration is not a kernel-verification claim.
 
-The first complete formal milestone can be the **original +1 and 120⁴ statement**. The finite route below includes explicit error estimates that preserve both; a larger constant or onset is not presently needed. Before that, the finite certificate inequality (S) is a useful independent milestone. This is a mathematical plan supported by hand derivations, not an already formalized theorem.
+The first complete formal milestone targets the **original +1 and 120⁴ statement**. The finite route below includes explicit error estimates preserving both. The finite certificate inequality (S) is also exposed independently; Main supplies every hypothesis of the intermediate conditional reductions using actual theorem proofs.
 
 ## 2. Representation choices
 
@@ -135,7 +134,7 @@ Consequently the difference of h*g is one at zero and zero elsewhere, by the rec
  g_n=\frac12(1+1/T)^n,\qquad \frac12\le g_n\le\frac32.
 \]
 
-The formula is an induction in the recurrence. For the upper bound, the finite binomial theorem gives (1+1/T)^T≤3: bound its i-th term by 1/i!, use i!≥2^{i−1} for i≥1, and sum a finite geometric series. There is no need for exponential functions or an infinite series.
+The formula is an induction in the recurrence. The implemented upper bound uses the pinned Mathlib inequalities Real.one_add_inv_pow_le_exp and Real.exp_lt_two_add_div_two_sub at 1 to prove (1+1/T)^T≤exp(1)<3. This is an exact scalar library estimate; the recurrence and certificate still use finite sums only. The originally planned binomial/factorial proof is not the implementation.
 
 **RenewalBlockMatrix.** For block number b≥0 and 1≤i,j≤T, write
 
@@ -321,7 +320,7 @@ The γ coefficient, +1 and onset are thus justified by explicit inequalities; th
 
 ## 4. Card DAG and proposed file boundaries
 
-Each row is one intended Lean file. Rows 01–03 have source now; other proof rows are planned. Statement.lean is the specification and is not counted as a proved card. The optional first counting result 03 is useful for auditing the convention but is not needed by the final route.
+Each row describes one mathematical card. All cards now have source; some use additional finite-support and assembly helper files listed above. The verification state is separate from source completion. Statement.lean is the specification, not a proved card. The optional counting result03 audits the convention but is not needed by the final route.
 
 | ID / file under Sidon30 | Precise target above / dependencies | Mathlib ingredients |
 |---|---|---|
@@ -367,7 +366,7 @@ These names/signatures were read in the official repository at the pinned commit
 - Real.sqrt_nonneg, Real.sq_sqrt (h : 0≤x), Real.sqrt_sq (h : 0≤x), Real.sqrt_le_sqrt, Real.le_sqrt and Real.sqrt_mul (hx : 0≤x) y are present in [Analysis/Real/Sqrt.lean](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Analysis/Real/Sqrt.lean#L144). Give both square-root square identities to nlinarith explicitly; it will not infer them itself.
 - Nat.le_ceil, Nat.ceil_lt_add_one with nonnegativity, Nat.floor_le with nonnegativity, Nat.lt_floor_add_one, Nat.le_floor and Nat.le_floor_iff were checked in [Floor/Semiring.lean](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Order/Floor/Semiring.lean#L47) and [Floor/Defs.lean](https://github.com/leanprover-community/mathlib4/blob/de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11/Mathlib/Algebra/Order/Floor/Defs.lean#L140). Prefer natural division for r if it reduces floor coercions.
 
-Exact helper names for power sums, factorial estimates, block reindexing and geometric bounds still need to be selected from the pinned library when those cards are implemented. They are mathematical dependencies, not claimed completed API checks. All imports may initially remain import Mathlib through the Basic dependency; narrow imports only after successful compilation.
+The implemented cards now contain the selected power-sum, block-reindexing and geometric-bound interfaces. Their verification status is listed above. Imports still include Mathlib through Basic; import minimization is outside this verification milestone.
 
 ## 6. Statement and final audit design
 
@@ -386,15 +385,15 @@ def SidonSecondOrderBound : Prop :=
         (2 * Real.sqrt 2 / 3) * Real.sqrt (Real.sqrt (N : ℝ)) + 1
 ~~~
 
-The future Main file must prove the global theorem
+Main.lean now contains the global theorem
 
 ~~~lean
 theorem sidon_second_order : SidonSecondOrderBound := ...
 ~~~
 
-The ellipsis is documentation of an unimplemented proof, not a Lean placeholder added to the project.
+The displayed ellipsis abbreviates the actual proof in Main.lean; it is not a Lean placeholder in the project. Main proves the finite certificate by applying the boundary-cost theorem with the actual renewal error bound, then applies FinalReduction.
 
-Once that theorem exists, FinalCheck must import it and guard the actual diagnostic, for example if all three standard logical axioms occur:
+FinalCheck imports the actual theorem and requires the following standard-axiom diagnostic. The new final guard is not counted as passed until CI succeeds:
 
 ~~~lean
 /-- info: 'sidon_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
@@ -404,7 +403,7 @@ Once that theorem exists, FinalCheck must import it and guard the actual diagnos
 
 Use the exact reviewed output of that theorem; a smaller subset of those standard axioms is acceptable. Do not silently regenerate expected output when an unexpected axiom appears. sorryAx or any project axiom is a failure. Printing axioms of the Prop definition instead would not audit a proof and is expressly insufficient.
 
-The current FinalCheck guards the three initial core theorem diagnostics against the actual standard-axiom output from run37056219882. It also reports later milestones, including the explicitly conditional final reduction. It does **not** contain or claim a final-theorem gate.
+FinalCheck now guards nine previously observed milestone diagnostics and four newly integrated diagnostics, including the unconditional global theorem. The latter four guards are pending their first full-chain CI run.
 
 ## 7. CI protocol, risks and honest status
 
@@ -418,7 +417,7 @@ The current FinalCheck guards the three initial core theorem diagnostics against
 - No finite numerical enumeration proves this parameterized certificate. No numerical experiment was run for this plan. The finite route was derived by one worker and independently checked by the root; another worker checked the normalization and pinned APIs but did not audit every detail of the tail constant 29. These are same-vendor mathematical reviews, not cross-vendor, human or Lean verification of the new discrete proof.
 - The source cards were written on a separate informed worker and read by the root. No clean-room claim is made for this formalisation planning task. Token and monetary costs are not exposed and are not estimated.
 
-Unfinished proof inventory: cards06,09–20,22, plus the finite-convolution specialization of card07, remain unimplemented or in progress. Cards04,05,07,08,21 have source but are not yet CI validated. The final theorem is absent. No optimality theorem is part of this inventory. CI result for the first new batch: **run37054355993 failed at mem_positivePairs; product_eq_sprod repair and next source cards await CI**.
+Source inventory: every mathematical card has an implementation, including the main theorem. Full-chain compilation and the final guarded axiom audit are still pending. Kernel optimality remains outside scope. The timestamped ledger below records earlier intermediate states, not current missing declarations.
 
 ### CI implementation ledger
 
@@ -438,3 +437,5 @@ Unfinished proof inventory: cards06,09–20,22, plus the finite-convolution spec
 
 - **Middle chain green:** run37058690156 / 346252d, 8729jobs; six additional printed axiom diagnostics all contained exactly [propext, Classical.choice, Quot.sound]. The reflected renewal beta-reduction repair closed the last failure in this batch.
 - Main.lean now supplies the actual renewal pointwise bound to boundaryCertificate_energy_le, supplies the resulting concrete double-sum bound to discreteSidonCertificate_of_boundaryCost, and applies the exact final reduction. Every previously explicit mathematical hypothesis is supplied by a theorem; no new axiom or sorry is used. The complete imported source and exact final axiom guards are **pending CI**, not yet a kernel result.
+
+- Run37059252632 / fbc8b92: the first full source chain failed in RenewalBlockContraction (sum notation excluded an unparenthesized subtraction term from the binder scope), FiniteBoundaryCost (two beta-reductions and subtraction syntax under absolute value), and SidonRampEnergy (untyped Nat-to-Int image lambda and downstream elaboration). CorrectionFiniteL1 and CorrectionFiniteMass compiled. Three workers repair these separate files concurrently; no change to the theorem statement, constants or hypotheses is required by these diagnostics. FinalCheck was skipped after Build failed.
