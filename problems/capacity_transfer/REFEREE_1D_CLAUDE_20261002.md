@@ -70,8 +70,8 @@ main structural risk. I found no defect in it.
   claimed 9/2, and |q|((L,∞)) is far below 6e^{−αL} for L = 1, 2, 5, 10, 20.
 - **The energy of ν_L.** For L = 1, 2, 3 I computed V_L ≡ 1 on [0,L] and V_L ≡ 0 beyond L+1.
   The energy correction E(ν_L,ν_L) − (L+2/3) is +0.0082 at L = 1, −0.00020 at L = 2 and
-  −0.00012 at L = 3. The proof allows up to 168e^{−αL} (126, 94 and 71). See the appendix for the
-  larger values of L.
+  −0.00012 at L = 3. The proof allows up to 168e^{−αL} (126, 94 and 71). At L = 5, 8, 12 and 20
+  the correction is at most 1e−6 in absolute value (see the appendix).
 - **Signed capacity of finite point sets.** For any finite P ⊂ [0,L], Lemma 6 implies
   1ᵀF_P^{−1}1 ≤ C(L), because its proof also works for signed μ. I tested 47 lattices
   {j/T} with T from 0.7 to 20 and L from 1 to 80. I also tested uniform grids on [0,L]
@@ -368,5 +368,16 @@ with numpy and mpmath, on at most 2 threads, with no SAT or ILP solvers. Their l
   roots.
 - numpy code for 1ᵀF^{−1}1 on point sets and for energies of large explicit sets.
 
-The energy computation for L = 5, 8, 12, 20 and 30 was still running when the main text was
-written. Results are recorded below if available.
+**Energy of ν_L for larger L** (continuing 0.2; V_L ≡ 1 on [0,L] and V_L ≡ 0 beyond L+1 in
+every case):
+
+| L | E(ν_L,ν_L) − (L+2/3) | allowed bound 168e^{−αL} |
+|---|---|---|
+| 5 | +9.5e−7 | 39.9 |
+| 8 | −2.8e−9 | 16.8 |
+| 12 | +5.1e−13 | 5.32 |
+| 20 | −2.8e−20 | 0.533 |
+
+The run for L = 30 reached its 1700 s time limit and was not repeated. The applications use
+L ≥ 36.7, and that range is covered by the finite point-set tests at L = 40 and L = 80 in 0.2,
+which use C(L) directly.
