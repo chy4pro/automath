@@ -1,0 +1,36 @@
+name: sidon30-lean
+on:
+  push:
+    paths:
+      - 'lean/sidon30/**'
+      - '.github/workflows/sidon30-lean.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: lean/sidon30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSf https://elan.lean-lang.org/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Toolchain
+        run: lean --version
+      - name: Mathlib cache
+        run: lake exe cache get
+      - name: Build
+        run: lake build 2>&1 | tee build.log
+      - name: Axioms
+        if: always()
+        run: |
+          if [ -f Sidon30/FinalCheck.lean ]; then lake env lean Sidon30/FinalCheck.lean; else echo "no FinalCheck yet"; fi
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: lean/sidon30/build.log
