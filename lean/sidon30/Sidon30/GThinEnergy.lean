@@ -99,9 +99,10 @@ theorem isGThin_rampEnergy_le {g T : ℕ} {A : Finset ℕ}
       1 - rampDiagonal T := by
     rw [← sum_pos_rampCorrelation_eq_nat hT]
     exact two_mul_sum_pos_rampCorrelation hT
+  have hmassg := congrArg (fun z : ℝ => (g : ℝ) * z) hmass
   rw [orderedPairEnergy_eq A (rampCorrelation T) (rampCorrelation_neg T),
     rampCorrelation_zero hT]
-  nlinarith
+  nlinarith only [hpairs, hmassg]
 
 theorem isGThin_shiftWindow {g N : ℕ} {A : Finset ℕ}
     (hA : IsGThin g A) (hAN : A ⊆ Finset.Icc 1 N) :

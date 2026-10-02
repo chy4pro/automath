@@ -33,3 +33,5 @@ import Sidon30.IndexedRampCertificate
 import Sidon30.SonarWindows
 import Sidon30.GThinEnergy
 import Sidon30.GThinScale
+import Sidon30.GThinMain
+import Sidon30.WeakSidonScale

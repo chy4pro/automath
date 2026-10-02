@@ -59,3 +59,15 @@ Unexpected project axioms or sorryAx must fail these exact guards.
 /-- info: 'sidon_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms sidon_second_order
+
+/-- info: 'Sidon30.ramp_card_sq_le_certificate' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.ramp_card_sq_le_certificate
+
+/-- info: 'Sidon30.indexed_ramp_card_sq_le_certificate' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.indexed_ramp_card_sq_le_certificate
+
+/-- info: 'g_thin_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms g_thin_second_order

@@ -98,6 +98,7 @@ theorem weakSidonIntegerScale_diagonal_le {x : ℝ} (hx : 0 < x) :
       mul_le_mul_of_nonneg_left (rampDiagonal_le hT) (by norm_num)
     _ = 4 / (weakSidonIntegerScale x : ℝ) := by
       field_simp [ne_of_gt hTpos]
+      <;> ring
     _ ≤ weakSidonBeta / x ^ 3 :=
       (div_le_div_iff₀ hTpos hx3pos).mpr hprod
 
@@ -235,4 +236,3 @@ theorem weakSidonIntegerScale_tail_lt_half {N : ℕ} {x : ℝ}
 end Sidon30
 
 end
-
