@@ -1,4 +1,4 @@
-OPEN — the exact Sidon bound is not yet proved in Lean. The discrete proof plan and first three source cards are ready; the first CI attempt failed in positive-pair membership, and a source repair is ready for the authorized self-service CI loop. The target has not been weakened, and no final kernel verification is claimed.
+OPEN — the exact Sidon theorem is not yet proved in Lean. The plan and initial cards are delivered; the imported baseline passed CI run37056219882 / f8e0beb. Three initial core theorems have reviewed standard-axiom output. Later source cards are entering CI, and the boundary-cost/decay proof is still incomplete.
 
 # Sidon30 formalisation plan and finite certificate
 
@@ -404,7 +404,7 @@ Once that theorem exists, FinalCheck must import it and guard the actual diagnos
 
 Use the exact reviewed output of that theorem; a smaller subset of those standard axioms is acceptable. Do not silently regenerate expected output when an unexpected axiom appears. sorryAx or any project axiom is a failure. Printing axioms of the Prop definition instead would not audit a proof and is expressly insufficient.
 
-The current FinalCheck has unguarded preliminary reports for the completed small cards, so CI can reveal their actual dependencies. It does **not** contain or claim a final-theorem gate. After the first run's messages are available those small-card diagnostics can also be guarded, but that still would not prove the final target.
+The current FinalCheck guards the three initial core theorem diagnostics against the actual standard-axiom output from run37056219882. It also reports later milestones, including the explicitly conditional final reduction. It does **not** contain or claim a final-theorem gate.
 
 ## 7. CI protocol, risks and honest status
 
@@ -428,3 +428,6 @@ Unfinished proof inventory: cards06,09–20,22, plus the finite-convolution spec
 - Run37055538640 / 1de2678: only RenewalRecurrence failed (sum_coe_sort simp matching); explicit term application is the repair. All earlier reported card errors disappeared, but no complete-batch or axiom PASS is claimed yet. The next commit also stores source-ready cards06,10,11,20 and FinalReduction without importing them until this baseline is green.
 - Card11 implementation choice: the first-block power bound uses the pinned Mathlib Real.one_add_inv_pow_le_exp and Real.exp_lt_two_add_div_two_sub at x=1. This is an exact library proof of the scalar bound3, replacing the planned explicit binomial/factorial derivation. No measure theory, infinite convolution or renewal limit is used by this card, but its library dependency does include the exponential function.
 - FinalReduction explicitly states DiscreteSidonCertificateBound as a Prop and proves only the implication from that finite inequality to SidonSecondOrderBound. It is not an axiom and does not close sidon_second_order.
+
+- **Baseline green:** run37056219882, commitf8e0beb, Build completed8719jobs and Axioms succeeded. Imported proof cards01–05,07–09,21 compiled. The first three diagnostic theorems each depend only on [propext, Classical.choice, Quot.sound]; their exact outputs are now guarded. The main theorem remains absent.
+- Next batch imports source cards06,10–12,20, the generic Gram/certificate bridges, CorrectionBasic, actual finite BoundaryPotential and the conditional FinalReduction. They are not yet claimed compiled. Cards13–16,18–19 actual certificate closure and Main remain unfinished.
