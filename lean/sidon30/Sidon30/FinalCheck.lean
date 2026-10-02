@@ -95,3 +95,19 @@ Unexpected project axioms or sorryAx must fail these exact guards.
 /-- info: 'sonar_triangle_bound' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms sonar_triangle_bound
+
+/-- info: 'Sidon30.dts_scope_count' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.dts_scope_count
+
+/-- info: 'Sidon30.dts_finite_certificate' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.dts_finite_certificate
+
+/-- info: 'difference_triangle_scope_bound' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms difference_triangle_scope_bound
+
+/-- info: 'difference_triangle_expanded_bound' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms difference_triangle_expanded_bound
