@@ -35,6 +35,19 @@ point is to avoid being trapped in the framing of existing human proofs. Tasks m
 must be run that way; the route reports (which do cite literature) are then compared with the
 clean-room output by the coordinator, never fed to the clean-room agents.
 
+## Self-service Lean loop (owner, 2026-10-02): Codex iterates on its own
+Exception to rule 5: for the Lean project you may commit and push by yourself, without the coordinator,
+using ONLY these two scripts (they need git + curl and the token mount /wb/creds/github-token/value;
+never print the token):
+- `tools/sidon30_push.sh "message"` — stages and commits ONLY `lean/sidon30/**`, refuses anything else,
+  runs the privacy grep, rebases on origin/main and pushes to main (no force pushes, ever).
+- `tools/sidon30_ci.sh --wait` — waits for the newest `sidon30-lean` GitHub Actions run to finish and
+  writes `lean/sidon30/CI_LOG.md` (errors with goal states + summary).
+Loop: edit → push → wait for CI → read CI_LOG.md → fix → repeat until green, then the next cards of
+`lean/sidon30/PLAN.md`. Write a STATUS line only at milestones (a card file green, a batch green, the
+main theorem green, or blocked with the reason). Do not touch files outside `lean/sidon30/` in commits.
+If the token mount is missing in your session, say so in QUESTIONS.md and fall back to READY lines.
+
 ## For Claude (the coordinator)
 - Writes tasks, reads STATUS.md and reports, moves finished tasks to `inbox/archive/`, answers QUESTIONS.md
   by appending under the question. Commits/pushes are Claude's job.
