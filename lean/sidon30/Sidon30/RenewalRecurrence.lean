@@ -30,7 +30,12 @@ theorem renewal_eq_prefix (T n : ℕ) :
     (if n = 0 then ((T : ℝ) + 1) / 2
      else (1 / (T : ℝ)) * ∑ k : Finset.range n,
        if n - (k : ℕ) ≤ T then renewal T k else 0) = _
-  simp only [Finset.sum_coe_sort]
+  by_cases hn : n = 0
+  · simp only [if_pos hn]
+  · simp only [if_neg hn]
+    exact congrArg (fun x : ℝ => (1 / (T : ℝ)) * x)
+      (Finset.sum_coe_sort (Finset.range n)
+        (fun k : ℕ => if n - k ≤ T then renewal T k else 0))
 
 @[simp]
 theorem renewal_zero (T : ℕ) :
