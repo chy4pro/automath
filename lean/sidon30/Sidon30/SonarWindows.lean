@@ -100,6 +100,7 @@ theorem sonarWindow_card_sq_sum {m U : ℕ} (hU : U ≤ m) :
       congr 1
       conv_lhs => rw [hm]
       rw [Finset.sum_range_add]
+      rw [← hm]
     _ = _ := by
       rw [hleft, hmiddle, hright, sum_range_sq_real, sum_range_sub_sq_real]
       ring

@@ -119,6 +119,7 @@ theorem weakBasePairs_difference_injOn {A : Finset ℕ} (hA : IsWeakSidon A) :
     Set.InjOn (fun p : ℕ × ℕ => p.1 - p.2)
       (↑(weakBasePairs A) : Set (ℕ × ℕ)) := by
   intro p hp q hq heq
+  change p.1 - p.2 = q.1 - q.2 at heq
   rcases mem_weakBasePairs.mp hp with ⟨hp, hpnot⟩
   rcases mem_weakBasePairs.mp hq with ⟨hq, hqnot⟩
   by_contra hne
@@ -132,6 +133,7 @@ theorem weakExtraPairs_middle_injOn {A : Finset ℕ} (hA : IsWeakSidon A) :
     Set.InjOn (fun p : ℕ × ℕ => p.2)
       (↑(weakExtraPairs A) : Set (ℕ × ℕ)) := by
   intro p hp q hq heq
+  change p.2 = q.2 at heq
   rcases mem_weakExtraPairs.mp hp with ⟨hpp, hple, hpl⟩
   rcases mem_weakExtraPairs.mp hq with ⟨hqp, hqle, hql⟩
   rcases mem_positivePairs.mp hpp with ⟨hpa, hpb, hpord⟩
@@ -148,6 +150,7 @@ theorem weakExtraPairs_difference_injOn {A : Finset ℕ} (hA : IsWeakSidon A) :
     Set.InjOn (fun p : ℕ × ℕ => p.1 - p.2)
       (↑(weakExtraPairs A) : Set (ℕ × ℕ)) := by
   intro p hp q hq heq
+  change p.1 - p.2 = q.1 - q.2 at heq
   rcases mem_weakExtraPairs.mp hp with ⟨hpp, hple, hpl⟩
   rcases mem_weakExtraPairs.mp hq with ⟨hqp, hqle, hql⟩
   rcases mem_positivePairs.mp hpp with ⟨hpa, hpb, hpord⟩

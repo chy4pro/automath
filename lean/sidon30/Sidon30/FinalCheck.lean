@@ -71,3 +71,19 @@ Unexpected project axioms or sorryAx must fail these exact guards.
 /-- info: 'g_thin_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms g_thin_second_order
+
+/-- info: 'sidon_second_order_from_gThin' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms sidon_second_order_from_gThin
+
+/-- info: 'Sidon30.isWeakSidon_positiveDifferenceCount_le_two' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.isWeakSidon_positiveDifferenceCount_le_two
+
+/-- info: 'Sidon30.isWeakSidon_repeatedDifferences_card_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.isWeakSidon_repeatedDifferences_card_le
+
+/-- info: 'Sidon30.weakSidon_second_order' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.weakSidon_second_order
