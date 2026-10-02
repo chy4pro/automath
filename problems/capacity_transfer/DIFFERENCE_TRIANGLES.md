@@ -1,4 +1,4 @@
-PROVED — informed transfer proof. Stage A: PASS-WITH-REPAIRS (real scope parameter justified, and an unnecessary additive loss removed). No novelty verdict or new Lean formalisation is asserted.
+PROVED — informed transfer proof; isolated Claude one-dimensional referee PASS (2026-10-02). Stage A: PASS-WITH-REPAIRS (real scope parameter justified, and an unnecessary additive loss removed). No novelty verdict or new Lean formalisation is asserted.
 
 # Difference triangle sets: an explicit scope lower bound
 

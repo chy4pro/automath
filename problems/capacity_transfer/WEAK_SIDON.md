@@ -1,4 +1,4 @@
-PROVED — informed transfer proof, with explicit onset. Stage A: PASS-WITH-REPAIRS. This is a mathematical proof with finite exact checks, not a Lean formalisation or a novelty verdict.
+PROVED — informed transfer proof with explicit onset; isolated Claude one-dimensional referee PASS (2026-10-02). Stage A scout review: PASS-WITH-REPAIRS. This is a mathematical proof with finite exact checks, not a Lean formalisation or a novelty verdict.
 
 # Weak Sidon sets: an explicit capacity bound
 
@@ -32,7 +32,7 @@ Use
  f(t)=\begin{cases}\frac43-2|t|+\frac23|t|^3,&|t|\le1,\\0,&|t|>1.\end{cases}
 \]
 
-The complete proof of the following input, including the signed certificate, is in [COMMON_CAPACITY.md, Lemmas 2–6](COMMON_CAPACITY.md). The kernel is even, nonnegative, decreasing on the positive half-line, has mass one and \(a=f(0)=4/3\). If \(L\ge1\) and a finite positive measure \(\mu\) of mass \(k\) is supported on the closed interval \([0,L]\), then
+The complete proof of the following input, including the signed certificate, is in [COMMON_CAPACITY.md, Lemmas 2–6](COMMON_CAPACITY.md). The kernel is even, nonnegative, nonincreasing on the positive half-line, has mass one and \(a=f(0)=4/3\). If \(L\ge1\) and a finite positive measure \(\mu\) of mass \(k\) is supported on the closed interval \([0,L]\), then
 
 \[
  k^2\le C(L)E_f(\mu,\mu),\qquad

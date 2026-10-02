@@ -1,3 +1,5 @@
+PROVED — isolated Claude two-dimensional referee PASS (2026-10-02). Explicit theorem and all-real remainder unchanged; no Lean formalisation or novelty verdict.
+
 # Manhattan distinct-difference configurations: referee and explicit transfer
 
 Task 039, item 5. Informed OpenAI review of the Claude scout derivation;

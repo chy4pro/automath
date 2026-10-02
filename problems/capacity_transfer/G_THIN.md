@@ -1,4 +1,4 @@
-PROVED — informed transfer proof. Stage A: PASS (all scale and scalar steps proved explicitly). This is a mathematical proof with finite exact checks, not a Lean formalisation or a novelty verdict.
+PROVED — informed transfer proof; isolated Claude one-dimensional referee PASS (2026-10-02). Stage A: PASS (all scale and scalar steps proved explicitly). This is a mathematical proof with finite exact checks, not a Lean formalisation or a novelty verdict.
 
 # Sets with bounded nonzero difference multiplicity
 

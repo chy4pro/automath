@@ -1,3 +1,5 @@
+PROVED — isolated Claude two-dimensional referee PASS (2026-10-02). Explicit all-d theorem and remainder unchanged; no Lean formalisation or novelty verdict.
+
 # Sidon sets in integer boxes: referee and explicit product-capacity transfer
 
 Task 039, item 6. Informed OpenAI review of the Claude scout derivation;

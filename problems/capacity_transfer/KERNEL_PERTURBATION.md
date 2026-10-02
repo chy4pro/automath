@@ -1,4 +1,6 @@
-PROVED — derivation and independent in-team adversarial review PASS. The BigInt rational checker passed. The full-class infimum is still OPEN; no new cross-vendor review or Lean formalisation of this perturbation is claimed.
+PROVED — derivation and independent in-team review PASS; isolated Claude 2D referee passes admissibility and the functional decrease, and passes the sonar consequence with editorial repairs applied below. The BigInt rational checker passed. The full-class infimum is still OPEN; no Lean formalisation is claimed.
+
+Revision 2026-10-02 (040a): inline the exact marginal cancellation, the variation estimate and the uniform tail proof, removing the dangling external C6 reference. Every theorem statement, coefficient, onset and numerical bound is unchanged.
 
 # An explicit admissible kernel below the nonnegative-factor optimum
 
@@ -74,7 +76,7 @@ Here are complete lattice and error bounds. We have1≤a≤4/3 and1/4≤M≤1/3.
 
 2a₀+128θa₀<3.
 
-For p(x)=|x|fθ(x), the unperturbed variation is at most2. Each shifted |x|bδ(x∓2) has variation at most1+(2+δ)·2a₀/δ, while |x|bδ(x) has variation at most2. Hence
+For p(x)=|x|fθ(x), the unperturbed variation is at most2: on(0,1), f₀'≤0 and integration by parts gives ∫_0^1 x|f₀'|dx=∫_0^1 f₀dx=1/2. Hence ∫_0^1 |(xf₀)'|dx≤∫_0^1 f₀dx+∫_0^1 x|f₀'|dx=1; evenness doubles this bound. No assertion of unimodality or numerical estimate of the maximum is required. Each shifted |x|bδ(x∓2) has variation at most1+(2+δ)·2a₀/δ, while |x|bδ(x) has variation at most2 by dilation of the same calculation. Hence
 
 Var(p)≤2+θ(6+132a₀)<3.
 
@@ -83,7 +85,7 @@ Lattice Riemann sums therefore satisfy
 |Σ_d fθ(d/T)−T|≤3,
 Σ_d |d|fθ(d/T)≤MT²+3T.
 
-When(33/16)T≤m, the exact horizontal marginal energy is at least m(T−3)−MT²−3T. The off-diagonal horizontal lattice sum is at most T+3−a≤T+2. The vertical ramp lattice sum is at most U+4/3. The same signed-product-certificate argument as in SONAR_COSINE.md gives, with C=n/U+2/3+ε and ε=200exp(−αn/U),
+When(33/16)T≤m, the exact horizontal marginal energy Λθ is at least m(T−3)−MT²−3T. Let μ be the sonar point measure, λ=Σ_(i=0)^(m−1)δ_i its exact column marginal, and ρ the U-pushforward of the vertical signed certificate ν_(n/U), with no mass multiplier. For G(x,y)=fθ(x/T)f(y/U), unit vertical potential gives E_G(μ,λ⊗ρ)=Λθ and E_G(λ⊗ρ,λ⊗ρ)=Λθ E_f(ν_(n/U),ν_(n/U)). Also Λθ≥ma>0 for m>0, by nonnegativity and the diagonal. Signed Cauchy–Schwarz therefore gives Λθ≤C E_G(μ,μ). Empty sequences are immediate. The off-diagonal horizontal lattice sum is at most T+3−a≤T+2, and the vertical ramp sum is at most U+4/3. Thus, with C=n/U+2/3+ε and ε=200exp(−αn/U),
 
 m[1−3/T−(4a/3)C/T]≤MT+3+C(1+2/T)(U+4/3).          (P5)
 
@@ -91,7 +93,7 @@ Put x=n^(1/3), t₁=v/M, t₂=(3/2)v, T=t₁x², U=t₂x². The identity v³=(8/
 
 (4a/3)/(t₁t₂)=v,  Mt₁=(2/3)t₂=v.
 
-Here R>9/10 by its explicit rational formula, so π>3 gives v³>(1/4)(9/10)=9/40>27/125=(3/5)³. Also R<1 and π<22/7 give v<2/3. Thus9/5≤t₁≤8/3 and9/10≤t₂≤1. If m<n, P4 is immediate. Otherwise x≥160 gives(33/16)T≤(11/2)x²≤n≤m and U≤n. The same uniform tail proof as C6 gives ε≤x^−4.
+Here R>9/10 by its explicit rational formula, so π>3 gives v³>(1/4)(9/10)=9/40>27/125=(3/5)³. Also R<1 and π<22/7 give v<2/3. Thus9/5≤t₁≤8/3 and9/10≤t₂≤1. If m<n, P4 is immediate. Otherwise x≥160 gives(33/16)T≤(11/2)x²≤n≤m and U≤n. Since α=∫_1^(4/3)dt/t≥1/4 and t₂≤1, ε≤200exp(−x/4). The function x⁴exp(−x/4) decreases for x≥16; at x=160, 200·160⁴=131072000000<2⁴⁰<exp(40). Therefore ε≤x^−4 for every real x≥160.
 
 Write the denominator in P5 as1−u, with
 

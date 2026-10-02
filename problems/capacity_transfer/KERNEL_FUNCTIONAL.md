@@ -1,4 +1,4 @@
-PROVED for nonnegative autocorrelation factors, with independent in-team review PASS. The full-class infimum remains OPEN, but KERNEL_PERTURBATION.md now proves that it is strictly below the restricted optimum. No numerical optimum is promoted to a theorem.
+PROVED for nonnegative autocorrelation factors, with independent in-team and isolated Claude mathematical reviews PASS. The full-class infimum remains OPEN, but KERNEL_PERTURBATION.md now proves that it is strictly below the restricted optimum. No numerical optimum is promoted to a theorem.
 
 Revision 2026-10-02 (039c): kernels are explicitly continuous; all coefficient-optimality statements below concern the stated leading-term product template. The vertical capacity theorem is linked with its exact hypotheses. The numerical bounds and constructed kernels are unchanged.
 

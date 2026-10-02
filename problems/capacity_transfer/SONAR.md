@@ -1,3 +1,5 @@
+PROVED — isolated Claude two-dimensional referee PASS (2026-10-02). Explicit theorem unchanged; no Lean formalisation or novelty verdict.
+
 # Sonar sequences: exact-marginal capacity transfer
 
 Status: **INFORMED; Stage A PASS-WITH-REPAIRS; Stage B proved analytically.**
@@ -290,7 +292,7 @@ independent error check, not the proof of the theorem for all n.
 Actual run on 2026-10-02 UTC: `node check_sonar.js` exited 0 with PASS.
 It checked 820 marginal identities, 60 lattice identities/inequalities,
 1070 sonar sequences/prefixes, and 41856 scale-specific energy sandwiches.
-Twenty exact power enclosures were reused. The negative control had
+The small-parameter sandwich checks use a generous exponential allowance and are not meaningful numerical evidence for the capacity step itself. Their useful scope is the exact identities and combinatorial/lattice accounting; the capacity step is proved analytically. Twenty exact power enclosures were reused. The negative control had
 energy 76/9 greater than its invalid purported upper bound 23/3 and was
 correctly rejected. The polynomial identity and all coefficients of its
 shift by 16 checked exactly. The complete analytic proof is Sections
