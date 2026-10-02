@@ -21,14 +21,17 @@ theorem positivePairs_card_le_pred {A : Finset ℕ} {N : ℕ}
     have haN : p.1 ≤ N := (Finset.mem_Icc.mp (hAN hpa)).2
     have hb1 : 1 ≤ p.2 := (Finset.mem_Icc.mp (hAN hpb)).1
     apply Finset.mem_range.mpr
+    change p.1 - p.2 - 1 < N - 1
     omega
   have hinj :
       Set.InjOn (fun p : ℕ × ℕ => p.1 - p.2 - 1)
         (↑(positivePairs A) : Set (ℕ × ℕ)) := by
     intro p hp q hq hpq
+    change p.1 - p.2 - 1 = q.1 - q.2 - 1 at hpq
     have hplt : p.2 < p.1 := (mem_positivePairs.mp hp).2.2
     have hqlt : q.2 < q.1 := (mem_positivePairs.mp hq).2.2
     apply positiveDifference_injOn hA hp hq
+    change p.1 - p.2 = q.1 - q.2
     omega
   have hcard :
       (positivePairs A).card ≤ (Finset.range (N - 1)).card :=

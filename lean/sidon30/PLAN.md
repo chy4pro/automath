@@ -419,3 +419,8 @@ The current FinalCheck has unguarded preliminary reports for the completed small
 - The source cards were written on a separate informed worker and read by the root. No clean-room claim is made for this formalisation planning task. Token and monetary costs are not exposed and are not estimated.
 
 Unfinished proof inventory: cards06,09–20,22, plus the finite-convolution specialization of card07, remain unimplemented or in progress. Cards04,05,07,08,21 have source but are not yet CI validated. The final theorem is absent. No optimality theorem is part of this inventory. CI result for the first new batch: **run37054355993 failed at mem_positivePairs; product_eq_sprod repair and next source cards await CI**.
+
+### CI implementation ledger
+
+- Run 37055051049 / fead917: the product bridge removed the Differences failure. Build still failed in ShiftWindow and PairCount where omega treated unapplied lambdas as opaque, and in SidonEnergyUpper on conditional simplification and addition-side API orientation. The next source repair makes the arithmetic expressions explicit with change, includes ite_true, and uses add_le_add le_rfl. Axioms did not run because the build failed.
+- Card09 RenewalRecurrence now has complete source, with a well-founded natural recurrence and zero extension, awaiting CI. Card10 remains in progress.

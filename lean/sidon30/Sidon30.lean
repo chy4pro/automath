@@ -8,3 +8,4 @@ import Sidon30.RampWeights
 import Sidon30.FiniteEnergyCS
 import Sidon30.SidonEnergyUpper
 import Sidon30.SecondOrderFinal
+import Sidon30.RenewalRecurrence

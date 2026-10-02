@@ -22,6 +22,7 @@ theorem shiftWindow_card {A : Finset ℕ} {N : ℕ}
   unfold shiftWindow
   apply Finset.card_image_of_injOn
   intro a ha b hb hab
+  change a - 1 = b - 1 at hab
   have ha1 : 1 ≤ a := (Finset.mem_Icc.mp (hAN ha)).1
   have hb1 : 1 ≤ b := (Finset.mem_Icc.mp (hAN hb)).1
   omega

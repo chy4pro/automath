@@ -56,7 +56,7 @@ theorem orderedPairEnergy_eq (A : Finset ℕ) (f : ℤ → ℝ)
       _ = ∑ _a ∈ A, f 0 := by
         apply Finset.sum_congr rfl
         intro a ha
-        simpa only [if_pos (rfl : a = a)] using
+        simpa only [if_pos (rfl : a = a), ite_true] using
           (Finset.sum_eq_single_of_mem a ha
             (f := fun b : ℕ => if a = b then f 0 else 0)
             (by
@@ -132,7 +132,7 @@ theorem isSidon_orderedPairEnergy_le_of_support {A D : Finset ℕ}
     (hnonneg : ∀ d ∈ D, 0 ≤ f (d : ℤ)) :
     orderedPairEnergy A f ≤ (A.card : ℝ) * f 0 + 2 * ∑ d ∈ D, f (d : ℤ) := by
   rw [orderedPairEnergy_eq A f heven]
-  apply add_le_add_left
+  apply add_le_add le_rfl
   exact mul_le_mul_of_nonneg_left
     (isSidon_positivePairSum_le_of_support hA (fun d => f (d : ℤ)) hcover hnonneg)
     (by norm_num)
