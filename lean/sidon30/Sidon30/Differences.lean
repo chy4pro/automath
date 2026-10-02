@@ -52,8 +52,8 @@ def positivePairs (A : Finset ℕ) : Finset (ℕ × ℕ) :=
 @[simp]
 theorem mem_positivePairs {A : Finset ℕ} {p : ℕ × ℕ} :
     p ∈ positivePairs A ↔ p.1 ∈ A ∧ p.2 ∈ A ∧ p.2 < p.1 := by
-  rcases p with ⟨a, b⟩
-  simp only [positivePairs, Finset.mem_filter, Finset.mem_product, and_assoc]
+  simp only [positivePairs, Finset.mem_filter, Finset.product_eq_sprod,
+    Finset.mem_product, and_assoc]
 
 /-- Natural subtraction is injective on the positive ordered pairs of a Sidon set. -/
 theorem positiveDifference_injOn {A : Finset ℕ} (hA : IsSidon A) :

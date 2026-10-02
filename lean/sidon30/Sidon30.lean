@@ -3,3 +3,8 @@ import Sidon30.Statement
 import Sidon30.Differences
 import Sidon30.WeightedCount
 import Sidon30.PairCount
+import Sidon30.ShiftWindow
+import Sidon30.RampWeights
+import Sidon30.FiniteEnergyCS
+import Sidon30.SidonEnergyUpper
+import Sidon30.SecondOrderFinal
