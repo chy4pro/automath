@@ -40,3 +40,8 @@
 2026-09-26T17:22:49.277Z DONE 019 referee_E1_restricted_theorem → /work/campaigns/zaremba-M/phase1/REFEREE_E1.md (two isolated checks PASS; 787 exact finite samples; G2 standard central-Fourier corollary, not a new general flattening theorem)
 2026-09-26T17:36:01.648Z DONE 018 extend_E1_flattening_to_walk_measures → /work/campaigns/zaremba-M/phase1/E1_EXTENSION.md (three concurrent strategies; tensor-envelope theorem checked by a second agent; actual capped family excludes uniform d=4 envelope; useful fixed-stage input remains open)
 2026-09-26T17:37:05.384Z PAUSED by owner's direct instruction after completion of current task018; all assigned parallel work completed; inbox polling and new dispatch stopped. No STOP file created.
+2026-10-02T08:38:22.887Z RESUMED by owner's direct instruction; protocol, OPERATIONS, queue, live agent/process state rechecked; STOP absent; no scheduler revived.
+2026-10-02T08:38:22.887Z START 020 cleanroom_central_envelope (fresh-context attempts after renewed primary-source version/frontier checks; task021 queued for distinct route strategies)
+2026-10-02T08:40:42.917Z START 021 route_envelope_via_R3_reduction (current primary-source checks completed for core versions; ordinary route work runs alongside the available clean-room seat)
+2026-10-02T08:45:51.658Z START 022 freshness_sweep (new priority-first task; root defers further021 proof work while020 active isolated attempt finishes its current write-up)
+2026-10-02T08:59:51.621Z DONE 022 freshness_sweep → /work/inbox/from_codex/FRESHNESS_20261002.md (read-only primary-source sweep plus parallel landscape check; Zaremba scoped CLEAR, #859 artifact and optimization baseline CHANGED; no kernel replay)
