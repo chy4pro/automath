@@ -57,6 +57,16 @@ actual finite signed certificate, with its geometric remainder; they do
 not assume the continuous capacity lemma. Every guarded theorem depends
 only on `[propext, Classical.choice, Quot.sound]`.
 
-The triangle-kernel sonar target is assembled but its final CI is pending.
+The triangle-kernel sonar theorem `sonar_triangle_bound : SonarTriangleBound`
+passed [CI run 37075227591](https://github.com/chy4pro/automath/actions/runs/37075227591)
+at `ca96407`, with 8755 build jobs and all 22 axiom guards passing. It states
+`m <= n + 2 n^(2/3) + 3 n^(1/3)` for `n >= 48^3`, for a map
+`Fin m → Fin n` whose ordered nondiagonal displacement vectors are distinct.
+The formal proof uses `Real.rpow`; row values may repeat. Sliding windows
+give the exact column marginal, and the signed indexed certificate supplies
+the finite triangle/ramp inequality.
+
+The optional difference-triangle scope bounds are candidates under CI;
+their exact statement audit passed. See the transfer plan for the specification.
 No claim about cosine kernels, Manhattan configurations, integer boxes,
 or the kernel-optimization results follows from these transfer checks.

@@ -1,9 +1,9 @@
-OPEN — T1 and T2 kernel-checked; T3 final CI pending.
+OPEN — required T1–T3 kernel-checked; optional T4 CI pending, statement audit passed.
 
 # Rational-kernel transfer formalization
 
 The exact targets are defined in `Sidon30/TransferStatement.lean`, importing
-only `Sidon30.Basic` (and hence Mathlib). T1 and T2 are now proved.
+only `Sidon30.Basic` (and hence Mathlib). T1, T2 and T3 are now proved.
 The existing Sidon theorem and its thirteen axiom guards remain unchanged.
 
 ## Work cards
@@ -14,9 +14,14 @@ The existing Sidon theorem and its thirteen axiom guards remain unchanged.
 2. **T2: weak Sidon — PROVED.** Strictly off-diagonal unordered sums. Proved the
    repeated-difference structure and an exact finite energy bound, then
    use scale `ceil(sqrt(6) N^(3/4))` and the original onset `90^4`.
-3. **T3: triangle sonar — CI pending.** `Fin m → Fin n`; ordered nondiagonal vector
+3. **T3: triangle sonar — PROVED.** `Fin m → Fin n`; ordered nondiagonal vector
    injectivity. State the original powers by `Real.rpow`, with onset `48^3`.
-4. **T4 (optional):** difference triangle sets, only if cheap after T1.
+4. **T4 (optional) — CI pending; statement audit passed:** difference triangle
+   sets. The exact D1 and D2 targets are in the separate definitions-only
+   `DifferenceTriangleStatement.lean`. A normalized configuration consists
+   of `n` rows of `k+1` marks including zero, all at most `m`, with globally
+   unique positive within-row differences. There is no cross-row constraint.
+   The strict D1 and expanded D2 candidates keep `n>=1`, `k>=20365`.
 
 The original finite signed certificate already has an explicit geometric
 remainder. Reusing it avoids any need to formalize continuous integration.
@@ -55,10 +60,22 @@ PROVED milestone. Statement audit is requested first through the inbox.
   row energy by `m U a_V + U(U-1)`. This yields the discrete triangle/ramp
   sandwich without continuous integration. At `x=n^(1/3) >= 48`, use
   `U=ceil(2x^2)`, `V=ceil(x^2)` and the explicit geometric tail `< 1`.
-  These final sonar cards are still candidates, not a kernel milestone.
+  CI `37075227591` / `ca96407` passed **8755 build jobs and all 22 axiom
+  guards**, including `sonar_triangle_bound : SonarTriangleBound` and the
+  actual finite sandwich. Build and Axioms step outcomes were separately
+  verified through the Actions API. The statement uses exact `Real.rpow`
+  exponents and allows repeated rows, with no unstated restriction on `m`.
   A separate informed source review found no convention or algebra error.
-  Its exact finite checks (231 marginal identities, 60270 pair counts,
-  21400 energy/window tests) are recorded separately from kernel validation.
+  The review seat also reported exact finite checks (231 marginal identities,
+  60270 pair counts, 21400 energy/window tests). These were not rerun by the
+  integrating seat and are not the evidence for the kernel milestone.
+- T4 reuses the real scope parameter `x^4=m/n` with the actual finite
+  window `N=m+1`. The additional `1/n` belongs to the explicit error term;
+  it is not discarded. A strict scalar comparison is retained so that D1
+  has no extra `-1`. Counting, scale, strict inversion and expanded remainder
+  candidates are assembled, awaiting CI. The coordinator read and approved
+  the exact T4 configuration definition and both scope statements through
+  the inbox. No further Lean targets are authorized for this package after T4.
 
 Only actual CI outcomes are listed as checked. Mathematical review and
 source inspection of a candidate are not substitutes for compilation and

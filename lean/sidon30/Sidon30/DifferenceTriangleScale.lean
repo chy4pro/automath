@@ -151,6 +151,9 @@ theorem dtsIntegerScale_tail_lt {n m : ℕ} {x : ℝ}
     (mul_nonneg (by norm_num : (0 : ℝ) ≤ 29) hp)
   have hmul := mul_lt_mul_of_pos_left hsmall
     (by positivity : (0 : ℝ) < ((87 : ℝ) / 2) * x ^ 2)
+  have hrearrange : 29 * (dtsIntegerScale n x : ℝ) / (n : ℝ) =
+      29 * ((dtsIntegerScale n x : ℝ) / (n : ℝ)) := by ring
+  rw [hrearrange]
   nlinarith only [hupper, hmul]
 
 theorem dtsScaleError_nonneg (n m : ℕ) (x : ℝ) : 0 ≤ dtsScaleError n m x := by
@@ -191,7 +194,7 @@ theorem dtsIntegerScale_cost_le {n m : ℕ} {x : ℝ}
     field_simp [ne_of_gt hnpos]
     <;> ring
   rw [hid]
-  exact add_le_add_right hb _
+  linarith only [hb]
 
 end Sidon30
 
