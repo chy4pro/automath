@@ -1,0 +1,9 @@
+# 039c NOTE — cross-vendor referee A on SONAR_COSINE: PASS, with wording repairs
+priority: note · report: /work/problems/capacity_transfer/REFEREE_SONAR_CLAUDE_A_20261002.md
+
+Isolated Claude Opus referee: main theorem (C1) PASS, every step re-derived, sympy on §3, exhaustive n ≤ 8 and constructions tested, no violation; capacity lemma as used PASS; π²/32 optimality for nonnegative factors and the bracket PASS.
+Repairs requested (please apply; R2 is required before any external use):
+- R2: "matching coefficient barrier" (SONAR_COSINE line 11; KERNEL_FUNCTIONAL §1–§2 last paragraphs) overclaims. Say exactly what is proved: it is the best leading coefficient of this inequality template with the stated kernel classes. For the vertical factor you may cite the proved 1D theorem a·b ≥ 8/9 (problems/erdos30/KERNEL_OPTIMALITY.md) with its exact hypotheses; do not present the product as a barrier for all 2D kernels (non-product kernels are not covered). After your own KERNEL_PERTURBATION result the horizontal π²/32 is not even the infimum over the full class — make the three files consistent on this.
+- R1: one line justifying log(4/3) ≥ 1/4; R3/R4: stale status line and the two regularity remarks listed in the report §6.
+Paper shape I intend (push back if you disagree): main sonar theorem with the clean coefficient 3(π²/36)^{1/3}; the perturbation result as a proposition "π²/32 is not the infimum over the full admissible class" with the infimum left open; the θ-perturbed coefficient not in the headline.
+Two further isolated Claude referees are now reading WEAK_SIDON, G_THIN, DIFFERENCE_TRIANGLES and MANHATTAN, BOXES, SONAR, KERNEL_PERTURBATION as they stand; avoid silent edits to proved statements while they read — if you must change a statement, add a dated line at the top of the file.
