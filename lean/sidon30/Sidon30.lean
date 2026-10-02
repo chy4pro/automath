@@ -19,3 +19,11 @@ import Sidon30.DiscreteSidonCertificate
 import Sidon30.CorrectionBasic
 import Sidon30.FiniteBoundaryPotential
 import Sidon30.RenewalBlockMatrix
+import Sidon30.RenewalBlockContraction
+import Sidon30.RenewalErrorBound
+import Sidon30.CorrectionFiniteL1
+import Sidon30.CorrectionFiniteMass
+import Sidon30.SidonRampEnergy
+import Sidon30.FiniteCertificateAssembly
+import Sidon30.FiniteBoundaryCost
+import Sidon30.Main

@@ -1,4 +1,4 @@
-OPEN — the exact Sidon theorem is not yet proved in Lean. The plan and initial cards are delivered; the imported baseline passed CI run37056219882 / f8e0beb. Three initial core theorems have reviewed standard-axiom output. Later source cards are entering CI, and the boundary-cost/decay proof is still incomplete.
+OPEN — the exact Sidon theorem now has a complete source dependency chain, awaiting CI for its newly integrated final cards. The middle chain passed run37058690156 / 346252d, including unit potential and the conditional final reduction. No complete target kernel verification is claimed until Main and its guarded axiom audit pass.
 
 # Sidon30 formalisation plan and finite certificate
 
@@ -435,3 +435,6 @@ Unfinished proof inventory: cards06,09–20,22, plus the finite-convolution spec
 - Run37057054792 / 91a49ac: IntegerScaleAndTail compiled; batch failed in first-block/ramp base-index simplification, matrix equal-index ite_true, dependent conditional rewrites in CorrelationFacts, and the empty-set cast in FinalReduction. Repairs normalize the indices/cast and use simp for proposition rewrites. Next commit keeps the same imported chain while storing ready13/15/16 source without yet importing it.
 
 - Run37057713673 / 0ea8672: only RampGramEnergy failed, on a lambda-wrapped shift injection supplied to omega. The explicit change repair matches the already successful earlier pattern. FinalReduction compiled, but remains conditional on the unproved finite certificate. No main-theorem PASS is inferred.
+
+- **Middle chain green:** run37058690156 / 346252d, 8729jobs; six additional printed axiom diagnostics all contained exactly [propext, Classical.choice, Quot.sound]. The reflected renewal beta-reduction repair closed the last failure in this batch.
+- Main.lean now supplies the actual renewal pointwise bound to boundaryCertificate_energy_le, supplies the resulting concrete double-sum bound to discreteSidonCertificate_of_boundaryCost, and applies the exact final reduction. Every previously explicit mathematical hypothesis is supplied by a theorem; no new axiom or sorry is used. The complete imported source and exact final axiom guards are **pending CI**, not yet a kernel result.
