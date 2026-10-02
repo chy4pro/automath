@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 120
     defaults:
       run:
+        shell: bash
         working-directory: lean/sidon30
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +26,6 @@ jobs:
       - name: Build
         run: lake build 2>&1 | tee build.log
       - name: Axioms
-        if: always()
         run: |
           if [ -f Sidon30/FinalCheck.lean ]; then lake env lean Sidon30/FinalCheck.lean; else echo "no FinalCheck yet"; fi
       - name: Upload build log
