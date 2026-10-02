@@ -32,3 +32,31 @@ CI workflow.
 This formalisation concerns the explicit bound above. It does not formalise
 the paper's kernel-optimality result or solve the full Erdős #30 conjecture.
 The associated paper record is [Zenodo](https://doi.org/10.5281/zenodo.23103979).
+
+## Rational-kernel transfers
+
+[TransferStatement.lean](Sidon30/TransferStatement.lean) fixes the exact
+definitions and targets using only Basic/Mathlib. The statement audit and
+the full evidence ledger are in [PLAN_TRANSFER.md](PLAN_TRANSFER.md).
+
+The following transfers passed
+[CI run 37073917922](https://github.com/chy4pro/automath/actions/runs/37073917922)
+at commit `3523813`, including the build and exact axiom guards:
+
+- `g_thin_second_order`: every nonzero ordered integer difference has at
+  most `g` representations; for `g,N >= 1` and `gN >= 120^4`,
+  `card A <= sqrt(gN) + (2 sqrt(2)/3) sqrt(sqrt(gN)) + 1`.
+- `Sidon30.weakSidon_second_order`: uniqueness of unordered sums of
+  **distinct** elements; for `N >= 90^4`,
+  `card A <= sqrt(N) + sqrt(8/3) sqrt(sqrt(N)) + 2`.
+
+Both statements require `A ⊆ {1,...,N}`. The `g=1` recovery of the
+ordinary Sidon specification is also checked, while the original theorem
+and its thirteen guards remain unchanged. The transfer proofs use the
+actual finite signed certificate, with its geometric remainder; they do
+not assume the continuous capacity lemma. Every guarded theorem depends
+only on `[propext, Classical.choice, Quot.sound]`.
+
+The triangle-kernel sonar target is assembled but its final CI is pending.
+No claim about cosine kernels, Manhattan configurations, integer boxes,
+or the kernel-optimization results follows from these transfer checks.

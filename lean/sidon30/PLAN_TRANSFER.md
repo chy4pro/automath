@@ -1,20 +1,20 @@
-OPEN
+OPEN — T1 and T2 kernel-checked; T3 final CI pending.
 
 # Rational-kernel transfer formalization
 
 The exact targets are defined in `Sidon30/TransferStatement.lean`, importing
-only `Sidon30.Basic` (and hence Mathlib). There are no theorem claims yet.
+only `Sidon30.Basic` (and hence Mathlib). T1 and T2 are now proved.
 The existing Sidon theorem and its thirteen axiom guards remain unchanged.
 
 ## Work cards
 
-1. **T1: g-thin.** Exact nonzero ordered integer-difference multiplicity.
+1. **T1: g-thin — PROVED.** Exact nonzero ordered integer-difference multiplicity.
    Reuse the finite ramp certificate with energy `g + a_T (k-g)`.
    The integer scale is rounded from `sqrt(2) (gN)^(3/4) / g`.
-2. **T2: weak Sidon.** Strictly off-diagonal unordered sums. Prove the
+2. **T2: weak Sidon — PROVED.** Strictly off-diagonal unordered sums. Proved the
    repeated-difference structure and an exact finite energy bound, then
    use scale `ceil(sqrt(6) N^(3/4))` and the original onset `90^4`.
-3. **T3: triangle sonar.** `Fin m → Fin n`; ordered nondiagonal vector
+3. **T3: triangle sonar — CI pending.** `Fin m → Fin n`; ordered nondiagonal vector
    injectivity. State the original powers by `Real.rpow`, with onset `48^3`.
 4. **T4 (optional):** difference triangle sets, only if cheap after T1.
 
@@ -40,9 +40,15 @@ PROVED milestone. Statement audit is requested first through the inbox.
   capacity certificates, g-thin difference counting and scale estimates,
   and the initial sliding-window identities. The indexed certificate
   explicitly allows repeated row values.
-- The complete g-thin proof and weak-Sidon proof are assembled as
-  candidates. Headline axiom gates are appended after the original thirteen
-  guards; their passing run is still required before a theorem milestone.
+- CI `37073917922` / `3523813` passed **8749 build jobs and the Axioms step**.
+  The job-step conclusions were independently read from the Actions API.
+  This checks `g_thin_second_order : GThinSecondOrderBound`, its `g=1`
+  recovery `sidon_second_order_from_gThin`, and
+  `Sidon30.weakSidon_second_order : WeakSidonSecondOrderBound`.
+  Each headline guard allows exactly `[propext, Classical.choice, Quot.sound]`.
+  Additional guards check the weak-Sidon multiplicity-two theorem and the
+  repeated-difference count `<= k-2`. All original thirteen guards passed
+  unchanged; the old Sidon main theorem and specification are unchanged.
 - The sonar finite route sums the indexed capacity inequality over every
   horizontal window. Its exact squared column count is
   `m U^2 - (U^3-U)/3`; uniqueness of displacement vectors bounds the summed
@@ -50,6 +56,9 @@ PROVED milestone. Statement audit is requested first through the inbox.
   sandwich without continuous integration. At `x=n^(1/3) >= 48`, use
   `U=ceil(2x^2)`, `V=ceil(x^2)` and the explicit geometric tail `< 1`.
   These final sonar cards are still candidates, not a kernel milestone.
+  A separate informed source review found no convention or algebra error.
+  Its exact finite checks (231 marginal identities, 60270 pair counts,
+  21400 energy/window tests) are recorded separately from kernel validation.
 
 Only actual CI outcomes are listed as checked. Mathematical review and
 source inspection of a candidate are not substitutes for compilation and

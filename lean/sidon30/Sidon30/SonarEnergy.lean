@@ -214,7 +214,7 @@ theorem isSonar_triangleRampEnergy_le {m n U V : ℕ}
     exact mul_nonneg (by positivity) (rampCorrelation_nonneg V d.2)
   have hsum : (∑ d ∈ D, w d) = (U : ℝ) * ((U : ℝ) - 1) / 2 := by
     dsimp [D, w]
-    rw [Finset.product_eq_sprod, Finset.sum_product]
+    rw [Finset.sum_product]
     simp_rw [← Finset.mul_sum, sum_rampCorrelation hV, mul_one]
     exact sum_positive_triangle hU
   have hpositive : (∑ p ∈ sonarPositivePairs m, K p.1 p.2) ≤

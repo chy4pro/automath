@@ -159,15 +159,17 @@ theorem sonarCubeRoot_nonneg (n : ℕ) : 0 ≤ sonarCubeRoot n := by
   exact Real.rpow_nonneg (by positivity : (0 : ℝ) ≤ (n : ℝ)) _
 
 theorem sonarCubeRoot_cube (n : ℕ) : sonarCubeRoot n ^ 3 = (n : ℝ) := by
-  unfold sonarCubeRoot
-  rw [← Real.rpow_natCast, ← Real.rpow_mul (by positivity : (0 : ℝ) ≤ (n : ℝ))]
-  norm_num
+  have h := (Real.rpow_mul (by positivity : (0 : ℝ) ≤ (n : ℝ))
+    ((1 : ℝ) / 3) (3 : ℝ)).symm
+  norm_num at h
+  simpa only [sonarCubeRoot, Real.rpow_eq_pow] using h
 
 theorem sonarCubeRoot_sq (n : ℕ) :
     sonarCubeRoot n ^ 2 = Real.rpow (n : ℝ) ((2 : ℝ) / 3) := by
-  unfold sonarCubeRoot
-  rw [← Real.rpow_natCast, ← Real.rpow_mul (by positivity : (0 : ℝ) ≤ (n : ℝ))]
-  norm_num
+  have h := (Real.rpow_mul (by positivity : (0 : ℝ) ≤ (n : ℝ))
+    ((1 : ℝ) / 3) (2 : ℝ)).symm
+  norm_num at h
+  simpa only [sonarCubeRoot, Real.rpow_eq_pow] using h
 
 theorem sonarCubeRoot_ge {n : ℕ} (hn : 48 ^ 3 ≤ n) : 48 ≤ sonarCubeRoot n := by
   have hx0 := sonarCubeRoot_nonneg n
@@ -184,4 +186,3 @@ theorem sonarCubeRoot_ge {n : ℕ} (hn : 48 ^ 3 ≤ n) : 48 ≤ sonarCubeRoot n 
 end Sidon30
 
 end
-
