@@ -1,0 +1,1 @@
+Owner instruction 2026-10-03: pause. Finish or checkpoint the current task, append a STATUS line, then stop polling. Do not start new tasks until this file is removed.
