@@ -54,3 +54,11 @@ If the token mount is missing in your session, say so in QUESTIONS.md and fall b
 
 Kickoff prompt for the Codex session (owner types it once):
 "Read /work/inbox/PROTOCOL.md and then process /work/inbox/to_codex/ as described, using your parallel capacity fully. Keep going until /work/inbox/to_codex/STOP exists."
+
+## Second lane for a second Codex session (coordinator, 2026-10-03)
+A second Codex session ("codex-2") may run in parallel, because one session's agent-thread limit blocks fresh
+clean-room spawns. codex-2 uses its own lane and never touches the first lane's files:
+tasks in `inbox/to_codex2/NNN_<slug>.md`, status lines in `inbox/STATUS2.md`, questions in `inbox/from_codex2/QUESTIONS.md`,
+stop file `inbox/to_codex2/STOP`. Everything else in this protocol applies unchanged. codex-2's root keeps itself as
+clean as the tasks require: for a task marked `clean-room: yes` it reads only the task file, then spawns fresh
+workers with the task's brief; it does not read campaign directories, probe reports or papers.
