@@ -5,7 +5,7 @@
 # Usage: bash tools/paperclip/cloudflare.sh <owner-email> [tunnel-name]
 set -euo pipefail
 EMAIL="${1:?owner e-mail for the Access policy}"; TNAME="${2:-automath}"
-HOST="automath.mozone.io"; ZONE_NAME="mozone.io"; ORIGIN="http://host.docker.internal:3100"
+HOST="automath.mozone.io"; ZONE_NAME="mozone.io"; ORIGIN="http://localhost:3100"
 T=$(cat /wb/creds/cloudflare-api-token/value); A=$(cat /wb/creds/cloudflare-account-id/value)
 cf(){ curl -s -H "Authorization: Bearer $T" -H "Content-Type: application/json" "$@"; }
 jq_(){ python3 -c "import sys,json; d=json.load(sys.stdin); $1"; }
@@ -43,5 +43,5 @@ if [ -z "$AID" ]; then
   cf -X POST "$API/accounts/$A/access/apps/$AID/policies" --data "{\"name\":\"owner only\",\"decision\":\"allow\",\"include\":[{\"email\":{\"email\":\"$EMAIL\"}}],\"precedence\":1}" | jq_ 'assert d["success"], d["errors"]; print("policy created")'
 else echo "access app exists: $AID (policies untouched)"; fi
 # 5. connector token for the Workbench tunnel project (printed to a file, never to stdout)
-cf "$API/accounts/$A/cfd_tunnel/$TID/token" | jq_ 'open("/work/.wb/tunnel.token","w").write(d["result"]); print("tunnel token written to /work/.wb/tunnel.token (keep out of git)")'
+cf "$API/accounts/$A/cfd_tunnel/$TID/token" | jq_ 'open("/work/.paperclip/tunnel.token","w").write(d["result"]); print("tunnel token written to /work/.paperclip/tunnel.token (keep out of git)")'
 echo "DONE: $HOST → tunnel $TNAME → $ORIGIN; Access allow $EMAIL"

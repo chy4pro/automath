@@ -11,5 +11,10 @@ export PORT=3100
 mkdir -p "$PAPERCLIP_HOME" "$HOME"
 cd /work
 echo "[start] $(date -u +%FT%TZ) node $(node -v) paperclipai $(paperclipai --version)"
+# Cloudflare connector: if a tunnel token exists, run cloudflared beside the server (origin = localhost:3100)
+if [ -s /work/.paperclip/tunnel.token ] && [ -x /work/.tools/bin/cloudflared ]; then
+  (/work/.tools/bin/cloudflared tunnel --no-autoupdate run --token-file /work/.paperclip/tunnel.token 2>&1 | sed 's/^/[cloudflared] /') &
+  echo "[start] cloudflared started"
+fi
 # `run` bootstraps (onboard + doctor) on first run; lan preset binds 0.0.0.0 so the Workbench port publish works
 exec paperclipai run
