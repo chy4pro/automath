@@ -4,13 +4,17 @@
 # Account Cloudflare Tunnel:Edit, Access: Apps and Policies:Edit. Never prints secrets.
 # Usage: bash tools/paperclip/cloudflare.sh <owner-email> [tunnel-name]
 set -euo pipefail
-EMAIL="${1:?owner e-mail for the Access policy}"; TNAME="${2:-automath}"
+EMAIL="${1:-}"; TNAME="${2:-automath}"
 HOST="automath.mozone.io"; ZONE_NAME="mozone.io"; ORIGIN="http://localhost:3100"
 T=$(cat /wb/creds/cloudflare-api-token/value); A=$(cat /wb/creds/cloudflare-account-id/value)
 cf(){ curl -s -H "Authorization: Bearer $T" -H "Content-Type: application/json" "$@"; }
 jq_(){ python3 -c "import sys,json; d=json.load(sys.stdin); $1"; }
 API=https://api.cloudflare.com/client/v4
 cf $API/user/tokens/verify | jq_ 'assert d["success"] and d["result"]["status"]=="active", d'
+# Access policy e-mail: the owner's Cloudflare account e-mail (from /user when the token allows it), else argument 1
+if [ -z "$EMAIL" ]; then EMAIL=$(cf $API/user | jq_ 'print((d.get("result") or {}).get("email",""))'); fi
+[ -n "$EMAIL" ] || { echo "no e-mail: pass it as argument 1"; exit 1; }
+echo "Access policy e-mail: $EMAIL"
 ZID=$(cf "$API/zones?name=$ZONE_NAME" | jq_ 'print(d["result"][0]["id"])')
 echo "zone $ZONE_NAME = $ZID"
 # 1. tunnel (remote-managed config)
