@@ -65,3 +65,4 @@ notes/*.bak*
 .tools/
 .paperclip/
 .home/
+.wb/tunnel.token
