@@ -62,3 +62,6 @@ engine/cache/
 notes/chatgpt_delete_queue.md
 notes/*dashboard-src*
 notes/*.bak*
+.tools/
+.paperclip/
+.home/
