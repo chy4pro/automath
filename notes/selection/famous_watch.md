@@ -757,11 +757,19 @@ conjecture, Wall–Sun–Sun primes, Hall's conjecture / abc neighborhood, Dicks
 Oppermann's conjecture, first and second Hardy–Littlewood conjectures, Lemoine's conjecture,
 Erdős #855) — worth a dedicated pass later.
 
-## Freshness addendum 2026-10-09 — OpenAI math release (coordinator, title screen)
+## Freshness addendum 2026-10-09 — OpenAI math release (G2 sweep, finalized)
 
-See `openai_math_release_20261009.md`. Rows with a claimed resolution in the 2026-10-06 catalogue
-(unverified AI-generated manuscripts; Lean status per the repo): row 2 Kaplansky zero-divisor → family
-196 (counterexample, Lean link); row 10 Zariski cancellation → family 047 (affine fourfold); row 12
-circulant Hadamard → family 179 (orders 1 and 4 only, Lean link). Row 13 Jacobian: two "Jacobian" hits
-to be read by the scout. Rows 1, 3–9, 11, 14–18: no title hit. Unlock conditions are not re-evaluated
-here; the scout sweep (G2_OPENAI_RELEASE_20261009.md) decides row by row.
+Source: scout sweep `G2_OPENAI_RELEASE_20261009.md` (all 18 rows read against the 372-family catalogue, snapshot
+fd4aeeb2). Every release statement is a LIVE CLAIM (AI-generated manuscript, unverified by us; Lean scope per the
+repo's notes, not replayed). Shelf status: a CLAIMED-CLOSED row stays on the shelf but is not a candidate while the
+claim stands; unlock conditions are not re-evaluated here.
+
+| Row | Verdict | Claimed statement / distinction |
+| --- | --- | --- |
+| 2 Kaplansky zero-divisor | **C 196** | finitely presented torsion-free G, nonzero α,β ∈ F₂[G] with αβ = 0; Lean scope "full". The unit conjecture (already refuted) is a different assertion. |
+| 10 Zariski cancellation | **C 047** | complex affine fourfold A with A[w] ≅ C[x₁..x₅], A ≇ C[x₁..x₄]; dimension-three residual question not claimed. |
+| 12 Circulant Hadamard | **C 179** | real circulant Hadamard exists iff n ∈ {1,4}; Barker lengths > 1 exactly {2,3,4,5,7,11,13} (Lean additional statement covers even lengths only). |
+| 7 #982 convex pinned distances | A 167/183 | weak sublinear pin guarantee / halving pairs; no convex floor(n/2). |
+| 14 five-cycle double cover | A 181 | O(n) cycle-or-edge partition, not a 5-colour double cover. |
+| 15 Kahn–Kalai 6(a) | A 175/176/186 | expectation-threshold, graph containment, threshold width; none is the small-coordinate booster of Conjecture 6(a). |
+| 1, 3, 4, 5, 6, 8, 9, 11, 13, 16, 17, 18 | N | no matching statement; row 13 "Jacobian" hits are abelian-variety Jacobians / analytic determinants, not polynomial invertibility. |

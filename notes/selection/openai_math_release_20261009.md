@@ -108,3 +108,23 @@ Snaky; random triangle removal constant; **cycle–clique Ramsey exact**; ordere
   rest only by title. The scout sweep (item 2) is the real G2.
 - Press numbers vary (722 vs 719; "20 %" vs "42 %" formalized); the repository README is the source
   of record and was read directly.
+
+## Scout G2 result (2026-10-09 ~14:54Z) — corrections to the screen above
+
+`G2_OPENAI_RELEASE_20261009.md` (scout, snapshot fd4aeeb2, all 372 titles + all abstracts of families 001–031,
+087–101, 155–192, all catalogue rows) supersedes this screen where they differ:
+
+- **Erdős #167 is Tuza's conjecture**, not unit distances; "exclusion row #167" above was an identifier collision with
+  OpenAI family 167. The unit-distance claim (u(n) ≤ C n^β, β < 4/3) closes `targets_20261003.md` card "Plane
+  unit-distance upper coefficient" asymptotically, nothing else.
+- **Row 13 splits**: #304 CLAIMED-CLOSED (family 025), #18 adjacent only (divisor restriction absent).
+- **Missed by the screen**: Jacobsthal #687/#970 old upper-bound target CLAIMED-CLOSED by family 021 (h(k) ≤
+  C k²/(log log 3k)², arbitrary moduli); Brennan (072), strong sensitivity (132), De Giorgi n = 8 (375) also C;
+  Hadwiger–Nelson six-colour bound (158) C with 6 vs 7 open.
+- **#1082 stays ADJACENT** (167: n^{1−ε} for all but o(n) pins, no rate, no linear coefficient; 183: halving pairs).
+- Active portfolio: no direct overlap confirmed at abstract depth (#30, #156, #241, #86, #1066, #1082, Zaremba, #708,
+  #377, #859, #624, #889, capacity transfer); adjacencies recorded in old_records addendum.
+- Lean caveat: the repo's scope notes and `lean/formalization.yaml` disagree for several comparators (012, 159, 167
+  PlanarUnitDistances, 170, 183, 186, 189; additional comparators of 021/025/179). Treat all as claims.
+- Catalogue files updated accordingly: old_records (addendum rewritten), famous_watch (addendum rewritten),
+  targets_20261003 (addendum added), SELECTION.md (crowding negative list added).

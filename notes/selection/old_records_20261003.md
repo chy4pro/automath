@@ -163,17 +163,32 @@ The #708 hinge/duality method can certify a specified finite counting inequality
 
 **Execution and limits.** Root plus three existing source-review seats; no fresh clean-room agents, solver, Lean build, new dependency, cloud job, commit/push, or external message. Only source reading and small exact arithmetic checks were performed. The global-memory recall tool/skill was unavailable; no notice was invented and no preset was changed. Three same-vendor read-only integration reviews completed with the stated scope; all requested definition, endpoint, attribution and formatting repairs were applied. The root separately inspected #1066 Theorem 4/Lemma 10 and the #1093 counterexample. Wall time and check scope, not unobserved model token/cost claims, are reported there.
 
-## Freshness addendum 2026-10-09 — OpenAI math release (coordinator, keyword screen)
+## Freshness addendum 2026-10-09 — OpenAI math release (G2 sweep, finalized)
 
-OpenAI's 2026-10-06 catalogue (719 manuscripts, 372 families; see `openai_math_release_20261009.md`)
-touches this audit as follows; a scout G2 sweep (G2_OPENAI_RELEASE_20261009.md) will finalize each row.
+Source of record: the scout's bounded G2 sweep `G2_OPENAI_RELEASE_20261009.md` (snapshot fd4aeeb2, 2026-10-08) of the
+OpenAI catalogue (719 manuscripts, 372 families; coordinator first screen `openai_math_release_20261009.md`). Every
+release statement is a LIVE CLAIM (AI-generated manuscript, community review pending; Lean scope per the repo's own
+notes, never replayed by us). "C" = the catalogue target is CLAIMED-CLOSED at the stated scope; "A" = an adjacent claim
+only; "N" = no matching statement found. The coordinator's keyword screen of the same day is superseded where it differs.
 
-- Row 13 (#304/#18 short Egyptian fractions): family 025 claims N(b) = O(log log b), Erdős's conjecture,
-  with a Lean link → **CLAIMED-CLOSED 2026-10-06**; remove from the candidate pool until the claim fails.
-- Row 3 (#1082): family 167 (weak pinned planar distances, n^{1−ε} from all but o(n) points) and family
-  183 (halving lines, no three collinear) are ADJACENT, not the exact-coefficient statement; HOLD stands,
-  any future #1082 G2 must cite them.
-- Exclusion row #167 (unit distances): family 167 also claims O(n^{4/3−δ}) unit distances → the
-  coefficient game on the 4/3 exponent is moot.
-- All other rows: no title/abstract hit on the keyword screen (Sidon, B₃, penny, hypercube C₄, Zaremba,
-  binomial/Selfridge, divisors, sum of two squares, cluster primes, asymptotic bases: 0 hits).
+- **Row 13 is split.** #304 (unrestricted short Egyptian fractions, max over numerators): **C, family 025**
+  (c₁ log log b ≤ N(b) ≤ c₂ log log b, Theorem 1.1, Lean scope "full"; constants/onset unspecified) → out of the pool
+  until the claim fails. #18 (practical numbers / n! divisor subsets): **A only** — the divisor restriction is absent
+  from the statement and the Lean scope; #18 stays HOLD/LOW-FIT on its own merits.
+- **B5 (#687/#970 Jacobsthal): C for the old upper-bound target, family 021** — h(k) ≤ C k²/(log log 3k)² for arbitrary
+  moduli with ≤ k prime factors (Theorem 1.1), superseding Iwaniec's O((k log k)²); no numerical C/onset, optimal order
+  not determined. NO-GO stands; the quadratic-bound subquestion is no longer a target.
+- **Row 3 (#1082): A, families 167/183** — the weak pinned theorem gives n^{1−ε} distances for all but o(n) pins at each
+  fixed ε, no rate; it neither improves the linear coefficient nor touches the global floor(n/2) question (the stronger
+  pinned variant stays recorded as false). HOLD stands; any #1082 G2 must cite 167/183.
+- **Row 1 (#1066): A, 158/167/184** — plane colouring, unit-pair exponents and clique-free independence give no new
+  penny-graph independence coefficient. Rows 4 (#902) A 173, 6 (#1182) A 189, 8 (#790) A 164, 10 (#187) A 160,
+  14 (#295) A 025, 18 (#1109) A 020, B4 (#375/#962) A 012: adjacent only, verdicts unchanged.
+- Rows 2, 5, 7, 9, 11, 12, 15, 16, 17, B1, B2, B3: **N**.
+- **Exclusion table correction:** Erdős #167 is Tuza's conjecture — an identifier collision with OpenAI family 167, not a
+  hit; the coordinator's first-screen note "exclusion row #167 (unit distances)" was wrong. The unit-distance claim
+  (family 167 second manuscript, u(n) ≤ C n^β, β < 4/3) bears on `targets_20261003.md` card "Plane unit-distance upper
+  coefficient" and on exclusion row #104 (A). Other exclusion rows: #812/#1030 A 170, #817/#201 A 159, #876 A 164,
+  #1184 A 012, cube C₄ A 171; the rest N.
+- Active lines (#30, #156, #241, #86, #1066, #1082, Zaremba, #708, #377, #859, #624, #889, capacity transfer): no
+  direct overlap; #86 A 171, #1066 A 158/167/184, #1082 A 167/183, #859 A 025, #889 A 012.

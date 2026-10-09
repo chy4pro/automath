@@ -56,3 +56,21 @@ re-scored at the next selection task. Selection tasks MUST read the shelf alongs
 rationale citing evidence paths. 3. Write lines/<line>/BOOTSTRAP.md for the new line.
 4. Report the pick + rationale to the user via dialogue (visibility; selection authority
 is delegated per owner ruling 08-22).
+
+## Crowding negative list — OpenAI "math" release (2026-10-09)
+OpenAI released 719 AI-generated manuscripts / 372 result families on 2026-10-06 (repo openai/math; ~42% of
+top-line results with Lean per its README). Catalogue: notes/selection/openai_math_families_20261009.txt;
+G2 verdicts per catalogue row: notes/selection/G2_OPENAI_RELEASE_20261009.md. Rules from it:
+1. Any target whose statement is CLAIMED-CLOSED by a release family is out of the pool until the claim
+   fails (currently: #304, Jacobsthal quadratic bound, Kaplansky zero-divisor, Zariski cancellation,
+   circulant Hadamard, plane unit-distance 4/3 coefficient, Hadwiger–Nelson six-colour bound, Brennan,
+   strong sensitivity, De Giorgi n=8). A release claim is a LIVE CLAIM, never a verified result, and
+   never a priority bar for a *different* statement.
+2. Any target ADJACENT to a release family is crowded: its G2 must cite the family and state the exact
+   difference (e.g. #1082 vs 167/183, #86 vs 171, #1066 vs 158/167/184).
+3. Unformalized release families in our area (G2 section B: 011, 022, 029, 164, 166, 171, 178; partial
+   formalizations 159/175/184/186) are referee-able claims, a different kind of work from attacking an
+   open problem; whether automath does any of it is an owner decision, not a selection-gate output.
+4. The famous × quantitative-frontier selector keeps preferring old elementary records with an
+   identifiable lossy step (old_records_20261003.md); the release did not touch the Sidon/B_h,
+   Zaremba, minimal-maximal-Sidon or capacity-transfer records.
