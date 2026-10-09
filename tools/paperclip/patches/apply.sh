@@ -3,7 +3,8 @@
 # Why: upstream `codex_local` allows a REMOTE's own ~/.codex/auth.json only for sandbox transports; ssh targets are forced
 # to use the Paperclip host's login. We let ssh targets behave like sandboxes: (1) the credential gate probes the remote
 # for ~/.codex/auth.json instead of refusing; (2) after the managed CODEX_HOME is uploaded over ssh, auth.json falls back
-# to the remote's own login (same rule as codex-auth-merge-extract.sh uses for sandboxes).
+# to the remote's own login (same rule as codex-auth-merge-extract.sh uses for sandboxes); (3) the server's pre-dispatch
+# credential gate (run-preparation) exempts ssh environments like it exempts sandbox ones.
 set -e
 PY=$(command -v python3 || echo /work/.tools/node/bin/node)   # python3 exists in the Claude container; fall back handled below
 NM=/work/.tools/npm/lib/node_modules/paperclipai/node_modules/@paperclipai
@@ -48,4 +49,15 @@ if 'PAPERCLIP_PATCH_SSH_AUTH' not in r:
     open(rm, 'w').write(r); print('patched remote-managed-runtime.js')
 else: print('remote-managed-runtime.js already patched')
 PYEOF
-/work/.tools/node/bin/node --check "$EX" && /work/.tools/node/bin/node --check "$RM" && echo "syntax ok"
+HB=$NM/server/dist/services/heartbeat.js
+[ -f "$HB.orig" ] || cp "$HB" "$HB.orig"
+python3 - "$HB" <<'PYEOF'
+import sys
+hb = sys.argv[1]; s = open(hb).read()
+if 'PAPERCLIP_PATCH_SSH_AUTH' not in s:
+    a = '(input.environmentDriver ?? null) !== "sandbox") {\n        const resolvedEnv = parseObject(resolvedConfig.env);\n        const readiness = await evaluateCodexCredentialReadiness({'
+    b = '(input.environmentDriver ?? null) !== "sandbox" && (input.environmentDriver ?? null) !== "ssh" /* PAPERCLIP_PATCH_SSH_AUTH: ssh environments are probed by the adapter like sandboxes */) {\n        const resolvedEnv = parseObject(resolvedConfig.env);\n        const readiness = await evaluateCodexCredentialReadiness({'
+    assert a in s, 'heartbeat anchor missing'; s = s.replace(a, b, 1); open(hb, 'w').write(s); print('patched heartbeat.js')
+else: print('heartbeat.js already patched')
+PYEOF
+/work/.tools/node/bin/node --check "$EX" && /work/.tools/node/bin/node --check "$RM" && /work/.tools/node/bin/node --check "$HB" && echo "syntax ok"
