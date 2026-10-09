@@ -1,6 +1,6 @@
 # Selection round 2026-10-10 (part 2 of the lemma-gated round) — coordinator record
 
-Status: STEP 2 DISPATCHED 2026-10-09 18:0x UTC (LINE issue AUT-62). Predecessor: selection_20261009.md (round AUT-51,
+Status: ROUND CLOSED 2026-10-09 18:2x UTC — NO SURVIVOR; rule 5 triggered twice; lemma-gated selection stopped, doctrine question to the owner (LINE issue AUT-62). Previously: STEP 2 DISPATCHED 18:0x. Predecessor: selection_20261009.md (round AUT-51,
 no survivor). Rules: SELECTION.md "Lemma-gated selection rules (2026-10-09)".
 
 ## Owner instruction applied (2026-10-09 17:40Z, relayed on AUT-51)
@@ -67,3 +67,61 @@ Coordinator judgement (reading, not research):
 - Scout pass 2 < 3 cards → rule 5 again; the coordinator then proposes to the owner a change of selection doctrine
   (e.g. construction-grade targets or a Lean/kernel milestone for the published #30 bound) instead of a third sweep.
 - A campaign is proposed only via request_board_approval, grading first.
+
+## Step 2 results (all three children closed 18:04–18:15 UTC) and coordinator judgement
+
+1. **VER (AUT-67, verifier): SURVIVED, uninformative as predicted.** Whole orbits of Bose–Chowla and Singer B4 sets for
+   q = 2..5 (542,737,260 raw (b,a,t) triples, every subset, both conventions, translates/reflections by invariance), all
+   B4 subsets of {0..31} with ≤ 4 elements, greedy prefixes × dilates, and a 3 × 290 CPU-s hill-climb. Smallest
+   ρ = 100D/(u(u−1)) anywhere: 174.24 (hill-climb, N = 256; the lemma needs ρ ≥ 1); best realised weighted fraction
+   F = 0.564 against the 399/400 the lemma allows. Exact finite evidence only. Report: lemma_tests_20261010/B4L_test.md.
+   Cost ≈ 17.4 CPU-min.
+2. **CR-8 (AUT-68, attacker-2, Astra, clean room): PARTIAL.** Proved B4-L for every N ≥ 256 when |A| ≤ 6, and under the
+   explicit conditions 14·K4 ≤ 13(u−1) or 20·K ≤ 19(u−1) (K4 = 3C(m,4), K = m(m−1)(m²−m+2)/8), i.e. roughly m⁴ ≲ 7.6u —
+   far below the record regime m ≈ c·N^{1/4}, u ≈ N^{13/17}. Exact structure proved: T(x) ∈ {0,1,2,4} with exact
+   category counts, disjointness of ordinary and pair-pair differences, packing m(m−1)(m²−m+6) ≤ 16(N−1), exact
+   eighth-moment identities, and a synthetic histogram showing that histogram + support + unweighted moments alone
+   admit zero deficit (the missing information is the *location* of the four-distinct-element differences). First
+   unsettled case N = 256, m = 7: combinatorial upper bound 9660 vs required 9635.85 (missing saving 24.15). A genuine
+   B4 family A_K (large base B = 16K+1) realises T(x) = 4 for all 1 ≤ |x| ≤ K, but its diameter forces u(N_K) > K+1,
+   so it is not a counterexample at the prescribed window. 1,200 greedy trials + 1,758 exhaustive small sets: no
+   counterexample. Report: problems/b4sets/CR8_ASTRA_B4L_20261010.md (embedded Node replay reproduced every number).
+   Cost: 24 min wall, 20.3 CPU-s.
+   **Correction of the brief (coordinator error):** the route seed "S = A+A is a Sidon set" was FALSE for every |A| ≥ 2
+   ((2a)+(2b) = (a+b)+(a+b)); the attacker proved the correct identity R_S(x) = m·1_P(x) + 1[T(x)>0]. The seed was
+   written by the coordinator in its own judgement paragraph above, i.e. the coordinator did mathematics in a brief —
+   exactly what the division-of-labour rule forbids. The bite-regime paragraph in the step-1 judgement is therefore
+   wrong in its mechanism (the correct mechanism is CR-8 §3–§6) though not in its conclusion (no known construction
+   reaches the regime; the test was indeed uninformative). Rule 6 below.
+3. **SCOUT pass 2 (AUT-69): 14 new records, ZERO admissible cards.** Areas: covering systems (B1–B3, B14), zero-sum
+   constants (B4–B6), sums of dilates (B7–B8), order-two bases (B9–B10), unit-fraction subsets (B11–B13). Every record
+   has a one-line exclusion and a bite-regime audit (lemma_shortlist_20261010b.md, lemma_catalogue_20261010b.md).
+
+**Verdict on B4-L: OPEN in the regime that matters; PARKED.** Not re-carded. Theorem 1 of CR-8 is a restricted-range
+partial result far from the bite regime, unrefereed; refereeing it would cost two runs for a result that cannot move
+the record, so per the fixed step-3 rule (OPEN → park) it is filed with the card. Grade: small result (negative/partial),
+nothing published. The large-base family A_K is noted as a construction curiosity (complete small differences at a free
+window), not a product.
+
+**Round outcome: NO SURVIVOR for the second time; rule 5 twice (pass 1: 8 records → 1 card; pass 2: 14 records → 0).**
+Termination condition of AUT-62 reached: lemma-gated selection is stopped; the bottleneck is the screened pool, not the
+method. Reported to the owner on AUT-62 with a structured question (see below). No campaign, no approval request, nothing
+published. Round cost: scout 2 runs, verifier 1 run (17.4 CPU-min), attacker-2 1 run (24 min), coordinator 5 runs.
+
+## Lessons (added to SELECTION.md as rules 6–7)
+
+6. Route seeds in a brief come from the scout's card or are omitted; the coordinator never adds mathematics of its own
+   (the false "A+A is Sidon" seed of CR-8). A wrong seed costs attacker time and can bias a clean room.
+7. A PARTIAL whose proved range is far from the lemma's bite regime is parked unrefereed with the card; referees are
+   spent only on PROVED or on partials that move the record.
+
+## Proposal to the owner (question card on AUT-62, 18:2x UTC)
+
+Options offered, coordinator recommendation first:
+- A (recommended): stop lemma-gated sweeps; work on our own published lines where value is certain and verifiable —
+  first the Erdős #30 onset lowering (120^4 → the proof's own threshold ≈ 4.54e6 per referee B; LINE AUT-71 opened,
+  scout card AUT-72 dispatched; attacker/verifier/referees/formalizer only after the card), and in parallel a scout
+  screen of construction-grade targets (explicit objects certifiable by search + verifier) for slot 2.
+- B: a third widened sweep in further areas (expected yield low: 22 records → 1 card → OPEN).
+- C: back to probe-based selection on famous problems (round 4 judged it at its method limit).
+- D: pause selection; only finish the published lines (#30 owner-pending items, onset lowering), no new targets.

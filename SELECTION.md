@@ -87,3 +87,10 @@ G2 verdicts per catalogue row: notes/selection/G2_OPENAI_RELEASE_20261009.md. Ru
 4. A disproof with an exact finite certificate needs no referee; the gate is an independent replay by the verifier.
 5. If a widened catalogue yields fewer than 3 admissible lemmas, the pool, not the method, is the bottleneck;
    report that to the owner instead of re-probing the same targets.
+6. Route seeds in an attacker brief come from the scout's card or are omitted. The coordinator never adds mathematics
+   of its own: in CR-8 (AUT-68) the coordinator's seed "A+A is a Sidon set" was false for every |A| ≥ 2 and the
+   attacker had to disprove it first. A wrong seed costs engine time and can bias a clean room.
+7. A PARTIAL whose proved range lies far from the lemma's bite regime (CR-8: |A| ≤ 6 against m ≈ N^{1/4}) is parked
+   unrefereed with its card; referee runs are spent only on PROVED, or on partials that move the record.
+8. Two consecutive widened catalogues under rule 5 (2026-10-09: 22 records → 1 card → OPEN) end lemma-gated selection
+   for the screened pool; the coordinator proposes a doctrine change to the owner instead of a third sweep.
