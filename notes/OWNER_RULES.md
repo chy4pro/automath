@@ -41,6 +41,13 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
   do nothing unless something happened.
 - Never stop a web-model run that is still thinking; "stuck" means an error or an ended run with no output, never elapsed time.
 
+- Full speed (2026-10-09 17:40Z, after the infrastructure repair — real session resumption, test residue cleaned,
+  disk freed): the project runs at full speed again; the selection round continues under the coordinator's own
+  procedure without pausing to save. Both Codex concurrency slots are to be kept busy wherever real work exists;
+  verifier and referees run in parallel as needed. A surviving lemma goes to the probe and then to a campaign
+  approval request; no survivor means the catalogue is widened and the next round opened. Standing rules and the
+  approval gates are unchanged (so "full speed" never means inventing tasks, skipping gates or outward actions).
+
 ## Reporting
 - Report facts, not model self-claims. Every result report states: what exactly closed and whether it is the easy end
   of the problem; the true size of the remaining gap; whether G2 was done (no "new"/"publishable" wording otherwise);
