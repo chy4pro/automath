@@ -1,4 +1,4 @@
-PROVED — the exact theorem is kernel-checked. [CI run37060176909](https://github.com/chy4pro/automath/actions/runs/37060176909), commit `f8e97665f26ea40ec867d8d054d352b5fc5ec56c`, passed the complete build (8737 jobs) and all thirteen exact axiom guards on 2026-10-02. See [CI_LOG.md](CI_LOG.md) and [PLAN.md](PLAN.md) for the verification record.
+PROVED — the lower-onset theorem is kernel-checked. [CI run 37978411704](https://github.com/chy4pro/automath/actions/runs/37978411704), commit `fd880addd5f55d45ad528c224c4aa3fbb2471864`, passed the complete build (8759 jobs) and all 39 exact axiom guards on 2026-10-09. See [CI_LOG.md](CI_LOG.md) and [PLAN.md](PLAN.md) for the verification record.
 
 # Sidon30 — Lean formalisation of the Sidon second-order bound
 
@@ -8,20 +8,22 @@ The exact target is
 |A|\le\sqrt N+\frac{2\sqrt2}{3}\sqrt{\sqrt N}+1
 \]
 
-for every natural number `N ≥ 120^4 = 207360000` and every strong Sidon set
+for every natural number `N ≥ 4600000` and every strong Sidon set
 `A ⊆ {1,…,N}`. Equality of pair sums must identify the sorted pairs, including
 diagonal pairs. There is no restriction to fourth-power values of `N`.
 
 - [Statement.lean](Sidon30/Statement.lean) defines the exact proposition using the single Sidon definition in [Basic.lean](Sidon30/Basic.lean).
-- [Main.lean](Sidon30/Main.lean) proves the finite certificate and supplies it to the final reduction, yielding the global theorem `sidon_second_order`.
-- [FinalCheck.lean](Sidon30/FinalCheck.lean) guards the axiom dependencies of the actual theorem and twelve intermediate milestones. Its required output is exactly `[propext, Classical.choice, Quot.sound]` for each theorem.
+- [Main.lean](Sidon30/Main.lean) proves the finite certificate and supplies it to the final reduction, yielding `sidon_second_order' : SidonSecondOrderBound'`. The original `sidon_second_order` is a corollary at `120^4`; its specification remains unchanged for transfer compatibility.
+- [FinalCheck.lean](Sidon30/FinalCheck.lean) retains all 26 prior guards and adds 13 for the lower-onset proof and scalar wrapper. All 39 required diagnostics are exactly `[propext, Classical.choice, Quot.sound]`.
 
 The proof uses finite ramp weights, a renewal recurrence with an explicit
 geometric error bound, a signed finite boundary certificate, finite
 Cauchy–Schwarz and exact real algebra. All hypotheses of the intermediate
 conditional reductions are discharged in Main. The first-block scalar estimate
 uses exact Mathlib exponential inequalities; no numerical approximation is a
-proof step.
+proof step. The lower-onset Route B proof uses the exact block bound `r ≥ 32`,
+the rational certificate `(3/4)^32 < 1/9900`, the tail bound
+`η < (667/3300)x² < x²/2`, and a scalar comparison valid for every real `x ≥ 1`.
 
 Pinned environment: Lean `v4.34.0-rc1`, Mathlib
 `de5ce8a9a66a4aa68a9bdbb35b63a06d34d9ca11`. GitHub Actions runs `lake build`
@@ -51,8 +53,9 @@ at commit `3523813`, including the build and exact axiom guards:
   `card A <= sqrt(N) + sqrt(8/3) sqrt(sqrt(N)) + 2`.
 
 Both statements require `A ⊆ {1,...,N}`. The `g=1` recovery of the
-ordinary Sidon specification is also checked, while the original theorem
-and its thirteen guards remain unchanged. The transfer proofs use the
+ordinary Sidon specification is also checked. Its statement and the original
+thirteen guards remain unchanged; the original theorem now follows from the
+lower-onset theorem. The transfer proofs use the
 actual finite signed certificate, with its geometric remainder; they do
 not assume the continuous capacity lemma. Every guarded theorem depends
 only on `[propext, Classical.choice, Quot.sound]`.

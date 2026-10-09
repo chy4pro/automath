@@ -1,4 +1,4 @@
-PROVED — the exact Sidon second-order theorem sidon_second_order is kernel-checked in Lean v4.34.0-rc1. Full-chain CI run37060176909 / f8e97665f26ea40ec867d8d054d352b5fc5ec56c passed Build (8737 jobs) and Axioms on 2026-10-02. All thirteen exact axiom guards passed, including the unconditional main theorem, with only [propext, Classical.choice, Quot.sound].
+PROVED — sidon_second_order' proves the exact bound at onset 4600000 in Lean v4.34.0-rc1. Full-chain CI [37978411704](https://github.com/chy4pro/automath/actions/runs/37978411704) / `fd880addd5f55d45ad528c224c4aa3fbb2471864` passed Build (8759 jobs) and all 39 Axioms guards on 2026-10-09, with only [propext, Classical.choice, Quot.sound]. The original onset 120^4 theorem follows as a corollary. Earlier verification milestones remain recorded below.
 
 # Sidon30 formalisation plan and finite certificate
 
@@ -6,7 +6,7 @@ Task 035, 2026-10-02. Lean v4.34.0-rc1, Mathlib de5ce8a9a66a4aa68a9bdbb35b63a06d
 
 ## 1. Exact target and current deliverables
 
-The target remains, for every natural N and finite A contained in {1,...,N},
+The original target, first verified on 2026-10-02, was for every natural N and finite A contained in {1,...,N},
 
 \[
  N\ge120^4=207360000,\quad A\text{ Sidon}
@@ -514,3 +514,50 @@ Verification will use only the scoped push script and remote GitHub Actions.
 | Run | Commit | Result | Evidence / repair |
 | --- | --- | --- | --- |
 | [37977887526](https://github.com/chy4pro/automath/actions/runs/37977887526) | `940f621cad8811eec09122f6b082b0459e2625c3` | failure | Build: one opaque-envelope goal in IntegerScaleAndTail; Axioms skipped. Repair: unfold sidonTailEnvelopeSharp before nlinarith. |
+| [37978411704](https://github.com/chy4pro/automath/actions/runs/37978411704) | `fd880addd5f55d45ad528c224c4aa3fbb2471864` | success | Build: 8759 jobs; all 39 exact Axioms guards passed. Build and Axioms step success independently confirmed from the Actions jobs API. |
+
+## 2026-10-09 — Lower-onset theorem verified
+
+PROVED — all five lower-onset cards are complete. The exact compiled theorem is
+
+~~~lean
+theorem sidon_second_order' : SidonSecondOrderBound'
+~~~
+
+The audited proposition is, without a fourth-power restriction,
+
+~~~lean
+∀ (N : ℕ) (A : Finset ℕ),
+  4600000 ≤ N → A ⊆ Finset.Icc 1 N → IsSidon A →
+  (A.card : ℝ) ≤ Real.sqrt (N : ℝ) +
+    (2 * Real.sqrt 2 / 3) * Real.sqrt (Real.sqrt (N : ℝ)) + 1
+~~~
+
+CI [37978411704](https://github.com/chy4pro/automath/actions/runs/37978411704) at `fd880addd5f55d45ad528c224c4aa3fbb2471864` passed
+Build (8759 jobs) and all 39 exact standard-axiom guards. The Actions jobs API
+independently confirmed Build success (19:12:37–19:14:30 UTC) and Axioms success
+(19:14:30–19:14:35 UTC). The prior 26 guards are a byte-for-byte prefix of the
+new guard file. Basic, all transfer statements and consumers, lean-toolchain,
+and lake-manifest.json are unchanged. Every added or rewritten theorem has a guard.
+
+New declarations: sidonIntegerScale_quotient_bound_sharp,
+sidonIntegerScale_quotient_ge_thirtytwo, sidonTailEnvelopeSharp_succ_le,
+sidonTailEnvelopeSharp_le_base, sidonTail_power_thirtytwo_lt,
+sidonTailEnvelopeSharp_lt, sidonIntegerScale_tail_lt_sharp,
+sidonIntegerScale_tail_lt_half_sharp, secondOrder_of_scaled_certificate_one,
+sidon_fourthRoot_gt_of_onset, sidon_second_order_of_discreteCertificate',
+and sidon_second_order'. The old reduction and scalar interfaces are wrappers;
+the original global theorem is a direct corollary using 4600000 ≤ 120^4.
+
+No mathematical repair to CR-9 was required. The Lean proof uses natural
+quotient/remainder arithmetic for the strict floor estimate and proves the
+sufficient cubic bound x³ > 33 from x³ ≥ x ≥ 463/10. These are equivalent
+proof arrangements; the statement, onset, 667/3300 tail constant, and exact
+11/18, 5/9 scalar margin are preserved. The only failed CI run required an
+explicit definition unfolding, with no change to a mathematical hypothesis.
+
+No local Lean builds, new axioms, proof placeholders, native_decide, kernel
+bypasses, dependency-pin changes, or edits to the paper/CR-9 report were made.
+This proves an explicit upper bound; no minimal onset or solution of the full
+Erdős conjecture is claimed. Comments were checked before the documentation
+push; no coordinator/referee repair was posted.
