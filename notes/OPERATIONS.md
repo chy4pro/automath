@@ -26,7 +26,9 @@ four cross-vendor referees PASS-WITH-REPAIRS, graded small result, lines parked;
 notes/selection/astra_probes_round4_20261009.md. Round 4 part 2 (AUT-21, #1082/#86/#241/#1066) DONE
 2026-10-09 15:1x: all four OPEN/PARTIAL-restricted, small results, parked; probe-based selection is at its method
 limit. Current work: AUT-51 lemma-gated selection round (scout shortlist → verifier finite tests → one clean-room
-probe → campaign only via board approval), method in notes/selection/selection_20261009.md. Reflection 2026-10-09
+probe → campaign only via board approval), method in notes/selection/selection_20261009.md. State 2026-10-09 17:1x: NO SURVIVOR —
+SQ-L (#222) falsified by the verifier, SID-L (#30) disproved by the Astra clean room (exact 68-point set at N=4096, CR7_ASTRA_SIDL_20261009.md);
+verifier replay AUT-60 is the last gate before AUT-51 closes; both slots empty; next round widens the catalogue (new LINE issue). Reflection 2026-10-09
 16:1x (AUT-54, in the ledger): coordinator runs cost as much as the referees in the 10:00–16:00 window because
 parallel coordinator wakes duplicated work — patch 5 (one run per pool) is in place; the coordinator does no
 literature/library reading itself (scout child issues only). The inbox lane (inbox/to_codex*) is secondary
