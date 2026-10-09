@@ -243,7 +243,7 @@ READ locator for card 3: [Seymour source, cor:directed-cycle-consequences, part 
 | Zaremba M | N | No bounded-partial-quotient denominator theorem or explicit M improvement. |
 | Capacity-transfer paper | N | No matching capacity inequality or stated sonar/weak-Sidon/g-thin/DTS/DDC consequence. Generic Fourier/convexity techniques are not subsumption. |
 
-**B. New-target intelligence (bounded; referee candidates only).** READ metadata and LIVE CLAIM statements. “Unformalized” here means no family Lean link and no matching manuscript registration in the read formalization YAML; it does not certify the nonexistence of all possible formal artifacts. Elementary-looking refers to the statement, not its proof or plausibility. No proof has been evaluated.
+**B. New-target intelligence (bounded; referee candidates only).** DECISION 2026-10-09 (AUT-47, owner): NO referee programme and no capability probe on these families; referee seats stay on automath lines. The table below is kept as intelligence only. READ metadata and LIVE CLAIM statements. “Unformalized” here means no family Lean link and no matching manuscript registration in the read formalization YAML; it does not certify the nonexistence of all possible formal artifacts. Elementary-looking refers to the statement, not its proof or plausibility. No proof has been evaluated.
 
 | Unformalized family | Elementary-looking statement to referee | Manuscript date / source |
 |---|---|---|
