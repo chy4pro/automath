@@ -108,7 +108,9 @@ Caveat: on PATCH `/api/agents/{id}` the fields `permissions` and `instructionsBu
 
 ## Patch 5: run pools (2026-10-09)
 
-Paperclip caps concurrency per agent only. Patch 5 (`patches/apply.sh`, marker `PAPERCLIP_PATCH_RUN_POOLS`) adds
+Paperclip caps concurrency per agent only. Patch 5 v2 (`patches/patch5_run_pools.py`, marker `PAPERCLIP_PATCH_RUN_POOLS`)
+mirrors upstream PR #14333 (count + claim under a Postgres advisory lock at the single admission point) with the
+bucket key generalised: `PAPERCLIP_ADAPTER_CONCURRENCY_LIMITS='{"codex_local":2}'` caps per adapter type, and
 named pools: `PAPERCLIP_RUN_POOLS="codex:2:scout,attacker-1,attacker-2,formalizer"` in `/work/.paperclip/env.sh`
 caps the simultaneously *running* runs across the named agents (several pools separated by `;`); queued runs wait
 and pool-mates are re-checked when a run ends. Combined with per-agent `maxConcurrentRuns: 1` on the Codex
