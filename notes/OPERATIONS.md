@@ -31,6 +31,9 @@ probe → campaign only via board approval), method in notes/selection/selection
 parallel coordinator wakes duplicated work — patch 5 (one run per pool) is in place; the coordinator does no
 literature/library reading itself (scout child issues only). The inbox lane (inbox/to_codex*) is secondary
 while this test runs; nothing there is in progress.
+Session continuity (owner 2026-10-09, AUT-55): resumed sessions are the default, the unit of continuity is the
+issue; naming, close/keep-open rules, literature-free follow-ups to clean-room attackers, resumed/fresh recording and the
+configuration freeze are in notes/PAPERCLIP_PLAYBOOK.md (coordinator-owned).
 
 ## Current portfolio and work
 
