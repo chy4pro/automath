@@ -70,6 +70,11 @@ async function statusPage() {
 http.createServer(async (req, res) => {
   const raw = (req.url || "/").split("?")[0];
   if (raw === "/reports") { res.writeHead(302, { Location: "/reports/" }); return res.end(); }
+  if (raw === "/reports/_reload") {           // supervisor in start.sh restarts us; LAN callers only (never via the tunnel)
+    const ip = req.socket.remoteAddress || "";
+    if (!/^(::ffff:)?192\.168\./.test(ip)) { res.writeHead(403); return res.end("lan only"); }
+    res.writeHead(200, { "Content-Type": "text/plain" }); res.end("reloading\n"); setTimeout(() => process.exit(0), 100); return;
+  }
   if (raw === "/reports/status" || raw === "/reports/status.html") {
     try { const html = await statusPage(); res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" }); return res.end(html); }
     catch (e) { res.writeHead(502, { "Content-Type": "text/plain; charset=utf-8" }); return res.end("status page error: " + e.message); }

@@ -17,6 +17,7 @@ if [ -s /work/.paperclip/tunnel.token ] && [ -x /work/.tools/bin/cloudflared ]; 
   echo "[start] cloudflared started"
 fi
 # Owner-facing report pages at /reports/ (static, port 3101; routed by the tunnel ingress path rule)
-(node /work/tools/paperclip/www/serve.js 2>&1 | sed 's/^/[reports] /') &
+# Supervised so it can be reloaded (GET /reports/_reload from the docker LAN) without touching Paperclip.
+(while true; do node /work/tools/paperclip/www/serve.js 2>&1 | sed 's/^/[reports] /'; sleep 1; done) &
 # `run` bootstraps (onboard + doctor) on first run; lan preset binds 0.0.0.0 so the Workbench port publish works
 exec paperclipai run
