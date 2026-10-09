@@ -73,3 +73,6 @@ gate). Verified: astra-1 in the Codex container ran with its own login, commente
 Re-run the script after every `npm install -g paperclipai`; if an anchor is missing, the upstream code moved — re-derive.
 `/work/.paperclip/env.sh` sets `PAPERCLIP_CODEX_AUTH_CACHE=0` so remote workers' credentials are never cached on the host
 (the first patched run had created `companies/<id>/codex-auth-cache/<account>/auth.json`; removed).
+
+Orchestration verified (2026-10-09, AUT-9/AUT-10): coordinator-ssh delegated a child issue to astra-1 with a blocker,
+Paperclip woke the parent when the child closed, and the parent verified the result (216 Sidon subsets of {1..10}, MATCH).
