@@ -37,3 +37,15 @@ Every restart before the bootstrap CEO invite is claimed regenerates the invite 
 
 Not yet done: agent definitions (coordinator / astra-1 / astra-2), CLI logins in the project container,
 routines, budgets, approvals; Cloudflare DNS/tunnel/Access (API token expired on 2026-10-08).
+
+## SSH environments for AI containers (2026-10-09)
+Agents can run in other Workbench containers through Paperclip's native `ssh` environment driver: an unprivileged
+OpenSSH sshd (Debian bookworm packages extracted to `/work/.tools/sshd`, started by `tools/paperclip/sshd/sshd-up.sh`,
+port 2222, pubkey only, `AllowUsers agent`) runs inside the AI container; Paperclip's client key lives in
+`/work/.paperclip/ssh/` (private key stored in Paperclip's secret store; `known_hosts` must use the `[ip]:2222` form).
+`tools/paperclip/setup_ssh_env.py` registers the container as an environment, probes it and creates an agent bound to it.
+Facts learned: the probe from the project container to 192.168.166.3:2222 succeeded; `claude_local` on an ssh target
+needs `adapterConfig.engine = "cli"` (the default ACP engine supports sandbox remotes only). Wakeups use
+`{"source":"on_demand"}`. Board token: obtained through the CLI-auth challenge flow (`POST /api/cli-auth/challenges`,
+owner approves in the browser), stored at `/work/.paperclip/board.token` (0600, git-ignored). Container IPs change on
+recreation: update the environment's host and known_hosts then.

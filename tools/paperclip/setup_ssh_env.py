@@ -61,6 +61,7 @@ acfg = {"cwd": remote_path, "timeoutSec": 3600, "maxTurnsPerRun": 200}
 if a.model: acfg["model"] = a.model
 if a.instructions: acfg["promptTemplate"] = open(a.instructions).read()
 if a.adapter == "codex_local": acfg["modelReasoningEffort"] = "xhigh"
+if a.adapter == "claude_local": acfg["engine"] = "cli"   # ACP engine supports sandbox remotes only; ssh targets need the classic CLI engine
 if not ag:
     ag = req("POST", f"/companies/{cid}/agents", {"name": a.agent, "role": "researcher", "adapterType": a.adapter,
              "adapterConfig": acfg, "defaultEnvironmentId": eid})
