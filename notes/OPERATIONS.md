@@ -13,6 +13,18 @@ dated handoff documents and old ledger sections retain their historical meaning.
   at 04:56 CDT reconfirmed no wakeups, dispatches, research edits or publication.
 - No second coordinator may be started by repairing the legacy Claude watchdog.
 
+## Orchestration layer: Paperclip (2026-10-09)
+
+Paperclip (self-hosted at automath.mozone.io, owner-only Cloudflare Access) is the project-management
+and dispatch layer under test. Org: coordinator (Fable, CEO) with reports scout, attacker-1/2 (Astra,
+clean room), referee-1/2 (Claude), formalizer (Astra), verifier (Claude); every agent has a private ssh
+workspace on its own container. Routines: hourly coordinator tick, 6-hour reflection, weekly scout sweep.
+Rules of this file and AGENTS.md bind every Paperclip agent (their bundles repeat them); outward actions
+are `request_board_approval` items for the owner. Details and rebuild commands: tools/paperclip/README.md.
+First real chain: AUT-11 (round-4 clean-room probes T1/T6) — result recorded in
+notes/selection/astra_probes_round4_20261009.md when done. The inbox lane (inbox/to_codex*) is secondary
+while this test runs; nothing there is in progress.
+
 ## Current portfolio and work
 
 | Line | State | Next useful gate |
