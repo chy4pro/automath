@@ -23,7 +23,13 @@ Rules of this file and AGENTS.md bind every Paperclip agent (their bundles repea
 are `request_board_approval` items for the owner. Details and rebuild commands: tools/paperclip/README.md.
 First real chain: AUT-11 (round-4 clean-room probes T1/T6) — DONE 2026-10-09: both targets OPEN,
 four cross-vendor referees PASS-WITH-REPAIRS, graded small result, lines parked; verdict and cost in
-notes/selection/astra_probes_round4_20261009.md. The inbox lane (inbox/to_codex*) is secondary
+notes/selection/astra_probes_round4_20261009.md. Round 4 part 2 (AUT-21, #1082/#86/#241/#1066) DONE
+2026-10-09 15:1x: all four OPEN/PARTIAL-restricted, small results, parked; probe-based selection is at its method
+limit. Current work: AUT-51 lemma-gated selection round (scout shortlist → verifier finite tests → one clean-room
+probe → campaign only via board approval), method in notes/selection/selection_20261009.md. Reflection 2026-10-09
+16:1x (AUT-54, in the ledger): coordinator runs cost as much as the referees in the 10:00–16:00 window because
+parallel coordinator wakes duplicated work — patch 5 (one run per pool) is in place; the coordinator does no
+literature/library reading itself (scout child issues only). The inbox lane (inbox/to_codex*) is secondary
 while this test runs; nothing there is in progress.
 
 ## Current portfolio and work
