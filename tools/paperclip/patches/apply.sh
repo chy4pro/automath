@@ -4,7 +4,8 @@
 # to use the Paperclip host's login. We let ssh targets behave like sandboxes: (1) the credential gate probes the remote
 # for ~/.codex/auth.json instead of refusing; (2) after the managed CODEX_HOME is uploaded over ssh, auth.json falls back
 # to the remote's own login (same rule as codex-auth-merge-extract.sh uses for sandboxes); (3) the server's pre-dispatch
-# credential gate (run-preparation) exempts ssh environments like it exempts sandbox ones.
+# credential gate (run-preparation) exempts ssh environments like it exempts sandbox ones; (4) agent deletion removes the
+# agent's cost_events first (upstream FK bug: cost_events -> heartbeat_runs/agents blocks DELETE /api/agents/:id).
 set -e
 PY=$(command -v python3 || echo /work/.tools/node/bin/node)   # python3 exists in the Claude container; fall back handled below
 NM=/work/.tools/npm/lib/node_modules/paperclipai/node_modules/@paperclipai
@@ -60,4 +61,22 @@ if 'PAPERCLIP_PATCH_SSH_AUTH' not in s:
     assert a in s, 'heartbeat anchor missing'; s = s.replace(a, b, 1); open(hb, 'w').write(s); print('patched heartbeat.js')
 else: print('heartbeat.js already patched')
 PYEOF
-/work/.tools/node/bin/node --check "$EX" && /work/.tools/node/bin/node --check "$RM" && /work/.tools/node/bin/node --check "$HB" && echo "syntax ok"
+AG=$NM/server/dist/services/agents.js
+[ -f "$AG.orig" ] || cp "$AG" "$AG.orig"
+python3 - "$AG" <<'PYEOF'
+import sys, re
+ag = sys.argv[1]; s = open(ag).read()
+if 'PAPERCLIP_PATCH_AGENT_DELETE' not in s:
+    # (4) upstream bug: agent removal deletes heartbeat_runs while cost_events still reference them (and the agent) -> FK violation
+    a = '                await tx.delete(heartbeatRuns).where(eq(heartbeatRuns.agentId, id));'
+    b = '                await tx.delete(costEvents).where(eq(costEvents.agentId, id)); // PAPERCLIP_PATCH_AGENT_DELETE (automath local patch)\n' + a
+    assert s.count(a) == 1, 'agents remove anchor missing'
+    s = s.replace(a, b, 1)
+    if not re.search(r'\bcostEvents\b.*from "@paperclipai/db"', s) and 'costEvents,' not in s.split('from "@paperclipai/db"')[0][-4000:]:
+        m = re.search(r'import \{([^}]*)\} from "@paperclipai/db";', s)
+        assert m, 'db import missing'
+        s = s.replace(m.group(0), 'import {' + m.group(1).rstrip() + (', ' if m.group(1).strip() else '') + 'costEvents } from "@paperclipai/db";', 1)
+    open(ag, 'w').write(s); print('patched agents.js')
+else: print('agents.js already patched')
+PYEOF
+/work/.tools/node/bin/node --check "$EX" && /work/.tools/node/bin/node --check "$RM" && /work/.tools/node/bin/node --check "$HB" && /work/.tools/node/bin/node --check "$AG" && echo "syntax ok"
