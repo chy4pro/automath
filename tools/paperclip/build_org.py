@@ -18,7 +18,10 @@ def api(method, path, body=None):
         print(method, path, e.code, e.read().decode()[:400]); raise
 
 def bundle(role):
-    files = {"AGENTS.md": open(f"{AG}/{role}.md").read() + "\n" + open(f"{AG}/_common.md").read()}
+    text = open(f"{AG}/{role}.md").read() + "\n" + open(f"{AG}/_common.md").read()
+    if role == "coordinator":  # the owner's standing rules travel inside the bundle: injected every run, no extra read
+        text += "\n\n" + open("/work/notes/OWNER_RULES.md").read()
+    files = {"AGENTS.md": text}
     return {"entryFile": "AGENTS.md", "files": files}
 
 def adapter(kind, name, model, env_extra=None):
