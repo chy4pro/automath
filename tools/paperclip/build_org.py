@@ -53,7 +53,11 @@ for name, title, icon, rf, ad, env, model, budget, extra in ROLES:
     if name in existing:
         patch = {k: v for k, v in body.items() if k not in ("permissions", "instructionsBundle")}  # create-only on PATCH
         a = api("PATCH", f"/agents/{existing[name]['id']}", patch)
-        api("PUT", f"/agents/{a['id']}/instructions-bundle/file", {"path": "AGENTS.md", "content": body["instructionsBundle"]["files"]["AGENTS.md"]})
+        cur = api("GET", f"/agents/{a['id']}/instructions-bundle/file?path=AGENTS.md")
+        new = body["instructionsBundle"]["files"]["AGENTS.md"]
+        if cur.get("content") != new:
+            api("PUT", f"/agents/{a['id']}/instructions-bundle/file",
+                {"path": "AGENTS.md", "content": new, "baseRevisionId": (cur.get("revision") or {}).get("id"), "baseHash": cur.get("contentHash")})
         print("updated", name, a["id"])
     else:
         a = api("POST", f"/companies/{COMPANY}/agents", body); print("created", name, a["id"])
