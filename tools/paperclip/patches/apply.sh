@@ -105,3 +105,6 @@ python3 "$(dirname "$0")/patch8_session_identity_codec.py" "$NM" && node --check
 # ---- patch 9: ssh session identity keyed on the environment workspace path, not the per-run directory
 cp -n "$NM/adapter-utils/dist/remote-managed-runtime.js" "$NM/adapter-utils/dist/remote-managed-runtime.js.orig9" 2>/dev/null || true
 python3 "$(dirname "$0")/patch9_ssh_identity_stable_cwd.py" "$NM" && node --check "$NM/adapter-utils/dist/remote-managed-runtime.js"
+
+# ---- patch 7b: resume diagnostics from #15437 (the old log claimed an identity mismatch on every ssh run)
+python3 "$(dirname "$0")/patch7b_resume_diagnostics.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/execute.js"
