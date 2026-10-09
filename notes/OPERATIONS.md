@@ -5,7 +5,7 @@ dated handoff documents and old ledger sections retain their historical meaning.
 
 ## Ownership
 
-- Coordinator: **Claude Fable 5.1 session `457116fb-0921-45cf-974f-013eece5c1dc`** (restart 2026-09-25, owner instruction). The 09-09 Codex coordinator ran one day; no Codex CLI exists in the container.
+- Coordinator (from 2026-10-09, owner instruction): **the Paperclip `coordinator` agent** (Fable 5.1, Claude container). It owns every research decision inside Paperclip. The chat-side Fable session is not a coordinator: it relays owner instructions to the coordinator, maintains the infrastructure and reports back. Historical: the session `457116fb-0921-45cf-974f-013eece5c1dc` coordinated from 2026-09-25 to 2026-10-09. The 09-09 Codex coordinator ran one day; no Codex CLI exists in the container.
 - Working root: `/work` (container). Public main repo: https://github.com/chy4pro/automath (per-problem repos as submodules).
 - Transfer authority: the owner's direct instruction to take over the remaining work, plus
   outgoing Claude's explicit stop/transfer in [handoff Appendix C](CODEX_HANDOFF_20260909_FROM_CLAUDE.md).
