@@ -21,14 +21,17 @@ bindings, secrets); or when a fresh session is forced. **Therefore the unit of c
 
 | prefix | assignee | one issue per | lifetime | follow-ups |
 |---|---|---|---|---|
-| `LINE <id>: <title>` | coordinator (self) | research line or selection round (e.g. AUT-51) | open from selection to park/publish | children's closures wake it; the coordinator judges inside the same session |
-| `OWNER <date>: <title>` | coordinator (self) | one owner instruction that needs work | open until executed and reported | same as LINE |
+| `LINE <id>：<中文标题>` | coordinator (self) | research line or selection round (e.g. AUT-51) | open from selection to park/publish | children's closures wake it; the coordinator judges inside the same session |
+| `OWNER <date>：<中文标题>` | coordinator (self) | one owner instruction that needs work | open until executed and reported | same as LINE |
 | `CR-<n> <target> (attacker-k)` | attacker-1 / attacker-2 | **one clean room** | done after the report; resumable | questions as comments (§4) |
 | `REF <target> <file> (referee-k)` | referee-1 / referee-2 | one referee × one report under review | done after the report; resumable | repairs / re-review as comments |
 | `VER <target>: <check>` | verifier | one target line's finite checks | done after the first check; resumable | further checks as comments |
 | `SCOUT <topic>` | scout | one literature / G2 / catalogue topic | done after the first delivery; resumable | updates as comments |
 | `LEAN <target>` | formalizer | one formalisation target | done per milestone; resumable | next lemma as comment |
 | `Hourly coordinator tick`, `6-hour reflection` | coordinator | routine (timer wake, always fresh) | closed each run | none — real work moves to a LINE/OWNER issue |
+
+Titles of coordinator-owned issues (LINE/OWNER/ticks/reflections) are in Chinese after the ASCII tag, because the owner
+reads them (§9); titles and descriptions of worker issues (CR/REF/VER/SCOUT/LEAN) are English.
 
 `<n>` for clean rooms is a global counter continued from the probe numbering (PROBE_ASTRA_1–6 → CR-7 onwards). Every
 child issue carries `parentId` = the LINE/OWNER issue and a blocker on the parent, so the parent's session is woken when
@@ -129,3 +132,25 @@ session of that agent. Therefore:
 - Open verification items for this playbook: (a) does a board-decision wake on a `request_board_approval` resume or
   reset; (b) does a comment with `resume: true` on a `done` Codex issue resume the Codex session as reliably as the
   14:17 retries did. Both are recorded at first occurrence.
+
+## 9. Language: everything that reaches the owner's inbox is Chinese (owner instruction 2026-10-09, AUT-55 comment)
+
+Rule: **whatever the owner reads inside Paperclip is written in concise Chinese; whatever another agent reads is
+English.** The owner's inbox is anything that lands in the board's approval list, decision cards, @-mentions, or the
+issue list the owner scans. Concretely:
+
+| item | language | notes |
+|---|---|---|
+| approval request (`request_board_approval`): `title`, grading line, `reason`, proposed `action` | Chinese | grading first (可公告 / 重要里程碑 / 小结果), then the exact outward action; the verbatim outward text (an X post, a site claim) stays in its own language and is attached as a quoted block after the Chinese |
+| decision cards to the owner (`ask_user_questions`, `request_confirmation`, `suggest_tasks`): questions, options, titles | Chinese | |
+| comments that @-mention the owner, replies to the owner's comments | Chinese | |
+| titles of issues the owner must look at (LINE/OWNER parents, ticks, reflections) and their closing summaries | Chinese | ASCII tag `LINE`/`OWNER` kept at the front for sorting; the rest of the title Chinese |
+| cost lines, dispatch reasons, judgements written as issue comments | Chinese | as before (language rule 2026-10-09) |
+| titles and descriptions of worker issues (CR/REF/VER/SCOUT/LEAN), briefs, follow-up questions to attackers/referees | English | the workers do not read Chinese instructions; status lines (PROVED/OPEN/PASS/…) stay English |
+| files under /work: notes, ledger, verdict files, commit messages, code | English | unchanged |
+| verbatim quotations of English material inside a Chinese comment | English | Chinese first, the quotation in a short block after it |
+
+Implementation checklist for the coordinator: before every `POST …/approvals` or `POST …/interactions`, read the payload
+back and confirm every owner-facing string is Chinese; when creating a LINE/OWNER issue, write the title in Chinese; when
+closing one, the closing comment is Chinese. Existing coordinator-owned issues were retitled on 2026-10-09 (AUT-51,
+AUT-55); worker issues keep their English titles.

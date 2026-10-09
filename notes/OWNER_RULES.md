@@ -49,6 +49,10 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
   solved for a bound or a restricted case; an exponent with an unspecified constant is not an effective theorem.
 - To the owner: concise Chinese. Internal notes, code and briefs: English. Grade every result when reporting:
   announce-worthy / important milestone / small result, with the reason.
+- Everything that reaches the owner's Paperclip inbox is Chinese (2026-10-09): approval requests (title, grading,
+  reason, proposed action), decision cards (questions and options), @-owner comments, and the titles and closing
+  summaries of issues the owner must look at. Child-issue titles and briefs for other agents stay English.
+  Procedure in notes/PAPERCLIP_PLAYBOOK.md §9.
 
 ## Publication gates
 - Three gates before anything leaves the repository: two independent cross-vendor referees, G2 novelty, finite checks;
