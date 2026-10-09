@@ -25,7 +25,7 @@ def revert_cx(s):
     i = s.find(V1_CX_HELPER_START)
     if i < 0: return s
     j = s.index("return await prepareAdapterExecutionTargetRuntime({", i)
-    s = s[:i] + s[j:]
+    s = s[:i] + "                " + s[j:]
     return s.replace("                    runId,\n                    runtimeRootKey: stableRuntimeRootKey,\n", "                    runId,\n", 1)
 rw(CX, revert_cx)
 # --- apply v2
