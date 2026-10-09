@@ -85,3 +85,8 @@ PYEOF
 HB=$NM/server/dist/services/heartbeat.js
 cp -n "$HB" "$HB.orig5" 2>/dev/null || true
 python3 "$(dirname "$0")/patch5_run_pools.py" "$HB" && node --check "$HB"
+
+# ---- patch 6: stable per-task remote workspace (PAPERCLIP_PATCH_STABLE_TASK_WS) — see patch6_stable_task_workspace.py
+for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-claude-local/dist/server/execute.js adapter-codex-local/dist/server/execute.js; do cp -n "$NM/$f" "$NM/$f.orig6" 2>/dev/null || true; done
+python3 "$(dirname "$0")/patch6_stable_task_workspace.py" "$NM"
+for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-claude-local/dist/server/execute.js adapter-codex-local/dist/server/execute.js; do node --check "$NM/$f" || exit 1; done
