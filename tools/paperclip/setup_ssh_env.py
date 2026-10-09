@@ -22,6 +22,7 @@ ap.add_argument("--user", default="agent"); ap.add_argument("--remote-path"); ap
 ap.add_argument("--key", default="/work/.paperclip/ssh/paperclip_ed25519"); ap.add_argument("--known-hosts", default="/work/.paperclip/ssh/known_hosts")
 ap.add_argument("--instructions", default=None, help="markdown file for the agent's instructions bundle / prompt")
 ap.add_argument("--company", default=None, help="company id (default: the first company)")
+ap.add_argument("--env", action="append", default=[], help="KEY=VALUE plain env for the agent (repeatable)")
 a = ap.parse_args()
 remote_path = a.remote_path or f"/home/agent/pcws/{a.name}"   # outside /work: no repo bundling, no /work/AGENTS.md pickup
 cos = req("GET", "/companies"); cos = cos if isinstance(cos, list) else cos.get("companies") or cos.get("items") or []
@@ -61,7 +62,8 @@ acfg = {"cwd": remote_path, "timeoutSec": 3600, "maxTurnsPerRun": 200}
 if a.model: acfg["model"] = a.model
 if a.instructions: acfg["promptTemplate"] = open(a.instructions).read()
 if a.adapter == "codex_local": acfg["modelReasoningEffort"] = "xhigh"
-if a.adapter == "claude_local": acfg["engine"] = "cli"   # ACP engine supports sandbox remotes only; ssh targets need the classic CLI engine
+if a.adapter == "claude_local": acfg["engine"] = "cli"
+if a.env: acfg["env"] = {k: v for k, v in (e.split("=", 1) for e in a.env)}   # ACP engine supports sandbox remotes only; ssh targets need the classic CLI engine
 if not ag:
     ag = req("POST", f"/companies/{cid}/agents", {"name": a.agent, "role": "researcher", "adapterType": a.adapter,
              "adapterConfig": acfg, "defaultEnvironmentId": eid})
