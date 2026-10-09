@@ -81,56 +81,7 @@ else: print('agents.js already patched')
 PYEOF
 /work/.tools/node/bin/node --check "$EX" && /work/.tools/node/bin/node --check "$RM" && /work/.tools/node/bin/node --check "$HB" && /work/.tools/node/bin/node --check "$AG" && echo "syntax ok"
 
-# ---- patch 5: run pools (PAPERCLIP_PATCH_RUN_POOLS) ------------------------------------------------
-# Paperclip only caps concurrency per agent. PAPERCLIP_RUN_POOLS="codex:2:scout,attacker-1,attacker-2,formalizer"
-# caps the number of simultaneously RUNNING runs across the named agents (one pool per ';'); queued runs
-# wait and are promoted when a pool-mate finishes.
+# ---- patch 5: run pools (PAPERCLIP_PATCH_RUN_POOLS v2) — see patch5_run_pools.py for the config and design
 HB=$NM/server/dist/services/heartbeat.js
-if ! grep -q PAPERCLIP_PATCH_RUN_POOLS "$HB"; then
-  cp -n "$HB" "$HB.orig5" 2>/dev/null || true
-  python3 - "$HB" <<'PY'
-import sys,re
-p=sys.argv[1]; s=open(p).read()
-helpers='''
-    // PAPERCLIP_PATCH_RUN_POOLS: cross-agent concurrency caps from PAPERCLIP_RUN_POOLS ("name:max:a,b,c;...").
-    const RUN_POOLS = (process.env.PAPERCLIP_RUN_POOLS || "").split(";").map((s) => s.trim()).filter(Boolean).map((spec) => {
-        const [name, max, members] = spec.split(":");
-        return { name, max: Number(max), members: new Set((members || "").split(",").map((m) => m.trim()).filter(Boolean)) };
-    }).filter((p) => p.max > 0 && p.members.size > 0);
-    function runPoolForAgent(agent) { return RUN_POOLS.find((p) => p.members.has(agent.name)) ?? null; }
-    async function countRunningRunsForPool(companyId, pool) {
-        const [{ count }] = await db.select({ count: sql `count(*)` }).from(heartbeatRuns)
-            .innerJoin(agents, eq(agents.id, heartbeatRuns.agentId))
-            .where(and(eq(heartbeatRuns.companyId, companyId), eq(heartbeatRuns.status, "running"), inArray(agents.name, [...pool.members])));
-        return Number(count ?? 0);
-    }
-    async function startNextQueuedRunForAgent(agentId) {
-        const started = await startNextQueuedRunForAgentCore(agentId);
-        if (RUN_POOLS.length === 0) return started;
-        const agent = await getAgent(agentId); const pool = agent ? runPoolForAgent(agent) : null;
-        if (!pool) return started;
-        const mates = await db.select({ id: agents.id }).from(agents)
-            .where(and(eq(agents.companyId, agent.companyId), inArray(agents.name, [...pool.members])));
-        for (const m of mates) { if (m.id !== agentId) await startNextQueuedRunForAgentCore(m.id); }
-        return started;
-    }
-    async function startNextQueuedRunForAgentCore(agentId) {'''
-s=s.replace('    async function startNextQueuedRunForAgent(agentId) {', helpers, 1)
-old='''            const policy = parseHeartbeatPolicy(agent);
-            const runningCount = await countRunningRunsForAgent(agentId);
-            const availableSlots = Math.max(0, policy.maxConcurrentRuns - runningCount);
-            if (availableSlots <= 0)
-                return [];'''
-new='''            const policy = parseHeartbeatPolicy(agent);
-            const runningCount = await countRunningRunsForAgent(agentId);
-            let availableSlots = Math.max(0, policy.maxConcurrentRuns - runningCount);
-            const runPool = runPoolForAgent(agent);
-            if (runPool) availableSlots = Math.min(availableSlots, Math.max(0, runPool.max - (await countRunningRunsForPool(agent.companyId, runPool))));
-            if (availableSlots <= 0)
-                return [];'''
-assert old in s, 'slot block not found'
-s=s.replace(old,new,1)
-open(p,'w').write(s)
-PY
-  node --check "$HB" && echo "patch 5 applied: run pools"
-else echo "patch 5 already applied"; fi
+cp -n "$HB" "$HB.orig5" 2>/dev/null || true
+python3 "$(dirname "$0")/patch5_run_pools.py" "$HB" && node --check "$HB"
