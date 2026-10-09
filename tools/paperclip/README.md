@@ -76,3 +76,30 @@ Re-run the script after every `npm install -g paperclipai`; if an anchor is miss
 
 Orchestration verified (2026-10-09, AUT-9/AUT-10): coordinator-ssh delegated a child issue to astra-1 with a blocker,
 Paperclip woke the parent when the child closed, and the parent verified the result (216 Sidon subsets of {1..10}, MATCH).
+
+## The automath org (built 2026-10-09)
+
+| agent | container / env | adapter, model | role file |
+|---|---|---|---|
+| coordinator (CEO) | Claude box, `ws-coordinator` | claude_local, claude-fable-5-1 | agents/coordinator.md |
+| scout | Codex box, `ws-scout` | codex_local, gpt-6-astra, xhigh | agents/scout.md |
+| attacker-1, attacker-2 | Codex box, `ws-attacker-N` | codex_local, gpt-6-astra, xhigh | agents/attacker.md (clean room) |
+| referee-1 | Claude box, `ws-referee-1` | claude_local, claude-fable-5-1 | agents/referee.md |
+| referee-2 | Claude box, `ws-referee-2` | claude_local, claude-opus-5-5 | agents/referee.md |
+| formalizer | Codex box, `ws-formalizer` | codex_local, gpt-6-astra | agents/formalizer.md |
+| verifier | Claude box, `ws-verifier` | claude_local, claude-sonnet-5-5 | agents/verifier.md |
+
+Everyone reports to the coordinator (`reportsTo`). Publisher/ops duties stay with the coordinator; all
+outward actions go through `request_board_approval`. Every agent has its own ssh environment on its
+container (`/home/agent/pcws/<agent>`, outside the repo), so agents that share a container never share
+a workspace; the per-host key secret is reused. Codex agents additionally need an empty host-side cwd
+(`/work/.paperclip/host-ws/<agent>`, `git init`) because the adapter bundles the host cwd per run.
+
+Instructions: `agents/<role>.md` + `agents/_common.md` → the agent's managed bundle (`AGENTS.md`).
+Rebuild/refresh everything (idempotent): `python3 tools/paperclip/build_org.py && python3 tools/paperclip/build_envs.py`
+(instruction edits are pushed through `PUT /api/agents/{id}/instructions-bundle/file` with the revision base).
+IDs land in `/work/.paperclip/agent_ids.json` and `env_ids.json`. `tools/paperclip/pc.py METHOD /path [json]` is the API helper.
+
+Routines (Asia/Shanghai): hourly coordinator tick (`0 * * * *`), 6-hour reflection (`0 */6 * * *`),
+weekly scout literature/site sweep (Mon 09:00). All `skip_if_active` / `skip_missed`.
+Caveat: on PATCH `/api/agents/{id}` the fields `permissions` and `instructionsBundle` are create-only.
