@@ -90,3 +90,7 @@ python3 "$(dirname "$0")/patch5_run_pools.py" "$HB" && node --check "$HB"
 for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-claude-local/dist/server/execute.js adapter-codex-local/dist/server/execute.js; do cp -n "$NM/$f" "$NM/$f.orig6" 2>/dev/null || true; done
 python3 "$(dirname "$0")/patch6_stable_task_workspace.py" "$NM"
 for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-claude-local/dist/server/execute.js adapter-codex-local/dist/server/execute.js; do node --check "$NM/$f" || exit 1; done
+
+# ---- patch 7: backport of upstream #15437 (stable prompt bundle key across per-run instruction copies)
+cp -n "$NM/adapter-claude-local/dist/server/execute.js" "$NM/adapter-claude-local/dist/server/execute.js.orig7" 2>/dev/null || true
+python3 "$(dirname "$0")/patch7_bundle_key_backport.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/execute.js"
