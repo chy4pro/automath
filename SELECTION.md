@@ -74,3 +74,16 @@ G2 verdicts per catalogue row: notes/selection/G2_OPENAI_RELEASE_20261009.md. Ru
 4. The famous × quantitative-frontier selector keeps preferring old elementary records with an
    identifiable lossy step (old_records_20261003.md); the release did not touch the Sidon/B_h,
    Zaremba, minimal-maximal-Sidon or capacity-transfer records.
+
+## Lemma-gated selection rules (2026-10-09, from round AUT-51; method in notes/selection/selection_20261009.md)
+1. A candidate enters the pool only as ONE exactly stated lemma (quantifiers, constants, onset) whose proof would
+   move a named record; "problem-level" candidates without such a lemma are excluded, not listed vaguely.
+2. Before any engine hour the lemma gets a finite test. Against an algebraic adversary family (Singer/Bose Sidon
+   sets, perfect difference sets, quadratic residues, …) the test must sweep the family's WHOLE symmetry orbit —
+   all multipliers, all cuts/translates, both interval conventions — never a sample: in AUT-57 a 6-multiplier
+   sample reported a 3.4× margin where the full orbit (seconds of CPU) contained 21 counterexamples (AUT-60).
+3. A lemma that patches a lossy step in one of our own papers is tested first against the best structured
+   near-extremal family at the lemma's own onset; our fixed-kernel barrier for Erdős #30 was real at N = 4096.
+4. A disproof with an exact finite certificate needs no referee; the gate is an independent replay by the verifier.
+5. If a widened catalogue yields fewer than 3 admissible lemmas, the pool, not the method, is the bottleneck;
+   report that to the owner instead of re-probing the same targets.

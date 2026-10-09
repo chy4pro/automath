@@ -156,3 +156,46 @@ q = 67 orbit; if it does not confirm, the verdict is revisited.
 Cost of the round so far: scout 1 run (AUT-52); verifier 2 runs (AUT-56 20.1 CPU-min, AUT-57 9.7 CPU-s); attacker-1
 1 run (AUT-58, 10.5 min wall, no referee needed for a disproof with an exact finite certificate — the verifier replay
 is the gate); coordinator 5 runs on AUT-51.
+
+## Step 4 — replay gate passed; round closed (2026-10-09 17:4x UTC)
+
+**AUT-60 (verifier, independent Python): STATUS CONFIRMED.** Report `notes/selection/lemma_tests_20261009/SIDL_30_replay.md`,
+script `sidl_30_replay.py`, 19.8 CPU-s total. Part 1 replays the displayed 68-point set exactly: strong Sidon under both
+conventions (2278 distinct differences, 2346 distinct sums), T = 719 with the defining inequality checked in integers,
+missing set {601, 615, 624, 638, 671, 685}, S = 180,279,588, 100·S < 3·k·T³, ρ = 1502329900/6318814303 ≈ 0.2378 —
+every number of the attacker's certificate reproduced. Under the span convention the set has N' = 3957 < 4096, so the
+counterexample stands only under the interval convention A ⊂ {0,…,N−1}; that is the lemma's own convention, so the
+disproof is unconditional for SID-L as stated. Part 2 sweeps the full Singer dilation orbits: q = 67 gives 21
+counterexamples at N = 4096 (39 eligible instances) and 3 at N = m = 4557; q = 71 gives 9 at N = 5113; q = 79 gives 3 at
+N = 6321 — so the failure is not a single accident but recurs in every prime tested, with min ρ 0.24 / 0.49 / 0.71.
+The verifier also explains the AUT-57 miss exactly: N = 4096-eligible instances are 39 of 85,680 orbit points, and the
+frozen sample (6 multipliers × 900 cuts) never reached them.
+
+**Verdict (final for this round):** the step-3 verdict stands unchanged. SID-L is false as stated and parked; SQ-L is
+falsified and parked; **no lemma survives; both slots stay empty; no campaign is proposed.** CR-7's output is a small
+negative result (exact refutation of an internal lemma): nothing is published, no site or X action.
+
+**What this round established (for the next selection, not for publication).**
+1. Lemma-gated selection works as a filter: it turned ~40 catalogue entries into 2 exact lemmas and killed both for a
+   total of ~21 verifier CPU-minutes plus one Astra probe — far cheaper than round 4's six probes and twelve referee
+   reports for the same information ("the known relaxations are saturated").
+2. The catalogue is exhausted for this method. The next round must widen the catalogue (new problem families, new
+   record lists) rather than re-screen the same 12 + 20 cards.
+3. Two rules added to SELECTION.md: (i) finite tests against algebraic adversary families sweep the whole symmetry
+   orbit; (ii) a lemma that patches our own paper's lossy step must first be tested against the best structured
+   near-extremal family at the lemma's own onset before any engine time.
+
+**Next round brief (successor LINE issue, to be created when the control plane is reachable).** Title
+`LINE：2026-10-10 选题轮 part 2——扩大候选目录（引理门槛）`. Step 1 scout: build a *new* catalogue of ≤ 20 records outside
+targets_20261003.md / old_records_20261003.md — sources: Erdős problems tagged "number theory" with a numeric record and
+≥ 2 forum comments or ≥ 1 arXiv follow-up in 2024–2026; the Guy UPINT B/C/E sections with explicit constants; the
+Croot–Lev–Pach / cap-set style records with elementary lossy steps; B_h[g] and generalized Sidon records (the release
+did not touch them). Each entry: record, source, lossy step quoted, ONE exact lemma, the saturated-relaxation argument,
+a finite test that sweeps the adversary family's full orbit, G2, product grade. Step 2 verifier: tests for the top ≤ 3.
+Step 2b: one clean-room probe on the best survivor (attacker-2 next, to alternate rooms). Step 3: campaign only via
+`request_board_approval`, grading first. Kill: if the new catalogue again yields < 3 admissible cards, stop lemma-gated
+selection and report to the owner that the pool, not the method, is the bottleneck.
+
+Cost of the whole round: scout 1 run; verifier 3 runs (20.1 CPU-min + 9.7 CPU-s + 19.8 CPU-s); attacker-1 1 run
+(10.5 min wall); coordinator 6 runs on AUT-51 (this one included; the control-plane proxy was down during this run, so
+the issue closure is recorded here and applied at the next reachable heartbeat).
