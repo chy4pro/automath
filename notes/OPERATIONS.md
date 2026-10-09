@@ -35,7 +35,7 @@ literature/library reading itself (scout child issues only). The inbox lane (inb
 while this test runs; nothing there is in progress.
 Session continuity (owner 2026-10-09, AUT-55): resumed sessions are the default, the unit of continuity is the
 issue; naming, close/keep-open rules, literature-free follow-ups to clean-room attackers, resumed/fresh recording and the
-configuration freeze are in notes/PAPERCLIP_PLAYBOOK.md (coordinator-owned).
+configuration freeze are in notes/PAPERCLIP_PLAYBOOK.md (coordinator-owned). Real resumption on the ssh targets exists only from 2026-10-09 17:36Z (Paperclip patches 7/8/9); earlier "resumed" runs were fresh (playbook §0 correction).
 
 ## Current portfolio and work
 

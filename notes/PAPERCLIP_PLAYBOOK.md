@@ -11,11 +11,23 @@ agent that touches Paperclip issues follows it. Changes to this file are made by
 Paperclip forces it.** Everything else — the coordinator's own work on a line, referee follow-ups, verifier re-checks,
 scout updates, and follow-up questions to a clean-room attacker — continues in the existing session of the existing issue.
 
-Facts this rests on (verified 2026-10-09 from run records): Paperclip keeps one saved session per (agent, issue). A wake
-on the same issue resumes it (comments, child completions, status changes, reopen-via-comment). The session is RESET
-when the wake reason is `issue_assigned`, `execution_approval_requested`, execution-review recovery or an unscoped timer
-wake; when the agent's effective configuration changes (instructions bundle, model, adapter config, environment, env
-bindings, secrets); or when a fresh session is forced. **Therefore the unit of continuity is the issue.**
+Facts this rests on: Paperclip keeps one saved session per (agent, issue). A wake on the same issue resumes it
+(comments, child completions, status changes, reopen-via-comment). The session is RESET when the wake reason is
+`issue_assigned`, `execution_approval_requested`, execution-review recovery or an unscoped timer wake; when the agent's
+effective configuration changes (instructions bundle, model, adapter config, environment, env bindings, secrets); or
+when a fresh session is forced. **Therefore the unit of continuity is the issue.**
+
+**Correction (chat session, 2026-10-09 17:37Z, AUT-55):** until 2026-10-09 17:36Z no session on the ssh targets ever
+actually resumed. Paperclip dropped the remote execution identity when it saved a session, and the identity key was the
+per-run temporary directory, so every wake started a fresh session while the server reported `sessionReused: true`.
+Fixed by Paperclip patches 7/8/9 (stable instructions fingerprint; session codecs keep the remote identity; identity
+keyed on the environment workspace path) and measured: three consecutive runs on one task kept the same Claude session
+id and the same conversation file. Consequences: (1) this playbook is in force for real from 17:36Z, not before;
+(2) every run recorded as `resumed` before 17:36Z was de facto fresh and is relabelled `reset (pre-fix)` in §5;
+(3) the saved sessions of issues whose runs all predate the fix (round-4 attackers and referees, AUT-51's children)
+hold nothing — a comment on them starts a session that knows only the issue text; (4) the configuration freeze (§7)
+is the live risk now: any change to the instructions bundle, model or environment resets a session that is genuinely
+being continued.
 
 ## 1. Issue kinds and naming
 
@@ -97,6 +109,9 @@ Every report entry in a verdict file (`notes/selection/*.md`, `notes/review/*.md
 - `resumed (comment on AUT-nn, follow-up k)` — continuation in the saved session;
 - `reset (<reason>, AUT-nn)` — Paperclip reset the session (config change, approval wake, recovery); for a clean room
   this starts generation g+1: write `CR-n gen 2`, and judge its output as a fresh attempt, not a continuation.
+- `reset (pre-fix, AUT-nn)` — a run before 2026-10-09 17:36Z that the server reported as resumed; it was fresh (see §0
+  correction). Applies to every "resumed" run of that day, including the coordinator's AUT-51 continuation runs and the
+  attackers' 14:17 retries, which therefore restarted their probes from the issue text alone.
 
 Referee reports additionally state their own lineage in the status line's second sentence ("Resumed session of AUT-40,
 follow-up 1") so cross-vendor independence stays auditable: referee-1 and referee-2 are independent because they are
@@ -127,11 +142,15 @@ session of that agent. Therefore:
 
 - AUT-51 is the LINE issue of the lemma-gated selection round; its children (AUT-52 scout, the verifier tests, the
   step-2b probe) follow §1–§3. The step-2b probe will be `CR-7 … (attacker-1)` with follow-ups per §4.
-- Round-4 issues (AUT-12/13/22–25 attackers, AUT-14–17/38–45 referees) are closed and resumable; if a parked line is
-  reopened, its follow-ups go to those issues as comments, not to new rooms.
-- Open verification items for this playbook: (a) does a board-decision wake on a `request_board_approval` resume or
-  reset; (b) does a comment with `resume: true` on a `done` Codex issue resume the Codex session as reliably as the
-  14:17 retries did. Both are recorded at first occurrence.
+- Round-4 issues (AUT-12/13/22–25 attackers, AUT-14–17/38–45 referees) are closed; their saved sessions predate the
+  17:36Z fix and are empty of context (§0 correction). A follow-up comment there is therefore a NEW room that sees only
+  the issue text plus the comment: label it `CR-n gen 2`, judge it as a fresh attempt, and put the full brief into the
+  comment. New rooms opened from 17:36Z on (CR-7 = AUT-58 and later) are the first ones whose follow-ups really resume.
+- Verification record: the 16:09Z "first confirmed resume of a coordinator OWNER issue" (ledger) was a false positive —
+  the server flag was spurious before the fix. Still open: (a) does a board-decision wake on a `request_board_approval`
+  resume or reset; (b) does a comment with `resume: true` on a `done` Codex issue resume the Codex session (the 14:17
+  retries are no longer evidence). Both are recorded at first occurrence after the fix; the test is the run record's
+  session id, not the `sessionReused` flag.
 
 ## 9. Language: everything that reaches the owner's inbox is Chinese (owner instruction 2026-10-09, AUT-55 comment)
 
