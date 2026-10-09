@@ -105,3 +105,25 @@ weekly scout literature/site sweep (Mon 09:00). All `skip_if_active` / `skip_mis
 reflection are gated `require_external_activity` (company scope): a quiet hour/6 h costs nothing; each
 ungated coordinator heartbeat costs ~70–100k input tokens of base context.
 Caveat: on PATCH `/api/agents/{id}` the fields `permissions` and `instructionsBundle` are create-only.
+
+## Patch 5: run pools (2026-10-09)
+
+Paperclip caps concurrency per agent only. Patch 5 (`patches/apply.sh`, marker `PAPERCLIP_PATCH_RUN_POOLS`) adds
+named pools: `PAPERCLIP_RUN_POOLS="codex:2:scout,attacker-1,attacker-2,formalizer"` in `/work/.paperclip/env.sh`
+caps the simultaneously *running* runs across the named agents (several pools separated by `;`); queued runs wait
+and pool-mates are re-checked when a run ends. Combined with per-agent `maxConcurrentRuns: 1` on the Codex
+agents, at most two Codex processes run at once. Subagents spawned inside a run are not counted. Upstream has
+open issues/PRs in this area (#14564, #7041, #14333, #14995); see the chat record before proposing it upstream.
+
+## Report pages: reload without a Paperclip restart
+
+`start.sh` runs `www/serve.js` under a loop; after editing the server, `curl http://wb-proj-656d7af54e8b:3101/reports/_reload`
+from an AI container (LAN only) restarts just the page server. Static pages under `/work/.www` need no reload.
+
+## Container rebuilds (Workbench base failure 2026-10-09)
+
+AI session containers can be recreated: hostname changes, IP and `/home/agent` persist, the user-space sshd dies.
+`sshd/sshd-up.sh` keys its state by IP so the host key (and Paperclip's pinned knownHosts) survive; rerun it in
+each AI container (the Claude side by the coordinator session, the Codex side by the owner), then set the
+interrupted issues back to `todo`. Failed runs count as activity, so gated routines fire once per hour during an
+outage at zero token cost; cancel the piled-up routine issues afterwards.
