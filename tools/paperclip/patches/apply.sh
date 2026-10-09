@@ -111,3 +111,8 @@ python3 "$(dirname "$0")/patch7b_resume_diagnostics.py" "$NM" && node --check "$
 
 # ---- patch 9b: codex_local skips the host-cwd comparison on remote targets (otherwise never resumes over ssh)
 python3 "$(dirname "$0")/patch9b_codex_remote_cwd.py" "$NM" && node --check "$NM/adapter-codex-local/dist/server/execute.js"
+
+# ---- patch 10: stable per-task runtime root on ssh (CODEX_HOME keeps its session rollouts across runs)
+for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-codex-local/dist/server/execute.js; do cp -n "$NM/$f" "$NM/$f.orig10" 2>/dev/null || true; done
+python3 "$(dirname "$0")/patch10_codex_stable_home.py" "$NM"
+for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-codex-local/dist/server/execute.js; do node --check "$NM/$f" || exit 1; done
