@@ -1,6 +1,6 @@
 # Selection round 2026-10-09 — lemma-gated (coordinator record)
 
-Status: IN PROGRESS (step 2, verifier tests AUT-56/AUT-57 running). Ranking and verdict are appended when steps 2–3 close.
+Status: STEP 3 (coordinator verdict written 2026-10-09 17:1x UTC; the CR-7 counterexample is being replayed by the verifier, AUT-60). Round outcome: NO SURVIVING LEMMA — see the step-3 section at the end.
 
 ## Method — coordinator decision (2026-10-09, after the owner's authority instruction relayed on AUT-51)
 
@@ -115,3 +115,44 @@ constant → grade by scope, then the campaign request; OPEN with the same obstr
 lemma parked, nothing survives this round, next round widens the catalogue (new family list). The campaign, if any, is
 proposed only via `request_board_approval` with the grading first: important milestone if proved with an onset, small
 result if asymptotic only.
+
+## Step 3 — CR-7 result and coordinator verdict (2026-10-09 17:1x UTC)
+
+**CR-7 (AUT-58, attacker-1 / Astra, clean room, fresh session): STATUS DISPROVED.** Report:
+`problems/erdos30/CR7_ASTRA_SIDL_20261009.md`. The attacker exhibits an explicit 68-element strong Sidon set in
+{0,…,4095} (max 3956), so N = 4096 = the lemma's own onset, k² = 4624 ≥ N, T = 719; the only missing differences
+below T are {601, 615, 624, 638, 671, 685}, S = 180,279,588, and 100·S = 18,027,958,800 < 75,825,771,636 = 3·k·T³,
+i.e. M(A) ≈ 0.1617 < k/100 = 0.68 (ρ ≈ 0.24). Further witnesses at N = 4557 (ρ ≈ 0.59), N = 6160 (q = 83, ρ ≈ 0.21)
+and N = 15216 (q = 127, ρ ≈ 0.79). All found in 1.7 CPU-s by dilating the Singer perfect difference sets (q = 67, 83,
+127) by every unit u ≤ m/2 and taking every cut; strong-Sidon-ness re-verified by enumeration, all arithmetic exact
+(BigInt). The attacker also records the exact obstruction for route (a): this very set satisfies positivity at all
+scales, the fourth-moment identity, the 0/1 far-difference structure and |F| ≤ k, so those constraints cannot imply
+the constant 1/100. Wall time 10.5 min, 1.8 CPU-s of mathematics.
+
+**Why the frozen finite test (AUT-57) missed it.** The scout's test specification sampled the multiplier group
+(s ∈ {1, −1, 2, 3, 5, 7}) and ≤ 900 cuts per prime; the witness is the dilation u = 353 of the q = 67 Singer set, cut
+66. The full orbit (1260 units × 68 cuts for q = 67) costs seconds. Lesson, recorded for SELECTION.md: a finite test
+of a lemma against an algebraic adversary family must sweep the family's whole symmetry orbit (all multipliers, all
+cuts, both interval conventions), not a sample — the sample gave a misleading 3.4× margin.
+
+**Verdict on SID-L: FALSE as stated; parked, not re-carded.** Reasons:
+- The counterexamples sit at ρ ≈ 0.21–0.79 at N = 4096..15216 with no sign of growth; a rescued constant would have to
+  be ≤ 1/500, and the conditional output (2√2/3 → √197/15, −0.75 %) shrinks proportionally to a ≲ 0.15 % coefficient
+  change — a small result even if proved, below the cost of a campaign.
+- The attacker's exact obstruction shows the "positional realizability" lever (the one live input named by the round-4
+  T6 referees) does not enforce a fixed positive fraction of missing small-difference mass: Singer dilations realize
+  almost every difference below T. The fixed-kernel wall of the 10-02 paper is therefore real at this scale; closing
+  the second-order gap for #30 needs a different mechanism (kernel optimality, or an argument about extremal rather
+  than near-extremal sets), not a missing-mass lemma.
+- Grade of CR-7's output: **small result (negative)** — an exact refutation of an internal candidate lemma; no
+  publication, no site/X action.
+
+**Round outcome: no lemma survives.** Two admissible cards of ≈ 40 candidates; SQ-L falsified by the verifier,
+SID-L refuted by the clean-room attacker. Both slots remain empty. Next round (new LINE issue) widens the catalogue
+instead of re-probing these targets; selection method stays lemma-gated, with the finite-test rule above added.
+Pending before this file is final: AUT-60 (verifier) replays the certificate in independent Python and sweeps the
+q = 67 orbit; if it does not confirm, the verdict is revisited.
+
+Cost of the round so far: scout 1 run (AUT-52); verifier 2 runs (AUT-56 20.1 CPU-min, AUT-57 9.7 CPU-s); attacker-1
+1 run (AUT-58, 10.5 min wall, no referee needed for a disproof with an exact finite certificate — the verifier replay
+is the gate); coordinator 5 runs on AUT-51.
