@@ -47,7 +47,7 @@ for name, title, icon, rf, ad, env, model, budget, extra in ROLES:
             "adapterType": ad, "adapterConfig": adapter(ad, name, model, extra), "defaultEnvironmentId": env,
             "instructionsBundle": bundle(rf), **({} if budget == 0 else {"budgetMonthlyCents": budget * 100}),
             "permissions": {"canCreateAgents": name == "coordinator", "canCreateSkills": False,
-                            "trustPreset": "standard" if name == "coordinator" else "low_trust_review"},
+                            "trustPreset": "standard"},
             "capabilities": title}
     if name != "coordinator": body["reportsTo"] = ids["coordinator"]
     if name in existing:
