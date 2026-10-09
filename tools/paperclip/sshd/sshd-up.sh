@@ -4,7 +4,12 @@
 # see /work/.tools/sshd/MANIFEST.txt). State per container: /work/.tools/sshd/state/<hostname>/.
 # Usage: sh /work/tools/paperclip/sshd/sshd-up.sh [port]   (default 2222; pubkey only; AllowUsers = current user)
 set -e
-PORT="${1:-2222}"; R=/work/.tools/sshd/root; S=/work/.tools/sshd/state/$(hostname); U=$(id -un)
+PORT="${1:-2222}"; R=/work/.tools/sshd/root; U=$(id -un)
+# State is keyed by container IP (stable across Workbench container rebuilds; the hostname is not), so the
+# host key — and therefore Paperclip's pinned knownHosts entry — survives a rebuild. Old hostname-keyed
+# state is migrated once.
+IP=$(hostname -I 2>/dev/null | awk '{print $1}'); S=/work/.tools/sshd/state/ip-$IP
+if [ ! -f "$S/hostkey" ] && [ -f "/work/.tools/sshd/state/$(hostname)/hostkey" ]; then mv "/work/.tools/sshd/state/$(hostname)" "$S"; fi
 mkdir -p "$S"; chmod 700 "$S"
 export LD_LIBRARY_PATH=$R/usr/lib/aarch64-linux-gnu:$R/lib/aarch64-linux-gnu
 [ -f "$S/hostkey" ] || ssh-keygen -q -t ed25519 -N "" -f "$S/hostkey" -C "sshd@$(hostname)"
@@ -31,5 +36,4 @@ CFG
 if [ -f "$S/sshd.pid" ] && kill -0 "$(cat "$S/sshd.pid")" 2>/dev/null; then echo "sshd already running (pid $(cat "$S/sshd.pid"))"; exit 0; fi
 nohup "$R/usr/sbin/sshd" -D -f "$S/sshd_config" -E "$S/sshd.log" >/dev/null 2>&1 &
 sleep 1
-IP=$(hostname -I 2>/dev/null | awk '{print $1}')
 echo "sshd up: $U@$IP:$PORT (host $(hostname)); host key fingerprint: $(ssh-keygen -lf "$S/hostkey.pub" | awk '{print $2}')"
