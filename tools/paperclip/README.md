@@ -101,5 +101,7 @@ Rebuild/refresh everything (idempotent): `python3 tools/paperclip/build_org.py &
 IDs land in `/work/.paperclip/agent_ids.json` and `env_ids.json`. `tools/paperclip/pc.py METHOD /path [json]` is the API helper.
 
 Routines (Asia/Shanghai): hourly coordinator tick (`0 * * * *`), 6-hour reflection (`0 */6 * * *`),
-weekly scout literature/site sweep (Mon 09:00). All `skip_if_active` / `skip_missed`.
+weekly scout literature/site sweep (Mon 09:00). All `skip_if_active` / `skip_missed`. The tick and the
+reflection are gated `require_external_activity` (company scope): a quiet hour/6 h costs nothing; each
+ungated coordinator heartbeat costs ~70–100k input tokens of base context.
 Caveat: on PATCH `/api/agents/{id}` the fields `permissions` and `instructionsBundle` are create-only.
