@@ -6,7 +6,9 @@ const ROOT = process.env.REPORTS_ROOT || "/work/.www", PORT = Number(process.env
 const TYPES = { ".html": "text/html; charset=utf-8", ".md": "text/plain; charset=utf-8", ".txt": "text/plain; charset=utf-8",
   ".css": "text/css", ".js": "text/javascript", ".json": "application/json", ".png": "image/png", ".svg": "image/svg+xml", ".pdf": "application/pdf" };
 http.createServer((req, res) => {
-  let p = decodeURIComponent((req.url || "/").split("?")[0]).replace(/^\/reports\/?/, "/");
+  const raw = (req.url || "/").split("?")[0];
+  if (raw === "/reports") { res.writeHead(302, { Location: "/reports/" }); return res.end(); }
+  let p = decodeURIComponent(raw).replace(/^\/reports\/?/, "/");
   if (p.endsWith("/")) p += "index.html";
   const file = path.normalize(path.join(ROOT, p));
   if (!file.startsWith(ROOT + path.sep) && file !== ROOT) { res.writeHead(403); return res.end("forbidden"); }
