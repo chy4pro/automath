@@ -16,5 +16,7 @@ if [ -s /work/.paperclip/tunnel.token ] && [ -x /work/.tools/bin/cloudflared ]; 
   (/work/.tools/bin/cloudflared tunnel --no-autoupdate run --token-file /work/.paperclip/tunnel.token 2>&1 | sed 's/^/[cloudflared] /') &
   echo "[start] cloudflared started"
 fi
+# Owner-facing report pages at /reports/ (static, port 3101; routed by the tunnel ingress path rule)
+(node /work/tools/paperclip/www/serve.js 2>&1 | sed 's/^/[reports] /') &
 # `run` bootstraps (onboard + doctor) on first run; lan preset binds 0.0.0.0 so the Workbench port publish works
 exec paperclipai run
