@@ -61,8 +61,8 @@ ag = next((g for g in ags if g.get("name") == a.agent), None)
 acfg = {"cwd": remote_path, "timeoutSec": 3600, "maxTurnsPerRun": 200}
 if a.model: acfg["model"] = a.model
 if a.instructions: acfg["promptTemplate"] = open(a.instructions).read()
-if a.adapter == "codex_local": acfg["modelReasoningEffort"] = "xhigh"
-if a.adapter == "claude_local": acfg["engine"] = "cli"
+if a.adapter == "codex_local": acfg["modelReasoningEffort"] = "xhigh"   # auth: host-owns-auth — the Paperclip host (project container, HOME=/work/.home) must hold ~/.codex/auth.json; it is symlinked into the managed home and uploaded per run
+if a.adapter in ("claude_local", "codex_local"): acfg["engine"] = "cli"
 if a.env: acfg["env"] = {k: v for k, v in (e.split("=", 1) for e in a.env)}   # ACP engine supports sandbox remotes only; ssh targets need the classic CLI engine
 if not ag:
     ag = req("POST", f"/companies/{cid}/agents", {"name": a.agent, "role": "researcher", "adapterType": a.adapter,

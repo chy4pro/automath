@@ -57,3 +57,11 @@ remote workspace **outside any git work tree** (`/home/agent/pcws/<name>`): insi
 repository to the remote every run and Claude Code picks up `/work/AGENTS.md`; (3) the agent runs in
 `<remoteWorkspacePath>/.paperclip-runtime/runs/<runId>/workspace`; (4) `jq` is absent in the AI images — instructions
 should say "build JSON with python3".
+
+Codex on ssh targets (2026-10-09): `codex_local` is **host-owns-auth** — Paperclip seeds a managed `CODEX_HOME` from the
+host's `~/.codex/auth.json` (host = project container, HOME=/work/.home → `/work/.home/.codex/auth.json`) and uploads it
+per run; a remote container's own login is shadowed, and an external `env.CODEX_HOME` is resolved on the host and
+uploaded too (so pointing it at the remote's `~/.codex` does not work: 401 Missing bearer). Therefore log Codex in once on
+the Paperclip host (project terminal, HOME=/work/.home). Also: the Codex AI image has no python3 — agent instructions
+must build JSON with node. Codex needs a host-side cwd that exists on the shared volume and is not inside the repo's
+work tree: `/work/.paperclip/host-ws/<name>` with its own empty `.git` (tar upload of a tiny dir instead of a repo bundle).
