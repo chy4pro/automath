@@ -41,10 +41,13 @@ ROLES = [
 ]
 
 existing = {a["name"]: a for a in api("GET", f"/companies/{COMPANY}/agents")}
+# per-agent environments (build_envs.py) win over the shared box ids
+try: ENV_IDS = json.load(open("/work/.paperclip/env_ids.json"))
+except FileNotFoundError: ENV_IDS = {}
 ids = {}
 for name, title, icon, rf, ad, env, model, budget, extra in ROLES:
     body = {"name": name, "title": title, "icon": icon, "role": "ceo" if name == "coordinator" else "researcher",
-            "adapterType": ad, "adapterConfig": adapter(ad, name, model, extra), "defaultEnvironmentId": env,
+            "adapterType": ad, "adapterConfig": adapter(ad, name, model, extra), "defaultEnvironmentId": ENV_IDS.get(name, env),
             "instructionsBundle": bundle(rf), **({} if budget == 0 else {"budgetMonthlyCents": budget * 100}),
             "permissions": {"canCreateAgents": name == "coordinator", "canCreateSkills": False,
                             "trustPreset": "standard"},
