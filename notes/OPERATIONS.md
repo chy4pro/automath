@@ -21,8 +21,9 @@ clean room), referee-1/2 (Claude), formalizer (Astra), verifier (Claude); every 
 workspace on its own container. Routines: hourly coordinator tick, 6-hour reflection, weekly scout sweep.
 Rules of this file and AGENTS.md bind every Paperclip agent (their bundles repeat them); outward actions
 are `request_board_approval` items for the owner. Details and rebuild commands: tools/paperclip/README.md.
-First real chain: AUT-11 (round-4 clean-room probes T1/T6) — result recorded in
-notes/selection/astra_probes_round4_20261009.md when done. The inbox lane (inbox/to_codex*) is secondary
+First real chain: AUT-11 (round-4 clean-room probes T1/T6) — DONE 2026-10-09: both targets OPEN,
+four cross-vendor referees PASS-WITH-REPAIRS, graded small result, lines parked; verdict and cost in
+notes/selection/astra_probes_round4_20261009.md. The inbox lane (inbox/to_codex*) is secondary
 while this test runs; nothing there is in progress.
 
 ## Current portfolio and work
