@@ -108,3 +108,6 @@ python3 "$(dirname "$0")/patch9_ssh_identity_stable_cwd.py" "$NM" && node --chec
 
 # ---- patch 7b: resume diagnostics from #15437 (the old log claimed an identity mismatch on every ssh run)
 python3 "$(dirname "$0")/patch7b_resume_diagnostics.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/execute.js"
+
+# ---- patch 9b: codex_local skips the host-cwd comparison on remote targets (otherwise never resumes over ssh)
+python3 "$(dirname "$0")/patch9b_codex_remote_cwd.py" "$NM" && node --check "$NM/adapter-codex-local/dist/server/execute.js"
