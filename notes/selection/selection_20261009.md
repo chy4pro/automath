@@ -71,3 +71,47 @@ for step 2b/3 will be decided after the tests, with the rule already recorded: p
 × test sharpness. Provisional order: SQ-L first (sharper test, elementary and self-contained lemma, clean-room
 attackable in one probe), SID-L second (higher grade but its finite test cannot discriminate and its attack is our
 own method's known barrier).
+
+## Step 2 results, ranking and step 2b dispatch (coordinator judgement, 2026-10-09 16:5x UTC)
+
+Test files: `notes/selection/lemma_tests_20261009/` (verifier, AUT-56 / AUT-57; exact integer arithmetic, stdlib only).
+
+**SQ-L (card 1, Erdős #222): FALSIFIED — card parked.** Batches 1–3 (the scout's frozen specification) passed with
+zero violations, exactly as predicted: batch 1 is trivial (0 non-trivial instances out of 15.7 M). The coordinator's
+supplementary batch 4 (critical window only) found **22 witnesses**: 14 in u = 4097..20000 (smallest u = 10082,
+r = 19882, n = 101,666,606, inside the lemma's domain and above the conditional output's onset 2^20) and 8 at
+u = 33194..33197 (b = 15); none for b = 16..28 (82.75 M instances). In every witness the minimum e_* is attained at
+j = 0 and 25e_*² exceeds 196u by 0.2–0.7 %, i.e. the growing neighbourhood j ≤ ⌈u^{1/4}⌉ never rescues the constant
+14/5 at these u. Interpretation and decision:
+- a rescued version (constant ≥ 2.81, or onset u ≥ 2^16 ≈ n ≥ 2^32) is a different lemma and would need a new card;
+  the product would still be a ≤ 1 % constant improvement at the same exponent on a problem with zero forum attention
+  — a small result at best;
+- proving any version is an explicit short-interval equidistribution statement for √(r + 2uj − j²), j ≤ u^{1/4}
+  (exponential sums with explicit constants), not attackable in one clean-room probe;
+- therefore parked, not re-carded. Cost: 20.1 CPU-min (verifier).
+
+**SID-L (card 2, Erdős #30): SURVIVED on the algebraic families — sole survivor, ranked first.** Bose (p = 67..257,
+37,056 sets) and Singer (p = 67..127, 1,024 sets), both interval conventions: zero counterexamples, 9.7 CPU-s. Margin
+ρ = 100·M(A)/k: minimum **3.40** (Singer, p = 67, span convention; 16 missing differences below T = 741), range
+3.4–14 over the family minima, not growing with p; random-like sets of the same density give ρ ≈ 26, and the Singer
+sets realize far more small differences than random (ρ/ρ_rand ≈ 0.13). Reading: the constant 1/100 sits within a
+factor ≈ 3.4 of the tightest known structured near-extremal sets — the lemma is non-trivial and neither generous nor
+absurd; perfect difference sets are the natural adversary. This is **not** evidence about extremal sets; the finite
+route is exhausted here.
+
+**Step 2b dispatched: CR-7 = AUT-58 (attacker-1, Astra, clean room).** Brief = definitions, the exact lemma SID-L
+(N ≥ 4096, k² ≥ N, T = ⌈(√197/10)N^{3/4}⌉, constant 1/100), prove-or-disprove, what counts as PROVED / PARTIAL /
+DISPROVED / OPEN, four mathematical route seeds — (a) positivity at all scales + the exact fourth-moment identity
+Σ|Â|⁴ = M(2k² − k), (b) window-count third moment with end-window/bulk coupling, (c) positional pair budget, (d) a
+disproof attempt by lifting perfect difference sets, with the algebraic-family margins as unattributed data — and the
+standard of proof. No literature, no campaign files, no mention of the published bound. Attacker-1 was chosen because
+attacker-2 ran T6 (#30) in round 4; the room must be fresh. Difference from T6: T6 was a problem-level target with
+third-moment seeds; its referees named "saturation of every difference below ≈ 1.5N^{3/4} as a positional
+constraint" as the one live input — SID-L is that input written as an exact lemma. Deliverable:
+`problems/erdos30/CR7_ASTRA_SIDL_20261009.md`.
+
+Decision tree after CR-7: PROVED → two Claude referees (cross-vendor) before anything else; PARTIAL with an explicit
+constant → grade by scope, then the campaign request; OPEN with the same obstruction as a saturated relaxation →
+lemma parked, nothing survives this round, next round widens the catalogue (new family list). The campaign, if any, is
+proposed only via `request_board_approval` with the grading first: important milestone if proved with an onset, small
+result if asymptotic only.
