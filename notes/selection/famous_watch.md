@@ -756,3 +756,12 @@ list) would surface more. The explicit-exclusion list in `orchestration/TARGETS.
 conjecture, Wall–Sun–Sun primes, Hall's conjecture / abc neighborhood, Dickson's conjecture,
 Oppermann's conjecture, first and second Hardy–Littlewood conjectures, Lemoine's conjecture,
 Erdős #855) — worth a dedicated pass later.
+
+## Freshness addendum 2026-10-09 — OpenAI math release (coordinator, title screen)
+
+See `openai_math_release_20261009.md`. Rows with a claimed resolution in the 2026-10-06 catalogue
+(unverified AI-generated manuscripts; Lean status per the repo): row 2 Kaplansky zero-divisor → family
+196 (counterexample, Lean link); row 10 Zariski cancellation → family 047 (affine fourfold); row 12
+circulant Hadamard → family 179 (orders 1 and 4 only, Lean link). Row 13 Jacobian: two "Jacobian" hits
+to be read by the scout. Rows 1, 3–9, 11, 14–18: no title hit. Unlock conditions are not re-evaluated
+here; the scout sweep (G2_OPENAI_RELEASE_20261009.md) decides row by row.

@@ -2,7 +2,7 @@ DONE — Task 044: bounded literature/status screen; no proof campaign or new bo
 
 # Old elementary records: selection audit, 2026-10-03
 
-**Decision.** Only **#1066 (penny-graph independence)** survives this bounded scan's strict screen with a read proof and an identifiable next structural gate. This supports a small source/structure audit, not an expensive campaign or an expectation of improvement. No mechanical transfer from #708/#889 was established. The requested 15–30 positive hits are not supported: below are **18 ranked screened records**, of which 17 are explicitly HOLD/LOW-FIT/NO-GO, followed by five adjacent families. Age alone does not establish unused slack.
+**Correction during task 045 (2026-10-03).** The direct forum check found July 2026 claims of 7/27 and 6/23 for #1066, missed by this report's initial search. [July 10 claim](https://www.erdosproblems.com/forum/thread/1066#post-7426), [July 12 claim](https://www.erdosproblems.com/forum/thread/1066#post-7461). The claims require proof review; the unchanged problem-page baseline does not establish that 8/31 is the current frontier. **No strict survivor is confirmed by this scan.** #1066 is downgraded to a source/claim-audit HOLD, and the earlier proposed 7/27 gate must first be checked against these manuscripts. No mechanical transfer from #708/#889 was established. The requested 15–30 positive hits are not supported: below are **18 ranked screened records**, all of which are now HOLD/LOW-FIT/NO-GO, followed by five adjacent families. Age alone does not establish unused slack.
 
 **Coverage and evidence.** Retrieved the live [OPEN catalog](https://www.erdosproblems.com/range/1-end/open): 635 OPEN cards, from a site total of 1,221 problems. Screened quantitative statements, tag groupings and OEIS links; split follow-up among additive/Sidon/basis, graphs/geometry/probability, arithmetic, and #708/#889 neighbors. This is a systematic metadata pass plus selective primary-source reading, **not 635 full proof audits**. Recent papers were searched through 2026-10-03, including 2015–2026 improvements. “None located” always means this bounded search, never a proof of absence. Site OPEN labels and their numerical summaries sometimes lag or conflict with primary sources.
 
@@ -10,11 +10,11 @@ DONE — Task 044: bounded literature/status screen; no proof campaign or new bo
 
 ## Part A: ranked screened records
 
-### 1. #1066 — independence in penny graphs: SCREEN SURVIVOR, bounded gate only
+### 1. #1066 — independence in penny graphs: HOLD after missed 2026 claims
 
 For $n$ planar points at pairwise distance at least 1, join pairs at distance exactly 1. Swanepoel (2002) proves $\alpha(G)\ge8n/31$; the quoted constructions give an asymptotic upper coefficient 5/16. This is a contact/minimum-distance graph, not an arbitrary unit-distance graph. [Problem](https://www.erdosproblems.com/1066), [original, §§3–4](https://link.springer.com/content/pdf/10.1007/s00454-002-2897-y.pdf), [author survey, §4.3](https://arxiv.org/pdf/1702.00066).
 
-READ: the minimal-counterexample reduction with coefficient $m/(4m-1)$ forces any three consecutive closures to start at $a\ge2m-10$; Euclidean geometry forces such a start with $a\le4$ for the cases m = 7, 8 considered here. Taking $m=8$ contradicts this. At $m=7$, the boundary case $a=4$ remains. The proof uses elementary graph/angle arguments; the basic four-color bound here has a greedy proof. Freshness search found recognition-complexity and other contact-graph work, but no improvement of this coefficient.
+READ: the minimal-counterexample reduction with coefficient $m/(4m-1)$ forces any three consecutive closures to start at $a\ge2m-10$; Euclidean geometry forces such a start with $a\le4$ for the cases m = 7, 8 considered here. Taking $m=8$ contradicts this. At $m=7$, the boundary case $a=4$ remains. The proof uses elementary graph/angle arguments; the basic four-color bound here has a greedy proof. The initial search missed the live forum claims of 7/27 and 6/23; task 045 is auditing their primary manuscripts. The following old-proof analysis remains a source summary, not an originality assessment.
 
 Tool/gain HEURISTIC: exact local adjacency and Euclidean compatibility, possibly a finite certificate. Excluding the remaining configuration could permit $7/27$, a gain $1/837\approx0.001195$; **the needed exclusion is unproved**. Improving angle estimates alone has not been shown to remove it. First gate: determine whether that boundary configuration is realizable and whether the reduction retains enough information.
 
@@ -159,6 +159,21 @@ The #708 hinge/duality method can certify a specified finite counting inequality
 
 **Empty regions.** No strict positive in additive combinatorics/bases, discrepancy/probabilistic methods, or #708/#889 arithmetic transfer was established. The strongest additive lead (#156) has a specific logarithmic union-bound loss but fails the recent-computation screen. Arithmetic leads mostly fail proof access, elementary-input, current-baseline, or domain gates. This is evidence against launching many old-constant campaigns on the present dossier, not a theorem that other opportunities do not exist.
 
-**Next useful order.** First, a bounded #1066 configuration audit; second, source acquisition for #509/#1033/#1093; only if the coordinator relaxes the literal computation condition, reassess #156/#1082. For #1181, require an actual fixed-proportion prime-budget inequality before scheduling proof work. No claims of priority, no original conjecture solved, and no full campaign recommended by this report.
+**Next useful order.** First, review the already posted #1066 claims before any configuration audit; second, source acquisition for #509/#1033/#1093; only if the coordinator relaxes the literal computation condition, reassess #156/#1082. For #1181, require an actual fixed-proportion prime-budget inequality before scheduling proof work. No claims of priority, no original conjecture solved, and no full campaign recommended by this report.
 
 **Execution and limits.** Root plus three existing source-review seats; no fresh clean-room agents, solver, Lean build, new dependency, cloud job, commit/push, or external message. Only source reading and small exact arithmetic checks were performed. The global-memory recall tool/skill was unavailable; no notice was invented and no preset was changed. Three same-vendor read-only integration reviews completed with the stated scope; all requested definition, endpoint, attribution and formatting repairs were applied. The root separately inspected #1066 Theorem 4/Lemma 10 and the #1093 counterexample. Wall time and check scope, not unobserved model token/cost claims, are reported there.
+
+## Freshness addendum 2026-10-09 — OpenAI math release (coordinator, keyword screen)
+
+OpenAI's 2026-10-06 catalogue (719 manuscripts, 372 families; see `openai_math_release_20261009.md`)
+touches this audit as follows; a scout G2 sweep (G2_OPENAI_RELEASE_20261009.md) will finalize each row.
+
+- Row 13 (#304/#18 short Egyptian fractions): family 025 claims N(b) = O(log log b), Erdős's conjecture,
+  with a Lean link → **CLAIMED-CLOSED 2026-10-06**; remove from the candidate pool until the claim fails.
+- Row 3 (#1082): family 167 (weak pinned planar distances, n^{1−ε} from all but o(n) points) and family
+  183 (halving lines, no three collinear) are ADJACENT, not the exact-coefficient statement; HOLD stands,
+  any future #1082 G2 must cite them.
+- Exclusion row #167 (unit distances): family 167 also claims O(n^{4/3−δ}) unit distances → the
+  coefficient game on the 4/3 exponent is moot.
+- All other rows: no title/abstract hit on the keyword screen (Sidon, B₃, penny, hypercube C₄, Zaremba,
+  binomial/Selfridge, divisors, sum of two squares, cluster primes, asymptotic bases: 0 hits).
