@@ -38,3 +38,23 @@ Referee repairs, if any, go to the formalizer as comments (mathematics only).
 - Owner doctrine decision on the AUT-62 question card (option A includes this line); the owner may cancel the line there.
 - After PASS + green CI: transplant CR-9 (i) as section 6 of SIDON_BOUND_PROOF.md v2 (status line updated), then
   request_board_approval (grade small result) before any Zenodo version.
+
+## Steps 3–5 — results (2026-10-09 19:0x–19:2x) and coordinator verdict
+- AUT-76 referee-1 (Claude): PASS, 41 comparisons recomputed true, no repair (3 cosmetic remarks on §(ii) wording;
+  note that r ≥ 32 comes from N−1 > 32T, not from the floor bound alone). session: resumed after a provider quota cut; all
+  checks re-run in the second session. notes/review/REF_CR9_referee1_20261010.md
+- AUT-77 referee-2 (Claude): PASS, 48 checks (40 numeric + 8 symbolic), no mathematical repair (E1 wording; E2/E3
+  formaliser notes — moot, the formaliser used (B4.2) and the hypothesis 463/10 ≤ x). session: resumed after a quota
+  cut; computation in the second session. notes/review/REF_CR9_referee2_20261010.md
+- AUT-78 formalizer (Astra): DONE. `sidon_second_order' : SidonSecondOrderBound'` (N ≥ 4600000) kernel-checked; CI
+  37978411704 (commit fd880ad) build 8759 jobs + 39 exact axiom guards; documentation run 37979173140 (commit ff9a9e4).
+  Old theorem is a corollary; transfer statements unchanged; no mathematical change to Route B. One failed CI (unfold).
+- AUT-79 verifier: check_sidon_bound_v2.py exit 0 (2.3 s): 67 CR-9 certificates, 30 identities, 62-point sanity grid,
+  exact (B3) for every N in [4.6e6, 5.6e6] + block starts to 1.2e7, old small-N enumeration.
+- Verdict: ALL GATES PASSED (two cross-vendor referees, finite checks, Lean, G2 card). SIDON_BOUND_PROOF.md updated to
+  version 2 (Section 6 = CR-9 (i) verbatim as refereed; statement, status line, §8 record, §9 checker note; version
+  history remark). Grade: SMALL RESULT — same theorem, same coefficient and constant, onset 120^4 → 4,600,000 (×45);
+  no new bound, no novelty claim. Outward action proposed to the owner: one Zenodo version (v2) of the existing record
+  + GitHub (already pushed). No X, no site claim, no e-mail.
+- Cost of the line (runs): scout 1, attacker-1 1, verifier 2, referee-1 1 (+1 quota-cut), referee-2 1 (+1 quota-cut),
+  formalizer 1 (3 CI runs), coordinator 5. Engine time not metered here.

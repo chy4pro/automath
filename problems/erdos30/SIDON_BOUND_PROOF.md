@@ -1,4 +1,4 @@
-PROVED — same-vendor reviewed only. Cross-vendor review, independent human verification and kernel formalization remain outstanding.
+PROVED — version 2 (2026-10-09): onset lowered from 120^4 to 4,600,000. Kernel-checked in Lean (lean/sidon30, theorem `sidon_second_order'`, CI run 37978411704, 39 exact axiom guards); two independent cross-vendor referees PASS on the new Section 6 (notes/review/REF_CR9_referee1_20261010.md, REF_CR9_referee2_20261010.md); exact replay by check_sidon_bound_v2.py (exit 0). No human referee. Version 1 (onset 120^4, Zenodo 10.5281/zenodo.23103980) remains valid as a special case.
 
 # An explicit upper bound for finite Sidon sets
 
@@ -22,7 +22,7 @@ A finite set of integers \(A\) is a **Sidon set** if the map
 is injective. In particular, the pairs \((a,a)\) are included: equality
 \(a+b=c+d\), with \(a\le b\) and \(c\le d\), requires \(a=c\) and \(b=d\).
 
-**Theorem.** For every integer \(N\ge207\,360\,000\) and every Sidon set
+**Theorem.** For every integer \(N\ge4\,600\,000\) and every Sidon set
 \(A\subseteq\{1,\ldots,N\}\),
 
 \[
@@ -32,7 +32,7 @@ is injective. In particular, the pairs \((a,a)\) are included: equality
 
 All powers and square roots in this document are positive real ones. In
 particular, there is no requirement that \(N\) be a fourth power. The onset is
-\(207\,360\,000=120^4\).
+\(4\,600\,000\) (version 2; version 1 used the convenience onset \(207\,360\,000=120^4\)).
 
 **Lemma 1 (equivalent difference convention).** The Sidon condition is
 equivalent to
@@ -566,18 +566,20 @@ This proof applies also to the empty set and to singleton sets. ∎
 
 ## 6. The explicit additive constant and onset
 
-Let
+Put \(N_1=4\,600\,000\) and \(x_1=N_1^{1/4}\). Let \(N\ge N_1\) be an integer and let \(A\subseteq\{0,\ldots,N-1\}\) be a Sidon set. Write \(k=|A|\). Set
 
 \[
-x=N^{1/4},\quad T=\sqrt2\,x^3,\quad
-\gamma=\frac{2\sqrt2}{3},\quad
+x=N^{1/4},\qquad T=\sqrt2\,x^3,\qquad
+\gamma=\frac{2\sqrt2}{3},\qquad
+\alpha=\log(4/3),\qquad
 \varepsilon=200e^{-\alpha x/\sqrt2}.
 \tag{6.1}
 \]
 
-For \(x\ge120\) the interval parameter \(L=N/T=x/\sqrt2\) is at least
-one, so Lemma 7 applies. Expanding its right side gives
-\(P_\varepsilon(k)\le0\), where
+The estimates below hold, in fact, for every real \(x\ge x_1\), regardless of whether \(x^4\) is integral. Put \(s=\sqrt2\), \(\beta=\alpha/s\), and \(u=463/10\). Since \(463^4=45\,954\,068\,161<46\,000\,000\,000=10^4N_1\), we have \(x\ge x_1>u>46>2>s>0\). Here \(u>46\) follows from \(463>460\), and \(2>s\) follows from \(2<4=2^2\). Consequently
+\(L=N/T=x/s>1\) and \(0<T<N\). Thus the interval parameter in Lemma 7 is admissible.
+
+Expanding Lemma 7 gives \(P_\varepsilon(k)\le0\), where, exactly as before,
 
 \[
 P_\varepsilon(z)=
@@ -586,105 +588,126 @@ z^2-\left(\gamma x+\frac89+\frac43\varepsilon\right)z
 \tag{6.2}
 \]
 
-For clarity, the coefficient of \(z\) comes from
-\((4/3)(x/\sqrt2+2/3+\varepsilon)\), and the constant term comes from
-\(-(x/\sqrt2+2/3+\varepsilon)\sqrt2 x^3\).
+Indeed, \((4/3)(x/s+2/3+\varepsilon)=\gamma x+8/9+(4/3)\varepsilon\), and \((x/s+2/3+\varepsilon)sx^3=x^4+\gamma x^3+s\varepsilon x^3\).
 
-We next establish a uniform bound for the error with all numerical
-comparisons explicit. The integral formula for the logarithm gives
+Here are exact elementary bounds for the exponential. Substitution in the logarithm integral gives
 
 \[
-\alpha=\int_1^{4/3}\frac{dt}{t}\ge\frac14.
+\alpha=2\int_0^{1/7}\frac{dt}{1-t^2}
+>2\left(\frac17+\frac{1}{3\cdot7^3}\right)
+=\frac{296}{1029}>\frac{719}{2500}.
 \]
 
-Since \(\sqrt2\le3/2\), it follows that
-\(\alpha/\sqrt2\ge1/6\). The derivative of \(x e^{-x/6}\) is
-\(e^{-x/6}(1-x/6)\), so it is nonpositive for \(x\ge6\). Consequently,
-for every real \(x\ge120\),
+The first strict inequality follows from \(1/(1-t^2)>1+t^2\) for \(0<t\le1/7\). The last comparison is \(740000>739851\). Also \(s<99/70\), since \(99^2=9801>9800=2\cdot70^2\). Therefore
 
 \[
-\varepsilon x
-\le200xe^{-x/6}
-\le24000e^{-20}
-<\frac{24000}{2^{20}}
-=\frac{375}{16384}
-<\frac1{32}.
+\beta u>
+\frac{719}{2500}\frac{463}{10}\frac{70}{99}
+>\frac{941}{100}>1.
 \tag{6.3}
 \]
 
-Here \(e>2\) follows from its series, and the last comparison is the
-integer inequality \(375\cdot32=12000<16384\). Equivalently,
-\(24000\cdot32=768000<1048576=2^{20}\).
+The middle comparison is exactly
+\(2\,330\,279\,000>2\,328\,975\,000\), obtained by multiplying the positive denominators; the last is \(941>100\).
 
-This is the reason for the convenient choice \(x_0=120\), hence
-\(N_0=120^4=207\,360\,000\): it makes the exponent \(x_0/6=20\) and
-proves (6.3) by integer arithmetic. This onset is not claimed minimal.
-The argument is uniform beyond the onset, rather than a check at one
-point. More explicitly, the controlling envelope
+The positive-term exponential series yields
 
 \[
-H(N)=200N^{1/4}\exp(-N^{1/4}/6)
+e^3>\sum_{j=0}^{9}\frac{3^j}{j!}
+=\frac{22471}{1120}>\frac{1003}{50},
+\qquad
+e^{41/100}>
+\sum_{j=0}^{3}\frac{(41/100)^j}{j!}
+=\frac{9033221}{6000000}>\frac32.
 \]
 
-has derivative
+The rational comparisons are \(1\,123\,550>1\,123\,360\) and \(9\,033\,221>9\,000\,000\). Hence
 
 \[
-H'(N)=50N^{-3/4}\exp(-N^{1/4}/6)
-\left(1-\frac{N^{1/4}}6\right)\le0
-\qquad(N\ge6^4).
+e^{\beta u}>e^{941/100}
+=(e^3)^3e^{41/100}
+>\frac{3\cdot1003^3}{2\cdot50^3}>12100,
+\qquad
+200e^{-\beta u}<\frac{2}{121}.
 \tag{6.4}
 \]
 
-The actual quantity \(\varepsilon x\) is also decreasing there, since
-\(\alpha/\sqrt2\ge1/6\). Thus no larger \(N\) can violate the error bound
-used in (6.3).
+The penultimate comparison is exactly
+\(3\,027\,081\,081>3\,025\,000\,000\).
 
-Put \(y=x^2+\gamma x+1\). Using \(\gamma^2=8/9\), direct expansion gives
+Put \(y=x^2+\gamma x+1\). Since \(\gamma^2=8/9\), the unchanged polynomial identity is
 
 \[
 P_0(y)=\frac{10}{9}x^2+\frac{\gamma}{9}x+\frac19\ge x^2.
 \tag{6.5}
 \]
 
-Also \(\gamma<1\), since \(\gamma^2=8/9<1\). For \(x\ge1\),
-\(y\le x^2+x+1\le3x^2\). Hence (6.3) implies
+We retain the full leading term \((10/9)x^2\) in what follows. In particular \(P_0(y)\ge(10/9)x^2\). Also \(0<\gamma<1\), because \(0<\gamma^2=8/9<1\).
+
+Normalize the error by \(x^2\):
 
 \[
-\begin{aligned}
-\varepsilon\left(\frac43y+\sqrt2\,x^3\right)
-&<\frac1{32x}\left(4x^2+\frac32x^3\right)\\
-&=\frac x8+\frac{3x^2}{64}
-\le\frac{11x^2}{64}.
-\end{aligned}
+F(x):=\frac{\varepsilon((4/3)y+sx^3)}{x^2}
+=200e^{-\beta x}
+\left(sx+\frac43+\frac{4\gamma}{3x}+\frac{4}{3x^2}\right).
+\]
+
+This function is strictly decreasing on \([u,\infty)\). To see this without any estimate on an unspecified remainder, its four summands are positive constant multiples of \(xe^{-\beta x}\), \(e^{-\beta x}\), \(x^{-1}e^{-\beta x}\), and \(x^{-2}e^{-\beta x}\). The first derivative is \(e^{-\beta x}(1-\beta x)<0\), by (6.3). For \(j=0,1,2\), the derivative of \(x^{-j}e^{-\beta x}\) is
+\(-e^{-\beta x}(j x^{-j-1}+\beta x^{-j})<0\).
+
+At the rational endpoint \(u\),
+
+\[
+su<\frac{99}{70}\frac{463}{10}
+=\frac{45837}{700}<\frac{131}{2},
+\qquad
+\frac43\left(1+\frac\gamma u+\frac1{u^2}\right)
+<\frac43\left(1+\frac1{46}+\frac1{46^2}\right)
+=\frac{721}{529}<\frac32.
+\]
+
+These comparisons are \(45837<45850\), \(463>460\), and \(1442<1587\). Combining them with (6.4) gives, uniformly for \(x\ge x_1>u\),
+
+\[
+F(x)\le F(u)
+<\frac{2}{121}\left(\frac{131}{2}+\frac32\right)
+=\frac{134}{121}.
 \tag{6.6}
 \]
 
-The last step uses \(x\le x^2\), valid for \(x\ge1\). Combining
-(6.2), (6.5), and (6.6) now proves, for every real \(x\ge120\),
+Finally, (6.2), (6.5), and (6.6) give
 
 \[
+\begin{aligned}
 P_\varepsilon(y)
-=P_0(y)-\varepsilon\left(\frac43y+\sqrt2\,x^3\right)
->\frac{53}{64}x^2>0.
+&=P_0(y)-\varepsilon\left(\frac43y+sx^3\right)\\
+&>\left(\frac{10}{9}-\frac{134}{121}\right)x^2
+=\frac4{1089}x^2>0.
+\end{aligned}
 \tag{6.7}
 \]
 
-The quadratic \(P_\varepsilon\) has leading coefficient 1 and strictly
-negative constant term. Its two real roots have opposite signs: this also
-follows directly from its positive discriminant and negative root product.
-Therefore, on \([0,\infty)\), the condition \(P_\varepsilon(k)\le0\)
-places \(k\) at or below the unique positive root. Since \(y>0\) and
-\(P_\varepsilon(y)>0\), that root is strictly smaller than \(y\).
-We have proved
+Here \(10\cdot121-134\cdot9=1210-1206=4>0\). This proves the requested real-variable assertion for every real \(x\ge x_1\).
+
+The quadratic \(P_\varepsilon\) has leading coefficient 1 and strictly negative constant term. Its discriminant is positive, and its two roots have negative product, so precisely one root is positive. Since \(k\ge0\) and \(P_\varepsilon(k)\le0\), \(k\) is at most that positive root. Since \(y>0\) and \(P_\varepsilon(y)>0\), the positive root is strictly smaller than \(y\). Consequently
 
 \[
 k<x^2+\gamma x+1
 =\sqrt N+\frac{2\sqrt2}{3}N^{1/4}+1.
 \]
 
-Translating the original set as in Section 1 proves (1.1). In particular,
-the stated non-strict bound follows from a strict bound on the real right
-side. ∎
+Translation from \(A\subseteq\{1,\ldots,N\}\) to \(A-1\subseteq\{0,\ldots,N-1\}\) preserves the given Sidon condition. This proves the stated non-strict theorem, and indeed its strict version, for every integer \(N\ge4\,600\,000\). The root argument also includes \(k=0\). ∎
+
+**Remark (version history).** Version 1 of this document (2026-10-02) proved
+the theorem with the convenience onset \(N_0=120^4=207\,360\,000\): it
+replaced \(\alpha/\sqrt2\) by \(1/6\) and absorbed the error through the
+envelope \(\varepsilon x<1/32\), which needs \(x\ge120\). The present
+section (version 2, 2026-10-09) keeps Lemma 7 and the identities (6.2), (6.5)
+unchanged and replaces only the numerical absorption; the earlier argument
+remains valid on its own range and is a special case of this one. The onset
+\(4\,600\,000\) is not claimed minimal: the real-variable inequality
+\(P_\varepsilon(y)>0\) with the fixed scale \(T=\sqrt2x^3\) first holds
+near \(N\approx4.54\cdot10^6\) (numerical observation, not part of the proof).
 
 ## 7. Where the constant \(2\sqrt2/3\) comes from
 
@@ -849,8 +872,29 @@ checked the telescoping identity, endpoints, signed measures, all-N monotonicity
 and the restricted scalar optimality argument, without identifying a gap.
 This is not cross-vendor, independent human, or kernel certification.
 
+**Version 2 record (2026-10-09).** The new Section 6 was written in a
+literature-free clean room from Lemma 7 alone (problems/erdos30/CR9_ASTRA_ONSET_20261010.md),
+independently reviewed by two referees of the other vendor (both PASS, no
+repair), replayed numerically (notes/review/VER_onset30_20261010.md) and
+kernel-checked: `sidon_second_order' : SidonSecondOrderBound'` in
+lean/sidon30 compiles with only `propext`, `Classical.choice`, `Quot.sound`.
+The formalisation uses the finite certificate of lean/sidon30/PLAN.md rather
+than the real-variable Lemma 7; its tail chain at the new onset is the Route B
+argument of the same report. Still no human referee.
+
 
 ## 9. Verification script and actual checks
+
+**Version 2.** [check_sidon_bound_v2.py](check_sidon_bound_v2.py) (Python 3,
+standard library, exact integers and fractions) replays every integer and
+rational comparison of the new Section 6 and of the formalisation's tail chain,
+checks the algebraic identities in \(\mathbb Q[\sqrt2,x]\), runs a rational
+interval sanity layer for \(P_\varepsilon(y)>0\) on a grid from \(x_1\) to
+\(10^6\), tests the finite-certificate tail inequality exactly for every integer
+\(N\in[4.6\cdot10^6,5.6\cdot10^6]\) and at every \((T,r)\) block start up to
+\(1.2\cdot10^7\), and repeats the small-\(N\) enumeration below. Run by the
+verifier on 2026-10-09: exit 0, 2.3 s. The original script below audits
+version 1 and is unchanged.
 
 The accompanying [check_sidon_bound.py](check_sidon_bound.py) uses Python3.8+
 and the standard library, principally exact fractions and integer square
