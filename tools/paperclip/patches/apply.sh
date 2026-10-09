@@ -101,3 +101,7 @@ python3 "$(dirname "$0")/patch7_bundle_key_backport.py" "$NM" && node --check "$
 # ---- patch 8: backport of upstream #12930 — session codecs keep the remote execution identity (claude + codex)
 for a in claude codex; do cp -n "$NM/adapter-$a-local/dist/server/index.js" "$NM/adapter-$a-local/dist/server/index.js.orig8" 2>/dev/null || true; done
 python3 "$(dirname "$0")/patch8_session_identity_codec.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/index.js" && node --check "$NM/adapter-codex-local/dist/server/index.js"
+
+# ---- patch 9: ssh session identity keyed on the environment workspace path, not the per-run directory
+cp -n "$NM/adapter-utils/dist/remote-managed-runtime.js" "$NM/adapter-utils/dist/remote-managed-runtime.js.orig9" 2>/dev/null || true
+python3 "$(dirname "$0")/patch9_ssh_identity_stable_cwd.py" "$NM" && node --check "$NM/adapter-utils/dist/remote-managed-runtime.js"
