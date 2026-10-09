@@ -65,3 +65,11 @@ uploaded too (so pointing it at the remote's `~/.codex` does not work: 401 Missi
 the Paperclip host (project terminal, HOME=/work/.home). Also: the Codex AI image has no python3 — agent instructions
 must build JSON with node. Codex needs a host-side cwd that exists on the shared volume and is not inside the repo's
 work tree: `/work/.paperclip/host-ws/<name>` with its own empty `.git` (tar upload of a tiny dir instead of a repo bundle).
+
+Local patches (2026-10-09, `tools/paperclip/patches/apply.sh`, marker `PAPERCLIP_PATCH_SSH_AUTH`, `.orig` backups):
+`codex_local` on ssh environments now uses the REMOTE's own `~/.codex/auth.json` when the host has none — exactly the
+behaviour upstream already has for sandbox targets (adapter probe + gate, ssh home-upload fallback, server pre-dispatch
+gate). Verified: astra-1 in the Codex container ran with its own login, commented and closed its task.
+Re-run the script after every `npm install -g paperclipai`; if an anchor is missing, the upstream code moved — re-derive.
+`/work/.paperclip/env.sh` sets `PAPERCLIP_CODEX_AUTH_CACHE=0` so remote workers' credentials are never cached on the host
+(the first patched run had created `companies/<id>/codex-auth-cache/<account>/auth.json`; removed).
