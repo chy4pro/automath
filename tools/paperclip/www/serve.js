@@ -39,9 +39,11 @@ async function statusPage() {
   }));
   const today = new Date(); today.setUTCHours(0, 0, 0, 0);
   const tot = { in: 0, cached: 0, out: 0, n: 0, running: 0 }; const perAgent = {};
-  for (const r of runs) { const u = r.usageJson || r.usage || {}; if (new Date(r.createdAt) < today) continue;
+  for (const r of runs) { let u = r.usageJson || r.usage || {}; if (new Date(r.createdAt) < today) continue;
     if (r.status === "running") { tot.running++; continue; }
     if (!u.inputTokens && !u.outputTokens) continue;
+    // Codex reports inputTokens inclusive of cached reads; Claude reports them separately. Normalise to "new input".
+    if ((u.model || "").startsWith("gpt")) u = { ...u, inputTokens: Math.max(0, (u.inputTokens || 0) - (u.cachedInputTokens || 0)) };
     tot.in += u.inputTokens || 0; tot.cached += u.cachedInputTokens || 0; tot.out += u.outputTokens || 0; tot.n++;
     const k = name[r.agentId] || r.agentId; const a = perAgent[k] ||= { n: 0, in: 0, cached: 0, out: 0, usd: 0, model: u.model || "" };
     a.n++; a.in += u.inputTokens || 0; a.cached += u.cachedInputTokens || 0; a.out += u.outputTokens || 0; a.usd += u.costUsd || 0; }
