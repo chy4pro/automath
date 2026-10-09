@@ -2,7 +2,7 @@
 """Register an AI container as a Paperclip `ssh` environment and create one agent on it.
 Needs a board API token (file path in PAPERCLIP_BOARD_TOKEN_FILE, default /wb/creds/paperclip-board-token/value).
 Usage: setup_ssh_env.py --host 192.168.166.3 --name claude-box --agent coordinator-ssh --adapter claude_local
-       [--port 2222] [--user agent] [--remote-path /work/.paperclip/ws/<name>] [--model claude-fable-5-1]
+       [--port 2222] [--user agent] [--remote-path /home/agent/pcws/<name>] [--model claude-fable-5-1]
 Never prints secrets. Idempotent on names (reuses existing secret/environment/agent with the same name)."""
 import argparse, json, os, sys, urllib.request, urllib.error
 BASE = os.environ.get("PAPERCLIP_API_URL", "http://wb-proj-656d7af54e8b:3100/api")
@@ -23,7 +23,7 @@ ap.add_argument("--key", default="/work/.paperclip/ssh/paperclip_ed25519"); ap.a
 ap.add_argument("--instructions", default=None, help="markdown file for the agent's instructions bundle / prompt")
 ap.add_argument("--company", default=None, help="company id (default: the first company)")
 a = ap.parse_args()
-remote_path = a.remote_path or f"/work/.paperclip/ws/{a.name}"
+remote_path = a.remote_path or f"/home/agent/pcws/{a.name}"   # outside /work: no repo bundling, no /work/AGENTS.md pickup
 cos = req("GET", "/companies"); cos = cos if isinstance(cos, list) else cos.get("companies") or cos.get("items") or []
 cid = a.company or (cos[0]["id"] if cos else sys.exit("no company yet: create one in the UI first"))
 print("company", cid)

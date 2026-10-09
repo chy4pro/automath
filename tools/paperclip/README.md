@@ -49,3 +49,11 @@ needs `adapterConfig.engine = "cli"` (the default ACP engine supports sandbox re
 `{"source":"on_demand"}`. Board token: obtained through the CLI-auth challenge flow (`POST /api/cli-auth/challenges`,
 owner approves in the browser), stored at `/work/.paperclip/board.token` (0600, git-ignored). Container IPs change on
 recreation: update the environment's host and known_hosts then.
+
+Verified 2026-10-09 (run f4cd01c3…): assignment-triggered heartbeat → checkout → work → comment → `done`, 17k input tokens,
+subscription-included. Rules that matter: (1) wake agents by **assigning an issue** (the run then carries the issue in its
+context; a bare `on_demand` wake cannot write any issue → 403 `cross_issue_influence_run_context_required`); (2) keep the
+remote workspace **outside any git work tree** (`/home/agent/pcws/<name>`): inside `/work` Paperclip bundles the whole
+repository to the remote every run and Claude Code picks up `/work/AGENTS.md`; (3) the agent runs in
+`<remoteWorkspacePath>/.paperclip-runtime/runs/<runId>/workspace`; (4) `jq` is absent in the AI images — instructions
+should say "build JSON with python3".
