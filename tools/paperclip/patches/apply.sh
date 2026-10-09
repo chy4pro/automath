@@ -87,10 +87,17 @@ cp -n "$HB" "$HB.orig5" 2>/dev/null || true
 python3 "$(dirname "$0")/patch5_run_pools.py" "$HB" && node --check "$HB"
 
 # ---- patch 6: stable per-task remote workspace (PAPERCLIP_PATCH_STABLE_TASK_WS) — see patch6_stable_task_workspace.py
+# Superseded by patch 8 unless PAPERCLIP_APPLY_PATCH6=1 (kept for the record; upstream keeps per-run directories).
+if [ "${PAPERCLIP_APPLY_PATCH6:-0}" = 1 ]; then
 for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-claude-local/dist/server/execute.js adapter-codex-local/dist/server/execute.js; do cp -n "$NM/$f" "$NM/$f.orig6" 2>/dev/null || true; done
 python3 "$(dirname "$0")/patch6_stable_task_workspace.py" "$NM"
 for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-claude-local/dist/server/execute.js adapter-codex-local/dist/server/execute.js; do node --check "$NM/$f" || exit 1; done
+fi
 
 # ---- patch 7: backport of upstream #15437 (stable prompt bundle key across per-run instruction copies)
 cp -n "$NM/adapter-claude-local/dist/server/execute.js" "$NM/adapter-claude-local/dist/server/execute.js.orig7" 2>/dev/null || true
 python3 "$(dirname "$0")/patch7_bundle_key_backport.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/execute.js"
+
+# ---- patch 8: backport of upstream #12930 — session codecs keep the remote execution identity (claude + codex)
+for a in claude codex; do cp -n "$NM/adapter-$a-local/dist/server/index.js" "$NM/adapter-$a-local/dist/server/index.js.orig8" 2>/dev/null || true; done
+python3 "$(dirname "$0")/patch8_session_identity_codec.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/index.js" && node --check "$NM/adapter-codex-local/dist/server/index.js"
