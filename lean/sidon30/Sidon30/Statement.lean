@@ -1,9 +1,9 @@
 import Sidon30.Basic
 
 /-!
-# The exact Sidon second-order target
+# The exact Sidon second-order targets
 
-This file states a proposition; it does not prove it. `Basic` imports only
+This file states propositions; it does not prove them. `Basic` imports only
 Mathlib and supplies the existing `IsSidon` definition, including diagonal
 pair sums. No proof card is imported here.
 
@@ -17,6 +17,20 @@ are the nonnegative real fourth root; `N` need not be a fourth power. -/
 def SidonSecondOrderBound : Prop :=
   ∀ (N : ℕ) (A : Finset ℕ),
     120 ^ 4 ≤ N →
+    A ⊆ Finset.Icc 1 N →
+    IsSidon A →
+    (A.card : ℝ) ≤
+      Real.sqrt (N : ℝ) +
+        (2 * Real.sqrt 2 / 3) * Real.sqrt (Real.sqrt (N : ℝ)) + 1
+
+/-- The lower-onset target: every strong Sidon subset of `{1, ..., N}` obeys
+the same explicit second-order bound for every natural number `N ≥ 4600000`.
+Diagonal pair sums are included, all square roots are real and nonnegative,
+and `N` need not be a fourth power. The original specification above remains
+available to the transfer theorems. This definition is not a proof. -/
+def SidonSecondOrderBound' : Prop :=
+  ∀ (N : ℕ) (A : Finset ℕ),
+    4600000 ≤ N →
     A ⊆ Finset.Icc 1 N →
     IsSidon A →
     (A.card : ℝ) ≤

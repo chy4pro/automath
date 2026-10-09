@@ -21,10 +21,27 @@ def DiscreteSidonCertificateBound : Prop :=
         29 * (T : ℝ) * ((3 : ℝ) / 4) ^ ((N - 1) / T)) *
       (1 + rampDiagonal T * ((A.card : ℝ) - 1))
 
-/-- Supplying the actual finite certificate suffices for the original coefficient,
-additive constant, and onset. This is explicitly a conditional reduction. -/
-theorem sidon_second_order_of_discreteCertificate
-    (hcertificate : DiscreteSidonCertificateBound) : SidonSecondOrderBound := by
+/-- The exact rational fourth-root lower bound at the new natural onset. -/
+theorem sidon_fourthRoot_gt_of_onset {N : ℕ} (hN : 4600000 ≤ N) :
+    (463 : ℝ) / 10 < Real.sqrt (Real.sqrt (N : ℝ)) := by
+  let x := Real.sqrt (Real.sqrt (N : ℝ))
+  have hxnonneg : 0 ≤ x := Real.sqrt_nonneg _
+  have hx2 : x ^ 2 = Real.sqrt (N : ℝ) := Real.sq_sqrt (Real.sqrt_nonneg _)
+  have hx4 : x ^ 4 = (N : ℝ) := by
+    calc
+      x ^ 4 = (x ^ 2) ^ 2 := by ring
+      _ = (N : ℝ) := by rw [hx2, Real.sq_sqrt (by positivity)]
+  have hNr : (4600000 : ℝ) ≤ (N : ℝ) := by exact_mod_cast hN
+  change (463 : ℝ) / 10 < x
+  by_contra h
+  have hle : x ≤ (463 : ℝ) / 10 := le_of_not_gt h
+  have hpow : x ^ 4 ≤ ((463 : ℝ) / 10) ^ 4 := by gcongr
+  norm_num at hpow
+  nlinarith only [hpow, hx4, hNr]
+
+/-- The finite certificate yields the audited target at every N ≥ 4600000. -/
+theorem sidon_second_order_of_discreteCertificate'
+    (hcertificate : DiscreteSidonCertificateBound) : SidonSecondOrderBound' := by
   intro N A hN hAN hA
   let B := shiftWindow A
   have hB : IsSidon B := isSidon_shiftWindow hA hAN
@@ -37,12 +54,7 @@ theorem sidon_second_order_of_discreteCertificate
     calc
       x ^ 4 = (x ^ 2) ^ 2 := by ring
       _ = (N : ℝ) := by rw [hx2, Real.sq_sqrt (by positivity)]
-  have hx : 120 ≤ x := by
-    change (120 : ℝ) ≤ Real.sqrt (Real.sqrt (N : ℝ))
-    apply Real.le_sqrt_of_sq_le
-    apply Real.le_sqrt_of_sq_le
-    have hNr : (120 : ℝ) ^ 4 ≤ (N : ℝ) := by exact_mod_cast hN
-    nlinarith
+  have hx : (463 : ℝ) / 10 ≤ x := (sidon_fourthRoot_gt_of_onset hN).le
   have hxpos : 0 < x := by linarith
   by_cases hkzero : B.card = 0
   · have hAzero : A.card = 0 := hcard.symm.trans hkzero
@@ -56,7 +68,7 @@ theorem sidon_second_order_of_discreteCertificate
     let η := 29 * (T : ℝ) * ((3 : ℝ) / 4) ^ ((N - 1) / T)
     have hT : 1 ≤ T := sidonIntegerScale_pos hxpos
     have hηnonneg : 0 ≤ η := sidonIntegerScale_tail_nonneg N x
-    have hη : η < x ^ 2 / 2 := sidonIntegerScale_tail_lt_half hx hx4
+    have hη : η < x ^ 2 / 2 := sidonIntegerScale_tail_lt_half_sharp hx hx4
     have hcost : (N : ℝ) + (2 : ℝ) / 3 * ((T : ℝ) - 1) + η ≤
         x ^ 4 + sidonGamma * x ^ 3 + η := by
       have hb := sidonIntegerScale_boundary_le hxnonneg hx4
@@ -77,9 +89,16 @@ theorem sidon_second_order_of_discreteCertificate
         (x ^ 4 + sidonGamma * x ^ 3 + η) *
           (1 + (sidonGamma / x ^ 3) * ((B.card : ℝ) - 1)) := by
       exact hraw.trans (mul_le_mul hcost hupper hUnonneg hCnonneg)
-    have hfinal := secondOrder_of_scaled_certificate hx sidonGamma_pos
+    have hfinal := secondOrder_of_scaled_certificate_one (by linarith : 1 ≤ x) sidonGamma_pos
       sidonGamma_lt_one sidonGamma_sq hηnonneg hη hscaled
     rw [hcard, hx2] at hfinal
     simpa only [x, sidonGamma] using hfinal
+
+/-- Compatibility reduction for the unchanged original specification. -/
+theorem sidon_second_order_of_discreteCertificate
+    (hcertificate : DiscreteSidonCertificateBound) : SidonSecondOrderBound := by
+  intro N A hN hAN hA
+  exact sidon_second_order_of_discreteCertificate' hcertificate N A
+    (le_trans (by norm_num : 4600000 ≤ 120 ^ 4) hN) hAN hA
 
 end Sidon30

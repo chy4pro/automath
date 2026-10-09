@@ -221,6 +221,159 @@ theorem sidonIntegerScale_tail_lt_half {N : ℕ} {x : ℝ}
         (87 : ℝ) / 200 * x ^ 2 := sidonIntegerScale_tail_lt hx hN
     _ < x ^ 2 / 2 := by nlinarith
 
+/-- Route B's sharper quotient estimate, including both rounding operations. -/
+theorem sidonIntegerScale_quotient_bound_sharp {N : ℕ} {x : ℝ}
+    (hx : 1 < x) (hN : x ^ 4 = (N : ℝ)) :
+    x < Real.sqrt 2 * ((((N - 1) / sidonIntegerScale x : ℕ) : ℝ) + 2) := by
+  have hxpos : 0 < x := by linarith
+  have hspos : 0 < Real.sqrt 2 := by positivity
+  have hs : (Real.sqrt 2) ^ 2 = (2 : ℝ) := Real.sq_sqrt (by norm_num)
+  have hx2 : 1 ≤ x ^ 2 := one_le_pow₀ hx.le
+  have hx3 : x ≤ x ^ 3 := by
+    have hm := mul_le_mul_of_nonneg_left hx2 hxpos.le
+    nlinarith only [hm]
+  have hNposR : (0 : ℝ) < (N : ℝ) := by rw [← hN]; positivity
+  have hNOne : 1 ≤ N := by
+    have : 0 < N := by exact_mod_cast hNposR
+    omega
+  let T := sidonIntegerScale x
+  let r := (N - 1) / T
+  have hT : 1 ≤ T := sidonIntegerScale_pos hxpos
+  have hdiv : N - 1 < T * (r + 1) := by
+    have hrem := Nat.mod_lt (N - 1) (show 0 < T by omega)
+    have hid := Nat.mod_add_div (N - 1) T
+    dsimp [r]
+    nlinarith
+  have hdivR : ((N - 1 : ℕ) : ℝ) < (T : ℝ) * ((r : ℝ) + 1) := by
+    exact_mod_cast hdiv
+  rw [Nat.cast_sub hNOne, Nat.cast_one, ← hN] at hdivR
+  have hupper := mul_le_mul_of_nonneg_right (sidonIntegerScale_lt hxpos.le).le
+    (show (0 : ℝ) ≤ (r : ℝ) + 1 by positivity)
+  have hscaled : Real.sqrt 2 * (x ^ 4 - 1) <
+      (Real.sqrt 2 * x ^ 3 + 1) * (Real.sqrt 2 * ((r : ℝ) + 1)) := by
+    have hm := mul_lt_mul_of_pos_left (hdivR.trans_le hupper) hspos
+    nlinarith only [hm]
+  have hsx : (Real.sqrt 2) ^ 2 * x ^ 3 = 2 * x ^ 3 := by rw [hs]
+  have hcompare : (Real.sqrt 2 * x ^ 3 + 1) * (x - Real.sqrt 2) <
+      Real.sqrt 2 * (x ^ 4 - 1) := by
+    nlinarith only [hsx, hx3, hxpos]
+  change x < Real.sqrt 2 * ((r : ℝ) + 2)
+  by_contra h
+  have hbad : Real.sqrt 2 * ((r : ℝ) + 1) ≤ x - Real.sqrt 2 := by
+    have := le_of_not_gt h
+    linarith
+  have hm := mul_le_mul_of_nonneg_left hbad
+    (show 0 ≤ Real.sqrt 2 * x ^ 3 + 1 by positivity)
+  linarith
+
+/-- The rational onset gives at least 32 complete blocks. -/
+theorem sidonIntegerScale_quotient_ge_thirtytwo {N : ℕ} {x : ℝ}
+    (hx : (463 : ℝ) / 10 ≤ x) (hN : x ^ 4 = (N : ℝ)) :
+    32 ≤ (N - 1) / sidonIntegerScale x := by
+  have hxpos : 0 < x := by linarith
+  have hsnonneg := Real.sqrt_nonneg (2 : ℝ)
+  have hs : (Real.sqrt 2) ^ 2 = (2 : ℝ) := Real.sq_sqrt (by norm_num)
+  have hsupper : Real.sqrt 2 < (99 : ℝ) / 70 := by nlinarith
+  have hgap : 1 < x - 32 * Real.sqrt 2 := by linarith
+  have hx2 : 1 ≤ x ^ 2 := one_le_pow₀ (show 1 ≤ x by linarith)
+  have hx3large : (33 : ℝ) < x ^ 3 := by
+    have hm := mul_le_mul_of_nonneg_left hx2 hxpos.le
+    nlinarith only [hm, hx]
+  have hmul := mul_lt_mul_of_pos_left hgap (pow_pos hxpos 3)
+  have hceil := sidonIntegerScale_lt hxpos.le
+  have h32R : 32 * (sidonIntegerScale x : ℝ) < x ^ 4 - 1 := by
+    nlinarith only [hmul, hx3large, hceil]
+  have hNposR : (0 : ℝ) < (N : ℝ) := by rw [← hN]; positivity
+  have hNpos : 0 < N := by exact_mod_cast hNposR
+  have hpred : ((N - 1 : ℕ) : ℝ) = x ^ 4 - 1 := by
+    rw [Nat.cast_sub (show 1 ≤ N by omega), Nat.cast_one, ← hN]
+  rw [← hpred] at h32R
+  have h32 : 32 * sidonIntegerScale x ≤ N - 1 := by exact_mod_cast h32R.le
+  have hT := sidonIntegerScale_pos hxpos
+  have hdiv : N - 1 < sidonIntegerScale x * ((N - 1) / sidonIntegerScale x + 1) := by
+    have hrem := Nat.mod_lt (N - 1) (show 0 < sidonIntegerScale x by omega)
+    have hid := Nat.mod_add_div (N - 1) (sidonIntegerScale x)
+    nlinarith
+  by_contra h
+  have hr : (N - 1) / sidonIntegerScale x + 1 ≤ 32 := by omega
+  have hm := Nat.mul_le_mul_left (sidonIntegerScale x) hr
+  nlinarith only [h32, hdiv, hm]
+
+/-- The sharper envelope retains the exact ceiling error. -/
+def sidonTailEnvelopeSharp (r : ℕ) : ℝ :=
+  (2 * (r : ℝ) + 5) * ((3 : ℝ) / 4) ^ r
+
+theorem sidonTailEnvelopeSharp_succ_le {r : ℕ} (hr : 32 ≤ r) :
+    sidonTailEnvelopeSharp (r + 1) ≤ sidonTailEnvelopeSharp r := by
+  have hrR : (32 : ℝ) ≤ (r : ℝ) := by exact_mod_cast hr
+  have hc : (2 * ((r : ℝ) + 1) + 5) * ((3 : ℝ) / 4) ≤
+      2 * (r : ℝ) + 5 := by linarith
+  have hm := mul_le_mul_of_nonneg_right hc
+    (show 0 ≤ ((3 : ℝ) / 4) ^ r by positivity)
+  simp only [sidonTailEnvelopeSharp, Nat.cast_add, Nat.cast_one, pow_succ]
+  nlinarith only [hm]
+
+theorem sidonTailEnvelopeSharp_le_base {r : ℕ} (hr : 32 ≤ r) :
+    sidonTailEnvelopeSharp r ≤ sidonTailEnvelopeSharp 32 := by
+  induction r, hr using Nat.le_induction with
+  | base => exact le_rfl
+  | succ r hr ih => exact (sidonTailEnvelopeSharp_succ_le hr).trans ih
+
+/-- Exact integer comparison: 9900 * 3^32 < 4^32. -/
+theorem sidonTail_power_thirtytwo_lt : ((3 : ℝ) / 4) ^ 32 < (1 : ℝ) / 9900 := by
+  norm_num
+
+/-- The Route B envelope, uniformly in the natural block number. -/
+theorem sidonTailEnvelopeSharp_lt {r : ℕ} (hr : 32 ≤ r) :
+    29 * sidonTailEnvelopeSharp r < (667 : ℝ) / 3300 := by
+  have hbase := sidonTailEnvelopeSharp_le_base hr
+  have hpower := sidonTail_power_thirtytwo_lt
+  norm_num only [sidonTailEnvelopeSharp, Nat.cast_ofNat] at hbase
+  nlinarith only [hbase, hpower]
+
+/-- CR-9's exact normalized tail constant, at the rational fourth-root onset. -/
+theorem sidonIntegerScale_tail_lt_sharp {N : ℕ} {x : ℝ}
+    (hx : (463 : ℝ) / 10 ≤ x) (hN : x ^ 4 = (N : ℝ)) :
+    29 * (sidonIntegerScale x : ℝ) *
+        ((3 : ℝ) / 4) ^ ((N - 1) / sidonIntegerScale x) <
+      (667 : ℝ) / 3300 * x ^ 2 := by
+  have hxone : 1 < x := by linarith
+  have hxpos : 0 < x := by linarith
+  have hx2pos : 0 < x ^ 2 := pow_pos hxpos 2
+  have hx2one : 1 < x ^ 2 := by nlinarith
+  let r := (N - 1) / sidonIntegerScale x
+  have hbound := sidonIntegerScale_quotient_bound_sharp hxone hN
+  have hr := sidonIntegerScale_quotient_ge_thirtytwo hx hN
+  have hs : (Real.sqrt 2) ^ 2 = (2 : ℝ) := Real.sq_sqrt (by norm_num)
+  have hsbound : Real.sqrt 2 * x < 2 * (r : ℝ) + 4 := by
+    have hm := mul_lt_mul_of_pos_left hbound (show 0 < Real.sqrt 2 by positivity)
+    have hid : Real.sqrt 2 * (Real.sqrt 2 * ((r : ℝ) + 2)) =
+        2 * (r : ℝ) + 4 := by
+      calc
+        _ = (Real.sqrt 2) ^ 2 * ((r : ℝ) + 2) := by ring
+        _ = _ := by rw [hs]; ring
+    change Real.sqrt 2 * x < Real.sqrt 2 * (Real.sqrt 2 * ((r : ℝ) + 2)) at hm
+    rw [hid] at hm
+    exact hm
+  have hTbound : (sidonIntegerScale x : ℝ) < (2 * (r : ℝ) + 5) * x ^ 2 := by
+    have hm := mul_lt_mul_of_pos_right hsbound hx2pos
+    have hceil := sidonIntegerScale_lt hxpos.le
+    nlinarith only [hm, hceil, hx2one]
+  have htail := mul_lt_mul_of_pos_right hTbound
+    (show 0 < 29 * ((3 : ℝ) / 4) ^ r by positivity)
+  have henv := mul_lt_mul_of_pos_right (sidonTailEnvelopeSharp_lt hr) hx2pos
+  change 29 * (sidonIntegerScale x : ℝ) * ((3 : ℝ) / 4) ^ r < _
+  change 29 * ((2 * (r : ℝ) + 5) * ((3 : ℝ) / 4) ^ r) * x ^ 2 < _ at henv
+  nlinarith only [htail, henv]
+
+theorem sidonIntegerScale_tail_lt_half_sharp {N : ℕ} {x : ℝ}
+    (hx : (463 : ℝ) / 10 ≤ x) (hN : x ^ 4 = (N : ℝ)) :
+    29 * (sidonIntegerScale x : ℝ) *
+        ((3 : ℝ) / 4) ^ ((N - 1) / sidonIntegerScale x) < x ^ 2 / 2 := by
+  have htail := sidonIntegerScale_tail_lt_sharp hx hN
+  have hx2pos : 0 < x ^ 2 := pow_pos (by linarith) 2
+  nlinarith only [htail, hx2pos]
+
 end Sidon30
 
 end

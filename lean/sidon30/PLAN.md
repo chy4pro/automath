@@ -440,3 +440,71 @@ Source inventory: every mathematical card has an implementation, including the m
 - Run37059252632 / fbc8b92: the first full source chain failed in RenewalBlockContraction (sum notation excluded an unparenthesized subtraction term from the binder scope), FiniteBoundaryCost (two beta-reductions and subtraction syntax under absolute value), and SidonRampEnergy (untyped Nat-to-Int image lambda and downstream elaboration). CorrectionFiniteL1 and CorrectionFiniteMass compiled. Three workers repair these separate files concurrently; no change to the theorem statement, constants or hypotheses is required by these diagnostics. FinalCheck was skipped after Build failed.
 
 - **Full theorem green:** [run37060176909](https://github.com/chy4pro/automath/actions/runs/37060176909), full commit f8e97665f26ea40ec867d8d054d352b5fc5ec56c. Build succeeded with8737jobs and Axioms succeeded. The public jobs API independently confirmed both step conclusions. The build job ran20:22:43–20:25:45UTC (182s), its Build step20:24:30–20:25:38UTC (68s), and Axioms20:25:38–20:25:42UTC (4s). All thirteen exact guards passed, including renewalCorrection_bound, boundaryCertificate_energy_le, discreteSidonCertificate and the unconditional global sidon_second_order. The CI fetcher's concise summary omits diagnostics successfully captured by guard_msgs; the successful Axioms step is the guard evidence. No local build was run; token use and monetary charges are unavailable, so no cost estimate is asserted. The original coefficient, +1, onset120^4, all-natural-N quantifier and diagonal Sidon convention are preserved. This establishes the stated upper bound, not the full Erdős conjecture or the separate kernel-optimality result.
+
+## 2026-10-09 — Lower-onset statement awaiting audit
+
+PARTIAL — `Statement.lean` now also defines `SidonSecondOrderBound'` with
+the literal onset `4600000`. This is a specification only; no theorem at
+the new onset has been implemented or compiled. The existing verification
+record above applies to the original onset only.
+
+The new proposition quantifies over every `N : ℕ` and `A : Finset ℕ`, with
+`4600000 ≤ N`, `A ⊆ Finset.Icc 1 N`, and the existing `IsSidon A`, and concludes
+
+~~~lean
+(A.card : ℝ) ≤
+  Real.sqrt (N : ℝ) +
+    (2 * Real.sqrt 2 / 3) * Real.sqrt (Real.sqrt (N : ℝ)) + 1
+~~~
+
+The old `SidonSecondOrderBound` definition is unchanged. The coefficient is
+written out exactly as in that definition, so this specification still imports
+only `Sidon30.Basic`; it does not import the proof module defining `sidonGamma`.
+The strong Sidon convention includes diagonal pairs. No fourth-power
+restriction on `N` is added.
+
+After the coordinator audits the statement, the proof cards are:
+
+1. Prove `463/10 < sqrt(sqrt(N))` from `4600000 ≤ N` using
+   `463^4 = 45954068161 < 46000000000`.
+2. Add the sharper integer-scale chain with `r ≥ 32`,
+   `x < sqrt(2) * (r + 2)`, envelope `(2*r + 5)*(3/4)^r`, and the exact
+   endpoint `(3/4)^32 < 1/9900`. Obtain
+   `η < (667/3300)*x^2 < x^2/2` for `463/10 ≤ x` and `x^4 = N`.
+   Retain the old envelope interfaces used by the transfers.
+3. Prove the scalar certificate comparison for `x ≥ 1`, retaining the exact
+   margin `(11/18)*x^2 + (11/18)*γ*x + 5/9`. Preserve the old caller interface
+   through a wrapper, or pass the weaker hypothesis explicitly in callers.
+4. Add the lower-onset finite-certificate reduction and
+   `sidon_second_order' : SidonSecondOrderBound'`. Derive the old
+   `sidon_second_order : SidonSecondOrderBound` using `4600000 ≤ 120^4`.
+   Keep all transfer statements unchanged.
+5. Preserve all 26 existing axiom guards, including the original thirteen,
+   and add exact standard-axiom guards for every new top-level theorem.
+   Use only the scoped push script and GitHub Actions; record each run in
+   `CI_LOG.md`, and check coordinator/referee comments before the final push.
+
+This heartbeat stops at the required statement audit. No Lean process, push,
+or CI run was started. Only `Statement.lean` and this dated section were edited;
+the pre-existing working-tree change to `CI_LOG.md` was left untouched.
+
+## 2026-10-09 — Route B proof implementation after statement audit
+
+PARTIAL — the coordinator accepted the exact lower-onset statement. The new
+source is ready for its first CI check; no new kernel result is claimed yet.
+
+- Added the sharp quotient bound for x > 1, the block bound r ≥ 32 for
+  x ≥ 463/10, and the decreasing envelope (2r+5)(3/4)^r.
+- Kept the exact rational endpoint (3/4)^32 < 1/9900 and the stronger
+  tail constant 667/3300 before deriving the half-square bound.
+- Added secondOrder_of_scaled_certificate_one for x ≥ 1, using the exact
+  margin (11/18)x² + (11/18)γx + 5/9. The original scalar interface is a wrapper.
+- Added sidon_fourthRoot_gt_of_onset, the lower-onset conditional reduction,
+  and sidon_second_order'. The old specification and transfer declarations
+  are unchanged; the old main theorem is a corollary of the new theorem.
+- All 26 prior guards remain verbatim; 13 guards cover the new theorems and
+  scalar wrapper. No mathematical change to CR-9 Route B was needed. The
+  quotient proof uses the natural-division remainder identity to implement
+  the same strict floor estimate without introducing a real floor.
+
+Verification will use only the scoped push script and remote GitHub Actions.

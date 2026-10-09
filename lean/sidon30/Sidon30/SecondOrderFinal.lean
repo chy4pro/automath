@@ -51,8 +51,8 @@ theorem secondOrder_margin_identity {x γ : ℝ} (hx : x ≠ 0)
 /-- The original `+1` follows from a certificate with error below `x²/2`.
 The inequality in the hypothesis is still a genuine obligation of the
 finite boundary construction; it is not assumed by the final Sidon theorem. -/
-theorem secondOrder_of_scaled_certificate {x γ k η : ℝ}
-    (hx : 120 ≤ x) (hγpos : 0 < γ) (hγlt : γ < 1)
+theorem secondOrder_of_scaled_certificate_one {x γ k η : ℝ}
+    (hx : 1 ≤ x) (hγpos : 0 < γ) (hγlt : γ < 1)
     (hγsq : γ ^ 2 = (8 : ℝ) / 9)
     (hηnonneg : 0 ≤ η) (hη : η < x ^ 2 / 2)
     (hk : k ^ 2 ≤ (x ^ 4 + γ * x ^ 3 + η) *
@@ -74,32 +74,49 @@ theorem secondOrder_of_scaled_certificate {x γ k η : ℝ}
   have hy : 0 < x ^ 2 + γ * x + 1 := by
     have := mul_pos hγpos hxpos
     linarith
-  have hfrac1 : γ / x < (1 : ℝ) / 2 := by
-    apply (div_lt_iff₀ hxpos).mpr
-    linarith
-  have hfrac2 : γ ^ 2 / x ^ 2 < (1 : ℝ) / 2 := by
-    apply (div_lt_iff₀ hx2).mpr
-    nlinarith [sq_nonneg (x - 120)]
   have hfactor_eq :
       1 + (γ / x ^ 3) * (x ^ 2 + γ * x + 1 - 1) =
         1 + γ / x + γ ^ 2 / x ^ 2 := by
     field_simp [hxne]
     <;> ring
-  have hfactor_lt :
-      1 + (γ / x ^ 3) * (x ^ 2 + γ * x + 1 - 1) < 2 := by
+  have hfactor_pos :
+      0 < 1 + (γ / x ^ 3) * (x ^ 2 + γ * x + 1 - 1) := by
     rw [hfactor_eq]
-    linarith
+    positivity
+  have hhalf_identity :
+      (x ^ 2 / 2) *
+          (1 + (γ / x ^ 3) * (x ^ 2 + γ * x + 1 - 1)) =
+        x ^ 2 / 2 + γ * x / 2 + (4 : ℝ) / 9 := by
+    rw [hfactor_eq]
+    have hraw : (x ^ 2 / 2) * (1 + γ / x + γ ^ 2 / x ^ 2) =
+        x ^ 2 / 2 + γ * x / 2 + γ ^ 2 / 2 := by
+      field_simp [hxne]
+      <;> ring
+    rw [hraw, hγsq]
+    ring
   have herror :
-      η * (1 + (γ / x ^ 3) * (x ^ 2 + γ * x + 1 - 1)) < x ^ 2 := by
-    have hmul := mul_le_mul_of_nonneg_left hfactor_lt.le hηnonneg
-    nlinarith
+      η * (1 + (γ / x ^ 3) * (x ^ 2 + γ * x + 1 - 1)) <
+        x ^ 2 / 2 + γ * x / 2 + (4 : ℝ) / 9 := by
+    rw [← hhalf_identity]
+    exact mul_lt_mul_of_pos_right hη hfactor_pos
   have hmargin := secondOrder_margin_identity hxne hγsq
+  have hremaining : 0 < (11 : ℝ) / 18 * x ^ 2 +
+      (11 : ℝ) / 18 * γ * x + (5 : ℝ) / 9 := by positivity
   have hgap :
       (x ^ 4 + γ * x ^ 3 + η) *
           (1 + (γ / x ^ 3) * (x ^ 2 + γ * x + 1 - 1)) <
         (x ^ 2 + γ * x + 1) ^ 2 := by
-    have hγx : 0 < γ * x := mul_pos hγpos hxpos
-    nlinarith
+    nlinarith only [hmargin, herror, hremaining]
   exact (quadratic_certificate_comparison hC hb hy hgap hk).le
+
+/-- Compatibility interface for the transfer proofs at their original onset. -/
+theorem secondOrder_of_scaled_certificate {x γ k η : ℝ}
+    (hx : 120 ≤ x) (hγpos : 0 < γ) (hγlt : γ < 1)
+    (hγsq : γ ^ 2 = (8 : ℝ) / 9)
+    (hηnonneg : 0 ≤ η) (hη : η < x ^ 2 / 2)
+    (hk : k ^ 2 ≤ (x ^ 4 + γ * x ^ 3 + η) *
+      (1 + (γ / x ^ 3) * (k - 1))) :
+    k ≤ x ^ 2 + γ * x + 1 :=
+  secondOrder_of_scaled_certificate_one (by linarith) hγpos hγlt hγsq hηnonneg hη hk
 
 end Sidon30

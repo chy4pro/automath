@@ -20,8 +20,15 @@ theorem discreteSidonCertificate : DiscreteSidonCertificateBound := by
 
 end Sidon30
 
+/-- The same exact coefficient and additive constant for every natural N ≥ 4600000,
+with the existing strong Sidon convention and no fourth-power restriction. -/
+theorem sidon_second_order' : SidonSecondOrderBound' :=
+  Sidon30.sidon_second_order_of_discreteCertificate' Sidon30.discreteSidonCertificate
+
 /-- For every strong Sidon subset of {1,...,N}, with N at least 120^4,
 the exact second-order coefficient is 2*sqrt(2)/3 and the additive constant is 1.
 The specification includes diagonal sums and places no fourth-power restriction on N. -/
-theorem sidon_second_order : SidonSecondOrderBound :=
-  Sidon30.sidon_second_order_of_discreteCertificate Sidon30.discreteSidonCertificate
+theorem sidon_second_order : SidonSecondOrderBound := by
+  intro N A hN hAN hA
+  exact sidon_second_order' N A
+    (le_trans (by norm_num : 4600000 ≤ 120 ^ 4) hN) hAN hA

@@ -111,3 +111,57 @@ Unexpected project axioms or sorryAx must fail these exact guards.
 /-- info: 'difference_triangle_expanded_bound' depends on axioms: [propext, Classical.choice, Quot.sound] -/
 #guard_msgs in
 #print axioms difference_triangle_expanded_bound
+
+/-! Lower-onset Route B: every new theorem and the scalar compatibility wrapper. -/
+
+/-- info: 'Sidon30.sidonIntegerScale_quotient_bound_sharp' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonIntegerScale_quotient_bound_sharp
+
+/-- info: 'Sidon30.sidonIntegerScale_quotient_ge_thirtytwo' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonIntegerScale_quotient_ge_thirtytwo
+
+/-- info: 'Sidon30.sidonTailEnvelopeSharp_succ_le' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonTailEnvelopeSharp_succ_le
+
+/-- info: 'Sidon30.sidonTailEnvelopeSharp_le_base' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonTailEnvelopeSharp_le_base
+
+/-- info: 'Sidon30.sidonTail_power_thirtytwo_lt' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonTail_power_thirtytwo_lt
+
+/-- info: 'Sidon30.sidonTailEnvelopeSharp_lt' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonTailEnvelopeSharp_lt
+
+/-- info: 'Sidon30.sidonIntegerScale_tail_lt_sharp' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonIntegerScale_tail_lt_sharp
+
+/-- info: 'Sidon30.sidonIntegerScale_tail_lt_half_sharp' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidonIntegerScale_tail_lt_half_sharp
+
+/-- info: 'Sidon30.secondOrder_of_scaled_certificate_one' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.secondOrder_of_scaled_certificate_one
+
+/-- info: 'Sidon30.secondOrder_of_scaled_certificate' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.secondOrder_of_scaled_certificate
+
+/-- info: 'Sidon30.sidon_fourthRoot_gt_of_onset' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidon_fourthRoot_gt_of_onset
+
+/-- info: 'Sidon30.sidon_second_order_of_discreteCertificate'' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms Sidon30.sidon_second_order_of_discreteCertificate'
+
+/-- info: 'sidon_second_order'' depends on axioms: [propext, Classical.choice, Quot.sound] -/
+#guard_msgs in
+#print axioms sidon_second_order'
