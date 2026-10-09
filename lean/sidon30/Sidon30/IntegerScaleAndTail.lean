@@ -329,6 +329,7 @@ theorem sidonTailEnvelopeSharp_lt {r : ℕ} (hr : 32 ≤ r) :
   have hbase := sidonTailEnvelopeSharp_le_base hr
   have hpower := sidonTail_power_thirtytwo_lt
   norm_num only [sidonTailEnvelopeSharp, Nat.cast_ofNat] at hbase
+  unfold sidonTailEnvelopeSharp
   nlinarith only [hbase, hpower]
 
 /-- CR-9's exact normalized tail constant, at the rational fourth-root onset. -/

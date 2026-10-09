@@ -508,3 +508,9 @@ source is ready for its first CI check; no new kernel result is claimed yet.
   the same strict floor estimate without introducing a real floor.
 
 Verification will use only the scoped push script and remote GitHub Actions.
+
+### AUT-78 CI ledger
+
+| Run | Commit | Result | Evidence / repair |
+| --- | --- | --- | --- |
+| [37977887526](https://github.com/chy4pro/automath/actions/runs/37977887526) | `940f621cad8811eec09122f6b082b0459e2625c3` | failure | Build: one opaque-envelope goal in IntegerScaleAndTail; Axioms skipped. Repair: unfold sidonTailEnvelopeSharp before nlinarith. |
