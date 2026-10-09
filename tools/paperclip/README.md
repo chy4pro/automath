@@ -129,3 +129,11 @@ AI session containers can be recreated: hostname changes, IP and `/home/agent` p
 each AI container (the Claude side by the coordinator session, the Codex side by the owner), then set the
 interrupted issues back to `todo`. Failed runs count as activity, so gated routines fire once per hour during an
 outage at zero token cost; cancel the piled-up routine issues afterwards.
+
+## Our own Paperclip repository (2026-10-09)
+
+Fork: https://github.com/chy4pro/paperclip. `master` tracks upstream; branch `automath` carries every customisation
+in source form, one commit each (see its `AUTOMATH.md` for the table). Production still runs the npm release with
+the dist patches from `patches/apply.sh`; the TypeScript ports on `automath` are the upstreamable form and have not
+been type-checked or built on our machines (CI does not run on the fork by default). Upstream threads: #14564,
+#14333 and #12930 (comments), issue #15709 and PR #15710 (ours).
