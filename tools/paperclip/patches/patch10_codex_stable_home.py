@@ -62,3 +62,27 @@ def v2_cx(s):
     return s.replace(old, new, 1)
 rw(CX, v2_cx)
 print("patch 10 v2 in place")
+
+# --- v3: replace host-owned entries in the retained home before upload (Greptile P1 on upstream PR #15724)
+M3 = "/* PAPERCLIP_PATCH_ASSET_REPLACE */"
+def v3_rmr(s):
+    if M3 in s: return s
+    old = "            const remoteDir = path.posix.join(assetRootDir, asset.key);\n            assetDirs[asset.key] = remoteDir;\n"
+    assert s.count(old) == 1, "rmr v3 anchor"
+    add = (f"            {M3} const replaceEntries = (asset.replaceEntries ?? []).filter((e) => e && e !== \".\" && e !== \"..\" && !e.includes(\"/\"));\n"
+           "            if (assetRootDir !== runtimeRootDir && replaceEntries.length > 0) {\n"
+           "                const q = (v) => \"'\" + String(v).replace(/'/g, \"'\\\\''\") + \"'\";\n"
+           "                await runSshCommand(input.spec, `mkdir -p ${q(remoteDir)} && cd ${q(remoteDir)} && rm -rf -- ${replaceEntries.map(q).join(\" \")}`, { timeoutMs: 30000 });\n"
+           "            }\n")
+    return s.replace(old, old + add, 1)
+rw(RMR, v3_rmr)
+def v3_cx(s):
+    if M3 in s: return s
+    old = '                                key: "home",\n'
+    if s.count(old) != 1:
+        import re
+        m = re.search(r'\n(\s*)key: "home",\n', s); assert m, "cx v3 anchor"; old = m.group(0)[1:]
+    ind = old[:len(old) - len(old.lstrip())]
+    return s.replace(old, old + f"{ind}replaceEntries: [\"config.json\", \"config.toml\", \"instructions.md\", \"auth.json\", \"skills\"], {M3}\n", 1)
+rw(CX, v3_cx)
+print("patch 10 v3 (replace host-owned entries) in place")
