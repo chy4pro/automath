@@ -121,6 +121,9 @@ task completion), not a high-frequency screenshot/polling loop.
   (erdosproblems.com/forum/proof-claims/386), answering John Akwei's 2026-10-05 comment there; text fixed in notes/forum_30_reply_akwei_20261010.txt (verbatim
   from the approval payload, action B). Posted once, verbatim, by the chat-side session's browser subagent (the coordinator container holds no site login).
   Not covered: any X post, any edit of the claim text, any e-mail (action C), any further comment.
+  DEFERRED 2026-10-10 03:34Z: erdosproblems.com has suspended comments on problems and proof claims site-wide; nothing was posted. The session side tracks it and posts
+  once comments resume, with two factual updates (v3 already cites Akwei; onset N >= 4,600,000) in notes/forum_30_reply_akwei_20261010_updated.txt; because that text differs
+  from the approved one, the owner confirms it before posting. No DM or other channel as a substitute.
   Second one-time exception, owner-authorized 2026-09-25 ("你来发吧", after the coordinator independently re-verified the witnesses): one forum comment on erdosproblems.com/624 replying in the existing thread with the certified small values; text fixed in notes/forum_624_comment_20260925.txt; a Sonnet browser subagent may post it verbatim.
 - Do not put the owner's private email, keys, login tokens, internal session dumps or unrelated
   personal conversations into a publication. **2026-09-25 scrub (owner: rewrite, it is not project content):** the public repo was rewritten from a single root; never commit local paths (`/Users/...`), chat/session links (chatgpt.com/c/…, claude.ai/…session…), GCP ids, e-mail addresses, quoted owner chat, arXiv text extracts, or GCP scripts. Commit trailers carry `Co-Authored-By` only, no session link. Pre-push grep: `roychen|chatgpt\.com/c/|claude\.ai/.*session|gmail|chenhaoyu1995`. Do not read/print engine-key files to prove access.
