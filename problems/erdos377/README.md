@@ -1,5 +1,7 @@
 # Erdős #377 — round 1: a correction to EGRS 1975, and an honest empty ledger on the main target
 
+**Status 2026-10-10: D2 PUBLISHED** — Zenodo 10.5281/zenodo.23274211, https://github.com/chy4pro/automath-papers/tree/main/erdos377 (scope 0 < alpha <= 1/2; two cross-vendor referees PASS after three rounds; verifier reproduction; bounded literature check notes/selection/G2_erdos377_D2_20261010.md; small result). Reviews: notes/review/REF_377D2_*, VER_377D2_*.
+
 Run: Astra (gpt-6-astra high), single agent, 1 h 36 m 30 s, 2026-09-09.
 Record: `engine/harvest/erdos377_r1_astra.md` (23 KB) + `engine/harvest/erdos377_r1_astra_data/`.
 Refereed by the dialogue seat before anything was written here.
