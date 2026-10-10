@@ -1,0 +1,306 @@
+{
+  "baseline": {
+    "accept": true,
+    "n": 22,
+    "k": 3,
+    "latin": true,
+    "excess": 0,
+    "collisionPairs": 0,
+    "pairs": [
+      {
+        "a": 0,
+        "b": 1,
+        "distinctPairs": 484,
+        "repeatedMarks": 0,
+        "collisionPairs": 0
+      },
+      {
+        "a": 0,
+        "b": 2,
+        "distinctPairs": 484,
+        "repeatedMarks": 0,
+        "collisionPairs": 0
+      },
+      {
+        "a": 1,
+        "b": 2,
+        "distinctPairs": 484,
+        "repeatedMarks": 0,
+        "collisionPairs": 0
+      }
+    ],
+    "errors": []
+  },
+  "near": {
+    "accept": false,
+    "n": 22,
+    "k": 4,
+    "latin": true,
+    "excess": 303,
+    "collisionPairs": 329,
+    "pairs": [
+      {
+        "a": 0,
+        "b": 1,
+        "distinctPairs": 484,
+        "repeatedMarks": 0,
+        "collisionPairs": 0
+      },
+      {
+        "a": 0,
+        "b": 2,
+        "distinctPairs": 484,
+        "repeatedMarks": 0,
+        "collisionPairs": 0
+      },
+      {
+        "a": 0,
+        "b": 3,
+        "distinctPairs": 382,
+        "repeatedMarks": 102,
+        "collisionPairs": 111
+      },
+      {
+        "a": 1,
+        "b": 2,
+        "distinctPairs": 484,
+        "repeatedMarks": 0,
+        "collisionPairs": 0
+      },
+      {
+        "a": 1,
+        "b": 3,
+        "distinctPairs": 388,
+        "repeatedMarks": 96,
+        "collisionPairs": 105
+      },
+      {
+        "a": 2,
+        "b": 3,
+        "distinctPairs": 379,
+        "repeatedMarks": 105,
+        "collisionPairs": 113
+      }
+    ],
+    "errors": []
+  },
+  "originalExtension": {
+    "sums": [
+      0,
+      0,
+      0,
+      7,
+      14
+    ],
+    "stars": [
+      0,
+      1,
+      2,
+      4,
+      3
+    ],
+    "nodes": 698,
+    "leaves": 0,
+    "complete": [
+      5,
+      8,
+      11,
+      14,
+      17,
+      20
+    ],
+    "aborted": false,
+    "hit": null,
+    "wallSeconds": 0.006,
+    "cpu": {
+      "user": 8680,
+      "system": 1117
+    }
+  },
+  "generalScore": 17,
+  "involutionScore": 18,
+  "s2Score": 47,
+  "s2PairScores": [
+    {
+      "a": 0,
+      "b": 1,
+      "e": 0
+    },
+    {
+      "a": 0,
+      "b": 2,
+      "e": 0
+    },
+    {
+      "a": 0,
+      "b": 3,
+      "e": 0
+    },
+    {
+      "a": 0,
+      "b": 4,
+      "e": 0
+    },
+    {
+      "a": 0,
+      "b": 5,
+      "e": 0
+    },
+    {
+      "a": 1,
+      "b": 2,
+      "e": 3
+    },
+    {
+      "a": 1,
+      "b": 3,
+      "e": 5
+    },
+    {
+      "a": 1,
+      "b": 4,
+      "e": 6
+    },
+    {
+      "a": 1,
+      "b": 5,
+      "e": 4
+    },
+    {
+      "a": 2,
+      "b": 3,
+      "e": 5
+    },
+    {
+      "a": 2,
+      "b": 4,
+      "e": 5
+    },
+    {
+      "a": 2,
+      "b": 5,
+      "e": 5
+    },
+    {
+      "a": 3,
+      "b": 4,
+      "e": 5
+    },
+    {
+      "a": 3,
+      "b": 5,
+      "e": 3
+    },
+    {
+      "a": 4,
+      "b": 5,
+      "e": 6
+    }
+  ],
+  "tabuColumn": 68,
+  "tabuEnergy": 267,
+  "results": [
+    [
+      "Involution seed",
+      {
+        "finished": true,
+        "best": 9,
+        "steps": 742278529,
+        "restarts": 743,
+        "wallSeconds": 600.012,
+        "cpu": {
+          "user": 568022819,
+          "system": 394505
+        }
+      }
+    ],
+    [
+      "Reduced seeds and exact extensions",
+      {
+        "finished": true,
+        "best": 1,
+        "collected": 30232,
+        "totalNodes": 21173952,
+        "steps": 2106875753,
+        "restarts": 30317,
+        "wallSeconds": 600,
+        "cpu": {
+          "user": 574709304,
+          "system": 1714642
+        }
+      }
+    ],
+    [
+      "Latin-preserving trades",
+      {
+        "finished": true,
+        "hit": false,
+        "joint": false,
+        "bestX": 303,
+        "bestE": 329,
+        "steps": 427484348,
+        "accepted": 3567531,
+        "wallSeconds": 450,
+        "cpu": {
+          "user": 449026110,
+          "system": 83826
+        }
+      }
+    ],
+    [
+      "General cyclic seed",
+      {
+        "finished": true,
+        "best": 17,
+        "steps": 1109458753,
+        "restarts": 1110,
+        "wallSeconds": 900.011,
+        "cpu": {
+          "user": 897657900,
+          "system": 274699
+        }
+      }
+    ],
+    [
+      "Tabu extension",
+      {
+        "finished": true,
+        "best": 267,
+        "validBest": 303,
+        "steps": 1446513663,
+        "restarts": 5786,
+        "wallSeconds": 720,
+        "cpu": {
+          "user": 718700843,
+          "system": 358876
+        }
+      }
+    ],
+    [
+      "Special-DM lift",
+      {
+        "finished": true,
+        "hit": false,
+        "best": 47,
+        "steps": 768557057,
+        "restarts": 769,
+        "wallSeconds": 180.005,
+        "cpu": {
+          "user": 179671459,
+          "system": 124849
+        }
+      }
+    ]
+  ],
+  "cpuTotal": 3390.7398319999998,
+  "archive": {
+    "records": 30232,
+    "uniqueLiteralSeeds": 30231,
+    "nodes": 21173952,
+    "representativeCases": 181392,
+    "coveredInfinityPositions": 544176,
+    "bytes": 21082783,
+    "sha256": "602595bbe07d34e112a181b00bd0014bd33e0435ac4edd0755cb9b33e959864e"
+  },
+  "finishedAt": "2026-10-10T04:28:36.034Z"
+}

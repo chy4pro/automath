@@ -186,3 +186,22 @@ allows long shots on idle engines; cap = one attacker run, no second attempt on 
 room; seeds only from the scout's screen, verbatim, rule 6) and VER AUT-98 (independent checker + baseline replay) in
 parallel. Exit: object → VER certification → scout G2 → grading → board approval for any outward action; no object →
 PARTIAL/OPEN recorded with the exhaustively covered search spaces, nothing published, line closed.
+
+### MOLS(22) long shot — outcome (2026-10-10 04:3x UTC): PARTIAL, parked; LINE AUT-94 closed
+
+- VER AUT-98 PASS: tools/mols/mols_check.py (exact checker, stdlib), self-test 0 failures (prime-order positives, all
+  negative controls rejected for the stated reason), baseline OA(5,22) → 3-MOLS(22) replayed from the pinned Sage QDM.
+- CR-10 AUT-97 (attacker-1, clean room, one run, ~3,391 CPU-s of self-written single-threaded node search, ≤2 processes,
+  no solver packages): **PARTIAL — no 4-MOLS(22).** It re-derived a 3-MOLS(22) from scratch (explicit cyclic
+  Z/21Z + ∞ seed with a complete hand-checkable difference table; known baseline, not new). Exhaustive only for a
+  restricted ansatz: none of the first 30,232 successful five-column cyclic seeds (reduced.cjs, xorshift state 13097)
+  extends to a sixth column under that development. Heuristic searches (involution-constrained seeds, general
+  normalized seeds, Latin-preserving trades, tabu, a lift of the "(22,6,2) difference matrix" hint made precise) found
+  nothing; best four-Latin near miss has 303 repeated ordered-pair marks (accept requires 0). Analytical side remarks:
+  affine squares over Z/22Z and the 2×11 direct product cannot reach even 2 resp. 4 MOLS (elementary).
+- Verdict: no object, so by the fixed exit rule the line is parked; nothing to certify, nothing published. Grade: no
+  result (a single-ansatz negative is not publishable). Files: problems/mols22/CR10_ASTRA_MOLS22_20261010.md (report with
+  full code), CR10_checks_20261010.json, CR10_mols22_k3_20261010.json, CR10_mols22_k4_NEARMISS_20261010.json; the 3 MB
+  seed archive stays local (regenerable from the report's code and seed state); a duplicate copy of the near miss that
+  sat under the requested hit filename mols22_k4.json was removed to avoid a false "object" signal.
+- Line cost: scout 1, attacker 1 (Astra), verifier 1 (Sonnet), coordinator 5 runs.
