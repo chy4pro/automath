@@ -1,3 +1,5 @@
+SUPERSEDED 2026-10-10 — owner: not to be sent. Outdated by the onset v2 (4.6e6) and by the third-party priority on the kernel-limit statement; experts are contacted only for an announce-worthy version.
+
 # Draft e-mail to a human expert (owner sends; suggested recipient: Kevin O'Bryant, CUNY — co-author of the 0.98183 and 0.99703 bounds and of the LM-ruler paper; alternatives: Hou / Zhao (arXiv:2607.01169), Balogh)
 
 Subject: An explicit Sidon bound with coefficient 2√2/3, and a limitation of the kernel method — would you be willing to look?

@@ -71,6 +71,7 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
 - Outward actions (X, site claims, e-mails, moderator messages, community PRs) are proposed to the owner with the grading
   stated first; the owner decides. No Mathlib or other community-repo PRs from the pipeline. Posted X posts are never
   deleted or edited; one post per result, English, plain language, no provocation, written as a person proud of the work.
+- Expert outreach (2026-10-10): contact outside experts only for an announce-worthy version of a result. Incremental progress at the same level (onset reductions, related-work additions, constant tweaks) gets no e-mail and no outreach proposal; drafts made obsolete by a new version are discarded, not updated.
 - After publishing, release what is no longer needed (regenerable inputs, raw certificates once the trimmed core is
   verified and uploaded, old bundles); no private archives; temporary backups are deleted once verified.
 - Public repository privacy: no local paths, chat/session links, cloud ids, e-mail addresses or quoted owner chat;
