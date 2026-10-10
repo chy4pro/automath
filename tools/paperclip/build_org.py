@@ -33,11 +33,11 @@ def adapter(kind, name, model, env_extra=None):
 
 ROLES = [
  # name, title, icon, role file, adapter, env, model, budget USD, extra env
- ("coordinator", "Coordinator (Fable) — single decision maker", "crown", "coordinator", "claude_local", CLAUDE_ENV, "claude-fable-5-1", 0, {}),
+ ("coordinator", "Coordinator (Fable) — single decision maker", "crown", "coordinator", "claude_local", CLAUDE_ENV, "claude-opus-5-5", 0, {}),
  ("scout", "Scout — literature status, G2, selection dossiers", "telescope", "scout", "codex_local", CODEX_ENV, "gpt-6-astra", 0, {}),
  ("attacker-1", "Attacker (Astra, clean room)", "swords", "attacker", "codex_local", CODEX_ENV, "gpt-6-astra", 0, {"AUTOMATH_CLEAN_ROOM": "1"}),
  ("attacker-2", "Attacker (Astra, clean room)", "swords", "attacker", "codex_local", CODEX_ENV, "gpt-6-astra", 0, {"AUTOMATH_CLEAN_ROOM": "1"}),
- ("referee-1", "Referee (Claude, isolated, adversarial)", "shield", "referee", "claude_local", CLAUDE_ENV, "claude-fable-5-1", 0, {}),
+ ("referee-1", "Referee (Claude, isolated, adversarial)", "shield", "referee", "claude_local", CLAUDE_ENV, "claude-opus-5-5", 0, {}),
  ("referee-2", "Referee (Claude, isolated, adversarial)", "shield", "referee", "claude_local", CLAUDE_ENV, "claude-opus-5-5", 0, {}),
  ("formalizer", "Formalizer (Astra, Lean 4 via GitHub Actions)", "atom", "formalizer", "codex_local", CODEX_ENV, "gpt-6-astra", 0, {}),
  ("verifier", "Verifier (Claude, finite checks and numerics)", "microscope", "verifier", "claude_local", CLAUDE_ENV, "claude-sonnet-5-5", 0, {}),
