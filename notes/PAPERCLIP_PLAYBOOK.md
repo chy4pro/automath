@@ -125,6 +125,10 @@ different agents and vendors, not because their sessions are fresh.
 - Resume when the prior context is needed: follow-ups, repairs, judging a child's report against the brief you wrote,
   continuing a line. Start fresh when it is not: a new target, a new clean room, a line whose summary file already
   contains everything (then close and open the successor, §2).
+- Quantitative trigger (reflection AUT-105, 2026-10-10): when a coordinator LINE's last resumed run exceeded 2 M input
+  tokens (cache reads included), the next step continues fresh from the line record (close and open the successor, §2).
+  The 12 h window 10-09 16:00 → 10-10 04:00 had resumed coordinator runs of up to 4.1 M input tokens and the coordinator
+  spent 85 % of the Claude money.
 - The 6-hour reflection reads the run records of the window and reports: runs per agent, fresh vs resumed count, input
   tokens of the longest resumed run, and whether any reset was unintended (config change while live).
 
