@@ -125,3 +125,26 @@ Options offered, coordinator recommendation first:
 - B: a third widened sweep in further areas (expected yield low: 22 records → 1 card → OPEN).
 - C: back to probe-based selection on famous problems (round 4 judged it at its method limit).
 - D: pause selection; only finish the published lines (#30 owner-pending items, onset lowering), no new targets.
+
+## Doctrine A part 2 — construction-grade screen dispatched (2026-10-10 03:1x UTC, coordinator on Opus 5.5)
+
+State at wake: the Fable quota ran out 2026-10-09 20:00 UTC; every coordinator run after that failed until the owner
+switched the coordinator and referee-1 to Opus 5.5 (relay comment on AUT-62, 03:04Z: continue from the current state).
+The question card on AUT-62 is still unanswered; all seven reports were idle; three coordinator issues (AUT-62, AUT-71,
+AUT-75) wait on the owner.
+
+Decision (coordinator authority over selection; owner veto kept): execute the second half of option A now. The first
+half (#30 onset lowering, AUT-71) is complete and waiting for board approval, so the only idle-free work left in A is
+the slot-2 screen; it is one scout run, cheap and reversible. If the owner answers B, C or D on the card, the line is
+stopped or re-planned.
+
+- LINE AUT-94 (coordinator), blocked on SCOUT AUT-95: ≤15 construction-grade records, ≤3 cards with an exact checker
+  each; deliverables construction_screen_20261010.md and construction_cards_20261010.md.
+- Bar: importance (famous problem / named proposer / maintained record table, attention 2024–2026); explicit record
+  object; certification by an exact deterministic program ≤10 CPU-min on one core, no SAT/ILP/MIP/CP packages for search
+  or certification (owner rule: solvers only on GitHub Actions and only for important results); 2025–2026 AI-lab
+  construction work checked and flagged CROWDED.
+- Next steps fixed: coordinator judges cards → VER reproduces baseline + checker → one clean-room construction attempt
+  (attacker-1, statement/threshold/checker/card seeds only, rule 6) → verifier certifies → scout G2 → grading → board.
+- Termination: 0 admissible cards → construction pool also thin; report to the owner and recommend D; no second screen
+  without owner direction.
