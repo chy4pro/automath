@@ -148,3 +148,30 @@ stopped or re-planned.
   (attacker-1, statement/threshold/checker/card seeds only, rule 6) → verifier certifies → scout G2 → grading → board.
 - Termination: 0 admissible cards → construction pool also thin; report to the owner and recommend D; no second screen
   without owner direction.
+
+### Outcome (2026-10-10 03:2x UTC, coordinator on Opus 5.5) — ZERO admissible cards; line terminated
+
+SCOUT AUT-95 delivered construction_screen_20261010.md (6 records) and construction_cards_20261010.md (0 cards).
+Coordinator judgement against the step-2 bar (importance; exact checker ≤10 CPU-min, no SAT/ILP/MIP/CP; not the output of a
+2025–2026 AI search unless a gap is stated; negative lists), record by record:
+
+| Record | Bar | Verdict |
+| --- | --- | --- |
+| C4 N(4,6) ≥ 746 (Oct 2026), C5 N(6,3) ≥ 120 (Oct 2026), C6 K(11) ≥ 604 (Apr 2026) | each record is an explicit 2026 AI-assisted construction on the maintainer's page / platform | **out — CROWDED** (agree with scout) |
+| C3 N(3,10) ≥ 1250 (Conder 2006) | importance and checker pass; no source names a lossy choice or an unused parameter | **out — no named lever** (selection v3 slot-1 condition; round-4 lesson) |
+| C2 n(3,13) ≤ 272 (Hoare/Biggs 1989) | checker passes; current-record chain not freshly confirmed; the reported 272 is already the exact minimum among vertex-transitive/Cayley graphs, which blocks the obvious symmetric route | **out — provenance gap + subclass barrier** |
+| C1 four MOLS(22) (3 known since ≤1978) | importance passes (the 2024 MOLS-table paper singles out order 22); checker trivial (<1 s); not AI-crowded; on the 2025-09-25 board only as a "gacha-scale" side task | **out as a card**, for the coordinator's own reason, not the scout's provenance gap: the only sourced lever (a (22,6,2) difference matrix, M1 §8) is the stated next step of the record holders themselves (Abel is a co-author), so it is not an untried lever; and an attempt is a computer search for a 6-column OA, not an LLM-reasoning task — the owner rules make LLM reasoning the solver and confine solver-grade search to GitHub Actions for important results. Kept as a possible owner-funded long shot only. |
+
+Coordinator note on the bar: "hard for humans" is not used as a reason anywhere above (owner rule); each exclusion is
+CROWDED, no named lever, or a provenance/subclass obstruction.
+
+**Termination rule applied (fixed when the line was opened):** 0 admissible cards → the construction-grade pool is also
+thin. Three screens in 24 h (lemma pass 1: 8 records → 1 card → OPEN; pass 2: 14 → 0; construction: 6 → 0) — the pool,
+not the method, is the bottleneck. The screen part of LINE AUT-94 is terminated; no VER/CR steps were dispatched; no second screen without owner
+direction. Recommendation to the owner: **option D** (pause selection; finish the published #30 line: approval 04b27a03
+for the single Zenodo version with onset 4,600,000 and the related-work section; the session-side forum reply B). The stale
+AUT-62 doctrine card (A recommended, A now fully executed) is withdrawn and replaced by a fresh card on AUT-94 (the run
+could not write interactions to AUT-62; AUT-62 is closed with a pointer) with D recommended and, as an alternative, D plus
+one owner-funded MOLS(22) long shot. AUT-94 waits in_review on that card.
+
+Cost of the line: scout 1 run (AUT-95), coordinator 2 runs; no attacker, verifier or referee time; nothing published.
