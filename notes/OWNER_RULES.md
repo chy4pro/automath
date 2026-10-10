@@ -84,3 +84,11 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
 - Delegate everything: literature → scout; proofs → attackers (clean room); review → referees (cross-vendor); finite
   checks → verifier; Lean → formalizer. Comments to the owner in Chinese, short; long content in files.
 - Reports to the owner live at the reports site (Chinese pages); they compile the coordinator's own conclusions.
+- Standing authority on decision cards (owner, 2026-10-10 03:48 UTC, relayed on AUT-94): when the coordinator posts a
+  doctrine/decision card, it executes its own recommendation without waiting for the answer; the card and the reasons
+  stay on the issue and the owner may overturn afterwards. Hard gates are outside this authority and still go through
+  board approval: outward publication (X, site claims, e-mails, moderator messages; Zenodo/GitHub per the gates above),
+  paid resources, deletion of published material.
+- Timed run windows: when the owner announces a pause (e.g. 2026-10-10 05:00 UTC, all agents and routines paused by the
+  session side; a pause cancels runs still going), the coordinator closes or checkpoints work before it and writes the
+  state to the ledger and the issues by five minutes before the pause, so work can continue after the resume.

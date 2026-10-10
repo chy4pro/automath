@@ -175,3 +175,14 @@ could not write interactions to AUT-62; AUT-62 is closed with a pointer) with D 
 one owner-funded MOLS(22) long shot. AUT-94 waits in_review on that card.
 
 Cost of the line: scout 1 run (AUT-95), coordinator 2 runs; no attacker, verifier or referee time; nothing published.
+
+### Owner decision and the MOLS(22) long shot (2026-10-10 03:5x UTC)
+
+Owner (03:48Z, relay on AUT-94): option D; standing authority to execute the coordinator's card recommendations without
+waiting (OWNER_RULES); full speed until the 05:00Z pause, idle engines usable, the MOLS(22) long shot left to the
+coordinator's judgement. D has no remaining work (#30 Zenodo v3 published). Coordinator decision: one long shot — high
+value (N(22) ≥ 4 is the gap the 2024 MOLS-table paper singles out), certification under a second, binary outcome, owner rule
+allows long shots on idle engines; cap = one attacker run, no second attempt on failure. CR-10 AUT-97 (attacker-1, clean
+room; seeds only from the scout's screen, verbatim, rule 6) and VER AUT-98 (independent checker + baseline replay) in
+parallel. Exit: object → VER certification → scout G2 → grading → board approval for any outward action; no object →
+PARTIAL/OPEN recorded with the exhaustively covered search spaces, nothing published, line closed.
