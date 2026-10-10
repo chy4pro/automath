@@ -54,3 +54,12 @@ Bib entries:
 ## 6. Cost
 
 Scout: two runs (AUT-81, AUT-82; the second was created by a parallel coordinator run before patch 5 took effect), ≈ 15 min, ~60 public fetches, no engine time. Coordinator: three runs on AUT-75 (one lost to the session limit).
+
+## 7. Execution (coordinator, 2026-10-10 03:3x UTC)
+
+Board approval 7c4457ab (A with timing A1, B, C) was approved by the owner at 2026-10-10 02:55 UTC; approval 04b27a03 (AUT-71, new Zenodo version with onset 4,600,000) at 02:56 UTC.
+
+- A, merged: ONE new Zenodo version carries both the AUT-71 onset change and the §4 related-work paragraph, table row and bib entries. Reasons: A1 is the approved timing and says exactly this; at most one Zenodo version per problem per day; a separate correction version one day after an onset version would be churn. Adjust two phrases of §4 when inserting: the onset sentence must state the new onset (N ≥ 4,600,000; N ≥ 120^4 in the first version), and "after the first two versions of this note had been published" must match the actual Zenodo version count at publication. Executed in the AUT-71 run with tools/zenodo_newversion.py.
+- B: text fixed verbatim from the approval payload in notes/forum_30_reply_akwei_20261010.txt (target: comments under our proof claim, erdosproblems.com/forum/proof-claims/386, as a reply to Akwei's 2026-10-05 comment). The approved text still says "onset N ≥ 120⁴"; it is left unchanged because the approval is verbatim and the statement is true of the published version. Posting is done by the chat-side session (browser subagent, owner's logged-in account); the coordinator container has no site login and does not seek one.
+- C: unchanged (no X, no claim edit, no e-mail).
+
