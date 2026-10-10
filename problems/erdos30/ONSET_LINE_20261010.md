@@ -58,3 +58,11 @@ Referee repairs, if any, go to the formalizer as comments (mathematics only).
   + GitHub (already pushed). No X, no site claim, no e-mail.
 - Cost of the line (runs): scout 1, attacker-1 1, verifier 2, referee-1 1 (+1 quota-cut), referee-2 1 (+1 quota-cut),
   formalizer 1 (3 CI runs), coordinator 5. Engine time not metered here.
+
+## Step 6 — publication (2026-10-10 03:2x, coordinator on Opus 5.5)
+- Board approval 04b27a03 (this line, one new Zenodo version) APPROVED 2026-10-10 02:56Z; 7c4457ab (AUT-75 related work, timing A1 = fold into this version) APPROVED 02:55Z. Decision: ONE version carries both (A1's own wording; one Zenodo version per problem per day).
+- Corrections to the approval text (no change of scope): the record already has Zenodo v1 (10.5281/zenodo.23103980) and v2 (10.5281/zenodo.23105891, optimality), so this is Zenodo version 3; the record's artefact is the LaTeX paper (publish/automath-papers/erdos30/main.pdf), with proof text, checkers, CR-9, referee/verifier reports and Lean linked on GitHub from the description, as for v1/v2.
+- Paper v3 prepared (papers-repo commit 192fbf3, local): Section 6 = SIDON_BOUND_PROOF.md §6 (v2) in LaTeX (normalized error renamed Φ(x) because F(N) is the Sidon function); Theorem 2.1 onset 4,600,000; abstract, table, footnote, Remark 9.1, §9.3 and provenance updated; Lean sidon_second_order' (run 37978411704); new §8.6 (Akwei) + table row + bib from PRIORITY_ADDENDUM §4. README and zenodo_description.html updated.
+- Gate before upload: AUT-96 VER transcription/consistency check (verifier) → notes/review/VER_paper30_v3_20261010.md. On PASS: push the papers repo, then `tools/zenodo_newversion.py 23105891 main.pdf --version 3 --description zenodo_description.html --publish`, record the DOI here and in the README.
+- 2026-10-10 03:3x — AUT-96 (verifier) PASS-WITH-REPAIRS: no mathematical or numerical discrepancy; four optional wording repairs, all applied (notes/review/VER_paper30_v3_20261010.md). Papers repo pushed (034b6c7; DOI in README 4fe0bb4).
+- **PUBLISHED: Zenodo version 3 = 10.5281/zenodo.23273526** (concept 10.5281/zenodo.23103979), main.pdf 18 pp., carrying both approvals (04b27a03 onset + 7c4457ab A related work). Grade: small result. No X, no site-claim edit, no e-mail. LINE CLOSED.
