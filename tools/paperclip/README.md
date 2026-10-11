@@ -144,8 +144,13 @@ bundle resets that agent's task sessions). formalizer-api and attacker-api-1 are
 Paperclip restart; the rate limits leave plenty of room). Routines: hourly tick and 6-hour reflection -> coordinator-api, weekly sweep -> scout.
 `resume_all.py` (default `api`) resumes the API agents plus the Codex seats; the subscription Claude agents
 (coordinator, referee-1/2, verifier) stay paused (`old` / `all` for the rest).
-- Budget: company budget policy, billed_cents, lifetime, $200 hard stop, warning at 80%. Subscription and Codex runs
-  record 0 cents, so it counts exactly the API spend. At the limit Paperclip pauses agents and opens a budget incident.
+- Budget: company budget policy, billed_cents, lifetime, hard stop, warning at 80%. Subscription and Codex runs record
+  0 cents, so it counts only API spend. Until patch 13 (2026-10-11 21:11 UTC) Paperclip charged every resumed Claude run
+  the session's running total again (Claude Code restores a session's cost on --resume), so the counter carries $42 of
+  over-count; the policy amount is therefore $242, which is the owner's $200 of real spend (watch_api.py subtracts it).
+- Background tasks are disabled for the API agents (`CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1`,
+  `--disallowedTools=CronCreate,CronDelete,CronList,Monitor`): a background job left at the end of a turn made every later
+  resume replay a stale result, and the run died after about 10 s.
 - Billing: API runs are recorded as `metered_api`; Paperclip's per-run cost matches list prices (Opus 5.5 $4 / $20 per
   million input / output tokens, cache reads $0.20). Probe runs cost $0.07-0.14. Re-pricing the old org's real work at
   these rates: about $1.9 per coordinator heartbeat, $2.7-3.6 per referee run, $0.27 per verifier run.

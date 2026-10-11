@@ -14,6 +14,9 @@ HOURS = float(sys.argv[2]) if len(sys.argv) > 2 else 12
 LOG = "/work/.paperclip/logs/api-watch.log"
 # exact markers emitted by Claude Code / the API (plain words like "429" also appear in task text)
 SIGNALS = ('"subtype":"api_retry"', "rate_limit_error", "API Error: 429", '"status":429', "overloaded_error", "API Error: 529")
+# Paperclip counted resumed Claude sessions' running totals again until patch 13 (2026-10-11 21:11 UTC): its counter
+# carries $42 of over-count, so real spend = counter - OVERCOUNT and the cap was raised to $242 (= $200 real).
+OVERCOUNT = 42.0
 seen, step, disk_low, disk_stopped = set(), None, False, False
 def get(path):
     try: return pc.call("GET", path)
@@ -36,7 +39,7 @@ while time.time() < end:
         print(f"ALERT {now} Paperclip unreachable", flush=True); time.sleep(INTERVAL); continue
     agents = {a["name"]: a for a in (get(f"/companies/{C}/agents") or [])}
     pol = ((get(f"/companies/{C}/budgets/overview") or {}).get("policies") or [{}])[0]
-    spent = (pol.get("observedAmount") or 0) / 100
+    spent = max(0.0, (pol.get("observedAmount") or 0) / 100 - OVERCOUNT)
     new_runs, hits, failed, running = 0, [], 0, 0
     for n in API:
         if n not in agents: continue
@@ -53,11 +56,11 @@ while time.time() < end:
             text = text.replace('\\"', '"')   # run logs store chunks as escaped JSON
             found = sorted({s for s in SIGNALS if s in text})
             if found: hits.append(f"{n}:{x['id'][:8]}:{','.join(found)}")
-    line = f"{now} disk_free={free_gb:.1f}GB spent=${spent:.2f}/{(pol.get('amount') or 0)/100:.0f} running_api={running} finished_api={new_runs} failed={failed} ratelimit={hits or '-'}"
+    line = f"{now} disk_free={free_gb:.1f}GB real_spent=${spent:.2f}/{(pol.get('amount') or 0)/100 - OVERCOUNT:.0f} running_api={running} finished_api={new_runs} failed={failed} ratelimit={hits or '-'}"
     open(LOG, "a").write(line + "\n")
     if step is None: step = int(spent // 40)
     if hits: print(f"ALERT {now} rate-limit signals: {hits}", flush=True)
     if failed >= 3: print(f"ALERT {now} {failed} API runs failed in the last interval", flush=True)
     if int(spent // 40) > step:
-        step = int(spent // 40); print(f"ALERT {now} API spend passed ${step*40} (now ${spent:.2f} of $200)", flush=True)
+        step = int(spent // 40); print(f"ALERT {now} real API spend passed ${step*40} (now ${spent:.2f} of $200)", flush=True)
     time.sleep(INTERVAL)

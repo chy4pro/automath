@@ -60,7 +60,10 @@ for name, title, icon, rf, model, extra in ROLES:
     body = {"name": name, "title": title, "icon": icon, "role": "ceo" if rf == "coordinator" else "researcher",
             "adapterType": "claude_local", "defaultEnvironmentId": e["id"], "capabilities": title,
             "adapterConfig": {"cwd": host_ws, "model": model, "engine": "cli", "timeoutSec": 3600, "maxTurnsPerRun": 200,
-                              "env": {"PAPERCLIP_AGENT_NAME": name, **extra}},
+                              "env": {"PAPERCLIP_AGENT_NAME": name, "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS": "1", **extra},
+                              # background tasks and session crons do not survive a Paperclip run; on resume they replay a stale
+                              # result and the run dies (2026-10-11)
+                              "extraArgs": ["--disallowedTools=CronCreate,CronDelete,CronList,Monitor"]},
             "runtimeConfig": {"heartbeat": {"enabled": False, "maxConcurrentRuns": 1}, "aiConnection": BINDING},
             "instructionsBundle": {"entryFile": "AGENTS.md", "files": {"AGENTS.md": bundle(rf)}},
             "permissions": {"canCreateAgents": rf == "coordinator", "canCreateSkills": False, "trustPreset": "standard"}}

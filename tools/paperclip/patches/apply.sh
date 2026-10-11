@@ -126,3 +126,7 @@ python3 "$(dirname "$0")/patch11_agy_remote.py" "$NM" && node --check "$NM/share
 # (PAPERCLIP_PATCH_CLAUDE_API_CONFIG_DIR). See patch12_claude_api_session_home.py.
 cp -n "$NM/adapter-claude-local/dist/server/execute.js" "$NM/adapter-claude-local/dist/server/execute.js.orig12" 2>/dev/null || true
 python3 "$(dirname "$0")/patch12_claude_api_session_home.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/execute.js"
+
+# ---- patch 13: bill only the per-run increase of a resumed Claude Code session (PAPERCLIP_PATCH_SESSION_COST_DELTA)
+cp -n "$NM/server/dist/services/heartbeat.js" "$NM/server/dist/services/heartbeat.js.orig13" 2>/dev/null || true
+python3 "$(dirname "$0")/patch13_claude_session_cost_delta.py" "$NM" && node --check "$NM/server/dist/services/heartbeat.js"
