@@ -130,6 +130,45 @@ each AI container (the Claude side by the coordinator session, the Codex side by
 interrupted issues back to `todo`. Failed runs count as activity, so gated routines fire once per hour during an
 outage at zero token cost; cancel the piled-up routine issues afterwards.
 
+## Muse seats (2026-10-11)
+
+muse is the owner's extra Linux machine (Workbench local end "muse"; Ubuntu 24.04 systemd-nspawn container in a VM;
+2 vCPU, ~7.7 GB RAM behind a virtio balloon, about 5.8 GB usable by one process, no swap, 98 GB free on /home/hatch).
+Only /home/hatch persists across a muse reboot; `/`, `/etc` and `/run` are a tmpfs overlay. Three Paperclip seats run
+there, all reporting to the coordinator and sharing the run pool `muse:2` (`/work/.paperclip/env.sh`):
+
+| Seat | Adapter | CLI on muse | Model |
+|---|---|---|---|
+| muse-claude | claude_local | /home/hatch/pcbin/claude → claude-keygate | claude-opus-5-5 |
+| muse-codex | codex_local | /home/hatch/pcbin/codex → codex-keygate | gpt-6-astra, xhigh |
+| muse-agy | agy_local (external) | /home/hatch/pcbin/agy → agy-keygate | gemini-3.1-pro-high |
+
+Path: Paperclip host → TCP `192.168.166.3:2223` → `muse/relay.mjs` in the Claude container → Workbench SSH bridge
+(`local-shim.mjs muse ssh`, the same command the documented `*.wb` ProxyCommand runs) → muse sshd on 127.0.0.1:22.
+The project container is not an AI session container, so it has neither the shim nor the `local-muse:ssh` grant; the
+relay accepts only the Paperclip host's IP and holds no SSH key (authentication is end to end with muse's sshd).
+- muse sshd: `/home/hatch/.local/share/paperclip-sshd/` (copies here: `muse/muse-sshd_config`, `muse/muse-up.sh`),
+  OpenSSH 9.6p1 from the Ubuntu package the Workbench probe unpacked, pubkey only, root only, loopback only, systemd unit
+  `paperclip-sshd`. `SetEnv TAR_OPTIONS=--no-same-owner` is required: /home/hatch refuses chown even for root, and
+  Paperclip unpacks its runtime archives with tar.
+- Key: secret `ssh-key-muse` in Paperclip only; its public half is in muse's `authorized_keys`. muse host key
+  `SHA256:sMdd1B9Rjj7CX2EUvPTK4Hjb2242BuoSbK0ydkhd1zk`, pinned in the environments.
+- CLIs: the owner's keygate wrappers (`~/.local/bin/*-keygate`, the owner's gateway, limit 3 concurrent
+  requests). `pcbin/<cli>` sets HOME=/home/hatch (ssh logins get HOME=/root); `pcbin/claude` also sets `IS_SANDBOX=1`, without
+  which Claude Code refuses `--dangerously-skip-permissions` as root. codex-keygate pins its own
+  CODEX_HOME, so Paperclip's managed Codex home is not used on muse; its pre-run credential gate is satisfied by a
+  placeholder `OPENAI_API_KEY` that codex-keygate deletes before starting Codex.
+- Antigravity: external adapter `agy_local` built from github.com/evgemar/agy-paperclip-adapter (MIT, commit in
+  `/work/.paperclip/adapters/agy-paperclip-adapter/SOURCE_COMMIT`), compiled against our patched adapter-utils (symlinked,
+  so patches 8–10 apply), registered with `POST /api/adapters/install {packageName: <dir>, isLocalPath: true}`. Patch 11
+  lets it use ssh environments. Not the npm package of the same name (different author, no source repository).
+- Workspaces: each seat's host-side folder (`host-ws/<seat>`) and fallback home are their own tiny git repositories.
+  Without that, git discovery climbs into /work and Paperclip ships the whole repository (~260 MB) over the bridge
+  and copies it back on every run.
+- Setup and repair: `setup_muse.py` (environments + seats, idempotent). After a Claude-container rebuild run
+  `sh muse/relay-up.sh` next to `sshd/sshd-up.sh`; after a muse reboot run `sh /home/hatch/.local/share/paperclip-sshd/up.sh`
+  on muse (muse shell tool).
+
 ## Our own Paperclip repository (2026-10-09)
 
 Fork: https://github.com/chy4pro/paperclip. `master` tracks upstream; branch `automath` carries every customisation

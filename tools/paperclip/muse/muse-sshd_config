@@ -1,0 +1,29 @@
+# Resident sshd for Paperclip on muse. Loopback only: reached solely through the Workbench SSH bridge.
+Port 22
+ListenAddress 127.0.0.1
+HostKey /home/hatch/.local/share/paperclip-sshd/host_ed25519
+PidFile /run/paperclip-sshd/sshd.pid
+AuthorizedKeysFile /run/paperclip-sshd/authorized_keys
+PubkeyAuthentication yes
+AuthenticationMethods publickey
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PermitRootLogin prohibit-password
+AllowUsers root
+UsePAM no
+StrictModes yes
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+PermitTunnel no
+PermitUserEnvironment no
+MaxAuthTries 3
+LoginGraceTime 15
+MaxStartups 10:30:30
+PrintMotd no
+PrintLastLog no
+UseDNS no
+# /home/hatch does not allow chown (even for root): unpack Paperclip archives without restoring owners
+SetEnv TAR_OPTIONS=--no-same-owner
+LogLevel VERBOSE
+Subsystem sftp internal-sftp

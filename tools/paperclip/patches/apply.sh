@@ -116,3 +116,8 @@ python3 "$(dirname "$0")/patch9b_codex_remote_cwd.py" "$NM" && node --check "$NM
 for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-codex-local/dist/server/execute.js; do cp -n "$NM/$f" "$NM/$f.orig10" 2>/dev/null || true; done
 python3 "$(dirname "$0")/patch10_codex_stable_home.py" "$NM"
 for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/execution-target.js adapter-codex-local/dist/server/execute.js; do node --check "$NM/$f" || exit 1; done
+
+# ---- patch 11: agy_local (external Antigravity adapter) may use ssh environments (PAPERCLIP_PATCH_AGY_REMOTE)
+# Mirrors the one-line change of community PR #14938; see patch11_agy_remote.py. Server restart required.
+[ -f "$NM/shared/dist/environment-support.js.orig" ] || cp "$NM/shared/dist/environment-support.js" "$NM/shared/dist/environment-support.js.orig"
+python3 "$(dirname "$0")/patch11_agy_remote.py" "$NM" && node --check "$NM/shared/dist/environment-support.js"

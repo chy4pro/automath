@@ -1,0 +1,131 @@
+diff --git a/src/execute.ts b/src/execute.ts
+index 475cce3..7516f22 100644
+--- a/src/execute.ts
++++ b/src/execute.ts
+@@ -12,8 +12,13 @@ import {
+   adapterExecutionTargetRemoteCwd,
+   adapterExecutionTargetSessionIdentity,
+   adapterExecutionTargetSessionMatches,
++  adapterExecutionTargetUsesPaperclipBridge,
++  describeAdapterExecutionTarget,
++  overrideAdapterExecutionTargetRemoteCwd,
++  prepareAdapterExecutionTargetRuntime,
+   readAdapterExecutionTarget,
+   runAdapterExecutionTargetProcess,
++  startAdapterExecutionTargetPaperclipBridge,
+ } from "@paperclipai/adapter-utils/execution-target";
+ import {
+   applyPaperclipWorkspaceEnv,
+@@ -165,7 +170,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
+     workspaceSource === "agent_home" && configuredCwd.length > 0;
+   const effectiveWorkspaceCwd = useConfiguredInsteadOfAgentHome ? "" : workspaceCwd;
+   const cwd = effectiveWorkspaceCwd || configuredCwd || process.cwd();
+-  const effectiveExecutionCwd = adapterExecutionTargetRemoteCwd(executionTarget, cwd);
++  let effectiveExecutionCwd = adapterExecutionTargetRemoteCwd(executionTarget, cwd);
+   if (!executionTargetIsRemote) {
+     await ensureAbsoluteDirectory(cwd, { createIfMissing: true });
+   }
+@@ -245,6 +250,54 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
+   });
+   applyConfiguredEnv(env, config);
+ 
++  // ── Remote targets: workspace sync + Paperclip callback bridge ─────────────
++  // Ported from the built-in claude_local adapter and community PR #14938 (agy_local): an SSH/sandbox
++  // target gets a synced copy of the workspace, and the Paperclip API is reached through the callback
++  // bridge, because PAPERCLIP_API_URL is usually not routable from the target.
++  let restoreRemoteWorkspace: (() => Promise<void>) | null = null;
++  let paperclipBridge: Awaited<ReturnType<typeof startAdapterExecutionTargetPaperclipBridge>> = null;
++  let remoteRuntimeRootDir: string | null = null;
++  if (executionTargetIsRemote) {
++    await onLog("stdout", `[paperclip] Syncing workspace to ${describeAdapterExecutionTarget(executionTarget)}.\n`);
++    const prepared = await prepareAdapterExecutionTargetRuntime({
++      runId,
++      target: executionTarget,
++      adapterKey: "agy",
++      timeoutSec,
++      workspaceLocalDir: cwd,
++      detectCommand: command,
++      onProgress: (line: string) => onLog("stdout", line),
++      assets: [],
++    });
++    restoreRemoteWorkspace = () => prepared.restoreWorkspace((line: string) => onLog("stdout", line));
++    if (prepared.workspaceRemoteDir) effectiveExecutionCwd = prepared.workspaceRemoteDir;
++    remoteRuntimeRootDir = prepared.runtimeRootDir ?? null;
++  }
++  const runtimeExecutionTarget = overrideAdapterExecutionTargetRemoteCwd(executionTarget, effectiveExecutionCwd);
++  try {
++    if (executionTargetIsRemote && adapterExecutionTargetUsesPaperclipBridge(runtimeExecutionTarget)) {
++      paperclipBridge = await startAdapterExecutionTargetPaperclipBridge({
++        runId,
++        target: runtimeExecutionTarget,
++        runtimeRootDir: remoteRuntimeRootDir,
++        adapterKey: "agy",
++        timeoutSec,
++        hostApiToken: env.PAPERCLIP_API_KEY,
++        onLog,
++      });
++      if (paperclipBridge) Object.assign(env, paperclipBridge.env);
++    }
++    return await executeWithEnv();
++  } finally {
++    if (paperclipBridge) await paperclipBridge.stop();
++    if (restoreRemoteWorkspace) {
++      await onLog("stdout", `[paperclip] Restoring workspace changes from ${describeAdapterExecutionTarget(executionTarget)}.\n`);
++      await restoreRemoteWorkspace();
++    }
++  }
++
++  async function executeWithEnv(): Promise<AdapterExecutionResult> {
++
+   // ── Session resume decision ───────────────────────────────────────────────
+   const runtimeSessionParams =
+     sessionCodec.deserialize(runtime.sessionParams ?? runtime.sessionId) ?? {};
+@@ -255,6 +308,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
+   // An agy conversation is bound to the directory it was created in, so a cwd
+   // mismatch means the transcript describes files that are not here.
+   const cwdMatches =
++    executionTargetIsRemote ||
+     storedCwd.length === 0 ||
+     path.resolve(storedCwd) === path.resolve(effectiveExecutionCwd);
+   const canResume =
+@@ -319,7 +373,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
+       });
+     }
+ 
+-    const proc = await runAdapterExecutionTargetProcess(runId, executionTarget, command, args, {
++    const proc = await runAdapterExecutionTargetProcess(runId, runtimeExecutionTarget, command, args, {
+       cwd,
+       env,
+       timeoutSec,
+@@ -465,6 +519,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
+   }
+ 
+   return toResult(initial, false);
++  }
+ }
+ 
+ function buildResultJson(
+diff --git a/src/session.ts b/src/session.ts
+index c08fe1d..c1a0d69 100644
+--- a/src/session.ts
++++ b/src/session.ts
+@@ -47,6 +47,10 @@ export const sessionCodec: AdapterSessionCodec = {
+       const value = asTrimmedString(record[key]);
+       if (value.length > 0) params[key] = value;
+     }
++    // Keep the remote execution identity (cf. upstream #12930): without it a session saved on an SSH/sandbox
++    // target never matches the target again and every remote run starts a fresh conversation.
++    const remoteExecution = asRecord(record.remoteExecution);
++    if (remoteExecution) params.remoteExecution = remoteExecution;
+     return params;
+   },
+ 
+@@ -59,6 +63,8 @@ export const sessionCodec: AdapterSessionCodec = {
+       const value = asTrimmedString(params[key]);
+       if (value.length > 0) serialized[key] = value;
+     }
++    const remoteExecution = asRecord(params.remoteExecution);
++    if (remoteExecution) serialized.remoteExecution = remoteExecution;
+     return serialized;
+   },
+ 
