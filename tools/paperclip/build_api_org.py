@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""The automath "API org" (owner decision 2026-10-11): the same roles as build_org.py, every agent running Claude Code
-in the Claude container over ssh and bound to the owner's Claude API connection (metered API billing), not to a
-subscription or Codex. The old org is kept and stays paused. Idempotent by agent name. New agents are paused after
-creation; `python3 resume_all.py` (or the UI) starts them when the owner says so.
+"""The automath Claude agents on the Claude API (owner decision 2026-10-11): coordinator, two referees and the verifier
+run Claude Code in the Claude container over ssh, bound to the owner's Claude API connection (metered billing) instead
+of the subscription. Codex work stays on Codex: scout, attacker-1/2, formalizer and muse-codex keep running GPT-6 Astra
+and now report to coordinator-api. The subscription Claude agents are kept and stay paused. API spend is capped by a
+company budget policy ($200 lifetime, hard stop). Idempotent by agent name; new agents are paused after creation and
+`python3 resume_all.py` starts this org when the owner says so.
 
 Needs patch 12 (tools/paperclip/patches): with an AI-connection binding on ssh, claude_local otherwise loses the session
 between runs and runs with a throwaway HOME."""
@@ -15,12 +17,8 @@ BINDING = {"mode": "responsible_user", "provider": "anthropic", "method": "api_k
 ROLES = [
  # name, title, icon, role file, model, extra env
  ("coordinator-api", "Coordinator (Claude API, Opus 5.5) - single decision maker", "crown", "coordinator", "claude-opus-5-5", {}),
- ("scout-api", "Scout (Claude API) - literature status, G2, selection dossiers", "telescope", "scout", "claude-opus-5-5", {}),
- ("attacker-api-1", "Attacker (Claude API, clean room)", "swords", "attacker", "claude-opus-5-5", {"AUTOMATH_CLEAN_ROOM": "1"}),
- ("attacker-api-2", "Attacker (Claude API, clean room)", "swords", "attacker", "claude-opus-5-5", {"AUTOMATH_CLEAN_ROOM": "1"}),
  ("referee-api-1", "Referee (Claude API, isolated, adversarial, same-vendor)", "shield", "referee", "claude-opus-5-5", {}),
  ("referee-api-2", "Referee (Claude API, isolated, adversarial, same-vendor)", "shield", "referee", "claude-opus-5-5", {}),
- ("formalizer-api", "Formalizer (Claude API, Lean 4 via GitHub Actions)", "atom", "formalizer", "claude-opus-5-5", {}),
  ("verifier-api", "Verifier (Claude API, Sonnet 5.5) - finite checks and numerics", "microscope", "verifier", "claude-sonnet-5-5", {}),
 ]
 
@@ -76,4 +74,8 @@ for name, title, icon, rf, model, extra in ROLES:
     probe = call("POST", f"/environments/{e['id']}/probe", {}).get("ok")
     full = call("GET", f"/agents/{a['id']}")
     print(f"{verb:7s} {name:15s} {model:18s} status={full['status']:7s} env probe={probe} api-binding={bool((full.get('runtimeConfig') or {}).get('aiConnection'))}")
+# Codex seats keep their engine and report to the API coordinator.
+for n in ("scout", "attacker-1", "attacker-2", "formalizer", "muse-codex"):
+    if n in agents:
+        call("PATCH", f"/agents/{agents[n]['id']}", {"reportsTo": ids["coordinator-api"]}); print(f"codex   {n:15s} reports to coordinator-api")
 json.dump(ids, open("/work/.paperclip/api_agent_ids.json", "w"), indent=1)

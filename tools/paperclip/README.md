@@ -130,22 +130,26 @@ each AI container (the Claude side by the coordinator session, the Codex side by
 interrupted issues back to `todo`. Failed runs count as activity, so gated routines fire once per hour during an
 outage at zero token cost; cancel the piled-up routine issues afterwards.
 
-## Claude API org (2026-10-11)
+## Claude agents on the Claude API (2026-10-11)
 
-Owner decision: the project runs on the owner's Claude API key ("My Claude API", a Paperclip AI connection with method
-api_key, the owner's default). `build_api_org.py` creates coordinator-api, scout-api, attacker-api-1/2, referee-api-1/2,
-formalizer-api (Opus 5.5) and verifier-api (Sonnet 5.5): same role files plus `agents/api_org.md`, Claude Code in the
-Claude container over ssh (`ws-<name>`), runtime binding `{"mode": "responsible_user", "provider": "anthropic",
-"method": "api_key"}`, created paused. The routines now target coordinator-api and scout-api. The old org and the muse
-seats stay paused; `resume_all.py` resumes the API org by default (`old` / `all` for the others).
-- Billing: runs are recorded as `metered_api`; Paperclip's per-run cost matches list prices (Opus 5.5 $4 / $20 per
+Owner decision: the Claude agents run on the owner's Claude API key ("My Claude API", a Paperclip AI connection with
+method api_key, the owner's default); Codex work stays on Codex. `build_api_org.py` creates coordinator-api,
+referee-api-1, referee-api-2 (Opus 5.5) and verifier-api (Sonnet 5.5): same role files plus `agents/api_org.md`, Claude
+Code in the Claude container over ssh (`ws-<name>`), runtime binding `{"mode": "responsible_user", "provider":
+"anthropic", "method": "api_key"}`, created paused. scout, attacker-1/2, formalizer and muse-codex keep GPT-6 Astra and
+report to coordinator-api. Routines: hourly tick and 6-hour reflection -> coordinator-api, weekly sweep -> scout.
+`resume_all.py` (default `api`) resumes the API agents plus the Codex seats; the subscription Claude agents
+(coordinator, referee-1/2, verifier) stay paused (`old` / `all` for the rest).
+- Budget: company budget policy, billed_cents, lifetime, $200 hard stop, warning at 80%. Subscription and Codex runs
+  record 0 cents, so it counts exactly the API spend. At the limit Paperclip pauses agents and opens a budget incident.
+- Billing: API runs are recorded as `metered_api`; Paperclip's per-run cost matches list prices (Opus 5.5 $4 / $20 per
   million input / output tokens, cache reads $0.20). Probe runs cost $0.07-0.14. Re-pricing the old org's real work at
   these rates: about $1.9 per coordinator heartbeat, $2.7-3.6 per referee run, $0.27 per verifier run.
 - Patch 12 is required: with an AI-connection binding over ssh, Paperclip passed its host-only managed home
   (HOME, XDG_*, CLAUDE_CONFIG_DIR under /tmp/paperclip-ai-*) to the remote run, so sessions never resumed and `~` was a
   throwaway directory. Verified after the patch: same session across runs, HOME=/home/agent, numpy available.
-- The API org is all Claude: reviews are same-vendor, so the cross-vendor referee gate stays open until the owner decides.
-- `api-probe` (paused) is the test seat; its environment references secret ssh-key-paperclip, so never delete it.
+- `api-probe` (paused) is the test seat. Environments of removed or unused agents are archived, never deleted: each
+  references secret ssh-key-paperclip, and deleting an environment deletes its secrets.
 
 ## Muse seats (2026-10-11)
 
