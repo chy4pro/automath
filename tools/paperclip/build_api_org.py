@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """The automath Claude agents on the Claude API (owner decision 2026-10-11): coordinator, two referees and the verifier
 run Claude Code in the Claude container over ssh, bound to the owner's Claude API connection (metered billing) instead
-of the subscription. Codex work stays on Codex: scout, attacker-1/2, formalizer and muse-codex keep running GPT-6 Astra
+of the subscription. Formalization moved to the Claude API too (owner, 2026-10-11). Codex work stays on Codex: scout, attacker-1/2 and
+muse-codex keep running GPT-6 Astra
 and now report to coordinator-api. The subscription Claude agents are kept and stay paused. API spend is capped by a
 company budget policy ($200 lifetime, hard stop). Idempotent by agent name; new agents are paused after creation and
-`python3 resume_all.py` starts this org when the owner says so.
+`python3 resume_all.py` starts this org when the owner says so. `build_api_org.py <name> ...` touches only the named
+agents: re-pushing an instruction bundle resets that agent's running task sessions, so leave busy agents alone.
 
 Needs patch 12 (tools/paperclip/patches): with an AI-connection binding on ssh, claude_local otherwise loses the session
 between runs and runs with a throwaway HOME."""
@@ -19,6 +21,7 @@ ROLES = [
  ("coordinator-api", "Coordinator (Claude API, Opus 5.5) - single decision maker", "crown", "coordinator", "claude-opus-5-5", {}),
  ("referee-api-1", "Referee (Claude API, isolated, adversarial, same-vendor)", "shield", "referee", "claude-opus-5-5", {}),
  ("referee-api-2", "Referee (Claude API, isolated, adversarial, same-vendor)", "shield", "referee", "claude-opus-5-5", {}),
+ ("formalizer-api", "Formalizer (Claude API, Opus 5.5) - Lean 4 via GitHub Actions", "atom", "formalizer", "claude-opus-5-5", {}),
  ("verifier-api", "Verifier (Claude API, Sonnet 5.5) - finite checks and numerics", "microscope", "verifier", "claude-sonnet-5-5", {}),
 ]
 
@@ -42,8 +45,10 @@ key = next(x for x in secs if x["name"] == "ssh-key-paperclip")
 known = call("GET", f"/environments/{json.load(open('/work/.paperclip/env_ids.json'))['verifier']}")["config"]["knownHosts"]
 envs = {e["name"]: e for e in call("GET", f"/companies/{C}/environments")}
 agents = {a["name"]: a for a in call("GET", f"/companies/{C}/agents")}
-ids = {}
+ONLY = set(sys.argv[1:])
+ids = {n: agents[n]["id"] for n in agents if n.endswith("-api")}
 for name, title, icon, rf, model, extra in ROLES:
+    if ONLY and name not in ONLY: continue
     cfg = {**CLAUDE_BOX, "remoteWorkspacePath": f"/home/agent/pcws/{name}", "knownHosts": known, "strictHostKeyChecking": True,
            "privateKeySecretRef": {"type": "secret_ref", "secretId": key["id"], "version": "latest"}}
     ebody = {"name": f"ws-{name}", "driver": "ssh", "status": "active", "config": cfg, "description": f"Claude container, private workspace for {name}"}
@@ -75,7 +80,7 @@ for name, title, icon, rf, model, extra in ROLES:
     full = call("GET", f"/agents/{a['id']}")
     print(f"{verb:7s} {name:15s} {model:18s} status={full['status']:7s} env probe={probe} api-binding={bool((full.get('runtimeConfig') or {}).get('aiConnection'))}")
 # Codex seats keep their engine and report to the API coordinator.
-for n in ("scout", "attacker-1", "attacker-2", "formalizer", "muse-codex"):
-    if n in agents:
+for n in ("scout", "attacker-1", "attacker-2", "muse-codex"):
+    if n in agents and not ONLY:
         call("PATCH", f"/agents/{agents[n]['id']}", {"reportsTo": ids["coordinator-api"]}); print(f"codex   {n:15s} reports to coordinator-api")
-json.dump(ids, open("/work/.paperclip/api_agent_ids.json", "w"), indent=1)
+json.dump({k: v for k, v in ids.items()}, open("/work/.paperclip/api_agent_ids.json", "w"), indent=1)
