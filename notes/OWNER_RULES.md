@@ -95,3 +95,16 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
 - Timed run windows: when the owner announces a pause (e.g. 2026-10-10 05:00 UTC, all agents and routines paused by the
   session side; a pause cancels runs still going), the coordinator closes or checkpoints work before it and writes the
   state to the ledger and the issues by five minutes before the pause, so work can continue after the resume.
+
+## Heavy-job venue (owner, 2026-10-11, AUT-118; coordinator's policy)
+- The coordinator chooses the venue per job; solver rules are unchanged (LLM reasoning is the solver, solvers verify,
+  only for important results).
+- GitHub Actions (public, 4 vCPU / 16 GB / 14 GB disk per job, 6 h per job, up to 20 jobs): default for any check that
+  will be cited publicly — final certificates and independent re-checks, parallel matrix sweeps, Lean CI. Jobs over 6 h
+  must be sharded with checkpoints. A new solver workflow and push path is requested from the chat session first.
+- muse (private, 2 vCPU, ~5.8 GB per process, no time limit, persistent disk): exploratory or private runs, long serial
+  jobs, building a solver from source, keeping large intermediates. One heavy job at a time, under 5 GB, nohup + log +
+  checkpoint, only when the task says so explicitly. Results that matter are re-checked on GitHub Actions before publication.
+- Run pools: Codex pool of 2 shared by scout, attacker-1, attacker-2, formalizer and muse-codex (same OpenAI account);
+  muse pool of 2 shared by muse-claude and muse-agy. muse runs at most 3 at once, heavy jobs one at a time.
+- Neither venue fits (>5.8 GB RAM and must be private or unshardable >6 h): reformulate or shard; otherwise ask the owner.
