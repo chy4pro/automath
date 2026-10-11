@@ -24,3 +24,6 @@ systemctl enable --now paperclip-sshd.service >/dev/null 2>&1 || true
 systemctl restart paperclip-sshd.service
 sleep 1
 systemctl is-active paperclip-sshd.service
+# Tailscale in userspace mode (the transport Paperclip uses since 2026-10-11): inbound tailnet TCP to this node is
+# forwarded to 127.0.0.1:22. Started from this shell so it inherits the runtime proxy settings; idempotent.
+node /home/hatch/.local/share/wb-tailscale-ws/start-userspace.cjs >/dev/null && /home/hatch/.local/share/wb-tailscale-ws/tailscale status --json 2>/dev/null | python3 -c "import json,sys; print('tailscale', json.load(sys.stdin).get('BackendState'))"

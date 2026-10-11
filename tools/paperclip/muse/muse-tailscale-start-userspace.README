@@ -1,0 +1,7 @@
+On muse: /home/hatch/.local/share/wb-tailscale-ws/start-userspace.cjs (2026-10-11) is a copy of the owner's start.cjs for
+the WebSocket-patched Tailscale 1.104.1-wbws3 build with three changes: --tun=userspace-networking, no CAP_NET_ADMIN
+check, no TS_DEBUG_FIREWALL_MODE. In userspace mode tailscaled handles inbound TCP itself and forwards connections to
+this node's tailnet address to 127.0.0.1:<port> (wgengine/netstack acceptTCP: "case isTailscaleIP: dialIP = ipv4Loopback"),
+which is how Paperclip reaches muse's loopback sshd. Kernel (TUN) mode cannot carry TCP on muse (connect EPERM outbound,
+inbound timeout: the owner's 2026-10-10 mesh-validation.json). Same state directory and identity; the owner's start.cjs is
+unchanged. muse-up.sh starts it.

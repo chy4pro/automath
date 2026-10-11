@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 """Paperclip seats on the machine "muse" (Claude Code, Codex, Antigravity). Idempotent by name.
 
-Path: Paperclip host -> TCP 192.168.166.3:2223 (tools/paperclip/muse/relay.mjs in the Claude container)
--> Workbench SSH bridge -> muse sshd on 127.0.0.1:22 (/home/hatch/.local/share/paperclip-sshd, user root).
+Path (default): Paperclip host -> Workbench host Mac's Tailscale -> muse userspace tailscaled -> muse sshd on
+127.0.0.1:22 (/home/hatch/.local/share/paperclip-sshd, user root). Fallback (MUSE_TRANSPORT=relay): TCP 192.168.166.3:2223
+(tools/paperclip/muse/relay.mjs in the Claude container) -> Workbench SSH bridge -> the same sshd.
 The CLIs on muse are the owner's keygate wrappers, launched through /home/hatch/pcbin/<cli> (sets HOME).
 The SSH key lives only in Paperclip's secret store (secret "ssh-key-muse"); to recreate it pass MUSE_KEY_FILE.
 """
 import json, os, subprocess, sys
 sys.path.insert(0, "/work/tools/paperclip"); from pc import call
 C = "d0817321-3b6a-412d-8aaa-1e2b42e35cae"
-RELAY_HOST, RELAY_PORT = "192.168.166.3", 2223
+# Transport (MUSE_TRANSPORT): "tailscale" (default since 2026-10-11) = muse's tailnet address, reached through the
+# Workbench host Mac's Tailscale (containers route 100.64.0.0/10 via the Mac) to muse's userspace tailscaled, which
+# forwards inbound TCP to its loopback sshd. "relay" = fallback through tools/paperclip/muse/relay.mjs in the Claude container.
+TRANSPORT = os.environ.get("MUSE_TRANSPORT", "tailscale")
+RELAY_HOST, RELAY_PORT = ("100.101.197.73", 22) if TRANSPORT == "tailscale" else ("192.168.166.3", 2223)
 MUSE_HOSTKEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKpt+vA3qyelu3exYrPtgfqS9rQ7auVqCoh0U3gtR5JF"
 AG = "/work/tools/paperclip/agents"
 SEATS = [
@@ -37,7 +42,7 @@ env_ids = json.load(open("/work/.paperclip/env_ids.json")); agent_ids = json.loa
 for name, title, icon, adapter, command, model, extra in SEATS:
     cfg = {"host": RELAY_HOST, "port": RELAY_PORT, "username": "root", "remoteWorkspacePath": f"/home/hatch/pcws/{name}",
            "privateKeySecretRef": {"type": "secret_ref", "secretId": sec["id"], "version": "latest"},
-           "knownHosts": f"[{RELAY_HOST}]:{RELAY_PORT} {MUSE_HOSTKEY}\n", "strictHostKeyChecking": True}
+           "knownHosts": (f"{RELAY_HOST} {MUSE_HOSTKEY}\n" if RELAY_PORT == 22 else f"[{RELAY_HOST}]:{RELAY_PORT} {MUSE_HOSTKEY}\n"), "strictHostKeyChecking": True}
     body = {"name": f"ws-{name}", "driver": "ssh", "status": "active", "config": cfg, "description": f"muse, private workspace for {name}"}
     e = call("PATCH", f"/environments/{envs[body['name']]['id']}", body) if body["name"] in envs \
         else call("POST", f"/companies/{C}/environments", body)
