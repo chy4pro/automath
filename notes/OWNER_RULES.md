@@ -35,6 +35,8 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
 
 ## Engines and cost
 - Subscriptions only; no API-key billing, no paid cloud (GCP retired), no new dependencies without approval.
+  2026-10-11 owner decision: the project now runs entirely on the owner's Claude API key (the "API org" in Paperclip);
+  the subscription/Codex agents are kept but not used. API spend is metered and reported.
 - Dispatch at the calibrated model tier; a result from a lower tier is void. Astra (gpt-6-astra) takes only the hardest or
   most critical tasks, single agent per brief, no hard time limit in the brief (the real limit is the weekly pool).
 - Quota is scarce: no exploratory fan-outs; one background run at a time unless a chain is in progress; routine ticks
@@ -64,6 +66,8 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
 ## Publication gates
 - Three gates before anything leaves the repository: two independent cross-vendor referees, G2 novelty, finite checks;
   Lean only when the result is worth it (then GitHub Actions, no local builds).
+  2026-10-11: the API org is all Claude, so it cannot supply cross-vendor referees; reviews there are labelled
+  same-vendor and the cross-vendor gate stays open until the owner decides how to satisfy or change it.
 - Publish when a method reaches its limit: closed theorems go out, exploration moves on. Each milestone gets the full
   set (GitHub with everything needed to verify and refute, Zenodo paper, X post) — but only milestones: at most one
   Zenodo version per problem per day, X only for announce-worthy results, one erdosproblems.com proof claim per problem

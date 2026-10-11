@@ -130,6 +130,23 @@ each AI container (the Claude side by the coordinator session, the Codex side by
 interrupted issues back to `todo`. Failed runs count as activity, so gated routines fire once per hour during an
 outage at zero token cost; cancel the piled-up routine issues afterwards.
 
+## Claude API org (2026-10-11)
+
+Owner decision: the project runs on the owner's Claude API key ("My Claude API", a Paperclip AI connection with method
+api_key, the owner's default). `build_api_org.py` creates coordinator-api, scout-api, attacker-api-1/2, referee-api-1/2,
+formalizer-api (Opus 5.5) and verifier-api (Sonnet 5.5): same role files plus `agents/api_org.md`, Claude Code in the
+Claude container over ssh (`ws-<name>`), runtime binding `{"mode": "responsible_user", "provider": "anthropic",
+"method": "api_key"}`, created paused. The routines now target coordinator-api and scout-api. The old org and the muse
+seats stay paused; `resume_all.py` resumes the API org by default (`old` / `all` for the others).
+- Billing: runs are recorded as `metered_api`; Paperclip's per-run cost matches list prices (Opus 5.5 $4 / $20 per
+  million input / output tokens, cache reads $0.20). Probe runs cost $0.07-0.14. Re-pricing the old org's real work at
+  these rates: about $1.9 per coordinator heartbeat, $2.7-3.6 per referee run, $0.27 per verifier run.
+- Patch 12 is required: with an AI-connection binding over ssh, Paperclip passed its host-only managed home
+  (HOME, XDG_*, CLAUDE_CONFIG_DIR under /tmp/paperclip-ai-*) to the remote run, so sessions never resumed and `~` was a
+  throwaway directory. Verified after the patch: same session across runs, HOME=/home/agent, numpy available.
+- The API org is all Claude: reviews are same-vendor, so the cross-vendor referee gate stays open until the owner decides.
+- `api-probe` (paused) is the test seat; its environment references secret ssh-key-paperclip, so never delete it.
+
 ## Muse seats (2026-10-11)
 
 muse is the owner's extra Linux machine (Workbench local end "muse"; Ubuntu 24.04 systemd-nspawn container in a VM;

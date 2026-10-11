@@ -121,3 +121,8 @@ for f in adapter-utils/dist/remote-managed-runtime.js adapter-utils/dist/executi
 # Mirrors the one-line change of community PR #14938; see patch11_agy_remote.py. Server restart required.
 [ -f "$NM/shared/dist/environment-support.js.orig" ] || cp "$NM/shared/dist/environment-support.js" "$NM/shared/dist/environment-support.js.orig"
 python3 "$(dirname "$0")/patch11_agy_remote.py" "$NM" && node --check "$NM/shared/dist/environment-support.js"
+
+# ---- patch 12: claude_local uses a stable remote CLAUDE_CONFIG_DIR on ssh when an AI connection (API key) is bound
+# (PAPERCLIP_PATCH_CLAUDE_API_CONFIG_DIR). See patch12_claude_api_session_home.py.
+cp -n "$NM/adapter-claude-local/dist/server/execute.js" "$NM/adapter-claude-local/dist/server/execute.js.orig12" 2>/dev/null || true
+python3 "$(dirname "$0")/patch12_claude_api_session_home.py" "$NM" && node --check "$NM/adapter-claude-local/dist/server/execute.js"
