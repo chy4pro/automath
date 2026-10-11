@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """The automath Claude agents on the Claude API (owner decision 2026-10-11): coordinator, two referees and the verifier
 run Claude Code in the Claude container over ssh, bound to the owner's Claude API connection (metered billing) instead
-of the subscription. Formalization moved to the Claude API too (owner, 2026-10-11). Codex work stays on Codex: scout, attacker-1/2 and
+of the subscription. Formalization moved to the Claude API too, and so did the attacker for the simpler, deterministic slot (attacker-api-1;
+owner, 2026-10-11); the hard slot keeps the Codex attackers. Codex work stays on Codex: scout, attacker-1/2 and
 muse-codex keep running GPT-6 Astra
 and now report to coordinator-api. The subscription Claude agents are kept and stay paused. API spend is capped by a
 company budget policy ($200 lifetime, hard stop). Idempotent by agent name; new agents are paused after creation and
@@ -21,6 +22,7 @@ ROLES = [
  ("coordinator-api", "Coordinator (Claude API, Opus 5.5) - single decision maker", "crown", "coordinator", "claude-opus-5-5", {}),
  ("referee-api-1", "Referee (Claude API, isolated, adversarial, same-vendor)", "shield", "referee", "claude-opus-5-5", {}),
  ("referee-api-2", "Referee (Claude API, isolated, adversarial, same-vendor)", "shield", "referee", "claude-opus-5-5", {}),
+ ("attacker-api-1", "Attacker (Claude API, clean room) - the simpler, deterministic slot", "swords", "attacker", "claude-opus-5-5", {"AUTOMATH_CLEAN_ROOM": "1"}),
  ("formalizer-api", "Formalizer (Claude API, Opus 5.5) - Lean 4 via GitHub Actions", "atom", "formalizer", "claude-opus-5-5", {}),
  ("verifier-api", "Verifier (Claude API, Sonnet 5.5) - finite checks and numerics", "microscope", "verifier", "claude-sonnet-5-5", {}),
 ]

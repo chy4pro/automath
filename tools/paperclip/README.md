@@ -134,12 +134,13 @@ outage at zero token cost; cancel the piled-up routine issues afterwards.
 
 Owner decision: the Claude agents run on the owner's Claude API key ("My Claude API", a Paperclip AI connection with
 method api_key, the owner's default); Codex work stays on Codex. `build_api_org.py` creates coordinator-api,
-referee-api-1, referee-api-2, formalizer-api (Opus 5.5; formalization moved off Codex on 2026-10-11 18:3x) and
+referee-api-1, referee-api-2, formalizer-api, attacker-api-1 (Opus 5.5; formalization and the simpler slot's attacks
+moved off Codex on 2026-10-11) and
 verifier-api (Sonnet 5.5): same role files plus `agents/api_org.md`, Claude
 Code in the Claude container over ssh (`ws-<name>`), runtime binding `{"mode": "responsible_user", "provider":
 "anthropic", "method": "api_key"}`, created paused. scout, attacker-1/2 and muse-codex keep GPT-6 Astra and report to
 coordinator-api; the Codex formalizer is paused. `build_api_org.py <name>` touches only the named agents (re-pushing a
-bundle resets that agent's task sessions). formalizer-api is outside the `claude-api` run pool (adding it needs a
+bundle resets that agent's task sessions). formalizer-api and attacker-api-1 are outside the `claude-api` run pool (adding it needs a
 Paperclip restart; the rate limits leave plenty of room). Routines: hourly tick and 6-hour reflection -> coordinator-api, weekly sweep -> scout.
 `resume_all.py` (default `api`) resumes the API agents plus the Codex seats; the subscription Claude agents
 (coordinator, referee-1/2, verifier) stay paused (`old` / `all` for the rest).
