@@ -1,4 +1,4 @@
-# Resident sshd for Paperclip on muse. Loopback only: reached solely through the Workbench SSH bridge.
+# Resident sshd for Paperclip on muse. Loopback only: reached through Tailscale (userspace tailscaled forwards to 127.0.0.1:22).
 Port 22
 ListenAddress 127.0.0.1
 HostKey /home/hatch/.local/share/paperclip-sshd/host_ed25519

@@ -147,10 +147,9 @@ muse-codex is in `codex:2` with the four Codex-container seats, because it uses 
 Path (since 2026-10-11 16:00Z): Paperclip host → the Workbench host Mac's Tailscale (OrbStack containers route
 100.64.0.0/10 through the Mac) → DERP over WebSocket → muse's tailscaled in userspace mode → muse sshd on
 127.0.0.1:22. Muse's tailnet address is 100.101.197.73. Measured: environment probe 1.5 s, 150 MB copy-back 118 s
-(≈1.3 MB/s, no drop). Fallback (`MUSE_TRANSPORT=relay python3 setup_muse.py`): TCP `192.168.166.3:2223` →
-`muse/relay.mjs` in the Claude container → Workbench SSH bridge (`local-shim.mjs muse ssh`) → the same sshd; ≈3.5 MB/s,
-but the bridge dropped once after 145 MB and it depends on the Claude container. The project container is not an AI
-session container, so it has no Workbench grant for the bridge itself; with Tailscale it needs none.
+(≈1.3 MB/s, no drop). Until 2026-10-11 16:00Z the seats went through a relay in the Claude container and the Workbench SSH bridge (≈3.5 MB/s,
+dropped once after 145 MB, depended on the Claude container); the relay was removed at the owner's request. The project
+container is not an AI session container, so it has no Workbench grant for the bridge itself; Tailscale needs none.
   Checked 2026-10-11 (start.sh logs it at every start): the project container has the shim on /opt/wb but no grant
   token, no WB_API, no `*.wb` ssh config and no /wb/creds; Workbench issues grants only to AI session containers.
 - muse sshd: `/home/hatch/.local/share/paperclip-sshd/` (copies here: `muse/muse-sshd_config`, `muse/muse-up.sh`),
@@ -171,10 +170,10 @@ session container, so it has no Workbench grant for the bridge itself; with Tail
 - Workspaces: each seat's host-side folder (`host-ws/<seat>`) and fallback home are their own tiny git repositories.
   Without that, git discovery climbs into /work and Paperclip ships the whole repository (~260 MB) over the bridge
   and copies it back on every run.
-- Setup and repair: `setup_muse.py` (environments + seats, idempotent). After a muse reboot run
-  `sh /home/hatch/.local/share/paperclip-sshd/up.sh` on muse (muse shell tool): it restores sshd and starts Tailscale in
-  userspace mode (`muse/muse-tailscale-start-userspace.README`). The relay is only needed for the fallback path
-  (`sh muse/relay-up.sh` in the Claude container). Environments `ws-muse-claude-relay-old` / `ws-muse-codex-relay-old` /
+- Setup and repair: `setup_muse.py` (environments + seats, idempotent). On muse,
+  `sh /home/hatch/.local/share/paperclip-sshd/up.sh` (copy: `muse/muse-up.sh`) brings up sshd and Tailscale in userspace
+  mode; it is idempotent, never restarts a healthy service, loads the egress proxy settings itself, and exits 0 only when
+  both are up, so muse's watchdog runs it routinely. `--restart-tailscale` forces a clean Tailscale restart. Environments `ws-muse-claude-relay-old` / `ws-muse-codex-relay-old` /
   `ws-muse-probe` are archived; each still references secret `ssh-key-muse`, so never delete them (deletion cascades).
 
 ## Crash forensics (since 2026-10-11)
