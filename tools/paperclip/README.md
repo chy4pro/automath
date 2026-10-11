@@ -135,7 +135,8 @@ outage at zero token cost; cancel the piled-up routine issues afterwards.
 muse is the owner's extra Linux machine (Workbench local end "muse"; Ubuntu 24.04 systemd-nspawn container in a VM;
 2 vCPU, ~7.7 GB RAM behind a virtio balloon, about 5.8 GB usable by one process, no swap, 98 GB free on /home/hatch).
 Only /home/hatch persists across a muse reboot; `/`, `/etc` and `/run` are a tmpfs overlay. Three Paperclip seats run
-there, all reporting to the coordinator and sharing the run pool `muse:2` (`/work/.paperclip/env.sh`):
+there, all reporting to the coordinator. Run pools (`/work/.paperclip/env.sh`): muse-claude and muse-agy share `muse:2`;
+muse-codex is in `codex:2` with the four Codex-container seats, because it uses the same OpenAI account (owner, 2026-10-11).
 
 | Seat | Adapter | CLI on muse | Model |
 |---|---|---|---|
@@ -168,6 +169,18 @@ relay accepts only the Paperclip host's IP and holds no SSH key (authentication 
 - Setup and repair: `setup_muse.py` (environments + seats, idempotent). After a Claude-container rebuild run
   `sh muse/relay-up.sh` next to `sshd/sshd-up.sh`; after a muse reboot run `sh /home/hatch/.local/share/paperclip-sshd/up.sh`
   on muse (muse shell tool).
+
+## Crash forensics (since 2026-10-11)
+
+On 2026-10-11 14:10Z the Paperclip process died without a clean shutdown (it stopped answering for ~30 s first) and the
+container restarted; its output was lost when the container was later recreated, so the cause is not established.
+Reproductions of that hour's workload (300 MB copy-back, cancel during copy-back plus deleting the target folder,
+repository-sized sync) did not crash it (RSS stayed < 700 MB, health latency 0.1 s). The shared VM (8 GB RAM, 9 GB
+swap) has recorded OOM kills since boot, so a VM-wide OOM kill is the leading hypothesis. `start.sh` now keeps:
+`/work/.paperclip/logs/server.log` (server output plus `paperclipai exited with status N`: 143 = normal stop,
+137 = SIGKILL such as the kernel OOM killer, 134 = fatal Node error, 1 = uncaught exception), `mem.log` (every 15 s:
+container and Paperclip RSS, VM available memory, swap used, VM-wide `oom_kill` count) and Node diagnostic reports
+on fatal errors in the same directory. Check these before restarting the node after an incident.
 
 ## Our own Paperclip repository (2026-10-09)
 
