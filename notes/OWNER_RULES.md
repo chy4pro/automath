@@ -108,3 +108,9 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
 - Run pools: Codex pool of 2 shared by scout, attacker-1, attacker-2, formalizer and muse-codex (same OpenAI account);
   muse pool of 2 shared by muse-claude and muse-agy. muse runs at most 3 at once, heavy jobs one at a time.
 - Neither venue fits (>5.8 GB RAM and must be private or unshardable >6 h): reformulate or shard; otherwise ask the owner.
+
+## Disk on the shared project volume (owner, 2026-10-11)
+- Below 20 GB free on /work: do not stop; dispatch an agent to clean up first (released or uncertified large files,
+  stale run copies, caches no longer needed; the release-after-publish and no-private-archive rules decide what may go).
+- Below 5 GB free: stop running (pause the agents) until space is recovered. This replaces the 2026-09-25 rule
+  "stop all runs if free disk < 20 GB".
