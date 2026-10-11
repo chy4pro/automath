@@ -39,6 +39,7 @@ while time.time() < end:
             text = (x.get("error") or "")
             lg = get(f"/heartbeat-runs/{x['id']}/log")
             if isinstance(lg, dict): text += lg.get("content") or ""
+            text = text.replace('\\"', '"')   # run logs store chunks as escaped JSON
             found = sorted({s for s in SIGNALS if s in text})
             if found: hits.append(f"{n}:{x['id'][:8]}:{','.join(found)}")
     line = f"{now} spent=${spent:.2f}/{(pol.get('amount') or 0)/100:.0f} running_api={running} finished_api={new_runs} failed={failed} ratelimit={hits or '-'}"
