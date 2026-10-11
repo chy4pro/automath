@@ -11,6 +11,8 @@ export PORT=3100
 mkdir -p "$PAPERCLIP_HOME" "$HOME"
 cd /work
 echo "[start] $(date -u +%FT%TZ) node $(node -v) paperclipai $(paperclipai --version)"
+# Workbench local-end capability of this container (yes/no only, never values): can Paperclip reach machines itself?
+echo "[start] wb: shim=$([ -f /opt/wb/kernel/local-shim.mjs ] && echo yes || echo no) grant_file=$([ -r /wb/grant/token ] && echo yes || echo no) WB_TOKEN=$([ -n "$WB_TOKEN" ] && echo set || echo unset) WB_API=$([ -n "$WB_API" ] && echo set || echo unset) wb_ssh_conf=$([ -f /etc/ssh/ssh_config.d/wb.conf ] && echo yes || echo no) creds=$(ls /wb/creds 2>/dev/null | wc -l) user=$(id -un) home_pw=$(getent passwd $(id -un) | cut -d: -f6)"
 # Cloudflare connector: if a tunnel token exists, run cloudflared beside the server (origin = localhost:3100)
 if [ -s /work/.paperclip/tunnel.token ] && [ -x /work/.tools/bin/cloudflared ]; then
   (/work/.tools/bin/cloudflared tunnel --no-autoupdate run --token-file /work/.paperclip/tunnel.token 2>&1 | sed 's/^/[cloudflared] /') &

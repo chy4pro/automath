@@ -148,6 +148,8 @@ Path: Paperclip host → TCP `192.168.166.3:2223` → `muse/relay.mjs` in the Cl
 (`local-shim.mjs muse ssh`, the same command the documented `*.wb` ProxyCommand runs) → muse sshd on 127.0.0.1:22.
 The project container is not an AI session container, so it has neither the shim nor the `local-muse:ssh` grant; the
 relay accepts only the Paperclip host's IP and holds no SSH key (authentication is end to end with muse's sshd).
+  Checked 2026-10-11 (start.sh logs it at every start): the project container has the shim on /opt/wb but no grant
+  token, no WB_API, no `*.wb` ssh config and no /wb/creds; Workbench issues grants only to AI session containers.
 - muse sshd: `/home/hatch/.local/share/paperclip-sshd/` (copies here: `muse/muse-sshd_config`, `muse/muse-up.sh`),
   OpenSSH 9.6p1 from the Ubuntu package the Workbench probe unpacked, pubkey only, root only, loopback only, systemd unit
   `paperclip-sshd`. `SetEnv TAR_OPTIONS=--no-same-owner` is required: /home/hatch refuses chown even for root, and
