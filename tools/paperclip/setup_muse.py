@@ -73,6 +73,8 @@ for name, title, icon, adapter, command, model, extra in SEATS:
     extra = dict(extra); env = {"PAPERCLIP_AGENT_NAME": name, **extra.pop("env", {})}
     acfg = {"cwd": host_ws, "command": command, "model": model, "timeoutSec": 3600, "env": env, **extra}
     if adapter in ("claude_local", "codex_local"): acfg.update({"engine": "cli", "maxTurnsPerRun": 200})
+    if adapter == "claude_local": acfg["effort"] = "max"            # owner 2026-10-12: highest thinking level
+    if adapter == "codex_local": acfg["modelReasoningEffort"] = "ultra"
     a_body = {"name": name, "title": title, "icon": icon, "role": "researcher", "reportsTo": coord, "adapterType": adapter,
               "adapterConfig": acfg, "defaultEnvironmentId": e["id"], "capabilities": title,
               "instructionsBundle": {"entryFile": "AGENTS.md", "files": {"AGENTS.md": bundle_for(name)}},

@@ -28,7 +28,7 @@ def adapter(kind, name, model, env_extra=None):
     cwd = f"/work/.paperclip/host-ws/{name}"
     cfg = {"cwd": cwd, "timeoutSec": 3600, "maxTurnsPerRun": 200, "model": model, "engine": "cli",
            "env": {"PAPERCLIP_AGENT_NAME": name, **(env_extra or {})}}
-    if kind == "codex_local": cfg["modelReasoningEffort"] = "xhigh"
+    if kind == "codex_local": cfg["modelReasoningEffort"] = "ultra"   # owner 2026-10-12: highest level GPT-6 Astra accepts
     return cfg
 
 ROLES = [
