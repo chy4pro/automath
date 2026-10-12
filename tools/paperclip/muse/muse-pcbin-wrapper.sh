@@ -6,3 +6,6 @@ export HOME=/home/hatch
 # --dangerously-skip-permissions as root (it refuses otherwise).
 export IS_SANDBOX=1
 exec /home/hatch/.local/bin/claude-keygate "$@"   # codex: codex-keygate, agy: agy-keygate (without IS_SANDBOX)
+
+# /home/hatch/pcbin/claude-api (2026-10-12): plain Claude Code on muse's own API login
+#   export HOME=/home/hatch; export IS_SANDBOX=1; exec /home/hatch/.local/bin/claude "$@"

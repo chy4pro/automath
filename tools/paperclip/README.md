@@ -170,7 +170,7 @@ muse-codex is in `codex:2` with the four Codex-container seats, because it uses 
 
 | Seat | Adapter | CLI on muse | Model |
 |---|---|---|---|
-| muse-claude | claude_local | /home/hatch/pcbin/claude → claude-keygate | claude-opus-5-5 |
+| muse-claude | claude_local | /home/hatch/pcbin/claude-api → plain claude with muse's API key (since 2026-10-12) | claude-opus-5-5 |
 | muse-codex | codex_local | /home/hatch/pcbin/codex → codex-keygate | gpt-6-astra, xhigh |
 | muse-agy | agy_local (external) | /home/hatch/pcbin/agy → agy-keygate | gemini-3.1-pro-high |
 
@@ -193,6 +193,11 @@ container is not an AI session container, so it has no Workbench grant for the b
   which Claude Code refuses `--dangerously-skip-permissions` as root. codex-keygate pins its own
   CODEX_HOME, so Paperclip's managed Codex home is not used on muse; its pre-run credential gate is satisfied by a
   placeholder `OPENAI_API_KEY` that codex-keygate deletes before starting Codex.
+- muse-claude on the API (owner, 2026-10-12): the owner put an ANTHROPIC_API_KEY into /home/hatch/.claude/settings.json on
+  muse. `pcbin/claude-api` runs plain Claude Code with HOME=/home/hatch; settings.json env wins over the process
+  environment, so the adapter's placeholder ANTHROPIC_API_KEY never reaches the API but makes Paperclip bill the runs as
+  metered_api (counted in the $200 budget; patch 13 charges the per-run increase). Verified: session resumes, billing
+  metered_api, budget moved by exactly the increase.
 - Antigravity: external adapter `agy_local` built from github.com/evgemar/agy-paperclip-adapter (MIT, commit in
   `/work/.paperclip/adapters/agy-paperclip-adapter/SOURCE_COMMIT`), compiled against our patched adapter-utils (symlinked,
   so patches 8–10 apply), registered with `POST /api/adapters/install {packageName: <dir>, isLocalPath: true}`. Patch 11
