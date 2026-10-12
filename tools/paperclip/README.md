@@ -141,7 +141,8 @@ Code in the Claude container over ssh (`ws-<name>`), runtime binding `{"mode": "
 "anthropic", "method": "api_key"}`, created paused. scout, attacker-1/2 and muse-codex keep GPT-6 Astra and report to
 coordinator-api; the Codex formalizer is paused. `build_api_org.py <name>` touches only the named agents (re-pushing a
 bundle resets that agent's task sessions). formalizer-api and attacker-api-1 are outside the `claude-api` run pool (adding it needs a
-Paperclip restart; the rate limits leave plenty of room). Routines: hourly tick and 6-hour reflection -> coordinator-api, weekly sweep -> scout.
+Paperclip restart; the rate limits leave plenty of room). Routines: coordinator tick every 20 minutes (owner, 2026-10-12; was hourly) and 6-hour reflection -> coordinator-api,
+weekly sweep -> scout.
 `resume_all.py` (default `api`) resumes the API agents plus the Codex seats; the subscription Claude agents
 (coordinator, referee-1/2, verifier) stay paused (`old` / `all` for the rest).
 - Budget: company budget policy, billed_cents, lifetime, hard stop, warning at 80%. Subscription and Codex runs record
