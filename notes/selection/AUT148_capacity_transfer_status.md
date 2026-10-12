@@ -1,6 +1,6 @@
 # AUT-148 — capacity-transfer formalisation status reconciliation (2026-10-12)
 
-Status: DONE (local patch prepared; nothing pushed, nothing uploaded).
+Status: DONE. README patch pushed 2026-10-12 after board approval 3685dd22 (automath-papers commit 34a9860, README only). PDF p.3 erratum deferred.
 
 ## Record check
 Recorded Lean scope (inbox/STATUS.md 2026-10-02T23:17Z/23:23Z; lean/sidon30/README.md; lean/sidon30/PLAN_TRANSFER.md;
