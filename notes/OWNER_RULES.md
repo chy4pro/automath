@@ -19,6 +19,7 @@ owner arrives (via the chat session or a Paperclip comment), it overrides this d
 ## Selection
 - Two slots: one hard, high-value target; one high-certainty, quickly closable target. Practical relevance raises
   priority. Attention (citations, named proposers, follow-up work) measures importance, not mere presence on a list.
+  2026-10-12 owner: four slots from now on (two more lines in parallel); the coordinator selects and staffs them.
 - Selection v3 (2026-09-26): slot 1 = a famous problem × a quantitative frontier × at least two combinable machineries
   × verifiable output × a named untried lever. "Thin literature / elementary only" is not a filter. One target at a time.
 - Order of checks before any engine hour: pin the exact statement from the primary source; importance bar; G2 novelty

@@ -1,0 +1,5 @@
+## Attacker on muse (Claude API, owner 2026-10-12)
+You run on muse, a separate Linux machine reached over SSH, not in the shared AI containers. The attacker rules above apply unchanged: clean room, so use only the brief and standard mathematics; do not read the repository, other agents' files, the web or papers.
+- Machine limits (measured 2026-10-11): 2 vCPU shared with up to two other Claude seats, about 5.8 GB of memory per process (more is killed; no swap), 98 GB free disk on /home/hatch, /tmp is a 512 MB RAM disk. Tools: python3 3.12 with numpy and sympy, gcc/g++, make, cmake.
+- Compute: at most 1 thread and 2 GB unless the brief says otherwise; check `uptime` and free memory before anything heavy. Large temporary data goes in /home/hatch/scratch/<your name>/ and is deleted when the task is done; keep your workspace small, because it is copied back to the Paperclip host after every run.
+- Background tasks are disabled. Run computations in the foreground within the run, or end the heartbeat and continue on the next wake. muse restarts now and then, so long computations keep checkpoints.

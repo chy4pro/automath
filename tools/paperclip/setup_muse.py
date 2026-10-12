@@ -24,6 +24,13 @@ SEATS = [
    "extraArgs": ["--disallowedTools=CronCreate,CronDelete,CronList,Monitor"]}),
  # OPENAI_API_KEY is a placeholder that only satisfies Paperclip's pre-run Codex credential gate; codex-keygate deletes
  # it from the environment before starting Codex, which then authenticates through the keygate provider.
+ # Two clean-room attackers on muse (owner, 2026-10-12), Claude Code on muse's API login like muse-claude.
+ ("muse-attacker-1", "Attacker on muse (Claude API, Opus 5.5, clean room)", "swords", "claude_local", "/home/hatch/pcbin/claude-api", "claude-opus-5-5",
+  {"env": {"ANTHROPIC_API_KEY": "placeholder-muse-settings-key-is-used", "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS": "1", "AUTOMATH_CLEAN_ROOM": "1"},
+   "extraArgs": ["--disallowedTools=CronCreate,CronDelete,CronList,Monitor"]}),
+ ("muse-attacker-2", "Attacker on muse (Claude API, Opus 5.5, clean room)", "swords", "claude_local", "/home/hatch/pcbin/claude-api", "claude-opus-5-5",
+  {"env": {"ANTHROPIC_API_KEY": "placeholder-muse-settings-key-is-used", "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS": "1", "AUTOMATH_CLEAN_ROOM": "1"},
+   "extraArgs": ["--disallowedTools=CronCreate,CronDelete,CronList,Monitor"]}),
  ("muse-codex", "Muse worker (Codex, GPT-6 Astra)", "cpu", "codex_local", "/home/hatch/pcbin/codex", "gpt-6-astra",
   {"modelReasoningEffort": "xhigh", "env": {"OPENAI_API_KEY": "placeholder-stripped-by-codex-keygate"}}),
  ("muse-agy", "Muse worker (Antigravity, Gemini 3.1 Pro)", "cpu", "agy_local", "/home/hatch/pcbin/agy", "gemini-3.1-pro-high", {}),
@@ -41,6 +48,8 @@ agents = {a["name"]: a for a in call("GET", f"/companies/{C}/agents")}
 coord = (agents.get("coordinator-api") or agents["coordinator"])["id"]   # the API coordinator since 2026-10-11
 bundle_text = open(f"{AG}/muse.md").read() + "\n" + open(f"{AG}/_common.md").read()
 bundle_api = open(f"{AG}/muse.md").read() + "\n" + open(f"{AG}/api_org.md").read() + "\n" + open(f"{AG}/_common.md").read()
+bundle_attacker = open(f"{AG}/attacker.md").read() + "\n" + open(f"{AG}/muse_attacker.md").read() + "\n" + open(f"{AG}/api_org.md").read() + "\n" + open(f"{AG}/_common.md").read()
+def bundle_for(name): return bundle_attacker if name.startswith("muse-attacker") else bundle_api if name == "muse-claude" else bundle_text
 env_ids = json.load(open("/work/.paperclip/env_ids.json")); agent_ids = json.load(open("/work/.paperclip/agent_ids.json"))
 ONLY = set(sys.argv[1:])
 for name, title, icon, adapter, command, model, extra in SEATS:
@@ -66,12 +75,12 @@ for name, title, icon, adapter, command, model, extra in SEATS:
     if adapter in ("claude_local", "codex_local"): acfg.update({"engine": "cli", "maxTurnsPerRun": 200})
     a_body = {"name": name, "title": title, "icon": icon, "role": "researcher", "reportsTo": coord, "adapterType": adapter,
               "adapterConfig": acfg, "defaultEnvironmentId": e["id"], "capabilities": title,
-              "instructionsBundle": {"entryFile": "AGENTS.md", "files": {"AGENTS.md": bundle_api if name == "muse-claude" else bundle_text}},
+              "instructionsBundle": {"entryFile": "AGENTS.md", "files": {"AGENTS.md": bundle_for(name)}},
               "permissions": {"canCreateAgents": False, "canCreateSkills": False, "trustPreset": "standard"}}
     if name in agents:
         a = call("PATCH", f"/agents/{agents[name]['id']}", {k: v for k, v in a_body.items() if k not in ("permissions", "instructionsBundle")})
         cur = call("GET", f"/agents/{a['id']}/instructions-bundle/file?path=AGENTS.md")
-        want = bundle_api if name == "muse-claude" else bundle_text
+        want = bundle_for(name)
         if cur.get("content") != want:
             call("PUT", f"/agents/{a['id']}/instructions-bundle/file", {"path": "AGENTS.md", "content": want,
                  "baseRevisionId": (cur.get("revision") or {}).get("id"), "baseHash": cur.get("contentHash")})
