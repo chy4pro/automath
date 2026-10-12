@@ -109,6 +109,7 @@ task completion), not a high-frequency screenshot/polling loop.
 
 ## Standing publication and privacy gates
 
+- Pre-attack G2 (2026-10-12, AUT-162 lesson from CR-13): the scout check includes subsumption by general theorems (e.g. continuous/interval analogues that transfer routinely), not only direct priority. Lean work runs on GitHub Actions only; every Lean brief repeats this.
 - New research is not automatically a paper/version. While a line is iterating, accumulate notes.
 - Zenodo: only a changed proved-and-refereed headline bound, a kernel milestone, or correction of
   a published claim. No new version merely for a referee report or supporting section.
