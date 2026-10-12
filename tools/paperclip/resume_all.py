@@ -7,7 +7,7 @@ import sys
 sys.path.insert(0, "/work/tools/paperclip"); import pc
 C = "d0817321-3b6a-412d-8aaa-1e2b42e35cae"
 which = sys.argv[1] if len(sys.argv) > 1 else "api"
-CODEX = {"scout", "attacker-1", "attacker-2", "muse-codex"}   # formalizer moved to formalizer-api (2026-10-11)
+CODEX = {"scout", "attacker-1", "attacker-2", "muse-codex", "muse-claude"}  # muse-claude: API-billed since 2026-10-12   # formalizer moved to formalizer-api (2026-10-11)
 OLD_CLAUDE = {"coordinator", "referee-1", "referee-2", "verifier"}
 def wanted(name):
     is_api = name.endswith("-api") or "-api-" in name

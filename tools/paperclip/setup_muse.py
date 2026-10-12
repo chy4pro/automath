@@ -16,7 +16,12 @@ MUSE_HOSTKEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKpt+vA3qyelu3exYrPtgfqS9rQ7
 AG = "/work/tools/paperclip/agents"
 SEATS = [
  # name, title, icon, adapter, command on muse, model, extra adapter config
- ("muse-claude", "Muse worker (Claude Code, Opus 5.5)", "cpu", "claude_local", "/home/hatch/pcbin/claude", "claude-opus-5-5", {}),
+ # muse-claude (owner, 2026-10-12): Claude Code with muse's own API login (ANTHROPIC_API_KEY in /home/hatch/.claude/settings.json,
+ # which takes precedence over the process environment). The placeholder ANTHROPIC_API_KEY below never reaches the API; it
+ # only makes Paperclip record these runs as API-billed, so they count against the $200 budget. Background tasks off.
+ ("muse-claude", "Muse worker (Claude Code on the API, Opus 5.5) - long or heavy jobs on muse", "cpu", "claude_local", "/home/hatch/pcbin/claude-api", "claude-opus-5-5",
+  {"env": {"ANTHROPIC_API_KEY": "placeholder-muse-settings-key-is-used", "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS": "1"},
+   "extraArgs": ["--disallowedTools=CronCreate,CronDelete,CronList,Monitor"]}),
  # OPENAI_API_KEY is a placeholder that only satisfies Paperclip's pre-run Codex credential gate; codex-keygate deletes
  # it from the environment before starting Codex, which then authenticates through the keygate provider.
  ("muse-codex", "Muse worker (Codex, GPT-6 Astra)", "cpu", "codex_local", "/home/hatch/pcbin/codex", "gpt-6-astra",
@@ -33,10 +38,13 @@ if not sec:
         "description": "Paperclip's SSH key for muse (root, loopback sshd behind the Workbench SSH bridge)"})
 envs = {e["name"]: e for e in call("GET", f"/companies/{C}/environments")}
 agents = {a["name"]: a for a in call("GET", f"/companies/{C}/agents")}
-coord = agents["coordinator"]["id"]
+coord = (agents.get("coordinator-api") or agents["coordinator"])["id"]   # the API coordinator since 2026-10-11
 bundle_text = open(f"{AG}/muse.md").read() + "\n" + open(f"{AG}/_common.md").read()
+bundle_api = open(f"{AG}/muse.md").read() + "\n" + open(f"{AG}/api_org.md").read() + "\n" + open(f"{AG}/_common.md").read()
 env_ids = json.load(open("/work/.paperclip/env_ids.json")); agent_ids = json.load(open("/work/.paperclip/agent_ids.json"))
+ONLY = set(sys.argv[1:])
 for name, title, icon, adapter, command, model, extra in SEATS:
+    if ONLY and name not in ONLY: continue
     cfg = {"host": MUSE_HOST, "port": MUSE_PORT, "username": "root", "remoteWorkspacePath": f"/home/hatch/pcws/{name}",
            "privateKeySecretRef": {"type": "secret_ref", "secretId": sec["id"], "version": "latest"},
            "knownHosts": f"{MUSE_HOST} {MUSE_HOSTKEY}\n", "strictHostKeyChecking": True}
@@ -58,13 +66,14 @@ for name, title, icon, adapter, command, model, extra in SEATS:
     if adapter in ("claude_local", "codex_local"): acfg.update({"engine": "cli", "maxTurnsPerRun": 200})
     a_body = {"name": name, "title": title, "icon": icon, "role": "researcher", "reportsTo": coord, "adapterType": adapter,
               "adapterConfig": acfg, "defaultEnvironmentId": e["id"], "capabilities": title,
-              "instructionsBundle": {"entryFile": "AGENTS.md", "files": {"AGENTS.md": bundle_text}},
+              "instructionsBundle": {"entryFile": "AGENTS.md", "files": {"AGENTS.md": bundle_api if name == "muse-claude" else bundle_text}},
               "permissions": {"canCreateAgents": False, "canCreateSkills": False, "trustPreset": "standard"}}
     if name in agents:
         a = call("PATCH", f"/agents/{agents[name]['id']}", {k: v for k, v in a_body.items() if k not in ("permissions", "instructionsBundle")})
         cur = call("GET", f"/agents/{a['id']}/instructions-bundle/file?path=AGENTS.md")
-        if cur.get("content") != bundle_text:
-            call("PUT", f"/agents/{a['id']}/instructions-bundle/file", {"path": "AGENTS.md", "content": bundle_text,
+        want = bundle_api if name == "muse-claude" else bundle_text
+        if cur.get("content") != want:
+            call("PUT", f"/agents/{a['id']}/instructions-bundle/file", {"path": "AGENTS.md", "content": want,
                  "baseRevisionId": (cur.get("revision") or {}).get("id"), "baseHash": cur.get("contentHash")})
         verb = "updated"
     else:
